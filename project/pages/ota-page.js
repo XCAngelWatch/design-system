@@ -3,169 +3,183 @@
 <div class="content">
 <section class="section" id="ota-page">
   <p class="section-eyebrow">Patterns · OTA 升级</p>
-  <h2>OtaPage · OTA 固件管理</h2>
-  <p class="lede">OTA(Over-The-Air)固件升级是 TMS 第二高频操作,关乎现网设备稳定。需呈现:固件包仓库 → 推送策略 → 设备级进度 → 失败回滚。本模板覆盖列表 + 详情两态 +"逐设备进度"实时面板。</p>
+  <h2>OtaPage · 固件管理</h2>
+  <p class="lede">沿袭旧 <code>views/ota/index.vue</code>:<b>左侧站点树 + 右侧固件列表</b>,支持<b>列表/卡片视图切换</b>。每条固件记录(name / 站点 / 新版本 / 基线版本 / 大小 / 适配机型 / 状态)对应一次推送任务的源,通过工具栏"推送日志"按钮跳到 PushPage 查看历史批次。</p>
 
-  <div class="demo-stack">
-    <div class="surface" style="padding:0;overflow:hidden">
-      <div style="padding:14px 18px;border-bottom:1px solid var(--aw-border-3);display:flex;justify-content:space-between;align-items:center">
-        <h3 class="card-title" style="margin:0">OTA 任务列表</h3>
-        <div class="row" style="gap:6px">
-          <button class="btn btn-primary btn-sm">+ 创建升级任务</button>
-          <button class="btn btn-sm">📦 固件仓库</button>
+  <div class="surface" style="padding:0;overflow:hidden">
+    <div style="display:flex;align-items:stretch;height:560px">
+      <!-- 左:站点树(对应旧 simpleTree, store_list) -->
+      <div class="ota-tree">
+        <div class="ot-h">
+          <strong>站点列表</strong>
+          <button class="btn btn-text btn-sm" style="padding:0 4px">⟳</button>
+        </div>
+        <div class="ot-search"><input class="input" placeholder="搜索站点" /></div>
+        <div class="ot-list">
+          <div class="ot-row"><span class="ot-arrow">▾</span><span>集团总部</span><span class="ot-count">128</span></div>
+          <div class="ot-row sub"><span class="ot-arrow">▾</span><span>华东大区</span><span class="ot-count">42</span></div>
+          <div class="ot-row sub2 act"><span>上海运营中心</span><span class="ot-count">12</span></div>
+          <div class="ot-row sub2"><span>杭州分中心</span><span class="ot-count">8</span></div>
+          <div class="ot-row sub2"><span>南京营业厅</span><span class="ot-count">6</span></div>
+          <div class="ot-row sub"><span class="ot-arrow">▸</span><span>华北大区</span><span class="ot-count">38</span></div>
+          <div class="ot-row sub"><span class="ot-arrow">▸</span><span>华南大区</span><span class="ot-count">30</span></div>
+          <div class="ot-row sub"><span class="ot-arrow">▸</span><span>西南大区</span><span class="ot-count">18</span></div>
         </div>
       </div>
 
-      <div class="table-wrap" style="border:0;border-radius:0">
-        <table class="dt">
-          <thead>
-            <tr>
-              <th>任务 / 版本</th>
-              <th style="width:100px">机型</th>
-              <th style="width:120px">目标设备</th>
-              <th style="width:140px">推送策略</th>
-              <th style="width:140px">总进度</th>
-              <th style="width:100px">状态</th>
-              <th style="width:140px" class="colactions">操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>v3.5.0 灰度推送</strong>
-                <div style="font-size:11px;color:var(--aw-text-3)">v3.4.2 → <span style="color:var(--aw-primary)">v3.5.0</span> · 245 MB</div>
-              </td>
-              <td>AW-Pro 5</td>
-              <td>1,284 台</td>
-              <td>分批 · 200 台/批</td>
-              <td>
-                <div class="progress" style="margin:0"><div class="track"><div class="fill" style="width:42%"></div></div><div class="pct">42%</div></div>
-                <div style="font-size:11px;color:var(--aw-text-3);margin-top:2px">540 ✓ · 18 ✕ · 726 ⏳</div>
-              </td>
-              <td><span class="status-dot upgrading">推送中</span></td>
-              <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">暂停</button></td>
-            </tr>
-            <tr>
-              <td>
-                <strong>v3.4.2 全量</strong>
-                <div style="font-size:11px;color:var(--aw-text-3)">v3.4.1 → v3.4.2 · 198 MB</div>
-              </td>
-              <td>AW-Pro 5 / 7</td>
-              <td>12,486 台</td>
-              <td>立即 · 无并发上限</td>
-              <td>
-                <div class="progress" style="margin:0"><div class="track"><div class="fill success" style="width:100%"></div></div><div class="pct">100%</div></div>
-                <div style="font-size:11px;color:var(--aw-text-3);margin-top:2px">12,438 ✓ · 48 ✕</div>
-              </td>
-              <td><span class="status-dot online">已完成</span></td>
-              <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">回滚</button></td>
-            </tr>
-            <tr>
-              <td>
-                <strong>v3.5.0 测试机预热</strong>
-                <div style="font-size:11px;color:var(--aw-text-3)">v3.4.2 → v3.5.0 · 245 MB</div>
-              </td>
-              <td>AW-Pro 5</td>
-              <td>5 台</td>
-              <td>定时 · 02:00 启动</td>
-              <td><div style="font-size:12px;color:var(--aw-text-3)">⏰ 6 小时后开始</div></td>
-              <td><span class="status-dot maint">已排程</span></td>
-              <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">取消</button></td>
-            </tr>
-            <tr>
-              <td>
-                <strong>v3.4.0 紧急回滚</strong>
-                <div style="font-size:11px;color:var(--aw-text-3)">v3.4.1 → <span style="color:var(--aw-danger)">v3.4.0</span> · 195 MB</div>
-              </td>
-              <td>AW-Pro 7</td>
-              <td>34 台</td>
-              <td>立即 · 应急通道</td>
-              <td>
-                <div class="progress" style="margin:0"><div class="track"><div class="fill danger" style="width:23%"></div></div><div class="pct">23%</div></div>
-                <div style="font-size:11px;color:var(--aw-text-3);margin-top:2px">7 ✓ · 17 ✕ · 10 ⏳</div>
-              </td>
-              <td><span class="status-dot fault">告警</span></td>
-              <td class="colactions"><button class="btn btn-link">诊断</button><button class="btn btn-link">取消</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="surface">
-      <h3 class="card-title">任务详情 · 逐设备进度</h3>
-      <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">点击列表"详情"进入。摘要 + 5 个 Tab(基础信息 / 设备清单 / 实时进度 / 失败诊断 / 操作日志)。</p>
-
-      <div class="surface" style="padding:18px;background:var(--aw-fill-1);margin-bottom:14px">
-        <div class="row" style="gap:18px;align-items:flex-start">
-          <div style="width:48px;height:48px;border-radius:8px;background:var(--aw-primary-bg);color:var(--aw-primary);display:grid;place-items:center;font-size:20px;font-weight:600">📦</div>
-          <div style="flex:1">
-            <div class="row" style="margin-bottom:8px">
-              <strong style="font-size:16px">v3.5.0 灰度推送</strong>
-              <span class="status-dot upgrading">推送中</span>
-              <span class="tag tag-blue">AW-Pro 5</span>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px 24px;font-size:13px;color:var(--aw-text-2)">
-              <div><div style="color:var(--aw-text-3);font-size:11px">目标版本</div>v3.4.2 → <code style="color:var(--aw-primary)">v3.5.0</code></div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">推送策略</div>分批 200/批</div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">设备总数</div>1,284 台</div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">已开始</div>2 分钟前</div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">成功</div><span style="color:var(--aw-success)">540 台</span></div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">失败</div><span style="color:var(--aw-danger)">18 台</span></div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">进行中</div>206 台</div>
-              <div><div style="color:var(--aw-text-3);font-size:11px">待处理</div>520 台</div>
-            </div>
-          </div>
-          <div class="row" style="gap:8px">
-            <button class="btn btn-sm">暂停</button>
-            <button class="btn btn-sm btn-danger">立即终止</button>
+      <!-- 右:固件列表 -->
+      <div class="ota-main">
+        <!-- 搜索表单 -->
+        <div class="lp-toolbar">
+          <div class="row" style="gap:12px;flex:1;min-width:0">
+            <div style="min-width:140px"><label>名称</label><input class="input" placeholder="固件名称" /></div>
+            <div style="min-width:140px"><label>新版本</label><input class="input" placeholder="如 v3.5.0" /></div>
+            <div style="min-width:140px"><label>基线版本</label><input class="input" placeholder="如 v3.4.2" /></div>
+            <button class="btn btn-primary btn-sm">查询</button>
+            <button class="btn btn-sm">重置</button>
           </div>
         </div>
-      </div>
 
-      <div class="tabs">
-        <a class="active">实时进度</a>
-        <a>基础信息</a>
-        <a>设备清单 (1284)</a>
-        <a>失败诊断 <span class="tag-meta" style="margin-left:4px;background:#FAE3E3;color:#A8071A">18</span></a>
-        <a>操作日志</a>
-      </div>
+        <!-- 工具栏 -->
+        <div class="lp-actions">
+          <div class="row" style="gap:6px">
+            <button class="btn btn-primary btn-sm">+ 新增</button>
+            <button class="btn btn-sm">推送日志</button>
+          </div>
+          <div class="row" style="gap:6px">
+            <button class="btn-icn" title="刷新">⟳</button>
+            <button class="btn-icn act" title="表格视图">☰</button>
+            <button class="btn-icn" title="卡片视图">⊞</button>
+            <button class="btn-icn" title="列设置">⚙</button>
+          </div>
+        </div>
 
-      <div style="padding:14px 0 0">
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span><strong>下载固件包</strong> · 245 MB</span><span class="mono" style="color:var(--aw-text-3)">540 / 540 · 100%</span></div><div class="progress" style="margin:0"><div class="track"><div class="fill success" style="width:100%"></div></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span><strong>校验签名</strong> · SHA-256</span><span class="mono" style="color:var(--aw-text-3)">540 / 540 · 100%</span></div><div class="progress" style="margin:0"><div class="track"><div class="fill success" style="width:100%"></div></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span><strong>安装升级</strong> · 重启中</span><span class="mono" style="color:var(--aw-text-3)">540 / 1,284 · 42%</span></div><div class="progress" style="margin:0"><div class="track"><div class="fill" style="width:42%"></div></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span style="color:var(--aw-danger)"><strong>失败:</strong> 17 台校验失败 / 1 台空间不足</span><a style="color:var(--aw-primary);cursor:pointer">查看诊断 →</a></div><div class="progress" style="margin:0"><div class="track"><div class="fill danger" style="width:1.4%"></div></div></div></div>
+        <!-- 表格(沿袭旧项目 columns: name / store / new_version / base_version / size / adapter_model / create_time / state / operate) -->
+        <div class="table-wrap" style="border:0;border-radius:0;flex:1;overflow:auto">
+          <table class="dt">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th style="width:120px">站点</th>
+                <th style="width:120px">新版本</th>
+                <th style="width:120px">基线版本</th>
+                <th style="width:80px">大小</th>
+                <th style="width:120px">适配机型</th>
+                <th style="width:140px">创建时间</th>
+                <th style="width:100px">状态</th>
+                <th style="width:140px" class="colactions">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>v3.5.0 灰度推送</strong></td>
+                <td>上海运营中心</td>
+                <td><code style="color:var(--aw-primary)">v3.5.0</code></td>
+                <td><code>v3.4.2</code></td>
+                <td>245 MB</td>
+                <td>AW-Pro 5</td>
+                <td>2026-04-27 09:12</td>
+                <td><span class="status-dot upgrading">推送中</span></td>
+                <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">推送</button></td>
+              </tr>
+              <tr>
+                <td><strong>v3.4.2 全量包</strong></td>
+                <td>集团总部</td>
+                <td><code>v3.4.2</code></td>
+                <td><code>v3.4.1</code></td>
+                <td>198 MB</td>
+                <td>AW-Pro 5/7</td>
+                <td>2026-04-26 02:00</td>
+                <td><span class="status-dot online">已完成</span></td>
+                <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">推送</button></td>
+              </tr>
+              <tr>
+                <td><strong>v3.5.0 测试机</strong></td>
+                <td>上海运营中心</td>
+                <td><code>v3.5.0</code></td>
+                <td><code>v3.4.2</code></td>
+                <td>245 MB</td>
+                <td>AW-Pro 5</td>
+                <td>2026-04-25 18:30</td>
+                <td><span class="status-dot maint">已排程</span></td>
+                <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">编辑</button></td>
+              </tr>
+              <tr>
+                <td><strong>v3.4.0 紧急回滚</strong></td>
+                <td>华南大区</td>
+                <td><code style="color:var(--aw-danger)">v3.4.0</code></td>
+                <td><code>v3.4.1</code></td>
+                <td>195 MB</td>
+                <td>AW-Pro 7</td>
+                <td>2026-04-24 21:55</td>
+                <td><span class="status-dot fault">告警</span></td>
+                <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">推送</button></td>
+              </tr>
+              <tr>
+                <td><strong>AW-Mini 适配包</strong></td>
+                <td>集团总部</td>
+                <td><code>v2.8.5</code></td>
+                <td><code>v2.8.4</code></td>
+                <td>134 MB</td>
+                <td>AW-Mini</td>
+                <td>2026-04-23 11:08</td>
+                <td><span class="status-dot online">已完成</span></td>
+                <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">推送</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lp-pager">
+          <span class="meta">共 38 条</span>
+          <div class="pager"><button class="page">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><button class="page">›</button></div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="surface">
-      <h3 class="card-title">固件仓库视图</h3>
-      <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">左:版本树(按机型 / 通道分组),右:版本详情 + 下游推送任务。沿袭 TreeListLayout pattern。</p>
-      <div class="row" style="gap:0;align-items:stretch;border:1px solid var(--aw-border-2);border-radius:6px;overflow:hidden">
-        <div style="flex:0 0 220px;background:var(--aw-fill-1);border-right:1px solid var(--aw-border-2);padding:12px 0;font-size:12px">
-          <div style="padding:6px 14px;font-weight:600;color:var(--aw-text-2)">▾ AW-Pro 5</div>
-          <div style="padding:4px 28px;color:var(--aw-text-2)">▸ Stable</div>
-          <div style="padding:4px 28px;background:var(--aw-primary-bg);color:var(--aw-primary);font-weight:500">▾ Beta</div>
-          <div style="padding:3px 42px;color:var(--aw-primary)"><strong>v3.5.0</strong> <span class="tag-meta" style="background:#FAE3E3;color:#A8071A">最新</span></div>
-          <div style="padding:3px 42px;color:var(--aw-text-2)">v3.4.2</div>
-          <div style="padding:3px 42px;color:var(--aw-text-2)">v3.4.1</div>
-          <div style="padding:6px 14px;font-weight:600;color:var(--aw-text-2)">▸ AW-Pro 7</div>
-          <div style="padding:6px 14px;font-weight:600;color:var(--aw-text-2)">▸ AW-Mini</div>
+  <div class="surface" style="margin-top:24px">
+    <h3 class="card-title">视图切换 · 表格 / 卡片</h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">工具栏右侧 <code>☰ ⊞</code> 切换视图模式。卡片视图把每条固件渲染为带封面 + 元数据的卡(适合现场调研一眼扫过几十条版本),用户偏好持久化到 localStorage。</p>
+    <div class="ota-card-grid">
+      <div class="ota-card">
+        <div class="oc-cover"><span class="oc-version">v3.5.0</span><span class="status-dot upgrading" style="margin-top:6px">推送中</span></div>
+        <div class="oc-body">
+          <strong>v3.5.0 灰度推送</strong>
+          <div class="oc-row"><span class="oc-l">基线</span><code>v3.4.2</code></div>
+          <div class="oc-row"><span class="oc-l">机型</span>AW-Pro 5</div>
+          <div class="oc-row"><span class="oc-l">大小</span>245 MB</div>
+          <div class="oc-foot"><a>详情</a><a>推送</a></div>
         </div>
-        <div style="flex:1;padding:14px 18px">
-          <div class="row" style="margin-bottom:10px"><strong style="font-size:15px">v3.5.0 (Beta)</strong><span class="tag tag-orange">Beta</span><span class="tag-meta">2026-04-25 发布</span></div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px 24px;font-size:12px;color:var(--aw-text-2);margin-bottom:14px">
-            <div><div style="color:var(--aw-text-3);font-size:11px">机型</div>AW-Pro 5</div>
-            <div><div style="color:var(--aw-text-3);font-size:11px">大小</div>245 MB</div>
-            <div><div style="color:var(--aw-text-3);font-size:11px">SHA-256</div><code style="font-size:10px">a3f2c8b1e9d4…</code></div>
-            <div><div style="color:var(--aw-text-3);font-size:11px">关联推送任务</div>3 个</div>
-            <div><div style="color:var(--aw-text-3);font-size:11px">已升级设备</div>540 / 1,284</div>
-            <div><div style="color:var(--aw-text-3);font-size:11px">回滚率</div><span style="color:var(--aw-warning)">1.4%</span></div>
-          </div>
-          <div class="row" style="gap:6px"><button class="btn btn-primary btn-sm">+ 创建推送任务</button><button class="btn btn-sm">下载</button><button class="btn btn-sm btn-ghost-danger">下架</button></div>
+      </div>
+      <div class="ota-card">
+        <div class="oc-cover oc-success"><span class="oc-version">v3.4.2</span><span class="status-dot online" style="margin-top:6px">已完成</span></div>
+        <div class="oc-body">
+          <strong>v3.4.2 全量包</strong>
+          <div class="oc-row"><span class="oc-l">基线</span><code>v3.4.1</code></div>
+          <div class="oc-row"><span class="oc-l">机型</span>AW-Pro 5 / 7</div>
+          <div class="oc-row"><span class="oc-l">大小</span>198 MB</div>
+          <div class="oc-foot"><a>详情</a><a>推送</a></div>
+        </div>
+      </div>
+      <div class="ota-card">
+        <div class="oc-cover oc-warn"><span class="oc-version">v3.5.0</span><span class="status-dot maint" style="margin-top:6px">已排程</span></div>
+        <div class="oc-body">
+          <strong>v3.5.0 测试机</strong>
+          <div class="oc-row"><span class="oc-l">基线</span><code>v3.4.2</code></div>
+          <div class="oc-row"><span class="oc-l">机型</span>AW-Pro 5</div>
+          <div class="oc-row"><span class="oc-l">大小</span>245 MB</div>
+          <div class="oc-foot"><a>详情</a><a>编辑</a></div>
+        </div>
+      </div>
+      <div class="ota-card">
+        <div class="oc-cover oc-danger"><span class="oc-version">v3.4.0</span><span class="status-dot fault" style="margin-top:6px">告警</span></div>
+        <div class="oc-body">
+          <strong>v3.4.0 紧急回滚</strong>
+          <div class="oc-row"><span class="oc-l">基线</span><code>v3.4.1</code></div>
+          <div class="oc-row"><span class="oc-l">机型</span>AW-Pro 7</div>
+          <div class="oc-row"><span class="oc-l">大小</span>195 MB</div>
+          <div class="oc-foot"><a>详情</a><a>推送</a></div>
         </div>
       </div>
     </div>

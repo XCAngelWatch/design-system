@@ -1482,3 +1482,161 @@
   margin-top: 2px;
   line-height: 1.5;
 }
+
+/* ===== ListPage 通用工具栏 / 翻页(沿袭旧 tms-base 风格) ===== */
+.lp-toolbar {
+  padding: 14px 16px;
+  background: var(--aw-fill-1);
+  border-bottom: 1px solid var(--aw-border-3);
+  display: flex; align-items: flex-end; gap: 12px;
+}
+.lp-toolbar .row > div { display: flex; flex-direction: column; gap: 4px; }
+.lp-toolbar label {
+  font-size: 11px; color: var(--aw-text-3);
+}
+.lp-actions {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--aw-border-3);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+}
+.lp-actions .meta { color: var(--aw-text-3); font-size: 12px; }
+.btn-icn {
+  width: 28px; height: 28px;
+  border: 1px solid var(--aw-border-2);
+  background: var(--aw-bg);
+  border-radius: var(--aw-radius);
+  cursor: pointer;
+  font-size: 13px; color: var(--aw-text-2);
+  display: inline-grid; place-items: center;
+  transition: all var(--aw-dur-fast) var(--aw-ease);
+}
+.btn-icn:hover { color: var(--aw-primary); border-color: var(--aw-primary); }
+.btn-icn.act { color: var(--aw-primary); border-color: var(--aw-primary); background: var(--aw-primary-bg); }
+.lp-pager {
+  padding: 10px 16px;
+  border-top: 1px solid var(--aw-border-3);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.lp-pager .meta { font-size: 12px; color: var(--aw-text-3); }
+
+/* ===== TreeListLayout 内嵌(OTA / UserMgmt 共用) ===== */
+.ota-tree {
+  flex: 0 0 220px;
+  border-right: 1px solid var(--aw-border-3);
+  background: var(--aw-bg);
+  display: flex; flex-direction: column;
+}
+.ota-tree .ot-h {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--aw-border-3);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px;
+}
+.ota-tree .ot-search {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--aw-border-3);
+}
+.ota-tree .ot-search .input { height: 28px; font-size: 12px; }
+.ota-tree .ot-list {
+  flex: 1; overflow: auto;
+  padding: 6px 0;
+  font-size: 13px;
+}
+.ot-row {
+  padding: 5px 14px;
+  display: flex; align-items: center; gap: 6px;
+  cursor: pointer;
+  color: var(--aw-text-1);
+}
+.ot-row:hover { background: var(--aw-fill-1); }
+.ot-row.act {
+  background: var(--aw-primary-bg);
+  color: var(--aw-primary);
+  font-weight: 500;
+}
+.ot-row.sub { padding-left: 28px; font-size: 12px; color: var(--aw-text-2); }
+.ot-row.sub2 { padding-left: 42px; font-size: 12px; }
+.ot-arrow {
+  font-size: 10px; color: var(--aw-text-3);
+  width: 10px; flex-shrink: 0;
+}
+.ot-count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--aw-text-3);
+  font-family: var(--aw-font-mono);
+}
+.ot-row.act .ot-count { color: var(--aw-primary); }
+.ota-main {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+}
+
+/* ===== OTA 卡片视图 ===== */
+.ota-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+@media (max-width: 1100px) { .ota-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ota-card {
+  border: 1px solid var(--aw-border-3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--aw-bg);
+  display: flex; flex-direction: column;
+  transition: border-color var(--aw-dur-fast), box-shadow var(--aw-dur-fast);
+}
+.ota-card:hover {
+  border-color: var(--aw-primary);
+  box-shadow: var(--aw-shadow-2);
+}
+.ota-card .oc-cover {
+  height: 88px;
+  background: linear-gradient(135deg, var(--aw-primary), var(--aw-primary-active));
+  color: white;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+}
+.ota-card .oc-cover.oc-success { background: linear-gradient(135deg, #6BAA47, var(--aw-success)); }
+.ota-card .oc-cover.oc-warn    { background: linear-gradient(135deg, #D89614, var(--aw-warning)); }
+.ota-card .oc-cover.oc-danger  { background: linear-gradient(135deg, #DC4446, var(--aw-danger)); }
+.ota-card .oc-version {
+  font-size: 22px; font-weight: 700;
+  font-family: var(--aw-font-mono);
+  letter-spacing: -0.4px;
+}
+.ota-card .oc-cover .status-dot {
+  background: rgba(255,255,255,0.18);
+  color: white !important;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.ota-card .oc-cover .status-dot::before { background: white !important; }
+.ota-card .oc-body {
+  padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 12px;
+}
+.ota-card .oc-body strong { font-size: 14px; color: var(--aw-text-1); margin-bottom: 4px; }
+.ota-card .oc-row {
+  display: flex; justify-content: space-between;
+  color: var(--aw-text-2);
+}
+.ota-card .oc-row .oc-l { color: var(--aw-text-3); }
+.ota-card .oc-foot {
+  margin-top: auto;
+  padding: 10px 14px;
+  border-top: 1px solid var(--aw-border-3);
+  display: flex; gap: 14px;
+  font-size: 12px;
+}
+.ota-card .oc-foot a {
+  color: var(--aw-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.ota-card .oc-foot a:hover { color: var(--aw-primary-hover); }
