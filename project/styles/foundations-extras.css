@@ -209,28 +209,32 @@
 .shell-mock.v12 .sb .menu::-webkit-scrollbar { width: 4px; }
 .shell-mock.v12 .sb .menu::-webkit-scrollbar-thumb { background: var(--aw-sidebar-scroll-thumb); border-radius: 2px; }
 
-/* ---------- Sidebar States grid (4 thumbnails) ---------- */
+/* ---------- Sidebar States grid (4 thumbnails) ----------
+   为什么不用 grid:grid 的 intrinsic sizing 在卡片有 fixed-width 子元素
+   (130px sidebar)时容易被撑大,即使设了 minmax(0, 1fr)。
+   改用 flex + 显式 calc() 宽度 —— 对 4 张固定卡完全可控。 */
 .sidebar-states {
-  display: grid;
-  /* 默认 2 列(2x2 网格),宽屏才展开为 4 列。
-     minmax(0, 1fr) 让卡片忽略内容固有最小宽度,严格按列宽渲染 */
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin: 24px 0 32px;
-}
-@media (min-width: 1180px) {
-  .sidebar-states {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 .sidebar-states .ss-card {
   border: 1px solid var(--aw-border-3);
   border-radius: 8px;
   overflow: hidden;
   background: var(--aw-bg);
-  /* min-width:0 让 grid auto-fit 真正按 minmax(220px) 阈值断行,
-     否则 .ss-thumb 内 130px sidebar + 内容会把卡撑到 ~280px */
+  /* 默认窄屏 2 列:每卡 = (100% - 16px gap) / 2 */
+  flex: 0 0 calc((100% - 16px) / 2);
+  max-width: calc((100% - 16px) / 2);
   min-width: 0;
+}
+@media (min-width: 1180px) {
+  .sidebar-states .ss-card {
+    /* 宽屏 4 列:每卡 = (100% - 3 * 16px gap) / 4 = (100% - 48px) / 4 */
+    flex: 0 0 calc((100% - 48px) / 4);
+    max-width: calc((100% - 48px) / 4);
+  }
 }
 .sidebar-states .ss-card.dark { background: #14171D; border-color: #232831; }
 .sidebar-states .ss-thumb { height: 280px; display: flex; }

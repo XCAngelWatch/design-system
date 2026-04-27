@@ -1,0 +1,72 @@
+/* ============================================================
+   AngelWatch Design System — Result Pro (S9)
+   部分成功 (partial) · 含失败明细 / 进度条分段 / 操作区
+   ============================================================ */
+
+.result-partial {
+  background: var(--aw-bg);
+}
+.rp-h {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px;
+  border-bottom: 1px solid var(--aw-border-3);
+}
+.rp-icn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--aw-warning-bg);
+  color: var(--aw-warning);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.rp-meta { flex: 1; min-width: 0; }
+.rp-meta h4 {
+  margin: 0 0 8px;
+  font-size: 18px; font-weight: 600;
+  color: var(--aw-text-1);
+}
+.rp-stats { display: flex; gap: 18px; font-size: 13px; }
+.rp-stat { color: var(--aw-text-2); }
+.rp-stat b { font-size: 16px; font-weight: 600; margin-right: 4px; }
+.rp-stat.ok b { color: var(--aw-success); }
+.rp-stat.err b { color: var(--aw-danger); }
+.rp-stat.dim { color: var(--aw-text-3); }
+
+.rp-progress {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--aw-border-3);
+}
+.rp-progress .track {
+  display: flex;
+  height: 8px;
+  background: var(--aw-fill-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.rp-progress .seg.ok { background: var(--aw-success); }
+.rp-progress .seg.err { background: var(--aw-danger); }
+.rp-pct {
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: var(--aw-text-3);
+  font-family: var(--aw-font-mono);
+}
+
+.rp-detail {
+  padding: 16px 24px;
+}
+.rp-d-h {
+  font-size: 13px; font-weight: 600;
+  color: var(--aw-text-1);
+  margin-bottom: 8px;
+}
+
+.rp-acts {
+  padding: 14px 24px;
+  border-top: 1px solid var(--aw-border-3);
+  display: flex; justify-content: flex-end; gap: 8px;
+  background: var(--aw-fill-1);
+}
+
+[data-theme="dark"] .rp-acts { background: rgba(255,255,255,0.04); }
+[data-theme="dark"] .rp-icn { background: rgba(173, 104, 0, 0.18); }

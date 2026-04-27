@@ -1,0 +1,132 @@
+/* ============================================================
+   AngelWatch Design System — Tree Pro (S7)
+   搜索高亮 / 懒加载 / 空态 / 选择模式 / 拖拽
+   ============================================================ */
+
+/* 搜索命中高亮 */
+.tnode .lbl mark {
+  background: var(--aw-warning-bg);
+  color: var(--aw-warning);
+  font-weight: 600;
+  padding: 0 2px; border-radius: 2px;
+}
+
+/* 懒加载 spinner */
+.tree-spin {
+  width: 12px; height: 12px;
+  border: 2px solid var(--aw-fill-2);
+  border-top-color: var(--aw-primary);
+  border-radius: 50%;
+  animation: pz-spin 0.7s linear infinite;
+}
+
+/* 节点 inline 信息 */
+.tnode .info-mini {
+  margin-left: 8px;
+  font-size: 11px; color: var(--aw-text-3);
+}
+.tnode .info-mini.err { color: var(--aw-danger); }
+
+/* 错误重试 link */
+.retry-link {
+  margin-left: 8px;
+  font-size: 11.5px; color: var(--aw-primary);
+  cursor: pointer;
+}
+.retry-link:hover { text-decoration: underline; }
+
+/* 错误状态 caret */
+.tnode.err .caret {
+  color: var(--aw-danger);
+  font-weight: 700;
+  background: var(--aw-danger-bg);
+  border-radius: 50%;
+}
+
+/* loading 节点 caret 区域 */
+.tnode.loading .caret {
+  display: grid; place-items: center;
+  width: 16px; height: 16px;
+  background: transparent;
+}
+
+/* 空态 */
+.tree-empty {
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--aw-text-4);
+}
+.tree-empty svg { color: var(--aw-text-4); margin-bottom: 10px; }
+.tree-empty .te-h { font-size: 13px; color: var(--aw-text-2); font-weight: 500; }
+.tree-empty .te-s { font-size: 11.5px; color: var(--aw-text-4); margin-top: 4px; margin-bottom: 10px; }
+
+
+/* 选择模式三列对比 */
+.tree-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 920px) { .tree-mode-grid { grid-template-columns: 1fr; } }
+.tm-card {
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  background: var(--aw-bg);
+  overflow: hidden;
+}
+.tm-cap {
+  padding: 8px 12px;
+  background: var(--aw-fill-1);
+  border-bottom: 1px solid var(--aw-border-3);
+  font-size: 11.5px; font-weight: 600; color: var(--aw-text-2);
+}
+.tm-body { padding: 8px 4px; }
+
+
+/* 拖拽 */
+.tnode .grip-h {
+  font-family: var(--aw-font-mono);
+  color: var(--aw-text-4);
+  margin-right: 4px;
+  cursor: grab;
+  user-select: none;
+  font-size: 11px;
+  letter-spacing: -1px;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity var(--aw-dur-fast);
+}
+.tnode:hover .grip-h { opacity: 1; }
+
+.tnode.dragging {
+  opacity: 0.5;
+  background: var(--aw-fill-2);
+  border-radius: 4px;
+}
+.tnode.drop-into {
+  outline: 2px solid var(--aw-primary);
+  outline-offset: -2px;
+  border-radius: 4px;
+  background: var(--aw-primary-bg);
+}
+.drop-line {
+  height: 0;
+  border-top: 2px solid var(--aw-primary);
+  margin: -1px 0;
+  position: relative;
+}
+.drop-line::before {
+  content: '';
+  position: absolute; left: -2px; top: -4px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--aw-primary);
+}
+
+
+/* Dark theme */
+[data-theme="dark"] .tnode .lbl mark {
+  background: rgba(173, 104, 0, 0.32);
+  color: #FFE58F;
+}
+[data-theme="dark"] .tnode.dragging { background: rgba(255,255,255,0.08); }

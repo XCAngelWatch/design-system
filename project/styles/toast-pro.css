@@ -1,0 +1,73 @@
+/* ============================================================
+   AngelWatch Design System — Toast Pro (S8)
+   富 Notification · 含按钮 / 进度 / 折叠展开
+   ============================================================ */
+
+.rich-toast-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+@media (max-width: 920px) { .rich-toast-grid { grid-template-columns: 1fr; } }
+.rt-card {
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  background: var(--aw-bg);
+  overflow: hidden;
+}
+.rt-cap {
+  padding: 8px 12px;
+  background: var(--aw-fill-1);
+  border-bottom: 1px solid var(--aw-border-3);
+  font-size: 12px; font-weight: 600;
+  color: var(--aw-text-2);
+}
+.rt-body {
+  padding: 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--aw-fill-1);
+}
+
+/* In-toast actions */
+.rt-acts {
+  display: flex; gap: 12px;
+  margin-top: 8px;
+}
+.rt-acts .btn-link { font-size: 12px; }
+
+/* In-toast progress */
+.rt-progress { width: 100%; }
+.rt-progress .track {
+  height: 4px;
+  background: var(--aw-fill-2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.rt-progress .fill {
+  height: 100%;
+  background: var(--aw-info);
+  transition: width var(--aw-dur-base);
+}
+
+/* In-toast detail (expanded error) */
+.rt-detail {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 4px;
+  font-family: var(--aw-font-mono);
+  font-size: 11.5px;
+  border: 1px solid rgba(168, 7, 26, 0.18);
+}
+.rd-row {
+  display: flex; justify-content: space-between;
+  padding: 2px 0;
+  color: var(--aw-text-2);
+}
+.rd-row .er { color: var(--aw-danger); }
+
+.toast.expanded { align-items: flex-start; }
+.toast.expanded .close { align-self: flex-start; padding-top: 2px; }
+
+[data-theme="dark"] .rt-cap, [data-theme="dark"] .rt-body { background: rgba(255,255,255,0.04); }
+[data-theme="dark"] .rt-detail { background: rgba(0,0,0,0.32); border-color: rgba(255,100,100,0.32); }
