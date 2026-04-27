@@ -6,6 +6,13 @@
 
 ## 入口
 
+**在线访问**:<https://xcangelwatch.github.io/design-system/>(主分支自动部署)
+
+直链路由也可用,例如:
+- <https://xcangelwatch.github.io/design-system/#/color>
+- <https://xcangelwatch.github.io/design-system/#/buttons>
+- <https://xcangelwatch.github.io/design-system/#/ecosystem>
+
 设计系统是 **静态 SPA(单页面应用)**,通过 hash 路由(`#/color`、`#/buttons` 等)
 按需用动态 `<script>` 注入各 section 片段。**无需 HTTP 服务器,直接打开就能用**:
 
@@ -18,11 +25,22 @@ open project/index.html
 
 放进任何静态服务器(Nginx / Apache / Caddy / 内网 CDN)同样可分发。无构建,无 NPM 依赖。
 
+## 部署
+
+通过 `.github/workflows/pages.yml` 自动部署到 GitHub Pages:
+
+- **触发**:push 到 `main` 自动跑;也可在 Actions 页面手动 `workflow_dispatch`
+- **发布范围**:仅 `project/` 目录,部署后 `index.html` 位于站点根
+- **一次性配置**:仓库 Settings → Pages → Build and deployment 的 Source 选 **GitHub Actions**
+
+部署状态见 <https://github.com/XCAngelWatch/design-system/actions>。
+
 ## 结构
 
 ```
 design-system/
 ├── README.md                          (本文件)
+├── .github/workflows/pages.yml        GitHub Pages 自动部署 (push main 触发)
 └── project/
     ├── index.html                     SPA shell — 7 个 CSS link + 路由器入口
     ├── pages/

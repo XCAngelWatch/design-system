@@ -27,6 +27,12 @@
   overflow: hidden;
 }
 .brand-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+[data-theme="dark"] .brand-logo img,
+[data-theme="dark"] .shell-mock.v12 .sb .logo-region .b img,
+[data-theme="dark"] .sidebar-states .ss-logo .lg img,
+[data-theme="dark"] .ss-sb.dark .ss-logo .lg img {
+  filter: brightness(0) invert(1) brightness(0.92);
+}
 .brand-name { font-weight: 600; font-size: 14px; line-height: 1.2; }
 .brand-name small {
   display: block; font-weight: 400; font-size: 11px;

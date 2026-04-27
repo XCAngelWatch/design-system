@@ -10,6 +10,10 @@ Static design-system reference site for AngelWatch TMS (设备终端管理系统
 
 设计系统本身不是组件库 —— 它的样式与规范最终通过 `@tms/design-tokens` + `ConfigProvider.theme` 落地到 sibling 仓库 `tms2.5-web-react` 的 `packages/web` 应用代码。
 
+## Deployment
+
+线上地址:<https://xcangelwatch.github.io/design-system/>。`.github/workflows/pages.yml` 在 push 到 `main` 时把 `project/` 目录发布到 GitHub Pages(Source 已设为 GitHub Actions)。手动触发用 Actions 页的 `workflow_dispatch`。无 build,artifact 即 `project/` 原文件。
+
 ## Common commands
 
 没有 build / install / test step。
