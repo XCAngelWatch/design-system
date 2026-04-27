@@ -1,5 +1,6 @@
 /* AngelWatch Design System — page: whitelabel */
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["whitelabel"] = `
+<div class="content">
 <section class="section" id="whitelabel">
   <p class="section-eyebrow">规范 · 白标 / 多租户</p>
   <h2>White-label · 租户主题接管</h2>
@@ -120,4 +121,5 @@
     </div>
   </div>
 </section>
+</div>
 `;

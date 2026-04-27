@@ -17,6 +17,7 @@
   };
 
   (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["row-actions"] = `
+<div class="content">
 <section class="section" id="row-actions">
   <p class="section-eyebrow">业务组件 · 行内操作</p>
   <h2>RowActions · 行操作图标库</h2>
@@ -151,5 +152,6 @@
     </div>
   </div>
 </section>
+</div>
 `;
 })();

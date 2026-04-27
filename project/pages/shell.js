@@ -1,5 +1,6 @@
 /* AngelWatch Design System — page: shell (auto-generated from HTML fragment) */
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["shell"] = `
+<div class="content">
 <!-- SHELL -->
 <section class="section" id="shell">
   <p class="section-eyebrow">Patterns · 页面外壳</p>
@@ -182,4 +183,5 @@
     </div>
   </div>
 </section>
+</div>
 `;
