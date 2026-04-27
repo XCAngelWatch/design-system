@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AngelWatch Design System</title>
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/system.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/components-extras.css" />
+<link rel="stylesheet" href="styles/foundations-extras.css" />
+<link rel="stylesheet" href="styles/layout.css" />
+<link rel="stylesheet" href="styles/ecosystem.css" />
+<link rel="stylesheet" href="styles/login-states.css" />
+<link rel="stylesheet" href="styles/row-actions.css" />
+<link rel="stylesheet" href="styles/table-pro.css" />
+<link rel="stylesheet" href="styles/upload-pro.css" />
+<script>
+  // Early theme restore — runs before <body> to avoid FOUC
+  try {
+    var t = localStorage.getItem('aw-theme');
+    if (t === 'dark' || t === 'light') {
+      document.documentElement.setAttribute('data-theme', t);
+    }
+  } catch (e) {}
+</script>
+</head>
+<body class="spa">
+<div class="app">
+  <aside class="app-side" id="app-side"></aside>
+  <main class="app-main comp-page">
+    <div class="comp-toolbar" id="app-toolbar"></div>
+    <div id="app-slot"></div>
+  </main>
+</div>
+<script src="pages/_router.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+/* ============================================================
+   AngelWatch Design System — Table Pro (S4 + S10)
+   密度三档 / 列设置 / 列冻结 / 列宽拖拽 / 批量条 / 分页三态
+   ============================================================ */
+
+/* ---------- 密度三档 ---------- */
+.dens-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 920px) { .dens-grid { grid-template-columns: 1fr; } }
+.dens-card {
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  overflow: hidden;
+  background: var(--aw-bg);
+}
+.dens-cap { padding: 10px 12px; background: var(--aw-fill-1); border-bottom: 1px solid var(--aw-border-3); }
+.dens-card .dt { border: 0; border-radius: 0; }
+
+.dt.dt-dense thead th, .dt.dt-dense tbody td {
+  padding-top: 6px; padding-bottom: 6px;
+  font-size: 12.5px;
+  line-height: 20px;
+}
+.dt.dt-dense tbody td { height: 32px; }
+.dt.dt-loose thead th, .dt.dt-loose tbody td {
+  padding-top: 14px; padding-bottom: 14px;
+  font-size: 14px;
+}
+.dt.dt-loose tbody td { height: 48px; }
+
+
+/* ---------- 列设置抽屉 (内嵌示意) ---------- */
+.col-cfg-panel {
+  background: var(--aw-bg);
+  display: flex; flex-direction: column;
+  font-size: 13px;
+}
+.ccp-h {
+  padding: 12px 14px;
+  font-weight: 600; color: var(--aw-text-1);
+  border-bottom: 1px solid var(--aw-border-3);
+}
+.ccp-l {
+  padding: 8px 14px;
+  font-size: 11.5px; color: var(--aw-text-3);
+  border-bottom: 1px solid var(--aw-border-3);
+}
+.ccp-list { flex: 1; padding: 4px 8px; overflow-y: auto; }
+.ccp-it {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: grab;
+  transition: background var(--aw-dur-fast);
+}
+.ccp-it:hover { background: var(--aw-fill-1); }
+.ccp-it.locked { opacity: 0.7; cursor: not-allowed; }
+.ccp-it .grip { color: var(--aw-text-4); font-family: var(--aw-font-mono); user-select: none; }
+.ccp-it .nm { flex: 1; color: var(--aw-text-1); }
+.ccp-it .lock {
+  font-size: 10px; padding: 1px 6px;
+  border-radius: 3px; background: var(--aw-fill-2);
+  color: var(--aw-text-3);
+}
+.ccp-foot {
+  padding: 10px 14px;
+  border-top: 1px solid var(--aw-border-3);
+  display: flex; justify-content: flex-end; gap: 8px;
+}
+
+
+/* ---------- 列冻结 ---------- */
+.frozen-table-wrap {
+  overflow-x: auto;
+  position: relative;
+}
+.frozen-table-wrap .dt { min-width: 1200px; border-radius: 0; border: 0; }
+.frozen-table-wrap .dt th.freeze-l, .frozen-table-wrap .dt td.freeze-l {
+  position: sticky; left: 0;
+  background: var(--aw-bg);
+  z-index: 2;
+}
+.frozen-table-wrap .dt th.freeze-l { background: var(--aw-fill-1); }
+.frozen-table-wrap .dt td.freeze-l:first-child,
+.frozen-table-wrap .dt th.freeze-l:first-child { left: 0; }
+.frozen-table-wrap .dt td.freeze-l:nth-child(2),
+.frozen-table-wrap .dt th.freeze-l:nth-child(2) {
+  left: 160px;
+  box-shadow: 4px 0 4px -4px rgba(0,0,0,0.06);
+}
+.frozen-table-wrap .dt th.freeze-r, .frozen-table-wrap .dt td.freeze-r {
+  position: sticky; right: 0;
+  background: var(--aw-bg);
+  z-index: 2;
+  box-shadow: -4px 0 4px -4px rgba(0,0,0,0.06);
+}
+.frozen-table-wrap .dt th.freeze-r { background: var(--aw-fill-1); }
+
+
+/* ---------- 列宽拖拽 ---------- */
+.dt.dt-resizable thead th { position: relative; }
+.col-resizer {
+  position: absolute; right: 0; top: 25%;
+  width: 4px; height: 50%;
+  cursor: col-resize;
+  background: transparent;
+  transition: background var(--aw-dur-fast);
+}
+.dt.dt-resizable thead th:hover .col-resizer { background: var(--aw-border-1); }
+.col-resizer.dragging,
+.col-resizer:active {
+  background: var(--aw-primary);
+}
+
+
+/* ---------- 批量操作条 sticky ---------- */
+.batch-bar {
+  position: sticky; top: 0; z-index: 3;
+  background: var(--aw-primary-bg);
+  border-bottom: 1px solid var(--aw-primary);
+  padding: 8px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  animation: bb-slide 120ms var(--aw-ease);
+}
+@keyframes bb-slide {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.bb-l { font-size: 13px; color: var(--aw-text-1); }
+.bb-l b { color: var(--aw-primary); margin-right: 6px; }
+.bb-l .bb-sub { color: var(--aw-text-3); font-weight: 400; }
+.bb-r { display: flex; align-items: center; gap: 8px; }
+.bb-clear {
+  font-size: 12px; color: var(--aw-text-2);
+  cursor: pointer; padding: 0 4px;
+  margin-left: 8px;
+  border-left: 1px solid var(--aw-border-1);
+  padding-left: 12px;
+}
+.bb-clear:hover { color: var(--aw-primary); }
+
+
+/* ---------- Pagination 三态 ---------- */
+.page-tri-card {
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  overflow: hidden;
+  background: var(--aw-bg);
+}
+.ptc-cap {
+  padding: 8px 14px;
+  font-size: 12px; font-weight: 600;
+  color: var(--aw-text-2);
+  background: var(--aw-fill-1);
+  border-bottom: 1px solid var(--aw-border-3);
+}
+.ptc-body { padding: 16px; display: flex; align-items: center; justify-content: flex-end; }
+
+.pager .total { color: var(--aw-text-3); font-size: 13px; margin-right: 12px; }
+.pager .goto {
+  font-size: 12.5px; color: var(--aw-text-2);
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-left: 12px;
+}
+
+.pager-simple {
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.pager-simple .cur {
+  min-width: 56px; text-align: center;
+  font-size: 13px; color: var(--aw-text-1); font-weight: 500;
+  padding: 0 4px;
+}
+
+.pager-mobile {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%;
+  padding: 10px 16px;
+  background: var(--aw-bg);
+  border-radius: var(--aw-radius);
+}
+.pm-prev, .pm-next {
+  font-size: 13px; color: var(--aw-primary);
+  font-weight: 500; cursor: pointer;
+}
+.pm-dots {
+  display: flex; gap: 6px;
+}
+.pm-dots .d {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--aw-border-1);
+}
+.pm-dots .d.cur {
+  width: 18px; border-radius: 3px;
+  background: var(--aw-primary);
+}
+
+
+/* ---------- Dark theme ---------- */
+[data-theme="dark"] .frozen-table-wrap .dt th.freeze-l,
+[data-theme="dark"] .frozen-table-wrap .dt th.freeze-r {
+  background: rgba(255,255,255,0.04);
+}
+[data-theme="dark"] .frozen-table-wrap .dt td.freeze-l,
+[data-theme="dark"] .frozen-table-wrap .dt td.freeze-r {
+  background: var(--aw-bg);
+  box-shadow: -4px 0 4px -4px rgba(0,0,0,0.32);
+}
+[data-theme="dark"] .col-resizer:hover { background: rgba(255,255,255,0.16); }
+[data-theme="dark"] .batch-bar {
+  background: rgba(74,139,224,0.12);
+  border-bottom-color: rgba(74,139,224,0.3);
+}

@@ -1,0 +1,146 @@
+/* AngelWatch TMS — Design Tokens (Ant Design v6 base, CSS variables mode)
+   Self-hosted, no CDN. Internal-deployment.
+*/
+
+/* Inter + Source Han Sans CN — declared but using local() fallback only,
+   since this is a documentation site. In production these are self-hosted .woff2. */
+@font-face {
+  font-family: "Inter Local";
+  src: local("Inter"), local("Inter-Regular"), local("system-ui");
+  font-display: swap;
+}
+
+:root,
+[data-theme="light"] {
+  /* Brand */
+  --aw-primary: #0052CC;
+  --aw-primary-hover: #1A6BDB;
+  --aw-primary-active: #003D99;
+  --aw-primary-bg: #E6EFFB;
+  --aw-primary-bg-hover: #CCDFF7;
+  --aw-primary-border: #99BFEF;
+
+  /* Status — muted enterprise tones */
+  --aw-success: #237804;
+  --aw-success-bg: #EAF4E2;
+  --aw-warning: #AD6800;
+  --aw-warning-bg: #FAF4E0;
+  --aw-danger: #A8071A;
+  --aw-danger-bg: #FAE3E3;
+  --aw-info: #003A8C;
+  --aw-info-bg: #E6EEF7;
+
+  /* Neutrals — antd v6 light */
+  --aw-text-1: #1F2937;
+  --aw-text-2: #4B5563;
+  --aw-text-3: #6B7280;
+  --aw-text-4: #9CA3AF;
+  --aw-text-disabled: #BFBFBF;
+
+  --aw-border-1: #D9D9D9;
+  --aw-border-2: #E5E7EB;
+  --aw-border-3: #F0F0F0;
+
+  --aw-fill-1: #FAFAFA;
+  --aw-fill-2: #F5F5F5;
+  --aw-fill-3: #EEEEEE;
+
+  --aw-bg: #FFFFFF;
+  --aw-bg-page: #F5F7FA;
+  --aw-bg-elevated: #FFFFFF;
+
+  /* Sidebar — Light = white-base (Linear/Notion style),
+     active 用 3px 品牌蓝 indicator + #E6F0FF 浅蓝底 + #0052CC 文字 */
+  --aw-sidebar-bg: #FFFFFF;
+  --aw-sidebar-bg-hover: #F5F7FA;
+  --aw-sidebar-bg-active: #E6F0FF;
+  --aw-sidebar-text: #4B5563;
+  --aw-sidebar-text-active: #0052CC;
+  --aw-sidebar-border: #EFF1F4;
+  --aw-sidebar-indicator: #0052CC;
+
+  /* Type */
+  --aw-font: "Inter", "Source Han Sans CN", -apple-system, BlinkMacSystemFont,
+             "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --aw-font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Radius — single value system per spec */
+  --aw-radius: 6px;
+  --aw-radius-sm: 4px;
+  --aw-radius-lg: 8px;
+
+  /* Shadow — restrained */
+  --aw-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 0 1px rgba(15, 23, 42, 0.06);
+  --aw-shadow-2: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --aw-shadow-3: 0 8px 24px rgba(15, 23, 42, 0.12);
+
+  /* Motion */
+  --aw-ease: cubic-bezier(0.34, 0.69, 0.1, 1);
+  --aw-dur-fast: 120ms;
+  --aw-dur-base: 200ms;
+  --aw-dur-slow: 320ms;
+
+  /* Sizing — antd middle density */
+  --aw-h-sm: 24px;
+  --aw-h-md: 32px;
+  --aw-h-lg: 40px;
+}
+
+[data-theme="dark"] {
+  --aw-primary: #4A8BE0;
+  --aw-primary-hover: #6BA3E8;
+  --aw-primary-active: #2F70C7;
+  --aw-primary-bg: #0E2748;
+  --aw-primary-bg-hover: #143966;
+  --aw-primary-border: #1E4D8C;
+
+  --aw-success: #6BAA47;
+  --aw-success-bg: #1A2916;
+  --aw-warning: #D89614;
+  --aw-warning-bg: #2B2111;
+  --aw-danger: #DC4446;
+  --aw-danger-bg: #2A1215;
+  --aw-info: #4A8BE0;
+  --aw-info-bg: #0E2748;
+
+  --aw-text-1: rgba(255, 255, 255, 0.92);
+  --aw-text-2: rgba(255, 255, 255, 0.72);
+  --aw-text-3: rgba(255, 255, 255, 0.52);
+  --aw-text-4: rgba(255, 255, 255, 0.32);
+  --aw-text-disabled: rgba(255, 255, 255, 0.24);
+
+  --aw-border-1: #3A3F4A;
+  --aw-border-2: #2D323C;
+  --aw-border-3: #232831;
+
+  --aw-fill-1: #1B1F27;
+  --aw-fill-2: #21262F;
+  --aw-fill-3: #2A2F38;
+
+  --aw-bg: #14171D;
+  --aw-bg-page: #0F1115;
+  --aw-bg-elevated: #1B1F27;
+
+  --aw-sidebar-bg: #1A1D23;
+  --aw-sidebar-bg-hover: #232831;
+  --aw-sidebar-bg-active: rgba(255, 255, 255, 0.08);
+  --aw-sidebar-text: rgba(255, 255, 255, 0.72);
+  --aw-sidebar-text-active: #FFFFFF;
+  --aw-sidebar-border: #232831;
+  --aw-sidebar-indicator: #4A8BE0;
+
+  --aw-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.6);
+  --aw-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --aw-shadow-3: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--aw-bg-page);
+  color: var(--aw-text-1);
+  font-family: var(--aw-font);
+  font-size: 14px;
+  line-height: 1.5715;
+  -webkit-font-smoothing: antialiased;
+}

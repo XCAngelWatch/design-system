@@ -1,0 +1,153 @@
+/* ============================================================
+   AngelWatch Design System — 布局
+   24 栅格 / 4 档断点 / 容器宽度 / 5 种页面骨架
+   ============================================================ */
+
+/* ---------- Layout · 24-grid system ---------- */
+.grid-demo {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-3);
+  border-radius: var(--aw-radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.grid-demo .grid-row {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.grid-demo .grid-row:last-child { margin-bottom: 0; }
+.grid-demo .gcell {
+  background: var(--aw-primary-bg);
+  color: var(--aw-primary);
+  border: 1px solid var(--aw-primary-border);
+  height: 36px;
+  display: grid; place-items: center;
+  font-size: 12px; font-family: var(--aw-font-mono);
+  border-radius: 4px;
+}
+.grid-demo .gcell.solid {
+  background: var(--aw-primary); color: white; border-color: var(--aw-primary);
+}
+.grid-demo .grid-ruler {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  height: 14px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.grid-demo .grid-ruler .gtick {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--aw-text-4) 0,
+    var(--aw-text-4) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  height: 100%;
+  position: relative;
+}
+.grid-demo .grid-ruler .gtick::after {
+  content: attr(data-n);
+  position: absolute; top: -14px; left: 0;
+  font-size: 9px; color: var(--aw-text-4); font-family: var(--aw-font-mono);
+}
+
+/* gutter & breakpoint tables */
+.layout-spec-table {
+  width: 100%; border-collapse: collapse; margin-top: 12px;
+  font-size: 13px;
+}
+.layout-spec-table thead th {
+  background: var(--aw-fill-1); color: var(--aw-text-2);
+  font-weight: 500; text-align: left;
+  padding: 10px 14px; border-bottom: 1px solid var(--aw-border-2);
+  font-size: 12px;
+}
+.layout-spec-table td {
+  padding: 12px 14px; border-bottom: 1px solid var(--aw-border-3);
+  vertical-align: top;
+}
+.layout-spec-table tr:last-child td { border-bottom: none; }
+.layout-spec-table .bp-name { font-weight: 600; color: var(--aw-text-1); }
+.layout-spec-table .bp-name code { background: transparent; padding: 0; color: var(--aw-primary); }
+.layout-spec-table .bp-bar {
+  display: inline-block; height: 6px; border-radius: 3px;
+  background: var(--aw-primary); vertical-align: middle;
+}
+
+/* device row preview for breakpoints */
+.bp-devices {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin: 16px 0;
+}
+.bp-devices .bp-card {
+  border: 1px solid var(--aw-border-3); border-radius: 8px;
+  background: var(--aw-bg); padding: 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  text-align: center;
+}
+.bp-devices .bp-frame {
+  background: var(--aw-fill-1);
+  border-radius: 6px;
+  height: 80px;
+  display: grid; place-items: center;
+  position: relative;
+}
+.bp-devices .bp-screen {
+  background: var(--aw-bg); border: 1px solid var(--aw-border-2);
+  border-radius: 3px;
+}
+.bp-devices .bp-mobile .bp-screen { width: 28px; height: 56px; }
+.bp-devices .bp-tablet .bp-screen { width: 56px; height: 44px; }
+.bp-devices .bp-desktop .bp-screen { width: 80px; height: 50px; }
+.bp-devices .bp-wide .bp-screen { width: 96px; height: 50px; }
+.bp-devices .bp-label {
+  font-weight: 600; color: var(--aw-text-1); font-size: 13px;
+}
+.bp-devices .bp-range {
+  font-family: var(--aw-font-mono); font-size: 11px; color: var(--aw-text-3);
+}
+.bp-devices .bp-cols { font-size: 11px; color: var(--aw-text-2); }
+
+/* Container widths visualization */
+.container-demo {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--aw-fill-1); padding: 16px; border-radius: 6px;
+  margin-top: 12px;
+}
+.container-demo .crow {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 12px; font-family: var(--aw-font-mono); color: var(--aw-text-2);
+}
+.container-demo .crow .clabel { width: 80px; flex-shrink: 0; color: var(--aw-text-1); font-weight: 600; }
+.container-demo .crow .cbar {
+  height: 12px; background: var(--aw-primary); border-radius: 2px; opacity: 0.85;
+}
+.container-demo .crow .cmax { color: var(--aw-text-3); margin-left: 8px; }
+
+/* Page layout skeletons (5 templates) */
+.page-skeletons {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+  margin-top: 16px;
+}
+.page-sk {
+  border: 1px solid var(--aw-border-3); border-radius: 8px;
+  background: var(--aw-bg); overflow: hidden;
+}
+.page-sk .sk-thumb {
+  height: 180px; background: var(--aw-bg-page); padding: 6px;
+  display: flex; gap: 4px;
+}
+.page-sk .sk-sb { width: 22px; background: white; border: 1px solid var(--aw-border-3); border-radius: 3px; flex-shrink: 0; }
+.page-sk .sk-main { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.page-sk .sk-block { background: white; border: 1px solid var(--aw-border-3); border-radius: 3px; }
+.page-sk .sk-block.brand { background: var(--aw-primary-bg); border-color: var(--aw-primary-border); }
+.page-sk .sk-foot {
+  padding: 10px 12px; border-top: 1px solid var(--aw-border-3);
+}
+.page-sk .sk-foot .sk-name { font-weight: 600; font-size: 13px; color: var(--aw-text-1); }
+.page-sk .sk-foot .sk-en { font-size: 10px; color: var(--aw-text-3); font-family: var(--aw-font-mono); margin-top: 2px; }
+.page-sk .sk-foot .sk-when { font-size: 11px; color: var(--aw-text-2); margin-top: 6px; line-height: 1.4; }

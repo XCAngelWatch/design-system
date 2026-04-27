@@ -1,0 +1,240 @@
+/* ============================================================
+   AngelWatch Design System — Login States (S2)
+   6 个登录变体 + blockPuzzle 滑块拼图 4 态
+   仅作视觉规范展示，落地走 antd v6 + 业务表单逻辑
+   ============================================================ */
+
+/* ---------- 6 状态卡片网格 ---------- */
+.login-states-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1100px) { .login-states-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px)  { .login-states-grid { grid-template-columns: 1fr; } }
+
+.ls-card {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  overflow: hidden;
+}
+.ls-cap {
+  padding: 10px 14px;
+  background: var(--aw-fill-1);
+  border-bottom: 1px solid var(--aw-border-3);
+  font-size: 12px; font-weight: 600;
+  color: var(--aw-text-2);
+}
+.ls-mock {
+  padding: 20px 18px 22px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.ls-h { font-size: 18px; font-weight: 600; color: var(--aw-text-1); margin-bottom: -4px; }
+.ls-sub { font-size: 12.5px; color: var(--aw-text-3); margin-bottom: 6px; }
+.ls-fld { display: flex; flex-direction: column; gap: 4px; }
+.ls-lab { font-size: 12px; color: var(--aw-text-2); }
+.ls-ipt {
+  height: 32px; padding: 0 11px;
+  border: 1px solid var(--aw-border-1); border-radius: var(--aw-radius);
+  background: var(--aw-bg);
+  display: flex; align-items: center;
+  font-size: 13px; color: var(--aw-text-1);
+}
+.ls-ipt.small { font-size: 12px; color: var(--aw-text-4); }
+.ls-ipt.err {
+  border-color: var(--aw-danger);
+  background: var(--aw-danger-bg);
+  color: var(--aw-danger);
+  font-size: 12.5px;
+}
+.ls-ipt-row { display: flex; gap: 8px; }
+.ls-cap-img {
+  width: 84px; height: 32px;
+  background: linear-gradient(135deg, #E6EFFB, #CCDFF7);
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  display: grid; place-items: center;
+  font-family: var(--aw-font-mono); font-size: 13px;
+  color: var(--aw-primary); font-weight: 600;
+  letter-spacing: 1.5px; cursor: pointer;
+  flex-shrink: 0;
+}
+.ls-select {
+  height: 32px; padding: 0 11px;
+  border: 1px solid var(--aw-border-1); border-radius: var(--aw-radius);
+  background: var(--aw-bg);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: var(--aw-text-1);
+}
+.ls-btn {
+  margin-top: 6px;
+  height: 36px;
+  background: var(--aw-primary); color: #fff;
+  border-radius: var(--aw-radius);
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+}
+.ls-btn:hover { background: var(--aw-primary-hover); }
+.ls-hint { font-size: 11.5px; color: var(--aw-text-4); margin-top: 4px; }
+.ls-link { font-size: 12.5px; color: var(--aw-primary); cursor: pointer; text-align: center; }
+.ls-link.disabled { color: var(--aw-text-disabled); cursor: not-allowed; }
+
+/* OTP 6-digit input */
+.ls-otp {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin: 4px 0 8px;
+}
+.ls-otp span {
+  height: 40px;
+  border: 1px solid var(--aw-border-1);
+  border-radius: var(--aw-radius);
+  display: grid; place-items: center;
+  font-family: var(--aw-font-mono); font-size: 18px; font-weight: 600;
+  color: var(--aw-text-1);
+  background: var(--aw-bg);
+}
+.ls-otp span.cur { border-color: var(--aw-primary); box-shadow: 0 0 0 2px var(--aw-primary-bg); color: var(--aw-text-3); }
+
+/* Password strength */
+.ls-strength {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px; color: var(--aw-text-3);
+  margin-top: -2px;
+}
+.ls-strength .bar {
+  flex: 1; height: 4px; background: var(--aw-fill-2); border-radius: 2px;
+  position: relative; overflow: hidden;
+}
+.ls-strength .bar::after {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 100%; background: var(--aw-warning); border-radius: 2px;
+}
+.ls-strength .bar.w70::after { width: 70%; background: var(--aw-warning); }
+
+/* Steps (forgot password 3-step) */
+.ls-steps { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.ls-steps .st {
+  font-size: 11px; color: var(--aw-text-4);
+  padding: 4px 8px; border-radius: 999px;
+  background: var(--aw-fill-2);
+}
+.ls-steps .st.act { color: var(--aw-primary); background: var(--aw-primary-bg); font-weight: 500; }
+.ls-steps .st.done { color: var(--aw-success); background: #EAF4E2; }
+.ls-steps .st-line { flex: 1; height: 1px; background: var(--aw-border-2); }
+
+
+/* ---------- blockPuzzle 滑块拼图 ---------- */
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 720px) { .puzzle-grid { grid-template-columns: 1fr; } }
+
+.pz-card {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  padding: 14px;
+}
+.pz-cap {
+  font-size: 12px; font-weight: 600; color: var(--aw-text-2);
+  margin-bottom: 10px;
+}
+.pz-frame {
+  width: 260px; max-width: 100%;
+  margin: 0 auto;
+}
+.pz-bg {
+  position: relative;
+  width: 100%; height: 130px;
+  border-radius: var(--aw-radius);
+  overflow: hidden;
+  border: 1px solid var(--aw-border-2);
+}
+.pz-bg svg { display: block; width: 100%; height: 100%; }
+.pz-hole {
+  position: absolute; top: 36px;
+  width: 36px; height: 36px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
+}
+.pz-piece {
+  position: absolute; top: 36px;
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--aw-primary);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,82,204,0.18);
+}
+.pz-spin {
+  position: absolute; left: 50%; top: 50%;
+  width: 28px; height: 28px;
+  margin: -14px 0 0 -14px;
+  border: 2px solid var(--aw-fill-3);
+  border-top-color: var(--aw-primary);
+  border-radius: 50%;
+  animation: pz-spin 0.8s linear infinite;
+}
+@keyframes pz-spin { to { transform: rotate(360deg); } }
+
+.pz-check, .pz-cross {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-size: 13px; font-weight: 600;
+  padding: 6px 14px; border-radius: 999px;
+}
+.pz-check { background: var(--aw-success); color: #fff; }
+.pz-cross { background: var(--aw-danger); color: #fff; }
+
+.pz-track {
+  margin-top: 8px;
+  height: 38px;
+  background: var(--aw-fill-1);
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  position: relative;
+  display: flex; align-items: center;
+}
+.pz-handle {
+  width: 42px; height: 36px;
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-1);
+  border-radius: var(--aw-radius);
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 600;
+  color: var(--aw-text-2);
+  cursor: grab;
+  margin-left: 1px;
+  transition: background var(--aw-dur-fast);
+}
+.pz-handle:hover { background: var(--aw-fill-1); }
+.pz-handle.dim { color: var(--aw-text-4); }
+.pz-handle.ok { color: var(--aw-success); border-color: var(--aw-success); }
+.pz-handle.err { color: var(--aw-danger); border-color: var(--aw-danger); }
+.pz-tip {
+  flex: 1; text-align: center;
+  font-size: 12px; color: var(--aw-text-3);
+}
+.pz-tip.ok { color: var(--aw-success); }
+.pz-tip.err { color: var(--aw-danger); }
+.pz-track.ok { background: #EAF4E2; border-color: #B7DFA0; }
+.pz-track.err { background: var(--aw-danger-bg); border-color: var(--aw-danger); animation: pz-shake 0.3s; }
+@keyframes pz-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+
+/* ---------- Dark theme adjustments ---------- */
+[data-theme="dark"] .ls-cap-img {
+  background: linear-gradient(135deg, rgba(74,139,224,0.16), rgba(74,139,224,0.04));
+  color: #5B9BFF;
+}
+[data-theme="dark"] .pz-check { background: #389E0D; }
+[data-theme="dark"] .pz-cross { background: #CF1322; }
+[data-theme="dark"] .pz-hole { background: rgba(0,0,0,0.6); }

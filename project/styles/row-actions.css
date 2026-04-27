@@ -1,0 +1,145 @@
+/* ============================================================
+   AngelWatch Design System — RowActions (S3)
+   行内操作图标库 + 表格嵌入 + 折叠下拉
+   ============================================================ */
+
+/* ---------- 标准动作集合网格 ---------- */
+.ra-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+@media (max-width: 900px) { .ra-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 560px) { .ra-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.ra-cell {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 14px 8px;
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  background: var(--aw-bg);
+  transition: all var(--aw-dur-fast) var(--aw-ease);
+}
+.ra-cell:hover { border-color: var(--aw-primary); background: var(--aw-primary-bg); }
+.ra-cell.danger:hover { border-color: var(--aw-danger); background: var(--aw-danger-bg); }
+.ra-cell.warn:hover { border-color: var(--aw-warning); background: var(--aw-warning-bg); }
+
+.ra-cell .ra-icn {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  color: var(--aw-text-2);
+}
+.ra-cell:hover .ra-icn { color: var(--aw-primary); }
+.ra-cell.danger:hover .ra-icn { color: var(--aw-danger); }
+.ra-cell.warn:hover .ra-icn { color: var(--aw-warning); }
+.ra-cell .ra-name { font-size: 12.5px; color: var(--aw-text-1); font-weight: 500; }
+.ra-cell code {
+  font-size: 10.5px;
+  color: var(--aw-text-3);
+  font-family: var(--aw-font-mono);
+}
+
+
+/* ---------- 表格嵌入示例 ---------- */
+.ra-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.ra-table thead th {
+  background: var(--aw-fill-1);
+  border-bottom: 1px solid var(--aw-border-2);
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 12px; font-weight: 600;
+  color: var(--aw-text-2);
+}
+.ra-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--aw-border-3);
+  color: var(--aw-text-1);
+  vertical-align: middle;
+}
+.ra-table tr:last-child td { border-bottom: 0; }
+.ra-table code {
+  background: var(--aw-fill-2);
+  padding: 1px 6px; border-radius: 4px;
+  font-size: 11.5px; color: var(--aw-text-2);
+  font-family: var(--aw-font-mono);
+}
+
+
+/* ---------- ra-row + ra-btn ---------- */
+.ra-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ra-btn {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 0;
+  background: transparent;
+  border-radius: 4px;
+  color: var(--aw-text-2);
+  cursor: pointer;
+  transition: all var(--aw-dur-fast) var(--aw-ease);
+  position: relative;
+}
+.ra-btn:hover { background: var(--aw-fill-2); color: var(--aw-primary); }
+.ra-btn.warn:hover { color: var(--aw-warning); background: var(--aw-warning-bg); }
+.ra-btn.danger:hover { color: var(--aw-danger); background: var(--aw-danger-bg); }
+.ra-btn.dim, .ra-btn[disabled] {
+  color: var(--aw-text-disabled);
+  cursor: not-allowed;
+}
+.ra-btn.dim:hover, .ra-btn[disabled]:hover {
+  background: transparent;
+  color: var(--aw-text-disabled);
+}
+.ra-divider {
+  width: 1px; height: 16px;
+  background: var(--aw-border-2);
+  margin: 0 2px;
+}
+
+
+/* ---------- 折叠下拉 (More Menu) ---------- */
+.ra-more-wrap { position: relative; }
+.ra-menu {
+  position: absolute;
+  top: calc(100% + 6px); right: 0;
+  min-width: 168px;
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  box-shadow: var(--aw-shadow-2);
+  padding: 4px;
+  z-index: 10;
+  /* Always visible in mock; in real app toggle via state. */
+}
+.ra-mit {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px;
+  border-radius: 4px;
+  font-size: 13px; color: var(--aw-text-1);
+  cursor: pointer;
+}
+.ra-mit svg { color: var(--aw-text-2); flex-shrink: 0; }
+.ra-mit:hover { background: var(--aw-fill-1); }
+.ra-mit:hover svg { color: var(--aw-primary); }
+.ra-mit.warn { color: var(--aw-warning); }
+.ra-mit.warn svg { color: var(--aw-warning); }
+.ra-mit.warn:hover { background: var(--aw-warning-bg); }
+.ra-mit.danger { color: var(--aw-danger); }
+.ra-mit.danger svg { color: var(--aw-danger); }
+.ra-mit.danger:hover { background: var(--aw-danger-bg); }
+.ra-mdiv {
+  height: 1px; background: var(--aw-border-3);
+  margin: 4px 6px;
+}
+
+
+/* ---------- Dark theme ---------- */
+[data-theme="dark"] .ra-cell:hover { background: rgba(74,139,224,0.08); }
+[data-theme="dark"] .ra-btn:hover { background: rgba(255,255,255,0.06); }
