@@ -1,0 +1,24 @@
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows metadata
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Editor backup / swap
+*~
+*.swp
+*.swo
+*.bak
+
+# IDE — let each developer's global .gitignore decide; uncomment if team-wide
+# .vscode/
+# .idea/
+
+# Logs (defensive — project is build-less but tools may emit logs)
+*.log
