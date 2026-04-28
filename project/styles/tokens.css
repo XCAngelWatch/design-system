@@ -84,6 +84,26 @@
   --aw-h-sm: 24px;
   --aw-h-md: 32px;
   --aw-h-lg: 40px;
+
+  /* Chart series — 8 hue palette consumed by echarts theme (charts.js) */
+  --aw-chart-1: #0052CC;  /* Brand   */
+  --aw-chart-2: #13A8A8;  /* Cyan    */
+  --aw-chart-3: #7B5CD9;  /* Purple  */
+  --aw-chart-4: #D97706;  /* Orange  */
+  --aw-chart-5: #DB2777;  /* Magenta */
+  --aw-chart-6: #3F8600;  /* Green   */
+  --aw-chart-7: #0EA5E9;  /* Sky     */
+  --aw-chart-8: #9333EA;  /* Violet  */
+
+  /* Tier expansion — 对齐 antd v6 token 阶数。
+     border-4 = 比 border-3 更浅 (近 bg);
+     fill-4   = 比 fill-3 更浅 (hover 极浅态);
+     bg-spotlight = Tooltip 暗底 (即使 light 也用暗底, 对比清晰);
+     bg-mask = Modal 遮罩。 */
+  --aw-border-4: #F5F5F5;
+  --aw-fill-4: #FAFAFA;
+  --aw-bg-spotlight: rgba(15, 23, 42, 0.92);
+  --aw-bg-mask: rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="dark"] {
@@ -132,6 +152,22 @@
   --aw-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.6);
   --aw-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.5);
   --aw-shadow-3: 0 8px 24px rgba(0, 0, 0, 0.6);
+
+  /* Chart series — dark variants (提亮 + 降饱和保对比度) */
+  --aw-chart-1: #4A8BE0;
+  --aw-chart-2: #2DC9C9;
+  --aw-chart-3: #9D86E8;
+  --aw-chart-4: #F59E0B;
+  --aw-chart-5: #EC4899;
+  --aw-chart-6: #65B428;
+  --aw-chart-7: #38BDF8;
+  --aw-chart-8: #B469F5;
+
+  /* Tier expansion — dark */
+  --aw-border-4: #2D323C;
+  --aw-fill-4: #2A2F38;
+  --aw-bg-spotlight: rgba(255, 255, 255, 0.92);
+  --aw-bg-mask: rgba(0, 0, 0, 0.65);
 }
 
 * { box-sizing: border-box; }

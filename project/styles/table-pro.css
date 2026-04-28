@@ -155,7 +155,8 @@
 }
 .ptc-body { padding: 16px; display: flex; align-items: center; justify-content: flex-end; }
 
-.pager .total { color: var(--aw-text-3); font-size: 13px; margin-right: 12px; }
+/* .pager .total 在 components.css 已定义；此处仅在完整态下需要稍宽的右间距 */
+.page-tri-card .pager .total { margin-right: 12px; }
 .pager .goto {
   font-size: 12.5px; color: var(--aw-text-2);
   display: inline-flex; align-items: center; gap: 6px;

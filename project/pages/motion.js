@@ -5,16 +5,85 @@
 <section class="section" id="motion">
   <p class="section-eyebrow">Foundations · 动效</p>
   <h2>Motion</h2>
-  <p class="lede">一条缓动曲线，三档时长。专注功能性反馈——hover、focus、过渡——避免装饰性动画。</p>
-  <div class="surface">
+  <p class="lede">沿用 Ant Design v6 的动效三原则 —— <b>自然</b>、<b>高效</b>、<b>克制</b>。一条缓动曲线，三档时长，是这三条原则的物理落地。专注功能性反馈（hover / focus / 过渡），不引入装饰性动画。</p>
+
+  <div class="subsection" style="margin-top:18px">
+    <h3>三条动效原则</h3>
     <div class="demo-grid cols-3">
-      <div><div class="mono" style="margin-bottom:8px">120ms · fast</div><div style="font-size:13px;color:var(--aw-text-2)">Hover、focus、tooltip。</div></div>
-      <div><div class="mono" style="margin-bottom:8px">200ms · base</div><div style="font-size:13px;color:var(--aw-text-2)">大多数过渡：tabs、accordion、按钮态。</div></div>
-      <div><div class="mono" style="margin-bottom:8px">320ms · slow</div><div style="font-size:13px;color:var(--aw-text-2)">drawer、modal 进出。</div></div>
+      <div class="surface" style="border-left:3px solid var(--aw-primary)">
+        <div class="tag-meta" style="margin-bottom:8px">原则 · 01</div>
+        <h3 style="margin:0 0 6px;font-size:15px">自然 · Natural</h3>
+        <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">遵从自然运动规律，保证视觉连贯，让用户感知到动作是"成立"的 —— 不是任意补间，而是有惯性、有阻尼。</p>
+        <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">落地：</b>统一缓动 <code class="mono">cubic-bezier(.34,.69,.1,1)</code>（先快后慢，模拟惯性减速），不用 linear / ease-in。</p>
+      </div>
+      <div class="surface" style="border-left:3px solid var(--aw-primary)">
+        <div class="tag-meta" style="margin-bottom:8px">原则 · 02</div>
+        <h3 style="margin:0 0 6px;font-size:15px">高效 · Efficient</h3>
+        <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">中后台场景效率优先 —— 尽量缩短过渡时间，快速完成动画。出场动画必须直接、不夸张。</p>
+        <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">落地：</b>fast 120ms / base 200ms / slow 320ms 三档封顶；超过 320ms 的动画必须 PR review 论证；不允许 enter / exit 不对称（如进 200ms 出 600ms）。</p>
+      </div>
+      <div class="surface" style="border-left:3px solid var(--aw-primary)">
+        <div class="tag-meta" style="margin-bottom:8px">原则 · 03</div>
+        <h3 style="margin:0 0 6px;font-size:15px">克制 · Restrained</h3>
+        <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">动效要有目的，不为博眼球。子要素的过场（图标切换、菜单展开）保持低调，让内容本身成为视觉焦点。</p>
+        <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">落地：</b>禁止 bounce / overshoot / scale &gt; 1.05 / rotate 装饰；禁用纯展示动画（如卡片入场逐个 stagger）。功能性反馈优先 —— hover、focus、loading、success。</p>
+      </div>
     </div>
   </div>
-  <div class="code" style="margin-top:12px"><span class="c">/* 全局缓动 */</span>
-<span class="k">--aw-ease</span>: cubic-bezier(0.34, 0.69, 0.1, 1);</div>
+
+  <div class="subsection">
+    <h3>时长 / 缓动 Token</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">三档时长是"高效"原则的量化表达，单一缓动是"自然"原则的量化表达。所有组件直接消费这四个 token，不在业务代码自建 timing。</p>
+    <div class="surface">
+      <div class="demo-grid cols-3">
+        <div><div class="mono" style="margin-bottom:8px">120ms · fast</div><div style="font-size:13px;color:var(--aw-text-2)">Hover、focus、tooltip、color / opacity 微变。</div></div>
+        <div><div class="mono" style="margin-bottom:8px">200ms · base</div><div style="font-size:13px;color:var(--aw-text-2)">大多数过渡：tabs、accordion、按钮态、popover。</div></div>
+        <div><div class="mono" style="margin-bottom:8px">320ms · slow</div><div style="font-size:13px;color:var(--aw-text-2)">drawer、modal 进出、页面级过场。</div></div>
+      </div>
+    </div>
+    <div class="code" style="margin-top:12px"><span class="c">/* 全局缓动（自然原则）+ 三档时长（高效原则） */</span>
+<span class="k">--aw-ease</span>: cubic-bezier(0.34, 0.69, 0.1, 1);
+<span class="k">--aw-dur-fast</span>: 120ms;
+<span class="k">--aw-dur-base</span>: 200ms;
+<span class="k">--aw-dur-slow</span>: 320ms;</div>
+  </div>
+
+  <div class="subsection">
+    <h3>与 antd motion token 的映射</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">antd 内置组件用自己的 motion token（<code>motionEaseInOut</code> / <code>motionDurationFast/Mid/Slow</code>）。TMS 自有动画用 <code>--aw-ease</code> / <code>--aw-dur-*</code>。两套必须同源 —— 否则同一界面 antd 组件和 TMS 组件的入场曲线不一致。下表给出映射 + 必须在 ConfigProvider 显式覆盖的项。</p>
+    <table class="map-table">
+      <thead><tr><th style="width:24%">TMS token</th><th style="width:30%">值</th><th style="width:24%">antd token</th><th>antd 默认</th></tr></thead>
+      <tbody>
+        <tr><td><code>--aw-ease</code></td><td><span class="mono">cubic-bezier(.34,.69,.1,1)</span></td><td><code>motionEaseInOut</code></td><td><span class="mono">cubic-bezier(.645,.045,.355,1)</span> ⚠ 不同</td></tr>
+        <tr><td><code>--aw-dur-fast</code></td><td>120ms</td><td><code>motionDurationFast</code></td><td>0.1s ⚠ 多 20ms</td></tr>
+        <tr><td><code>--aw-dur-base</code></td><td>200ms</td><td><code>motionDurationMid</code></td><td>0.2s ✓ 同</td></tr>
+        <tr><td><code>--aw-dur-slow</code></td><td>320ms</td><td><code>motionDurationSlow</code></td><td>0.3s ⚠ 多 20ms</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7">⚠ 所有标记的项必须在 <a href="#/config-provider" style="color:var(--aw-primary)">ConfigProvider</a> 中显式覆盖到 antd token，否则 antd 内置组件用 antd 默认（视觉与 TMS 自有组件不一致）。详见 config-provider 页代码示例。</p>
+  </div>
+
+  <div class="subsection">
+    <h3>降低动效偏好 · prefers-reduced-motion</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">系统设置开启"减少动效"时（macOS Accessibility / Windows 简单视觉效果）必须降级到几乎无动画 —— 不仅是 CSS transition，也包括 <code>rc-motion</code> 内部的 keyframes。</p>
+    <div class="code-block"><pre><code>@media (prefers-reduced-motion: reduce) {
+  /* 1. CSS transition 直降 */
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+    /* rc-motion 用的是 animation/keyframes, transition 拦不住 */
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  /* 2. 同步降级 token, 让 ConfigProvider 注入到 antd 内部组件 */
+  :root, [data-theme="dark"] {
+    --aw-dur-fast: 1ms;
+    --aw-dur-base: 1ms;
+    --aw-dur-slow: 1ms;
+  }
+}</code></pre></div>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">完整链路：</b>CSS variable 降为 1ms → ConfigProvider 监听 <code>--aw-dur-*</code> 把 antd <code>motionDurationFast/Mid/Slow</code> 同步覆盖 → antd 内部组件入场动画也降为 1ms。两层都改才能闭环，仅改 CSS transition 拦不住 antd Drawer/Modal 的 rc-motion 入场。</p>
+  </div>
 
   <div class="subsection">
     <h3>主题与切换 · Light / Dark</h3>

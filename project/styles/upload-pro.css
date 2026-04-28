@@ -220,9 +220,9 @@
 }
 .upp-apk-icn {
   width: 48px; height: 48px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0052CC, #4A8BE0);
-  color: white;
+  border-radius: var(--aw-radius-lg);
+  background: linear-gradient(135deg, var(--aw-primary), var(--aw-primary-hover));
+  color: #FFFFFF;
   display: grid; place-items: center;
   font-size: 22px; font-weight: 700;
   flex-shrink: 0;

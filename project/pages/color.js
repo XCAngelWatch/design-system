@@ -123,6 +123,53 @@
   </div>
 
   <div class="subsection">
+    <h3>Ant Design v6 基础色相 · 12 Hue Reference</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 14px">Ant Design v6 提供 12 个基础色相 × 10 阶（共 120 色）作为上游色板。AngelWatch 在每个色相的 <b>第 6 阶</b>（饱和度最高的"主"色）取色 —— 这是 antd 官方推荐的品牌色取色位。下表标注我们当前在用的色相位 + 备用扩展位，扩展位仅供 palette / Tag 等业务标签使用，不用于状态语义。</p>
+    <div class="hue-grid">
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFF1F0,#FFA39E,#F5222D,#A8071A,#5C0011);"><span class="hue-label">Red · 红</span><span class="hue-tag">danger 取 #A8071A（≈ 8 阶）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFF2E8,#FFBB96,#FA541C,#871400,#2B0E05);"><span class="hue-label">Volcano · 火山</span><span class="hue-tag">扩展位</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFF7E6,#FFD591,#FA8C16,#873800,#2B1611);"><span class="hue-label">Orange · 橙</span><span class="hue-tag">扩展位</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FCFFE6,#EAFF8F,#A0D911,#3F6600,#1F2611);"><span class="hue-label">Lime · 青柠</span><span class="hue-tag">扩展位</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFFBE6,#FFE58F,#FAAD14,#AD6800,#2B2111);"><span class="hue-label">Gold · 金</span><span class="hue-tag">warning 取 #AD6800（≈ 8 阶）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FEFFE6,#FFFB8F,#FADB14,#876800,#2B2611);"><span class="hue-label">Yellow · 黄</span><span class="hue-tag">扩展位</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#F6FFED,#B7EB8F,#52C41A,#237804,#092B00);"><span class="hue-label">Green · 绿</span><span class="hue-tag">success 取 #237804（≈ 8 阶）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#E6FFFB,#87E8DE,#13C2C2,#006D75,#022C33);"><span class="hue-label">Cyan · 青</span><span class="hue-tag">扩展位</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#E6F7FF,#91D5FF,#1677FF,#003A8C,#002766);"><span class="hue-label">Blue · 蓝</span><span class="hue-tag">info 取 #003A8C（≈ 8 阶）· antd 默认主色 #1677FF 不用</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#F0F5FF,#ADC6FF,#2F54EB,#10239E,#030852);"><span class="hue-label">Geekblue · 极客蓝</span><span class="hue-tag">primary 锚定 #0052CC（介于 6/7 阶之间）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#F9F0FF,#D3ADF7,#722ED1,#391085,#120338);"><span class="hue-label">Purple · 紫</span><span class="hue-tag">扩展位</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFF0F6,#FFADD2,#EB2F96,#9E1068,#520339);"><span class="hue-label">Magenta · 洋红</span><span class="hue-tag">扩展位</span></div>
+    </div>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">取色规则：</b>状态色统一上调到 ≈ 8 阶（更深、更克制，符合企业级中后台），非默认 6 阶 —— 牺牲 +5% 饱和度换取 +2 档对比度，所有状态色文本同时通过 AA 与 AAA 级 WCAG。品牌主色 <code>#0052CC</code> 选用 Geekblue 而非 Blue，避开 antd 默认 <code>#1677FF</code>，保持与 Arco / Material 视觉边界。</p>
+  </div>
+
+  <div class="subsection">
+    <h3>Tier 阶数 · 与 antd v6 token 对齐</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">antd v6 在 border / fill / bg 三个维度提供多档 token；TMS 全部对齐，便于 component override 在任意 tier 都能取到 token。</p>
+    <table class="map-table">
+      <thead><tr><th style="width:22%">维度</th><th style="width:24%">TMS Token</th><th style="width:18%">值 (Light)</th><th style="width:18%">值 (Dark)</th><th>对应 antd</th></tr></thead>
+      <tbody>
+        <tr class="map-group"><td colspan="5">Border · 4 阶（antd 2 阶 + TMS 加深 / 浅 2 阶）</td></tr>
+        <tr><td>较深</td><td><code>--aw-border-1</code></td><td><span class="swatch-inline" style="background:#D9D9D9"></span><code>#D9D9D9</code></td><td><span class="swatch-inline" style="background:#3A3F4A"></span><code>#3A3F4A</code></td><td><code>colorBorder</code></td></tr>
+        <tr><td>主用</td><td><code>--aw-border-2</code></td><td><span class="swatch-inline" style="background:#E5E7EB"></span><code>#E5E7EB</code></td><td><span class="swatch-inline" style="background:#2D323C"></span><code>#2D323C</code></td><td><code>colorBorderSecondary</code></td></tr>
+        <tr><td>较浅</td><td><code>--aw-border-3</code></td><td><span class="swatch-inline" style="background:#F0F0F0"></span><code>#F0F0F0</code></td><td><span class="swatch-inline" style="background:#232831"></span><code>#232831</code></td><td>(TMS 自有)</td></tr>
+        <tr><td>最浅 (近 bg)</td><td><code>--aw-border-4</code></td><td><span class="swatch-inline" style="background:#F5F5F5"></span><code>#F5F5F5</code></td><td><span class="swatch-inline" style="background:#2D323C"></span><code>#2D323C</code></td><td>(TMS 自有, 用于表头分隔)</td></tr>
+        <tr class="map-group"><td colspan="5">Fill · 4 阶（与 antd 4 阶对齐）</td></tr>
+        <tr><td>较深</td><td><code>--aw-fill-1</code></td><td><span class="swatch-inline" style="background:#FAFAFA"></span><code>#FAFAFA</code></td><td><span class="swatch-inline" style="background:#1B1F27"></span><code>#1B1F27</code></td><td><code>colorFill</code></td></tr>
+        <tr><td>主用</td><td><code>--aw-fill-2</code></td><td><span class="swatch-inline" style="background:#F5F5F5"></span><code>#F5F5F5</code></td><td><span class="swatch-inline" style="background:#21262F"></span><code>#21262F</code></td><td><code>colorFillSecondary</code></td></tr>
+        <tr><td>较浅</td><td><code>--aw-fill-3</code></td><td><span class="swatch-inline" style="background:#EEEEEE"></span><code>#EEEEEE</code></td><td><span class="swatch-inline" style="background:#2A2F38"></span><code>#2A2F38</code></td><td><code>colorFillTertiary</code></td></tr>
+        <tr><td>极浅 (hover)</td><td><code>--aw-fill-4</code></td><td><span class="swatch-inline" style="background:#FAFAFA"></span><code>#FAFAFA</code></td><td><span class="swatch-inline" style="background:#2A2F38"></span><code>#2A2F38</code></td><td><code>colorFillQuaternary</code></td></tr>
+        <tr class="map-group"><td colspan="5">Bg · 5 阶（含 spotlight 与 mask）</td></tr>
+        <tr><td>页面底</td><td><code>--aw-bg-page</code></td><td><span class="swatch-inline" style="background:#F5F7FA"></span><code>#F5F7FA</code></td><td><span class="swatch-inline" style="background:#0F1115"></span><code>#0F1115</code></td><td><code>colorBgLayout</code></td></tr>
+        <tr><td>容器</td><td><code>--aw-bg</code></td><td><span class="swatch-inline" style="background:#FFFFFF"></span><code>#FFFFFF</code></td><td><span class="swatch-inline" style="background:#14171D"></span><code>#14171D</code></td><td><code>colorBgContainer</code></td></tr>
+        <tr><td>浮层 / Modal</td><td><code>--aw-bg-elevated</code></td><td><span class="swatch-inline" style="background:#FFFFFF"></span><code>#FFFFFF</code></td><td><span class="swatch-inline" style="background:#1B1F27"></span><code>#1B1F27</code></td><td><code>colorBgElevated</code></td></tr>
+        <tr><td>Tooltip 暗底</td><td><code>--aw-bg-spotlight</code></td><td><span class="swatch-inline" style="background:rgba(15,23,42,.92)"></span><code>rgba(15,23,42,.92)</code></td><td><span class="swatch-inline" style="background:rgba(255,255,255,.92)"></span><code>rgba(255,255,255,.92)</code></td><td><code>colorBgSpotlight</code></td></tr>
+        <tr><td>Modal 遮罩</td><td><code>--aw-bg-mask</code></td><td><span class="swatch-inline" style="background:rgba(0,0,0,.45)"></span><code>rgba(0,0,0,.45)</code></td><td><span class="swatch-inline" style="background:rgba(0,0,0,.65)"></span><code>rgba(0,0,0,.65)</code></td><td><code>colorBgMask</code></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">关键点：</b>所有 4 / 5 阶 token 与 antd 一一对应，便于 ConfigProvider 直接桥接。Tooltip 即使 light 模式也用<b>暗底</b>（spotlight），charts 页 tooltip 已经在用，这里把它 token 化。</p>
+  </div>
+
+  <div class="subsection">
     <h3>Mapping to antd v6 tokens</h3>
     <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:680px;line-height:1.6">在 <code class="mono">ConfigProvider.theme.token</code> 中桥接，确保 antd 内置组件与自定义组件颜色一致。落地于 <span class="mono">packages/design-tokens/src/antd.ts</span>。</p>
     <table class="map-table">

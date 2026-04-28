@@ -807,3 +807,411 @@
 }
 .code-block pre { margin: 0; }
 .code-block code { white-space: pre; }
+
+/* ============================================================
+   AntD v6 12-hue base palette reference (color.js)
+   ============================================================ */
+.hue-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  border: 1px solid var(--aw-border-3);
+  border-radius: 6px;
+  padding: 10px;
+  background: var(--aw-bg);
+}
+.hue-row {
+  position: relative;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+.hue-row .hue-label {
+  font-size: 12px; font-weight: 600;
+  color: rgba(0, 0, 0, 0.82);
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.2px;
+  flex: 0 0 140px;
+}
+.hue-row .hue-tag {
+  margin-left: auto;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: var(--aw-font-mono);
+}
+[data-theme="dark"] .hue-grid {
+  background: var(--aw-bg);
+  border-color: var(--aw-border-2);
+}
+[data-theme="dark"] .hue-row .hue-label {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+}
+[data-theme="dark"] .hue-row .hue-tag {
+  background: rgba(0, 0, 0, 0.55);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================================
+   Icons page (icons.js) — size grid + library grid
+   ============================================================ */
+.icon-size-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.icon-tile {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-3);
+  border-radius: 6px;
+  padding: 18px 16px 14px;
+  text-align: center;
+}
+.icon-tile .icon-shape {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aw-text-2);
+  margin-bottom: 10px;
+}
+.icon-tile .icon-shape svg { width: 100%; height: 100%; }
+.icon-tile .icon-shape.sz-16 { width: 16px; height: 16px; }
+.icon-tile .icon-shape.sz-24 { width: 24px; height: 24px; }
+.icon-tile .icon-shape.sz-32 { width: 32px; height: 32px; }
+.icon-tile .icon-shape.sz-48 { width: 48px; height: 48px; }
+.icon-tile .size-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--aw-text-1);
+  margin-bottom: 4px;
+}
+.icon-tile .size-use {
+  font-size: 11px;
+  color: var(--aw-text-3);
+  line-height: 1.5;
+}
+.icon-lib-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  border: 1px solid var(--aw-border-3);
+  border-radius: 6px;
+  padding: 12px;
+  background: var(--aw-bg);
+}
+.icon-lib-grid .ilib {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-radius: 4px;
+  color: var(--aw-text-2);
+  transition: background var(--aw-dur-fast) var(--aw-ease);
+}
+.icon-lib-grid .ilib:hover { background: var(--aw-fill-1); color: var(--aw-primary); }
+.icon-lib-grid .ilib svg { width: 22px; height: 22px; }
+.icon-lib-grid .ilib span {
+  font-size: 11px;
+  font-family: var(--aw-font-mono);
+  color: var(--aw-text-3);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   Dark mode page (dark.js) — 5-layer background grid
+   ============================================================ */
+.dark-layer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  border: 1px solid var(--aw-border-3);
+  border-radius: 6px;
+  padding: 10px;
+  background: #14171D;
+}
+.dlay {
+  height: 96px;
+  border-radius: 4px;
+  padding: 12px;
+  color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.dlay .dl-name {
+  font-family: var(--aw-font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+}
+.dlay .dl-hex {
+  font-family: var(--aw-font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.dlay .dl-use {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ============================================================
+   Illustration page (illustration.js) — frame
+   ============================================================ */
+.illust-frame {
+  background: var(--aw-fill-1);
+  border-radius: 6px;
+  padding: 24px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+[data-theme="dark"] .illust-frame { background: var(--aw-fill-1); }
+
+/* ============================================================
+   Charts page (charts.js) — color bar
+   ============================================================ */
+.chart-color-bar {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  border: 1px solid var(--aw-border-3);
+  border-radius: 6px;
+  padding: 10px;
+  background: var(--aw-bg);
+}
+.chart-color-bar > div {
+  height: 56px;
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+}
+.chart-color-bar > div span {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  font-family: var(--aw-font-mono);
+}
+
+/* ============================================================
+   Empty-state page (empty-state.js) — mock card
+   ============================================================ */
+.empty-mock {
+  border: 1px dashed var(--aw-border-2);
+  border-radius: 6px;
+  padding: 20px 14px;
+  text-align: center;
+  background: var(--aw-fill-1);
+}
+.empty-mock .em-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--aw-text-1);
+  margin-bottom: 4px;
+}
+.empty-mock .em-sub {
+  font-size: 12px;
+  color: var(--aw-text-3);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Cases page (cases.js) — flow steps
+   ============================================================ */
+.case-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 8px;
+  align-items: stretch;
+  margin: 14px 0 12px;
+}
+.cf-step {
+  background: var(--aw-bg);
+  border: 1px solid var(--aw-border-3);
+  border-radius: 6px;
+  padding: 14px;
+  position: relative;
+}
+.cf-step .cf-num {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: var(--aw-primary);
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--aw-font-mono);
+}
+.cf-step .cf-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--aw-text-1);
+  margin: 4px 0 8px;
+}
+.cf-step .cf-desc {
+  font-size: 12px;
+  color: var(--aw-text-2);
+  line-height: 1.7;
+}
+.cf-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--aw-text-3);
+  font-size: 18px;
+}
+.case-tags {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.case-tags span {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  background: var(--aw-fill-1);
+  border: 1px solid var(--aw-border-3);
+  border-radius: 4px;
+  font-family: var(--aw-font-mono);
+  font-size: 11px;
+  color: var(--aw-text-3);
+}
+@media (max-width: 1100px) {
+  .case-flow {
+    grid-template-columns: 1fr;
+  }
+  .cf-arrow {
+    transform: rotate(90deg);
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   a11y page (a11y.js) — kbd inline keys
+   ============================================================ */
+kbd {
+  display: inline-block;
+  min-width: 18px;
+  padding: 1px 6px;
+  border: 1px solid var(--aw-border-1);
+  border-radius: 3px;
+  background: var(--aw-fill-1);
+  color: var(--aw-text-2);
+  font-family: var(--aw-font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: inset 0 -1px 0 var(--aw-border-2);
+  vertical-align: middle;
+}
+[data-theme="dark"] kbd {
+  background: var(--aw-fill-2);
+  border-color: var(--aw-border-1);
+  color: var(--aw-text-1);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   PageHeader page (page-header.js) — anatomy + mock variants
+   ============================================================ */
+.ph-anatomy {
+  border: 1px solid var(--aw-border-2);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--aw-bg);
+}
+.ph-anatomy .ph-row { padding: 14px; }
+.ph-anatomy .ph-titlerow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+}
+.ph-anatomy .ph-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.ph-anatomy .ph-tabs {
+  display: flex;
+  gap: 24px;
+  padding: 8px 14px 0;
+  border-top: 1px solid var(--aw-border-3);
+  background: var(--aw-fill-1);
+}
+.ph-anatomy .ph-tabs span {
+  font-size: 13px;
+  color: var(--aw-text-3);
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.ph-anatomy .ph-tabs span.active {
+  color: var(--aw-primary);
+  border-bottom-color: var(--aw-primary);
+  font-weight: 500;
+}
+
+.ph-mock {
+  padding: 14px 16px;
+}
+.ph-mock .ph-cm {
+  font-size: 11px;
+  color: var(--aw-text-3);
+  margin-bottom: 8px;
+  font-family: var(--aw-font-mono);
+}
+.ph-mock .ph-tm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px dashed var(--aw-border-3);
+  padding-top: 10px;
+}
+.ph-mock .ph-tm > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ph-mock .ph-tm b {
+  font-size: 14px;
+  color: var(--aw-text-1);
+}
+.ph-mock .ph-meta {
+  font-size: 11px;
+  color: var(--aw-text-3);
+  font-family: var(--aw-font-mono);
+}
+.ph-mock .ph-acts {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.ph-mock .ph-acts .btn {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+}

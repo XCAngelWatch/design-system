@@ -4,7 +4,26 @@
 <section class="section" id="feedback">
   <p class="section-eyebrow">Components · 反馈</p>
   <h2>Feedback</h2>
-  <p class="lede">提示横条用于持续性的状态信息；toast/message 用于瞬时操作反馈；modal 用于阻塞性的二次确认。</p>
+  <p class="lede">提示横条用于持续性的状态信息；toast / message 用于瞬时操作反馈；modal 用于阻塞性的二次确认。下表是"什么时候用什么" 的决策表 —— PR review 出现"应该用 Toast 还是 Modal" 争议时回到这里。</p>
+
+  <div class="subsection">
+    <h3>反馈层级决策表</h3>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">类型</th><th style="width:22%">触发场景</th><th style="width:18%">是否阻塞</th><th style="width:18%">消失方式</th><th>选用条件</th></tr></thead>
+      <tbody>
+        <tr><td><b>Toast / Message</b></td><td>瞬时反馈 —— 保存成功 / 复制成功 / 已收藏</td><td>否</td><td>3 秒自动消失</td><td>结果是<b>成功</b>且<b>无需阅读</b>；视觉位置顶部居中</td></tr>
+        <tr><td><b>Notification</b></td><td>系统主动推送 —— 告警 / 完成回报 / 提醒</td><td>否</td><td>需手动关闭</td><td>用户没在等结果但需要知道；右上角栈，可堆 ≤ 3 条</td></tr>
+        <tr><td><b>Alert 横条</b></td><td>持续状态 —— 系统升级中 / 试用期剩余 / 限制提示</td><td>否</td><td>常驻直到状态变更</td><td>整页或区域级横条；不阻塞操作</td></tr>
+        <tr><td><b>Inline 校验</b></td><td>表单字段错误 —— 邮箱格式 / 密码强度</td><td>否</td><td>用户修正后消失</td><td>字段下方红色文案 + icon；表单提交时聚焦首个错误</td></tr>
+        <tr><td><b>Popconfirm</b></td><td>行内可逆操作 —— 删除一行 / 解绑单条</td><td>是（行内）</td><td>用户确认或取消</td><td>影响范围 = 1 条记录；附在触发按钮旁</td></tr>
+        <tr><td><b>Modal.confirm</b></td><td>批量 / 不可逆 —— 删除 28 台 / 推送固件</td><td>是（页面级）</td><td>用户输入数量 + 确认</td><td>影响 ≥ 2 条 或 不可逆；焦点默认在"取消"</td></tr>
+        <tr><td><b>Modal · 表单</b></td><td>需要填写信息 —— 新建 / 编辑</td><td>是</td><td>提交或关闭</td><td>字段 ≤ 8 个；超过用 Drawer 或独立页面</td></tr>
+        <tr><td><b>Result 页</b></td><td>异步终态 —— 推送完成 / 部分成功 / 完全失败</td><td>是（占位）</td><td>用户确认或继续</td><td>耗时 ≥ 5 秒的批量动作；必带 extra prop 给下一步</td></tr>
+        <tr><td><b>ErrorPage</b></td><td>整页失败 —— 404 / 403 / 500 / 离线</td><td>是（替换）</td><td>用户重试或导航</td><td>请求层错误；带 traceId 便于审计</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">三条硬规则：</b>1) 错误结果<b>禁用</b> Toast，必须 Modal / Result / ErrorPage；2) 不可逆操作<b>禁用</b> Toast 替代 Modal.confirm；3) Notification 同时存在 ≤ 3 条，超出折叠。</p>
+  </div>
 
   <div class="demo-stack">
     <div class="surface">

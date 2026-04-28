@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Static design-system reference site for AngelWatch TMS (设备终端管理系统),组织成 **静态 SPA(单页面应用)**:`index.html` 是 shell,所有 41 个 section(基础 / 通用组件 / 业务组件 / 页面模板 / 生态 / 规范)拆为 `pages/<id>.js` 片段(每个文件就是一段把 HTML 字符串注册到 `window.__AW_PAGES__` 的 JS),通过 hash 路由(`#/color`、`#/buttons` 等)由 `pages/_router.js` 用动态 `<script>` 注入而非 fetch 加载。
+Static design-system reference site for AngelWatch TMS (设备终端管理系统),组织成 **静态 SPA(单页面应用)**:`index.html` 是 shell,所有 43 个 section(导览 1 / 基础 8 / 通用组件 13 / 业务组件 9 / 页面模板 8 / 生态 2 / 规范 2)拆为 `pages/<id>.js` 片段(每个文件就是一段把 HTML 字符串注册到 `window.__AW_PAGES__` 的 JS),通过 hash 路由(`#/color`、`#/buttons` 等)由 `pages/_router.js` 用动态 `<script>` 注入而非 fetch 加载。
 
 **Pure HTML + CSS + 一份 vanilla JS 路由器,无构建,无 NPM 依赖,无 HTTP 服务器要求 —— `file://` 直接打开 `index.html` 即可。** 共用部分(品牌区 / 侧边栏 / toolbar / 主题切换 / 路由)在 `pages/_router.js`,差异部分(每个 section 的 HTML 内容)在 `pages/<id>.js`。
 
@@ -72,17 +72,17 @@ grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-g
 project/
 ├── index.html             SPA shell (~34 行) — 7 个 CSS link + 早期主题恢复脚本 +
 │                          空 sidebar/toolbar/slot 容器 + <script src="pages/_router.js">
-├── pages/
-│   ├── _router.js         共用 (~250 行) — ROUTES 表 / sidebar / toolbar 渲染 /
+├── pages/                 43 个 fragment + 1 个 router
+│   ├── _router.js         共用 (~270 行) — ROUTES 表 / sidebar / toolbar 渲染 /
 │   │                      hash 路由 / 动态 <script> 加载 / 主题持久化(localStorage)
-│   ├── overview.js        Hero + Principles
-│   ├── color.js ~ palette.js          基础(8)
-│   ├── buttons.js ~ skeleton.js       通用组件(13)
-│   ├── status-matrix.js ~ loading-levels.js  业务组件(8)
-│   ├── shell.js ~ dash-page.js        页面模板(8)
-│   ├── ecosystem.js / tech-stack.js   生态(2)
-│   └── do-dont.js                     规范(1)
-└── styles/                7 个 CSS,按职责分层
+│   ├── overview.js        Hero + Principles                                  (导览 1)
+│   ├── color.js ~ palette.js          色 / 字 / 距 / 圆角 / 阴影 / 动效…    (基础 8)
+│   ├── buttons.js ~ skeleton.js       按钮 / 输入 / 表格 / 反馈 / 上传…    (通用 13)
+│   ├── status-matrix.js ~ row-actions.js  设备 / 状态 / 行操作 …           (业务 9)
+│   ├── shell.js ~ dash-page.js        Login / List / Detail / Form / …     (模板 8)
+│   ├── ecosystem.js / tech-stack.js                                          (生态 2)
+│   └── do-dont.js / whitelabel.js                                            (规范 2)
+└── styles/                15 个 CSS — 7 基础骨架 + 8 业务扩展(*-pro.css)
     ├── tokens.css         设计 token (色/字/距/圆角/阴影/动效) — :root + [data-theme="dark"]
     ├── system.css         全局 reset + 基础排版 + 应用 grid (.app, .app-side, .app-main)
     ├── components.css     核心组件 mock (Button / Input / Select / Table / Modal / Form / Tag 等)
@@ -91,14 +91,23 @@ project/
     ├── foundations-extras.css  Token 三层金字塔 / 密度三档 / 嵌套主题 / WCAG / 8 色 palette /
     │                           Sidebar 渲染规范 / Theme compare / Interaction principles / i18n
     ├── layout.css         24 栅格 + 4 断点 + 容器宽度 + 5 种页面骨架
-    └── ecosystem.css      生态库集成 10 卡 mock + 技术栈速查表
+    ├── ecosystem.css      生态库集成 10 卡 mock + 技术栈速查表
+    │   ── (以下为业务扩展,服务单个 page fragment) ──
+    ├── login-states.css   登录 6 态变体 + blockPuzzle 滑块拼图(login-page)
+    ├── row-actions.css    行操作图标库 + 折叠下拉(row-actions)
+    ├── table-pro.css      密度三档 + 列冻结 + 列宽拖 + 批量条 + 分页三态(table)
+    ├── upload-pro.css     4 形态 + 大文件分片 + 进度环 + 多类型预览(upload)
+    ├── modal-pro.css      Modal 复杂内嵌 (tabs / 表单分组 / 全屏)(feedback)
+    ├── tree-pro.css       搜索高亮 / 懒加载 / 选择模式 / 拖拽(tree-comp)
+    ├── toast-pro.css      富 Notification (按钮 / 进度 / 折叠展开)(toast)
+    └── result-pro.css     Result 部分成功 (失败明细 + CSV 下载)(avatar-result)
 ```
 
 **SPA 工作机制**(关键:不需要 HTTP 服务器):
 
 1. `index.html` 加载,`<head>` inline script 立即从 `localStorage('aw-theme')` 恢复主题(避免 FOUC)
 2. `<body>` 含空容器:`<aside id="app-side">` / `<div id="app-toolbar">` / `<div id="app-slot">`
-3. `<script src="pages/_router.js">` 执行,渲染 sidebar(品牌区 + 7 组导航,链接形如 `#/X`)+ toolbar(面包屑 + 主题切换)
+3. `<script src="pages/_router.js">` 执行,渲染 sidebar(品牌区 + 43 条 7 组导航,链接形如 `#/X`)+ toolbar(面包屑 + 主题切换)
 4. 监听 `hashchange`:`#/color` → 动态 `<script src="pages/color.js">` 注入到 `<head>` → script 执行后 `window.__AW_PAGES__['color']` 已注册 → 取出 HTML 字符串 inject 到 `#app-slot`
 5. 已加载的 script(标签 + 全局变量)永久缓存,二次访问无重复加载
 6. 因为是 `<script>` 注入而非 `fetch()`,**完全在 file:// 下工作**
@@ -118,7 +127,7 @@ project/
 ### 新增/修改一个 section
 
 1. 编辑 `pages/<id>.js`:`pages/<id>.js` 中模板字面量包裹的 HTML 部分。**只改字符串里的 HTML,别动 `(window.__AW_PAGES__ = ...)` 那行**
-2. HTML 内禁止出现 `` ` ``(backtick)、`${...}`、`\` —— 否则破坏 template literal。当前 41 个文件均干净
+2. HTML 内禁止出现 `` ` ``(backtick)、`${...}`、`\` —— 否则破坏 template literal。当前 43 个文件均干净
 3. 跨片段链接用 `href="#/other-id"`(注意带 `/`,纯 `#xxx` 是 in-page 锚点,路由不会拦截)
 4. 用 `var(--aw-*)` 引用所有颜色,Light/Dark 自动跟随
 
@@ -141,6 +150,9 @@ project/
 
 ### 新增 CSS
 
+按"基础 → 拓展 → 业务"分层挑文件。**不要**按时间线新建 CSS 文件。
+
+**优先复用基础骨架**(7 文件):
 1. 改 token 值 → `tokens.css`
 2. 新增"核心组件"mock(antd v6 自带的) → `components.css`
 3. 新增"扩展组件"mock(业务封装) → `components-extras.css`
@@ -148,7 +160,7 @@ project/
 5. 新增"页面骨架"或栅格示意 → `layout.css`
 6. 新增"复杂场景生态"mock(指向 NPM 库的视觉示意) → `ecosystem.css`
 
-**不要**按时间线新建 CSS 文件;按职责挑文件。
+**业务扩展**(`*-pro.css`):仅当某个 page fragment 引入大量专属新类(>30 行 CSS)且仅自己用时,才新建一个 `<page>-pro.css`,在 `index.html` 末尾追加 `<link>`。当前 8 个:`login-states / row-actions / table-pro / upload-pro / modal-pro / tree-pro / toast-pro / result-pro`。新增前先看是否已有匹配文件可扩展。
 
 ## Conventions(违反会被设计审查打回)
 

@@ -5,7 +5,8 @@
 <section class="section" id="palette">
   <p class="section-eyebrow">Foundations · 扩展色板</p>
   <h2>Extended Palette · 8 色 × 5 阶</h2>
-  <p class="lede">品牌蓝 + 4 状态色不足以表达"机构分组"、"设备类型"、"标签分类"等高频业务分类。提供完整的 8 色扩展色板（中性、红、橙、金、绿、青、蓝、紫），每色 5 阶（25 → 100 → 500 → 700 → 900）。所有 hex 来自 antd v6 的 generate 算法（H 不变，S/L 按曲线派生），保证视觉一致性，并集中收口在 <code class="mono">@aw/design-tokens/extended.ts</code>。</p>
+  <p class="lede">品牌蓝 + 4 状态色不足以表达"机构分组"、"设备类型"、"标签分类"等高频业务分类。本页提供完整的 8 色 <b>标签色板</b>（中性、红、橙、金、绿、青、蓝、紫），每色 5 阶（25 → 100 → 500 → 700 → 900），优化「文字 / 底色对比度 + 业务语义」。所有 hex 来自 antd v6 的 generate 算法（H 不变，S/L 按曲线派生），保证视觉一致性，集中收口在 <code class="mono">@aw/design-tokens/extended.ts</code>。</p>
+  <div class="alert info" style="margin:10px 0 18px"><div class="ico">i</div><div class="content"><strong>标签色板 ≠ 图表序列色板。</strong>本页是<b>标签 / Tag / Pill / 状态徽章</b>使用的色板，token 形如 <code>--aw-{hue}-{step}</code>（共 40 个变量）。<b>多系列图表</b>使用独立的 8 色序列色板，token 形如 <code>--aw-chart-1..8</code>，优化"序列间区分度 + 色弱可达"，详见 <a href="#/charts" style="color:var(--aw-primary)">Charts 页</a>。两套色板职责不同 —— 标签优化阅读对比度，图表优化序列识别。</div></div>
 
   <div class="ext-palette">
     <!-- Neutral -->

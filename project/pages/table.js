@@ -339,6 +339,82 @@
       <div style="margin-top:4px">列冻结阴影：0 0 4px rgba(0,0,0,0.06) light · 0 0 4px rgba(0,0,0,0.32) dark</div>
     </div>
   </div>
+
+  <div class="subsection">
+    <h3>列定义规范 · Column Spec</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">每列都是一份契约：<code>key</code> / <code>title</code> / <code>dataIndex</code> / <code>render</code> 是必填，<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">列类型</th><th style="width:14%">align</th><th style="width:14%">width</th><th style="width:18%">priority</th><th>特殊规则</th></tr></thead>
+      <tbody>
+        <tr><td>勾选框</td><td>center</td><td>40</td><td>1（不隐藏）</td><td><code>fixed: 'left'</code> 跟随首列冻结</td></tr>
+        <tr><td>主标识（设备名）</td><td>left</td><td>auto</td><td>1（不隐藏）</td><td><code>ellipsis: true</code> + Tooltip；<code>fixed: 'left'</code></td></tr>
+        <tr><td>SN / IMEI / IP</td><td>left</td><td>160</td><td>2</td><td>monospace + 复制按钮 hover 显</td></tr>
+        <tr><td>状态</td><td>left</td><td>96</td><td>1（不隐藏）</td><td>状态色 + 圆点 + 文字三重编码</td></tr>
+        <tr><td>数字 / 时间戳</td><td>right</td><td>100-140</td><td>3</td><td><code>tabular-nums</code>；时间戳带 tooltip 绝对时间</td></tr>
+        <tr><td>操作</td><td>right</td><td>140</td><td>1（不隐藏）</td><td><code>fixed: 'right'</code>；≤ 3 个直接展示，≥ 4 折叠</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <h3>排序 · Sorting</h3>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">维度</th><th style="width:30%">规则</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>触发位</td><td>列标题点击</td><td>整列标题可点；不要靠图标 hover</td></tr>
+        <tr><td>循环顺序</td><td>asc → desc → 无序</td><td>三态循环；无序回归后端默认排序</td></tr>
+        <tr><td>多列排序</td><td><kbd>Shift</kbd>+ 列标题点击</td><td>最多 3 列；视觉用数字角标 ① ② ③</td></tr>
+        <tr><td>排序场景</td><td>仅<b>服务端</b>排序</td><td>禁前端排序大数据集，与分页 / 筛选一起走 API</td></tr>
+        <tr><td>持久化</td><td>URL query string</td><td><code>?sort=lastHeartbeat:desc,sn:asc</code> —— 刷新 / 分享 URL 保持</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <h3>筛选 · Filtering</h3>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">类型</th><th style="width:30%">触发方式</th><th>典型字段</th></tr></thead>
+      <tbody>
+        <tr><td>列内筛选</td><td>列标题 ▾ 弹层</td><td>状态 / 站点 / 固件版本（枚举值 ≤ 20）</td></tr>
+        <tr><td>顶部筛选条</td><td>表格上方独立区域</td><td>关键词搜索 + 时间范围 + 主要枚举（4 字段先露）</td></tr>
+        <tr><td>高级筛选</td><td>顶部筛选条 "高级 ▾" 展开</td><td>≥ 5 个字段时折叠，"清除全部" 按钮显式</td></tr>
+        <tr><td>筛选标签</td><td>表头下方 Tag 序列</td><td>每条筛选 = 1 个可关闭 Tag；点击 × 单独移除</td></tr>
+        <tr><td>持久化</td><td>URL query string</td><td><code>?status=online,offline&amp;site=sh-001</code></td></tr>
+        <tr><td>组合规则</td><td>同字段 OR、跨字段 AND</td><td>状态 = (在线 OR 升级中) AND 站点 = 上海</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <h3>分页 · Pagination</h3>
+    <table class="map-table">
+      <thead><tr><th style="width:24%">规则</th><th>具体</th></tr></thead>
+      <tbody>
+        <tr><td>默认条数</td><td>20 / 页（中密度 40px 行 × 20 = ~800px 主区域）</td></tr>
+        <tr><td>可选条数</td><td>10 / 20 / 50 / 100</td></tr>
+        <tr><td>跳页</td><td>≥ 5 页时显示"跳到第 __ 页"输入框</td></tr>
+        <tr><td>边界态</td><td>仅 1 页：隐藏 pager；总条 0：仅显示"共 0 项"</td></tr>
+        <tr><td>大数据集</td><td>≥ 10,000 条：游标分页 (cursor-based)，禁随机跳页</td></tr>
+        <tr><td>选中态跨页</td><td>"已选 28 / 共 12,486 项 · 跨页选中"明示</td></tr>
+        <tr><td>持久化</td><td>URL <code>?page=3&amp;pageSize=50</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <h3>行交互 · Row Interaction</h3>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">交互</th><th style="width:24%">触发</th><th>行为</th></tr></thead>
+      <tbody>
+        <tr><td>hover 高亮</td><td>鼠标悬停</td><td>背景 <code>--aw-fill-1</code>；不触发任何动作</td></tr>
+        <tr><td>行点击</td><td>点击非操作列</td><td><b>禁用</b> "点行进详情" —— 用专门的"详情"按钮，避免误点</td></tr>
+        <tr><td>双击</td><td>—</td><td>不绑定（误触风险）</td></tr>
+        <tr><td>勾选</td><td>勾选框点击 / Space</td><td>触发批量条；跨页选中明示 "+ 跨页 28 项"</td></tr>
+        <tr><td>展开</td><td>左侧 ▸ icon</td><td>嵌套子表 / 详细字段；同时 ≤ 3 行展开</td></tr>
+        <tr><td>右键</td><td>—</td><td>不绑定（用浏览器原生菜单）</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 </div>
 `;

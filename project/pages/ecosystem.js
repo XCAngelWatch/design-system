@@ -11,7 +11,7 @@
     <div class="eco-card">
 <div class="eco-h"><div class="eco-num">01</div><div class="eco-t">RealtimeChart · 实时图表</div></div>
 <div class="eco-use">Dashboard 趋势图 · OTA 推送进度大盘 · 网络流量监控</div>
-<div class="eco-pkg"><code>@ant-design/charts</code><span class="eco-pkg-note">基于 G2 · 与 antd v6 视觉语言一致 · 内置主题继承 design tokens</span></div>
+<div class="eco-pkg"><code>echarts</code> + <code>echarts-for-react</code><span class="eco-pkg-note">ECharts v6 · Apache 2.0 · 业务统一通过 <code>&lt;TMSChart /&gt;</code> 包装层调用，详见 <a href="#/charts" style="color:var(--aw-primary)">Charts 页</a></span></div>
 <div class="eco-mock">
   <svg viewBox="0 0 360 130" preserveAspectRatio="none" style="width:100%;height:100%">
     <defs><linearGradient id="eg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0052CC" stop-opacity="0.32"/><stop offset="100%" stop-color="#0052CC" stop-opacity="0"/></linearGradient></defs>
@@ -25,7 +25,7 @@
     <text x="320" y="124" fill="#9CA3AF" font-size="8" font-family="Inter">04-30</text>
   </svg>
 </div>
-<div class="eco-warn">⚠ 仅视觉示意 · 实际接入 @ant-design/charts &lt;Area /&gt; / &lt;Line /&gt;</div>
+<div class="eco-warn">⚠ 仅视觉示意 · 业务代码用 &lt;TMSChart option={...} /&gt;，禁止直接 import echarts-for-react</div>
     </div>
 
     <!-- 2. DeviceMap -->

@@ -16,7 +16,9 @@
   // === 41 routes (id → label, group) ===
   var ROUTES = [
     ['overview',         '概览',                            '导览'],
+    ['cases',            '实践案例',                        '导览'],
     ['color',            '色彩',                            '基础'],
+    ['dark',             '暗黑模式',                        '基础'],
     ['i18n',             '国际化',                          '基础'],
     ['type',             '字体',                            '基础'],
     ['space',            '间距',                            '基础'],
@@ -24,6 +26,10 @@
     ['motion',           '动效',                            '基础'],
     ['layout',           '布局栅格',                        '基础'],
     ['palette',          '扩展色板',                        '基础'],
+    ['icons',            '图标',                            '基础'],
+    ['illustration',     '图形化',                          '基础'],
+    ['a11y',             '无障碍',                          '基础'],
+    ['responsive',       '响应式断点',                      '基础'],
     ['buttons',          '按钮',                            '通用组件'],
     ['inputs',           '输入与表单',                      '通用组件'],
     ['tags',             '标签 / 状态',                     '通用组件'],
@@ -44,9 +50,12 @@
     ['advanced-form',    'NumberInput / 校验态',            '业务组件'],
     ['tab-variants',     'Tabs 变体 / Popconfirm',          '业务组件'],
     ['avatar-result',    'Avatar / Result / Description',   '业务组件'],
+    ['empty-state',      '空状态',                          '业务组件'],
+    ['page-header',      'PageHeader 页头',                 '业务组件'],
     ['error-page',       'ErrorPage 404 / 403 / 500',       '业务组件'],
     ['loading-levels',   'Loading 层次',                    '业务组件'],
     ['row-actions',      'RowActions 行操作',               '业务组件'],
+    ['charts',           '图表与可视化',                    '业务组件'],
     ['shell',            '应用外壳',                        '页面模板'],
     ['login-page',       'LoginPage',                       '页面模板'],
     ['list-page',        'ListPage',                        '页面模板'],
@@ -61,7 +70,11 @@
     ['ecosystem',        '生态库集成',                      '生态'],
     ['tech-stack',       '技术栈速查',                      '生态'],
     ['do-dont',          '规范红线',                        '规范'],
-    ['whitelabel',       '白标 / 租户主题',                 '规范']
+    ['whitelabel',       '白标 / 租户主题',                 '规范'],
+    ['data-format',      '数据格式',                        '规范'],
+    ['copywriting',      '文案规范',                        '规范'],
+    ['api',              '组件 API 约定',                   '规范'],
+    ['config-provider',  'ConfigProvider 全局配置',         '规范']
   ];
   var ROUTE_MAP = {};
   ROUTES.forEach(function (r) { ROUTE_MAP[r[0]] = { label: r[1], group: r[2] }; });

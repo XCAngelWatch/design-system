@@ -127,6 +127,6 @@
 /* Dark theme */
 [data-theme="dark"] .tnode .lbl mark {
   background: rgba(173, 104, 0, 0.32);
-  color: #FFE58F;
+  color: var(--aw-warning);
 }
 [data-theme="dark"] .tnode.dragging { background: rgba(255,255,255,0.08); }
