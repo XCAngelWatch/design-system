@@ -29,14 +29,14 @@
     <h3>业务序列色板 · 8 色</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">图表序列专属 8 色，<b>独立于</b> <a href="#/palette" style="color:var(--aw-primary)">palette 页</a>的标签色板 —— 标签色板优化"文字 / 底色对比度 + 业务语义"，图表色板优化"序列间区分度 + 色弱可达"。两者职责不同，token 也分离：标签用 <code>--aw-{hue}-{step}</code>，图表用 <code>--aw-chart-1..8</code>。多系列图表按下表顺序取色，dark 模式自动切提亮变体。</p>
     <div class="chart-color-bar">
-      <div style="background:var(--aw-chart-1)"><span>① Brand</span></div>
-      <div style="background:var(--aw-chart-2)"><span>② Cyan</span></div>
-      <div style="background:var(--aw-chart-3)"><span>③ Purple</span></div>
-      <div style="background:var(--aw-chart-4)"><span>④ Orange</span></div>
-      <div style="background:var(--aw-chart-5)"><span>⑤ Magenta</span></div>
-      <div style="background:var(--aw-chart-6)"><span>⑥ Green</span></div>
-      <div style="background:var(--aw-chart-7)"><span>⑦ Sky</span></div>
-      <div style="background:var(--aw-chart-8)"><span>⑧ Violet</span></div>
+      <div style="background:var(--aw-chart-1)"><span>① Blue</span></div>
+      <div style="background:var(--aw-chart-2)"><span>② Aqua</span></div>
+      <div style="background:var(--aw-chart-3)"><span>③ Indigo</span></div>
+      <div style="background:var(--aw-chart-4)"><span>④ Gold</span></div>
+      <div style="background:var(--aw-chart-5)"><span>⑤ Coral</span></div>
+      <div style="background:var(--aw-chart-6)"><span>⑥ Cyan</span></div>
+      <div style="background:var(--aw-chart-7)"><span>⑦ Plum</span></div>
+      <div style="background:var(--aw-chart-8)"><span>⑧ Orange</span></div>
     </div>
     <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">状态分布特例：</b>设备状态饼图 / 堆叠柱用<b>状态色直接映射</b>（success 绿 / warning 黄 / danger 红 / 灰中性），不取业务序列色 —— 保持与列表 status pill 视觉同色。</p>
   </div>
@@ -68,29 +68,29 @@
           <line x1="30" y1="120" x2="270" y2="120" stroke="#D9D9D9"/>
           <line x1="30" y1="40" x2="270" y2="40" stroke="#F0F0F0" stroke-dasharray="2 3"/>
           <line x1="30" y1="80" x2="270" y2="80" stroke="#F0F0F0" stroke-dasharray="2 3"/>
-          <polyline points="30,90 70,72 110,80 150,55 190,38 230,48 270,30" fill="none" stroke="#0052CC" stroke-width="2" stroke-linejoin="round"/>
-          <polyline points="30,100 70,95 110,88 150,70 190,72 230,60 270,55" fill="none" stroke="#13A8A8" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="30,90 70,72 110,80 150,55 190,38 230,48 270,30" fill="none" stroke="#1677FF" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="30,100 70,95 110,88 150,70 190,72 230,60 270,55" fill="none" stroke="#5AD8A6" stroke-width="2" stroke-linejoin="round"/>
           <text x="20" y="125" font-size="10" fill="#6B7280">0</text>
           <text x="20" y="85" font-size="10" fill="#6B7280">5k</text>
           <text x="15" y="45" font-size="10" fill="#6B7280">10k</text>
           <text x="30" y="135" font-size="10" fill="#6B7280">04-22</text>
           <text x="240" y="135" font-size="10" fill="#6B7280">04-28</text>
         </svg>
-        <div style="margin-top:8px;font-size:12px;color:var(--aw-text-3);display:flex;gap:14px"><span><span style="display:inline-block;width:10px;height:2px;background:#0052CC;margin-right:4px;vertical-align:middle"></span>在线设备</span><span><span style="display:inline-block;width:10px;height:2px;background:#13A8A8;margin-right:4px;vertical-align:middle"></span>心跳数</span></div>
+        <div style="margin-top:8px;font-size:12px;color:var(--aw-text-3);display:flex;gap:14px"><span><span style="display:inline-block;width:10px;height:2px;background:#1677FF;margin-right:4px;vertical-align:middle"></span>在线设备</span><span><span style="display:inline-block;width:10px;height:2px;background:#5AD8A6;margin-right:4px;vertical-align:middle"></span>心跳数</span></div>
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px">占比 · Donut</div>
         <svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-          <circle cx="80" cy="70" r="42" fill="none" stroke="#237804" stroke-width="22" stroke-dasharray="180 264"/>
-          <circle cx="80" cy="70" r="42" fill="none" stroke="#AD6800" stroke-width="22" stroke-dasharray="38 264" stroke-dashoffset="-180"/>
-          <circle cx="80" cy="70" r="42" fill="none" stroke="#A8071A" stroke-width="22" stroke-dasharray="20 264" stroke-dashoffset="-218"/>
+          <circle cx="80" cy="70" r="42" fill="none" stroke="#389E0D" stroke-width="22" stroke-dasharray="180 264"/>
+          <circle cx="80" cy="70" r="42" fill="none" stroke="#D48806" stroke-width="22" stroke-dasharray="38 264" stroke-dashoffset="-180"/>
+          <circle cx="80" cy="70" r="42" fill="none" stroke="#CF1322" stroke-width="22" stroke-dasharray="20 264" stroke-dashoffset="-218"/>
           <circle cx="80" cy="70" r="42" fill="none" stroke="#6B7280" stroke-width="22" stroke-dasharray="26 264" stroke-dashoffset="-238"/>
           <text x="80" y="68" font-size="14" font-weight="600" text-anchor="middle" fill="#1F2937">12,486</text>
           <text x="80" y="84" font-size="10" text-anchor="middle" fill="#6B7280">总数</text>
           <g transform="translate(160,30)" font-size="11" fill="#4B5563">
-            <circle cx="0" cy="0" r="4" fill="#237804"/><text x="10" y="4">在线 8,856</text>
-            <circle cx="0" cy="20" r="4" fill="#AD6800"/><text x="10" y="24">升级 1,872</text>
-            <circle cx="0" cy="40" r="4" fill="#A8071A"/><text x="10" y="44">故障 984</text>
+            <circle cx="0" cy="0" r="4" fill="#389E0D"/><text x="10" y="4">在线 8,856</text>
+            <circle cx="0" cy="20" r="4" fill="#D48806"/><text x="10" y="24">升级 1,872</text>
+            <circle cx="0" cy="40" r="4" fill="#CF1322"/><text x="10" y="44">故障 984</text>
             <circle cx="0" cy="60" r="4" fill="#6B7280"/><text x="10" y="64">离线 774</text>
           </g>
         </svg>
@@ -100,10 +100,10 @@
         <svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
           <line x1="60" y1="20" x2="60" y2="120" stroke="#D9D9D9"/>
           <line x1="60" y1="120" x2="270" y2="120" stroke="#D9D9D9"/>
-          <rect x="60" y="32" width="180" height="14" rx="2" fill="#0052CC"/>
-          <rect x="60" y="52" width="140" height="14" rx="2" fill="#0052CC"/>
-          <rect x="60" y="72" width="100" height="14" rx="2" fill="#0052CC"/>
-          <rect x="60" y="92" width="60" height="14" rx="2" fill="#0052CC"/>
+          <rect x="60" y="32" width="180" height="14" rx="2" fill="#1677FF"/>
+          <rect x="60" y="52" width="140" height="14" rx="2" fill="#1677FF"/>
+          <rect x="60" y="72" width="100" height="14" rx="2" fill="#1677FF"/>
+          <rect x="60" y="92" width="60" height="14" rx="2" fill="#1677FF"/>
           <text x="55" y="42" font-size="10" text-anchor="end" fill="#4B5563">华东</text>
           <text x="55" y="62" font-size="10" text-anchor="end" fill="#4B5563">华南</text>
           <text x="55" y="82" font-size="10" text-anchor="end" fill="#4B5563">华北</text>
@@ -122,8 +122,8 @@
           <div style="font-size:12px;color:var(--aw-success)">↑ +12 较上一分钟</div>
         </div>
         <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-          <polyline points="0,28 20,24 40,30 60,18 80,22 100,16 120,12 140,18 160,10 180,14 200,8" fill="none" stroke="#0052CC" stroke-width="1.5" stroke-linejoin="round"/>
-          <linearGradient id="trendG" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0052CC" stop-opacity="0.18"/><stop offset="100%" stop-color="#0052CC" stop-opacity="0"/></linearGradient>
+          <polyline points="0,28 20,24 40,30 60,18 80,22 100,16 120,12 140,18 160,10 180,14 200,8" fill="none" stroke="#1677FF" stroke-width="1.5" stroke-linejoin="round"/>
+          <linearGradient id="trendG" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1677FF" stop-opacity="0.18"/><stop offset="100%" stop-color="#1677FF" stop-opacity="0"/></linearGradient>
           <polygon points="0,28 20,24 40,30 60,18 80,22 100,16 120,12 140,18 160,10 180,14 200,8 200,40 0,40" fill="url(#trendG)"/>
         </svg>
       </div>
@@ -195,14 +195,14 @@ function buildTMSTheme(mode) {
   const isDark = mode === 'dark';
   return {
     color: [
-      cssVar('--aw-chart-1'),  // Brand   #0052CC / dark: #4A8BE0
-      cssVar('--aw-chart-2'),  // Cyan    #13A8A8
-      cssVar('--aw-chart-3'),  // Purple  #7B5CD9
-      cssVar('--aw-chart-4'),  // Orange  #D97706
-      cssVar('--aw-chart-5'),  // Magenta #DB2777
-      cssVar('--aw-chart-6'),  // Green   #3F8600
-      cssVar('--aw-chart-7'),  // Sky     #0EA5E9
-      cssVar('--aw-chart-8'),  // Violet  #9333EA
+      cssVar('--aw-chart-1'),  // antd blue-6   #1677FF / dark: #4096FF
+      cssVar('--aw-chart-2'),  // aqua green    #5AD8A6
+      cssVar('--aw-chart-3'),  // indigo gray   #5D7092
+      cssVar('--aw-chart-4'),  // gold          #F6BD16
+      cssVar('--aw-chart-5'),  // coral         #E8684A
+      cssVar('--aw-chart-6'),  // light cyan    #6DC8EC
+      cssVar('--aw-chart-7'),  // plum          #9270CA
+      cssVar('--aw-chart-8'),  // soft orange   #FF9D4D
     ],
     backgroundColor: 'transparent',
     textStyle: {

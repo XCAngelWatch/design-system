@@ -112,16 +112,16 @@
     <div class="surface" style="padding:14px">
       <div style="font-family:var(--aw-font-mono);font-size:12px;line-height:1.7;color:var(--aw-text-2)">
         <div style="color:var(--aw-text-3)">// locales/<lang>/device.json</div>
-        <div><b style="color:var(--aw-primary)">zh-CN</b>:  <span style="color:var(--aw-success)">"upgrade.confirm"</span>: <span style="color:#A8071A">"升级 {{count}} 台设备？"</span>  <span style="color:var(--aw-text-4)">// 中文不区分单复数</span></div>
+        <div><b style="color:var(--aw-primary)">zh-CN</b>:  <span style="color:var(--aw-success)">"upgrade.confirm"</span>: <span style="color:#CF1322">"升级 {{count}} 台设备？"</span>  <span style="color:var(--aw-text-4)">// 中文不区分单复数</span></div>
         <div style="margin-top:6px"><b style="color:var(--aw-primary)">en-US</b>:</div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#A8071A">"Upgrade 1 device?"</span></div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#A8071A">"Upgrade {{count}} devices?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#CF1322">"Upgrade 1 device?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#CF1322">"Upgrade {{count}} devices?"</span></div>
         <div style="margin-top:6px"><b style="color:var(--aw-primary)">es-419</b>:</div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#A8071A">"¿Actualizar 1 dispositivo?"</span></div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#A8071A">"¿Actualizar {{count}} dispositivos?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#CF1322">"¿Actualizar 1 dispositivo?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#CF1322">"¿Actualizar {{count}} dispositivos?"</span></div>
         <div style="margin-top:6px"><b style="color:var(--aw-primary)">pt-BR</b>:</div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#A8071A">"Atualizar 1 dispositivo?"</span></div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#A8071A">"Atualizar {{count}} dispositivos?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#CF1322">"Atualizar 1 dispositivo?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#CF1322">"Atualizar {{count}} dispositivos?"</span></div>
         <div style="margin-top:8px;color:var(--aw-text-3)">// 调用</div>
         <div>t(<span style="color:var(--aw-success)">'upgrade.confirm'</span>, { count })  <span style="color:var(--aw-text-4)">// i18next 自动取 _one / _other</span></div>
       </div>
@@ -134,16 +134,16 @@
     <div class="surface" style="padding:14px">
       <div style="font-family:var(--aw-font-mono);font-size:12px;line-height:1.85;color:var(--aw-text-2)">
         <div style="color:var(--aw-text-3)">// 日期</div>
-        <div>new <b>Intl.DateTimeFormat</b>(locale, { dateStyle: <span style="color:#A8071A">'medium'</span>, timeStyle: <span style="color:#A8071A">'short'</span> }).format(d)</div>
+        <div>new <b>Intl.DateTimeFormat</b>(locale, { dateStyle: <span style="color:#CF1322">'medium'</span>, timeStyle: <span style="color:#CF1322">'short'</span> }).format(d)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)">→ zh-CN: 2026年4月12日 14:30 · en-US: Apr 12, 2026, 2:30 PM</div>
         <div style="margin-top:8px;color:var(--aw-text-3)">// 数字 (千分位)</div>
         <div>new <b>Intl.NumberFormat</b>(locale).format(12486)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)">→ zh-CN/en-US: 12,486 · es-419/pt-BR: 12.486</div>
         <div style="margin-top:8px;color:var(--aw-text-3)">// 货币</div>
-        <div>new <b>Intl.NumberFormat</b>(locale, { style: <span style="color:#A8071A">'currency'</span>, currency: <span style="color:#A8071A">'USD'</span> }).format(1234.5)</div>
+        <div>new <b>Intl.NumberFormat</b>(locale, { style: <span style="color:#CF1322">'currency'</span>, currency: <span style="color:#CF1322">'USD'</span> }).format(1234.5)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)">→ en-US: $1,234.50 · es-419: US$ 1.234,50 · pt-BR: US$ 1.234,50</div>
         <div style="margin-top:8px;color:var(--aw-text-3)">// 相对时间</div>
-        <div>new <b>Intl.RelativeTimeFormat</b>(locale, { numeric: <span style="color:#A8071A">'auto'</span> }).format(-2, <span style="color:#A8071A">'minute'</span>)</div>
+        <div>new <b>Intl.RelativeTimeFormat</b>(locale, { numeric: <span style="color:#CF1322">'auto'</span> }).format(-2, <span style="color:#CF1322">'minute'</span>)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)">→ zh-CN: 2 分钟前 · en-US: 2 minutes ago · pt-BR: há 2 minutos</div>
       </div>
     </div>

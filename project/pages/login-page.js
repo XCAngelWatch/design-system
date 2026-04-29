@@ -167,7 +167,7 @@
         <div class="pz-cap">③  成功</div>
         <div class="pz-frame">
           <div class="pz-bg ok">
-            <svg viewBox="0 0 260 130" preserveAspectRatio="none"><rect width="260" height="130" fill="#EAF4E2"/></svg>
+            <svg viewBox="0 0 260 130" preserveAspectRatio="none"><rect width="260" height="130" fill="#F6FFED"/></svg>
             <div class="pz-check">✓ 验证通过</div>
           </div>
           <div class="pz-track ok"><div class="pz-handle ok">✓</div><div class="pz-tip ok">已完成验证</div></div>
@@ -178,7 +178,7 @@
         <div class="pz-cap">④  失败 · 抖动 + 重置</div>
         <div class="pz-frame">
           <div class="pz-bg err">
-            <svg viewBox="0 0 260 130" preserveAspectRatio="none"><rect width="260" height="130" fill="#FAE3E3"/></svg>
+            <svg viewBox="0 0 260 130" preserveAspectRatio="none"><rect width="260" height="130" fill="#FFF1F0"/></svg>
             <div class="pz-cross">×  位置不正确</div>
           </div>
           <div class="pz-track err"><div class="pz-handle err">×</div><div class="pz-tip err">第 2 次失败 · 还剩 1 次</div></div>

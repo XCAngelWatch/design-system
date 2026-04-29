@@ -265,8 +265,8 @@
         <thead><tr><th style="width:160px">行数</th><th style="width:200px">渲染策略</th><th>说明</th></tr></thead>
         <tbody>
           <tr><td>&lt; 1,000 行</td><td><span class="tag-meta">原生 DOM</span></td><td>antd Table 默认行为，性能足够。开启 <code>fixed: 'left' / 'right'</code> 即可冻结</td></tr>
-          <tr><td>1,000 – 50,000 行</td><td><span class="tag-meta" style="background:#FAF4E0;color:#AD6800">虚拟列表</span></td><td>切换到 <code>@tanstack/react-virtual</code>，仅渲染可视区 + buffer。冻结列单独渲染层</td></tr>
-          <tr><td>&gt; 50,000 行</td><td><span class="tag-meta" style="background:#FAE3E3;color:#A8071A">服务端分页</span></td><td>禁用全选跨页，分页大小默认 100。提示文案："数据量过大，请使用筛选缩小范围"</td></tr>
+          <tr><td>1,000 – 50,000 行</td><td><span class="tag-meta" style="background:#FFFBE6;color:#D48806">虚拟列表</span></td><td>切换到 <code>@tanstack/react-virtual</code>，仅渲染可视区 + buffer。冻结列单独渲染层</td></tr>
+          <tr><td>&gt; 50,000 行</td><td><span class="tag-meta" style="background:#FFF1F0;color:#CF1322">服务端分页</span></td><td>禁用全选跨页，分页大小默认 100。提示文案："数据量过大，请使用筛选缩小范围"</td></tr>
         </tbody>
       </table>
     </div>

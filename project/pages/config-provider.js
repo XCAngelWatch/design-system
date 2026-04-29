@@ -109,7 +109,7 @@ export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale }&gt; = ({
 &lt;/ConfigProvider&gt;
 
 // 案例 2: 危险操作面板 (整个区域用红色主题)
-&lt;ConfigProvider theme={{ token: { colorPrimary: '#A8071A' } }}&gt;
+&lt;ConfigProvider theme={{ token: { colorPrimary: '#CF1322' } }}&gt;
   &lt;DangerPanel&gt;
     &lt;Button type="primary"&gt;立即处理&lt;/Button&gt;
   &lt;/DangerPanel&gt;

@@ -41,12 +41,12 @@
     <circle cx="100" cy="50" r="14" fill="#0052CC" fill-opacity="0.85"/><text x="100" y="54" fill="white" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">328</text>
     <circle cx="180" cy="80" r="18" fill="#0052CC" fill-opacity="0.85"/><text x="180" y="84" fill="white" font-size="10" font-family="Inter" text-anchor="middle" font-weight="600">1.2k</text>
     <circle cx="270" cy="60" r="10" fill="#0052CC" fill-opacity="0.85"/><text x="270" y="63" fill="white" font-size="8" font-family="Inter" text-anchor="middle" font-weight="600">86</text>
-    <circle cx="240" cy="100" r="6" fill="#A8071A"/>
-    <circle cx="140" cy="100" r="6" fill="#A8071A"/>
-    <circle cx="310" cy="40" r="5" fill="#AD6800"/>
+    <circle cx="240" cy="100" r="6" fill="#CF1322"/>
+    <circle cx="140" cy="100" r="6" fill="#CF1322"/>
+    <circle cx="310" cy="40" r="5" fill="#D48806"/>
     <rect x="282" y="6" width="74" height="28" rx="4" fill="white" stroke="#E5E7EB"/>
     <circle cx="294" cy="14" r="3" fill="#0052CC"/><text x="302" y="17" fill="#4B5563" font-size="8" font-family="Inter">在线</text>
-    <circle cx="294" cy="26" r="3" fill="#A8071A"/><text x="302" y="29" fill="#4B5563" font-size="8" font-family="Inter">故障</text>
+    <circle cx="294" cy="26" r="3" fill="#CF1322"/><text x="302" y="29" fill="#4B5563" font-size="8" font-family="Inter">故障</text>
   </svg>
 </div>
 <div class="eco-warn">⚠ 仅视觉示意 · 实际用 OpenStreetMap 瓦片</div>

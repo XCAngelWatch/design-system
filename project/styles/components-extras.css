@@ -668,9 +668,9 @@
 }
 .avatar-group .avatar:first-child,
 .avatar-group .avatar-square:first-child { margin-left: 0; }
-.avatar-fb-1 { background: #FFE7BA; color: #AD6800; }
+.avatar-fb-1 { background: #FFE7BA; color: #D48806; }
 .avatar-fb-2 { background: #D6E4FF; color: #1D39C4; }
-.avatar-fb-3 { background: #FFCCC7; color: #A8071A; }
+.avatar-fb-3 { background: #FFCCC7; color: #CF1322; }
 .avatar-fb-4 { background: #B5F5EC; color: #006D75; }
 .avatar-fb-5 { background: #EFDBFF; color: #531DAB; }
 
@@ -1600,9 +1600,9 @@
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 4px;
 }
-.ota-card .oc-cover.oc-success { background: linear-gradient(135deg, #6BAA47, var(--aw-success)); }
-.ota-card .oc-cover.oc-warn    { background: linear-gradient(135deg, #D89614, var(--aw-warning)); }
-.ota-card .oc-cover.oc-danger  { background: linear-gradient(135deg, #DC4446, var(--aw-danger)); }
+.ota-card .oc-cover.oc-success { background: linear-gradient(135deg, #52C41A, var(--aw-success)); }
+.ota-card .oc-cover.oc-warn    { background: linear-gradient(135deg, #FAAD14, var(--aw-warning)); }
+.ota-card .oc-cover.oc-danger  { background: linear-gradient(135deg, #FF4D4F, var(--aw-danger)); }
 .ota-card .oc-version {
   font-size: 22px; font-weight: 700;
   font-family: var(--aw-font-mono);

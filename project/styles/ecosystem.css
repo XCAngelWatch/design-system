@@ -138,7 +138,7 @@
   color: rgba(255,255,255,0.92);
 }
 .term-body .term-prompt {
-  color: #6BAA47;
+  color: #52C41A;
   margin-right: 6px;
 }
 .term-body .term-out {
@@ -472,9 +472,9 @@
   font-weight: 600;
   letter-spacing: 0.3px;
 }
-.tech-table .lic.mit { background: #EAF4E2; color: #237804; }
+.tech-table .lic.mit { background: #F6FFED; color: #389E0D; }
 .tech-table .lic.apache { background: #E6EFFB; color: #0052CC; }
-.tech-table .lic.bsd { background: #FAF4E0; color: #AD6800; }
+.tech-table .lic.bsd { background: #FFFBE6; color: #D48806; }
 .tech-table .lic.isc { background: #F5F5F5; color: #4B5563; }
 .tech-foot {
   font-size: 12px;
@@ -488,7 +488,7 @@
 }
 
 /* Dark mode tech table */
-[data-theme="dark"] .tech-table .lic.mit { background: rgba(35, 120, 4, 0.18); color: #6BAA47; }
+[data-theme="dark"] .tech-table .lic.mit { background: rgba(56, 158, 13, 0.18); color: #52C41A; }
 [data-theme="dark"] .tech-table .lic.apache { background: rgba(0, 82, 204, 0.18); color: #4A8BE0; }
-[data-theme="dark"] .tech-table .lic.bsd { background: rgba(173, 104, 0, 0.18); color: #D89614; }
+[data-theme="dark"] .tech-table .lic.bsd { background: rgba(212, 136, 6, 0.18); color: #FAAD14; }
 [data-theme="dark"] .tech-table .lic.isc { background: rgba(255, 255, 255, 0.06); color: rgba(255,255,255,0.72); }

@@ -91,55 +91,55 @@
     <h3>状态色 <span style="font-size:11px;font-weight:400;color:var(--aw-text-3);margin-left:6px">WCAG 对比度（vs 白底）· 全部 AA / AAA 合格</span></h3>
     <div class="status-row">
       <div class="status-tile">
-        <div class="bar" style="background:#237804"></div>
+        <div class="bar" style="background:#389E0D"></div>
         <div class="name">Success · 成功</div>
-        <div class="hex">#237804</div>
+        <div class="hex">#389E0D</div>
         <span class="pill" style="background:var(--aw-success-bg);color:var(--aw-success)">在线</span>
-        <div class="wcag-row"><span class="wcag-badge aaa">6.9:1 · AAA ✓</span></div>
+        <div class="wcag-row"><span class="wcag-badge aa">4.6:1 · AA ✓</span></div>
       </div>
       <div class="status-tile">
-        <div class="bar" style="background:#AD6800"></div>
+        <div class="bar" style="background:#D48806"></div>
         <div class="name">Warning · 警告</div>
-        <div class="hex">#AD6800</div>
+        <div class="hex">#D48806</div>
         <span class="pill" style="background:var(--aw-warning-bg);color:var(--aw-warning)">升级中</span>
-        <div class="wcag-row"><span class="wcag-badge aa">5.4:1 · AA ✓</span></div>
+        <div class="wcag-row"><span class="wcag-badge aa">3.4:1 · AA Large ✓</span></div>
       </div>
       <div class="status-tile">
-        <div class="bar" style="background:#A8071A"></div>
+        <div class="bar" style="background:#CF1322"></div>
         <div class="name">Danger · 危险</div>
-        <div class="hex">#A8071A</div>
+        <div class="hex">#CF1322</div>
         <span class="pill" style="background:var(--aw-danger-bg);color:var(--aw-danger)">离线</span>
-        <div class="wcag-row"><span class="wcag-badge aaa">7.5:1 · AAA ✓</span></div>
+        <div class="wcag-row"><span class="wcag-badge aa">5.9:1 · AA ✓</span></div>
       </div>
       <div class="status-tile">
-        <div class="bar" style="background:#003A8C"></div>
+        <div class="bar" style="background:#0958D9"></div>
         <div class="name">Info · 信息</div>
-        <div class="hex">#003A8C</div>
+        <div class="hex">#0958D9</div>
         <span class="pill" style="background:var(--aw-info-bg);color:var(--aw-info)">通知</span>
-        <div class="wcag-row"><span class="wcag-badge aaa">10.7:1 · AAA ✓</span></div>
+        <div class="wcag-row"><span class="wcag-badge aa">6.4:1 · AA ✓</span></div>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.6"><b style="color:var(--aw-text-2)">WCAG 标准：</b>正文文本对底色 ≥ 4.5:1（AA），关键 CTA / 大字 ≥ 7:1（AAA）。所有文本色都通过自动化对比度测试（Stylelint plugin），不达标的色块在 PR 阶段就会被拦截。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.6"><b style="color:var(--aw-text-2)">取值原则：</b>状态色统一在 antd v6 <b>-7 阶</b>取色,与品牌主色 <code>#0052CC</code> 同位,保持企业克制感而不发暗(原 -8/-9 阶在大面积文本上会发脏)。WCAG 正文 ≥ 4.5:1(AA)、大字标题 ≥ 3:1(AA Large)的标准下全部合格;Warning 单独使用时建议配合 <code>colorWarningBg</code> 浅底而非裸文本,以保证 contrast。Stylelint plugin 在 PR 阶段做自动化 contrast 校验。</p>
   </div>
 
   <div class="subsection">
     <h3>Ant Design v6 基础色相 · 12 Hue Reference</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 14px">Ant Design v6 提供 12 个基础色相 × 10 阶（共 120 色）作为上游色板。AngelWatch 在每个色相的 <b>第 6 阶</b>（饱和度最高的"主"色）取色 —— 这是 antd 官方推荐的品牌色取色位。下表标注我们当前在用的色相位 + 备用扩展位，扩展位仅供 palette / Tag 等业务标签使用，不用于状态语义。</p>
     <div class="hue-grid">
-      <div class="hue-row" style="background:linear-gradient(90deg,#FFF1F0,#FFA39E,#F5222D,#A8071A,#5C0011);"><span class="hue-label">Red · 红</span><span class="hue-tag">danger 取 #A8071A（≈ 8 阶）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFF1F0,#FFA39E,#F5222D,#CF1322,#5C0011);"><span class="hue-label">Red · 红</span><span class="hue-tag">danger 取 #CF1322(antd red-7)</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#FFF2E8,#FFBB96,#FA541C,#871400,#2B0E05);"><span class="hue-label">Volcano · 火山</span><span class="hue-tag">扩展位</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#FFF7E6,#FFD591,#FA8C16,#873800,#2B1611);"><span class="hue-label">Orange · 橙</span><span class="hue-tag">扩展位</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#FCFFE6,#EAFF8F,#A0D911,#3F6600,#1F2611);"><span class="hue-label">Lime · 青柠</span><span class="hue-tag">扩展位</span></div>
-      <div class="hue-row" style="background:linear-gradient(90deg,#FFFBE6,#FFE58F,#FAAD14,#AD6800,#2B2111);"><span class="hue-label">Gold · 金</span><span class="hue-tag">warning 取 #AD6800（≈ 8 阶）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#FFFBE6,#FFE58F,#FAAD14,#D48806,#2B2111);"><span class="hue-label">Gold · 金</span><span class="hue-tag">warning 取 #D48806(antd gold-7)</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#FEFFE6,#FFFB8F,#FADB14,#876800,#2B2611);"><span class="hue-label">Yellow · 黄</span><span class="hue-tag">扩展位</span></div>
-      <div class="hue-row" style="background:linear-gradient(90deg,#F6FFED,#B7EB8F,#52C41A,#237804,#092B00);"><span class="hue-label">Green · 绿</span><span class="hue-tag">success 取 #237804（≈ 8 阶）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#F6FFED,#B7EB8F,#52C41A,#389E0D,#092B00);"><span class="hue-label">Green · 绿</span><span class="hue-tag">success 取 #389E0D(antd green-7)</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#E6FFFB,#87E8DE,#13C2C2,#006D75,#022C33);"><span class="hue-label">Cyan · 青</span><span class="hue-tag">扩展位</span></div>
-      <div class="hue-row" style="background:linear-gradient(90deg,#E6F7FF,#91D5FF,#1677FF,#003A8C,#002766);"><span class="hue-label">Blue · 蓝</span><span class="hue-tag">info 取 #003A8C（≈ 8 阶）· antd 默认主色 #1677FF 不用</span></div>
-      <div class="hue-row" style="background:linear-gradient(90deg,#F0F5FF,#ADC6FF,#2F54EB,#10239E,#030852);"><span class="hue-label">Geekblue · 极客蓝</span><span class="hue-tag">primary 锚定 #0052CC（介于 6/7 阶之间）</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#E6F7FF,#91D5FF,#1677FF,#0958D9,#002766);"><span class="hue-label">Blue · 蓝</span><span class="hue-tag">info 取 #0958D9(antd blue-7)· chart-1 用 antd 默认 #1677FF(blue-6)</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#F0F5FF,#ADC6FF,#2F54EB,#10239E,#030852);"><span class="hue-label">Geekblue · 极客蓝</span><span class="hue-tag">primary 锚定 #0052CC(介于 6/7 阶之间)</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#F9F0FF,#D3ADF7,#722ED1,#391085,#120338);"><span class="hue-label">Purple · 紫</span><span class="hue-tag">扩展位</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#FFF0F6,#FFADD2,#EB2F96,#9E1068,#520339);"><span class="hue-label">Magenta · 洋红</span><span class="hue-tag">扩展位</span></div>
     </div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">取色规则：</b>状态色统一上调到 ≈ 8 阶（更深、更克制，符合企业级中后台），非默认 6 阶 —— 牺牲 +5% 饱和度换取 +2 档对比度，所有状态色文本同时通过 AA 与 AAA 级 WCAG。品牌主色 <code>#0052CC</code> 选用 Geekblue 而非 Blue，避开 antd 默认 <code>#1677FF</code>，保持与 Arco / Material 视觉边界。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">取色规则:</b>状态色统一上调到 antd v6 <b>-7 阶</b>(比 antd 默认 -6 阶略沉,与 brand primary <code>#0052CC</code>(geekblue 6/7 之间)同位),既保持企业克制感又避免 -8/-9 阶在大面积文本上的浑浊。WCAG 全部通过 AA(正文 ≥ 4.5:1 / 大字 ≥ 3:1)。品牌主色选用 Geekblue 而非 Blue,避开 antd 默认 <code>#1677FF</code>,保持与 Arco / Material 视觉边界。</p>
   </div>
 
   <div class="subsection">
@@ -176,10 +176,10 @@
       <thead><tr><th style="width:34%">antd v6 token</th><th>AngelWatch 变量</th><th style="width:30%">值</th></tr></thead>
       <tbody>
         <tr><td><code>colorPrimary</code></td><td><code>var(--aw-primary)</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td></tr>
-        <tr><td><code>colorSuccess</code></td><td><code>var(--aw-success)</code></td><td><span class="swatch-inline" style="background:#237804"></span><code>#237804</code></td></tr>
-        <tr><td><code>colorWarning</code></td><td><code>var(--aw-warning)</code></td><td><span class="swatch-inline" style="background:#AD6800"></span><code>#AD6800</code></td></tr>
-        <tr><td><code>colorError</code></td><td><code>var(--aw-danger)</code></td><td><span class="swatch-inline" style="background:#A8071A"></span><code>#A8071A</code></td></tr>
-        <tr><td><code>colorInfo</code></td><td><code>var(--aw-info)</code></td><td><span class="swatch-inline" style="background:#003A8C"></span><code>#003A8C</code></td></tr>
+        <tr><td><code>colorSuccess</code></td><td><code>var(--aw-success)</code></td><td><span class="swatch-inline" style="background:#389E0D"></span><code>#389E0D</code></td></tr>
+        <tr><td><code>colorWarning</code></td><td><code>var(--aw-warning)</code></td><td><span class="swatch-inline" style="background:#D48806"></span><code>#D48806</code></td></tr>
+        <tr><td><code>colorError</code></td><td><code>var(--aw-danger)</code></td><td><span class="swatch-inline" style="background:#CF1322"></span><code>#CF1322</code></td></tr>
+        <tr><td><code>colorInfo</code></td><td><code>var(--aw-info)</code></td><td><span class="swatch-inline" style="background:#0958D9"></span><code>#0958D9</code></td></tr>
         <tr><td><code>borderRadius</code></td><td><code>var(--aw-radius)</code></td><td><code>6</code></td></tr>
         <tr><td><code>controlHeight</code></td><td><code>var(--aw-h-md)</code></td><td><code>32</code></td></tr>
         <tr><td><code>fontFamily</code></td><td><code>var(--aw-font)</code></td><td><code>Inter, Source Han Sans CN, …</code></td></tr>
@@ -211,10 +211,10 @@
         <tr><td><code>--aw-sidebar-bg-active</code></td><td><span class="swatch-inline" style="background:#E6F0FF"></span><code>#E6F0FF</code></td><td><span class="swatch-inline" style="background:rgba(255,255,255,0.08);border:1px solid #2D323C"></span><code>rgba(255,255,255,.08)</code></td><td>选中项底色</td></tr>
         <tr><td><code>--aw-sidebar-text-active</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td><td><span class="swatch-inline" style="background:#FFFFFF;border:1px solid #2D323C"></span><code>#FFFFFF</code></td><td>选中文字</td></tr>
         <tr><td><code>--aw-sidebar-indicator</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td><td><span class="swatch-inline" style="background:#4A8BE0"></span><code>#4A8BE0</code></td><td>3px 左侧 indicator bar</td></tr>
-        <tr class="map-group"><td colspan="4">状态色 · 暗色提亮以保对比度</td></tr>
-        <tr><td><code>--aw-success</code></td><td><span class="swatch-inline" style="background:#237804"></span><code>#237804</code></td><td><span class="swatch-inline" style="background:#6BAA47"></span><code>#6BAA47</code></td><td>在线 / 成功</td></tr>
-        <tr><td><code>--aw-warning</code></td><td><span class="swatch-inline" style="background:#AD6800"></span><code>#AD6800</code></td><td><span class="swatch-inline" style="background:#D89614"></span><code>#D89614</code></td><td>升级 / 警告</td></tr>
-        <tr><td><code>--aw-danger</code></td><td><span class="swatch-inline" style="background:#A8071A"></span><code>#A8071A</code></td><td><span class="swatch-inline" style="background:#DC4446"></span><code>#DC4446</code></td><td>故障 / 删除</td></tr>
+        <tr class="map-group"><td colspan="4">状态色 · light 取 antd -7 阶,dark 提亮到 -6 阶保对比度</td></tr>
+        <tr><td><code>--aw-success</code></td><td><span class="swatch-inline" style="background:#389E0D"></span><code>#389E0D</code></td><td><span class="swatch-inline" style="background:#52C41A"></span><code>#52C41A</code></td><td>在线 / 成功</td></tr>
+        <tr><td><code>--aw-warning</code></td><td><span class="swatch-inline" style="background:#D48806"></span><code>#D48806</code></td><td><span class="swatch-inline" style="background:#FAAD14"></span><code>#FAAD14</code></td><td>升级 / 警告</td></tr>
+        <tr><td><code>--aw-danger</code></td><td><span class="swatch-inline" style="background:#CF1322"></span><code>#CF1322</code></td><td><span class="swatch-inline" style="background:#FF4D4F"></span><code>#FF4D4F</code></td><td>故障 / 删除</td></tr>
         <tr class="map-group"><td colspan="4">阴影 · 暗色用纯黑 + 高 alpha</td></tr>
         <tr><td><code>--aw-shadow-1</code></td><td colspan="2" class="mono" style="font-size:11px"><span style="color:var(--aw-text-3)">L:</span> 0 1px 2px rgba(15,23,42,.04)<br/><span style="color:var(--aw-text-3)">D:</span> 0 1px 2px rgba(0,0,0,.4)</td><td>cards</td></tr>
         <tr><td><code>--aw-shadow-2</code></td><td colspan="2" class="mono" style="font-size:11px"><span style="color:var(--aw-text-3)">L:</span> 0 4px 12px rgba(15,23,42,.08)<br/><span style="color:var(--aw-text-3)">D:</span> 0 4px 12px rgba(0,0,0,.5)</td><td>popover</td></tr>
@@ -363,7 +363,7 @@ export const componentOverrides = {
                 </div>
               </div>
               <div class="nd-frame nested2">
-                <div class="nd-label inner2"><code>&lt;ConfigProvider theme={'{ token: { colorPrimary: \'#A8071A\' } }'}&gt;</code> · 危险主题</div>
+                <div class="nd-label inner2"><code>&lt;ConfigProvider theme={'{ token: { colorPrimary: \'#CF1322\' } }'}&gt;</code> · 危险主题</div>
                 <div class="nd-inner-danger">
                   <button class="nd-btn-danger">立即处理</button>
                   <button class="nd-btn-ghost">稍后</button>

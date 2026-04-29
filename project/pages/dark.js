@@ -36,7 +36,7 @@
         <tr><td>背景</td><td>不用纯黑 <span class="mono">#000</span>，用灰阶 <span class="mono">#0F1115</span> 页面底 / <span class="mono">#14171D</span> 卡片</td><td>纯黑 OLED 闪烁感强；灰阶呈现层次</td></tr>
         <tr><td>文本</td><td>不用纯白 <span class="mono">#FFF</span>，用 <span class="mono">rgba(255,255,255,.92)</span></td><td>纯白与暗背景对比过强，长时间阅读眼睛酸</td></tr>
         <tr><td>品牌色</td><td>提亮 + 降饱和：<span class="mono">#0052CC</span> → <span class="mono">#4A8BE0</span></td><td>原品牌色在暗底对比度不够（仅 3:1）；提亮变体保 4.5:1</td></tr>
-        <tr><td>状态色</td><td>统一提亮：success <span class="mono">#237804 → #6BAA47</span></td><td>暗底色块需要更亮才能识别；保留色相不变</td></tr>
+        <tr><td>状态色</td><td>统一提亮：success <span class="mono">#389E0D → #52C41A</span></td><td>暗底色块需要更亮才能识别；保留色相不变</td></tr>
         <tr><td>边框</td><td>用 <span class="mono">#3A3F4A → #2D323C → #232831</span> 三档</td><td>层次比 light 模式更微，避免割裂感</td></tr>
         <tr><td>阴影</td><td>纯黑 + 高 alpha（0.4 ~ 0.6）</td><td>暗底要更深的阴影才有空间感</td></tr>
       </tbody>
@@ -74,8 +74,8 @@
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">antd v5+ 提供 <code>theme.darkAlgorithm</code>，传入 light token 自动派生 dark token。TMS <b>不</b>用 darkAlgorithm，原因有三：</p>
     <ul style="margin:0 0 12px;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
       <li><b>沿袭旧 Vue 项目的暗色习惯</b>：运维人员对 <code>#0F1115 → #14171D → #1B1F27</code> 三档背景已经形成肌肉记忆；darkAlgorithm 的派生结果是 <code>#141414 → #1F1F1F → #262626</code>，迁移会破坏既有习惯</li>
-      <li><b>状态色饱和度不一致</b>：darkAlgorithm 对状态色提亮幅度大（如 success <code>#52C41A → #6ABE39</code>），TMS 偏好更克制（<code>#237804 → #6BAA47</code>），保留"企业级"视觉</li>
-      <li><b>白标场景灵活性</b>：每个租户的暗色主色不是单纯亮度变化（如某租户 light <code>#0052CC</code> / dark <code>#4A8BE0</code>，但有租户 light <code>#A8071A</code> / dark <code>#DC4446</code>），手写 token 表更灵活</li>
+      <li><b>状态色饱和度不一致</b>：darkAlgorithm 对状态色提亮幅度大（如 success <code>#52C41A → #6ABE39</code>），TMS 偏好更克制（<code>#389E0D → #52C41A</code>），保留"企业级"视觉</li>
+      <li><b>白标场景灵活性</b>：每个租户的暗色主色不是单纯亮度变化（如某租户 light <code>#0052CC</code> / dark <code>#4A8BE0</code>，但有租户 light <code>#CF1322</code> / dark <code>#FF4D4F</code>），手写 token 表更灵活</li>
     </ul>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><b style="color:var(--aw-text-1)">代价：</b>antd 内置组件（如 Drawer / Modal / Tooltip）依然用 antd 内部 dark token；它们的 <code>colorBgElevated</code> 与 TMS 的 <code>--aw-bg-elevated</code> 可能产生<b>组件级视觉差</b>。</p>
     <div class="code-block"><pre><code>// ConfigProvider 配置 — 关键: 不传 algorithm

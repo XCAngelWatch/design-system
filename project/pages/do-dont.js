@@ -13,8 +13,8 @@
     <table class="map-table">
       <thead><tr><th style="width:24%">维度</th><th style="width:30%">antd 默认</th><th>TMS 覆盖</th></tr></thead>
       <tbody>
-        <tr><td>品牌主色</td><td><span class="mono">#1677FF</span></td><td><span class="mono">#0052CC</span> Geekblue 6-7 阶</td></tr>
-        <tr><td>状态色</td><td><span class="mono">#52C41A / #FAAD14 / #FF4D4F / #1677FF</span> (~6 阶)</td><td><span class="mono">#237804 / #AD6800 / #A8071A / #003A8C</span> (~8 阶, 更克制)</td></tr>
+        <tr><td>品牌主色</td><td><span class="mono">#1677FF</span></td><td><span class="mono">#165DFF</span> Arco blue-6(沿用历史 tms_web_ui 主色)</td></tr>
+        <tr><td>状态色</td><td><span class="mono">#52C41A / #FAAD14 / #FF4D4F / #1677FF</span> (-6 阶)</td><td><span class="mono">#389E0D / #D48806 / #CF1322 / #0958D9</span> (-7 阶, 与品牌同位)</td></tr>
         <tr><td>Motion ease</td><td><span class="mono">cubic-bezier(.645,.045,.355,1)</span></td><td><span class="mono">cubic-bezier(.34,.69,.1,1)</span> 惯性减速</td></tr>
         <tr><td>Motion 时长</td><td>0.1 / 0.2 / 0.3 s</td><td>120 / 200 / 320 ms</td></tr>
         <tr><td>Button.fontWeight</td><td>400</td><td>500</td></tr>
@@ -42,7 +42,7 @@
   <li>组件优先级：<b>antd v6 原生 → 业务自建</b>（封装在 <span class="mono">src/components/</span>）。两者都不满足时才引第三方包</li>
   <li>所有颜色通过 CSS 变量引用</li>
   <li>radius 统一 6px（仅 sm/lg 例外）</li>
-  <li>侧边栏：Light <span class="mono">#FFFFFF</span> 白底 + 3px <span class="mono">#0052CC</span> indicator bar / Dark <span class="mono">#1A1D23</span> 渐变</li>
+  <li>侧边栏：Light <span class="mono">#FFFFFF</span> 白底 + 3px <span class="mono">#165DFF</span> indicator bar / Dark <span class="mono">#1A1D23</span> 渐变</li>
   <li>Inter + Source Han Sans CN 自托管</li>
   <li>状态以「点 + 文字 + 形状」三重编码（色弱可辨）</li>
   <li>键盘可达（tab 顺序 + focus 可见）+ 13 个全局快捷键</li>
@@ -69,7 +69,6 @@
   <li>不要使用 <span class="mono">!important</span>（stylelint 报错）</li>
   <li>不要使用 Tailwind utility（仅 CSS Modules）</li>
   <li>不要使用 <span class="mono">@ant-design/pro-components</span>（不再维护对 antd v6 的兼容）。<span class="mono">ProForm / ProTable / ProLayout / ProCard</span> 等均改用 antd 原生 + 业务自建封装</li>
-  <li>不要使用 Arco 旧主色 <span class="mono">#165DFF</span></li>
   <li>不要使用过亮的强调色（饱和度 ≤ 80%）</li>
   <li>不要在登录页之外使用装饰性插画（错误页线性插画除外）</li>
   <li>不要从 CDN 加载字体或图标</li>
@@ -78,7 +77,7 @@
   <li>不要用整卡背景色表达状态（用 4px 顶部色条）</li>
   <li>不要用 Toast 显示错误结果（用 Result 页或 Modal）</li>
   <li>不要用纯色彩表达状态（必须 + 文字 / 形状）</li>
-  <li>不要在业务代码中写 hex（<code>#0052CC</code> ✗ ／ <code>var(--aw-primary)</code> ✓）</li>
+  <li>不要在业务代码中写 hex（<code>#165DFF</code> ✗ ／ <code>var(--aw-primary)</code> ✓）</li>
   <li>不要在 Sidebar 用品牌蓝铺底色（仅作 3px indicator）</li>
   <li>不要在一屏内并存 &gt; 5 种色相，避免视觉嘈杂</li>
   <li>不要为破坏性操作默认聚焦"确认"按钮（焦点必须落在"取消"）</li>

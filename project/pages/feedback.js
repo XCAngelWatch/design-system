@@ -72,7 +72,7 @@
               <div class="tab is-active">基础信息</div>
               <div class="tab">实时状态</div>
               <div class="tab">操作日志 <span class="tag-meta" style="margin-left:4px">12</span></div>
-              <div class="tab">告警 <span class="tag-meta" style="margin-left:4px;background:#FAE3E3;color:#A8071A">3</span></div>
+              <div class="tab">告警 <span class="tag-meta" style="margin-left:4px;background:#FFF1F0;color:#CF1322">3</span></div>
             </div>
             <div class="body">
               <div class="form-demo">

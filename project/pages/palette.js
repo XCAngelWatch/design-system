@@ -42,14 +42,14 @@
   <div class="sh" style="background:#FFF1F0;color:#5C0011"><div class="step">25</div><div class="hx">#FFF1F0</div></div>
   <div class="sh" style="background:#FFA39E;color:#5C0011"><div class="step">100</div><div class="hx">#FFA39E</div></div>
   <div class="sh" style="background:#F5222D;color:white"><div class="step">500</div><div class="hx">#F5222D</div></div>
-  <div class="sh" style="background:#A8071A;color:white"><div class="step">700</div><div class="hx">#A8071A</div></div>
+  <div class="sh" style="background:#CF1322;color:white"><div class="step">700</div><div class="hx">#CF1322</div></div>
   <div class="sh" style="background:#5C0011;color:white"><div class="step">900</div><div class="hx">#5C0011</div></div>
 </div>
 <div class="ep-example">
   <span class="label-text">业务示例 · 故障 / 告警</span>
-  <span class="ep-tag" style="background:#FFF1F0;color:#A8071A;border-color:#FFA39E">设备故障</span>
-  <span class="ep-tag" style="background:#A8071A;color:white;border-color:#A8071A">紧急告警</span>
-  <span class="ep-tag" style="background:#fff;color:#A8071A;border-color:#FFA39E">未恢复 12</span>
+  <span class="ep-tag" style="background:#FFF1F0;color:#CF1322;border-color:#FFA39E">设备故障</span>
+  <span class="ep-tag" style="background:#CF1322;color:white;border-color:#CF1322">紧急告警</span>
+  <span class="ep-tag" style="background:#fff;color:#CF1322;border-color:#FFA39E">未恢复 12</span>
 </div>
     </div>
 
@@ -86,14 +86,14 @@
   <div class="sh" style="background:#FFFBE6;color:#613400"><div class="step">25</div><div class="hx">#FFFBE6</div></div>
   <div class="sh" style="background:#FFE58F;color:#613400"><div class="step">100</div><div class="hx">#FFE58F</div></div>
   <div class="sh" style="background:#FAAD14;color:#613400"><div class="step">500</div><div class="hx">#FAAD14</div></div>
-  <div class="sh" style="background:#AD6800;color:white"><div class="step">700</div><div class="hx">#AD6800</div></div>
+  <div class="sh" style="background:#D48806;color:white"><div class="step">700</div><div class="hx">#D48806</div></div>
   <div class="sh" style="background:#613400;color:white"><div class="step">900</div><div class="hx">#613400</div></div>
 </div>
 <div class="ep-example">
   <span class="label-text">业务示例 · 待处理 / 警告</span>
-  <span class="ep-tag" style="background:#FFFBE6;color:#AD6800;border-color:#FFE58F">待审批</span>
+  <span class="ep-tag" style="background:#FFFBE6;color:#D48806;border-color:#FFE58F">待审批</span>
   <span class="ep-tag" style="background:#FAAD14;color:#613400;border-color:#FAAD14">待确认</span>
-  <span class="ep-tag" style="background:#fff;color:#AD6800;border-color:#FFE58F">证书将过期</span>
+  <span class="ep-tag" style="background:#fff;color:#D48806;border-color:#FFE58F">证书将过期</span>
 </div>
     </div>
 
@@ -108,14 +108,14 @@
   <div class="sh" style="background:#F6FFED;color:#092B00"><div class="step">25</div><div class="hx">#F6FFED</div></div>
   <div class="sh" style="background:#B7EB8F;color:#092B00"><div class="step">100</div><div class="hx">#B7EB8F</div></div>
   <div class="sh" style="background:#52C41A;color:white"><div class="step">500</div><div class="hx">#52C41A</div></div>
-  <div class="sh" style="background:#237804;color:white"><div class="step">700</div><div class="hx">#237804</div></div>
+  <div class="sh" style="background:#389E0D;color:white"><div class="step">700</div><div class="hx">#389E0D</div></div>
   <div class="sh" style="background:#092B00;color:white"><div class="step">900</div><div class="hx">#092B00</div></div>
 </div>
 <div class="ep-example">
   <span class="label-text">业务示例 · 在线 / 成功</span>
-  <span class="ep-tag" style="background:#F6FFED;color:#237804;border-color:#B7EB8F">在线 12,486</span>
-  <span class="ep-tag" style="background:#237804;color:white;border-color:#237804">操作成功</span>
-  <span class="ep-tag" style="background:#fff;color:#237804;border-color:#B7EB8F">心跳正常</span>
+  <span class="ep-tag" style="background:#F6FFED;color:#389E0D;border-color:#B7EB8F">在线 12,486</span>
+  <span class="ep-tag" style="background:#389E0D;color:white;border-color:#389E0D">操作成功</span>
+  <span class="ep-tag" style="background:#fff;color:#389E0D;border-color:#B7EB8F">心跳正常</span>
 </div>
     </div>
 

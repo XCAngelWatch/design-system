@@ -103,7 +103,7 @@
       <div class="up-chunk-row" style="margin-top:10px">
         <span class="file-ico" style="background:var(--aw-warning-bg);color:var(--aw-warning)">BIN</span>
         <div class="up-chunk-meta">
-          <div class="name">angelwatch-firmware-v3.5.0-rc2.bin <span class="tag-meta" style="background:var(--aw-warning-bg);color:#AD6800;margin-left:4px">已暂停</span></div>
+          <div class="name">angelwatch-firmware-v3.5.0-rc2.bin <span class="tag-meta" style="background:var(--aw-warning-bg);color:#D48806;margin-left:4px">已暂停</span></div>
           <div class="up-chunk-bar">
             <div class="chk done"></div><div class="chk done"></div><div class="chk done"></div><div class="chk done"></div>
             <div class="chk paused"></div>

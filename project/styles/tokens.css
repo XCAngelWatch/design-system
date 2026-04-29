@@ -12,23 +12,27 @@
 
 :root,
 [data-theme="light"] {
-  /* Brand */
-  --aw-primary: #0052CC;
-  --aw-primary-hover: #1A6BDB;
-  --aw-primary-active: #003D99;
-  --aw-primary-bg: #E6EFFB;
-  --aw-primary-bg-hover: #CCDFF7;
-  --aw-primary-border: #99BFEF;
+  /* Brand — Arco blue-6 ramp(对齐历史 tms_web_ui 主色) */
+  --aw-primary: #165DFF;
+  --aw-primary-hover: #4080FF;
+  --aw-primary-active: #0E42D2;
+  --aw-primary-bg: #E8F3FF;
+  --aw-primary-bg-hover: #BEDAFF;
+  --aw-primary-border: #94BFFF;
 
-  /* Status — muted enterprise tones */
-  --aw-success: #237804;
-  --aw-success-bg: #EAF4E2;
-  --aw-warning: #AD6800;
-  --aw-warning-bg: #FAF4E0;
-  --aw-danger: #A8071A;
-  --aw-danger-bg: #FAE3E3;
-  --aw-info: #003A8C;
-  --aw-info-bg: #E6EEF7;
+  /* Status — antd v6 spec aligned, "-7" 色阶(配合 brand 保持企业克制感) */
+  --aw-success: #389E0D;       /* antd green-7  */
+  --aw-success-bg: #F6FFED;    /* antd green-1  */
+  --aw-success-border: #B7EB8F;/* antd green-3  */
+  --aw-warning: #D48806;       /* antd gold-7   */
+  --aw-warning-bg: #FFFBE6;    /* antd gold-1   */
+  --aw-warning-border: #FFE58F;/* antd gold-3   */
+  --aw-danger: #CF1322;        /* antd red-7    */
+  --aw-danger-bg: #FFF1F0;     /* antd red-1    */
+  --aw-danger-border: #FFA39E; /* antd red-3    */
+  --aw-info: #0958D9;          /* antd blue-7   */
+  --aw-info-bg: #E6F4FF;       /* antd blue-1   */
+  --aw-info-border: #91CAFF;   /* antd blue-3   */
 
   /* Neutrals — antd v6 light */
   --aw-text-1: #1F2937;
@@ -50,14 +54,14 @@
   --aw-bg-elevated: #FFFFFF;
 
   /* Sidebar — Light = white-base (Linear/Notion style),
-     active 用 3px 品牌蓝 indicator + #E6F0FF 浅蓝底 + #0052CC 文字 */
+     active 用 3px 品牌蓝 indicator + #E8F3FF 浅蓝底 + #165DFF 文字 */
   --aw-sidebar-bg: #FFFFFF;
   --aw-sidebar-bg-hover: #F5F7FA;
-  --aw-sidebar-bg-active: #E6F0FF;
+  --aw-sidebar-bg-active: #E8F3FF;
   --aw-sidebar-text: #4B5563;
-  --aw-sidebar-text-active: #0052CC;
+  --aw-sidebar-text-active: #165DFF;
   --aw-sidebar-border: #EFF1F4;
-  --aw-sidebar-indicator: #0052CC;
+  --aw-sidebar-indicator: #165DFF;
 
   /* Type */
   --aw-font: "Inter", "Source Han Sans CN", -apple-system, BlinkMacSystemFont,
@@ -85,15 +89,18 @@
   --aw-h-md: 32px;
   --aw-h-lg: 40px;
 
-  /* Chart series — 8 hue palette consumed by echarts theme (charts.js) */
-  --aw-chart-1: #0052CC;  /* Brand   */
-  --aw-chart-2: #13A8A8;  /* Cyan    */
-  --aw-chart-3: #7B5CD9;  /* Purple  */
-  --aw-chart-4: #D97706;  /* Orange  */
-  --aw-chart-5: #DB2777;  /* Magenta */
-  --aw-chart-6: #3F8600;  /* Green   */
-  --aw-chart-7: #0EA5E9;  /* Sky     */
-  --aw-chart-8: #9333EA;  /* Violet  */
+  /* Chart series — 8 hue palette consumed by echarts theme (charts.js)
+     antd v6 数据可视化推荐色板(ant-design-charts Geometric 主题改良),
+     感知亮度统一便于多系列共存;chart-1 沿用 antd blue-6 而非品牌 -7 阶,
+     避免实心 bar/area 填充过重(brand -7 留给 button/link 等强反馈) */
+  --aw-chart-1: #1677FF;  /* antd blue-6     — 主蓝     */
+  --aw-chart-2: #5AD8A6;  /* aqua green      — 第二序列 */
+  --aw-chart-3: #5D7092;  /* indigo gray     — 中性辅色 */
+  --aw-chart-4: #F6BD16;  /* gold            — 暖色提示 */
+  --aw-chart-5: #E8684A;  /* coral           — 警示不刺眼 */
+  --aw-chart-6: #6DC8EC;  /* light cyan      — 蓝系扩展 */
+  --aw-chart-7: #9270CA;  /* plum            — 紫系点缀 */
+  --aw-chart-8: #FF9D4D;  /* soft orange     — 暖色扩展 */
 
   /* Tier expansion — 对齐 antd v6 token 阶数。
      border-4 = 比 border-3 更浅 (近 bg);
@@ -107,21 +114,28 @@
 }
 
 [data-theme="dark"] {
-  --aw-primary: #4A8BE0;
-  --aw-primary-hover: #6BA3E8;
-  --aw-primary-active: #2F70C7;
-  --aw-primary-bg: #0E2748;
-  --aw-primary-bg-hover: #143966;
-  --aw-primary-border: #1E4D8C;
+  /* Brand — Arco blue ramp inverted for dark surfaces */
+  --aw-primary: #4080FF;        /* Arco blue-5,在深底上更高对比 */
+  --aw-primary-hover: #6AA1FF;   /* Arco blue-4 */
+  --aw-primary-active: #2858DC;  /* darken from blue-6 */
+  --aw-primary-bg: #0F2A52;
+  --aw-primary-bg-hover: #163C75;
+  --aw-primary-border: #285FB2;
 
-  --aw-success: #6BAA47;
-  --aw-success-bg: #1A2916;
-  --aw-warning: #D89614;
+  /* Status — dark variants 对齐 antd v6 darkAlgorithm,提亮以保持
+     dark bg 上的可读性;border 与主色同级,兼作分隔与点缀 */
+  --aw-success: #52C41A;        /* antd green-6 */
+  --aw-success-bg: #162312;
+  --aw-success-border: #274916;
+  --aw-warning: #FAAD14;        /* antd gold-6  */
   --aw-warning-bg: #2B2111;
-  --aw-danger: #DC4446;
+  --aw-warning-border: #594214;
+  --aw-danger: #FF4D4F;         /* antd red-6   */
   --aw-danger-bg: #2A1215;
-  --aw-info: #4A8BE0;
-  --aw-info-bg: #0E2748;
+  --aw-danger-border: #58181C;
+  --aw-info: #4DABF7;
+  --aw-info-bg: #111A2C;
+  --aw-info-border: #15325B;
 
   --aw-text-1: rgba(255, 255, 255, 0.92);
   --aw-text-2: rgba(255, 255, 255, 0.72);
@@ -147,21 +161,21 @@
   --aw-sidebar-text: rgba(255, 255, 255, 0.72);
   --aw-sidebar-text-active: #FFFFFF;
   --aw-sidebar-border: #232831;
-  --aw-sidebar-indicator: #4A8BE0;
+  --aw-sidebar-indicator: #4080FF;
 
   --aw-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.6);
   --aw-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.5);
   --aw-shadow-3: 0 8px 24px rgba(0, 0, 0, 0.6);
 
-  /* Chart series — dark variants (提亮 + 降饱和保对比度) */
-  --aw-chart-1: #4A8BE0;
-  --aw-chart-2: #2DC9C9;
-  --aw-chart-3: #9D86E8;
-  --aw-chart-4: #F59E0B;
-  --aw-chart-5: #EC4899;
-  --aw-chart-6: #65B428;
-  --aw-chart-7: #38BDF8;
-  --aw-chart-8: #B469F5;
+  /* Chart series dark — 同色相提亮 1-2 阶,确保 dark bg 上可辨识 */
+  --aw-chart-1: #4096FF;  /* antd blue-5 */
+  --aw-chart-2: #73E0BD;
+  --aw-chart-3: #8AA0C7;
+  --aw-chart-4: #FFD24D;
+  --aw-chart-5: #FF8B6B;
+  --aw-chart-6: #87DCEC;
+  --aw-chart-7: #B393E0;
+  --aw-chart-8: #FFB070;
 
   /* Tier expansion — dark */
   --aw-border-4: #2D323C;

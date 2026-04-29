@@ -568,7 +568,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
   border: 1px solid var(--aw-border-2);
 }
 .code .k { color: #6BA3E8; }
-.code .s { color: #6BAA47; }
+.code .s { color: #52C41A; }
 .code .c { color: #6B7785; }
 
 /* ===== ADDITIONAL COMPONENTS ===== */

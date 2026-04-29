@@ -91,7 +91,7 @@ function DeviceCard(props) {
 }
 
 // ✓ 所有自定义组件应支持嵌套 ConfigProvider 主题继承
-&lt;ConfigProvider theme={{ token: { colorPrimary: '#A8071A' } }}&gt;
+&lt;ConfigProvider theme={{ token: { colorPrimary: '#CF1322' } }}&gt;
   &lt;DeviceCard /&gt;   {/* 自动接收红色品牌 */}
 &lt;/ConfigProvider&gt;
 

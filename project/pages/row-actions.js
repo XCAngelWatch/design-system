@@ -103,9 +103,9 @@
         <thead><tr><th style="width:200px">场景</th><th style="width:160px">交互形态</th><th>说明</th></tr></thead>
         <tbody>
           <tr><td>单条 · 非破坏性<br/><small style="color:var(--aw-text-3)">查看日志、复制 SN、下载</small></td><td><span class="tag-meta">直接执行</span></td><td>无确认 · 仅 toast 反馈结果</td></tr>
-          <tr><td>单条 · 可逆<br/><small style="color:var(--aw-text-3)">启停、重置缓存</small></td><td><span class="tag-meta" style="background:#FAF4E0;color:#AD6800">Popconfirm</span></td><td>悬浮 popover · 一句话确认 · 单击外部取消</td></tr>
-          <tr><td>单条 · 不可逆<br/><small style="color:var(--aw-text-3)">删除设备、注销证书</small></td><td><span class="tag-meta" style="background:#FAE3E3;color:#A8071A">Modal</span></td><td>阻塞确认 · 必须列出影响范围 · 红色危险按钮</td></tr>
-          <tr><td>批量 · 任意操作<br/><small style="color:var(--aw-text-3)">批量启停、批量推送、批量删除</small></td><td><span class="tag-meta" style="background:#FAE3E3;color:#A8071A">Modal · 含明细</span></td><td>必须显示选中数量与影响范围；删除类需二次输入"确认"或勾选确认框</td></tr>
+          <tr><td>单条 · 可逆<br/><small style="color:var(--aw-text-3)">启停、重置缓存</small></td><td><span class="tag-meta" style="background:#FFFBE6;color:#D48806">Popconfirm</span></td><td>悬浮 popover · 一句话确认 · 单击外部取消</td></tr>
+          <tr><td>单条 · 不可逆<br/><small style="color:var(--aw-text-3)">删除设备、注销证书</small></td><td><span class="tag-meta" style="background:#FFF1F0;color:#CF1322">Modal</span></td><td>阻塞确认 · 必须列出影响范围 · 红色危险按钮</td></tr>
+          <tr><td>批量 · 任意操作<br/><small style="color:var(--aw-text-3)">批量启停、批量推送、批量删除</small></td><td><span class="tag-meta" style="background:#FFF1F0;color:#CF1322">Modal · 含明细</span></td><td>必须显示选中数量与影响范围；删除类需二次输入"确认"或勾选确认框</td></tr>
         </tbody>
       </table>
     </div>
