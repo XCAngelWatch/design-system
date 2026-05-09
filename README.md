@@ -109,6 +109,9 @@ design-system/
 - **所有颜色** 通过 CSS 变量引用,禁止硬编码 hex
 - **所有可见文本** 通过 `t('namespace.key')` 包裹,禁止硬编码字符串
 - **`!important`** 触发 stylelint 报错,禁用
+  - **例外（必须显式声明）**:① `prefers-reduced-motion` 等 a11y 重置;② antd CSS-in-JS 高优先级覆盖且无 `theme.components` 覆盖路径时
+  - 豁免代码必须前置 `/* stylelint-disable-next-line declaration-no-important -- 原因 */` 注释,否则 CI 拦截
+  - 优先级:能用 `theme.components` token 收口就不要走 !important 豁免
 - **新引入第三方包** license 必须 ∈ MIT / Apache-2.0 / BSD / ISC,其他需法务确认
 - **第三方资源**(字体 / 图标 / Monaco loader / Leaflet 瓦片) 必须自托管,禁运行时 CDN
 

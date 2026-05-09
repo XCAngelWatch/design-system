@@ -66,7 +66,7 @@
     <div class="surface" style="border-left:3px solid var(--aw-danger)">
 <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)">✕ DON'T</h3>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-  <li>不要使用 <span class="mono">!important</span>（stylelint 报错）</li>
+  <li>不要使用 <span class="mono">!important</span>（stylelint 报错）<br/><span style="color:var(--aw-text-3);font-size:12px">例外:a11y reduced-motion 重置 / antd CSS-in-JS 覆盖。豁免必须前置 <code>/* stylelint-disable-next-line declaration-no-important -- 原因 */</code> 注释。</span></li>
   <li>不要使用 Tailwind utility（仅 CSS Modules）</li>
   <li>不要使用 <span class="mono">@ant-design/pro-components</span>（不再维护对 antd v6 的兼容）。<span class="mono">ProForm / ProTable / ProLayout / ProCard</span> 等均改用 antd 原生 + 业务自建封装</li>
   <li>不要使用过亮的强调色（饱和度 ≤ 80%）</li>
