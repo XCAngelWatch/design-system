@@ -4,7 +4,7 @@
 
 **Goal:** Merge the OpenDesign/Figma evidence into the static AngelWatch design-system site as module-level coverage while preserving the existing Ant Design v6, `file://`, and evergreen documentation rules.
 
-**Architecture:** Keep the current static SPA: `project/index.html` links CSS, `project/pages/_router.js` registers route metadata, and each `project/pages/<id>.js` registers HTML in `window.__AW_PAGES__`. The first implementation round delivers the approved must-have scope: inventory/source matrix, primary-token correction, four shared component/template backfills, and two business blueprint pages.
+**Architecture:** Keep the current static SPA: `project/index.html` links CSS, `project/pages/_router.js` registers route metadata, and each `project/pages/<id>.js` registers HTML in `window.__AW_PAGES__`. The first implementation round delivers the approved must-have scope: inventory/source matrix, primary-standard alignment, four shared component/template backfills, and two business blueprint pages.
 
 **Tech Stack:** Plain HTML fragments in JavaScript template literals, CSS variables in layered CSS files, vanilla JS router, Python/Node one-off validation commands. No NPM install, build step, runtime CDN, or HTTP server dependency.
 
@@ -14,7 +14,7 @@
 
 Implement must-have scope only:
 
-- Phase 1: inventory/source coverage and primary-token correction.
+- Phase 1: inventory/source coverage and primary-standard alignment.
 - Phase 2 must-have: `table`, `data-cards`, `status-matrix`, `feedback` / `drawer`.
 - Phase 3 must-have: `market-page`, `device-center-page`.
 - Phase 4/5: shared CSS, route registration, validation, local preview.
@@ -29,12 +29,12 @@ Defer nice-to-have scope to a separate follow-up plan:
 
 Create or modify these files:
 
-- Modify `project/styles/tokens.css`: align light primary tokens to `#0052CC`; keep dark primary `#4080FF`.
-- Modify `project/styles/foundations-extras.css`: align sidebar active helper tokens to `#0052CC`.
+- Read `project/styles/tokens.css`: verify light primary is already `#165DFF`; keep dark primary `#4080FF`.
+- Modify `project/styles/foundations-extras.css`: align any remaining legacy `#0052CC` helper values to the `#165DFF` primary family.
 - Create `project/styles/blueprints-pro.css`: reusable layout classes for Figma coverage matrix and module blueprint mockups.
 - Modify `project/index.html`: add the `blueprints-pro.css?v=1777279768` link immediately after `result-pro.css`.
 - Modify `project/pages/cases.js`: add OpenDesign/Figma coverage matrix and implementation inventory summary.
-- Modify `project/pages/color.js`: align dark primary documentation rows to `#4080FF`.
+- Modify `project/pages/color.js` and other primary-color documentation examples: align legacy `#0052CC` references to `#165DFF`.
 - Modify `project/pages/table.js`: add OpenDesign list/table pattern backfill.
 - Modify `project/pages/data-cards.js`: add module card pattern backfill.
 - Modify `project/pages/status-matrix.js`: add business-domain status families without state transitions.
@@ -223,7 +223,7 @@ OTA升级管理: sections=1 new_frames=13 state_frames=4
 系统管理: sections=5 new_frames=15 state_frames=4
 ```
 
-- [ ] **Step 2: Confirm primary-token mismatch**
+- [ ] **Step 2: Confirm primary-token source**
 
 Run:
 
@@ -231,7 +231,7 @@ Run:
 grep -n 'aw-primary' project/styles/tokens.css
 ```
 
-Expected before correction:
+Expected current source of truth:
 
 ```text
 16:  --aw-primary: #165DFF;
@@ -262,7 +262,7 @@ The `#/market-page` and `#/device-center-page` links point to pages created late
     </table>
     <div class="coverage-notes">
       <span>排除：老系统页面、废案、临时方案</span>
-      <span>Token：light primary = #0052CC，dark primary = #4080FF</span>
+      <span>Token：light primary = #165DFF，dark primary = #4080FF</span>
       <span>资产：本轮不复制图片素材</span>
     </div>
   </div>
@@ -285,108 +285,134 @@ git commit -m "docs: add opendesign coverage matrix"
 
 Expected: one commit containing only `project/pages/cases.js`.
 
-### Task 2: Primary Token Correction
+### Task 2: Primary Standard Alignment
 
 **Files:**
-- Modify: `project/styles/tokens.css`
-- Modify: `project/styles/foundations-extras.css`
+- Read: `project/styles/tokens.css`
+- Modify: `project/pages/api.js`
 - Modify: `project/pages/color.js`
+- Modify: `project/pages/config-provider.js`
+- Modify: `project/pages/dark.js`
+- Modify: `project/pages/dash-page.js`
+- Modify: `project/pages/ecosystem.js`
+- Modify: `project/pages/illustration.js`
+- Modify: `project/pages/login-page.js`
+- Modify: `project/pages/palette.js`
+- Modify: `project/pages/row-actions.js`
+- Modify: `project/pages/shell.js`
+- Modify: `project/pages/upload.js`
+- Modify: `project/pages/whitelabel.js`
+- Modify: `project/styles/components.css`
+- Modify: `project/styles/ecosystem.css`
+- Modify: `project/styles/foundations-extras.css`
 
-- [ ] **Step 1: Update light primary tokens in `project/styles/tokens.css`**
-
-Change the light brand block to:
-
-```css
-  /* Brand — TMS primary, mapped from Figma/OpenDesign evidence into current standard */
-  --aw-primary: #0052CC;
-  --aw-primary-hover: #2868E0;
-  --aw-primary-active: #003D99;
-  --aw-primary-bg: #E6EFFB;
-  --aw-primary-bg-hover: #CCE0F7;
-  --aw-primary-border: #99BFEF;
-```
-
-`#2868E0` intentionally makes hover lighter than `#0052CC` while preserving AA contrast with white text (about 5.06:1). Do not use `#4080FF` for light hover; its contrast with white text is too low for normal button text.
-
-Also update the sidebar comment and variables in the same light block:
-
-```css
-  /* Sidebar — Light = white-base (Linear/Notion style),
-     active 用 3px 品牌蓝 indicator + #E6EFFB 浅蓝底 + #0052CC 文字 */
-  --aw-sidebar-bg-active: #E6EFFB;
-  --aw-sidebar-text-active: #0052CC;
-  --aw-sidebar-indicator: #0052CC;
-```
-
-- [ ] **Step 2: Keep dark primary tokens in `project/styles/tokens.css`**
-
-Ensure the dark block contains:
-
-```css
-  --aw-primary: #4080FF;
-  --aw-primary-hover: #6AA1FF;
-  --aw-primary-active: #2858DC;
-```
-
-Expected: dark primary remains `#4080FF`.
-
-- [ ] **Step 3: Update sidebar helper tokens in `project/styles/foundations-extras.css`**
-
-Change the light helper values to:
-
-```css
-  --aw-sidebar-active-bg: #E6EFFB;
-  --aw-sidebar-text-active: #0052CC;
-  --aw-sidebar-icon-active: #0052CC;
-```
-
-Do not change dark helper tokens.
-
-- [ ] **Step 4: Align primary token documentation in `project/pages/color.js`**
-
-Find the light primary ramp examples and change the hover row to:
-
-```html
-<div style="background:#2868E0"><div><div class="name">Hover</div><div class="lbl">--aw-primary-hover</div></div><div>#2868E0 <span class="wcag-badge aa">5.0:1 · AA ✓</span></div></div>
-```
-
-Find the dark mode token table rows and change the dark primary examples:
-
-```html
-<span class="swatch-inline" style="background:#4080FF"></span><code>#4080FF</code>
-<span class="swatch-inline" style="background:#6AA1FF"></span><code>#6AA1FF</code>
-<span class="swatch-inline" style="background:#0F2A52"></span><code>#0F2A52</code>
-```
-
-Also change the dark sidebar indicator row to `#4080FF`.
-
-- [ ] **Step 5: Verify token values**
+- [ ] **Step 1: Verify runtime primary tokens already match the chosen source**
 
 Run:
 
 ```bash
 grep -n 'aw-primary' project/styles/tokens.css
-rg -n '#165DFF' project/styles/tokens.css project/styles/foundations-extras.css project/pages/color.js
 ```
 
-Expected: `tokens.css` shows light `#0052CC` and dark `#4080FF`; no `#165DFF` remains in the three touched files.
+Expected:
 
-- [ ] **Step 6: Run page registration check**
+```text
+16:  --aw-primary: #165DFF;
+17:  --aw-primary-hover: #4080FF;
+18:  --aw-primary-active: #0E42D2;
+118:  --aw-primary: #4080FF;
+```
+
+Do not change the light `--aw-primary` away from `#165DFF`. It is the user-approved OpenDesign/Figma primary for this merge.
+
+- [ ] **Step 2: Rewrite legacy primary examples from `#0052CC` to the `#165DFF` token family**
+
+Run this script from the repository root. It only rewrites `project/pages/*.js` and `project/styles/*.css`, leaving the source `tokens.css` primary intact.
+
+```bash
+python3 - <<'PY'
+from pathlib import Path
+
+paths = list(Path('project/pages').glob('*.js')) + list(Path('project/styles').glob('*.css'))
+replacements = {
+    '#0052CC': '#165DFF',
+    '#003D99': '#0E42D2',
+    '#1A6BDB': '#4080FF',
+    '#2868E0': '#4080FF',
+    '#E6EFFB': '#E8F3FF',
+    '#E6F0FF': '#E8F3FF',
+    '#CCE0F7': '#BEDAFF',
+    '#99BFEF': '#94BFFF',
+    '#4A8BE0': '#4080FF',
+    '#6BA3E8': '#6AA1FF',
+    '#0E2748': '#0F2A52',
+}
+
+changed = []
+for path in paths:
+    text = path.read_text()
+    new = text
+    for old, value in replacements.items():
+        new = new.replace(old, value)
+    if new != text:
+        path.write_text(new)
+        changed.append(str(path))
+
+for path in changed:
+    print(path)
+PY
+```
+
+Expected: the script prints files that previously referenced the older `#0052CC` family, such as `project/pages/color.js`, `project/pages/config-provider.js`, `project/pages/palette.js`, `project/pages/dark.js`, `project/pages/whitelabel.js`, and related visual examples.
+
+- [ ] **Step 3: Restore the intended `tokens.css` light token values if the script touched swatch comments only**
+
+Run:
+
+```bash
+grep -n 'aw-primary' project/styles/tokens.css
+```
+
+Expected values remain:
+
+```text
+16:  --aw-primary: #165DFF;
+17:  --aw-primary-hover: #4080FF;
+18:  --aw-primary-active: #0E42D2;
+19:  --aw-primary-bg: #E8F3FF;
+20:  --aw-primary-bg-hover: #BEDAFF;
+21:  --aw-primary-border: #94BFFF;
+118:  --aw-primary: #4080FF;
+```
+
+If any of these values changed, edit `project/styles/tokens.css` back to the expected values before continuing.
+
+- [ ] **Step 4: Verify no runtime project file still presents `#0052CC` as primary**
+
+Run:
+
+```bash
+rg -n '#0052CC' project/pages project/styles
+```
+
+Expected: no matches. If there are matches, inspect each one; convert primary examples to the `#165DFF` family unless the text explicitly documents historical migration.
+
+- [ ] **Step 5: Run page registration check**
 
 Run the Node page registration command from the validation section.
 
 Expected: all pages register.
 
-- [ ] **Step 7: Commit token correction**
+- [ ] **Step 6: Commit primary standard alignment**
 
 Run:
 
 ```bash
-git add project/styles/tokens.css project/styles/foundations-extras.css project/pages/color.js
-git commit -m "fix(tokens): align primary color mapping"
+git add project/pages project/styles
+git commit -m "docs: align primary color references to opendesign blue"
 ```
 
-Expected: one commit containing only the three listed files.
+Expected: one commit containing only primary-color documentation/example updates under `project/pages` and `project/styles`.
 
 ### Task 3: Shared Blueprint CSS
 

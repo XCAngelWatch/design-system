@@ -23,7 +23,7 @@ The current repository rules have the highest priority:
 - `index.html`, `pages/_router.js`, `pages/<id>.js`, and layered CSS stay the core architecture.
 - All routes must work under `file://` through dynamic script injection.
 - Existing Ant Design v6 token mapping approach and `--aw-*` CSS variable conventions remain authoritative.
-- Brand primary remains `#0052CC` per repository guidance; OpenDesign's historic `#165DFF` must not be imported as the new primary.
+- Brand primary is `#165DFF` for this merge, per the user decision to make OpenDesign/Figma the visual authority for primary color. This supersedes earlier `#0052CC` guidance for the implementation scope.
 - Use local assets only; do not add runtime CDN dependencies.
 - Keep evergreen documentation; do not add changelog-style version badges or release timelines.
 - Do not restore the removed state-machine chapter or state-transition graph.
@@ -73,7 +73,7 @@ The inventory must cover:
 
 This inventory is a design input, not a new runtime dependency. It may be summarized in a section of the Figma coverage page instead of shipping a large generated report.
 
-The primary-token inventory must explicitly check `project/styles/tokens.css`. As of this spec review, `--aw-primary` in light mode is measured as `#165DFF`, which conflicts with the repository rule that brand primary is `#0052CC`. Phase 1 must treat this as an explicit correction task: align light `--aw-primary`, related active/indicator values, and token documentation to `#0052CC`, while keeping dark `--aw-primary` mapped to `#4080FF`.
+The primary-token inventory must explicitly check `project/styles/tokens.css`. As of this spec review, `--aw-primary` in light mode is measured as `#165DFF`, which matches the user-approved OpenDesign/Figma primary. Phase 1 must treat remaining `#0052CC` references in documentation, examples, and swatches as legacy design-system copy to align with `#165DFF`, while keeping dark `--aw-primary` mapped to `#4080FF`.
 
 ## Information Architecture
 
@@ -216,11 +216,11 @@ OpenDesign-generated `figma-tokens.js`, `figma-tokens.css`, and `figma-design-sy
 
 ### Tokens
 
-Preserve the current `--aw-*` token model and Ant Design v6 mapping approach. If implementation touches primary-color documentation or tokens, align with the repository rule that the brand primary is `#0052CC`, not OpenDesign's historic `#165DFF`.
+Preserve the current `--aw-*` token model and Ant Design v6 mapping approach. If implementation touches primary-color documentation or tokens, align with the user-approved rule that the brand primary is `#165DFF`.
 
 Rules:
 
-- Do not replace the primary token with OpenDesign's historic Vue/Element source.
+- Do not replace the `#165DFF` primary token with the older design-system `#0052CC` documentation value.
 - Do not make Figma's raw fills authoritative when they conflict with current tokens.
 - Use Figma colors as source observations, state examples, or aliases only when they do not conflict.
 - Continue using `var(--aw-*)` in examples.
@@ -228,10 +228,10 @@ Rules:
 
 Primary-color mapping must be explicit:
 
-- `#0052CC` is the canonical light-mode brand primary. It maps to light `--aw-primary`, AntD `colorPrimary`, primary buttons, active links, selected states, sidebar active text, and sidebar indicator.
+- `#165DFF` is the canonical light-mode brand primary. It maps to light `--aw-primary`, AntD `colorPrimary`, primary buttons, active links, selected states, sidebar active text, and sidebar indicator.
 - `#4080FF` is the dark-surface primary adaptation. It maps to dark `[data-theme="dark"] --aw-primary`, dark AntD `colorPrimary`, dark selected states, and dark sidebar indicator.
 - `#4080FF` must not be described as a separate brand color; it is the accessible dark-mode rendering of the same primary role.
-- OpenDesign/Figma `#165DFF` maps to a historical source observation only. For primary affordances in new documentation, translate it to `#0052CC` in light mode and `#4080FF` in dark mode through tokens.
+- Older `#0052CC` references map to legacy design-system documentation only. For primary affordances in new documentation, translate them to `#165DFF` in light mode and `#4080FF` in dark mode through tokens.
 - New HTML/CSS examples must reference these through `var(--aw-primary)` and related variables. Raw hex is allowed only inside documentation swatches that are explicitly showing token values.
 - For success, warning, danger, and info in dark mode, prefer the existing dark token values. If Figma provides only light-mode evidence for a semantic color, mark the dark variant as "待确认" in documentation rather than inventing a new dark color.
 
@@ -379,7 +379,7 @@ During preview, verify:
 Inventory the current design-system project, then add coverage documentation to 导览/规范:
 
 - Current route, CSS, token, asset, and prohibited-pattern baseline.
-- Explicit primary-token correction from the measured light `#165DFF` to the repository-standard light `#0052CC`, with dark `#4080FF` kept as the dark-surface primary adaptation.
+- Explicit primary-documentation correction from legacy `#0052CC` references to the measured and user-approved light `#165DFF`, with dark `#4080FF` kept as the dark-surface primary adaptation.
 - Business module coverage.
 - Source files and paths.
 - Exclusion list.
@@ -452,7 +452,7 @@ The work is successful when:
 - The Figma/OpenDesign new interface coverage is visible by business module.
 - Shared component/template pages are enriched before module blueprints depend on them.
 - The blueprint/template module list is covered as follows: `market-page` for app market; `ota-page` for OTA; `push-page` for push tasks; `device-center-page` for device center; `map-page` for device map; `service-page` for value-added services; `ops-page` for account/operations, data statistics, and system management; `user-mgmt-page` for detailed user-management examples linked from operations.
-- `#0052CC` and `#4080FF` are mapped only through the approved light/dark primary token roles, and `#165DFF` is not reintroduced as a primary.
+- `#165DFF` and `#4080FF` are mapped only through the approved light/dark primary token roles, and `#0052CC` is not reintroduced as a primary.
 - Runtime remains static, local, buildless, and `file://` compatible.
 - Local preview instructions are documented and verified.
 - Copied OpenDesign assets, if any, have provenance records.
