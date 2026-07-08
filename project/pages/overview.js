@@ -5,7 +5,7 @@
   <div class="hero-inner">
     <div class="hero-eyebrow">AngelWatch · TMS Design System</div>
     <h1>The unified visual &amp; interaction language for <em>AngelWatch TMS.</em></h1>
-    <p>Built on Ant Design v6, calibrated for high-density telemetry, OTA orchestration, and 24/7 fleet operations. Single source of truth for ops engineers and IT admins who live in this tool 4–8 hours a day. Light + Dark 双主题，zh-CN / en / es / pt 四语言，均自托管，内网部署，离线可用。</p>
+    <p>Built on Ant Design v6, calibrated for high-density telemetry, OTA orchestration, and 24/7 Android terminal operations. Single source of truth for ops engineers and IT admins who live in this tool 4–8 hours a day. Light + Dark 双主题，zh-CN / en / es / pt 四语言，均自托管，内网部署，离线可用。</p>
     <div class="hero-meta">
 <div><strong>240</strong>设计 Token</div>
 <div><strong>33+</strong>核心组件</div>
@@ -20,7 +20,7 @@
   <section class="section">
     <p class="section-eyebrow">Values · 设计价值观</p>
     <h2>AngelWatch TMS 设计系统</h2>
-    <p class="lede">沿用 Ant Design v6 的四条价值观作为设计语言的最上层。它们解释「为什么」我们这样做选择，下文的三条原则是把价值观翻译到 TMS 场景的具体取舍，再下面的 10 条交互守则是落地到每个 PR review 的硬约束。</p>
+    <p class="lede">AngelWatch TMS 是面向安卓设备的终端管理系统。本设计系统把设备管理、应用分发、OTA 升级、推送任务、数据监控、账户权限和系统配置沉淀为可复用的页面、组件和文案规范。</p>
     <div class="demo-grid cols-2" style="margin-top:18px">
 <div class="surface" style="border-left:3px solid var(--aw-primary)">
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 01</div>

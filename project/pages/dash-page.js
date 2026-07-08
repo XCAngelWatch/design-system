@@ -5,7 +5,7 @@
 <section class="section" id="dash-page">
   <p class="section-eyebrow">Patterns · DashboardPage</p>
   <h2>首页仪表盘 DashboardPage</h2>
-  <p class="lede">指标卡片行 + 图表行 + 待办 / 活动列表。仪表盘出现在「数据统计」「首页」类页面。所有图表通过 <code>&lt;TMSChart /&gt;</code> 包装层（echarts v6）渲染，主题切换走 <code>tms-light</code> / <code>tms-dark</code>，色板用 <code>--aw-chart-1..8</code>。详见 <a href="#/charts" style="color:var(--aw-primary)">Charts 页</a>。</p>
+  <p class="lede">首页仪表盘用于快速扫读 Android 终端运行概况：设备总数、激活设备、活跃设备、锁定设备、推送结果和近期告警。它不是营销看板，而是运维入口。</p>
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 DashboardPage</div>
     <div class="frame-body" style="padding:20px">

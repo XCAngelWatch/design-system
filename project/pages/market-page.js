@@ -4,7 +4,7 @@
 <section class="section" id="market-page">
   <p class="section-eyebrow">页面模板 · 业务蓝图</p>
   <h2>应用市场 MarketPage</h2>
-  <p class="lede">覆盖 Figma 新界面中的应用管理、广告管理、应用分类、版本管理、审核、安装明细。它不是截图目录，而是把应用市场页面族抽象成可复用的列表、卡片、审核、版本与明细模式。</p>
+  <p class="lede">应用市场覆盖应用管理、广告管理、应用分类、版本管理、审核和安装明细。它把 Figma 中的应用市场页面族抽象为列表、卡片、审核、版本与明细规则。</p>
 
   <div class="subsection">
     <h3>覆盖范围</h3>
@@ -35,7 +35,7 @@
           <table class="dt">
             <thead><tr><th>应用</th><th>包名</th><th>版本</th><th>分类</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead>
             <tbody>
-              <tr><td><b>Fleet Guard</b></td><td><code>com.aw.guard</code></td><td>3.5.0</td><td>安全</td><td><span class="status-dot online">已上架</span></td><td>今天 09:12</td><td><a>详情</a> · <a>版本</a> · <a>下架</a></td></tr>
+              <tr><td><b>Android terminal Guard</b></td><td><code>com.aw.guard</code></td><td>3.5.0</td><td>安全</td><td><span class="status-dot online">已上架</span></td><td>今天 09:12</td><td><a>详情</a> · <a>版本</a> · <a>下架</a></td></tr>
               <tr><td><b>Route Sync</b></td><td><code>com.aw.route</code></td><td>2.8.1</td><td>导航</td><td><span class="status-dot upgrading">待审核</span></td><td>昨天 18:44</td><td><a>审核</a> · <a>修改</a> · <a>驳回</a></td></tr>
               <tr><td><b>Device Tools</b></td><td><code>com.aw.tools</code></td><td>1.9.4</td><td>工具</td><td><span class="status-dot offline">已下架</span></td><td>周一 11:03</td><td><a>详情</a> · <a>重新上架</a></td></tr>
             </tbody>

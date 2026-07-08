@@ -4,7 +4,7 @@
 <section class="section" id="user-mgmt-page">
   <p class="section-eyebrow">Patterns · 用户管理</p>
   <h2>账户权限 UserMgmtPage</h2>
-  <p class="lede">沿袭旧 <code>views/admin/user/index.vue</code>:<b>左侧机构树 + 右侧用户表</b>(TreeListLayout 范式)。搜索按 姓名 / 登录账号,操作含 编辑 / 删除 / 重置密码 / 启停账号,均通过 Modal 表单完成。</p>
+  <p class="lede">账户权限页管理账号、机构、角色、菜单权限和数据权限。权限文案必须说明作用域、影响对象和保存后的结果。</p>
 
   <div class="surface" style="padding:0;overflow:hidden">
     <div style="display:flex;align-items:stretch;height:560px">

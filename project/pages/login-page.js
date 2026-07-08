@@ -5,7 +5,7 @@
 <section class="section" id="login-page">
   <p class="section-eyebrow">Patterns · LoginPage</p>
   <h2>登录页 LoginPage</h2>
-  <p class="lede">分屏布局。左侧 40% 品牌区（logo + 产品名 + slogan + 装饰图形），右侧 60% 表单区（账号 + 密码 + 验证码 + 记住我 + 登录 + 语言切换）。深品牌色突出企业身份。</p>
+  <p class="lede">登录页服务于 Android 终端管理后台，重点是安全进入系统、选择语言、记住账号和处理验证码。视觉上保持冷静、轻盈、科技感，不使用营销化大段文案。</p>
   <div class="frame">
     <div class="frame-head">📐 LoginPage · 默认（单租户）</div>
     <div class="frame-body" style="padding:0">
