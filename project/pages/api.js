@@ -16,7 +16,7 @@
         <tr><td>Boolean prop</td><td>无前缀；状态用 <code>disabled</code> / <code>loading</code> / <code>open</code></td><td><code>disabled</code> · <code>loading</code></td><td><code>isDisabled</code> · <code>hasLoading</code></td></tr>
         <tr><td>事件回调</td><td><code>on</code> + 动词或事件名</td><td><code>onChange</code> · <code>onClick</code> · <code>onSelect</code></td><td><code>change</code> · <code>handleClick</code></td></tr>
         <tr><td>before / after</td><td><code>onBefore*</code> 可阻断；<code>onAfter*</code> 仅通知</td><td><code>onBeforeSubmit</code> 返 <code>false</code> 阻止</td><td>—</td></tr>
-        <tr><td>插槽</td><td>语义命名；<code>title</code> / <code>extra</code> / <code>footer</code></td><td><code>extra={'<Button/>'}</code></td><td><code>actionSlot</code> · <code>renderActions</code></td></tr>
+        <tr><td>插槽</td><td>语义命名；<code>header</code> / <code>extra</code> / <code>footer</code></td><td><code>extra={'<Button/>'}</code></td><td><code>actionSlot</code> · <code>renderActions</code></td></tr>
         <tr><td>render prop</td><td><code>render*</code> 前缀</td><td><code>renderItem</code> · <code>renderHeader</code></td><td><code>itemRenderer</code></td></tr>
         <tr><td>枚举值</td><td>kebab-case 字符串</td><td><code>type="primary"</code> · <code>size="small"</code></td><td><code>type="Primary"</code></td></tr>
       </tbody>

@@ -106,6 +106,7 @@
         <tr><td>远程服务</td><td>推送到设备、从设备删除、恢复出厂、取回日志</td><td>处理、操作、执行等缺少对象和后果的按钮</td></tr>
       </tbody>
     </table>
+    <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong>Figma 合并红线：</strong>只能把本地 Figma 当作业务证据和模式来源。禁止把旧系统、废案、临时方案、设计占位词或逐帧截图目录迁入站点；每一处迁移都必须落到 token、组件规则、页面模板或模块蓝图。</div></div>
   </div>
 </section>
 </div>

@@ -20,6 +20,18 @@
         <tr><td>增值服务</td><td>APN、WIFI、黑白名单、文件推送、恢复出厂、日志、锁定、解锁</td><td>远程服务动作必须说明“推送到设备”或“从设备删除”。</td></tr>
       </tbody>
     </table>
+    <div class="surface" style="margin-top:14px">
+      <h3 style="margin:0 0 10px;font-size:14px">Figma 可见文本 · 筛选口径</h3>
+      <table class="map-table">
+        <thead><tr><th style="width:24%">文本类型</th><th style="width:34%">处理方式</th><th>原因</th></tr></thead>
+        <tbody>
+          <tr><td>真实导航和页面标题</td><td>纳入模块词表</td><td>这些词决定信息架构，例如应用市场、OTA升级管理、推送任务、数据中心。</td></tr>
+          <tr><td>字段名和状态名</td><td>转译为组件规则</td><td>字段用于表格、详情、抽屉和筛选项；状态用于标签、结果页和操作可用性。</td></tr>
+          <tr><td>样例文件、样例包名、测试数据</td><td>仅作为结构证据</td><td>它们帮助判断需要上传、安装明细、版本记录等模块，不直接作为最终文案。</td></tr>
+          <tr><td>设计占位和图层命名</td><td>不进入用户可见文案</td><td>占位词只能说明布局层级，不能污染产品语言。</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="subsection">

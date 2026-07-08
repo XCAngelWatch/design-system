@@ -1,0 +1,26 @@
+{
+  "kind": "critique-panel",
+  "score": 4,
+  "axes": {
+    "clarity": {
+      "score": 4,
+      "notes": "新增内容明确区分本地 Figma、OpenDesign 证据和当前 design-system 的职责。"
+    },
+    "hierarchy": {
+      "score": 4,
+      "notes": "cases 页承接来源边界，copywriting 页承接文本筛选，do-dont 页承接合并红线，信息层级清晰。"
+    },
+    "typography": {
+      "score": 4,
+      "notes": "沿用现有 map-table、surface、alert 结构，没有引入新的字号或展示样式。"
+    },
+    "motion": {
+      "score": 4,
+      "notes": "本轮为静态规范内容，没有新增动效；保持现有站点交互模型。"
+    },
+    "brand": {
+      "score": 4,
+      "notes": "brand-spec.md 使用源包色彩并转换为 OKLch，页面内容继续约束为 --aw-* token 与 #165DFF 主色规则。"
+    }
+  }
+}

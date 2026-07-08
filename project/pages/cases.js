@@ -26,6 +26,18 @@
       <span>Token：light primary = #165DFF，dark primary = #4080FF</span>
       <span>资产：本轮不复制图片素材</span>
     </div>
+    <div class="surface" style="margin-top:14px">
+      <h3 style="margin:0 0 10px;font-size:14px">来源与转译边界</h3>
+      <table class="map-table">
+        <thead><tr><th style="width:22%">来源</th><th style="width:30%">用途</th><th>转译规则</th></tr></thead>
+        <tbody>
+          <tr><td>本地 Figma 文件</td><td>识别业务模块、页面族和高频状态</td><td>只抽取可复用模式，不把每个画板逐帧复制进站点。</td></tr>
+          <tr><td>OpenDesign tree / tokens</td><td>核对模块数量、文案词汇和色彩证据</td><td>运行时不依赖本地绝对路径，最终只保留规范化说明和仓库内页面。</td></tr>
+          <tr><td>当前 design-system</td><td>落地 token、组件规则、路由和页面模板</td><td>优先遵循 Ant Design v6、file://、常青文档与 --aw-* 变量约束。</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--aw-text-3);line-height:1.7;margin:10px 0 0">本轮把 Figma 证据转译为模块级规则：应用市场、OTA、推送任务、数据中心、账户权限、设备地图、增值服务和系统管理。旧系统、废案和临时方案不进入规范。</p>
+    </div>
   </div>
 
   <div class="subsection">
