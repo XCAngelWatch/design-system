@@ -6,7 +6,7 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 
 ## Filtering Rules
 
-Product-copy tables use visible `TEXT.text` first, then `characters`, then `name` only as a fallback. They exclude structural, component, state, design-review, and designer-note annotations so module tables stay focused on user-facing product copy.
+Product-copy tables use visible `TEXT.text` first, then `characters`, then `name` only as a fallback. They exclude structural, component, state, design-review, designer-note, and visual-language annotations so module tables stay focused on user-facing product copy.
 
 Design-language signals are collected separately when useful. Real short UI strings such as `台`, `近7日`, `账号`, `密码`, `验证码`, `上传中`, `上传失败`, and `上传成功` are preserved when they come from visible Figma text.
 
@@ -24,6 +24,9 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 蓝色-效率、冷静、科技感 | 1 |
 | 白色半透玻璃 | 1 |
 | 高反射银色金属点缀 | 1 |
+| 蓝色渐变玻璃 | 2 |
+| 互联互通，无人化，云端 | 1 |
+| 白色为主，点缀蓝色渐变及金属银色 | 1 |
 
 ## 登陆页
 
@@ -41,47 +44,29 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 简体中文 | 5 |
 | English | 5 |
 | 记住密码 | 3 |
-| 蓝色渐变玻璃 | 2 |
 | 语言切换 | 2 |
 | 用户管理 | 2 |
 | 邮箱验证 | 2 |
-| 登陆框 | 2 |
-| 卡片001-004 | 2 |
 | 搜索 | 2 |
 | NICKWONG | 2 |
 | 设备总数 | 2 |
 | 验证码已发送至邮箱 788adakdsj@Hotmail.com | 2 |
 | 验证码 | 2 |
 | 台 | 2 |
-| 表现造型关键词： | 1 |
-| 互联互通，无人化，云端 | 1 |
-| 白色为主，点缀蓝色渐变及金属银色 | 1 |
-| 采用芯片和云的元素，体现系统作为线上核心统筹公司各方面业务，高效处理工作，管理统合能力强大。 | 1 |
 | Angel Watch ｜ A.1.0  \|  <br>客服电话：0571 - 2312 2323 | 1 |
-| 主题配置 | 1 |
 | ·卡片投影<br>·数字动效<br>·图标动效 | 1 |
-| 运用了摄像头的元素，体现了公司智能人脸识别办公的业务。 | 1 |
-| 运用了钱币的元素，体现了公司智能支付、智能零售等方面的业务。 | 1 |
-| 运用了办公电脑、系统对话框的元素，体现了公司政府税控数据设备方面的业务，表现税控办公处理等方面的工作。 | 1 |
-| 运用了统计数据图表的元素，r | 1 |
 | 语言切换框 | 1 |
 | 语言：英文 | 1 |
 | 账号 | 1 |
 | 密码 | 1 |
-| 输出-出错 | 1 |
-| 输出-最多字符 | 1 |
 | 历史输入账号-最多记录 5 个 | 1 |
 | 单选 | 1 |
 | 明暗切换 | 1 |
-| 主题切换 | 1 |
 | 消息通知 | 1 |
 | 设置 | 1 |
 | 顶部功能 | 1 |
-| 蓝色玻璃 | 1 |
 | 白色 | 1 |
-| 银色金属 | 1 |
 | 蓝色发光 | 1 |
-| 白色磨砂玻璃 | 1 |
 | TMS | 1 |
 | Terminal Management System | 1 |
 | ｜ | 1 |
@@ -183,11 +168,9 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 下线 | 2 |
 | 这里是错误原因 | 2 |
 | Angel Watch | 2 |
-| 文件说明 | 2 |
 | 所属机构 | 2 |
 | T0511_E1_MP_V1.2_... | 2 |
 | 已发布 | 2 |
-| 版本说明变信息列 | 1 |
 | 内容搜索卡片 | 1 |
 | 输入态 | 1 |
 | 页面取消 | 1 |
@@ -294,7 +277,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 加入日期 | 5 |
 | P | 5 |
 | 是否强制 | 5 |
-| 文件说明 | 5 |
 | 可见范围 | 5 |
 | Tactile Ad | 4 |
 | 修改 | 2 |
@@ -373,7 +355,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 客户列表 | 1 |
 | 适配机型 | 1 |
 | 固件名称 | 1 |
-| 文件说明 | 1 |
 | 消息内容 | 1 |
 | 升级版本 | 1 |
 | 基线版本 | 1 |
@@ -669,7 +650,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 更多 | 4 |
 | 删除 | 4 |
 | 推送<br>到设备 | 3 |
-| 文件说明 | 3 |
 | 安全性 | 3 |
 | 网络名称 | 3 |
 | 名单类型 | 3 |
