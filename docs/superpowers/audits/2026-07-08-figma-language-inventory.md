@@ -1,8 +1,8 @@
 # Figma Language Inventory
 
-Source: local OpenDesign `figma/tree.json` for `brand-customertest-3a5d64`.
+Source: local OpenDesign `figma/tree.json` for `brand-customertest-3a5d64`. Product-copy evidence is extracted from visible text nodes exported as `TEXT.text`; no node-name fallback is used in product-copy tables.
 
-This inventory is evidence for rewriting visible copy into Android terminal management language. Placeholder design labels such as `title`, `text`, `input`, `2rd-level-title`, and `Button Text` are evidence of structure only and must not be copied as final UI text.
+This inventory is evidence for rewriting visible copy into Android terminal management language. Placeholder design labels such as `title`, `text`, `input`, `2rd-level-title`, and `Button Text` are evidence of structure only and must not be copied as final UI text. The inventory is manually curated after extraction to remove placeholders, design states, sample names, asset names, technical sample identifiers, repeated global navigation, and obvious mock data.
 
 ## Filtering Rules
 
@@ -28,6 +28,43 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 互联互通，无人化，云端 | 1 |
 | 白色为主，点缀蓝色渐变及金属银色 | 1 |
 | 蓝色发光 | 1 |
+
+## Global Navigation / Shell Copy
+
+Global shell labels appear repeatedly across canvases and are listed once here instead of being repeated in each module table.
+
+| Visible Shell Copy | Count |
+| --- | ---: |
+| 主页 | 72 |
+| 应用市场 | 73 |
+| OTA升级管理 | 74 |
+| 推送任务 | 74 |
+| 数据中心 | 75 |
+| 账户信息 | 51 |
+| 设备地图 | 68 |
+| 数据统计 | 38 |
+| 增值服务 | 65 |
+| 系统管理 | 48 |
+
+## Short UI Strings / Units
+
+Short strings are preserved with context because they are real visible UI copy, but they are not treated as standalone module vocabulary.
+
+| String | Context | Count |
+| --- | --- | ---: |
+| 台 | Dashboard/statistics device count unit | 54 |
+| 500m | Device map distance scale | 11 |
+
+## Excluded Mock / Technical Samples
+
+Representative sample names, asset filenames, technical identifiers, and metric demo strings are excluded from product-copy tables.
+
+| Excluded Pattern | Reason |
+| --- | --- |
+| `*.apk`, `*.jpg` such as `employeelist.apk`, `superads.jpg` | Asset or file sample |
+| `FAE_OMNI_CONTROL`, `OTPL_ITS_*`, `Update_0316_0422`, `Success_OTA` | Technical/mock identifier |
+| `总数：2`, `成功 1（50.00％）`, `失败 1（50.00％）` | Demo metric row |
+| Mock model/app names such as `LANDI P5`, `Tactile Ad`, `P0821-test应用详情` | Sample data rather than product language |
 
 ## 登陆页
 
@@ -55,7 +92,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 台 | 36 |
 | 解锁设备 | 10 |
 | 锁定设备 | 10 |
 | 近7日 | 9 |
@@ -71,9 +107,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 活动 | 2 |
 | 消息 | 2 |
 | 活跃设备 | 2 |
-| OTA升级管理 | 2 |
-| 推送任务 | 2 |
-| 账户信息 | 2 |
 
 ## 应用市场
 
@@ -87,14 +120,11 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 基本信息 | 10 |
 | 规则信息 | 10 |
 | 操作人 | 10 |
-| employeelist.apk | 10 |
 | 安装包 | 10 |
 | 下载数 | 10 |
 | 版本号 | 10 |
 | 设备型号 | 10 |
-| LANDI P5 | 10 |
 | 加入日期 | 9 |
-| P0821-test应用详情 | 6 |
 | 广告图 | 6 |
 | 删除 | 5 |
 | 详细介绍 | 5 |
@@ -102,13 +132,7 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 上传失败 | 4 |
 | 上传成功 | 4 |
 | 修改 | 4 |
-| Tactile Ad | 4 |
 | 更多 | 3 |
-| 销量统计 | 3 |
-| 数据统计 | 3 |
-| 增值服务 | 3 |
-| 系统管理 | 3 |
-| superads.jpg | 3 |
 | 安装明细 | 2 |
 | 错误 | 2 |
 | 筛选 | 2 |
@@ -138,20 +162,9 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 规则信息 | 8 |
 | 基本信息 | 7 |
 | 可见对象 | 7 |
-| 主页 | 7 |
-| 应用市场 | 7 |
-| OTA升级管理 | 7 |
-| 推送任务 | 7 |
-| 数据中心 | 7 |
-| 账户信息 | 7 |
-| 设备地图 | 7 |
 | 标识 | 6 |
 | 安卓版本 | 6 |
-| FAE_OMNI_CONTROL | 6 |
-| OTPL_ITS_V1.0.2_20220422 | 6 |
-| OTPL_ITS_V1.0.1_20220316 | 6 |
 | 大小 | 6 |
-| OTPL P3 | 6 |
 | 最后操作时间 | 6 |
 | 状态 | 6 |
 | 操作人 | 5 |
@@ -173,7 +186,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 上传失败 | 1 |
 | 上传成功 | 1 |
 | 下载 | 1 |
-| Update_0316_0422 | 1 |
 | 添加升级文件 | 1 |
 | 包文件 | 1 |
 | 所属机构 | 1 |
@@ -192,16 +204,8 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 成功 | 6 |
 | 状态 | 6 |
 | 详情 | 6 |
-| Success_OTA | 6 |
 | 失败 | 5 |
 | 总数 | 5 |
-| 主页 | 5 |
-| 应用市场 | 5 |
-| OTA升级管理 | 5 |
-| 推送任务 | 5 |
-| 数据中心 | 5 |
-| 账户信息 | 5 |
-| 设备地图 | 5 |
 | 推送设备详情 | 3 |
 | 添加推送任务 | 2 |
 | 推送任务详情 | 2 |
@@ -209,14 +213,8 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 强制操作 | 2 |
 | 推送目标 | 2 |
 | 应用 | 2 |
-| 数据统计 | 2 |
-| 增值服务 | 2 |
-| 系统管理 | 2 |
 | 查看详情 | 1 |
 | 查看推送设备详情 | 1 |
-| 总数：2 | 1 |
-| 成功 1（50.00％） | 1 |
-| 失败 1（50.00％） | 1 |
 | 客户列表 | 1 |
 | 适配机型 | 1 |
 | 固件名称 | 1 |
@@ -234,12 +232,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 加入日期 | 28 |
 | 设备型号 | 22 |
 | 版本号 | 22 |
-| 主页 | 22 |
-| OTA升级管理 | 22 |
-| 推送任务 | 22 |
-| 账户信息 | 22 |
-| 应用市场 | 22 |
-| 数据中心 | 22 |
 | 设备管理 | 22 |
 | 设备分组 | 22 |
 | 型号管理 | 22 |
@@ -271,7 +263,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 结束 | 4 |
 | 设备信息 | 4 |
 | 位置上报 | 4 |
-| 设备地图 | 4 |
 | 查看详情 | 3 |
 | 软件信息 | 3 |
 | 导入设备 | 3 |
@@ -306,7 +297,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 500m | 11 |
 | 运营商管理 | 4 |
 | 开始时间 | 4 |
 | 结束时间 | 4 |
@@ -331,13 +321,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 解锁 | 6 |
 | 是否启动缴费充值功能 | 5 |
 | 备注 | 5 |
-| 主页 | 5 |
-| OTA升级管理 | 5 |
-| 推送任务 | 5 |
-| 数据中心 | 5 |
-| 设备地图 | 5 |
-| 应用市场 | 5 |
-| 账户信息 | 5 |
 | 机构管理 | 5 |
 | 角色管理 | 5 |
 | 账号管理 | 5 |
@@ -376,7 +359,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 台 | 18 |
 | 近7日 | 6 |
 | 设备活跃数据 | 4 |
 | 活跃设备 | 4 |
@@ -386,15 +368,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 增值服务 | 28 |
-| 主页 | 27 |
-| OTA升级管理 | 27 |
-| 推送任务 | 27 |
-| 应用市场 | 27 |
-| 数据中心 | 27 |
-| 设备地图 | 27 |
-| 数据统计 | 27 |
-| 系统管理 | 27 |
 | 恢复出厂设置 | 27 |
 | 修改 | 4 |
 | 更多 | 4 |
@@ -407,15 +380,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 系统管理 | 12 |
-| 主页 | 6 |
-| 应用市场 | 6 |
-| OTA升级管理 | 6 |
-| 推送任务 | 6 |
-| 数据中心 | 6 |
-| 账户信息 | 6 |
-| 数据统计 | 6 |
-| 增值服务 | 6 |
 | 独立服务器部署 | 6 |
 | 财务管理 | 6 |
 | OSS节点 | 6 |
