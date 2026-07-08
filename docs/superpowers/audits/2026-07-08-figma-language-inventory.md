@@ -6,7 +6,7 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 
 ## Filtering Rules
 
-Product-copy tables use visible `TEXT.text` first, then `characters`, then `name` only as a fallback. They exclude structural, component, state, design-review, designer-note, and visual-language annotations so module tables stay focused on user-facing product copy.
+Product-copy tables use visible Figma `TEXT.text` only. They exclude structural, component, state, design-review, designer-note, and visual-language annotations so module tables stay focused on user-facing product copy.
 
 Design-language signals are collected separately when useful. Real short UI strings such as `台`, `近7日`, `账号`, `密码`, `验证码`, `语言切换`, `消息通知`, `设置`, `搜索`, `上传中`, `上传失败`, and `上传成功` are preserved when they come from visible Figma text.
 
@@ -155,7 +155,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | superads.jpg | 3 |
 | 安装明细 | 2 |
 | 错误 | 2 |
-| 展示-上传图片 | 2 |
 | 筛选 | 2 |
 | 激活 | 2 |
 | 发布 | 2 |
@@ -165,35 +164,24 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 所属机构 | 2 |
 | T0511_E1_MP_V1.2_... | 2 |
 | 已发布 | 2 |
-| 内容搜索卡片 | 1 |
-| 输入态 | 1 |
-| 页面取消 | 1 |
 | （注：未开通权限的页签将会不显示） | 1 |
 | 子选项 | 1 |
 | 母选项 | 1 |
-| 选择器 | 1 |
 | 转为正式版 | 1 |
 | 滚动 | 1 |
 | 多项选择 | 1 |
-| 选项过多-多项选择器 | 1 |
-| 展示-上传 | 1 |
 | 展示-文本 | 1 |
-| 展示-选择器 | 1 |
 | 常规信息展示 | 1 |
 | 可交互信息展示 | 1 |
 | 图片展示 | 1 |
 | 图标展示与下载 | 1 |
 | 选择 | 1 |
-| 表格-操作 | 1 |
-| 表格-字段 | 1 |
 | 普通 | 1 |
 | 正序 | 1 |
 | 倒序 | 1 |
 | 下拉选择-普通态 | 1 |
-| 表格-分页器 | 1 |
 | 已激活 | 1 |
 | 分页器 | 1 |
-| 广告管理主页的表格，表格高度为其他标准表格的两倍 | 1 |
 | 卡片操作 | 1 |
 | 卡片功能 | 1 |
 | 卡片图标 | 1 |
@@ -217,13 +205,11 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 引用 | 1 |
 | 帮助 | 1 |
 | 全屏 | 1 |
-| 正常-选择器 | 1 |
 | 上架 | 1 |
 | 版本<br>管理 | 1 |
 | 审核 | 1 |
 | 下架 | 1 |
 | 列表排序 | 1 |
-| icon | 1 |
 | 应用升级 | 1 |
 | 添加应用分类 | 1 |
 | 修改应用分类 | 1 |
@@ -275,8 +261,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 推送固件包 | 2 |
 | 推送类型 | 2 |
 | 推送方式 | 2 |
-| 统一：有修改操作，用这一种；如果不能做任何修改，就用表单形式 | 1 |
-| 加一个页面 | 1 |
 | 下载文件 | 1 |
 | 查看详情 | 1 |
 | 下线 | 1 |
@@ -330,12 +314,8 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 数据统计 | 2 |
 | 增值服务 | 2 |
 | 系统管理 | 2 |
-| 先弹窗 | 1 |
-| 弹窗滚动 | 1 |
-| 饼图展示交互 | 1 |
 | 查看详情 | 1 |
 | 查看推送设备详情 | 1 |
-| 加一张运营端主页，搜索条件加个客户 | 1 |
 | 总数：2 | 1 |
 | 成功 1（50.00％） | 1 |
 | 失败 1（50.00％） | 1 |
@@ -422,7 +402,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 软件<br>信息 | 3 |
 | 软件信息 | 3 |
 | 导入设备 | 3 |
-| icon | 3 |
 | 包名 | 3 |
 | com.redepos.giotto | 3 |
 | 版本名称 | 3 |
@@ -438,12 +417,8 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 添加设备 | 2 |
 | 修改参数 | 2 |
 | 设备序列号 | 2 |
-| 开启-开关 | 1 |
-| 关闭-开关 | 1 |
 | 设置 | 1 |
 | 全部<br>导出 | 1 |
-| 表格选择 | 1 |
-| 卡片选择 | 1 |
 | 设备连接中，请稍候… | 1 |
 | 弹窗还是新页面，根据内容量来（已确定） | 1 |
 | 锁定 | 1 |
@@ -452,15 +427,8 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 远程<br>诊断 | 1 |
 | 设备<br>地图 | 1 |
 | 刷新设备信息 | 1 |
-| 是批量删除 | 1 |
 | 加列：应用名称 | 1 |
 | 详情 | 1 |
-| 960x620 | 1 |
-| 720x500 | 1 |
-| 480x500 | 1 |
-| 640x500 | 1 |
-| 240x500 | 1 |
-| 操作只有一个删除，其他随便编 | 1 |
 | 设备连接 | 1 |
 | 25MB / 245.59MB | 1 |
 | 当前速度：1.33Mbps | 1 |
@@ -549,7 +517,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 网络定位类型 | 2 |
 | 推送类型 | 2 |
 | 运营商 | 2 |
-| 目录里没有账户信息-运营商管理这一项 | 1 |
 | 设备 | 1 |
 | 重置密码 | 1 |
 | 选项-未选 | 1 |
@@ -557,7 +524,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 已选项-正常 | 1 |
 | 账号 | 1 |
 | 重置<br>密码 | 1 |
-| 数据录入提示 | 1 |
 | 添加下级机构 | 1 |
 | 修改下级机构 | 1 |
 | 添加设备 | 1 |
@@ -725,16 +691,9 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 字典键值 | 2 |
 | 字典排序 | 2 |
 | 上级菜单ID | 2 |
-| 时间与日期选择器 | 1 |
 | 详情 | 1 |
 | 已选 | 1 |
 | 精确到秒 | 1 |
-| 数据录入提示 | 1 |
-| 960x620 | 1 |
-| 720x500 | 1 |
-| 480x500 | 1 |
-| 640x500 | 1 |
-| 240x500 | 1 |
 | 添加OSS节点 | 1 |
 | 修改OSS节点 | 1 |
 | 开始时间 | 1 |
