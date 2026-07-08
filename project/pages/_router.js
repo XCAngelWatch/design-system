@@ -67,6 +67,8 @@
     ['push-page',        'PushPage 消息推送',               '页面模板'],
     ['ota-page',         'OtaPage OTA 升级',                '页面模板'],
     ['user-mgmt-page',   'UserMgmtPage 用户管理',           '页面模板'],
+    ['market-page',      'MarketPage 应用市场蓝图',         '页面模板'],
+    ['device-center-page', 'DeviceCenterPage 数据中心蓝图',  '页面模板'],
     ['ecosystem',        '生态库集成',                      '生态'],
     ['tech-stack',       '技术栈速查',                      '生态'],
     ['do-dont',          '规范红线',                        '规范'],
