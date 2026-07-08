@@ -3,9 +3,9 @@
 <!-- HERO -->
 <section class="hero" id="overview">
   <div class="hero-inner">
-    <div class="hero-eyebrow">AngelWatch · TMS Design System</div>
-    <h1>The unified visual &amp; interaction language for <em>AngelWatch TMS.</em></h1>
-    <p>Built on Ant Design v6, calibrated for high-density telemetry, OTA orchestration, and 24/7 Android terminal operations. Single source of truth for ops engineers and IT admins who live in this tool 4–8 hours a day. Light + Dark 双主题，zh-CN / en / es / pt 四语言，均自托管，内网部署，离线可用。</p>
+    <div class="hero-eyebrow">AngelWatch · TMS 设计系统</div>
+    <h1>面向 <em>Android 终端管理</em> 的统一视觉与交互语言。</h1>
+    <p>基于 Ant Design v6，为设备管理、应用分发、OTA 升级、推送任务和数据监控校准高密度后台体验。它是运维人员与 IT 管理员每天高频使用的设计规范源；Light + Dark 双主题，zh-CN / en / es / pt 四语言，均自托管，内网部署，离线可用。</p>
     <div class="hero-meta">
 <div><strong>240</strong>设计 Token</div>
 <div><strong>33+</strong>核心组件</div>
