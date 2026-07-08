@@ -8,7 +8,7 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 
 Product-copy tables use visible `TEXT.text` first, then `characters`, then `name` only as a fallback. They exclude structural, component, state, design-review, designer-note, and visual-language annotations so module tables stay focused on user-facing product copy.
 
-Design-language signals are collected separately when useful. Real short UI strings such as `台`, `近7日`, `账号`, `密码`, `验证码`, `上传中`, `上传失败`, and `上传成功` are preserved when they come from visible Figma text.
+Design-language signals are collected separately when useful. Real short UI strings such as `台`, `近7日`, `账号`, `密码`, `验证码`, `语言切换`, `消息通知`, `设置`, `搜索`, `上传中`, `上传失败`, and `上传成功` are preserved when they come from visible Figma text.
 
 ## Design Language Signals
 
@@ -27,6 +27,7 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 蓝色渐变玻璃 | 2 |
 | 互联互通，无人化，云端 | 1 |
 | 白色为主，点缀蓝色渐变及金属银色 | 1 |
+| 蓝色发光 | 1 |
 
 ## 登陆页
 
@@ -54,19 +55,12 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 验证码 | 2 |
 | 台 | 2 |
 | Angel Watch ｜ A.1.0  \|  <br>客服电话：0571 - 2312 2323 | 1 |
-| ·卡片投影<br>·数字动效<br>·图标动效 | 1 |
-| 语言切换框 | 1 |
 | 语言：英文 | 1 |
 | 账号 | 1 |
 | 密码 | 1 |
-| 历史输入账号-最多记录 5 个 | 1 |
-| 单选 | 1 |
 | 明暗切换 | 1 |
 | 消息通知 | 1 |
 | 设置 | 1 |
-| 顶部功能 | 1 |
-| 白色 | 1 |
-| 蓝色发光 | 1 |
 | TMS | 1 |
 | Terminal Management System | 1 |
 | ｜ | 1 |
@@ -179,20 +173,16 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 母选项 | 1 |
 | 选择器 | 1 |
 | 转为正式版 | 1 |
-| 单选选择器 | 1 |
-| 文本框输入 | 1 |
 | 滚动 | 1 |
 | 多项选择 | 1 |
 | 选项过多-多项选择器 | 1 |
 | 展示-上传 | 1 |
-| 展示-文本框 | 1 |
 | 展示-文本 | 1 |
 | 展示-选择器 | 1 |
 | 常规信息展示 | 1 |
 | 可交互信息展示 | 1 |
 | 图片展示 | 1 |
 | 图标展示与下载 | 1 |
-| 文本框展示 | 1 |
 | 选择 | 1 |
 | 表格-操作 | 1 |
 | 表格-字段 | 1 |
@@ -201,7 +191,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 倒序 | 1 |
 | 下拉选择-普通态 | 1 |
 | 表格-分页器 | 1 |
-| ·无数据时或数据不足10条时，不显示分页器，仅显示总条数 | 1 |
 | 已激活 | 1 |
 | 分页器 | 1 |
 | 广告管理主页的表格，表格高度为其他标准表格的两倍 | 1 |
@@ -287,7 +276,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 推送类型 | 2 |
 | 推送方式 | 2 |
 | 统一：有修改操作，用这一种；如果不能做任何修改，就用表单形式 | 1 |
-| 强制推送那一块改一下单选字段 | 1 |
 | 加一个页面 | 1 |
 | 下载文件 | 1 |
 | 查看详情 | 1 |
@@ -296,7 +284,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 上传中 | 1 |
 | 上传失败 | 1 |
 | 上传成功 | 1 |
-| 单选器 | 1 |
 | 卡片功能 | 1 |
 | 下载 | 1 |
 | Update_0316_0422 | 1 |
