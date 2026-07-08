@@ -415,6 +415,21 @@
       </tbody>
     </table>
   </div>
+
+  <div class="subsection">
+    <h3>OpenDesign 列表模式 · 表格与卡片双视图</h3>
+    <p class="lede" style="margin-bottom:12px">Figma 新界面中，应用、广告、设备、设备分组、推送任务都复用同一套列表骨架：筛选区先行、批量条只在勾选后出现、表格/卡片视图保留同一操作语义。</p>
+    <table class="blueprint-table">
+      <thead><tr><th>模式</th><th>出现模块</th><th>规则</th></tr></thead>
+      <tbody>
+        <tr><td>筛选区</td><td>应用管理 / OTA / 设备管理 / 推送任务</td><td>常用 3-4 字段直接展示，高级筛选折叠；搜索字段永远在第一位。</td></tr>
+        <tr><td>表格视图</td><td>应用列表 / 设备列表 / 日志 / 字典</td><td>状态列靠近主对象；操作列固定右侧；超过 4 个动作交给 RowActions。</td></tr>
+        <tr><td>卡片视图</td><td>应用管理 / 广告管理 / 设备管理 / 设备分组</td><td>卡片保留主状态、关键字段、最近操作；批量勾选入口在左上角。</td></tr>
+        <tr><td>批量条</td><td>分配设备 / 推送设备 / 导出日志</td><td>只在选中后出现，显示已选数量、清空入口和 2-3 个高频批量动作。</td></tr>
+        <tr><td>状态列</td><td>应用审核 / OTA 推送 / 设备在线 / 任务结果</td><td>状态文案与操作可用性绑定；不能只改变颜色而不改变可操作项。</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 </div>
 `;

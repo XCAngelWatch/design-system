@@ -52,6 +52,19 @@
     <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong>多 Drawer 嵌套：</strong>原则不允许。若必须从 Drawer 内打开新 Drawer（如选择"机构"），第二层用 Modal 而非 Drawer，避免视觉栈混乱。</div></div>
   </div>
 
+
+  <div class="subsection">
+    <h3>OpenDesign 抽屉模式 · 详情、编辑、远程控制</h3>
+    <table class="blueprint-table">
+      <thead><tr><th>抽屉类型</th><th>宽度</th><th>典型内容</th><th>关闭规则</th></tr></thead>
+      <tbody>
+        <tr><td>快速详情</td><td>480px</td><td>设备基础信息、最近心跳、当前状态、操作入口</td><td>可 Esc / 点击遮罩关闭，不产生数据变更。</td></tr>
+        <tr><td>编辑表单</td><td>480-720px</td><td>设备、分组、应用分类、参数模板的创建与修改</td><td>有未保存变更时关闭前二次确认。</td></tr>
+        <tr><td>远程控制</td><td>720px 或全屏</td><td>应用程序、设备信息、定位、轨迹、上传进度</td><td>离线设备禁用入口；进行中任务关闭后转入任务详情。</td></tr>
+        <tr><td>分配设备</td><td>720px</td><td>树筛选、表格勾选、导入设备、已选列表</td><td>提交前展示已选数量，失败进入部分成功 Result。</td></tr>
+      </tbody>
+    </table>
+  </div>
   <div class="subsection">
     <h3>反例</h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong>不要用 Drawer 做"删除确认"：</strong>动作太轻量，且需要阻塞决策。改 Modal 或 Popconfirm。</div></div>

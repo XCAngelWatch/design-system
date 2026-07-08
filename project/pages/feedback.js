@@ -180,6 +180,16 @@
     <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong>Modal 内 Modal：</strong>原则禁止。如必须二次确认（如"确定要放弃当前编辑吗？"），用 Popconfirm 嵌入到主 Modal 关闭按钮上。</div></div>
     <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content">详细 Modal vs Drawer 取舍参见 <a href="#/drawer" style="color:var(--aw-primary)">Drawer 章节</a>。</div></div>
   </div>
+
+  <div class="subsection">
+    <h3>OpenDesign 反馈模式 · 批量动作与部分成功</h3>
+    <div class="bp-flow">
+      <div class="bp-step"><div class="num">1</div><div class="name">动作前确认</div><div class="desc">推送、删除、重置、恢复出厂等强副作用操作使用 Modal.confirm，并明示影响数量。</div></div>
+      <div class="bp-step"><div class="num">2</div><div class="name">执行中进度</div><div class="desc">大批量任务使用进度弹窗或任务详情页；Toast 只做启动成功提示。</div></div>
+      <div class="bp-step"><div class="num">3</div><div class="name">终态 Result</div><div class="desc">完成、失败、部分成功都进入 Result 或详情卡；部分成功必须列出失败项。</div></div>
+      <div class="bp-step"><div class="num">4</div><div class="name">下一步动作</div><div class="desc">提供重试失败项、下载 CSV、查看日志、返回列表，不让用户猜下一步。</div></div>
+    </div>
+  </div>
 </section>
 </div>
 `;

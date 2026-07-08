@@ -21,6 +21,21 @@
 <tr><td><strong>已退役</strong> · Decommissioned</td><td><span class="sm-dot sm-decom">下线</span></td><td><code>--aw-text-4</code></td><td>资产已注销</td><td>仅审计查看</td></tr>
     </tbody>
   </table>
+
+  <div class="subsection">
+    <h3>业务域状态族 · 来自 Figma 新界面</h3>
+    <p class="lede" style="margin-bottom:12px">这些状态用于列表、卡片、详情和结果页。这里只定义状态族与操作可用性，不定义状态转换图。</p>
+    <table class="blueprint-table">
+      <thead><tr><th>状态族</th><th>典型状态</th><th>适用模块</th><th>操作规则</th></tr></thead>
+      <tbody>
+        <tr><td>应用审核</td><td>待审核 / 已通过 / 已驳回 / 已上架 / 已下架</td><td>应用市场</td><td>待审核显示审核动作；已上架显示下架和版本；驳回显示修改后再提交。</td></tr>
+        <tr><td>OTA 文件</td><td>待上传 / 已上传 / 推送中 / 部分成功 / 失败</td><td>OTA 升级</td><td>推送中禁用删除；部分成功进入 Result 明细；失败保留重试和下载失败清单。</td></tr>
+        <tr><td>推送任务</td><td>草稿 / 等待中 / 执行中 / 完成 / 部分失败</td><td>推送任务、增值服务</td><td>执行中显示进度；完成只允许查看和导出；部分失败允许重试失败项。</td></tr>
+        <tr><td>设备连接</td><td>在线 / 离线 / 锁定 / 故障 / 维护中</td><td>数据中心、设备地图</td><td>离线禁用远程控制；锁定只允许解锁；故障优先诊断与日志。</td></tr>
+        <tr><td>权限分配</td><td>未分配 / 部分分配 / 已分配 / 冲突</td><td>账户、组织、设备分组</td><td>冲突状态必须展示来源，不允许只给红色标签。</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 </div>
 `;

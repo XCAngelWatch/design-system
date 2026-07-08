@@ -33,6 +33,16 @@
     </div>
   </div>
   <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0">▸ 卡片宽 = (容器宽 − 12 × (n−1)) / n，n ∈ {2,3,4,5,6}；当 n=6 时仅显示前两条 body 字段，详情移入 hover 浮层。</p>
+
+  <div class="subsection">
+    <h3>OpenDesign 卡片族 · 应用 / OTA / 设备</h3>
+    <div class="bp-grid">
+      <div class="bp-card"><h4>应用卡片</h4><p>用于应用市场卡片视图。主信息是应用名、包名、版本、审核/上架状态；动作保持查看、审核、版本、更多。</p></div>
+      <div class="bp-card"><h4>OTA 文件卡片</h4><p>用于升级文件卡片视图。主信息是文件名、机型、版本、大小、上传人；状态决定是否允许更新推送。</p></div>
+      <div class="bp-card"><h4>设备卡片</h4><p>用于设备管理和设备分组。主信息是设备名、SN、在线状态、所属组织；远程控制、日志、升级动作随状态启停。</p></div>
+    </div>
+    <div class="blueprint-notes"><span>卡片不是替代表格，而是高频巡检视图</span><span>卡片动作必须与表格操作列一致</span><span>禁用态要展示原因</span></div>
+  </div>
 </section>
 </div>
 `;
