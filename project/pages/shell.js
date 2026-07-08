@@ -5,7 +5,7 @@
 <section class="section" id="shell">
   <p class="section-eyebrow">Patterns · 页面外壳</p>
   <h2>应用外壳 Shell</h2>
-  <p class="lede">应用外壳承载终端管理系统的全局导航、租户/机构切换、主题配置、语言切换和用户入口。它必须让用户快速回到设备、应用、OTA、推送和系统管理等核心模块。</p>
+  <p class="lede">应用外壳承载终端管理系统的全局导航、租户/机构切换、主题配置、语言切换和账号入口。它必须让用户快速回到设备、应用、OTA、推送和系统管理等核心模块。</p>
 
   <div class="section-subtitle">Sidebar States · 4 态对照</div>
   <div class="sidebar-states">
@@ -176,7 +176,7 @@
     <div class="surface" style="font-size:12.5px;line-height:1.7">
 <b style="color:var(--aw-text-1)">布局 &amp; 交互</b><br/>
 · 分组标题：全大写英文 + 中文，<code>letter-spacing 0.6px</code>，<code>color #9AA3AE</code><br/>
-· 用户区固定底部，<code>#FAFAFA</code> 底色 + 头像 + 姓名 + 角色 chip + ⋯ 菜单<br/>
+· 账号区固定底部，<code>#FAFAFA</code> 底色 + 头像 + 姓名 + 角色 chip + ⋯ 菜单<br/>
 · 折叠态 64px：仅 icon 居中；hover 浮出右侧 tooltip 卡片<br/>
 · 折叠按钮在 Topbar，快捷键 <code>⌘ + B</code><br/>
 · 自定义滚动条：默认 0px；hover sidebar 时显示 4px <code>#DEE1E6</code>

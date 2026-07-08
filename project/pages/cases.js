@@ -77,7 +77,7 @@
     <h3>案例 · 04 · 多租户切换</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px">同一管理员管多个租户（不同品牌白标）。登录 → 切租户 → 视觉品牌随租户变 → 数据隔离。</p>
     <div class="case-flow">
-      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name">LoginPage 多租户</div><div class="cf-desc">登录页第一步选租户（下拉记住上次） → 第二步用户名 / 密码 → 验证码（blockPuzzle 滑块）</div></div>
+      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name">LoginPage 多租户</div><div class="cf-desc">登录页第一步选租户（下拉记住上次） → 第二步账号 / 密码 → 验证码（blockPuzzle 滑块）</div></div>
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">2</div><div class="cf-name">Shell 顶部切换</div><div class="cf-desc">右上角租户徽章 → Dropdown 列出有权限的租户 → 切换后 <b>整页 reload</b>（不是 SPA 切换）→ logo / 主色 / 机构名 全替换</div></div>
       <div class="cf-arrow">→</div>

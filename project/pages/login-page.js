@@ -37,7 +37,7 @@
     <div class="lr-form">
       <h3>欢迎回来</h3>
       <div class="sub">登录到 TMS 控制台</div>
-      <div class="lr-field"><label>账号</label><input class="input" placeholder="用户名 / 邮箱 / 工号" /></div>
+      <div class="lr-field"><label>账号</label><input class="input" placeholder="账号 / 邮箱 / 工号" /></div>
       <div class="lr-field"><label>密码</label><div style="position:relative"><input class="input" type="password" value="••••••••" /><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--aw-text-3);cursor:pointer">👁</span></div></div>
       <div class="lr-field"><label>验证码</label><div class="row" style="gap:8px"><input class="input" placeholder="6 位字符" style="flex:1" /><div style="width:100px;height:32px;background:linear-gradient(135deg,#E8F3FF,#CCDFF7);border:1px solid var(--aw-border-2);border-radius:6px;display:grid;place-items:center;font-family:var(--aw-font-mono);font-size:14px;color:var(--aw-primary);font-weight:600;letter-spacing:2px;cursor:pointer">7K2N9</div></div></div>
       <div class="lr-row"><label class="check"><input type="checkbox" checked /><span class="box"></span>记住账号</label><a>忘记密码？</a></div>
@@ -51,7 +51,7 @@
 
   <div class="subsection">
     <h3>登录全态 · 6 变体</h3>
-    <p class="lede" style="margin-bottom:16px">企业 TMS 登录链路除了"用户名 + 密码"，还需覆盖多租户、强制改密、MFA、邮箱二次校验、忘记密码 5 种衍生态。下面展示每种态在表单区的形态（左侧品牌区不变）。</p>
+    <p class="lede" style="margin-bottom:16px">企业 TMS 登录链路除了"账号 + 密码"，还需覆盖多租户、强制改密、MFA、邮箱二次校验、忘记密码 5 种衍生态。下面展示每种态在表单区的形态（左侧品牌区不变）。</p>
     <div class="login-states-grid">
 
       <div class="ls-card">

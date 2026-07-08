@@ -14,11 +14,11 @@
         <tr><td><b>侧边 Sidebar</b></td><td>顶级 + 二级</td><td>主导航 ≥ 4 项；功能明显分组</td><td>TMS 默认导航；可折叠（icon-only 64px）；Light 白底 + 3px 品牌 indicator</td></tr>
         <tr><td><b>顶部 Topbar</b></td><td>租户切换 / 个人 / 全局搜索</td><td>跨业务功能（语言 / 主题 / 帮助）</td><td>不放主业务导航；仅放跨页面通用功能</td></tr>
         <tr><td><b>Tabs · 视图切换</b></td><td>同一对象的视图</td><td>详情页 6 个视图（基础 / 状态 / 日志 / 告警 ...）</td><td><b>不</b>用于路由跳转；按使用频率排序，第一个解决 80% 查看意图</td></tr>
-        <tr><td><b>Tabs · Card 路由</b></td><td>同级别页面间</td><td>用户管理 → 角色 / 权限 / 审计 三个 sub-page</td><td>路由变化但保持父级导航位；面包屑追加</td></tr>
+        <tr><td><b>Tabs · Card 路由</b></td><td>同级别页面间</td><td>账号权限 → 角色 / 权限 / 审计 三个 sub-page</td><td>路由变化但保持父级导航位；面包屑追加</td></tr>
         <tr><td><b>面包屑 Breadcrumbs</b></td><td>跨级层级</td><td>≥ 3 级深度的页面（设备 / 详情 / 编辑）</td><td>位置感知 + 快速回退；最后一段不可点</td></tr>
         <tr><td><b>步骤 Steps</b></td><td>线性流程</td><td>WizardPage 5 步配置 / 上传 → 配置 → 推送</td><td>明确进度；可回退到已完成步骤</td></tr>
         <tr><td><b>Cascader 级联</b></td><td>层级数据筛选</td><td>地区 → 站点 → 设备 三级筛选</td><td>不超过 3 级；4 级以上用 TreeSelect</td></tr>
-        <tr><td><b>Menu / Dropdown</b></td><td>动作集合</td><td>RowActions 折叠 / 用户菜单</td><td>≤ 8 项主菜单；≥ 9 项分组 + 分隔线</td></tr>
+        <tr><td><b>Menu / Dropdown</b></td><td>动作集合</td><td>RowActions 折叠 / 账号菜单</td><td>≤ 8 项主菜单；≥ 9 项分组 + 分隔线</td></tr>
       </tbody>
     </table>
     <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">三条硬规则：</b>1) Tabs 切视图、Tabs Card 切路由 —— 不混用；2) 面包屑最后一段不可点（当前位）；3) 同级菜单 ≥ 9 项必须分组（按用途，不按字母）。</p>

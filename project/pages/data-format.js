@@ -105,7 +105,7 @@
   </div>
 
   <div class="subsection">
-    <h3>货币 / 金额（用户管理 / 计费场景）</h3>
+    <h3>货币 / 金额（账户权限 / 计费场景）</h3>
     <table class="map-table">
       <thead><tr><th style="width:24%">场景</th><th style="width:30%">格式</th><th style="width:22%">示例</th><th>说明</th></tr></thead>
       <tbody>
