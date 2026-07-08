@@ -5,7 +5,7 @@
 <section class="section" id="dash-page">
   <p class="section-eyebrow">Patterns · DashboardPage</p>
   <h2>首页仪表盘 DashboardPage</h2>
-  <p class="lede">首页仪表盘用于快速扫读 Android 终端运行概况：设备总数、激活设备、活跃设备、锁定设备、推送结果和近期告警。它不是营销看板，而是运维入口。</p>
+  <p class="lede">首页仪表盘用于快速扫读 Android 终端运行概况：设备总数、激活设备、活跃设备、锁定设备、推送结果和近期告警。它不是营销看板，而是运维入口；图表用法可参考 <a href="#/charts">数据图表</a>。</p>
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 DashboardPage</div>
     <div class="frame-body" style="padding:20px">
