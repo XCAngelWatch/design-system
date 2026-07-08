@@ -307,6 +307,14 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
+| 500m | 11 |
+| 运营商管理 | 4 |
+| 开始时间 | 4 |
+| 结束时间 | 4 |
+| 备注 | 3 |
+| 终点 | 2 |
+| 起点 | 2 |
+| 输入内容 | 2 |
 
 ## 账户信息
 
