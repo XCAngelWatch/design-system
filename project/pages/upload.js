@@ -169,7 +169,7 @@
         <div class="upp-cap">①  图像 · 缩略图 + 双击放大</div>
         <div class="upp-body">
           <div class="upp-thumb-row">
-            <div class="upp-thumb"><div class="t-img" style="background:linear-gradient(135deg,#0052CC,#7B2CBF)"></div><div class="t-name">device-1.png</div></div>
+            <div class="upp-thumb"><div class="t-img" style="background:linear-gradient(135deg,#165DFF,#7B2CBF)"></div><div class="t-name">device-1.png</div></div>
             <div class="upp-thumb"><div class="t-img" style="background:linear-gradient(135deg,#52C41A,#FAAD14)"></div><div class="t-name">device-2.png</div></div>
             <div class="upp-thumb"><div class="t-img" style="background:linear-gradient(135deg,#722ED1,#13C2C2)"></div><div class="t-name">device-3.png</div></div>
           </div>

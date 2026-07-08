@@ -96,7 +96,7 @@ function DeviceCard(props) {
 &lt;/ConfigProvider&gt;
 
 // ✕ 不要在组件内硬编码 antd 私有变量
-const styles = { color: '#0052CC' };  // ← 硬编码,白标失效</code></pre></div>
+const styles = { color: '#165DFF' };  // ← 硬编码,白标失效</code></pre></div>
   </div>
 
   <div class="subsection">

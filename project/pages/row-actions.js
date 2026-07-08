@@ -139,7 +139,7 @@
 
   <div class="subsection">
     <h3>反例</h3>
-    <div class="alert error"><div class="ico">×</div><div class="content"><strong>不要把"删除"做成主色按钮：</strong>主色 <code>#0052CC</code> 是积极动作（提交 / 确认），删除应走 ghost-danger 或纯红 icon。</div></div>
+    <div class="alert error"><div class="ico">×</div><div class="content"><strong>不要把"删除"做成主色按钮：</strong>主色 <code>#165DFF</code> 是积极动作（提交 / 确认），删除应走 ghost-danger 或纯红 icon。</div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong>不要在表格行尾列堆超过 6 个图标：</strong>横向滚动一定让其中几个失踪。超过 4 个用折叠。</div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong>不要把"详情"做成超链接文字而其他做成图标：</strong>形态混用导致动作权重不可识别，统一图标 + tooltip。</div></div>
   </div>

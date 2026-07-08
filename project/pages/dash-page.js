@@ -21,7 +21,7 @@
     <div class="row" style="justify-content:space-between"><div class="ttl">激活趋势 · 近 30 日</div><div class="row"><span class="tag">日</span><span class="tag tag-blue">周</span><span class="tag">月</span></div></div>
     <div class="spark"><svg viewBox="0 0 400 100" preserveAspectRatio="none">
       <path d="M0,80 L20,72 L40,68 L60,55 L80,58 L100,42 L120,45 L140,30 L160,35 L180,28 L200,40 L220,32 L240,20 L260,25 L280,18 L300,28 L320,22 L340,15 L360,22 L380,12 L400,16 L400,100 L0,100 Z" fill="rgba(0,82,204,0.12)"/>
-      <path d="M0,80 L20,72 L40,68 L60,55 L80,58 L100,42 L120,45 L140,30 L160,35 L180,28 L200,40 L220,32 L240,20 L260,25 L280,18 L300,28 L320,22 L340,15 L360,22 L380,12 L400,16" fill="none" stroke="#0052CC" stroke-width="2"/>
+      <path d="M0,80 L20,72 L40,68 L60,55 L80,58 L100,42 L120,45 L140,30 L160,35 L180,28 L200,40 L220,32 L240,20 L260,25 L280,18 L300,28 L320,22 L340,15 L360,22 L380,12 L400,16" fill="none" stroke="#165DFF" stroke-width="2"/>
     </svg></div>
   </div>
   <div class="dash-chart">

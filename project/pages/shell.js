@@ -5,7 +5,7 @@
 <section class="section" id="shell">
   <p class="section-eyebrow">Patterns · 页面外壳</p>
   <h2>Shell · 应用外壳</h2>
-  <p class="lede">Sidebar 视觉语言：<b>纯白底 + 深色文字</b>（参考 Linear / Notion 桌面端），<b>3px 品牌蓝 indicator bar</b> + 浅蓝底 <code>#E6F0FF</code> + 蓝色文字标记 active，<b>子菜单时间轴线</b>建立层级，底部固定<b>用户区</b>，折叠态 64px + hover tooltip。Light 主题白底，Dark 主题深色渐变。</p>
+  <p class="lede">Sidebar 视觉语言：<b>纯白底 + 深色文字</b>（参考 Linear / Notion 桌面端），<b>3px 品牌蓝 indicator bar</b> + 浅蓝底 <code>#E8F3FF</code> + 蓝色文字标记 active，<b>子菜单时间轴线</b>建立层级，底部固定<b>用户区</b>，折叠态 64px + hover tooltip。Light 主题白底，Dark 主题深色渐变。</p>
 
   <div class="section-subtitle">Sidebar States · 4 态对照</div>
   <div class="sidebar-states">
@@ -168,7 +168,7 @@
 <b style="color:var(--aw-text-1)">视觉（Light · 默认）</b><br/>
 · 整体背景：<code>#FFFFFF</code>（与正文区隔靠 1px <code>#EFF1F4</code> 边线）<br/>
 · Logo 区：<code>#FAFAFA</code> 浅灰底 + 底部 1px <code>#EFF1F4</code> 分割线<br/>
-· 主菜单 Active：左 3px 实心品牌蓝 indicator bar + bg <code>#E6F0FF</code> + 文字 <code>#0052CC</code><br/>
+· 主菜单 Active：左 3px 实心品牌蓝 indicator bar + bg <code>#E8F3FF</code> + 文字 <code>#165DFF</code><br/>
 · 主菜单 Hover：bg <code>#F4F6F9</code> + 文字 <code>#1F2329</code><br/>
 · 二级菜单：缩进 36px + 1px <code>#E5E8EC</code> 时间轴线，active 子项前 6×6 圆点<br/>
 · Dark 主题保留 <code>#0F1115 → #1A1D23</code> 深色渐变

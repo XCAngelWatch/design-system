@@ -275,7 +275,7 @@
 }
 .sidebar-states .ss-sb.dark .ss-it { color: rgba(255,255,255,0.72); }
 .sidebar-states .ss-it.act {
-  background: #E6F0FF; color: #0052CC; font-weight: 500;
+  background: #E8F3FF; color: #165DFF; font-weight: 500;
 }
 .sidebar-states .ss-sb.dark .ss-it.act {
   background: rgba(255,255,255,0.08); color: white;
@@ -295,7 +295,7 @@
 }
 .sidebar-states .ss-sb.dark .ss-sub::before { background: rgba(255,255,255,0.12); }
 .sidebar-states .ss-sub .ss-it { font-size: 8px; height: 16px; padding: 0 6px; }
-.sidebar-states .ss-sub .ss-it.act { background: transparent; color: #0052CC; }
+.sidebar-states .ss-sub .ss-it.act { background: transparent; color: #165DFF; }
 .sidebar-states .ss-sb.dark .ss-sub .ss-it.act { color: white; }
 .sidebar-states .ss-sub .ss-it.act::before {
   content: ""; width: 4px; height: 4px; border-radius: 50%;
@@ -382,8 +382,8 @@
   border-left: 3px solid;
   padding: 8px 0 8px 12px;
 }
-.token-pyramid .pyramid-legend .leg.seed { border-color: #0052CC; }
-.token-pyramid .pyramid-legend .leg.map { border-color: #4A8BE0; }
+.token-pyramid .pyramid-legend .leg.seed { border-color: #165DFF; }
+.token-pyramid .pyramid-legend .leg.map { border-color: #4080FF; }
 .token-pyramid .pyramid-legend .leg.alias { border-color: #A5C9FF; }
 .token-pyramid .pyramid-legend .leg .h {
   font-size: 13px; font-weight: 600; color: var(--aw-text-1);
@@ -537,7 +537,7 @@
 .nested-theme .nt-code .k { color: #B83280; }
 .nested-theme .nt-code .v { color: #389E0D; }
 .nested-theme .nt-code .c { color: var(--aw-text-3); }
-.nested-theme .nt-code .tag { color: #0052CC; }
+.nested-theme .nt-code .tag { color: #165DFF; }
 
 /* ============================================================
    WCAG contrast badges

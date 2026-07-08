@@ -14,7 +14,7 @@
           <tr><th style="width:180px">字段</th><th style="width:200px">antd v6 token 路径</th><th style="width:120px">默认值</th><th>说明</th></tr>
         </thead>
         <tbody>
-          <tr><td>主色</td><td><code>token.colorPrimary</code></td><td>#0052CC</td><td>派生 hover/active/light，色相单值即可</td></tr>
+          <tr><td>主色</td><td><code>token.colorPrimary</code></td><td>#165DFF</td><td>派生 hover/active/light，色相单值即可</td></tr>
           <tr><td>产品名</td><td><code>app.productName</code></td><td>AngelWatch</td><td>侧栏 brand-name + 浏览器 title</td></tr>
           <tr><td>产品副标题</td><td><code>app.productSubtitle</code></td><td>Terminal Management System</td><td>登录页 + 侧栏 small 文案</td></tr>
           <tr><td>Home Logo</td><td><code>app.logo.home</code></td><td>angle.png</td><td>登录页浮层 / 顶栏</td></tr>
@@ -56,7 +56,7 @@
       <div>&lt;ConfigProvider</div>
       <div style="padding-left:20px">theme={{</div>
       <div style="padding-left:40px"><span style="color:var(--aw-success)">// 可覆盖：仅 colorPrimary 与少量组件 token</span></div>
-      <div style="padding-left:40px">token: { colorPrimary: tenant.primary ?? <span style="color:var(--aw-primary)">'#0052CC'</span> },</div>
+      <div style="padding-left:40px">token: { colorPrimary: tenant.primary ?? <span style="color:var(--aw-primary)">'#165DFF'</span> },</div>
       <div style="padding-left:40px">components: { Layout: { siderBg: <span style="color:var(--aw-primary)">'#FFFFFF'</span> } }</div>
       <div style="padding-left:20px">}}</div>
       <div>&gt;</div>
@@ -79,16 +79,16 @@
   <div class="subsection">
     <h3>双租户对比 · 同组件不同主色</h3>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div class="surface" style="--aw-primary-local:#0052CC;background:var(--aw-bg)">
+      <div class="surface" style="--aw-primary-local:#165DFF;background:var(--aw-bg)">
         <div style="font-size:11px;letter-spacing:0.6px;text-transform:uppercase;color:var(--aw-text-3);font-weight:600;margin-bottom:8px">租户 A · AngelWatch 默认</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <div style="width:32px;height:32px;border-radius:6px;background:#0052CC;color:white;display:grid;place-items:center;font-weight:700">A</div>
+          <div style="width:32px;height:32px;border-radius:6px;background:#165DFF;color:white;display:grid;place-items:center;font-weight:700">A</div>
           <div style="font-size:14px;font-weight:600">AngelWatch<div style="font-size:11px;font-weight:400;color:var(--aw-text-3);margin-top:2px">Terminal Management System</div></div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn" style="background:#0052CC;border-color:#0052CC;color:white">主操作</button>
+          <button class="btn" style="background:#165DFF;border-color:#165DFF;color:white">主操作</button>
           <button class="btn">次操作</button>
-          <span class="tag-meta" style="background:#E6EFFB;color:#0052CC;font-family:inherit;font-weight:500">在线</span>
+          <span class="tag-meta" style="background:#E8F3FF;color:#165DFF;font-family:inherit;font-weight:500">在线</span>
         </div>
       </div>
       <div class="surface" style="background:var(--aw-bg)">

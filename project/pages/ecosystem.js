@@ -14,12 +14,12 @@
 <div class="eco-pkg"><code>echarts</code> + <code>echarts-for-react</code><span class="eco-pkg-note">ECharts v6 · Apache 2.0 · 业务统一通过 <code>&lt;TMSChart /&gt;</code> 包装层调用，详见 <a href="#/charts" style="color:var(--aw-primary)">Charts 页</a></span></div>
 <div class="eco-mock">
   <svg viewBox="0 0 360 130" preserveAspectRatio="none" style="width:100%;height:100%">
-    <defs><linearGradient id="eg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0052CC" stop-opacity="0.32"/><stop offset="100%" stop-color="#0052CC" stop-opacity="0"/></linearGradient></defs>
+    <defs><linearGradient id="eg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#165DFF" stop-opacity="0.32"/><stop offset="100%" stop-color="#165DFF" stop-opacity="0"/></linearGradient></defs>
     <line x1="0" y1="40" x2="360" y2="40" stroke="#F0F0F0" stroke-dasharray="3 3"/>
     <line x1="0" y1="80" x2="360" y2="80" stroke="#F0F0F0" stroke-dasharray="3 3"/>
     <path d="M0 95 L40 80 L80 70 L120 60 L160 65 L200 50 L240 40 L280 35 L320 25 L360 20 L360 130 L0 130 Z" fill="url(#eg1)"/>
-    <path d="M0 95 L40 80 L80 70 L120 60 L160 65 L200 50 L240 40 L280 35 L320 25 L360 20" fill="none" stroke="#0052CC" stroke-width="2"/>
-    <circle cx="320" cy="25" r="3" fill="#0052CC"/>
+    <path d="M0 95 L40 80 L80 70 L120 60 L160 65 L200 50 L240 40 L280 35 L320 25 L360 20" fill="none" stroke="#165DFF" stroke-width="2"/>
+    <circle cx="320" cy="25" r="3" fill="#165DFF"/>
     <text x="6" y="14" fill="#6B7280" font-size="9" font-family="Inter">激活设备 · 近 30 日</text>
     <text x="6" y="124" fill="#9CA3AF" font-size="8" font-family="Inter">04-01</text>
     <text x="320" y="124" fill="#9CA3AF" font-size="8" font-family="Inter">04-30</text>
@@ -38,14 +38,14 @@
     <rect width="360" height="130" fill="#F5F7FA"/>
     <path d="M40 40 Q80 30 130 50 L160 70 L200 60 L260 90 L300 80 L320 100" fill="none" stroke="#D9D9D9" stroke-width="1"/>
     <path d="M60 70 Q100 80 160 90 L210 100 L260 110" fill="none" stroke="#D9D9D9" stroke-width="1"/>
-    <circle cx="100" cy="50" r="14" fill="#0052CC" fill-opacity="0.85"/><text x="100" y="54" fill="white" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">328</text>
-    <circle cx="180" cy="80" r="18" fill="#0052CC" fill-opacity="0.85"/><text x="180" y="84" fill="white" font-size="10" font-family="Inter" text-anchor="middle" font-weight="600">1.2k</text>
-    <circle cx="270" cy="60" r="10" fill="#0052CC" fill-opacity="0.85"/><text x="270" y="63" fill="white" font-size="8" font-family="Inter" text-anchor="middle" font-weight="600">86</text>
+    <circle cx="100" cy="50" r="14" fill="#165DFF" fill-opacity="0.85"/><text x="100" y="54" fill="white" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">328</text>
+    <circle cx="180" cy="80" r="18" fill="#165DFF" fill-opacity="0.85"/><text x="180" y="84" fill="white" font-size="10" font-family="Inter" text-anchor="middle" font-weight="600">1.2k</text>
+    <circle cx="270" cy="60" r="10" fill="#165DFF" fill-opacity="0.85"/><text x="270" y="63" fill="white" font-size="8" font-family="Inter" text-anchor="middle" font-weight="600">86</text>
     <circle cx="240" cy="100" r="6" fill="#CF1322"/>
     <circle cx="140" cy="100" r="6" fill="#CF1322"/>
     <circle cx="310" cy="40" r="5" fill="#D48806"/>
     <rect x="282" y="6" width="74" height="28" rx="4" fill="white" stroke="#E5E7EB"/>
-    <circle cx="294" cy="14" r="3" fill="#0052CC"/><text x="302" y="17" fill="#4B5563" font-size="8" font-family="Inter">在线</text>
+    <circle cx="294" cy="14" r="3" fill="#165DFF"/><text x="302" y="17" fill="#4B5563" font-size="8" font-family="Inter">在线</text>
     <circle cx="294" cy="26" r="3" fill="#CF1322"/><text x="302" y="29" fill="#4B5563" font-size="8" font-family="Inter">故障</text>
   </svg>
 </div>
@@ -96,17 +96,17 @@
     <rect width="360" height="130" fill="#FAFAFA"/>
     <pattern id="flowdot" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="#D9D9D9"/></pattern>
     <rect width="360" height="130" fill="url(#flowdot)"/>
-    <rect x="20" y="48" width="80" height="34" rx="6" fill="white" stroke="#0052CC" stroke-width="1.5"/>
-    <text x="60" y="62" fill="#0052CC" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">选择设备</text>
+    <rect x="20" y="48" width="80" height="34" rx="6" fill="white" stroke="#165DFF" stroke-width="1.5"/>
+    <text x="60" y="62" fill="#165DFF" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">选择设备</text>
     <text x="60" y="74" fill="#6B7280" font-size="8" font-family="Inter" text-anchor="middle">1,284 台</text>
     <path d="M100 65 L138 65" stroke="#A5C9FF" stroke-width="1.5" fill="none" marker-end="url(#flowarr)"/>
-    <rect x="140" y="48" width="80" height="34" rx="6" fill="white" stroke="#0052CC" stroke-width="1.5"/>
-    <text x="180" y="62" fill="#0052CC" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">选择固件包</text>
+    <rect x="140" y="48" width="80" height="34" rx="6" fill="white" stroke="#165DFF" stroke-width="1.5"/>
+    <text x="180" y="62" fill="#165DFF" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">选择固件包</text>
     <text x="180" y="74" fill="#6B7280" font-size="8" font-family="Inter" text-anchor="middle">v3.5.0</text>
     <path d="M220 65 L258 65" stroke="#A5C9FF" stroke-width="1.5" fill="none" marker-end="url(#flowarr)"/>
-    <rect x="260" y="48" width="80" height="34" rx="6" fill="#E6EFFB" stroke="#0052CC" stroke-width="1.5"/>
-    <text x="300" y="62" fill="#0052CC" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">推送策略</text>
-    <text x="300" y="74" fill="#0052CC" font-size="8" font-family="Inter" text-anchor="middle" font-weight="600">02:00 启动</text>
+    <rect x="260" y="48" width="80" height="34" rx="6" fill="#E8F3FF" stroke="#165DFF" stroke-width="1.5"/>
+    <text x="300" y="62" fill="#165DFF" font-size="9" font-family="Inter" text-anchor="middle" font-weight="600">推送策略</text>
+    <text x="300" y="74" fill="#165DFF" font-size="8" font-family="Inter" text-anchor="middle" font-weight="600">02:00 启动</text>
     <defs><marker id="flowarr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 8 5 L 0 10 z" fill="#A5C9FF"/></marker></defs>
   </svg>
 </div>
@@ -193,7 +193,7 @@
         <rect x="34" y="70" width="3" height="3"/><rect x="46" y="70" width="3" height="3"/>
       </g>
       <rect x="33" y="33" width="14" height="14" fill="white"/>
-      <rect x="34" y="34" width="12" height="12" fill="#0052CC"/>
+      <rect x="34" y="34" width="12" height="12" fill="#165DFF"/>
       <text x="40" y="44" fill="white" font-size="8" font-family="Inter" text-anchor="middle" font-weight="700">A</text>
     </svg>
   </div>

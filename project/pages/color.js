@@ -11,14 +11,14 @@
   <div class="token-pyramid">
     <svg class="pyramid-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <!-- Seed layer -->
-      <polygon points="300,12 420,12 440,62 280,62" fill="#0052CC"/>
+      <polygon points="300,12 420,12 440,62 280,62" fill="#165DFF"/>
       <text x="360" y="42" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="14" font-weight="600">Seed Tokens</text>
       <text x="360" y="56" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="Inter, sans-serif" font-size="10">设计师真正决策 · 6–8 个</text>
       <!-- arrow -->
-      <path d="M360 68 L360 80" stroke="#4A8BE0" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-      <text x="380" y="78" fill="#4A8BE0" font-family="Inter, sans-serif" font-size="10">algorithm 派生</text>
+      <path d="M360 68 L360 80" stroke="#4080FF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+      <text x="380" y="78" fill="#4080FF" font-family="Inter, sans-serif" font-size="10">algorithm 派生</text>
       <!-- Map layer -->
-      <polygon points="240,84 480,84 510,140 210,140" fill="#4A8BE0"/>
+      <polygon points="240,84 480,84 510,140 210,140" fill="#4080FF"/>
       <text x="360" y="114" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="14" font-weight="600">Map Tokens</text>
       <text x="360" y="128" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Inter, sans-serif" font-size="10">算法派生 · ~40 个</text>
       <!-- arrow -->
@@ -26,11 +26,11 @@
       <text x="380" y="156" fill="#7B9CCB" font-family="Inter, sans-serif" font-size="10">语义化映射</text>
       <!-- Alias layer -->
       <polygon points="170,162 550,162 590,210 130,210" fill="#A5C9FF"/>
-      <text x="360" y="190" text-anchor="middle" fill="#003D99" font-family="Inter, sans-serif" font-size="14" font-weight="600">Alias Tokens</text>
-      <text x="360" y="204" text-anchor="middle" fill="#003D99" font-family="Inter, sans-serif" font-size="10" opacity="0.8">业务消费层 · ~190 个</text>
+      <text x="360" y="190" text-anchor="middle" fill="#0E42D2" font-family="Inter, sans-serif" font-size="14" font-weight="600">Alias Tokens</text>
+      <text x="360" y="204" text-anchor="middle" fill="#0E42D2" font-family="Inter, sans-serif" font-size="10" opacity="0.8">业务消费层 · ~190 个</text>
       <defs>
         <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-          <path d="M 0 0 L 8 5 L 0 10 z" fill="#4A8BE0"/>
+          <path d="M 0 0 L 8 5 L 0 10 z" fill="#4080FF"/>
         </marker>
       </defs>
     </svg>
@@ -62,11 +62,11 @@
   <div class="subsection">
     <h3>品牌主色 <span style="font-size:11px;font-weight:400;color:var(--aw-text-3);margin-left:6px">每色标注 WCAG 对比度（vs 白底）</span></h3>
     <div class="brand-strip">
-      <div style="background:#003D99"><div><div class="name">Active</div><div class="lbl">--aw-primary-active</div></div><div>#003D99 <span class="wcag-badge aaa">10.4:1 · AAA ✓</span></div></div>
-      <div style="background:#0052CC"><div><div class="name">Primary</div><div class="lbl">--aw-primary</div></div><div>#0052CC <span class="wcag-badge aaa">7.2:1 · AAA ✓</span></div></div>
-      <div style="background:#1A6BDB"><div><div class="name">Hover</div><div class="lbl">--aw-primary-hover</div></div><div>#1A6BDB <span class="wcag-badge aa">5.5:1 · AA ✓</span></div></div>
-      <div style="background:#99BFEF;color:#003D99"><div><div class="name">Border</div><div class="lbl">--aw-primary-border</div></div><div>#99BFEF <span class="wcag-badge fail">2.0:1 · 仅装饰</span></div></div>
-      <div style="background:#E6EFFB;color:#0052CC"><div><div class="name">Bg</div><div class="lbl">--aw-primary-bg</div></div><div>#E6EFFB <span class="wcag-badge fail">1.1:1 · 仅背景</span></div></div>
+      <div style="background:#0E42D2"><div><div class="name">Active</div><div class="lbl">--aw-primary-active</div></div><div>#0E42D2 <span class="wcag-badge aaa">7.7:1 · AAA ✓</span></div></div>
+      <div style="background:#165DFF"><div><div class="name">Primary</div><div class="lbl">--aw-primary</div></div><div>#165DFF <span class="wcag-badge aa">5.2:1 · AA ✓</span></div></div>
+      <div style="background:#4080FF"><div><div class="name">Hover</div><div class="lbl">--aw-primary-hover</div></div><div>#4080FF <span class="wcag-badge fail">3.7:1 · AA Large</span></div></div>
+      <div style="background:#94BFFF;color:#0E42D2"><div><div class="name">Border</div><div class="lbl">--aw-primary-border</div></div><div>#94BFFF <span class="wcag-badge fail">1.9:1 · 仅装饰</span></div></div>
+      <div style="background:#E8F3FF;color:#165DFF"><div><div class="name">Bg</div><div class="lbl">--aw-primary-bg</div></div><div>#E8F3FF <span class="wcag-badge fail">1.1:1 · 仅背景</span></div></div>
     </div>
   </div>
 
@@ -119,7 +119,7 @@
         <div class="wcag-row"><span class="wcag-badge aa">6.4:1 · AA ✓</span></div>
       </div>
     </div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.6"><b style="color:var(--aw-text-2)">取值原则：</b>状态色统一在 antd v6 <b>-7 阶</b>取色,与品牌主色 <code>#0052CC</code> 同位,保持企业克制感而不发暗(原 -8/-9 阶在大面积文本上会发脏)。WCAG 正文 ≥ 4.5:1(AA)、大字标题 ≥ 3:1(AA Large)的标准下全部合格;Warning 单独使用时建议配合 <code>colorWarningBg</code> 浅底而非裸文本,以保证 contrast。Stylelint plugin 在 PR 阶段做自动化 contrast 校验。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.6"><b style="color:var(--aw-text-2)">取值原则：</b>状态色统一在 antd v6 <b>-7 阶</b>取色,与品牌主色 <code>#165DFF</code> 同位,保持企业克制感而不发暗(原 -8/-9 阶在大面积文本上会发脏)。WCAG 正文 ≥ 4.5:1(AA)、大字标题 ≥ 3:1(AA Large)的标准下全部合格;Warning 单独使用时建议配合 <code>colorWarningBg</code> 浅底而非裸文本,以保证 contrast。Stylelint plugin 在 PR 阶段做自动化 contrast 校验。</p>
   </div>
 
   <div class="subsection">
@@ -135,11 +135,11 @@
       <div class="hue-row" style="background:linear-gradient(90deg,#F6FFED,#B7EB8F,#52C41A,#389E0D,#092B00);"><span class="hue-label">Green · 绿</span><span class="hue-tag">success 取 #389E0D(antd green-7)</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#E6FFFB,#87E8DE,#13C2C2,#006D75,#022C33);"><span class="hue-label">Cyan · 青</span><span class="hue-tag">扩展位</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#E6F7FF,#91D5FF,#1677FF,#0958D9,#002766);"><span class="hue-label">Blue · 蓝</span><span class="hue-tag">info 取 #0958D9(antd blue-7)· chart-1 用 antd 默认 #1677FF(blue-6)</span></div>
-      <div class="hue-row" style="background:linear-gradient(90deg,#F0F5FF,#ADC6FF,#2F54EB,#10239E,#030852);"><span class="hue-label">Geekblue · 极客蓝</span><span class="hue-tag">primary 锚定 #0052CC(介于 6/7 阶之间)</span></div>
+      <div class="hue-row" style="background:linear-gradient(90deg,#F0F5FF,#ADC6FF,#2F54EB,#10239E,#030852);"><span class="hue-label">Geekblue · 极客蓝</span><span class="hue-tag">primary 锚定 #165DFF(介于 6/7 阶之间)</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#F9F0FF,#D3ADF7,#722ED1,#391085,#120338);"><span class="hue-label">Purple · 紫</span><span class="hue-tag">扩展位</span></div>
       <div class="hue-row" style="background:linear-gradient(90deg,#FFF0F6,#FFADD2,#EB2F96,#9E1068,#520339);"><span class="hue-label">Magenta · 洋红</span><span class="hue-tag">扩展位</span></div>
     </div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">取色规则:</b>状态色统一上调到 antd v6 <b>-7 阶</b>(比 antd 默认 -6 阶略沉,与 brand primary <code>#0052CC</code>(geekblue 6/7 之间)同位),既保持企业克制感又避免 -8/-9 阶在大面积文本上的浑浊。WCAG 全部通过 AA(正文 ≥ 4.5:1 / 大字 ≥ 3:1)。品牌主色选用 Geekblue 而非 Blue,避开 antd 默认 <code>#1677FF</code>,保持与 Arco / Material 视觉边界。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">取色规则:</b>状态色统一上调到 antd v6 <b>-7 阶</b>(比 antd 默认 -6 阶略沉,与 brand primary <code>#165DFF</code>(geekblue 6/7 之间)同位),既保持企业克制感又避免 -8/-9 阶在大面积文本上的浑浊。WCAG 全部通过 AA(正文 ≥ 4.5:1 / 大字 ≥ 3:1)。品牌主色选用 Geekblue 而非 Blue,避开 antd 默认 <code>#1677FF</code>,保持与 Arco / Material 视觉边界。</p>
   </div>
 
   <div class="subsection">
@@ -175,7 +175,7 @@
     <table class="map-table">
       <thead><tr><th style="width:34%">antd v6 token</th><th>AngelWatch 变量</th><th style="width:30%">值</th></tr></thead>
       <tbody>
-        <tr><td><code>colorPrimary</code></td><td><code>var(--aw-primary)</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td></tr>
+        <tr><td><code>colorPrimary</code></td><td><code>var(--aw-primary)</code></td><td><span class="swatch-inline" style="background:#165DFF"></span><code>#165DFF</code></td></tr>
         <tr><td><code>colorSuccess</code></td><td><code>var(--aw-success)</code></td><td><span class="swatch-inline" style="background:#389E0D"></span><code>#389E0D</code></td></tr>
         <tr><td><code>colorWarning</code></td><td><code>var(--aw-warning)</code></td><td><span class="swatch-inline" style="background:#D48806"></span><code>#D48806</code></td></tr>
         <tr><td><code>colorError</code></td><td><code>var(--aw-danger)</code></td><td><span class="swatch-inline" style="background:#CF1322"></span><code>#CF1322</code></td></tr>
@@ -194,9 +194,9 @@
       <thead><tr><th style="width:34%">Token</th><th>Light</th><th>Dark</th><th style="width:18%">语义</th></tr></thead>
       <tbody>
         <tr class="map-group"><td colspan="4">品牌色 · 暗色提亮 + 降饱和</td></tr>
-        <tr><td><code>--aw-primary</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td><td><span class="swatch-inline" style="background:#4A8BE0"></span><code>#4A8BE0</code></td><td>主操作</td></tr>
-        <tr><td><code>--aw-primary-hover</code></td><td><span class="swatch-inline" style="background:#1A6BDB"></span><code>#1A6BDB</code></td><td><span class="swatch-inline" style="background:#6BA3E8"></span><code>#6BA3E8</code></td><td>hover 态</td></tr>
-        <tr><td><code>--aw-primary-bg</code></td><td><span class="swatch-inline" style="background:#E6EFFB"></span><code>#E6EFFB</code></td><td><span class="swatch-inline" style="background:#0E2748"></span><code>#0E2748</code></td><td>浅底背景</td></tr>
+        <tr><td><code>--aw-primary</code></td><td><span class="swatch-inline" style="background:#165DFF"></span><code>#165DFF</code></td><td><span class="swatch-inline" style="background:#4080FF"></span><code>#4080FF</code></td><td>主操作</td></tr>
+        <tr><td><code>--aw-primary-hover</code></td><td><span class="swatch-inline" style="background:#4080FF"></span><code>#4080FF</code></td><td><span class="swatch-inline" style="background:#6AA1FF"></span><code>#6AA1FF</code></td><td>hover 态</td></tr>
+        <tr><td><code>--aw-primary-bg</code></td><td><span class="swatch-inline" style="background:#E8F3FF"></span><code>#E8F3FF</code></td><td><span class="swatch-inline" style="background:#0F2A52"></span><code>#0F2A52</code></td><td>浅底背景</td></tr>
         <tr class="map-group"><td colspan="4">文本 · Dark 用 rgba 白色梯度</td></tr>
         <tr><td><code>--aw-text-1</code></td><td><span class="swatch-inline" style="background:#1F2937"></span><code>#1F2937</code></td><td><span class="swatch-inline" style="background:#fff"></span><code>rgba(255,255,255,.92)</code></td><td>主标题</td></tr>
         <tr><td><code>--aw-text-2</code></td><td><span class="swatch-inline" style="background:#4B5563"></span><code>#4B5563</code></td><td><span class="swatch-inline" style="background:#fff;opacity:.72"></span><code>rgba(255,255,255,.72)</code></td><td>正文</td></tr>
@@ -208,9 +208,9 @@
         <tr><td><code>--aw-fill-1</code></td><td><span class="swatch-inline" style="background:#FAFAFA"></span><code>#FAFAFA</code></td><td><span class="swatch-inline" style="background:#1B1F27"></span><code>#1B1F27</code></td><td>表头 / hover</td></tr>
         <tr class="map-group"><td colspan="4">侧边栏 · Light 白底（Linear/Notion 路线），Dark 保留深色渐变</td></tr>
         <tr><td><code>--aw-sidebar-bg</code></td><td><span class="swatch-inline" style="background:#FFFFFF;border:1px solid #E5E7EB"></span><code>#FFFFFF</code></td><td><span class="swatch-inline" style="background:#1A1D23"></span><code>#1A1D23</code></td><td>侧栏底</td></tr>
-        <tr><td><code>--aw-sidebar-bg-active</code></td><td><span class="swatch-inline" style="background:#E6F0FF"></span><code>#E6F0FF</code></td><td><span class="swatch-inline" style="background:rgba(255,255,255,0.08);border:1px solid #2D323C"></span><code>rgba(255,255,255,.08)</code></td><td>选中项底色</td></tr>
-        <tr><td><code>--aw-sidebar-text-active</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td><td><span class="swatch-inline" style="background:#FFFFFF;border:1px solid #2D323C"></span><code>#FFFFFF</code></td><td>选中文字</td></tr>
-        <tr><td><code>--aw-sidebar-indicator</code></td><td><span class="swatch-inline" style="background:#0052CC"></span><code>#0052CC</code></td><td><span class="swatch-inline" style="background:#4A8BE0"></span><code>#4A8BE0</code></td><td>3px 左侧 indicator bar</td></tr>
+        <tr><td><code>--aw-sidebar-bg-active</code></td><td><span class="swatch-inline" style="background:#E8F3FF"></span><code>#E8F3FF</code></td><td><span class="swatch-inline" style="background:rgba(255,255,255,0.08);border:1px solid #2D323C"></span><code>rgba(255,255,255,.08)</code></td><td>选中项底色</td></tr>
+        <tr><td><code>--aw-sidebar-text-active</code></td><td><span class="swatch-inline" style="background:#165DFF"></span><code>#165DFF</code></td><td><span class="swatch-inline" style="background:#FFFFFF;border:1px solid #2D323C"></span><code>#FFFFFF</code></td><td>选中文字</td></tr>
+        <tr><td><code>--aw-sidebar-indicator</code></td><td><span class="swatch-inline" style="background:#165DFF"></span><code>#165DFF</code></td><td><span class="swatch-inline" style="background:#4080FF"></span><code>#4080FF</code></td><td>3px 左侧 indicator bar</td></tr>
         <tr class="map-group"><td colspan="4">状态色 · light 取 antd -7 阶,dark 提亮到 -6 阶保对比度</td></tr>
         <tr><td><code>--aw-success</code></td><td><span class="swatch-inline" style="background:#389E0D"></span><code>#389E0D</code></td><td><span class="swatch-inline" style="background:#52C41A"></span><code>#52C41A</code></td><td>在线 / 成功</td></tr>
         <tr><td><code>--aw-warning</code></td><td><span class="swatch-inline" style="background:#D48806"></span><code>#D48806</code></td><td><span class="swatch-inline" style="background:#FAAD14"></span><code>#FAAD14</code></td><td>升级 / 警告</td></tr>

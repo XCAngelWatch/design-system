@@ -12,7 +12,7 @@
       <thead><tr><th style="width:18%">维度</th><th style="width:24%">antd 默认</th><th style="width:24%">TMS 覆盖</th><th>覆盖位置</th></tr></thead>
       <tbody>
         <tr class="map-group"><td colspan="4">Token 层 · theme.token</td></tr>
-        <tr><td>colorPrimary</td><td><span class="mono">#1677FF</span></td><td><span class="mono">#0052CC</span></td><td><code>theme.token.colorPrimary</code></td></tr>
+        <tr><td>colorPrimary</td><td><span class="mono">#1677FF</span></td><td><span class="mono">#165DFF</span></td><td><code>theme.token.colorPrimary</code></td></tr>
         <tr><td>motionEaseInOut</td><td><span class="mono">cubic-bezier(.645,.045,.355,1)</span></td><td><span class="mono">cubic-bezier(.34,.69,.1,1)</span></td><td><code>theme.token.motionEaseInOut</code></td></tr>
         <tr><td>motionDurationSlow</td><td>0.3s</td><td>0.32s</td><td><code>theme.token.motionDurationSlow</code></td></tr>
         <tr><td>borderRadius</td><td>6</td><td>6</td><td>同 ✓ 不需覆盖</td></tr>

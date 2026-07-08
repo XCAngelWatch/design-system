@@ -39,7 +39,7 @@
       <div class="sub">登录到 TMS 控制台</div>
       <div class="lr-field"><label>账号</label><input class="input" placeholder="用户名 / 邮箱 / 工号" /></div>
       <div class="lr-field"><label>密码</label><div style="position:relative"><input class="input" type="password" value="••••••••" /><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--aw-text-3);cursor:pointer">👁</span></div></div>
-      <div class="lr-field"><label>验证码</label><div class="row" style="gap:8px"><input class="input" placeholder="6 位字符" style="flex:1" /><div style="width:100px;height:32px;background:linear-gradient(135deg,#E6EFFB,#CCDFF7);border:1px solid var(--aw-border-2);border-radius:6px;display:grid;place-items:center;font-family:var(--aw-font-mono);font-size:14px;color:var(--aw-primary);font-weight:600;letter-spacing:2px;cursor:pointer">7K2N9</div></div></div>
+      <div class="lr-field"><label>验证码</label><div class="row" style="gap:8px"><input class="input" placeholder="6 位字符" style="flex:1" /><div style="width:100px;height:32px;background:linear-gradient(135deg,#E8F3FF,#CCDFF7);border:1px solid var(--aw-border-2);border-radius:6px;display:grid;place-items:center;font-family:var(--aw-font-mono);font-size:14px;color:var(--aw-primary);font-weight:600;letter-spacing:2px;cursor:pointer">7K2N9</div></div></div>
       <div class="lr-row"><label class="check"><input type="checkbox" checked /><span class="box"></span>记住账号</label><a>忘记密码？</a></div>
       <button class="btn btn-primary btn-lg" style="width:100%">登录</button>
       <div style="margin-top:18px;font-size:12px;color:var(--aw-text-3);text-align:center">使用 SSO 登录 · <a style="color:var(--aw-primary);text-decoration:none">单点登录 →</a></div>
@@ -144,7 +144,7 @@
         <div class="pz-cap">①  初始 · 触发</div>
         <div class="pz-frame">
           <div class="pz-bg">
-            <svg viewBox="0 0 260 130" preserveAspectRatio="none"><defs><linearGradient id="pz1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0052CC" stop-opacity="0.18"/><stop offset="1" stop-color="#7B2CBF" stop-opacity="0.18"/></linearGradient></defs><rect width="260" height="130" fill="url(#pz1)"/><circle cx="80" cy="40" r="24" fill="rgba(255,255,255,0.5)"/><rect x="160" y="70" width="50" height="40" rx="4" fill="rgba(255,255,255,0.5)"/></svg>
+            <svg viewBox="0 0 260 130" preserveAspectRatio="none"><defs><linearGradient id="pz1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#165DFF" stop-opacity="0.18"/><stop offset="1" stop-color="#7B2CBF" stop-opacity="0.18"/></linearGradient></defs><rect width="260" height="130" fill="url(#pz1)"/><circle cx="80" cy="40" r="24" fill="rgba(255,255,255,0.5)"/><rect x="160" y="70" width="50" height="40" rx="4" fill="rgba(255,255,255,0.5)"/></svg>
             <div class="pz-hole" style="left:172px"></div>
             <div class="pz-piece" style="left:8px"></div>
           </div>

@@ -567,7 +567,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
   line-height: 1.7; overflow-x: auto;
   border: 1px solid var(--aw-border-2);
 }
-.code .k { color: #6BA3E8; }
+.code .k { color: #6AA1FF; }
 .code .s { color: #52C41A; }
 .code .c { color: #6B7785; }
 
@@ -819,7 +819,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
   border: 1px solid var(--aw-border-2);
 }
 .login-mock .panel-left {
-  background: linear-gradient(135deg, #003D99 0%, #0052CC 50%, #1A6BDB 100%);
+  background: linear-gradient(135deg, #0E42D2 0%, #165DFF 50%, #4080FF 100%);
   color: white; padding: 40px; position: relative;
   display: flex; flex-direction: column; justify-content: space-between;
   overflow: hidden;

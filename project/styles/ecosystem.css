@@ -309,7 +309,7 @@
   user-select: none;
 }
 .code-mock .cm-key { color: #C5CAD2; }
-.code-mock .cm-prop { color: #6BA3E8; }
+.code-mock .cm-prop { color: #6AA1FF; }
 .code-mock .cm-str { color: #A5D6A7; }
 .code-mock .cm-cursor {
   display: inline-block;
@@ -473,7 +473,7 @@
   letter-spacing: 0.3px;
 }
 .tech-table .lic.mit { background: #F6FFED; color: #389E0D; }
-.tech-table .lic.apache { background: #E6EFFB; color: #0052CC; }
+.tech-table .lic.apache { background: #E8F3FF; color: #165DFF; }
 .tech-table .lic.bsd { background: #FFFBE6; color: #D48806; }
 .tech-table .lic.isc { background: #F5F5F5; color: #4B5563; }
 .tech-foot {
@@ -489,6 +489,6 @@
 
 /* Dark mode tech table */
 [data-theme="dark"] .tech-table .lic.mit { background: rgba(56, 158, 13, 0.18); color: #52C41A; }
-[data-theme="dark"] .tech-table .lic.apache { background: rgba(0, 82, 204, 0.18); color: #4A8BE0; }
+[data-theme="dark"] .tech-table .lic.apache { background: rgba(0, 82, 204, 0.18); color: #4080FF; }
 [data-theme="dark"] .tech-table .lic.bsd { background: rgba(212, 136, 6, 0.18); color: #FAAD14; }
 [data-theme="dark"] .tech-table .lic.isc { background: rgba(255, 255, 255, 0.06); color: rgba(255,255,255,0.72); }

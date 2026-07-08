@@ -149,17 +149,17 @@
   <div class="use">操作、主按钮、链接、信息提示。</div>
 </div>
 <div class="ep-shades">
-  <div class="sh" style="background:#E6EFFB;color:#002766"><div class="step">25</div><div class="hx">#E6EFFB</div></div>
-  <div class="sh" style="background:#99BFEF;color:#002766"><div class="step">100</div><div class="hx">#99BFEF</div></div>
-  <div class="sh" style="background:#1A6BDB;color:white"><div class="step">500</div><div class="hx">#1A6BDB</div></div>
-  <div class="sh" style="background:#0052CC;color:white"><div class="step">700</div><div class="hx">#0052CC</div></div>
+  <div class="sh" style="background:#E8F3FF;color:#002766"><div class="step">25</div><div class="hx">#E8F3FF</div></div>
+  <div class="sh" style="background:#94BFFF;color:#002766"><div class="step">100</div><div class="hx">#94BFFF</div></div>
+  <div class="sh" style="background:#4080FF;color:white"><div class="step">500</div><div class="hx">#4080FF</div></div>
+  <div class="sh" style="background:#165DFF;color:white"><div class="step">700</div><div class="hx">#165DFF</div></div>
   <div class="sh" style="background:#002766;color:white"><div class="step">900</div><div class="hx">#002766</div></div>
 </div>
 <div class="ep-example">
   <span class="label-text">业务示例 · 操作 / 信息</span>
-  <span class="ep-tag" style="background:#E6EFFB;color:#0052CC;border-color:#99BFEF">推送中</span>
-  <span class="ep-tag" style="background:#0052CC;color:white;border-color:#0052CC">主操作</span>
-  <span class="ep-tag" style="background:#fff;color:#0052CC;border-color:#99BFEF">查看详情</span>
+  <span class="ep-tag" style="background:#E8F3FF;color:#165DFF;border-color:#94BFFF">推送中</span>
+  <span class="ep-tag" style="background:#165DFF;color:white;border-color:#165DFF">主操作</span>
+  <span class="ep-tag" style="background:#fff;color:#165DFF;border-color:#94BFFF">查看详情</span>
 </div>
     </div>
 

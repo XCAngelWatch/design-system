@@ -51,7 +51,7 @@
 .ls-ipt-row { display: flex; gap: 8px; }
 .ls-cap-img {
   width: 84px; height: 32px;
-  background: linear-gradient(135deg, #E6EFFB, #CCDFF7);
+  background: linear-gradient(135deg, #E8F3FF, #CCDFF7);
   border: 1px solid var(--aw-border-2);
   border-radius: var(--aw-radius);
   display: grid; place-items: center;

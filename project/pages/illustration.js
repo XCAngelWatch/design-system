@@ -80,7 +80,7 @@
         <div class="tc-tag">☀ Light</div>
         <div class="tc-stack">
           <div style="text-align:center;padding:24px 0">
-            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#0052CC;width:120px;height:auto">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#165DFF;width:120px;height:auto">
               <rect x="10" y="20" width="80" height="50" rx="4"/>
               <rect x="20" y="30" width="30" height="6" rx="1"/>
               <rect x="20" y="42" width="60" height="6" rx="1"/>
@@ -94,7 +94,7 @@
         <div class="tc-tag">🌙 Dark</div>
         <div class="tc-stack">
           <div style="text-align:center;padding:24px 0">
-            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#4A8BE0;width:120px;height:auto">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:#4080FF;width:120px;height:auto">
               <rect x="10" y="20" width="80" height="50" rx="4"/>
               <rect x="20" y="30" width="30" height="6" rx="1"/>
               <rect x="20" y="42" width="60" height="6" rx="1"/>
