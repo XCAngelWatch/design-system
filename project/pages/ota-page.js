@@ -43,7 +43,7 @@
         <!-- 工具栏 -->
         <div class="lp-actions">
           <div class="row" style="gap:6px">
-            <button class="btn btn-primary btn-sm">+ 添加</button>
+            <button class="btn btn-primary btn-sm">+ 添加升级包</button>
             <button class="btn btn-sm">推送日志</button>
           </div>
           <div class="row" style="gap:6px">

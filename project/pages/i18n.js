@@ -160,7 +160,7 @@
           <tr><td>nav.devices</td><td>设备管理</td><td>Devices</td><td>Dispositivos</td><td>Dispositivos</td></tr>
           <tr><td>nav.ota</td><td>OTA 升级</td><td>OTA Upgrade</td><td>Actualización OTA</td><td>Atualização OTA</td></tr>
           <tr><td>action.batchUpgrade</td><td>批量升级</td><td>Batch Upgrade</td><td>Actualización masiva</td><td>Atualização em lote</td></tr>
-          <tr><td>btn.confirmSave</td><td>确认保存</td><td>Confirm Save</td><td>Confirmar guardado</td><td>Confirmar salvamento</td></tr>
+          <tr><td>btn.saveSettings</td><td>保存设置</td><td>Save Settings</td><td>Guardar configuración</td><td>Salvar configurações</td></tr>
           <tr><td>col.lastOnline</td><td>最后心跳</td><td>Last Online</td><td>Última conexión</td><td>Última conexão</td></tr>
           <tr><td>status.upgrading</td><td>升级中</td><td>Upgrading</td><td>Actualizando</td><td>Atualizando</td></tr>
           <tr><td>placeholder.search</td><td>搜索 SN / 名称 / 负责人</td><td>Search by SN, name, owner</td><td>Buscar por SN, nombre o responsable</td><td>Pesquisar por SN, nome ou responsável</td></tr>

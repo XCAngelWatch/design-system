@@ -2,7 +2,7 @@
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["user-mgmt-page"] = `
 <div class="content">
 <section class="section" id="user-mgmt-page">
-  <p class="section-eyebrow">Patterns · 账号权限</p>
+  <p class="section-eyebrow">Patterns · 账户权限</p>
   <h2>账户权限 UserMgmtPage</h2>
   <p class="lede">账户权限页管理账号、机构、角色、菜单权限和数据权限。权限文案必须说明作用域、影响对象和保存后的结果。</p>
 
@@ -40,7 +40,7 @@
 
         <div class="lp-actions">
           <div class="row" style="gap:6px">
-            <button class="btn btn-primary btn-sm">+ 添加</button>
+            <button class="btn btn-primary btn-sm">+ 添加账号</button>
           </div>
           <span class="meta" style="font-size:12px;color:var(--aw-text-3)">上海运营中心 · 18 名成员</span>
         </div>
@@ -142,7 +142,7 @@
         </div>
         <div class="foot">
           <button class="btn">取消</button>
-          <button class="btn btn-primary">保存</button>
+          <button class="btn btn-primary">完成添加</button>
         </div>
       </div>
     </div>
