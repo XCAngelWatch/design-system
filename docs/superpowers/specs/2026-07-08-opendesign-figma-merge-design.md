@@ -56,6 +56,21 @@ Exclude old-system, discarded, and temporary Figma content:
 
 Historic Vue 2 / Element UI observations from the OpenDesign package are useful evidence, but must not override current Ant Design v6 tokens, naming, architecture, or rules.
 
+## Current Project Inventory Requirement
+
+Before changing runtime pages or CSS, implementation must inventory the current design-system project and record the findings in the implementation notes or a committed source/coverage page. This prevents overwriting existing standards while merging the OpenDesign material.
+
+The inventory must cover:
+
+- Route inventory: every `project/pages/*.js` fragment, its `__AW_PAGES__` key, corresponding `_router.js` route, label, and group.
+- Existing coverage: which routes already cover foundation, general components, business components, page templates, ecosystem, and standards.
+- CSS inventory: each `project/styles/*.css` file, its responsibility, and whether new rules should extend it or require a new responsibility-named CSS file.
+- Token inventory: current `tokens.css` light/dark values, hardcoded color swatches used only for documentation, and any mismatch with `AGENTS.md` guidance that must be corrected or explicitly left untouched.
+- Asset inventory: existing local assets, external references kept only for legacy reasons, and any new asset destinations needed for OpenDesign imports.
+- Prohibited-pattern baseline: current matches for version badges, state-machine classes, old TMS 1.0 copy, runtime CDN additions, and hardcoded colors outside documentation swatches.
+
+This inventory is a design input, not a new runtime dependency. It may be summarized in a section of the Figma coverage page instead of shipping a large generated report.
+
 ## Information Architecture
 
 Keep the existing seven navigation groups. Do not create a second parallel design system.
@@ -169,6 +184,14 @@ Rules:
 - Continue using `var(--aw-*)` in examples.
 - Avoid hardcoded hex values in new CSS except where the existing style layer intentionally documents a color swatch.
 
+Primary-color mapping must be explicit:
+
+- `#0052CC` is the canonical light-mode brand primary. It maps to light `--aw-primary`, AntD `colorPrimary`, primary buttons, active links, selected states, sidebar active text, and sidebar indicator.
+- `#4080FF` is the dark-surface primary adaptation. It maps to dark `[data-theme="dark"] --aw-primary`, dark AntD `colorPrimary`, dark selected states, and dark sidebar indicator.
+- `#4080FF` must not be described as a separate brand color; it is the accessible dark-mode rendering of the same primary role.
+- OpenDesign/Figma `#165DFF` maps to a historical source observation only. For primary affordances in new documentation, translate it to `#0052CC` in light mode and `#4080FF` in dark mode through tokens.
+- New HTML/CSS examples must reference these through `var(--aw-primary)` and related variables. Raw hex is allowed only inside documentation swatches that are explicitly showing token values.
+
 ### Assets
 
 Copy only necessary assets into the project, preferably under:
@@ -181,6 +204,8 @@ Asset rules:
 - Do not add runtime CDN dependencies.
 - Do not copy all 119 assets unless a page uses them.
 - Prefer CSS/HTML reconstructions for generic UI; use image assets only for logos, screenshots, or visual evidence that cannot be represented cleanly.
+- Record asset provenance for every copied file in `project/assets/opendesign/PROVENANCE.md`.
+- Each provenance row must include destination path, original OpenDesign path, source Figma node/frame or asset filename when known, SHA-256 hash, intended page/use, and whether the asset is source evidence or runtime UI.
 
 ## Styling Plan
 
@@ -221,8 +246,8 @@ console.log(ok + ' / ' + files.length + ' pages registered ✓');
 python3 -c "
 import re, glob
 js = open('project/pages/_router.js').read()
-m = re.search(r'var ROUTES = \\[([\\s\\S]*?)\\];', js)
-ids_in_js = set(re.findall(r\"\\['([^']+)',\", m.group(1)))
+m = re.search(r'var ROUTES = \[([\s\S]*?)\];', js)
+ids_in_js = set(re.findall(r"\['([^']+)',", m.group(1)))
 files = {p.split('/')[-1].rsplit('.',1)[0] for p in glob.glob('project/pages/*.js') if not p.endswith('_router.js')}
 print('only in router:', ids_in_js - files)
 print('only on disk:  ', files - ids_in_js)
@@ -244,10 +269,28 @@ print('balanced ✓' if all(o==c for t,(o,c) in p.s.items() if t not in void) el
 ```
 
 ```bash
-grep -rnE 'class="new-tag"|class="v">v[0-9]+\\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\\.0/|撤回 v1|（同 v1' project/
+if grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\.0/|撤回 v1|（同 v1' project/; then
+  echo 'FORBIDDEN PATTERN FOUND ✗'
+  exit 1
+else
+  echo 'forbidden patterns clear ✓'
+fi
 ```
 
-Also open the site locally and inspect:
+Then run a local preview with no server dependency:
+
+```bash
+open project/index.html
+```
+
+Inspect representative hash routes directly in the opened browser:
+
+- `#/overview` or `#/cases` for the coverage matrix.
+- `#/table`, `#/data-cards`, `#/status-matrix`, and `#/row-actions` for shared component backfill.
+- `#/market-page`, `#/device-center-page`, `#/map-page`, `#/service-page`, and `#/ops-page` for new module blueprints.
+- `#/ota-page`, `#/push-page`, and `#/user-mgmt-page` for existing module templates enhanced from Figma.
+
+During preview, verify:
 
 - New routes render.
 - Sidebar and toolbar still work.
@@ -257,18 +300,34 @@ Also open the site locally and inspect:
 
 ## Implementation Phases
 
-### Phase 1: Source Index And Coverage Matrix
+### Phase 1: Inventory, Source Index, And Coverage Matrix
 
-Add coverage documentation to 导览/规范:
+Inventory the current design-system project, then add coverage documentation to 导览/规范:
 
+- Current route, CSS, token, asset, and prohibited-pattern baseline.
 - Business module coverage.
 - Source files and paths.
 - Exclusion list.
 - Mapping from Figma modules to design-system pages.
 
-### Phase 2: Module Blueprint Pages
+### Phase 2: Shared Component And Template Backfill
 
-Add and route the module blueprint pages:
+Enhance existing foundation, component, business-component, and template pages first, so module blueprints can point to shared rules instead of duplicating them:
+
+- `table`
+- `data-cards`
+- `status-matrix`
+- `row-actions`
+- `upload`
+- `tree-comp`
+- `feedback` / `drawer`
+- `ota-page`
+- `push-page`
+- `user-mgmt-page`
+
+### Phase 3: Module Blueprint Pages
+
+Add and route the module blueprint pages, aligned to the approved module coverage:
 
 - `market-page`
 - `device-center-page`
@@ -276,17 +335,15 @@ Add and route the module blueprint pages:
 - `service-page`
 - `ops-page`
 
-### Phase 3: Existing Page Backfill
+Keep the existing `ota-page`, `push-page`, and `user-mgmt-page` as module-level templates rather than duplicating them as new blueprint pages.
 
-Enhance the existing component and template pages listed in this spec so the module pages can point to shared rules instead of duplicating every detail.
+### Phase 4: Style, Asset, And Provenance Consolidation
 
-### Phase 4: Style And Asset Consolidation
+Add necessary CSS and local assets while preserving current token and CSS layering rules. If assets are copied, add `project/assets/opendesign/PROVENANCE.md` in the same phase.
 
-Add necessary CSS and local assets while preserving current token and CSS layering rules.
+### Phase 5: Local Preview, Verification, And Delivery Notes
 
-### Phase 5: Verification And Delivery Notes
-
-Run validation commands, inspect key pages, and summarize coverage, changed files, and residual limitations.
+Run validation commands, inspect key routes through `open project/index.html`, and summarize coverage, changed files, asset provenance, and residual limitations.
 
 ## Out Of Scope
 
@@ -303,8 +360,11 @@ The work is successful when:
 
 - The current AntD v6 design-system rules remain intact.
 - The Figma/OpenDesign new interface coverage is visible by business module.
-- The module blueprint pages cover the major Figma domains: app market, OTA, push tasks, device center, device map, account/operations, data statistics, value-added services, and system management.
-- Existing component/template pages are enriched with the cross-cutting patterns from Figma.
+- Shared component/template pages are enriched before module blueprints depend on them.
+- The blueprint/template module list is covered as follows: `market-page` for app market; `ota-page` for OTA; `push-page` for push tasks; `device-center-page` for device center; `map-page` for device map; `service-page` for value-added services; `ops-page` for account/operations, data statistics, and system management; `user-mgmt-page` for detailed user-management examples linked from operations.
+- `#0052CC` and `#4080FF` are mapped only through the approved light/dark primary token roles, and `#165DFF` is not reintroduced as a primary.
 - Runtime remains static, local, buildless, and `file://` compatible.
+- Local preview instructions are documented and verified.
+- Copied OpenDesign assets, if any, have provenance records.
 - Static validation passes.
 - The site contains no prohibited version-badge, old state-machine, or old-system regression content.
