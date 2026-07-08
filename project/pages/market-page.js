@@ -35,8 +35,8 @@
           <table class="dt">
             <thead><tr><th>应用</th><th>包名</th><th>版本</th><th>分类</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead>
             <tbody>
-              <tr><td><b>Android terminal Guard</b></td><td><code>com.aw.guard</code></td><td>3.5.0</td><td>安全</td><td><span class="status-dot online">已上架</span></td><td>今天 09:12</td><td><a>详情</a> · <a>版本</a> · <a>下架</a></td></tr>
-              <tr><td><b>Route Sync</b></td><td><code>com.aw.route</code></td><td>2.8.1</td><td>导航</td><td><span class="status-dot upgrading">待审核</span></td><td>昨天 18:44</td><td><a>审核</a> · <a>修改</a> · <a>驳回</a></td></tr>
+              <tr><td><b>Terminal Guard</b></td><td><code>com.aw.guard</code></td><td>3.5.0</td><td>安全</td><td><span class="status-dot online">已上架</span></td><td>今天 09:12</td><td><a>详情</a> · <a>版本</a> · <a>下架</a></td></tr>
+              <tr><td><b>Policy Sync</b></td><td><code>com.aw.policy</code></td><td>2.8.1</td><td>策略同步</td><td><span class="status-dot upgrading">待审核</span></td><td>昨天 18:44</td><td><a>审核</a> · <a>修改</a> · <a>驳回</a></td></tr>
               <tr><td><b>Device Tools</b></td><td><code>com.aw.tools</code></td><td>1.9.4</td><td>工具</td><td><span class="status-dot offline">已下架</span></td><td>周一 11:03</td><td><a>详情</a> · <a>重新上架</a></td></tr>
             </tbody>
           </table>

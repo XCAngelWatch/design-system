@@ -8,7 +8,7 @@
   <p class="lede">Inter 拉丁字符 + Source Han Sans CN 中文字符，自托管 woff2，离线可用。8 级字阶，4-pt 对齐。基础字号 14 / 22 与 Ant Design v6 一致；字重严格控制在三档（Regular 400 / Medium 500 / Semibold 600），同一界面通常只用 Regular + Medium 两档。</p>
   <div class="surface" style="padding:8px 24px">
     <div class="type-row"><div class="meta"><strong>Display</strong>48 / 56 · 600</div><div class="meta">--aw-fs-48</div><div style="font-size:48px;font-weight:600;line-height:1.1;letter-spacing:-0.8px">设备总览</div></div>
-    <div class="type-row"><div class="meta"><strong>H1</strong>30 / 40 · 600</div><div class="meta">--aw-fs-30</div><div style="font-size:30px;font-weight:600;line-height:1.3;letter-spacing:-0.3px">Android terminal Operations</div></div>
+    <div class="type-row"><div class="meta"><strong>H1</strong>30 / 40 · 600</div><div class="meta">--aw-fs-30</div><div style="font-size:30px;font-weight:600;line-height:1.3;letter-spacing:-0.3px">终端运维中心</div></div>
     <div class="type-row"><div class="meta"><strong>H2</strong>24 / 32 · 600</div><div class="meta">--aw-fs-24</div><div style="font-size:24px;font-weight:600;line-height:1.3">激活设备数</div></div>
     <div class="type-row"><div class="meta"><strong>H3</strong>20 / 28 · 600</div><div class="meta">--aw-fs-20</div><div style="font-size:20px;font-weight:600;line-height:1.4">设备详情 / Detail</div></div>
     <div class="type-row"><div class="meta"><strong>H4</strong>16 / 24 · 500</div><div class="meta">--aw-fs-16</div><div style="font-size:16px;font-weight:500;line-height:1.5">区块标题</div></div>
