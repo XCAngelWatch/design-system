@@ -6,11 +6,28 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 
 ## Filtering Rules
 
-Product-copy frequency tables exclude structural design annotations, component/state labels, upload-control variants, and pure design notes. Real short UI strings such as `台`, `近7日`, `账号`, and `密码` are preserved when they come from visible Figma text.
+Product-copy tables use visible `TEXT.text` first, then `characters`, then `name` only as a fallback. They exclude structural, component, state, design-review, and designer-note annotations so module tables stay focused on user-facing product copy.
+
+Design-language signals are collected separately when useful. Real short UI strings such as `台`, `近7日`, `账号`, `密码`, `验证码`, `上传中`, `上传失败`, and `上传成功` are preserved when they come from visible Figma text.
+
+## Design Language Signals
+
+These are tone and visual-language signals from the Figma file, not final UI copy.
+
+| Signal | Count |
+| --- | ---: |
+| 轻盈 | 1 |
+| 科技感 | 3 |
+| 洁净 | 1 |
+| 冷静 | 2 |
+| 效率 | 3 |
+| 蓝色-效率、冷静、科技感 | 1 |
+| 白色半透玻璃 | 1 |
+| 高反射银色金属点缀 | 1 |
 
 ## 登陆页
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 请输入你的账号 | 13 |
 | 请输入你的密码 | 12 |
@@ -23,10 +40,8 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 请输入右侧验证码 | 5 |
 | 简体中文 | 5 |
 | English | 5 |
-| 设计风格参考 | 3 |
 | 记住密码 | 3 |
 | 蓝色渐变玻璃 | 2 |
-| ·鼠标悬停，显示下拉菜单 | 2 |
 | 语言切换 | 2 |
 | 用户管理 | 2 |
 | 邮箱验证 | 2 |
@@ -38,29 +53,11 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 验证码已发送至邮箱 788adakdsj@Hotmail.com | 2 |
 | 验证码 | 2 |
 | 台 | 2 |
-| 设计风格关键词 | 1 |
-| 轻盈 | 1 |
-| 科技感 | 1 |
-| 洁净 | 1 |
-| 冷静 | 1 |
-| 效率 | 1 |
 | 表现造型关键词： | 1 |
 | 互联互通，无人化，云端 | 1 |
-| 设计色彩关键词： | 1 |
-| 蓝色-效率、冷静、科技感 | 1 |
-| 白色-效率 | 1 |
-| 银色-科技感 | 1 |
 | 白色为主，点缀蓝色渐变及金属银色 | 1 |
-| 设计质感关键词： | 1 |
-| 白色半透玻璃 | 1 |
-| 高反射银色金属点缀 | 1 |
-| 设计说明 | 1 |
-| 设计主题：云核心 | 1 |
 | 采用芯片和云的元素，体现系统作为线上核心统筹公司各方面业务，高效处理工作，管理统合能力强大。 | 1 |
 | Angel Watch ｜ A.1.0  \|  <br>客服电话：0571 - 2312 2323 | 1 |
-| 鼠标悬停<br>·更改【指示箭头】图标 + 显示下拉菜单<br>·默认选中当前使用的语言 | 1 |
-| 鼠标移除【语言选择框+下拉菜单框】<br>·恢复默认 | 1 |
-| ·鼠标悬停，显示下拉菜单<br>·鼠标点击，切换上一个语言 | 1 |
 | 主题配置 | 1 |
 | ·卡片投影<br>·数字动效<br>·图标动效 | 1 |
 | 运用了摄像头的元素，体现了公司智能人脸识别办公的业务。 | 1 |
@@ -71,8 +68,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 语言：英文 | 1 |
 | 账号 | 1 |
 | 密码 | 1 |
-| 点击【显示密码】 | 1 |
-| 默认-无历史记录 | 1 |
 | 输出-出错 | 1 |
 | 输出-最多字符 | 1 |
 | 历史输入账号-最多记录 5 个 | 1 |
@@ -101,7 +96,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 首页
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 台 | 36 |
 | 解锁设备 | 10 |
@@ -122,15 +117,12 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 折线图｜ 列表 | 3 |
 | 最近访问 | 2 |
 | 2023版 | 2 |
-| 点击下载 | 2 |
 | 产品动态 | 2 |
 | 查看更多 | 2 |
 | 设备活跃数据 | 2 |
 | 活动 | 2 |
 | 内容最新优惠活动 | 2 |
 | 消息 | 2 |
-| 新增内容尚未通过审核，详情请点击查看。 | 2 |
-| 当前产品试用期即将结束，如需续费请点击查看。 | 2 |
 | 1 月新系统升级计划通知 | 2 |
 | 活跃设备 | 2 |
 | OTA升级管理 | 2 |
@@ -140,7 +132,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 应用市场
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 有言科技 | 41 |
 | Areeba_001 | 35 |
@@ -149,7 +141,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 更新时间 | 19 |
 | New_param_4011 | 16 |
 | Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 12 |
-| user.png | 12 |
 | 包名 | 11 |
 | 截图 | 11 |
 | 基本信息 | 10 |
@@ -175,7 +166,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 上传成功 | 4 |
 | 修改 | 4 |
 | Tactile Ad | 4 |
-| 正常 | 3 |
 | 已输入 | 3 |
 | 更多 | 3 |
 | P | 3 |
@@ -184,28 +174,13 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 增值服务 | 3 |
 | 系统管理 | 3 |
 | superads.jpg | 3 |
-| 正文 | 3 |
-| 字体 | 3 |
-| 状态-内容过多 | 2 |
-| 输入框 | 2 |
-| 全量状态与对应样式 | 2 |
 | 安装明细 | 2 |
-| 上传中-悬停 | 2 |
-| 上传失败-悬停 | 2 |
-| 上传成功-悬停 | 2 |
 | 错误 | 2 |
-| 选项悬停 | 2 |
-| 信息展示模块 | 2 |
 | 展示-上传图片 | 2 |
-| 正常-更多按钮 | 2 |
-| 悬停-更多按钮 | 2 |
-| 点击-更多按钮 | 2 |
-| 选项悬停-更多按钮 | 2 |
 | 筛选 | 2 |
 | 激活 | 2 |
 | 发布 | 2 |
 | 下线 | 2 |
-| 上传图片组件-点击上传单个文件 | 2 |
 | 这里是错误原因 | 2 |
 | Angel Watch | 2 |
 | 文件说明 | 2 |
@@ -215,105 +190,44 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 版本说明变信息列 | 1 |
 | 内容搜索卡片 | 1 |
 | 输入态 | 1 |
-| 失效态 | 1 |
-| ·点击筛选按钮，会显示下拉列表，列表中显示所有表格列选项 | 1 |
 | 页面取消 | 1 |
-| 侧边栏模块 | 1 |
-| 机构选择模块 | 1 |
-| 搜索模块 | 1 |
-| 状态-展开 | 1 |
-| 状态-收起 | 1 |
-| 展开且选中子菜单<br>·主菜单固定 | 1 |
-| 展开且选中子菜单<br>·主菜单固定<br>·悬停另一个子菜单 | 1 |
 | （注：未开通权限的页签将会不显示） | 1 |
-| 主按钮 | 1 |
 | 子选项 | 1 |
 | 母选项 | 1 |
-| 次按钮 | 1 |
 | 选择器 | 1 |
-| 收起所有 | 1 |
-| 收起/展开 | 1 |
-| ·鼠标悬停时：会显示该模块的所有子选项，可进行快速选择 | 1 |
-| ·在页面当前的高度无法完全展示列表内容且鼠标在该模块悬停时，显示侧边栏滚动条，只可查看，不可拖拽 | 1 |
 | 转为正式版 | 1 |
-| 上传图片组件-拖拽上传多个文件 | 1 |
 | 单选选择器 | 1 |
 | 文本框输入 | 1 |
 | 滚动 | 1 |
 | 多项选择 | 1 |
-| 标签悬停 | 1 |
-| 选项悬停-多项选择器 | 1 |
 | 选项过多-多项选择器 | 1 |
-| 标签点击 | 1 |
 | 展示-上传 | 1 |
-| 展示悬停-上传图片 | 1 |
-| 上传图片组件-多个文件 | 1 |
-| 输入框/单选选择器组件 | 1 |
-| 文本展示组件 | 1 |
-| 展示-输入框 | 1 |
 | 展示-文本框 | 1 |
 | 展示-文本 | 1 |
 | 展示-选择器 | 1 |
-| 悬浮操作模块 | 1 |
-| 表单模块 | 1 |
-| 按钮组件 | 1 |
-| 信息展示组件 | 1 |
 | 常规信息展示 | 1 |
 | 可交互信息展示 | 1 |
 | 图片展示 | 1 |
 | 图标展示与下载 | 1 |
 | 文本框展示 | 1 |
-| ·为此状态时，鼠标悬停与点击均无反应 | 1 |
-| 弹窗按钮 | 1 |
-| 正常-关闭按钮 | 1 |
-| 悬停-关闭按钮 | 1 |
-| 点击-关闭按钮 | 1 |
 | 选择 | 1 |
 | 表格-操作 | 1 |
 | 表格-字段 | 1 |
-| ·表头图标点击一下为正序，再点击一下为倒序，第三次点击恢复正常 | 1 |
-| 悬停出现气泡提示，<br>点击直接开始下载文件 | 1 |
 | 普通 | 1 |
 | 正序 | 1 |
 | 倒序 | 1 |
 | 下拉选择-普通态 | 1 |
-| 翻页按钮-普通态 | 1 |
-| 翻页按钮-点击态 | 1 |
-| 翻页按钮-失效态 | 1 |
-| 数字按钮-普通态 | 1 |
-| 数字按钮-悬停态 | 1 |
-| 数字按钮-激活态 | 1 |
-| 数字按钮-省略态 | 1 |
-| 下拉选择-悬停态 | 1 |
-| 下拉选择-选中态 | 1 |
 | 表格-分页器 | 1 |
 | ·无数据时或数据不足10条时，不显示分页器，仅显示总条数 | 1 |
 | 已激活 | 1 |
-| 已激活悬停 | 1 |
-| 已激活点击 | 1 |
-| 点击-视图切换 | 1 |
-| 按钮-图标 | 1 |
-| ·该按钮点击可切换布局，在列表布局与卡片布局中切换，卡片布局样式详见下一张页面 | 1 |
 | 分页器 | 1 |
-| ·数字有选中、悬停、默认三种状态，箭头有默认、失效两种状态 | 1 |
-| 悬停出现气泡提示，<br>点击进入到详情页 | 1 |
 | 广告管理主页的表格，表格高度为其他标准表格的两倍 | 1 |
 | 卡片操作 | 1 |
 | 卡片功能 | 1 |
 | 卡片图标 | 1 |
-| 正常-图标按钮 | 1 |
-| 悬停-图标按钮 | 1 |
-| 点击-图标按钮 | 1 |
-| 文本编辑器组件 | 1 |
-| 文本编辑器组件功能与样式 | 1 |
 | 激活-文本编辑器 | 1 |
-| 文本编辑器按钮样式 | 1 |
-| 选择器样式 | 1 |
-| 全屏按钮样式 | 1 |
 | 撤销 | 1 |
 | 重做 | 1 |
-| 样式选择 | 1 |
-| 字体选择 | 1 |
 | 字号选择 | 1 |
 | 加粗 | 1 |
 | 斜体 | 1 |
@@ -329,21 +243,9 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 插入链接 | 1 |
 | 插入视频 | 1 |
 | 引用 | 1 |
-| 代码块 | 1 |
 | 帮助 | 1 |
 | 全屏 | 1 |
-| 正常-按钮 | 1 |
-| 全屏状态-按钮 | 1 |
 | 正常-选择器 | 1 |
-| 选项悬停-选择器 | 1 |
-| 悬停-按钮 | 1 |
-| 普通状态-按钮 | 1 |
-| 悬停-选择器 | 1 |
-| 点击-按钮 | 1 |
-| 激活-按钮 | 1 |
-| 点击-选择器 | 1 |
-| 广告状态 🔗 按钮状态 | 1 |
-| 正文样式 | 1 |
 | 上架 | 1 |
 | 版本<br>管理 | 1 |
 | 审核 | 1 |
@@ -357,7 +259,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## OTA升级管理
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 版本号 | 15 |
 | 基线版本 | 15 |
@@ -402,13 +304,9 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 推送固件包 | 2 |
 | 推送类型 | 2 |
 | 推送方式 | 2 |
-| 详情页的所有操作暂时先去掉（UI暂时先保留） | 1 |
 | 统一：有修改操作，用这一种；如果不能做任何修改，就用表单形式 | 1 |
 | 强制推送那一块改一下单选字段 | 1 |
 | 加一个页面 | 1 |
-| 悬停出现气泡提示，<br>点击直接开始下载文件 | 1 |
-| 全量状态·对应样式 | 1 |
-| 表格字段状态 | 1 |
 | 下载文件 | 1 |
 | 查看详情 | 1 |
 | 下线 | 1 |
@@ -417,9 +315,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 上传失败 | 1 |
 | 上传成功 | 1 |
 | 单选器 | 1 |
-| 未选-单选按钮 | 1 |
-| 悬停-单选按钮 | 1 |
-| 已选-单选按钮 | 1 |
 | 卡片功能 | 1 |
 | 下载 | 1 |
 | Update_0316_0422 | 1 |
@@ -429,7 +324,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 推送任务
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 推送方式 | 18 |
 | 批次号 | 14 |
@@ -468,14 +363,10 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 系统管理 | 2 |
 | 先弹窗 | 1 |
 | 弹窗滚动 | 1 |
-| 代码块 | 1 |
-| 展示-代码块 | 1 |
 | 饼图展示交互 | 1 |
 | 查看详情 | 1 |
 | 查看推送设备详情 | 1 |
 | 加一张运营端主页，搜索条件加个客户 | 1 |
-| 批次号是否作为卡片标题？交互待定（可能作为类型更有用），先不动，卡片布局要不要，待确认 | 1 |
-| 纯查看页面用这种（样式先留一个作参考） | 1 |
 | 总数：2 | 1 |
 | 成功 1（50.00％） | 1 |
 | 失败 1（50.00％） | 1 |
@@ -494,7 +385,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 数据中心
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 51 |
 | 加入日期 | 28 |
@@ -572,8 +463,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 设备状态 | 3 |
 | 设备使用情况 | 2 |
 | 表格对应状态 | 2 |
-| 样式-已选择 | 2 |
-| 样式-未选择 | 2 |
 | 分配<br>设备 | 2 |
 | 终点 | 2 |
 | 起点 | 2 |
@@ -581,23 +470,13 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 添加设备 | 2 |
 | 修改参数 | 2 |
 | 设备序列号 | 2 |
-| 是没改页面名字吗？为什么放在应用参数旁边却叫设备管理？ | 1 |
-| 输入框组件-带固定单位 | 1 |
-| 开关组件 | 1 |
-| 正常-输入框 | 1 |
 | 开启-开关 | 1 |
-| 悬停-输入框 | 1 |
-| 点击-输入框 | 1 |
 | 关闭-开关 | 1 |
 | 设置 | 1 |
 | 全部<br>导出 | 1 |
-| 卡片省略 | 1 |
-| 卡片内文字不会折行，显示不完全的部分在用户鼠标悬停到该字段时会以气泡方式显示，如图所示 | 1 |
 | 表格选择 | 1 |
-| 样式-表头半选 | 1 |
 | 卡片选择 | 1 |
 | 设备连接中，请稍候… | 1 |
-| 关于卡片视图要不要，先待定 | 1 |
 | 弹窗还是新页面，根据内容量来（已确定） | 1 |
 | 锁定 | 1 |
 | 日志 | 1 |
@@ -606,8 +485,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 设备<br>地图 | 1 |
 | 刷新设备信息 | 1 |
 | 是批量删除 | 1 |
-| 哪些要批量删除，需要统一确定：先不做，等业务方确定 | 1 |
-| 待定，先不改 | 1 |
 | 加列：应用名称 | 1 |
 | 详情 | 1 |
 | 960x620 | 1 |
@@ -615,7 +492,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 480x500 | 1 |
 | 640x500 | 1 |
 | 240x500 | 1 |
-| 待确认：中栏机构选择改为客户选择？ | 1 |
 | 操作只有一个删除，其他随便编 | 1 |
 | 设备连接 | 1 |
 | 25MB / 245.59MB | 1 |
@@ -642,7 +518,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 设备地图
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 500m | 11 |
 | 运营商管理 | 4 |
@@ -658,7 +534,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 账户信息
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 有言科技 | 18 |
 | B2381_B1_V1.1_20211011 | 18 |
@@ -705,25 +581,15 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 网络定位类型 | 2 |
 | 推送类型 | 2 |
 | 运营商 | 2 |
-| 待产品更新，会加组织树 | 1 |
 | 目录里没有账户信息-运营商管理这一项 | 1 |
 | 设备 | 1 |
 | 重置密码 | 1 |
-| 穿梭框模块 | 1 |
 | 选项-未选 | 1 |
 | 选项-已选 | 1 |
-| 选项-半选 | 1 |
-| 选项-悬停 | 1 |
-| 母选项-展开 | 1 |
-| 母选项-收起 | 1 |
 | 已选项-正常 | 1 |
-| 已选项-悬停 | 1 |
-| 已选项-选中 | 1 |
 | 账号 | 1 |
 | 重置<br>密码 | 1 |
 | 数据录入提示 | 1 |
-| 普通-提示按钮 | 1 |
-| 悬停-提示按钮 | 1 |
 | 添加下级机构 | 1 |
 | 修改下级机构 | 1 |
 | 添加设备 | 1 |
@@ -741,7 +607,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 数据统计
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | 台 | 18 |
 | Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 8 |
@@ -766,7 +632,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 增值服务
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 47 |
 | 推送文件到设备 | 28 |
@@ -822,7 +688,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 从设备<br>删除APN | 1 |
 | 从设备<br>端取消保存 | 1 |
 | 从设备<br>中删除 | 1 |
-| 应该是禁用态 | 1 |
 | 添加获取设备日志 | 1 |
 | 消息内容 | 1 |
 | 推送任务详情 | 1 |
@@ -831,7 +696,6 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 重置锁屏密码 | 1 |
 | 添加重置设备密码 | 1 |
 | 添加恢复出厂设置 | 1 |
-| 设为默认值 | 1 |
 | 推送APN到设备 | 1 |
 | 从设备删除APN | 1 |
 | 立刻连接 | 1 |
@@ -850,7 +714,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 
 ## 系统管理
 
-| Text | Count |
+| Visible Product Copy | Count |
 | --- | ---: |
 | Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 13 |
 | 系统管理 | 12 |
@@ -893,18 +757,12 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 字典标签 | 2 |
 | 字典键值 | 2 |
 | 字典排序 | 2 |
-| 样式属性 | 2 |
-| 回显样式 | 2 |
 | 上级菜单ID | 2 |
 | 时间与日期选择器 | 1 |
-| 信息录入模块 | 1 |
 | 详情 | 1 |
 | 已选 | 1 |
 | 精确到秒 | 1 |
-| 只需要目录和按钮，菜单全部改成目录；加上拖动列，方便排序（做一个排序开关在入口） | 1 |
 | 数据录入提示 | 1 |
-| 普通-提示按钮 | 1 |
-| 悬停-提示按钮 | 1 |
 | 960x620 | 1 |
 | 720x500 | 1 |
 | 480x500 | 1 |
@@ -922,10 +780,7 @@ Product-copy frequency tables exclude structural design annotations, component/s
 | 五 | 1 |
 | 六 | 1 |
 | 请求参数 | 1 |
-| 操作模块 | 1 |
 | 登录信息 | 1 |
 | 请求方式 | 1 |
 | 操作方法 | 1 |
 | 状态 | 1 |
-| 是否为行按钮 | 1 |
-| 按钮父ID | 1 |
