@@ -6,6 +6,28 @@
   <h2>Cases · 实践案例</h2>
   <p class="lede">设计系统不是组件清单 —— 它是把价值观、原则、token 跨越多个组件页落地到端到端业务流程的能力。下表 5 个案例对应 TMS 最高频的运维流程，每个都跨 4-6 个 page template + 3-5 类组件。复杂场景出现争议时回到这里看"完整链路怎么走"。</p>
 
+  <div class="subsection figma-coverage">
+    <h3>OpenDesign / Figma 覆盖矩阵</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:820px;line-height:1.7;margin:0 0 12px">本轮合入以本地 OpenDesign 离线解析为证据源，按业务模块沉淀设计规则，而不是逐帧复刻 Figma。运行时站点只依赖仓库内文件；本地绝对路径只用于实施期读取。</p>
+    <table class="coverage-table">
+      <thead><tr><th>业务域</th><th>Figma 证据</th><th>落地页面</th><th>覆盖策略</th></tr></thead>
+      <tbody>
+        <tr><td>应用市场</td><td>7 sections / 32 new frames / 12 state frames</td><td><a href="#/market-page">market-page</a> + <a href="#/table">table</a> + <a href="#/data-cards">data-cards</a></td><td>主列表、卡片视图、审核、版本、安装明细</td></tr>
+        <tr><td>OTA 升级</td><td>1 section / 13 new frames / 4 state frames</td><td><a href="#/ota-page">ota-page</a> + <a href="#/feedback">feedback</a></td><td>沿用模板页，抽取上传、确认、推送结果规则</td></tr>
+        <tr><td>推送任务</td><td>1 section / 10 new frames / 3 state frames</td><td><a href="#/push-page">push-page</a> + <a href="#/status-matrix">status-matrix</a></td><td>沿用模板页，抽取批量状态与结果明细</td></tr>
+        <tr><td>数据中心</td><td>8 sections / 72 new frames / 13 state frames</td><td><a href="#/device-center-page">device-center-page</a> + <a href="#/drawer">drawer</a></td><td>主蓝图页，覆盖设备生命周期与远程控制</td></tr>
+        <tr><td>设备地图</td><td>3 sections / 13 new frames / 0 state frames</td><td>follow-up: map-page</td><td>本轮记录证据，后续建地图蓝图</td></tr>
+        <tr><td>账户 / 运营 / 统计 / 系统</td><td>12 sections / 49 new frames / 13 state frames</td><td>follow-up: ops-page + <a href="#/user-mgmt-page">user-mgmt-page</a></td><td>本轮记录证据，后续建运营蓝图</td></tr>
+        <tr><td>增值服务</td><td>9 sections / 74 new frames / 9 state frames</td><td>follow-up: service-page</td><td>本轮记录证据，后续建服务蓝图</td></tr>
+      </tbody>
+    </table>
+    <div class="coverage-notes">
+      <span>排除：老系统页面、废案、临时方案</span>
+      <span>Token：light primary = #165DFF，dark primary = #4080FF</span>
+      <span>资产：本轮不复制图片素材</span>
+    </div>
+  </div>
+
   <div class="subsection">
     <h3>案例 · 01 · 批量推送固件</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px">运维选 28 台设备 → 推送固件 v3.4.2 → 实时跟进 → 处理失败设备。这是 TMS 最高频流程，跨 list-page → push-page → ota-page → detail-page 四个页面。</p>
