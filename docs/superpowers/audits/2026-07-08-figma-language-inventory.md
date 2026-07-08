@@ -114,7 +114,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 筛选 | 2 |
 | 发布 | 2 |
 | 下线 | 2 |
-| 这里是错误原因 | 2 |
 | 所属机构 | 2 |
 | 已发布 | 2 |
 | 转为正式版 | 1 |
@@ -314,7 +313,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 备注 | 3 |
 | 终点 | 2 |
 | 起点 | 2 |
-| 输入内容 | 2 |
 
 ## 账户信息
 
@@ -427,7 +425,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 恢复出厂设置 | 6 |
 | 删除 | 4 |
 | 请求地址 | 4 |
-| 输入内容 | 4 |
 | 备注 | 4 |
 | 字典类型 | 4 |
 | 修改 | 3 |
