@@ -177,7 +177,7 @@ project/
 - 任何业务 mock 数据(如 DataCard 里的 `v3.4.2` 固件版本)是合法 placeholder,**保留**
 
 ### 颜色 / 主题
-- **品牌主色** `#0052CC`,不是 antd 默认 `#1677FF` 也不是旧 Arco `#165DFF`
+- **品牌主色** `#165DFF`,不是 antd 默认 `#1677FF` 也不是旧设计稿中的 `#0052CC`;暗色主题使用同色相提亮的 `#4080FF`
 - **状态色**(success / warning / danger / info)是 muted enterprise tones,深于 antd 默认。在 `pages/color.js` 内有 antd token 映射表,改 token 时同步
 - **Sidebar**:Light = 白底 + 3px 品牌蓝 indicator bar(参考 Linear / Notion);Dark = `#0F1115 → #1A1D23` 深色渐变。token 收口在 `tokens.css` 与 `foundations-extras.css` 顶部
 - 所有颜色通过 `var(--aw-*)` 引用,**禁止硬编码 hex**
