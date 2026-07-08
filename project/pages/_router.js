@@ -269,9 +269,12 @@
       var picker = el.closest('.time-picker');
       if (picker) {
         var cols = picker.querySelectorAll('.time-col');
-        var h = cols[0].querySelector('.active').textContent.trim();
-        var m = cols[1].querySelector('.active').textContent.trim();
-        var s = cols[2].querySelector('.active').textContent.trim();
+        var hEl = cols[0].querySelector('.active,.is-active') || cols[0].querySelector('button');
+        var mEl = cols[1].querySelector('.active,.is-active') || cols[1].querySelector('button');
+        var sEl = cols[2].querySelector('.active,.is-active') || cols[2].querySelector('button');
+        var h = hEl ? hEl.textContent.trim() : '00';
+        var m = mEl ? mEl.textContent.trim() : '00';
+        var s = sEl ? sEl.textContent.trim() : '00';
         var value = h + ':' + m + (s === '00' ? '' : ':' + s);
         setOutput(root, 'time', value);
         updateDateTimeStart(root);
