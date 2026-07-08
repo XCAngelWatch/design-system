@@ -260,11 +260,11 @@ Follow the existing CSS layering:
 - `layout.css` for page skeleton and grid patterns.
 - Existing `*-pro.css` files for specialized component enhancements.
 
-If module blueprints need a substantial amount of shared module-specific styling, add one responsibility-named file:
+If module blueprints need a substantial amount of shared module-specific styling, add one responsibility-named `*-pro.css` file:
 
-- `business-blueprints.css`
+- `blueprints-pro.css`
 
-Then link it in `project/index.html` after the existing business extension files. Do not use versioned CSS filenames.
+Then link it in `project/index.html` after `result-pro.css` with the same cache-busting query pattern as the existing stylesheets. Do not use versioned CSS filenames.
 
 ## Validation Plan
 

@@ -31,8 +31,8 @@ Create or modify these files:
 
 - Modify `project/styles/tokens.css`: align light primary tokens to `#0052CC`; keep dark primary `#4080FF`.
 - Modify `project/styles/foundations-extras.css`: align sidebar active helper tokens to `#0052CC`.
-- Create `project/styles/business-blueprints.css`: reusable layout classes for Figma coverage matrix and module blueprint mockups.
-- Modify `project/index.html`: add the `business-blueprints.css` link after existing business extension styles.
+- Create `project/styles/blueprints-pro.css`: reusable layout classes for Figma coverage matrix and module blueprint mockups.
+- Modify `project/index.html`: add the `blueprints-pro.css?v=1777279768` link immediately after `result-pro.css`.
 - Modify `project/pages/cases.js`: add OpenDesign/Figma coverage matrix and implementation inventory summary.
 - Modify `project/pages/color.js`: align dark primary documentation rows to `#4080FF`.
 - Modify `project/pages/table.js`: add OpenDesign list/table pattern backfill.
@@ -161,7 +161,7 @@ Expected: `Switched to a new branch 'codex/opendesign-figma-merge'`. If the bran
 Use this staging rule for every commit:
 
 ```bash
-git add project/styles/tokens.css project/styles/foundations-extras.css project/styles/business-blueprints.css project/index.html project/pages/cases.js project/pages/color.js project/pages/table.js project/pages/data-cards.js project/pages/status-matrix.js project/pages/feedback.js project/pages/drawer.js project/pages/market-page.js project/pages/device-center-page.js project/pages/_router.js
+git add project/styles/tokens.css project/styles/foundations-extras.css project/styles/blueprints-pro.css project/index.html project/pages/cases.js project/pages/color.js project/pages/table.js project/pages/data-cards.js project/pages/status-matrix.js project/pages/feedback.js project/pages/drawer.js project/pages/market-page.js project/pages/device-center-page.js project/pages/_router.js
 ```
 
 Expected: only files touched by this implementation are staged.
@@ -170,11 +170,11 @@ Expected: only files touched by this implementation are staged.
 
 **Files:**
 - Modify: `project/pages/cases.js`
-- Read: `/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64/figma/tree.json`
+- Read optionally: `/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64/figma/tree.json`
 - Read: `project/pages/_router.js`
 - Read: `project/styles/tokens.css`
 
-- [ ] **Step 1: Run Figma inventory helper**
+- [ ] **Step 1: Run Figma inventory helper when local evidence exists**
 
 Run:
 
@@ -184,6 +184,11 @@ import json
 from pathlib import Path
 
 tree = Path('/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64/figma/tree.json')
+if not tree.exists():
+    print(f'SKIP: local OpenDesign tree not found: {tree}')
+    print('Use the hardcoded coverage matrix in Step 3 and continue.')
+    raise SystemExit(0)
+
 nodes = json.loads(tree.read_text())
 by_id = {n['id']: n for n in nodes}
 
@@ -204,7 +209,7 @@ for canvas in [n for n in nodes if n.get('type') == 'CANVAS']:
 PY
 ```
 
-Expected output includes these important lines or close equivalents:
+Expected output includes these important lines or close equivalents when the local OpenDesign file exists. If the command prints `SKIP: local OpenDesign tree not found`, continue with Step 3; the matrix content below is already the implementation source of truth for this plan.
 
 ```text
 应用市场: sections=7 new_frames=32 state_frames=12
@@ -236,6 +241,8 @@ Expected before correction:
 - [ ] **Step 3: Insert coverage matrix in `project/pages/cases.js`**
 
 Add this subsection immediately after the opening `Cases · 实践案例` lede paragraph:
+
+The `#/market-page` and `#/device-center-page` links point to pages created later in this plan. They are forward links during intermediate task commits and must resolve after Task 7.
 
 ```html
   <div class="subsection figma-coverage">
@@ -292,12 +299,14 @@ Change the light brand block to:
 ```css
   /* Brand — TMS primary, mapped from Figma/OpenDesign evidence into current standard */
   --aw-primary: #0052CC;
-  --aw-primary-hover: #1A6BDB;
+  --aw-primary-hover: #2868E0;
   --aw-primary-active: #003D99;
   --aw-primary-bg: #E6EFFB;
   --aw-primary-bg-hover: #CCE0F7;
   --aw-primary-border: #99BFEF;
 ```
+
+`#2868E0` intentionally makes hover lighter than `#0052CC` while preserving AA contrast with white text (about 5.06:1). Do not use `#4080FF` for light hover; its contrast with white text is too low for normal button text.
 
 Also update the sidebar comment and variables in the same light block:
 
@@ -333,7 +342,13 @@ Change the light helper values to:
 
 Do not change dark helper tokens.
 
-- [ ] **Step 4: Align dark token documentation in `project/pages/color.js`**
+- [ ] **Step 4: Align primary token documentation in `project/pages/color.js`**
+
+Find the light primary ramp examples and change the hover row to:
+
+```html
+<div style="background:#2868E0"><div><div class="name">Hover</div><div class="lbl">--aw-primary-hover</div></div><div>#2868E0 <span class="wcag-badge aa">5.0:1 · AA ✓</span></div></div>
+```
 
 Find the dark mode token table rows and change the dark primary examples:
 
@@ -376,10 +391,10 @@ Expected: one commit containing only the three listed files.
 ### Task 3: Shared Blueprint CSS
 
 **Files:**
-- Create: `project/styles/business-blueprints.css`
+- Create: `project/styles/blueprints-pro.css`
 - Modify: `project/index.html`
 
-- [ ] **Step 1: Create `project/styles/business-blueprints.css`**
+- [ ] **Step 1: Create `project/styles/blueprints-pro.css`**
 
 Create the file with this content:
 
@@ -491,7 +506,7 @@ Create the file with this content:
   margin-bottom: 8px;
   border-radius: 50%;
   background: var(--aw-primary);
-  color: #fff;
+  color: var(--aw-bg);
   font-size: 11px;
   font-weight: 700;
 }
@@ -603,10 +618,10 @@ Create the file with this content:
 
 - [ ] **Step 2: Link the CSS in `project/index.html`**
 
-Add this line after the existing business extension stylesheet links:
+Add this line immediately after `styles/result-pro.css?v=1777279768` in `project/index.html`:
 
 ```html
-  <link rel="stylesheet" href="styles/business-blueprints.css" />
+  <link rel="stylesheet" href="styles/blueprints-pro.css?v=1777279768" />
 ```
 
 Expected: CSS loads under `file://` because it uses a relative path.
@@ -622,7 +637,7 @@ Expected: `balanced ✓`.
 Run:
 
 ```bash
-git add project/styles/business-blueprints.css project/index.html
+git add project/styles/blueprints-pro.css project/index.html
 git commit -m "feat(styles): add business blueprint styles"
 ```
 
@@ -697,7 +712,7 @@ Insert this subsection after the existing status matrix table and before `</sect
 
 - [ ] **Step 4: Add modal/result patterns to `project/pages/feedback.js`**
 
-Insert this subsection before the `反例` subsection:
+Insert this subsection before the final `</section>` in `project/pages/feedback.js`:
 
 ```html
   <div class="subsection">
@@ -713,7 +728,7 @@ Insert this subsection before the `反例` subsection:
 
 - [ ] **Step 5: Add remote-control drawer patterns to `project/pages/drawer.js`**
 
-Insert this subsection before the `反例` subsection:
+Insert this subsection before the existing `反例` subsection in `project/pages/drawer.js` (verified by `rg -n '反例' project/pages/drawer.js`):
 
 ```html
   <div class="subsection">
@@ -960,7 +975,7 @@ Insert these rows in the `页面模板` group after `user-mgmt-page`:
 
 ```javascript
     ['market-page',      'MarketPage 应用市场蓝图',        '页面模板'],
-    ['device-center-page','DeviceCenterPage 数据中心蓝图', '页面模板'],
+    ['device-center-page', 'DeviceCenterPage 数据中心蓝图', '页面模板'],
 ```
 
 Keep array formatting aligned with nearby rows.
@@ -1077,7 +1092,7 @@ Expected: only pre-existing unrelated changes remain, or no changes remain. If i
 If validation required final fixes, commit only those implementation files:
 
 ```bash
-git add project/styles/tokens.css project/styles/foundations-extras.css project/styles/business-blueprints.css project/index.html project/pages/cases.js project/pages/color.js project/pages/table.js project/pages/data-cards.js project/pages/status-matrix.js project/pages/feedback.js project/pages/drawer.js project/pages/market-page.js project/pages/device-center-page.js project/pages/_router.js
+git add project/styles/tokens.css project/styles/foundations-extras.css project/styles/blueprints-pro.css project/index.html project/pages/cases.js project/pages/color.js project/pages/table.js project/pages/data-cards.js project/pages/status-matrix.js project/pages/feedback.js project/pages/drawer.js project/pages/market-page.js project/pages/device-center-page.js project/pages/_router.js
 git commit -m "test: validate opendesign blueprint merge"
 ```
 
@@ -1101,3 +1116,4 @@ After the must-have implementation passes validation, create a separate plan for
 - `service-page`: logs, lock/unlock, data flow, reset password, factory reset, file push, APN, WIFI, allow/deny lists.
 - `ops-page`: organizations, operators, accounts, data statistics, OSS nodes, operation logs, dictionaries, menu management.
 - Nice-to-have backfills: `row-actions`, `upload`, `tree-comp`, `ota-page`, `push-page`, `user-mgmt-page`.
+- Replace the historical external `BRAND_LOGO` URL in `project/pages/_router.js` with a copied local asset such as `project/assets/angle.png`, then record its provenance.
