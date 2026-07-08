@@ -1,118 +1,208 @@
 # AngelWatch Design System
 
-设备终端管理 (TMS) 的统一视觉与交互语言。基于 Ant Design v6,覆盖品牌色 / 排版 /
-间距 / 圆角 / 动效 / 国际化 / 暗色主题 / 多租户白标 / 35+ 核心 & 业务组件 /
-8 页面模板 / 10 大复杂场景生态集成方案。共 43 个 section,按 `导览(1) / 基础(8) /
-通用组件(13) / 业务组件(9) / 页面模板(8) / 生态(2) / 规范(2)` 7 组分类。
+本项目是 AngelWatch TMS（设备终端管理系统）的 **AI-first 设计系统参考文档站**，用静态 SPA 的形式沉淀系统设计、页面模板、组件规范、设计 token、交互约束与落地规则。它的目标不是发布运行时组件库，而是为 AI 与开发者在业务系统设计和开发时提供可检索、可引用、可对齐的设计知识库。
+
+当前站点覆盖设计 token、基础规范、通用组件、业务组件、页面模板、生态选型与规范红线，共 **62 个 section**，按 `导览(2) / 基础(13) / 通用组件(14) / 业务组件(12) / 页面模板(13) / 生态(2) / 规范(6)` 组织。
+
+站点是 **纯静态 SPA**：`project/index.html` 是 shell，`project/pages/<id>.js` 是页面片段，`project/pages/_router.js` 通过 hash 路由和动态 `<script>` 注入加载片段。无构建、无 NPM 依赖、无 HTTP 服务器要求，`file://` 直接打开即可。
 
 ## 入口
 
-**在线访问**:<https://xcangelwatch.github.io/design-system/>(主分支自动部署)
+**在线访问**：[https://xcangelwatch.github.io/design-system/](https://xcangelwatch.github.io/design-system/)
 
-直链路由也可用,例如:
-- <https://xcangelwatch.github.io/design-system/#/color>
-- <https://xcangelwatch.github.io/design-system/#/buttons>
-- <https://xcangelwatch.github.io/design-system/#/ecosystem>
+常用直链：
 
-设计系统是 **静态 SPA(单页面应用)**,通过 hash 路由(`#/color`、`#/buttons` 等)
-按需用动态 `<script>` 注入各 section 片段。**无需 HTTP 服务器,直接打开就能用**:
+- [概览](https://xcangelwatch.github.io/design-system/#/overview)
+- [色彩](https://xcangelwatch.github.io/design-system/#/color)
+- [按钮](https://xcangelwatch.github.io/design-system/#/buttons)
+- [实践案例](https://xcangelwatch.github.io/design-system/#/cases)
+- [ConfigProvider 全局配置](https://xcangelwatch.github.io/design-system/#/config-provider)
+
+本地查看：
 
 ```bash
 open project/index.html
-# 或:浏览器拖入 project/index.html
-
-# 浏览器直接进入 #/overview。直链 #/color、#/buttons 等也可工作。
+# 或将 project/index.html 拖入浏览器
 ```
 
-放进任何静态服务器(Nginx / Apache / Caddy / 内网 CDN)同样可分发。无构建,无 NPM 依赖。
+放进任何静态服务器（Nginx / Apache / Caddy / 内网 CDN）也可分发；部署产物就是 `project/` 原文件。
 
 ## 部署
 
-通过 `.github/workflows/pages.yml` 自动部署到 GitHub Pages:
+`.github/workflows/pages.yml` 在 push 到 `main` 时把 `project/` 发布到 GitHub Pages，也支持在 Actions 页面手动 `workflow_dispatch`。
 
-- **触发**:push 到 `main` 自动跑;也可在 Actions 页面手动 `workflow_dispatch`
-- **发布范围**:仅 `project/` 目录,部署后 `index.html` 位于站点根
-- **一次性配置**:仓库 Settings → Pages → Build and deployment 的 Source 选 **GitHub Actions**
-
-部署状态见 <https://github.com/XCAngelWatch/design-system/actions>。
+- **Source**：GitHub Actions
+- **Artifact**：`project/`
+- **部署状态**：[GitHub Actions](https://github.com/XCAngelWatch/design-system/actions)
 
 ## 结构
 
-```
+```text
 design-system/
-├── README.md                          (本文件)
-├── CLAUDE.md                          Claude Code 工作指南
-├── .github/workflows/pages.yml        GitHub Pages 自动部署 (push main 触发)
+├── README.md                         说明文档
+├── CLAUDE.md                         Claude Code 工作指南
+├── AGENTS.md                         Codex 工作指南
+├── .github/workflows/pages.yml       GitHub Pages 自动部署
 └── project/
-    ├── index.html                     SPA shell — 15 个 CSS link + 路由器入口
-    ├── pages/                         (43 个 fragment + 1 个 router,共 44 文件)
-    │   ├── _router.js                 路由器 + sidebar/toolbar 模板 + 主题持久化
-    │   ├── overview.js                Hero + 设计原则                       (导览 1)
-    │   ├── color.js ~ palette.js      色 / 字 / 距 / 圆角 / 阴影 / 动效…   (基础 8)
-    │   ├── buttons.js ~ skeleton.js   按钮 / 输入 / 表格 / 反馈 / 上传…    (通用 13)
-    │   ├── status-matrix.js ~ row-actions.js  设备 / 状态 / 行操作 …       (业务 9)
-    │   ├── shell.js ~ dash-page.js    Login / List / Detail / Form / …     (模板 8)
-    │   ├── ecosystem.js / tech-stack.js                                     (生态 2)
-    │   └── do-dont.js / whitelabel.js                                       (规范 2)
-    └── styles/                        (15 文件,基础骨架 7 + 业务扩展 8)
-        ├── tokens.css                 设计 token (色 / 字 / 距 / 圆角 / 阴影 / 动效)
-        ├── system.css                 全局 reset 与基础排版
-        ├── components.css             核心组件样式 (按钮 / 输入 / 表格 / 模态等)
-        ├── components-extras.css      扩展组件 + SPA shell 样式
-        ├── foundations-extras.css     基础规范扩展 (Token 三层架构 / 密度三档 /
-        │                              嵌套主题 / WCAG 徽章 / 8 色 palette / i18n)
-        ├── layout.css                 布局 (24 栅格 / 4 档断点 / 5 种页面骨架)
-        ├── ecosystem.css              生态库集成示意 + 技术栈速查表
-        ├── login-states.css           登录 6 态变体 + blockPuzzle 滑块拼图
-        ├── row-actions.css            行操作图标库 + 折叠下拉
-        ├── table-pro.css              密度三档 + 列冻结 + 列宽拖 + 批量条 + 分页三态
-        ├── upload-pro.css             4 形态 + 大文件分片 + 进度环 + 多类型预览
-        ├── modal-pro.css              Modal 复杂内嵌 (tabs / 表单分组 / 全屏)
-        ├── tree-pro.css               搜索高亮 / 懒加载 / 选择模式 / 拖拽
-        ├── toast-pro.css              富 Notification (按钮 / 进度 / 折叠展开)
-        └── result-pro.css             Result 部分成功 (失败明细 + CSV 下载)
+    ├── index.html                    SPA shell：favicon、16 个 CSS link、主题恢复脚本、路由器入口
+    ├── favicon.ico                   站点图标
+    ├── pages/                        62 个 fragment + 1 个 router
+    │   ├── _router.js                ROUTES 表、sidebar、toolbar、hash 路由、主题持久化
+    │   ├── overview.js / cases.js    导览：概览、实践案例
+    │   ├── color.js ... responsive.js
+    │   │                             基础：色彩、暗黑、国际化、字体、间距、圆角、动效、布局、色板、图标、图形化、无障碍、响应式
+    │   ├── buttons.js ... skeleton.js
+    │   │                             通用组件：按钮、输入、标签、表格、导航、菜单、反馈、进度、日期、上传、树、抽屉、Toast、骨架屏
+    │   ├── status-matrix.js ... charts.js
+    │   │                             业务组件：设备状态、DataCard、Cascader、表单校验、Tabs、Result、空状态、页头、错误页、Loading、RowActions、图表
+    │   ├── shell.js ... device-center-page.js
+    │   │                             页面模板：应用外壳、登录、列表、详情、表单、树列表、向导、仪表盘、推送、OTA、用户管理、市场、数据中心
+    │   ├── ecosystem.js / tech-stack.js
+    │   │                             生态：集成方案、技术栈速查
+    │   └── do-dont.js ... config-provider.js
+    │                                 规范：红线、白标、数据格式、文案、组件 API、ConfigProvider
+    └── styles/                       16 个 CSS：基础骨架 7 + 业务扩展 9
+        ├── tokens.css                设计 token：:root + [data-theme="dark"]
+        ├── system.css                全局 reset、排版、应用 grid
+        ├── components.css            核心组件 mock
+        ├── components-extras.css     扩展组件 mock + SPA shell 样式
+        ├── foundations-extras.css    基础规范展示物
+        ├── layout.css                栅格、断点、页面骨架
+        ├── ecosystem.css             生态库集成与技术栈表
+        ├── login-states.css          登录状态与验证码
+        ├── row-actions.css           行操作折叠
+        ├── table-pro.css             表格高级态
+        ├── upload-pro.css            上传高级态
+        ├── modal-pro.css             Modal 复杂内嵌
+        ├── tree-pro.css              Tree 高级态
+        ├── toast-pro.css             富 Notification
+        ├── result-pro.css            Result 部分成功
+        └── blueprints-pro.css        业务蓝图页共享样式
 ```
 
-**共用 vs 差异**:`index.html` + `_router.js` + 15 个 CSS 是共用骨架,所有 section 内容
-独立放在 `pages/<id>.js` —— 改一个 section 不影响别的。
+## SPA 工作机制
 
-加载顺序基于"基础 → 拓展 → 布局 → 业务"分层,在 `index.html` 的 `<head>` 中按
-此顺序声明 `<link>`。
+1. `index.html` 先从 `localStorage('aw-theme')` 恢复 `<html data-theme>`，避免主题闪烁。
+2. shell 只保留空容器：`#app-side`、`#app-toolbar`、`#app-slot`。
+3. `_router.js` 渲染 sidebar、toolbar 和主题切换器，导航链接形如 `#/color`。
+4. hash 变化后，路由器动态插入 `<script src="pages/<id>.js">`。
+5. fragment 执行后把 HTML 注册到 `window.__AW_PAGES__[id]`，路由器再注入 `#app-slot`。
+6. 已加载的 fragment 会留在全局缓存中，二次访问不重复加载。
 
-## 落地
+因为加载方式是 `<script>` 注入，不是 `fetch()`，所以 `file://` 下也能完整工作。
 
-设计系统不是组件库,所有规范最终通过以下方式落地到 `packages/web` 应用代码:
+每个 fragment 的结构：
 
-1. **Token** — `@aw/design-tokens` 输出 CSS 变量,被 `ConfigProvider.theme.token`
-   消费(antd 内置组件)与项目自身组件 (`var(--aw-*)`) 共用
-2. **核心组件** — 直接使用 antd v6 + `theme.components` 定向覆盖
-3. **扩展组件** — 业务团队封装,但 token / 命名 / 交互规则严格按本文档
-4. **生态集成** — 复杂场景(地图 / 终端 / 拖拽 / 节点编辑器 / 虚拟表格 /
-   动态表单 / 代码编辑器 等)优先用成熟 NPM 包,套用本系统的 token,不自建
+```javascript
+/* AngelWatch Design System — page: <id> */
+(window.__AW_PAGES__ = window.__AW_PAGES__ || {})["<id>"] = `
+<div class="content">
+  <section class="section" id="<id>">...</section>
+</div>
+`;
+```
 
-### 组件选型优先级(必须遵守)
+## 落地关系
 
-写新页面 / 新组件时,按以下顺序选型,**不能跳级**:
+设计系统不是发布到业务侧的组件库；它是视觉与交互契约，最终通过 sibling 仓库 `tms2.5-web-react` 中的代码落地：
 
-1. **antd v6 原生**:首选 <https://ant.design/components/overview-cn>。Form / Table /
-   Layout / Menu / Modal / Drawer / Select / Cascader 等 50+ 组件覆盖绝大多数中后台场景
-2. **业务自建**(`src/components/`):antd 没有覆盖的场景再考虑自建,封装时严格走 token,
-   命名以业务语义为主(`ChartCard` / `KpiCard` / `SliderCaptcha` 等)
-3. **第三方 NPM 包**:仅"生态集成"白名单内(参见 tech-stack 速查表)。license 必须
-   ∈ MIT / Apache-2.0 / BSD / ISC
+1. **Token**：`@tms/design-tokens` / `packages/design-tokens/` 生成 CSS 变量与 antd token。
+2. **antd 覆盖**：`packages/design-tokens/src/antd.ts` 收口 `ConfigProvider.theme.token` 与 `theme.components`。
+3. **应用消费**：`packages/web` 使用 antd v6 原生组件 + 业务封装组件。
+4. **生态集成**：图表、地图、虚拟表格、代码编辑器等复杂能力优先采用白名单 NPM 包，再套用本系统 token。
 
-> 已弃:**`@ant-design/pro-components`**(ProForm / ProTable / ProLayout / ProCard)
-> 不再维护对 antd v6 的兼容,峰会评审通过后于 2026-04 全量退役,统一改为 antd 原生 + 业务封装。
+### 组件选型优先级
 
-## 使用规则
+1. **antd v6 原生**：Form、Table、Layout、Menu、Modal、Drawer、Select、Cascader 等优先使用原生组件。
+2. **业务自建**：antd 不覆盖的场景再封装 `src/components/`，命名以业务语义为主。
+3. **第三方 NPM 包**：仅限生态白名单；license 必须属于 MIT / Apache-2.0 / BSD / ISC。
 
-- **所有颜色** 通过 CSS 变量引用,禁止硬编码 hex
-- **所有可见文本** 通过 `t('namespace.key')` 包裹,禁止硬编码字符串
-- **`!important`** 触发 stylelint 报错,禁用
-  - **例外（必须显式声明）**:① `prefers-reduced-motion` 等 a11y 重置;② antd CSS-in-JS 高优先级覆盖且无 `theme.components` 覆盖路径时
-  - 豁免代码必须前置 `/* stylelint-disable-next-line declaration-no-important -- 原因 */` 注释,否则 CI 拦截
-  - 优先级:能用 `theme.components` token 收口就不要走 !important 豁免
-- **新引入第三方包** license 必须 ∈ MIT / Apache-2.0 / BSD / ISC,其他需法务确认
-- **第三方资源**(字体 / 图标 / Monaco loader / Leaflet 瓦片) 必须自托管,禁运行时 CDN
+`@ant-design/pro-components` 不作为新页面选型；统一采用 antd 原生能力 + 业务封装。
 
-完整的 Do / Don't 清单见 `index.html` 末尾"规范红线"章节。
+## 常用校验
+
+仓库没有 build / install / test step。改文档或页面片段后按需运行以下校验：
+
+```bash
+# 1. 全部 page fragments 加载 + 注册校验（无浏览器）
+node -e "
+global.window = {};
+const fs = require('fs');
+const files = fs.readdirSync('project/pages').filter(f => f.endsWith('.js') && f !== '_router.js');
+let ok = 0;
+for (const f of files) {
+  delete require.cache[require.resolve('./project/pages/' + f)];
+  require('./project/pages/' + f);
+  if (window.__AW_PAGES__[f.slice(0, -3)]) ok++;
+}
+console.log(ok + ' / ' + files.length + ' pages registered ✓');
+"
+
+# 2. ROUTES 与磁盘 fragments 一致
+python3 -c "
+import re, glob
+js = open('project/pages/_router.js').read()
+m = re.search(r'var ROUTES = \[([\s\S]*?)\];', js)
+ids_in_js = set(re.findall(r\"\['([^']+)',\", m.group(1)))
+files = {p.split('/')[-1].rsplit('.', 1)[0] for p in glob.glob('project/pages/*.js') if not p.endswith('_router.js')}
+print('only in router:', ids_in_js - files)
+print('only on disk:  ', files - ids_in_js)
+print('match ✓' if ids_in_js == files else 'MISMATCH ✗')
+"
+
+# 3. index.html 结构平衡
+python3 -c "
+from html.parser import HTMLParser
+class C(HTMLParser):
+    def __init__(self): super().__init__(); self.s = {}
+    def handle_starttag(self, t, a): self.s[t] = (self.s.get(t, (0, 0))[0] + 1, self.s.get(t, (0, 0))[1])
+    def handle_endtag(self, t): self.s[t] = (self.s.get(t, (0, 0))[0], self.s.get(t, (0, 0))[1] + 1)
+void = {'meta','link','br','hr','img','input','source','track','wbr','area','base','col','embed','param','circle','rect','path','line','polygon','ellipse','use','marker','stop','text','image','tspan'}
+p = C(); p.feed(open('project/index.html').read())
+print('balanced ✓' if all(o == c for t, (o, c) in p.s.items() if t not in void) else 'UNBALANCED ✗')
+"
+
+# 4. 禁止模式回归：版本时间线 / 状态机图 / 版本徽章
+grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\.0/|撤回 v1|（同 v1' project/
+```
+
+## 扩展规则
+
+### 修改一个 section
+
+1. 编辑 `project/pages/<id>.js` 中模板字面量包裹的 HTML。
+2. 不要改 `(window.__AW_PAGES__ = ...)` 注册行。
+3. HTML 内避免出现反引号、`${...}` 或未转义反斜杠，避免破坏 template literal。
+4. 跨片段链接用 `href="#/other-id"`；纯 `#xxx` 只作为页面内锚点。
+5. 颜色、间距、圆角、阴影优先引用 `var(--aw-*)`。
+
+### 新增一个 route
+
+1. 新建 `project/pages/<id>.js`。
+2. 在 `_router.js` 的 `ROUTES` 中追加 `['<id>', '<中文标签>', '<分组名>']`。
+3. 分组必须属于已有 7 类：导览、基础、通用组件、业务组件、页面模板、生态、规范。
+4. 运行 ROUTES 与磁盘 fragments 一致性校验。
+
+### 新增 CSS
+
+按职责放入已有 CSS，避免按时间线新建文件：
+
+- token 值：`tokens.css`
+- 核心组件 mock：`components.css`
+- 扩展组件 mock / shell：`components-extras.css`
+- 基础规范展示物：`foundations-extras.css`
+- 布局、栅格、断点：`layout.css`
+- 生态集成示意：`ecosystem.css`
+- 单页大体量业务样式：对应 `*-pro.css`
+
+只有当某个 page fragment 引入大量专属样式且难以复用时，才新增 `<page>-pro.css` 并在 `index.html` 中追加 `<link>`。
+
+## 约定红线
+
+- **Evergreen**：站点是现行规范，不写 changelog；不要加入版本徽章、版本比较句式或具体发布时间线。
+- **主色**：当前 token 锚点为 `#165DFF`，暗色主色为 `#4080FF`；业务实现必须通过 `var(--aw-primary)` 或 antd token 使用。
+- **状态机**：设备状态矩阵保留，State Machine 转换图不要恢复。
+- **主题**：Light / Dark 通过 `[data-theme="dark"]` 覆盖，切换器持久化到 `localStorage('aw-theme')`。
+- **离线**：新增第三方字体、图标、loader、瓦片等必须自托管，不引入运行时 CDN。
+- **国际化**：业务应用中的可见文本必须走 `t('namespace.key')`；参考站示例文案除外。
+- **样式优先级**：避免 `!important`；确有必要时加豁免注释并说明原因。
