@@ -22,7 +22,7 @@
         <div class="ph-actions">
           <button class="btn">导出</button>
           <button class="btn">操作 ▾</button>
-          <button class="btn btn-primary">推送固件</button>
+          <button class="btn btn-primary">推送 OTA 包</button>
         </div>
       </div>
       <div class="ph-row ph-tabs">
@@ -40,7 +40,7 @@
       <thead><tr><th style="width:18%">页面类型</th><th style="width:24%">面包屑</th><th style="width:22%">主标题</th><th style="width:18%">操作</th><th>底部 Tabs</th></tr></thead>
       <tbody>
         <tr><td><b>ListPage</b></td><td>1 级 (e.g. "设备管理")</td><td>资源类目名 + 总数</td><td>主：+ 添加 / 次：导入 / 导出</td><td>视图切换 (Tab)</td></tr>
-        <tr><td><b>DetailPage</b></td><td>2-3 级 + 当前对象名</td><td>对象名 + 状态</td><td>对象动作（编辑 / 删除 / 推送）</td><td>视图（基础 / 状态 / 日志 / 告警 / 固件）</td></tr>
+        <tr><td><b>DetailPage</b></td><td>2-3 级 + 当前对象名</td><td>对象名 + 状态</td><td>对象动作（编辑 / 删除 / 推送）</td><td>视图（基础 / 状态 / 日志 / 告警 / OTA）</td></tr>
         <tr><td><b>FormPage</b></td><td>2 级 + "新建" / "编辑"</td><td>"新建 X" / "编辑 X"</td><td>主：保存 / 次：取消 / 草稿</td><td>无</td></tr>
         <tr><td><b>DashboardPage</b></td><td>无 (顶级)</td><td>"仪表盘" + 时间范围</td><td>右：时间范围切换 / 刷新</td><td>主题切换 (Tab)</td></tr>
       </tbody>
@@ -112,11 +112,11 @@
     <div class="demo-grid cols-3">
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">2-3 个操作</div>
-        <div style="display:flex;gap:8px"><button class="btn">导出</button><button class="btn">操作 ▾</button><button class="btn btn-primary">推送固件</button></div>
+        <div style="display:flex;gap:8px"><button class="btn">导出</button><button class="btn">操作 ▾</button><button class="btn btn-primary">推送 OTA 包</button></div>
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">≥ 4 个操作 · 折叠</div>
-        <div style="display:flex;gap:8px"><button class="btn">操作 ▾</button><button class="btn btn-primary">推送固件</button></div>
+        <div style="display:flex;gap:8px"><button class="btn">操作 ▾</button><button class="btn btn-primary">推送 OTA 包</button></div>
         <div style="margin-top:8px;font-size:11px;color:var(--aw-text-3)">下拉 4-8 项；超过分组</div>
       </div>
       <div class="surface">

@@ -50,7 +50,7 @@
           </tr>
           <tr>
             <td><code>BATCH-202604271402-D419</code></td>
-            <td>当前及子站点</td>
+            <td>当前及子机构</td>
             <td>调度-北京</td>
             <td>2026-04-27 14:02</td>
             <td><span class="status-dot online">已完成</span></td>
@@ -104,8 +104,8 @@
         <tr><td><code>3</code></td><td><code>device_model</code></td><td>按机型</td><td>OTA 升级最常用,定向某型号</td></tr>
         <tr><td><code>4</code></td><td><code>sys_version</code></td><td>按系统版本</td><td>定向某 Android 版本(灰度)</td></tr>
         <tr><td><code>5</code></td><td><code>group_device</code></td><td>按分组</td><td>按设备分组(部门 / 用途)</td></tr>
-        <tr><td><code>6</code></td><td><code>current_includes_store</code></td><td>当前及子站点</td><td>含子站点递归</td></tr>
-        <tr><td><code>7</code></td><td><code>current_store</code></td><td>仅当前站点</td><td>不含子站点</td></tr>
+        <tr><td><code>6</code></td><td><code>current_includes_store</code></td><td>当前及子机构</td><td>含子机构递归</td></tr>
+        <tr><td><code>7</code></td><td><code>current_store</code></td><td>仅当前机构</td><td>不含子机构</td></tr>
       </tbody>
     </table>
   </div>

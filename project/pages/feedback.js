@@ -16,7 +16,7 @@
         <tr><td><b>Alert 横条</b></td><td>持续状态 —— 系统升级中 / 试用期剩余 / 限制提示</td><td>否</td><td>常驻直到状态变更</td><td>整页或区域级横条；不阻塞操作</td></tr>
         <tr><td><b>Inline 校验</b></td><td>表单字段错误 —— 邮箱格式 / 密码强度</td><td>否</td><td>用户修正后消失</td><td>字段下方红色文案 + icon；表单提交时聚焦首个错误</td></tr>
         <tr><td><b>Popconfirm</b></td><td>行内可逆操作 —— 删除一行 / 解绑单条</td><td>是（行内）</td><td>用户确认或取消</td><td>影响范围 = 1 条记录；附在触发按钮旁</td></tr>
-        <tr><td><b>Modal.confirm</b></td><td>批量 / 不可逆 —— 删除 28 台 / 推送固件</td><td>是（页面级）</td><td>用户输入数量 + 确认</td><td>影响 ≥ 2 条 或 不可逆；焦点默认在"取消"</td></tr>
+        <tr><td><b>Modal.confirm</b></td><td>批量 / 不可逆 —— 删除 28 台 / 推送 OTA 包</td><td>是（页面级）</td><td>用户输入数量 + 确认</td><td>影响 ≥ 2 条 或 不可逆；焦点默认在"取消"</td></tr>
         <tr><td><b>Modal · 表单</b></td><td>需要填写信息 —— 新建 / 编辑</td><td>是</td><td>提交或关闭</td><td>字段 ≤ 8 个；超过用 Drawer 或独立页面</td></tr>
         <tr><td><b>Result 页</b></td><td>异步终态 —— 推送完成 / 部分成功 / 完全失败</td><td>是（占位）</td><td>用户确认或继续</td><td>耗时 ≥ 5 秒的批量动作；必带 extra prop 给下一步</td></tr>
         <tr><td><b>ErrorPage</b></td><td>整页失败 —— 404 / 403 / 500 / 离线</td><td>是（替换）</td><td>用户重试或导航</td><td>请求层错误；带 traceId 便于审计</td></tr>
@@ -32,7 +32,7 @@
         <div class="alert info"><div class="ico">i</div><div class="content"><strong>OTA 计划已生成</strong>共影响 1,284 台设备，将于今晚 02:00 开始推送。</div></div>
         <div class="alert success"><div class="ico">✓</div><div class="content"><strong>推送成功</strong>1,284 台设备已收到更新通知。</div></div>
         <div class="alert warning"><div class="ico">!</div><div class="content"><strong>低电量预警</strong>当前批次中 18 台设备电量低于 20%，可能升级失败。</div></div>
-        <div class="alert error"><div class="ico">×</div><div class="content"><strong>推送失败</strong>34 台设备未确认接收，请稍后重试或查看故障日志。</div></div>
+        <div class="alert error"><div class="ico">×</div><div class="content"><strong>推送失败</strong>34 台设备未确认接收，请稍后重试或查看设备日志。</div></div>
       </div>
     </div>
 
@@ -187,7 +187,7 @@
       <div class="bp-step"><div class="num">1</div><div class="name">动作前确认</div><div class="desc">推送、删除、重置、恢复出厂等强副作用操作使用 Modal.confirm，并明示影响数量。</div></div>
       <div class="bp-step"><div class="num">2</div><div class="name">执行中进度</div><div class="desc">大批量任务使用进度弹窗或任务详情页；Toast 只做启动成功提示。</div></div>
       <div class="bp-step"><div class="num">3</div><div class="name">终态 Result</div><div class="desc">完成、失败、部分成功都进入 Result 或详情卡；部分成功必须列出失败项。</div></div>
-      <div class="bp-step"><div class="num">4</div><div class="name">下一步动作</div><div class="desc">提供重试失败项、下载 CSV、查看日志、返回列表，不让用户猜下一步。</div></div>
+      <div class="bp-step"><div class="num">4</div><div class="name">下一步动作</div><div class="desc">提供重试失败项、下载失败清单、查看日志、返回列表，不让用户猜下一步。</div></div>
     </div>
   </div>
 </section>

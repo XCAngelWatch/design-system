@@ -14,7 +14,7 @@
     <th>设备名称</th>
     <th>SN</th>
     <th>状态</th>
-    <th>固件版本</th>
+    <th>OTA 版本</th>
     <th>所属机构</th>
     <th>最后心跳</th>
     <th class="colactions">操作</th>
@@ -161,7 +161,7 @@
           <div class="ccp-it locked"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked disabled /><span class="box"></span></label><span class="nm">设备名称</span><span class="lock">锁定</span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm">SN</span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm">状态</span></div>
-          <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm">固件版本</span></div>
+          <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm">OTA 版本</span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" /><span class="box"></span></label><span class="nm">所属机构</span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" /><span class="box"></span></label><span class="nm">最后心跳</span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" /><span class="box"></span></label><span class="nm">设备型号</span></div>
@@ -181,7 +181,7 @@
           <thead><tr>
             <th class="freeze-l">设备名称</th>
             <th class="freeze-l">SN</th>
-            <th>状态</th><th>固件版本</th><th>所属机构</th><th>设备型号</th><th>入网时间</th>
+            <th>状态</th><th>OTA 版本</th><th>所属机构</th><th>设备型号</th><th>入网时间</th>
             <th>最后心跳</th><th>电池</th><th>信号</th><th>系统</th>
             <th class="freeze-r colactions">操作</th>
           </tr></thead>
@@ -342,7 +342,7 @@
 
   <div class="subsection">
     <h3>列定义规范 · Column Spec</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">每列都是一份契约：<code>key</code> / <code>title</code> / <code>dataIndex</code> / <code>render</code> 是必填，<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">每列都是一份契约：<code>key</code> / <code>columnTitle</code> / <code>dataIndex</code> / <code>render</code> 是必填，<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
     <table class="map-table">
       <thead><tr><th style="width:18%">列类型</th><th style="width:14%">align</th><th style="width:14%">width</th><th style="width:18%">priority</th><th>特殊规则</th></tr></thead>
       <tbody>
@@ -375,12 +375,12 @@
     <table class="map-table">
       <thead><tr><th style="width:18%">类型</th><th style="width:30%">触发方式</th><th>典型字段</th></tr></thead>
       <tbody>
-        <tr><td>列内筛选</td><td>列标题 ▾ 弹层</td><td>状态 / 站点 / 固件版本（枚举值 ≤ 20）</td></tr>
+        <tr><td>列内筛选</td><td>列标题 ▾ 弹层</td><td>状态 / 机构 / OTA 版本（枚举值 ≤ 20）</td></tr>
         <tr><td>顶部筛选条</td><td>表格上方独立区域</td><td>关键词搜索 + 时间范围 + 主要枚举（4 字段先露）</td></tr>
         <tr><td>高级筛选</td><td>顶部筛选条 "高级 ▾" 展开</td><td>≥ 5 个字段时折叠，"清除全部" 按钮显式</td></tr>
         <tr><td>筛选标签</td><td>表头下方 Tag 序列</td><td>每条筛选 = 1 个可关闭 Tag；点击 × 单独移除</td></tr>
-        <tr><td>持久化</td><td>URL query string</td><td><code>?status=online,offline&amp;site=sh-001</code></td></tr>
-        <tr><td>组合规则</td><td>同字段 OR、跨字段 AND</td><td>状态 = (在线 OR 升级中) AND 站点 = 上海</td></tr>
+        <tr><td>持久化</td><td>URL query string</td><td><code>?status=online,offline&amp;org=sh-001</code></td></tr>
+        <tr><td>组合规则</td><td>同字段 OR、跨字段 AND</td><td>状态 = (在线 OR 升级中) AND 机构 = 上海</td></tr>
       </tbody>
     </table>
   </div>

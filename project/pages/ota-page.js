@@ -8,13 +8,13 @@
 
   <div class="surface" style="padding:0;overflow:hidden">
     <div style="display:flex;align-items:stretch;height:560px">
-      <!-- 左:站点树(对应旧 simpleTree, store_list) -->
+      <!-- 左:机构树(对应旧 simpleTree, store_list) -->
       <div class="ota-tree">
         <div class="ot-h">
-          <strong>站点列表</strong>
+          <strong>机构列表</strong>
           <button class="btn btn-text btn-sm" style="padding:0 4px">⟳</button>
         </div>
-        <div class="ot-search"><input class="input" placeholder="搜索站点" /></div>
+        <div class="ot-search"><input class="input" placeholder="搜索机构" /></div>
         <div class="ot-list">
           <div class="ot-row"><span class="ot-arrow">▾</span><span>集团总部</span><span class="ot-count">128</span></div>
           <div class="ot-row sub"><span class="ot-arrow">▾</span><span>华东大区</span><span class="ot-count">42</span></div>
@@ -27,12 +27,12 @@
         </div>
       </div>
 
-      <!-- 右:固件列表 -->
+      <!-- 右:OTA 包列表 -->
       <div class="ota-main">
         <!-- 搜索表单 -->
         <div class="lp-toolbar">
           <div class="row" style="gap:12px;flex:1;min-width:0">
-            <div style="min-width:140px"><label>名称</label><input class="input" placeholder="固件名称" /></div>
+            <div style="min-width:140px"><label>名称</label><input class="input" placeholder="OTA 包名称" /></div>
             <div style="min-width:140px"><label>新版本</label><input class="input" placeholder="如 v3.5.0" /></div>
             <div style="min-width:140px"><label>基线版本</label><input class="input" placeholder="如 v3.4.2" /></div>
             <button class="btn btn-primary btn-sm">查询</button>
@@ -60,7 +60,7 @@
             <thead>
               <tr>
                 <th>名称</th>
-                <th style="width:120px">站点</th>
+                <th style="width:120px">机构</th>
                 <th style="width:120px">新版本</th>
                 <th style="width:120px">基线版本</th>
                 <th style="width:80px">大小</th>
@@ -140,7 +140,7 @@
 
   <div class="surface" style="margin-top:24px">
     <h3 class="card-title">视图切换 · 表格 / 卡片</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">工具栏右侧 <code>☰ ⊞</code> 切换视图模式。卡片视图把每条固件渲染为带封面 + 元数据的卡(适合现场调研一眼扫过几十条版本),用户偏好持久化到 localStorage。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">工具栏右侧 <code>☰ ⊞</code> 切换视图模式。卡片视图把每条 OTA 包渲染为带封面 + 元数据的卡(适合现场调研一眼扫过几十条版本),用户偏好持久化到 localStorage。</p>
     <div class="ota-card-grid">
       <div class="ota-card">
         <div class="oc-cover"><span class="oc-version">v3.5.0</span><span class="status-dot upgrading" style="margin-top:6px">推送中</span></div>

@@ -31,9 +31,9 @@
           <div class="bp-nav-item">联机方案</div>
         </div>
         <div class="bp-main">
-          <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" /><div class="select"><span>全部状态 ▾</span></div><div class="select"><span>所属组织 ▾</span></div><button class="btn">筛选</button></div>
+          <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" /><div class="select"><span>全部状态 ▾</span></div><div class="select"><span>所属机构 ▾</span></div><button class="btn">筛选</button></div>
           <table class="dt">
-            <thead><tr><th>设备</th><th>SN</th><th>所属组织</th><th>状态</th><th>电量</th><th>最后心跳</th><th>操作</th></tr></thead>
+            <thead><tr><th>设备</th><th>SN</th><th>所属机构</th><th>状态</th><th>电量</th><th>最后心跳</th><th>操作</th></tr></thead>
             <tbody>
               <tr><td><b>终端-上海-001</b></td><td><code>DEV-86420075</code></td><td>上海 / 黄浦</td><td><span class="status-dot online">在线</span></td><td>86%</td><td>28 秒前</td><td><a>详情</a> · <a>远程</a> · <a>日志</a></td></tr>
               <tr><td><b>终端-广州-007</b></td><td><code>DEV-86420112</code></td><td>华南 / 仓配</td><td><span class="status-dot fault">故障</span></td><td>32%</td><td>8 分钟前</td><td><a>诊断</a> · <a>日志</a> · <a>工单</a></td></tr>
@@ -48,7 +48,7 @@
   <div class="subsection">
     <h3>设备详情信息架构</h3>
     <div class="bp-flow">
-      <div class="bp-step"><div class="num">1</div><div class="name">状态摘要</div><div class="desc">顶部固定设备名、SN、在线状态、所属组织、最后心跳和主操作。</div></div>
+      <div class="bp-step"><div class="num">1</div><div class="name">状态摘要</div><div class="desc">顶部固定设备名、SN、在线状态、所属机构、最后心跳和主操作。</div></div>
       <div class="bp-step"><div class="num">2</div><div class="name">运行指标</div><div class="desc">电池、充电、流量、存储、RAM、CPU、亮度、音量、IP 一屏可扫读。</div></div>
       <div class="bp-step"><div class="num">3</div><div class="name">远程控制</div><div class="desc">在线才开放应用程序、定位、轨迹、设备信息和上传进度入口。</div></div>
       <div class="bp-step"><div class="num">4</div><div class="name">审计记录</div><div class="desc">推送、修改、锁定、解锁、重置等写操作都要能追溯操作者和时间。</div></div>
@@ -70,7 +70,7 @@
 
   <div class="subsection">
     <h3>组件映射</h3>
-    <div class="blueprint-notes"><span><a href="#/table">Table</a>：设备列表和软件信息</span><span><a href="#/data-cards">DataCard</a>：设备卡片视图</span><span><a href="#/drawer">Drawer</a>：编辑与远程控制</span><span><a href="#/status-matrix">Status Matrix</a>：设备状态规则</span></div>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a>：设备列表和软件信息</span><span><a href="#/data-cards">DataCard</a>：Android 终端卡片视图</span><span><a href="#/drawer">Drawer</a>：编辑与远程控制</span><span><a href="#/status-matrix">Status Matrix</a>：设备状态规则</span></div>
   </div>
 </section>
 </div>

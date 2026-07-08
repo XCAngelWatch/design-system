@@ -47,8 +47,8 @@
             <path d="M30 16v12M30 32v0.01"/>
           </svg>
           <div class="em-title">加载失败</div>
-          <div class="em-sub">网络超时，请检查网关连通性 · <span class="mono">[E_TIMEOUT]</span></div>
-          <div style="margin-top:10px;display:flex;gap:8px;justify-content:center"><button class="btn btn-primary">重试</button><button class="btn">联系管理员</button></div>
+          <div class="em-sub">网络超时，请检查终端连通性 · <span class="mono">[E_TIMEOUT]</span></div>
+          <div style="margin-top:10px;display:flex;gap:8px;justify-content:center"><button class="btn btn-primary">重试</button><button class="btn">联系系统管理员</button></div>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
       <tbody>
         <tr><td>图标颜色</td><td><code>--aw-text-3</code> 灰</td><td><code>--aw-text-3</code> 灰</td><td><code>--aw-danger</code> 红</td></tr>
         <tr><td>主按钮</td><td><b>+ 添加设备</b>（primary）</td><td>清除筛选（default）</td><td>重试（primary）</td></tr>
-        <tr><td>次操作</td><td>查看示例 / 文档</td><td>调整筛选</td><td>联系管理员 / 复制错误码</td></tr>
+        <tr><td>次操作</td><td>查看示例 / 文档</td><td>调整筛选</td><td>联系系统管理员 / 复制错误码</td></tr>
         <tr><td>图标</td><td>Device + 加号</td><td>放大镜 + 斜线</td><td>感叹号 / 警告</td></tr>
         <tr><td>文案模板</td><td>"还没有 X / 添加首条..."</td><td>"无匹配 X / 当前筛选..."</td><td>"加载失败 / 原因 + 错误码"</td></tr>
         <tr><td>错误码</td><td>—</td><td>—</td><td>必带 <code>[E_*]</code> 方括号 + tooltip</td></tr>
@@ -128,10 +128,10 @@ type ResultProps = {
 &lt;Result status="no-match" title="无匹配设备" description="当前筛选条件下查不到设备"
   extra={&lt;Button onClick={clearFilter}&gt;清除筛选&lt;/Button&gt;} /&gt;
 
-&lt;Result status="error" title="加载失败" description="网络超时,请检查网关连通性"
+&lt;Result status="error" title="加载失败" description="网络超时,请检查终端连通性"
   errorCode="E_TIMEOUT"
   extra={&lt;&gt;&lt;Button type="primary" onClick={retry}&gt;重试&lt;/Button&gt;
-    &lt;Button onClick={contactAdmin}&gt;联系管理员&lt;/Button&gt;&lt;/&gt;} /&gt;</code></pre></div>
+    &lt;Button onClick={contactAdmin}&gt;联系系统管理员&lt;/Button&gt;&lt;/&gt;} /&gt;</code></pre></div>
   </div>
 
   <div class="subsection">

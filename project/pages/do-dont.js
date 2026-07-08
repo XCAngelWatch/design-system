@@ -92,6 +92,21 @@
 </ul>
     </div>
   </div>
+  <div class="subsection">
+    <h3>Figma 模块语言 · 必须统一</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px">模块名称、对象名和按钮动作必须与 Figma 业务语义保持一致，避免把终端管理产品写成泛行业后台。</p>
+    <table class="map-table">
+      <thead><tr><th style="width:22%">模块</th><th style="width:39%">推荐</th><th>禁止</th></tr></thead>
+      <tbody>
+        <tr><td>产品定位</td><td>面向安卓设备的终端管理系统</td><td>偏行业调度平台、车队系统、泛企业平台</td></tr>
+        <tr><td>设备对象</td><td>Android 终端、设备、设备分组、设备型号</td><td>车辆、网关、装置、机器混用</td></tr>
+        <tr><td>应用市场</td><td>应用管理、应用分类、版本管理、安装明细</td><td>软件商城、资源市场、下载中心混用</td></tr>
+        <tr><td>OTA</td><td>升级文件、基线版本、适配机型、更新推送</td><td>只写“更新”“执行”“开始”</td></tr>
+        <tr><td>推送任务</td><td>批次号、推送方式、指定设备编号、推送设备详情</td><td>任务编号、目标列表等无业务指向的泛词</td></tr>
+        <tr><td>远程服务</td><td>推送到设备、从设备删除、恢复出厂、取回日志</td><td>处理、操作、执行等缺少对象和后果的按钮</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 </div>
 `;
