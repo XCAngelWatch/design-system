@@ -43,6 +43,8 @@ Use this Figma file as the binding visual source:
 
 - `/Users/david/Documents/workspaces/xctech/tms25/code/Angelwatch体验重构-设计执行 去除tms1.0内容.fig`
 
+These absolute paths are local evidence sources for implementation only. The runtime site must not depend on them; after merge, the site may reference only repository files such as `project/pages/`, `project/styles/`, and copied assets under `project/assets/opendesign/`.
+
 ### Exclusions
 
 Exclude old-system, discarded, and temporary Figma content:
@@ -70,6 +72,8 @@ The inventory must cover:
 - Prohibited-pattern baseline: current matches for version badges, state-machine classes, old TMS 1.0 copy, runtime CDN additions, and hardcoded colors outside documentation swatches.
 
 This inventory is a design input, not a new runtime dependency. It may be summarized in a section of the Figma coverage page instead of shipping a large generated report.
+
+The primary-token inventory must explicitly check `project/styles/tokens.css`. As of this spec review, `--aw-primary` in light mode is measured as `#165DFF`, which conflicts with the repository rule that brand primary is `#0052CC`. Phase 1 must treat this as an explicit correction task: align light `--aw-primary`, related active/indicator values, and token documentation to `#0052CC`, while keeping dark `--aw-primary` mapped to `#4080FF`.
 
 ## Information Architecture
 
@@ -172,6 +176,44 @@ Recommended implementation workflow:
 - Manually translate the useful patterns into static `pages/<id>.js` fragments.
 - Keep generated working notes out of runtime unless they become intentional documentation.
 
+Use a small local helper to summarize `tree.json` instead of reading it by hand:
+
+```bash
+python3 - <<'PY'
+import collections, json
+from pathlib import Path
+
+tree = Path('/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64/figma/tree.json')
+nodes = json.loads(tree.read_text())
+by_id = {n['id']: n for n in nodes}
+
+def descendants(root_id):
+    stack = list(by_id[root_id].get('children', []))
+    while stack:
+        node_id = stack.pop(0)
+        node = by_id[node_id]
+        yield node
+        stack.extend(node.get('children', []))
+
+for canvas in [n for n in nodes if n.get('type') == 'CANVAS']:
+    desc = list(descendants(canvas['id']))
+    sections = [n for n in desc if n.get('type') == 'SECTION']
+    new_frames = [n for n in desc if n.get('type') == 'FRAME' and ('【新界面】' in n.get('name','') or '【新页面】' in n.get('name',''))]
+    state_frames = [n for n in desc if n.get('type') == 'FRAME' and '【状态】' in n.get('name','')]
+    print(f"\n# {canvas['name']} ({canvas['id']})")
+    print(f"sections={len(sections)} new_frames={len(new_frames)} state_frames={len(state_frames)}")
+    for section in sections:
+        frames = [n for n in descendants(section['id']) if n.get('type') == 'FRAME' and ('【新界面】' in n.get('name','') or '【新页面】' in n.get('name','') or '【状态】' in n.get('name',''))]
+        print(f"  - {section['name']}: {len(frames)} relevant frames")
+        for frame in frames[:8]:
+            print(f"      * {frame['name']} [{frame['id']}]")
+        if len(frames) > 8:
+            print(f"      ... +{len(frames)-8} more")
+PY
+```
+
+OpenDesign-generated `figma-tokens.js`, `figma-tokens.css`, and `figma-design-system.html` are reference drafts only. Do not copy them directly into `project/`; final pages must be rewritten as static design-system fragments registered through `window.__AW_PAGES__`.
+
 ### Tokens
 
 Preserve the current `--aw-*` token model and Ant Design v6 mapping approach. If implementation touches primary-color documentation or tokens, align with the repository rule that the brand primary is `#0052CC`, not OpenDesign's historic `#165DFF`.
@@ -191,6 +233,7 @@ Primary-color mapping must be explicit:
 - `#4080FF` must not be described as a separate brand color; it is the accessible dark-mode rendering of the same primary role.
 - OpenDesign/Figma `#165DFF` maps to a historical source observation only. For primary affordances in new documentation, translate it to `#0052CC` in light mode and `#4080FF` in dark mode through tokens.
 - New HTML/CSS examples must reference these through `var(--aw-primary)` and related variables. Raw hex is allowed only inside documentation swatches that are explicitly showing token values.
+- For success, warning, danger, and info in dark mode, prefer the existing dark token values. If Figma provides only light-mode evidence for a semantic color, mark the dark variant as "待确认" in documentation rather than inventing a new dark color.
 
 ### Assets
 
@@ -205,7 +248,7 @@ Asset rules:
 - Do not copy all 119 assets unless a page uses them.
 - Prefer CSS/HTML reconstructions for generic UI; use image assets only for logos, screenshots, or visual evidence that cannot be represented cleanly.
 - Record asset provenance for every copied file in `project/assets/opendesign/PROVENANCE.md`.
-- Each provenance row must include destination path, original OpenDesign path, source Figma node/frame or asset filename when known, SHA-256 hash, intended page/use, and whether the asset is source evidence or runtime UI.
+- Each provenance row must include destination path, original OpenDesign path, source Figma node/frame or asset filename when known, and intended page/use. Add SHA-256 only for assets that are likely to drift, be replaced, or need tamper checks.
 
 ## Styling Plan
 
@@ -269,12 +312,43 @@ print('balanced ✓' if all(o==c for t,(o,c) in p.s.items() if t not in void) el
 ```
 
 ```bash
-if grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\.0/|撤回 v1|（同 v1' project/; then
-  echo 'FORBIDDEN PATTERN FOUND ✗'
-  exit 1
-else
-  echo 'forbidden patterns clear ✓'
-fi
+python3 - <<'PY'
+from pathlib import Path
+import re, sys
+
+forbidden_terms = [
+    'state-machine',
+    'sm-graph',
+    'sm-legend',
+    'sm-rules',
+    '撤回 v1',
+    '（同 v1',
+]
+forbidden_regexes = [
+    ('class new-tag', re.compile(r'class=["\'][^"\']*\bnew-tag\b[^"\']*["\']')),
+    ('class="v">vX.X</span>', re.compile(r'class="v">v[0-9]+\.[0-9]+ *</span>')),
+]
+checked_suffixes = {'.html', '.js', '.css', '.md'}
+bad = []
+
+for path in Path('project').rglob('*'):
+    if not path.is_file() or path.suffix not in checked_suffixes:
+        continue
+    text = path.read_text(encoding='utf-8', errors='ignore')
+    for term in forbidden_terms:
+        if term in text:
+            bad.append((str(path), term))
+    for label, pattern in forbidden_regexes:
+        if pattern.search(text):
+            bad.append((str(path), label))
+
+if bad:
+    for path, term in bad:
+        print(f'{path}: forbidden pattern {term}')
+    sys.exit(1)
+
+print('forbidden patterns clear ✓')
+PY
 ```
 
 Then run a local preview with no server dependency:
@@ -305,6 +379,7 @@ During preview, verify:
 Inventory the current design-system project, then add coverage documentation to 导览/规范:
 
 - Current route, CSS, token, asset, and prohibited-pattern baseline.
+- Explicit primary-token correction from the measured light `#165DFF` to the repository-standard light `#0052CC`, with dark `#4080FF` kept as the dark-surface primary adaptation.
 - Business module coverage.
 - Source files and paths.
 - Exclusion list.
@@ -312,38 +387,53 @@ Inventory the current design-system project, then add coverage documentation to 
 
 ### Phase 2: Shared Component And Template Backfill
 
-Enhance existing foundation, component, business-component, and template pages first, so module blueprints can point to shared rules instead of duplicating them:
+Enhance existing foundation, component, business-component, and template pages first, so module blueprints can point to shared rules instead of duplicating them. A single implementation round must deliver the must-have items first; nice-to-have items can move to a follow-up if the round would otherwise become too broad.
+
+Must-have:
 
 - `table`
 - `data-cards`
 - `status-matrix`
+- `feedback` / `drawer`
+
+Nice-to-have:
+
 - `row-actions`
 - `upload`
 - `tree-comp`
-- `feedback` / `drawer`
 - `ota-page`
 - `push-page`
 - `user-mgmt-page`
 
 ### Phase 3: Module Blueprint Pages
 
-Add and route the module blueprint pages, aligned to the approved module coverage:
+Add and route the module blueprint pages, aligned to the approved module coverage. A single implementation round must deliver the must-have blueprints first; nice-to-have blueprints can move to a follow-up if needed.
+
+Must-have:
 
 - `market-page`
 - `device-center-page`
+
+Nice-to-have:
+
 - `map-page`
 - `service-page`
 - `ops-page`
 
 Keep the existing `ota-page`, `push-page`, and `user-mgmt-page` as module-level templates rather than duplicating them as new blueprint pages.
 
+Blueprints and templates have different roles:
+
+- Blueprint: a cross-page business-domain abstraction focused on patterns, state sets, decision rules, and component mappings.
+- Template: a reusable single-page HTML skeleton focused on structure that product teams can copy.
+
 ### Phase 4: Style, Asset, And Provenance Consolidation
 
 Add necessary CSS and local assets while preserving current token and CSS layering rules. If assets are copied, add `project/assets/opendesign/PROVENANCE.md` in the same phase.
 
-### Phase 5: Local Preview, Verification, And Delivery Notes
+### Phase 5: Local Preview, Verification, Rollback, And Delivery Notes
 
-Run validation commands, inspect key routes through `open project/index.html`, and summarize coverage, changed files, asset provenance, and residual limitations.
+Run validation commands, inspect key routes through `open project/index.html`, and summarize coverage, changed files, asset provenance, rollback path, and residual limitations. Keep implementation changes in reviewable commits; if validation fails after a commit, rollback should be possible with a single `git revert <commit>` for the failing implementation commit.
 
 ## Out Of Scope
 
