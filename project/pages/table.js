@@ -52,7 +52,7 @@
   <div style="font-size:13px;color:var(--aw-text-3);margin-bottom:8px">Loading · 骨架屏占位</div>
   <div class="table-wrap">
     <table class="dt">
-      <thead><tr><th style="width:36px"></th><th>设备名称</th><th>SN</th><th>状态</th><th>版本</th><th class="colactions">操作</th></tr></thead>
+      <thead><tr><th style="width:36px"></th><th>设备名称</th><th>SN</th><th>状态</th><th>OTA 版本</th><th class="colactions">操作</th></tr></thead>
       <tbody>
         <tr><td><div class="skel" style="height:14px;width:14px;border-radius:3px"></div></td><td><div class="skel mid"></div></td><td><div class="skel short"></div></td><td><div class="skel" style="width:60px"></div></td><td><div class="skel short"></div></td><td class="colactions"><div class="skel short" style="margin-left:auto"></div></td></tr>
         <tr><td><div class="skel" style="height:14px;width:14px;border-radius:3px"></div></td><td><div class="skel mid"></div></td><td><div class="skel short"></div></td><td><div class="skel" style="width:60px"></div></td><td><div class="skel short"></div></td><td class="colactions"><div class="skel short" style="margin-left:auto"></div></td></tr>
@@ -67,7 +67,7 @@
   <div style="font-size:13px;color:var(--aw-text-3);margin-bottom:8px">Empty · 无数据</div>
   <div class="table-wrap">
     <table class="dt">
-      <thead><tr><th style="width:36px"></th><th>设备名称</th><th>SN</th><th>状态</th><th>版本</th><th class="colactions">操作</th></tr></thead>
+      <thead><tr><th style="width:36px"></th><th>设备名称</th><th>SN</th><th>状态</th><th>OTA 版本</th><th class="colactions">操作</th></tr></thead>
     </table>
     <div style="padding:48px 24px;text-align:center;background:var(--aw-bg)">
       <div style="width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:var(--aw-fill-2);display:grid;place-items:center;color:var(--aw-text-4)">
@@ -84,7 +84,7 @@
   <div style="font-size:13px;color:var(--aw-text-3);margin-bottom:8px">Error · 加载失败</div>
   <div class="table-wrap">
     <table class="dt">
-      <thead><tr><th style="width:36px"></th><th>设备名称</th><th>SN</th><th>状态</th><th>版本</th><th class="colactions">操作</th></tr></thead>
+      <thead><tr><th style="width:36px"></th><th>设备名称</th><th>SN</th><th>状态</th><th>OTA 版本</th><th class="colactions">操作</th></tr></thead>
     </table>
     <div style="padding:48px 24px;text-align:center;background:var(--aw-bg)">
       <div style="width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:var(--aw-danger-bg);display:grid;place-items:center;color:var(--aw-danger)">
@@ -106,7 +106,7 @@
       <div class="dens-card">
         <div class="dens-cap"><span class="tag-meta">Dense · 32px</span></div>
         <table class="dt dt-dense">
-          <thead><tr><th>设备</th><th>状态</th><th>版本</th></tr></thead>
+          <thead><tr><th>设备</th><th>状态</th><th>OTA 版本</th></tr></thead>
           <tbody>
             <tr><td>SH-001</td><td><span class="status-dot online">在线</span></td><td>v3.4.2</td></tr>
             <tr><td>BJ-014</td><td><span class="status-dot upgrading">升级中</span></td><td>v3.4.1</td></tr>
@@ -118,7 +118,7 @@
       <div class="dens-card">
         <div class="dens-cap"><span class="tag-meta">Middle · 40px (默认)</span></div>
         <table class="dt">
-          <thead><tr><th>设备</th><th>状态</th><th>版本</th></tr></thead>
+          <thead><tr><th>设备</th><th>状态</th><th>OTA 版本</th></tr></thead>
           <tbody>
             <tr><td>SH-001</td><td><span class="status-dot online">在线</span></td><td>v3.4.2</td></tr>
             <tr><td>BJ-014</td><td><span class="status-dot upgrading">升级中</span></td><td>v3.4.1</td></tr>
@@ -129,7 +129,7 @@
       <div class="dens-card">
         <div class="dens-cap"><span class="tag-meta">Loose · 48px</span></div>
         <table class="dt dt-loose">
-          <thead><tr><th>设备</th><th>状态</th><th>版本</th></tr></thead>
+          <thead><tr><th>设备</th><th>状态</th><th>OTA 版本</th></tr></thead>
           <tbody>
             <tr><td>SH-001</td><td><span class="status-dot online">在线</span></td><td>v3.4.2</td></tr>
             <tr><td>BJ-014</td><td><span class="status-dot upgrading">升级中</span></td><td>v3.4.1</td></tr>
@@ -146,7 +146,7 @@
       <table class="dt" style="border-radius:0;border-right:1px solid var(--aw-border-2)">
         <thead><tr>
           <th><label class="check"><input type="checkbox" /><span class="box"></span></label></th>
-          <th>设备名称</th><th>SN</th><th>状态</th><th>版本</th>
+          <th>设备名称</th><th>SN</th><th>状态</th><th>OTA 版本</th>
           <th class="colactions">⚙ 列设置</th>
         </tr></thead>
         <tbody>
@@ -218,7 +218,7 @@
           <th style="width:160px">设备名称<div class="col-resizer"></div></th>
           <th style="width:140px">SN<div class="col-resizer dragging"></div></th>
           <th style="width:90px">状态<div class="col-resizer"></div></th>
-          <th>版本<div class="col-resizer"></div></th>
+          <th>OTA 版本<div class="col-resizer"></div></th>
           <th>所属机构</th>
         </tr></thead>
         <tbody>
@@ -247,7 +247,7 @@
       <table class="dt" style="border-radius:0">
         <thead><tr>
           <th><label class="check"><input type="checkbox" checked /><span class="box"></span></label></th>
-          <th>设备名称</th><th>SN</th><th>状态</th><th>版本</th>
+          <th>设备名称</th><th>SN</th><th>状态</th><th>OTA 版本</th>
         </tr></thead>
         <tbody>
           <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td>终端-上海-001</td><td><code>DEV-86420075</code></td><td><span class="status-dot online">在线</span></td><td>v3.4.2</td></tr>
@@ -342,7 +342,7 @@
 
   <div class="subsection">
     <h3>列定义规范 · Column Spec</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">每列都是一份契约：<code>key</code> / <code>title?: ColumnTitle&lt;RecordType&gt;</code>（列头文本或列头渲染函数） / <code>dataIndex</code> / <code>render</code> 是必填，<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">列定义至少明确 <code>key</code> / <code>dataIndex</code> / <code>render</code>；<code>title?: ColumnTitle&lt;RecordType&gt;</code> 为可选列头配置，本规范建议业务列提供清晰 title。<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
     <table class="map-table">
       <thead><tr><th style="width:18%">列类型</th><th style="width:14%">align</th><th style="width:14%">width</th><th style="width:18%">priority</th><th>特殊规则</th></tr></thead>
       <tbody>
