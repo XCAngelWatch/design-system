@@ -23,7 +23,7 @@
       <table class="dt">
         <thead>
           <tr>
-            <th>批次 ID</th>
+            <th>批次号</th>
             <th style="width:160px">推送方式</th>
             <th style="width:120px">操作人</th>
             <th style="width:160px">推送时间</th>

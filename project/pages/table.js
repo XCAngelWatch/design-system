@@ -342,7 +342,7 @@
 
   <div class="subsection">
     <h3>列定义规范 · Column Spec</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">每列都是一份契约：<code>key</code> / <code>columnTitle</code> / <code>dataIndex</code> / <code>render</code> 是必填，<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">每列都是一份契约：<code>key</code> / <code>title: ReactNode</code> / <code>dataIndex</code> / <code>render</code> 是必填，<code>width</code> / <code>fixed</code> / <code>align</code> / <code>priority</code> 是结构性，<code>sorter</code> / <code>filters</code> 是交互性。下表给出 6 类常见列的标准定义。</p>
     <table class="map-table">
       <thead><tr><th style="width:18%">列类型</th><th style="width:14%">align</th><th style="width:14%">width</th><th style="width:18%">priority</th><th>特殊规则</th></tr></thead>
       <tbody>

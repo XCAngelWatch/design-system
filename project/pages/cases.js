@@ -51,7 +51,7 @@
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">2</div><div class="cf-name">DetailPage</div><div class="cf-desc">顶部 <b>状态条</b>（红色离线）+ 关键字段 SN/IMEI/IP 一屏可见 → 6 Tab 第一个就是"心跳"，不需要再点</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name">操作记录追溯</div><div class="cf-desc">"操作记录" Tab 看最近 24h <b>完整审计</b>（who / when / what / IP）→ 定位是"昨天 14:30 推送 OTA 包后丢心跳"</div></div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name">操作记录追溯</div><div class="cf-desc">"操作记录" Tab 看最近 24h <b>完整审计</b>（who / when / what / IP）→ 定位是"昨天 14:30 OTA 升级后丢心跳"</div></div>
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">4</div><div class="cf-name">Popconfirm 回滚</div><div class="cf-desc">"回滚 OTA 版本" → Popconfirm 行内确认（明示"回滚需 2 分钟，期间设备离线"） → 服务端二次校验 → 推回滚</div></div>
     </div>
