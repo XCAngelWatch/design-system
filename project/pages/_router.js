@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  // === 41 routes (id → label, group) ===
+  // === 62 routes (id → label, group) ===
   var ROUTES = [
     ['overview',         '设计系统概览',                            '导览'],
     ['cases',            '终端管理实践案例',                        '导览'],
@@ -174,6 +174,202 @@
     });
   }
 
+  // === demo interactions ===
+  function setSingleActive(el, selector, cls) {
+    var scope = el.parentElement || document;
+    scope.querySelectorAll(selector).forEach(function (item) {
+      item.classList.remove(cls);
+      item.classList.remove('is-active');
+    });
+    el.classList.add(cls);
+    el.classList.add('is-active');
+  }
+
+  function setOutput(root, name, value) {
+    root.querySelectorAll('[data-demo-output="' + name + '"]').forEach(function (el) {
+      el.textContent = value;
+    });
+  }
+
+  function getOutput(root, name, fallback) {
+    var el = root.querySelector('[data-demo-output="' + name + '"]');
+    return el ? el.textContent : fallback;
+  }
+
+  function pulse(el) {
+    el.classList.add('demo-pressed');
+    window.setTimeout(function () { el.classList.remove('demo-pressed'); }, 180);
+  }
+
+  function showDemoToast(root, message) {
+    var toast = root.querySelector('.demo-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'demo-toast';
+      toast.setAttribute('role', 'status');
+      root.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    window.clearTimeout(showDemoToast.timer);
+    showDemoToast.timer = window.setTimeout(function () {
+      toast.classList.remove('show');
+    }, 1400);
+  }
+
+  function updateDateTimeStart(root) {
+    var date = getOutput(root, 'date', '2026-04-20');
+    var time = getOutput(root, 'time', '02:00');
+    if (date.indexOf('未选择') === 0 || time.indexOf('未选择') === 0) return;
+    setOutput(root, 'datetime-start', date + ' ' + time);
+  }
+
+  function handleDemoAction(root, el, action, event) {
+    event.preventDefault();
+    pulse(el);
+
+    if (action === 'quick-range') {
+      setSingleActive(el, '.chip', 'active');
+      setOutput(root, 'range-start', el.getAttribute('data-range-start'));
+      setOutput(root, 'range-end', el.getAttribute('data-range-end'));
+      setOutput(root, 'date', el.getAttribute('data-range-end'));
+      updateDateTimeStart(root);
+      showDemoToast(root, '已切换到「' + el.textContent.trim() + '」');
+      return;
+    }
+
+    if (action === 'date-select') {
+      var calendar = el.closest('.calendar');
+      if (calendar) {
+        calendar.querySelectorAll('.day.selected').forEach(function (day) {
+          day.classList.remove('selected');
+        });
+      }
+      el.classList.add('selected');
+      setOutput(root, 'date', el.getAttribute('data-date'));
+      setOutput(root, 'range-end', el.getAttribute('data-date'));
+      updateDateTimeStart(root);
+      showDemoToast(root, '已选择日期 ' + el.getAttribute('data-date'));
+      return;
+    }
+
+    if (action === 'time-select') {
+      setSingleActive(el, '.time-option', 'active');
+      var time = el.getAttribute('data-time');
+      var endMap = { '02:00': '06:00', '06:00': '10:00', '12:30': '16:30', '22:00': '02:00(+1)' };
+      setOutput(root, 'time', time);
+      setOutput(root, 'datetime-end', endMap[time] || '06:00');
+      updateDateTimeStart(root);
+      showDemoToast(root, '已选择时间 ' + time);
+      return;
+    }
+
+    if (action === 'time-part') {
+      setSingleActive(el, 'button', 'active');
+      var picker = el.closest('.time-picker');
+      if (picker) {
+        var cols = picker.querySelectorAll('.time-col');
+        var h = cols[0].querySelector('.active').textContent.trim();
+        var m = cols[1].querySelector('.active').textContent.trim();
+        var s = cols[2].querySelector('.active').textContent.trim();
+        var value = h + ':' + m + (s === '00' ? '' : ':' + s);
+        setOutput(root, 'time', value);
+        updateDateTimeStart(root);
+        showDemoToast(root, '已设置时间 ' + value);
+      }
+      return;
+    }
+
+    if (action === 'month-prev' || action === 'month-next') {
+      var label = root.querySelector('[data-demo-output="month-label"]');
+      var months = ['2026 年 3 月', '2026 年 4 月', '2026 年 5 月'];
+      var idx = months.indexOf(label ? label.textContent : months[1]);
+      idx = action === 'month-prev' ? Math.max(0, idx - 1) : Math.min(months.length - 1, idx + 1);
+      if (label) label.textContent = months[idx];
+      showDemoToast(root, '切换到 ' + months[idx]);
+      return;
+    }
+
+    if (action === 'clear-picker') {
+      setOutput(root, 'date', '未选择日期');
+      setOutput(root, 'time', '未选择时间');
+      setOutput(root, 'range-start', '开始日期');
+      setOutput(root, 'range-end', '结束日期');
+      setOutput(root, 'datetime-start', '开始时间');
+      setOutput(root, 'datetime-end', '结束时间');
+      root.querySelectorAll('.selected,.active,.is-active').forEach(function (item) {
+        if (!item.hasAttribute('data-theme-set')) {
+          item.classList.remove('selected', 'active', 'is-active');
+        }
+      });
+      showDemoToast(root, '已清空选择');
+      return;
+    }
+
+    if (action === 'confirm-picker') {
+      showDemoToast(root, '已确认当前日期时间');
+      return;
+    }
+  }
+
+  function wireDemoInteractions(root) {
+    if (!root) return;
+
+    root.onclick = function (event) {
+      var target = event.target;
+      var actionEl = target.closest && target.closest('[data-demo-action]');
+      if (actionEl && root.contains(actionEl)) {
+        handleDemoAction(root, actionEl, actionEl.getAttribute('data-demo-action'), event);
+        return;
+      }
+
+      var routeLink = target.closest && target.closest('a[href^="#/"]');
+      if (routeLink) return;
+
+      var select = target.closest && target.closest('.select');
+      if (select && root.contains(select)) {
+        event.preventDefault();
+        select.classList.toggle('is-open');
+        showDemoToast(root, select.classList.contains('is-open') ? '已展开选择器' : '已收起选择器');
+        return;
+      }
+
+      var page = target.closest && target.closest('.pager .page');
+      if (page && root.contains(page)) {
+        event.preventDefault();
+        var text = page.textContent.trim();
+        if (!/[‹›…]/.test(text)) setSingleActive(page, '.page', 'is-active');
+        showDemoToast(root, '分页点击：' + text);
+        return;
+      }
+
+      var tab = target.closest && target.closest('.tabs a, .viewtoggle button, .seg button, .chip');
+      if (tab && root.contains(tab)) {
+        event.preventDefault();
+        setSingleActive(tab, tab.tagName === 'A' ? 'a' : tab.classList.contains('chip') ? '.chip' : 'button', tab.classList.contains('chip') ? 'active' : 'active');
+        showDemoToast(root, '已切换：' + tab.textContent.trim());
+        return;
+      }
+
+      var button = target.closest && target.closest('button, .btn');
+      if (button && root.contains(button) && !button.disabled) {
+        event.preventDefault();
+        pulse(button);
+        showDemoToast(root, '已点击：' + (button.textContent.trim() || '操作'));
+      }
+    };
+
+    root.onchange = function (event) {
+      var input = event.target;
+      if (!input.matches || !input.matches('input[type="checkbox"]')) return;
+      var row = input.closest('tr');
+      var label = input.closest('label');
+      if (row) row.classList.toggle('is-selected', input.checked);
+      if (label) label.classList.toggle('is-checked', input.checked);
+      showDemoToast(root, input.checked ? '已选中' : '已取消选中');
+    };
+  }
+
   // === routing ===
   var currentReqId = 0;
 
@@ -251,6 +447,7 @@
     // 同步可用?
     if (window.__AW_PAGES__[routeId]) {
       slot.innerHTML = window.__AW_PAGES__[routeId];
+      wireDemoInteractions(slot);
       window.scrollTo(0, 0);
       return;
     }
@@ -260,6 +457,7 @@
     loadPageScript(routeId).then(function (html) {
       if (reqId !== currentReqId) return;
       slot.innerHTML = html;
+      wireDemoInteractions(slot);
       window.scrollTo(0, 0);
     }).catch(function (err) {
       if (reqId !== currentReqId) return;

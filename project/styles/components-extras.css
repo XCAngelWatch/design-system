@@ -1640,3 +1640,53 @@
   cursor: pointer;
 }
 .ota-card .oc-foot a:hover { color: var(--aw-primary-hover); }
+
+/* ===== 全站 demo 轻交互 ===== */
+.demo-pressed {
+  transform: translateY(1px);
+  filter: brightness(0.98);
+}
+.select.is-open {
+  border-color: var(--aw-primary);
+  box-shadow: 0 0 0 2px var(--aw-primary-bg);
+}
+.select.is-open::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.pager .page.is-active,
+.pager .page.active {
+  color: var(--aw-primary);
+  border-color: var(--aw-primary);
+  background: var(--aw-primary-bg);
+}
+.tabs a.is-active,
+.tabs a.active {
+  color: var(--aw-primary);
+  border-bottom-color: var(--aw-primary);
+  font-weight: 500;
+}
+tr.is-selected td {
+  background: var(--aw-primary-bg);
+}
+.demo-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  max-width: min(320px, calc(100vw - 48px));
+  padding: 10px 14px;
+  border: 1px solid var(--aw-border-2);
+  border-radius: var(--aw-radius);
+  background: var(--aw-bg);
+  color: var(--aw-text-1);
+  box-shadow: var(--aw-shadow-3);
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity var(--aw-dur-fast), transform var(--aw-dur-fast);
+}
+.demo-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

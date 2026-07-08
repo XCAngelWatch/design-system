@@ -2,42 +2,95 @@
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["datepicker"] = `
 <div class="content">
 <section class="section" id="datepicker">
-  <p class="section-eyebrow">Components · 日期选择</p>
-  <h2>日期选择 DatePicker</h2>
-  <p class="lede">日志查询、告警过滤、统计区间——所有时间范围筛选的入口。提供常用快捷范围 chip 减少点击。</p>
+  <p class="section-eyebrow">Components · 日期 / 时间选择</p>
+  <h2>DatePicker / TimePicker · 日期时间选择</h2>
+  <p class="lede">日志查询、告警过滤、统计区间、OTA 执行窗口——所有时间范围筛选的入口。日期、时间、日期时间范围都必须支持快捷项与明确确认，降低误操作。</p>
 
   <div class="demo-grid cols-2">
     <div class="surface">
-<h3 style="margin:0 0 12px;font-size:14px">输入态</h3>
+<h3 style="margin:0 0 12px;font-size:14px">输入态 · 可点击预览</h3>
 <div style="display:flex;flex-direction:column;gap:12px">
   <div class="dp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="placeholder">选择日期</span></div>
-  <div class="dp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="val">2026-04-20</span></div>
-  <div class="dp dp-range"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="val">2026-03-21</span><span class="sep">→</span><span class="val">2026-04-20</span></div>
+  <div class="dp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="val" data-demo-output="date">2026-04-20</span></div>
+  <div class="dp"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="val" data-demo-output="time">02:00</span></div>
+  <div class="dp dp-range"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="val" data-demo-output="range-start">2026-03-21</span><span class="sep">→</span><span class="val" data-demo-output="range-end">2026-04-20</span></div>
+  <div class="dp dp-range"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="val" data-demo-output="datetime-start">2026-04-20 02:00</span><span class="sep">→</span><span class="val" data-demo-output="datetime-end">06:00</span></div>
 </div>
 <h3 style="margin:18px 0 10px;font-size:14px">快捷范围</h3>
 <div class="dp-quick">
-  <span class="chip">今日</span>
-  <span class="chip">昨日</span>
-  <span class="chip active">近 7 天</span>
-  <span class="chip">近 30 天</span>
-  <span class="chip">本月</span>
-  <span class="chip">本季度</span>
+  <button class="chip" data-demo-action="quick-range" data-range-start="2026-04-27" data-range-end="2026-04-27">今日</button>
+  <button class="chip" data-demo-action="quick-range" data-range-start="2026-04-26" data-range-end="2026-04-26">昨日</button>
+  <button class="chip active" data-demo-action="quick-range" data-range-start="2026-04-21" data-range-end="2026-04-27">近 7 天</button>
+  <button class="chip" data-demo-action="quick-range" data-range-start="2026-03-29" data-range-end="2026-04-27">近 30 天</button>
+  <button class="chip" data-demo-action="quick-range" data-range-start="2026-04-01" data-range-end="2026-04-30">本月</button>
+  <button class="chip" data-demo-action="quick-range" data-range-start="2026-04-01" data-range-end="2026-06-30">本季度</button>
 </div>
+<div class="alert info" style="margin-top:14px"><div class="ico">i</div><div class="content">点击 chip、日期格、时间项会更新上方输入态。此站点只模拟状态切换，不持久化业务数据。</div></div>
     </div>
     <div class="surface">
 <h3 style="margin:0 0 12px;font-size:14px">日历面板</h3>
 <div class="calendar">
-  <div class="head"><span class="nav-btn">‹</span><span>2026 年 4 月</span><span class="nav-btn">›</span></div>
+  <div class="head"><button class="nav-btn" data-demo-action="month-prev">‹</button><span data-demo-output="month-label">2026 年 4 月</span><button class="nav-btn" data-demo-action="month-next">›</button></div>
   <div class="grid">
     <div class="dow">日</div><div class="dow">一</div><div class="dow">二</div><div class="dow">三</div><div class="dow">四</div><div class="dow">五</div><div class="dow">六</div>
     <div class="day muted">29</div><div class="day muted">30</div><div class="day muted">31</div>
-    <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div>
-    <div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div>
-    <div class="day">12</div><div class="day">13</div><div class="day in-range">14</div><div class="day in-range">15</div><div class="day in-range">16</div><div class="day in-range">17</div><div class="day in-range">18</div>
-    <div class="day in-range">19</div><div class="day selected">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div>
-    <div class="day">26</div><div class="day today">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day muted">1</div><div class="day muted">2</div>
+    <button class="day" data-demo-action="date-select" data-date="2026-04-01">1</button><button class="day" data-demo-action="date-select" data-date="2026-04-02">2</button><button class="day" data-demo-action="date-select" data-date="2026-04-03">3</button><button class="day" data-demo-action="date-select" data-date="2026-04-04">4</button>
+    <button class="day" data-demo-action="date-select" data-date="2026-04-05">5</button><button class="day" data-demo-action="date-select" data-date="2026-04-06">6</button><button class="day" data-demo-action="date-select" data-date="2026-04-07">7</button><button class="day" data-demo-action="date-select" data-date="2026-04-08">8</button><button class="day" data-demo-action="date-select" data-date="2026-04-09">9</button><button class="day" data-demo-action="date-select" data-date="2026-04-10">10</button><button class="day" data-demo-action="date-select" data-date="2026-04-11">11</button>
+    <button class="day" data-demo-action="date-select" data-date="2026-04-12">12</button><button class="day" data-demo-action="date-select" data-date="2026-04-13">13</button><button class="day in-range" data-demo-action="date-select" data-date="2026-04-14">14</button><button class="day in-range" data-demo-action="date-select" data-date="2026-04-15">15</button><button class="day in-range" data-demo-action="date-select" data-date="2026-04-16">16</button><button class="day in-range" data-demo-action="date-select" data-date="2026-04-17">17</button><button class="day in-range" data-demo-action="date-select" data-date="2026-04-18">18</button>
+    <button class="day in-range" data-demo-action="date-select" data-date="2026-04-19">19</button><button class="day selected" data-demo-action="date-select" data-date="2026-04-20">20</button><button class="day" data-demo-action="date-select" data-date="2026-04-21">21</button><button class="day" data-demo-action="date-select" data-date="2026-04-22">22</button><button class="day" data-demo-action="date-select" data-date="2026-04-23">23</button><button class="day" data-demo-action="date-select" data-date="2026-04-24">24</button><button class="day" data-demo-action="date-select" data-date="2026-04-25">25</button>
+    <button class="day" data-demo-action="date-select" data-date="2026-04-26">26</button><button class="day today" data-demo-action="date-select" data-date="2026-04-27">27</button><button class="day" data-demo-action="date-select" data-date="2026-04-28">28</button><button class="day" data-demo-action="date-select" data-date="2026-04-29">29</button><button class="day" data-demo-action="date-select" data-date="2026-04-30">30</button><div class="day muted">1</div><div class="day muted">2</div>
   </div>
 </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3>时间选择 · TimePicker</h3>
+    <div class="demo-grid cols-3">
+      <div class="surface">
+        <h3 style="margin:0 0 12px;font-size:14px">常用执行时间</h3>
+        <div class="time-list">
+          <button class="time-option active" data-demo-action="time-select" data-time="02:00">02:00 <span>低峰默认</span></button>
+          <button class="time-option" data-demo-action="time-select" data-time="06:00">06:00 <span>晨间窗口</span></button>
+          <button class="time-option" data-demo-action="time-select" data-time="12:30">12:30 <span>午间巡检</span></button>
+          <button class="time-option" data-demo-action="time-select" data-time="22:00">22:00 <span>夜间维护</span></button>
+        </div>
+      </div>
+      <div class="surface">
+        <h3 style="margin:0 0 12px;font-size:14px">三列滚轮面板</h3>
+        <div class="time-picker">
+          <div class="time-col">
+            <button data-demo-action="time-part" data-part="hour">00</button>
+            <button class="active" data-demo-action="time-part" data-part="hour">02</button>
+            <button data-demo-action="time-part" data-part="hour">06</button>
+            <button data-demo-action="time-part" data-part="hour">22</button>
+          </div>
+          <div class="time-col">
+            <button class="active" data-demo-action="time-part" data-part="minute">00</button>
+            <button data-demo-action="time-part" data-part="minute">15</button>
+            <button data-demo-action="time-part" data-part="minute">30</button>
+            <button data-demo-action="time-part" data-part="minute">45</button>
+          </div>
+          <div class="time-col">
+            <button class="active" data-demo-action="time-part" data-part="second">00</button>
+            <button data-demo-action="time-part" data-part="second">10</button>
+            <button data-demo-action="time-part" data-part="second">30</button>
+            <button data-demo-action="time-part" data-part="second">59</button>
+          </div>
+        </div>
+      </div>
+      <div class="surface">
+        <h3 style="margin:0 0 12px;font-size:14px">日期时间范围</h3>
+        <div class="dt-summary">
+          <div><span>开始</span><strong data-demo-output="datetime-start">2026-04-20 02:00</strong></div>
+          <div><span>结束</span><strong data-demo-output="datetime-end">06:00</strong></div>
+          <div><span>策略</span><strong>超时延后到次日同窗口</strong></div>
+        </div>
+        <div class="dt-actions">
+          <button class="btn btn-sm" data-demo-action="clear-picker">清空</button>
+          <button class="btn btn-primary btn-sm" data-demo-action="confirm-picker">确认时间</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
