@@ -4,7 +4,7 @@
 <!-- DATA CARDS -->
 <section class="section" id="data-cards">
   <p class="section-eyebrow">Components · 设备卡片</p>
-  <h2>DataCard · 设备卡片视图</h2>
+  <h2>设备卡片 DataCard</h2>
   <p class="lede">仅 ListPage 表格视图无法满足现场调研：班组长在小屏（笔记本）下扫一排状态比扫表更高效。新增 DataCard 作为 ListPage 的第二种视图（顶部工具栏 <span class="mono">⊞ ☰</span> 切换）。状态色作为顶部色条而非整卡背景，避免视觉过载。</p>
   <div class="datacard-grid">
     <div class="datacard">

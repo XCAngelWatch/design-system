@@ -4,7 +4,7 @@
 <!-- WIZARD PAGE -->
 <section class="section" id="wizard-page">
   <p class="section-eyebrow">Patterns · WizardPage</p>
-  <h2>WizardPage · 向导页</h2>
+  <h2>向导页 WizardPage</h2>
   <p class="lede">顶部 Steps 进度 → 中部内容 → 底部上一步 / 下一步。用于 OTA 推送、批量导入、复杂配置。每步都可保存草稿，避免长流程中断丢失。</p>
   <div class="frame">
     <div class="frame-head">📐 WizardPage · OTA 推送向导</div>

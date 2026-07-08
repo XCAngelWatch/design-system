@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="inputs">
   <p class="section-eyebrow">Components · 输入与表单</p>
-  <h2>Inputs &amp; Forms</h2>
+  <h2>输入与表单 Input</h2>
   <p class="lede">输入控件高度 32px（middle 密度）。focus 态采用 2px 主色光晕，避免使用粗边框。</p>
 
   <div class="demo-grid cols-2">

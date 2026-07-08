@@ -4,7 +4,7 @@
 <!-- ADVANCED FORM -->
 <section class="section" id="advanced-form">
   <p class="section-eyebrow">Components · 表单进阶</p>
-  <h2>NumberInput · 校验四态 · 表单完成度</h2>
+  <h2>数字输入与校验态</h2>
 
   <div class="subsection">
     <h3>NumberInput · 数字输入（带步进 + 单位）</h3>

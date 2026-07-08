@@ -4,7 +4,7 @@
 <!-- DO / DON'T -->
 <section class="section" id="do-dont">
   <p class="section-eyebrow">Specs · 规范红线</p>
-  <h2>Do &amp; Don't</h2>
+  <h2>规范红线 Do & Don't</h2>
   <p class="lede">这些是 stylelint / 设计审查中会被直接打回的硬约束，覆盖 Token 三层架构、Sidebar 规范、扩展色板与交互守则。</p>
 
   <div class="subsection">

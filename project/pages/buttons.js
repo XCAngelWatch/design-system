@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="buttons">
   <p class="section-eyebrow">Components · 按钮</p>
-  <h2>Buttons</h2>
+  <h2>按钮 Button</h2>
   <p class="lede">主按钮承载页面的主要操作；同一上下文中只允许一个 Primary。Default 用于次级操作，Text/Link 用于行内动作。</p>
 
   <div class="demo-stack">

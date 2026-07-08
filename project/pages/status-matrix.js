@@ -4,7 +4,7 @@
 <!-- DEVICE STATUS MATRIX -->
 <section class="section" id="status-matrix">
   <p class="section-eyebrow">Components · 设备状态</p>
-  <h2>Device Status Matrix · 八种状态</h2>
+  <h2>终端状态矩阵</h2>
   <p class="lede">设备在生命周期中会经历远多于"在线/离线"的状态：已下发指令但未激活、被锁定、维护中、已退役 …… 系统定义 8 种状态，每个状态有专属图形信号 + 颜色 + 动效，色弱用户可凭形状辨认。</p>
   <table class="status-matrix">
     <thead>

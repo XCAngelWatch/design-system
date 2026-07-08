@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="empty-state">
   <p class="section-eyebrow">业务组件 · 空状态</p>
-  <h2>Empty State · 空状态</h2>
+  <h2>空状态 Empty State</h2>
   <p class="lede">空状态不只是"暂无数据"。三类空态对应三类下一步动作 —— 必须可执行、必须有路径。Result 组件强制传 <code>extra</code> prop（CI 阶段拦截），杜绝出现"留白 + 暂无"的死页面。</p>
 
   <div class="subsection">

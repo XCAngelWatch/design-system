@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="api">
   <p class="section-eyebrow">Specs · API 约定</p>
-  <h2>Component API · 组件 API 设计约定</h2>
+  <h2>组件 API 约定</h2>
   <p class="lede">设计 token 是「视觉契约」，组件 API 是「调用契约」。两者一致才能让 PM 切换业务页时不重学。本页固化命名规则、受控 / 非受控、common props、组合模式、版本演进 —— 新组件提 PR 时 review 直接对照本页。</p>
 
   <div class="subsection">

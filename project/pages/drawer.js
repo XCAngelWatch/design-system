@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="drawer">
   <p class="section-eyebrow">Components · 抽屉</p>
-  <h2>Drawer</h2>
+  <h2>抽屉 Drawer</h2>
   <p class="lede">从右侧滑入，承载快速编辑、详情预览。<strong>比 Modal 更适合 TMS 高频操作</strong>——保留页面上下文，可继续看到列表。默认 480px 宽。</p>
   <div style="background:var(--aw-fill-1);border-radius:6px;padding:32px;display:flex;justify-content:flex-end">
     <div class="drawer-demo">

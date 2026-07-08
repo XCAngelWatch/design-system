@@ -4,7 +4,7 @@
 <!-- LOADING LEVELS -->
 <section class="section" id="loading-levels">
   <p class="section-eyebrow">Components · 加载层级</p>
-  <h2>Loading · 四级加载层次</h2>
+  <h2>加载层次 Loading</h2>
   <p class="lede">明确四级 Loading 层次，按"用户感知 + 操作影响"分层。原则：Skeleton 优先于 spinner；spinner 优先于 fullscreen mask；fullscreen 仅用于阻塞写操作。</p>
   <div class="loading-row">
     <div class="loading-tile">

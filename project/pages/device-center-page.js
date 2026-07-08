@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="device-center-page">
   <p class="section-eyebrow">页面模板 · 业务蓝图</p>
-  <h2>DeviceCenterPage · 数据中心蓝图</h2>
+  <h2>数据中心 DeviceCenterPage</h2>
   <p class="lede">覆盖 Figma 新界面中的设备管理、设备详情、设备分组、型号、参数、联机方案与远程控制。核心目标是一套设备生命周期页面族：查找设备、判断状态、分配组织、远程处理、追踪结果。</p>
 
   <div class="subsection">

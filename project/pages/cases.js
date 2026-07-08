@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="cases">
   <p class="section-eyebrow">导览 · 实践案例</p>
-  <h2>Cases · 实践案例</h2>
+  <h2>终端管理实践案例</h2>
   <p class="lede">设计系统不是组件清单 —— 它是把价值观、原则、token 跨越多个组件页落地到端到端业务流程的能力。下表 5 个案例对应 TMS 最高频的运维流程，每个都跨 4-6 个 page template + 3-5 类组件。复杂场景出现争议时回到这里看"完整链路怎么走"。</p>
 
   <div class="subsection figma-coverage">

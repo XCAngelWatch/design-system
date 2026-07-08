@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="push-page">
   <p class="section-eyebrow">Patterns · 推送日志</p>
-  <h2>PushPage · 推送批次记录</h2>
+  <h2>推送任务 PushPage</h2>
   <p class="lede">TMS 所有"批量下发"操作(40+ 子指令:Wi-Fi 配置 / GPS 开关 / 应用安装 / 文件下发 / 重启 / 远程清除 …)统一汇聚到一张<b>批次日志表</b>。每条记录对应一次"按 X 推送指令到 N 台设备"的事务,运维通过 batchId 反查任意推送的设备清单 / 成功率 / 失败原因。本页是<b>只读审计视图</b>,创建推送在各子指令模块自身。</p>
 
   <div class="surface" style="padding:0;overflow:hidden">

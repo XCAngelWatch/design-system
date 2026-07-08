@@ -4,7 +4,7 @@
 <!-- LIST PAGE -->
 <section class="section" id="list-page">
   <p class="section-eyebrow">Patterns · ListPage</p>
-  <h2>ListPage · 列表页</h2>
+  <h2>列表页 ListPage</h2>
   <p class="lede">面包屑 → 可折叠搜索表单 → 工具栏（批量操作 + 视图切换） → 表格（多选 + 分页 + 列设置）。这是 TMS 出现频率最高的页面骨架。</p>
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 ListPage</div>

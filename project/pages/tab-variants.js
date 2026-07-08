@@ -4,7 +4,7 @@
 <!-- TAB VARIANTS / POPCONFIRM -->
 <section class="section" id="tab-variants">
   <p class="section-eyebrow">Components · Tabs 变体 / 二次确认</p>
-  <h2>Tabs Variants · Card / Route · Popconfirm</h2>
+  <h2>Tabs 变体与 Popconfirm</h2>
 
   <div class="subsection">
     <h3>Tabs · 三种形态</h3>

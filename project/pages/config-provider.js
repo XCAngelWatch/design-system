@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="config-provider">
   <p class="section-eyebrow">Specs · 全局配置</p>
-  <h2>Config Provider · 全局覆盖必填项清单</h2>
+  <h2>全局配置 ConfigProvider</h2>
   <p class="lede">antd 默认值与 TMS 内部约定有 13 项不一致 —— 这一页是把 docs 中散布的"我们用的是 X 而不是 antd 默认 Y"集中落地到 <code>&lt;ConfigProvider&gt;</code> 的<b>唯一入口</b>。所有项目根 <code>App.tsx</code> 必须包一层带这些覆盖的 ConfigProvider，否则视觉与 docs 不一致是已知 bug。集中收口在 <code class="mono">packages/web/src/app/AntdConfig.tsx</code>。</p>
 
   <div class="subsection">

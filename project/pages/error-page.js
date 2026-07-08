@@ -4,7 +4,7 @@
 <!-- ERROR PAGE -->
 <section class="section" id="error-page">
   <p class="section-eyebrow">Components · 错误页</p>
-  <h2>ErrorPage · 404 / 403 / 500</h2>
+  <h2>错误页 ErrorPage</h2>
   <p class="lede">三种正式错误页 + 统一插画风格（极简线性，单色主品牌蓝）：404 页面不存在；403 区分"未登录"与"无权限"；500 提供 traceId 一键复制，便于工单。</p>
   <div class="errorpage-grid">
     <div class="errorpage-card">

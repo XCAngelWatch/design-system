@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="a11y">
   <p class="section-eyebrow">Foundations · 无障碍</p>
-  <h2>Accessibility · 无障碍设计</h2>
+  <h2>无障碍 Accessibility</h2>
   <p class="lede">运维与 IT 管理员中包含视障 / 色弱 / 键盘优先用户。系统目标 WCAG 2.1 AA 全量合规、关键路径 AAA 合规，CI 阶段通过 axe-core + Pa11y 自动扫描，PR 不达标会被拦。本页固化七大维度的硬约束。</p>
 
   <div class="subsection">

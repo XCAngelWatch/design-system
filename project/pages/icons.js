@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="icons">
   <p class="section-eyebrow">Foundations · 图标</p>
-  <h2>Icons · 图标系统</h2>
+  <h2>图标系统 Icons</h2>
   <p class="lede">直接采用 <code>@ant-design/icons</code> 作为基础图标库（覆盖 ~700 个通用图标）。在此之上补充约 24 个 TMS 业务专属图标 —— 设备 / 心跳 / 固件 / 推送 / 解绑 / 锁定 / 重启 / 故障态等。所有 SVG 自托管 + tree-shake，禁运行时 CDN。</p>
 
   <div class="subsection">

@@ -4,7 +4,7 @@
 <!-- LOGIN PAGE -->
 <section class="section" id="login-page">
   <p class="section-eyebrow">Patterns · LoginPage</p>
-  <h2>LoginPage · 登录页</h2>
+  <h2>登录页 LoginPage</h2>
   <p class="lede">分屏布局。左侧 40% 品牌区（logo + 产品名 + slogan + 装饰图形），右侧 60% 表单区（账号 + 密码 + 验证码 + 记住我 + 登录 + 语言切换）。深品牌色突出企业身份。</p>
   <div class="frame">
     <div class="frame-head">📐 LoginPage · 默认（单租户）</div>

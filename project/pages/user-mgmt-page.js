@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="user-mgmt-page">
   <p class="section-eyebrow">Patterns · 用户管理</p>
-  <h2>UserMgmtPage · 用户列表</h2>
+  <h2>账户权限 UserMgmtPage</h2>
   <p class="lede">沿袭旧 <code>views/admin/user/index.vue</code>:<b>左侧机构树 + 右侧用户表</b>(TreeListLayout 范式)。搜索按 姓名 / 登录账号,操作含 编辑 / 删除 / 重置密码 / 启停账号,均通过 Modal 表单完成。</p>
 
   <div class="surface" style="padding:0;overflow:hidden">

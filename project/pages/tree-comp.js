@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="tree-comp">
   <p class="section-eyebrow">Components · 树</p>
-  <h2>Tree</h2>
+  <h2>树 Tree</h2>
   <p class="lede">承载层级关系——机构树（集团 → 大区 → 城市 → 营业厅）、设备分组、权限菜单。支持搜索、多选、半选状态。</p>
 
   <div class="surface">

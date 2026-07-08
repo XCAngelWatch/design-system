@@ -4,7 +4,7 @@
 <!-- CASCADER + TRANSFER -->
 <section class="section" id="cascader">
   <p class="section-eyebrow">Components · 高级选择</p>
-  <h2>Cascader &amp; Transfer · 级联 / 穿梭</h2>
+  <h2>级联与穿梭 Cascader / Transfer</h2>
   <p class="lede">"区域 → 站点 → 仓库 → 货架"四级地理选择用 Cascader，"角色 → 终端组"权限分配用 Transfer，两个 antd 经典组件覆盖几乎所有"层级选择 / 双栏选取"场景，避免嵌套 Select 凑合。</p>
 
   <div class="subsection">

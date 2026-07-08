@@ -4,7 +4,7 @@
 <!-- SPACE -->
 <section class="section" id="space">
   <p class="section-eyebrow">Foundations · 间距</p>
-  <h2>Spacing</h2>
+  <h2>间距 Spacing</h2>
   <p class="lede">基于 4-pt 网格。组件内边距 8/12/16；区块间距 20/24/32；页面外缘 16（按规格定义）。</p>
   <div class="surface">
     <div class="space-row"><div class="label"><b>4</b>px</div><div class="label">--aw-sp-4</div><div class="bar" style="width:4px"></div></div>

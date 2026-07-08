@@ -4,7 +4,7 @@
 <!-- MOTION -->
 <section class="section" id="motion">
   <p class="section-eyebrow">Foundations · 动效</p>
-  <h2>Motion</h2>
+  <h2>动效 Motion</h2>
   <p class="lede">沿用 Ant Design v6 的动效三原则 —— <b>自然</b>、<b>高效</b>、<b>克制</b>。一条缓动曲线，三档时长，是这三条原则的物理落地。专注功能性反馈（hover / focus / 过渡），不引入装饰性动画。</p>
 
   <div class="subsection" style="margin-top:18px">

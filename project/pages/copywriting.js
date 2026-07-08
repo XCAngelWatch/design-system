@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="copywriting">
   <p class="section-eyebrow">Specs · 文案</p>
-  <h2>Copywriting · 文案规范</h2>
+  <h2>文案规范 Copywriting</h2>
   <p class="lede">AngelWatch TMS 是面向安卓设备的终端管理系统。文案必须围绕设备管理、应用分发、OTA 升级、推送任务、数据监控、账户权限和系统配置展开；设计系统保留必要英文组件名，但业务对象优先使用中文。</p>
 
   <div class="subsection">

@@ -4,7 +4,7 @@
 <!-- FORM PAGE -->
 <section class="section" id="form-page">
   <p class="section-eyebrow">Patterns · FormPage</p>
-  <h2>FormPage · 表单页</h2>
+  <h2>表单页 FormPage</h2>
   <p class="lede">头部（返回 + 标题）→ 主体（分组表单，每组带标题分割线 + 双列字段网格） → 底部固定操作栏（取消 + 保存）。用于新建 / 编辑设备、固件、机构等。</p>
   <div class="frame">
     <div class="frame-head">📐 FormPage</div>

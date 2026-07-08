@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="whitelabel">
   <p class="section-eyebrow">规范 · 白标 / 多租户</p>
-  <h2>White-label · 租户主题接管</h2>
+  <h2>白标与租户主题 White-label</h2>
   <p class="lede">企业 TMS 必须支持租户级品牌定制：主色、Logo、登录背景、ICP 文案、产品名等可被租户接管，但语义色 / 间距 / 字号 / 圆角 / 阴影 / 动效曲线由设计系统锁定，租户禁止覆盖。覆盖通过 antd v6 <code>ConfigProvider.theme</code> 注入。</p>
 
   <div class="subsection">

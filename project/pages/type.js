@@ -4,7 +4,7 @@
 <!-- TYPE -->
 <section class="section" id="type">
   <p class="section-eyebrow">Foundations · 字体</p>
-  <h2>Typography</h2>
+  <h2>字体与字号 Typography</h2>
   <p class="lede">Inter 拉丁字符 + Source Han Sans CN 中文字符，自托管 woff2，离线可用。8 级字阶，4-pt 对齐。基础字号 14 / 22 与 Ant Design v6 一致；字重严格控制在三档（Regular 400 / Medium 500 / Semibold 600），同一界面通常只用 Regular + Medium 两档。</p>
   <div class="surface" style="padding:8px 24px">
     <div class="type-row"><div class="meta"><strong>Display</strong>48 / 56 · 600</div><div class="meta">--aw-fs-48</div><div style="font-size:48px;font-weight:600;line-height:1.1;letter-spacing:-0.8px">设备总览</div></div>

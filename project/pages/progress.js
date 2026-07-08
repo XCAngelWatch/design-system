@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="progress">
   <p class="section-eyebrow">Components · 进度</p>
-  <h2>Progress &amp; Steps</h2>
+  <h2>进度与步骤 Progress</h2>
   <p class="lede">OTA 升级、批量推送、固件上传——任何耗时操作都用 Progress 提供持续反馈。多步流程使用 Steps。</p>
 
   <div class="demo-stack">

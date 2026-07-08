@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="page-header">
   <p class="section-eyebrow">业务组件 · 页头</p>
-  <h2>PageHeader · 页头</h2>
+  <h2>页头 PageHeader</h2>
   <p class="lede">每个业务页的顶部都是相同骨架 —— 面包屑 + 主标题 + 副标题 / 状态 + 主次操作。这套结构由 <code>PageHeader</code> 组件统一封装，保证 100% 一致。运维切换业务页时不用重新找"主操作在哪"。</p>
 
   <div class="alert warning" style="margin:10px 0 18px"><div class="ico">!</div><div class="content"><strong>这是 TMS 自建组件，不是 antd 提供。</strong>antd v4 曾内置 <code>&lt;PageHeader /&gt;</code>，v5 起官方移除（迁移到 <code>@ant-design/pro-components</code> 的 <code>&lt;ProPageHeader /&gt;</code>）。TMS 在 do-dont 页禁用 ProComponents（peer-dep 冲突），因此<b>必须自建</b>。代码集中在 <code class="mono">packages/web/src/components/PageHeader.tsx</code>。新人查 antd 官方文档找不到 PageHeader 是正常的。</div></div>

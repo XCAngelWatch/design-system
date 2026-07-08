@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="feedback">
   <p class="section-eyebrow">Components · 反馈</p>
-  <h2>Feedback</h2>
+  <h2>反馈 Feedback</h2>
   <p class="lede">提示横条用于持续性的状态信息；toast / message 用于瞬时操作反馈；modal 用于阻塞性的二次确认。下表是"什么时候用什么" 的决策表 —— PR review 出现"应该用 Toast 还是 Modal" 争议时回到这里。</p>
 
   <div class="subsection">

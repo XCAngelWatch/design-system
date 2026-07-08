@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="data-format">
   <p class="section-eyebrow">Specs · 数据格式</p>
-  <h2>Data Format · 数据格式</h2>
+  <h2>数据格式 Data Format</h2>
   <p class="lede">数字、日期、设备标识、文件大小、敏感数据、空值、错误 —— 七类高频展示数据的格式收口规范。所有格式化必须走 <code>Intl.*</code> API 或 <code>@tms/format</code> 工具包，禁止手写 <code>toLocaleString</code> 散落在业务代码。</p>
 
   <div class="subsection">

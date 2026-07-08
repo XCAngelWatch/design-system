@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="dark">
   <p class="section-eyebrow">Foundations · 暗黑模式</p>
-  <h2>Dark Mode · 暗黑模式</h2>
+  <h2>暗色主题 Dark Mode</h2>
   <p class="lede">暗色主题在 TMS 是一等公民，不是切换插件。token 通过 <code>[data-theme="dark"]</code> 完整覆盖，所有组件都参与 dark 视觉回归。运维夜班高频使用，沿袭旧 Vue 版本的暗色习惯。</p>
 
   <div class="subsection">

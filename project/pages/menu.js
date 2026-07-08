@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="menu">
   <p class="section-eyebrow">Components · 菜单</p>
-  <h2>Menu · 菜单</h2>
+  <h2>菜单 Menu</h2>
   <p class="lede">侧边栏的核心组件。Vertical Menu（默认）+ 横向 Menu（分隔少 / 顶栏用）+ 折叠态 + Submenu 时间轴层级。Active 用 3px 品牌蓝 indicator bar + 浅蓝底 + 蓝色文字标记，子菜单缩进 + 1px 时间轴线建立层级。</p>
 
   <div class="demo-stack">

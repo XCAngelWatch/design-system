@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="market-page">
   <p class="section-eyebrow">页面模板 · 业务蓝图</p>
-  <h2>MarketPage · 应用市场蓝图</h2>
+  <h2>应用市场 MarketPage</h2>
   <p class="lede">覆盖 Figma 新界面中的应用管理、广告管理、应用分类、版本管理、审核、安装明细。它不是截图目录，而是把应用市场页面族抽象成可复用的列表、卡片、审核、版本与明细模式。</p>
 
   <div class="subsection">

@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="table">
   <p class="section-eyebrow">Components · 表格 / 分页</p>
-  <h2>Tables</h2>
+  <h2>表格 Table</h2>
   <p class="lede">设备列表的核心组件。行高 40px（含 padding），表头浅灰背景，hover 高亮。操作列右对齐，使用文字按钮。</p>
 
   <div class="table-wrap">

@@ -4,7 +4,7 @@
 <!-- TREELIST -->
 <section class="section" id="tree-list">
   <p class="section-eyebrow">Patterns · TreeListLayout</p>
-  <h2>TreeListLayout · 树 + 列表</h2>
+  <h2>树列表 TreeListLayout</h2>
   <p class="lede">左侧 240px 机构树 / 资源树（可折叠），右侧承载列表或详情。TMS 中频率最高的层级布局——设备分组、权限管理、告警规则均沿用。</p>
   <div class="frame">
     <div class="frame-head">📐 TreeListLayout · 设备分组</div>

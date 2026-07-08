@@ -4,7 +4,7 @@
 <!-- TECH STACK MAP -->
 <section class="section" id="tech-stack">
   <p class="section-eyebrow">Reference · 技术栈速查</p>
-  <h2>Tech Stack Map · NPM 包速查表</h2>
+  <h2>技术栈速查 Tech Stack</h2>
   <p class="lede">Design system 各部分对应的 NPM 包、版本、license 一表清。新人入职 / 安全审计 / license 合规检查直接查这张表。所有包均自托管，禁运行时 CDN。版本号见下方"版本固化策略"章节。</p>
 
   <div class="subsection">

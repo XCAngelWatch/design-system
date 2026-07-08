@@ -4,7 +4,7 @@
 <!-- LAYOUT -->
 <section class="section" id="layout">
   <p class="section-eyebrow">Foundations · 整体布局</p>
-  <h2>Layout · 栅格 / 容器 / 断点 / 页面骨架</h2>
+  <h2>布局栅格 Layout</h2>
   <p class="lede">布局规则可执行可校验：基于 <b>24 栅格 + 4 档断点 + 5 种页面模板</b>，覆盖从手机到 4K 大屏的所有场景。所有间距使用 4px 基础单元（同 Spacing scale）。</p>
 
   <div class="section-subtitle">Grid System · 24 栅格</div>

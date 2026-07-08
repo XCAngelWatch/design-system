@@ -4,7 +4,7 @@
 <!-- SHELL -->
 <section class="section" id="shell">
   <p class="section-eyebrow">Patterns · 页面外壳</p>
-  <h2>Shell · 应用外壳</h2>
+  <h2>应用外壳 Shell</h2>
   <p class="lede">Sidebar 视觉语言：<b>纯白底 + 深色文字</b>（参考 Linear / Notion 桌面端），<b>3px 品牌蓝 indicator bar</b> + 浅蓝底 <code>#E8F3FF</code> + 蓝色文字标记 active，<b>子菜单时间轴线</b>建立层级，底部固定<b>用户区</b>，折叠态 64px + hover tooltip。Light 主题白底，Dark 主题深色渐变。</p>
 
   <div class="section-subtitle">Sidebar States · 4 态对照</div>

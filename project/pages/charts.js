@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="charts">
   <p class="section-eyebrow">Components · 图表与可视化</p>
-  <h2>Charts · 数据可视化</h2>
+  <h2>数据图表 Charts</h2>
   <p class="lede">统一使用 <code>echarts</code> + <code>echarts-for-react</code>(v6 · Apache 2.0) 作为唯一图表方案，覆盖业务统计、复杂场景（拓扑 / 桑基 / 关系图）与大屏需求。所有图表通过 <code>setOption</code> 注入 design tokens —— 8 色业务序列、状态色直接复用、坐标轴 / 网格 / Tooltip 视觉一致。</p>
 
   <div class="subsection">

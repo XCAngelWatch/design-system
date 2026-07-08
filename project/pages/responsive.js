@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="responsive">
   <p class="section-eyebrow">Foundations · 响应式</p>
-  <h2>Responsive · 响应式断点</h2>
+  <h2>响应式断点 Responsive</h2>
   <p class="lede">TMS 是<b>桌面优先</b>的运维工具，不支持手机。但 ≥ 1280 ~ ≥ 1920 范围内有 4 倍像素差异，组件必须做适配。本页固化目标分辨率、各组件在每档断点的行为、不支持移动端的明示边界。</p>
 
   <div class="subsection">

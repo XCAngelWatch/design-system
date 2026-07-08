@@ -4,7 +4,7 @@
 <!-- RADIUS / SHADOW -->
 <section class="section" id="radius">
   <p class="section-eyebrow">Foundations · 圆角与阴影</p>
-  <h2>Radius &amp; Elevation</h2>
+  <h2>圆角与阴影 Radius & Elevation</h2>
   <p class="lede">单一 6px 圆角作为系统默认。三档投影；保持克制——界面应是平的，仅在浮层上承担可见的高度差。</p>
   <div class="subsection">
     <h3>圆角</h3>

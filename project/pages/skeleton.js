@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="skeleton">
   <p class="section-eyebrow">Components · 骨架屏</p>
-  <h2>Skeleton</h2>
+  <h2>骨架屏 Skeleton</h2>
   <p class="lede">数据加载中的占位。比 Spinner 更友好，让用户看到即将到来的内容轮廓。</p>
 
   <div class="demo-grid cols-2">

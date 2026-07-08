@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="toast">
   <p class="section-eyebrow">Components · 瞬时反馈</p>
-  <h2>Toast / Tooltip / Popover</h2>
+  <h2>提示 Toast / Tooltip / Popover</h2>
   <p class="lede">Toast 浮于右上角，自动消失 (3s)，用于操作结果。Tooltip 用于解释行内文字。Popover 承载结构化补充内容。</p>
 
   <div class="demo-grid cols-2">

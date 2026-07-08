@@ -4,7 +4,7 @@
 <!-- COLOR -->
 <section class="section" id="color">
   <p class="section-eyebrow">Foundations · 色彩</p>
-  <h2>Color</h2>
+  <h2>色彩 Token</h2>
   <p class="lede">品牌蓝承载操作；中性灰承载信息；状态色承载语义。所有颜色以 CSS 变量在 <span class="mono">:root</span> 暴露，深色模式通过 <span class="mono">[data-theme="dark"]</span> 完整覆盖。两套主题共享同一品牌色锚点，确保跨主题视觉延续性。</p>
 
   <div class="section-subtitle">Token Architecture · 三层金字塔</div>

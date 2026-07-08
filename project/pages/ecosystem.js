@@ -4,7 +4,7 @@
 <!-- ECOSYSTEM INTEGRATIONS -->
 <section class="section" id="ecosystem">
   <p class="section-eyebrow">Patterns · 生态集成</p>
-  <h2>Ecosystem Integrations · 复杂场景不要自建</h2>
+  <h2>生态库集成 Ecosystem</h2>
   <p class="lede">TMS 有 10 类高复杂度场景（地图 / 终端 / 拖拽树 / 流程编排 / 大数据表格 / 动态表单 / 代码编辑 等）。这些都有成熟的开源库，本系统提供视觉规范让它们 <b>套用 design tokens</b>，而不是从头写。每张卡是 <b>套色后的视觉示意</b>，不是组件，落地直接接入对应 NPM 包。</p>
   <div class="eco-grid">
     <!-- 1. RealtimeChart -->

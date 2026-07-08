@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="illustration">
   <p class="section-eyebrow">Foundations · 图形化</p>
-  <h2>Illustration · 图形化系统</h2>
+  <h2>图形化规则 Illustration</h2>
   <p class="lede">企业级中后台不依赖装饰性插画 —— TMS 仅在两个场景使用图形化资产：<b>登录页</b>主视觉与<b>异常页</b>（404 / 403 / 500 / Network）。所有插画线性 + 单色，与界面 token 保持一致；自托管 SVG，禁外链。</p>
 
   <div class="subsection">

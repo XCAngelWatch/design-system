@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="tags">
   <p class="section-eyebrow">Components · 标签 / 状态</p>
-  <h2>Tags &amp; Status</h2>
+  <h2>标签与状态 Tag</h2>
   <p class="lede">设备状态以「点 + 文字」呈现，便于在密集表格中扫读；分类标签用色块，限制 4 种语义色。</p>
   <div class="demo-grid cols-2">
     <div class="surface">

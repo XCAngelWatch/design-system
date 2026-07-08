@@ -20,7 +20,7 @@
 <div class="content">
 <section class="section" id="row-actions">
   <p class="section-eyebrow">业务组件 · 行内操作</p>
-  <h2>RowActions · 行操作图标库</h2>
+  <h2>行操作 RowActions</h2>
   <p class="lede">表格 / 卡片每条记录的尾列动作。统一图标集合 + tooltip + 危险确认阈值，避免每个业务页各写各的图标和文案。</p>
 
   <div class="subsection">

@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="datepicker">
   <p class="section-eyebrow">Components · 日期选择</p>
-  <h2>DatePicker</h2>
+  <h2>日期选择 DatePicker</h2>
   <p class="lede">日志查询、告警过滤、统计区间——所有时间范围筛选的入口。提供常用快捷范围 chip 减少点击。</p>
 
   <div class="demo-grid cols-2">

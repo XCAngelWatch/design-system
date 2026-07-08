@@ -4,7 +4,7 @@
 <!-- I18N -->
 <section class="section" id="i18n">
   <p class="section-eyebrow">Foundations · 国际化</p>
-  <h2>Internationalization · 多语言</h2>
+  <h2>多语言 Internationalization</h2>
   <p class="lede">客户在欧美与拉美的 OEM 业务量增长，IT admin 需要英文/西班牙文/葡萄牙文界面。基于 Ant Design <span class="mono">ConfigProvider locale</span>，搭配 <span class="mono">react-i18next</span> 作为 key-value 层。所有可见文本必须经 <span class="mono">t('namespace.key')</span> 包裹，禁止硬编码。</p>
 
   <div class="subsection">

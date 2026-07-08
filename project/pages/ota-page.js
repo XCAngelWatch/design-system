@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="ota-page">
   <p class="section-eyebrow">Patterns · OTA 升级</p>
-  <h2>OtaPage · 固件管理</h2>
+  <h2>OTA 升级 OtaPage</h2>
   <p class="lede">沿袭旧 <code>views/ota/index.vue</code>:<b>左侧站点树 + 右侧固件列表</b>,支持<b>列表/卡片视图切换</b>。每条固件记录(name / 站点 / 新版本 / 基线版本 / 大小 / 适配机型 / 状态)对应一次推送任务的源,通过工具栏"推送日志"按钮跳到 PushPage 查看历史批次。</p>
 
   <div class="surface" style="padding:0;overflow:hidden">

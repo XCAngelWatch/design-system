@@ -4,7 +4,7 @@
 <!-- AVATAR + RESULT + DESCRIPTION -->
 <section class="section" id="avatar-result">
   <p class="section-eyebrow">Components · 头像 / 结果 / 描述列表</p>
-  <h2>Avatar · Result · Description List</h2>
+  <h2>头像 / 结果 / 描述 Avatar / Result / Description</h2>
 
   <div class="subsection">
     <h3>Avatar · 圆形 / 方形 / 群组</h3>

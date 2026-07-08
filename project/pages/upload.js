@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="upload">
   <p class="section-eyebrow">Components · 上传</p>
-  <h2>Upload</h2>
+  <h2>上传 Upload</h2>
   <p class="lede">固件包上传、批量导入设备 CSV——大文件场景。支持拖拽，显示进度与校验和。</p>
 
   <div class="surface">

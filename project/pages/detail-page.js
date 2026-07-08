@@ -4,7 +4,7 @@
 <!-- DETAIL PAGE -->
 <section class="section" id="detail-page">
   <p class="section-eyebrow">Patterns · DetailPage</p>
-  <h2>DetailPage · 详情页</h2>
+  <h2>详情页 DetailPage</h2>
   <p class="lede">返回按钮 + 摘要头（KV 键值对） + 标签页（基础信息 / 状态 / 日志 / 告警 / 固件历史）。</p>
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 DetailPage</div>

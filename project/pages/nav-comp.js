@@ -3,7 +3,7 @@
 <div class="content">
 <section class="section" id="nav-comp">
   <p class="section-eyebrow">Components · 导航</p>
-  <h2>Tabs &amp; Breadcrumbs</h2>
+  <h2>导航与标签页 Navigation</h2>
   <p class="lede">面包屑用于位置感知；标签页用于同一对象的视图切换（不用于跳转）。下表给出"用哪种导航" 的选型 —— 顶部 / 侧边 / Tabs / 面包屑各有适用场景，不应混搭。</p>
 
   <div class="subsection">

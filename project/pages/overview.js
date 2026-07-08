@@ -19,7 +19,7 @@
   <!-- VALUES -->
   <section class="section">
     <p class="section-eyebrow">Values · 设计价值观</p>
-    <h2>自然、确定性、意义感、生长性</h2>
+    <h2>AngelWatch TMS 设计系统</h2>
     <p class="lede">沿用 Ant Design v6 的四条价值观作为设计语言的最上层。它们解释「为什么」我们这样做选择，下文的三条原则是把价值观翻译到 TMS 场景的具体取舍，再下面的 10 条交互守则是落地到每个 PR review 的硬约束。</p>
     <div class="demo-grid cols-2" style="margin-top:18px">
 <div class="surface" style="border-left:3px solid var(--aw-primary)">
