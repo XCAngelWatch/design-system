@@ -4,7 +4,23 @@
 <section class="section" id="copywriting">
   <p class="section-eyebrow">Specs · 文案</p>
   <h2>Copywriting · 文案规范</h2>
-  <p class="lede">UI 文案是产品的口头表达 —— 一致、精简、有用，比"漂亮"更重要。本页固化术语锁定表、人称、按钮文案、错误文案、空状态文案、标点与中英混排的全部约定。所有可见字符串必须通过 <code>t('namespace.key')</code> 包裹，硬编码字符串在 stylelint / lint 阶段会被拒。</p>
+  <p class="lede">Angel Watch TMS 是面向安卓设备的终端管理系统。文案必须围绕设备管理、应用分发、OTA 升级、推送任务、数据监控、账户权限和系统配置展开；设计系统保留必要英文组件名，但业务对象优先使用中文。</p>
+
+  <div class="subsection">
+    <h3>Figma 语言锚点 · Android 终端管理</h3>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">模块</th><th style="width:46%">锚点词</th><th>文案规则</th></tr></thead>
+      <tbody>
+        <tr><td>登录 / 首页</td><td>账号、密码、验证码、语言切换、主题配置、欢迎回来、设备总数、激活设备、活跃设备</td><td>强调进入系统和快速扫读，不写营销口号。</td></tr>
+        <tr><td>应用市场</td><td>应用管理、广告管理、应用分类、版本管理、包名、版本号、下载数、审核、上架、下架</td><td>应用相关动作必须说明对象和状态，例如“审核应用”“下架版本”。</td></tr>
+        <tr><td>OTA 升级</td><td>升级文件、更新推送、基线版本、适配机型、OTA 包、推送策略、下载文件</td><td>版本、机型、范围和风险前置，避免只写“更新”。</td></tr>
+        <tr><td>推送任务</td><td>批次号、推送时间、推送方式、指定设备编号、成功、失败、总数、推送设备详情</td><td>异步任务必须展示批次和结果，部分成功要给下一步。</td></tr>
+        <tr><td>数据中心</td><td>设备管理、设备详情、设备分组、型号、参数模板、联机方案、远程控制、软件信息</td><td>围绕 Android 终端生命周期写，不写运输、物流或车队。</td></tr>
+        <tr><td>账户 / 系统</td><td>账号、机构、权限、配置权限、重置密码、组织树、菜单、字典、操作日志</td><td>权限文案要说明作用域和后果。</td></tr>
+        <tr><td>增值服务</td><td>APN、WIFI、黑白名单、文件推送、恢复出厂、日志、锁定、解锁</td><td>远程服务动作必须说明“推送到设备”或“从设备删除”。</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="subsection">
     <h3>七项文案原则</h3>
