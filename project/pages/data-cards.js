@@ -10,7 +10,7 @@
     <div class="datacard">
 <div class="topbar"></div>
 <div class="head"><div class="ico">DV</div><div class="meta"><div class="nm">终端-上海-001</div><div class="sn">DEV-86420075</div></div></div>
-<div class="body"><span class="l">状态</span><span class="v"><span class="status-dot online">在线</span></span><span class="l">OTA 版本</span><span class="l">所在组</span><span class="v">华东一区 / 仓配</span><span class="l">最后心跳</span><span class="v">12 秒前</span></div>
+<div class="body"><span class="l">状态</span><span class="v"><span class="status-dot online">在线</span></span><span class="l">OTA 版本</span><span class="v">v3.4.2</span><span class="l">所在组</span><span class="v">华东一区 / 仓配</span><span class="l">最后心跳</span><span class="v">12 秒前</span></div>
 <div class="foot"><a>详情</a><a>下发指令</a><a>升级</a></div>
     </div>
     <div class="datacard upgrading">
@@ -22,13 +22,13 @@
     <div class="datacard fault">
 <div class="topbar"></div>
 <div class="head"><div class="ico">DV</div><div class="meta"><div class="nm">终端-广州-007</div><div class="sn">DEV-86420198</div></div></div>
-<div class="body"><span class="l">状态</span><span class="v"><span class="status-dot fault">故障 · 自检失败</span></span><span class="l">OTA 版本</span><span class="l">所在组</span><span class="v">华南一区 / 仓配</span><span class="l">异常时间</span><span class="v">2 小时前</span></div>
+<div class="body"><span class="l">状态</span><span class="v"><span class="status-dot fault">故障 · 自检失败</span></span><span class="l">OTA 版本</span><span class="v">v3.4.1</span><span class="l">所在组</span><span class="v">华南一区 / 仓配</span><span class="l">异常时间</span><span class="v">2 小时前</span></div>
 <div class="foot"><a>诊断</a><a>远程重启</a><a>上报工单</a></div>
     </div>
     <div class="datacard offline">
 <div class="topbar"></div>
 <div class="head"><div class="ico">DV</div><div class="meta"><div class="nm">终端-成都-022</div><div class="sn">DEV-86420244</div></div></div>
-<div class="body"><span class="l">状态</span><span class="v"><span class="status-dot offline">离线</span></span><span class="l">OTA 版本</span><span class="l">所在组</span><span class="v">西南一区 / 仓配</span><span class="l">最后在线</span><span class="v">1 天 4 小时</span></div>
+<div class="body"><span class="l">状态</span><span class="v"><span class="status-dot offline">离线</span></span><span class="l">OTA 版本</span><span class="v">v3.3.9</span><span class="l">所在组</span><span class="v">西南一区 / 仓配</span><span class="l">最后在线</span><span class="v">1 天 4 小时</span></div>
 <div class="foot"><a>历史</a><a style="color:var(--aw-text-disabled);cursor:not-allowed">下发</a><a style="color:var(--aw-text-disabled);cursor:not-allowed">升级</a></div>
     </div>
   </div>
