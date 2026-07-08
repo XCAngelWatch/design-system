@@ -22,7 +22,7 @@
   <div class="avatar" style="background:var(--aw-fill-2);color:var(--aw-text-2)">+9</div>
 </div>
     </div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0">▸ 用户头像用圆形；终端 / 设备 / 仓库等"物"用方形；群组 fallback 色板共 5 色循环。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0">▸ 用户头像用圆形；终端 / 设备 / 应用等"物"用方形；群组 fallback 色板共 5 色循环。</p>
   </div>
 
   <div class="subsection">
@@ -120,8 +120,8 @@
   <div class="dl-item"><div class="dl-l">设备 SN</div><div class="dl-v" style="font-family:var(--aw-font-mono)">DEV-86420075</div></div>
   <div class="dl-item"><div class="dl-l">名称</div><div class="dl-v">终端-上海-001</div></div>
   <div class="dl-item"><div class="dl-l">状态</div><div class="dl-v"><span class="status-dot online">在线</span></div></div>
-  <div class="dl-item"><div class="dl-l">所属区域</div><div class="dl-v">华东一区 / 上海站 / 嘉定仓</div></div>
-  <div class="dl-item"><div class="dl-l">固件版本</div><div class="dl-v">v3.4.2 <span class="tag tag-blue" style="margin-left:6px">最新</span></div></div>
+  <div class="dl-item"><div class="dl-l">所属区域</div><div class="dl-v">华东一区 / 上海运营中心 / P5 设备组</div></div>
+  <div class="dl-item"><div class="dl-l">OTA 版本</div><div class="dl-v">v3.4.2 <span class="tag tag-blue" style="margin-left:6px">最新</span></div></div>
   <div class="dl-item"><div class="dl-l">硬件型号</div><div class="dl-v">AW-T200-PRO</div></div>
   <div class="dl-item"><div class="dl-l">激活时间</div><div class="dl-v">2025/08/14 09:32:11</div></div>
   <div class="dl-item"><div class="dl-l">最后心跳</div><div class="dl-v">12 秒前</div></div>

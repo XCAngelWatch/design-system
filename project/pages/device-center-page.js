@@ -36,8 +36,8 @@
             <thead><tr><th>设备</th><th>SN</th><th>所属机构</th><th>状态</th><th>电量</th><th>最后心跳</th><th>操作</th></tr></thead>
             <tbody>
               <tr><td><b>终端-上海-001</b></td><td><code>DEV-86420075</code></td><td>上海 / 黄浦</td><td><span class="status-dot online">在线</span></td><td>86%</td><td>28 秒前</td><td><a>详情</a> · <a>远程</a> · <a>日志</a></td></tr>
-              <tr><td><b>终端-广州-007</b></td><td><code>DEV-86420112</code></td><td>华南 / 仓配</td><td><span class="status-dot fault">故障</span></td><td>32%</td><td>8 分钟前</td><td><a>诊断</a> · <a>日志</a> · <a>工单</a></td></tr>
-              <tr><td><b>终端-成都-022</b></td><td><code>DEV-86420244</code></td><td>西南 / 仓配</td><td><span class="status-dot offline">离线</span></td><td>未知</td><td>1 天前</td><td><a>历史</a> · <span style="color:var(--aw-text-disabled)">远程</span></td></tr>
+              <tr><td><b>终端-广州-007</b></td><td><code>DEV-86420112</code></td><td>华南 / P5 设备组</td><td><span class="status-dot fault">故障</span></td><td>32%</td><td>8 分钟前</td><td><a>诊断</a> · <a>日志</a> · <a>工单</a></td></tr>
+              <tr><td><b>终端-成都-022</b></td><td><code>DEV-86420244</code></td><td>西南 / P8 设备组</td><td><span class="status-dot offline">离线</span></td><td>未知</td><td>1 天前</td><td><a>历史</a> · <span style="color:var(--aw-text-disabled)">远程</span></td></tr>
             </tbody>
           </table>
         </div>

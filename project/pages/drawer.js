@@ -54,7 +54,7 @@
 
 
   <div class="subsection">
-    <h3>OpenDesign 抽屉模式 · 详情、编辑、远程控制</h3>
+    <h3>业务抽屉模式 · 详情、编辑、远程控制</h3>
     <table class="blueprint-table">
       <thead><tr><th>抽屉类型</th><th>宽度</th><th>典型内容</th><th>关闭规则</th></tr></thead>
       <tbody>

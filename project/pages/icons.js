@@ -69,7 +69,7 @@
 
   <div class="subsection">
     <h3>业务图标库 · 24 个 TMS 专属图标</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">设计稿在 Figma 共享库（<code>@tms/icons</code>），前端按需导入，tree-shake 后体积仅含实际用到的图标。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">图标资产统一收口在 <code>@tms/icons</code> 共享库，前端按需导入，tree-shake 后体积仅含实际用到的图标。</p>
     <div class="icon-lib-grid">
       <div class="ilib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg><span>Device</span></div>
       <div class="ilib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="9"/></svg><span>DeviceOnline</span></div>

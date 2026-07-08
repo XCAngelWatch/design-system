@@ -17,7 +17,7 @@
         <tr><td><b>分布</b></td><td>Histogram / Box</td><td>升级耗时分布</td><td>看离群值用 Box；看密度用 Histogram</td></tr>
         <tr><td><b>关系</b></td><td>Scatter / Heatmap</td><td>心跳频率 × 故障率相关性</td><td>双连续变量 Scatter；密度大用 Heatmap</td></tr>
         <tr><td><b>构成</b></td><td>Stacked Bar / Area</td><td>每日推送结果（成功 / 失败 / 跳过）</td><td>看总量趋势 Area；看占比变化 Stacked Bar</td></tr>
-        <tr><td><b>层级</b></td><td>Treemap / Sunburst</td><td>地区 → 站点 → 设备 三级数量</td><td>不超过 3 级；4 级以上用 Tree 组件</td></tr>
+        <tr><td><b>层级</b></td><td>Treemap / Sunburst</td><td>机构 → 设备分组 → 设备 三级数量</td><td>不超过 3 级；4 级以上用 Tree 组件</td></tr>
         <tr><td><b>流向</b></td><td>Sankey</td><td>升级版本迁移路径（v3.4.1 → v3.4.2）</td><td>echarts <code>series.type="sankey"</code></td></tr>
         <tr><td><b>地理</b></td><td>Map（自托管 GeoJSON）</td><td>设备地理分布热力</td><td>禁用百度 / Google Map JS（需自托管 leaflet + 瓦片）</td></tr>
         <tr><td><b>实时</b></td><td>Gauge / 数字统计</td><td>当前在线数 / 当前推送速率</td><td>数字 + 趋势箭头比 gauge 更易快速读</td></tr>

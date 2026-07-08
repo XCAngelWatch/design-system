@@ -5,39 +5,39 @@
 <section class="section" id="cascader">
   <p class="section-eyebrow">Components · 高级选择</p>
   <h2>级联与穿梭 Cascader / Transfer</h2>
-  <p class="lede">"区域 → 站点 → 仓库 → 货架"四级地理选择用 Cascader，"角色 → 终端组"权限分配用 Transfer，两个 antd 经典组件覆盖几乎所有"层级选择 / 双栏选取"场景，避免嵌套 Select 凑合。</p>
+  <p class="lede">"机构 → 设备分组 → 设备型号 → 终端"四级对象选择用 Cascader，"角色 → 终端组"权限分配用 Transfer，两个 antd 经典组件覆盖几乎所有"层级选择 / 双栏选取"场景，避免嵌套 Select 凑合。</p>
 
   <div class="subsection">
     <h3>Cascader · 级联选择</h3>
     <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start">
 <div>
-  <div class="select" style="width:340px">华东一区 / 上海站 / 嘉定仓 / 货架 A-12</div>
-  <p style="font-size:12px;color:var(--aw-text-3);margin:8px 0 0;max-width:340px;line-height:1.6">点击展开 popover；最多 4 级深度；面包屑回填到输入框；支持搜索"嘉定"直接定位叶子。</p>
+  <div class="select" style="width:340px">华东一区 / 上海运营中心 / P5 设备组 / DEV-86420075</div>
+  <p style="font-size:12px;color:var(--aw-text-3);margin:8px 0 0;max-width:340px;line-height:1.6">点击展开 popover；最多 4 级深度；面包屑回填到输入框；支持搜索"DEV"直接定位叶子。</p>
 </div>
 <div class="cascader-pop">
   <div class="cascader-col">
-    <div class="search"><input placeholder="搜索区域 / 站点…" /></div>
+    <div class="search"><input placeholder="搜索机构 / 设备…" /></div>
     <div class="item active">华东一区<span class="arrow">›</span></div>
     <div class="item">华北二区<span class="arrow">›</span></div>
     <div class="item">华南一区<span class="arrow">›</span></div>
     <div class="item">西南一区<span class="arrow">›</span></div>
   </div>
   <div class="cascader-col">
-    <div class="item active">上海站<span class="arrow">›</span></div>
-    <div class="item">杭州站<span class="arrow">›</span></div>
-    <div class="item">南京站<span class="arrow">›</span></div>
+    <div class="item active">上海运营中心<span class="arrow">›</span></div>
+    <div class="item">杭州运营中心<span class="arrow">›</span></div>
+    <div class="item">南京运营中心<span class="arrow">›</span></div>
   </div>
   <div class="cascader-col">
-    <div class="item">浦东仓<span class="arrow">›</span></div>
-    <div class="item active">嘉定仓<span class="arrow">›</span></div>
-    <div class="item">松江仓<span class="arrow">›</span></div>
+    <div class="item">P3 设备组<span class="arrow">›</span></div>
+    <div class="item active">P5 设备组<span class="arrow">›</span></div>
+    <div class="item">P8 设备组<span class="arrow">›</span></div>
   </div>
   <div class="cascader-col">
-    <div class="item">货架 A-08</div>
-    <div class="item">货架 A-10</div>
-    <div class="item active">货架 A-12</div>
-    <div class="item">货架 A-15</div>
-    <div class="item">货架 B-01</div>
+    <div class="item">DEV-86420008</div>
+    <div class="item">DEV-86420010</div>
+    <div class="item active">DEV-86420075</div>
+    <div class="item">DEV-86420015</div>
+    <div class="item">DEV-86420101</div>
   </div>
 </div>
     </div>

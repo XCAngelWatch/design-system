@@ -4,7 +4,7 @@
 <section class="section" id="market-page">
   <p class="section-eyebrow">页面模板 · 业务蓝图</p>
   <h2>应用市场 MarketPage</h2>
-  <p class="lede">应用市场覆盖应用管理、广告管理、应用分类、版本管理、审核和安装明细。它把 Figma 中的应用市场页面族抽象为列表、卡片、审核、版本与明细规则。</p>
+  <p class="lede">应用市场覆盖应用管理、广告管理、应用分类、版本管理、审核和安装明细。它把应用市场页面族抽象为列表、卡片、审核、版本与明细规则。</p>
 
   <div class="subsection">
     <h3>覆盖范围</h3>

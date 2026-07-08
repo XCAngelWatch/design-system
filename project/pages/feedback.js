@@ -182,7 +182,7 @@
   </div>
 
   <div class="subsection">
-    <h3>OpenDesign 反馈模式 · 批量动作与部分成功</h3>
+    <h3>反馈模式 · 批量动作与部分成功</h3>
     <div class="bp-flow">
       <div class="bp-step"><div class="num">1</div><div class="name">动作前确认</div><div class="desc">推送、删除、重置、恢复出厂等强副作用操作使用 Modal.confirm，并明示影响数量。</div></div>
       <div class="bp-step"><div class="num">2</div><div class="name">执行中进度</div><div class="desc">大批量任务使用进度弹窗或任务详情页；Toast 只做启动成功提示。</div></div>

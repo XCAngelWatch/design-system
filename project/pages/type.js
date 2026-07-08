@@ -19,7 +19,7 @@
 
   <div class="subsection">
     <h3>与 antd <code>fontSizeHeading*</code> 的命名映射</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">TMS 的 Heading 标签与 antd 内置 token 名<b>错位一档</b> —— 设计师在 antd Figma library 取 H1 token 拿到 38px，与 TMS 的 H1 (30px) 不同。下表是对照表，避免设计 / 前端用同一术语指不同 px。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">TMS 的 Heading 标签与 antd 内置 token 名<b>错位一档</b> —— 设计师在 antd 默认标题体系取 H1 token 拿到 38px，与 TMS 的 H1 (30px) 不同。下表是对照表，避免设计 / 前端用同一术语指不同 px。</p>
     <table class="map-table">
       <thead><tr><th style="width:22%">TMS 标签</th><th style="width:18%">px / line-height</th><th style="width:32%">对应 antd token</th><th>说明</th></tr></thead>
       <tbody>
@@ -33,7 +33,7 @@
         <tr><td><b>Caption</b></td><td>12 / 18</td><td><code>fontSizeSM</code></td><td>辅助文字 (antd 默认 ✓)</td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">为什么跳过 38px：</b>antd 默认 H1=38px 偏 marketing-style；TMS 中后台运维场景 30px 已经足够"页面级"识别度，再大反而压缩内容区。Figma 端应在 token 表显示"TMS H1 (30px) ≡ antd fontSizeHeading2"</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)">为什么跳过 38px：</b>antd 默认 H1=38px 偏 marketing-style；TMS 中后台运维场景 30px 已经足够"页面级"识别度，再大反而压缩内容区。设计工具端应在 token 表显示"TMS H1 (30px) ≡ antd fontSizeHeading2"</p>
   </div>
 
   <div class="subsection">

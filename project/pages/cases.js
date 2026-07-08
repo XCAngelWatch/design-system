@@ -6,19 +6,19 @@
   <h2>终端管理实践案例</h2>
   <p class="lede">实践案例用于说明 Android 终端管理的端到端流程：选择设备、推送应用或 OTA 包、跟踪结果、处理失败项、审计操作记录。复杂场景出现争议时，优先回到这里看完整链路。</p>
 
-  <div class="subsection figma-coverage">
-    <h3>OpenDesign / Figma 覆盖矩阵</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:820px;line-height:1.7;margin:0 0 12px">本轮合入以本地 OpenDesign 离线解析为证据源，按业务模块沉淀设计规则，而不是逐帧复刻 Figma。运行时站点只依赖仓库内文件；本地绝对路径只用于实施期读取。</p>
+  <div class="subsection module-coverage">
+    <h3>业务模块覆盖矩阵</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:820px;line-height:1.7;margin:0 0 12px">本页按 Android 终端管理的核心业务域沉淀页面规则，帮助团队在应用、OTA、推送、数据中心、账户权限和增值服务之间保持一致体验。</p>
     <table class="coverage-table">
-      <thead><tr><th>业务域</th><th>Figma 证据</th><th>落地页面</th><th>覆盖策略</th></tr></thead>
+      <thead><tr><th>业务域</th><th>关键页面</th><th>落地页面</th><th>覆盖策略</th></tr></thead>
       <tbody>
-        <tr><td>应用市场</td><td>7 sections / 32 new frames / 12 state frames</td><td><a href="#/market-page">market-page</a> + <a href="#/table">table</a> + <a href="#/data-cards">data-cards</a></td><td>主列表、卡片视图、审核、版本、安装明细</td></tr>
-        <tr><td>OTA 升级</td><td>1 section / 13 new frames / 4 state frames</td><td><a href="#/ota-page">ota-page</a> + <a href="#/feedback">feedback</a></td><td>沿用模板页，抽取上传、确认、推送结果规则</td></tr>
-        <tr><td>推送任务</td><td>1 section / 10 new frames / 3 state frames</td><td><a href="#/push-page">push-page</a> + <a href="#/status-matrix">status-matrix</a></td><td>沿用模板页，抽取批量状态与结果明细</td></tr>
-        <tr><td>数据中心</td><td>8 sections / 72 new frames / 13 state frames</td><td><a href="#/device-center-page">device-center-page</a> + <a href="#/drawer">drawer</a></td><td>主蓝图页，覆盖设备生命周期与远程控制</td></tr>
-        <tr><td>设备地图</td><td>3 sections / 13 new frames / 0 state frames</td><td>follow-up: map-page</td><td>本轮记录证据，后续建地图蓝图</td></tr>
-        <tr><td>账户 / 运营 / 统计 / 系统</td><td>12 sections / 49 new frames / 13 state frames</td><td>follow-up: ops-page + <a href="#/user-mgmt-page">user-mgmt-page</a></td><td>本轮记录证据，后续建运营蓝图</td></tr>
-        <tr><td>增值服务</td><td>9 sections / 74 new frames / 9 state frames</td><td>follow-up: service-page</td><td>本轮记录证据，后续建服务蓝图</td></tr>
+        <tr><td>应用市场</td><td>应用列表 / 版本 / 审核 / 安装明细</td><td><a href="#/market-page">market-page</a> + <a href="#/table">table</a> + <a href="#/data-cards">data-cards</a></td><td>主列表、卡片视图、审核、版本、安装明细</td></tr>
+        <tr><td>OTA 升级</td><td>升级文件 / 推送确认 / 结果明细</td><td><a href="#/ota-page">ota-page</a> + <a href="#/feedback">feedback</a></td><td>沿用模板页，抽取上传、确认、推送结果规则</td></tr>
+        <tr><td>推送任务</td><td>批次列表 / 设备明细 / 结果统计</td><td><a href="#/push-page">push-page</a> + <a href="#/status-matrix">status-matrix</a></td><td>沿用模板页，抽取批量状态与结果明细</td></tr>
+        <tr><td>数据中心</td><td>设备列表 / 详情 / 分组 / 远程控制</td><td><a href="#/device-center-page">device-center-page</a> + <a href="#/drawer">drawer</a></td><td>主蓝图页，覆盖设备生命周期与远程控制</td></tr>
+        <tr><td>设备地图</td><td>轨迹筛选 / 地图标注 / 时间范围</td><td>follow-up: map-page</td><td>本轮沉淀字段和筛选规则，后续建地图蓝图</td></tr>
+        <tr><td>账户 / 运营 / 统计 / 系统</td><td>账号 / 机构 / 角色 / 菜单 / 字典</td><td>follow-up: ops-page + <a href="#/user-mgmt-page">user-mgmt-page</a></td><td>本轮沉淀账户权限和运营规则，后续建运营蓝图</td></tr>
+        <tr><td>增值服务</td><td>APN / WIFI / 黑白名单 / 文件推送 / 日志</td><td>follow-up: service-page</td><td>本轮沉淀远程服务规则，后续建服务蓝图</td></tr>
       </tbody>
     </table>
     <div class="coverage-notes">

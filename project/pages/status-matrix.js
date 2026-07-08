@@ -23,7 +23,7 @@
   </table>
 
   <div class="subsection">
-    <h3>业务域状态族 · 来自 Figma 新界面</h3>
+    <h3>业务域状态族 · 模块通用规则</h3>
     <p class="lede" style="margin-bottom:12px">这些状态用于列表、卡片、详情和结果页。这里只定义状态族与操作可用性，不定义状态转换图。</p>
     <table class="blueprint-table">
       <thead><tr><th>状态族</th><th>典型状态</th><th>适用模块</th><th>操作规则</th></tr></thead>

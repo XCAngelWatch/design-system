@@ -199,7 +199,7 @@
 · 全色板暴露为 CSS var：<code>--aw-{hue}-{step}</code>，共 40 个变量<br/>
 · TS 端：<code>import {'{ palette }'} from '@aw/design-tokens'</code><br/>
 · Dark mode 下每色阶提亮 10–15%，由 algorithm 自动派生<br/>
-· Figma：8 色 × 5 阶发布为 Library Variables，与代码同步
+· 设计变量：8 色 × 5 阶发布为共享变量，与代码同步
     </div>
   </div>
 </section>

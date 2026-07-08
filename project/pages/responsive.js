@@ -70,9 +70,9 @@
         <tr><td>设备名</td><td>1</td><td>从不</td><td>主标识</td></tr>
         <tr><td>状态</td><td>1</td><td>从不</td><td>核心信息</td></tr>
         <tr><td>SN</td><td>2</td><td>从不</td><td>运维高频引用</td></tr>
-        <tr><td>固件版本</td><td>3</td><td>S 隐藏</td><td>详情页可见</td></tr>
+        <tr><td>OTA 版本</td><td>3</td><td>S 隐藏</td><td>详情页可见</td></tr>
         <tr><td>最近心跳</td><td>3</td><td>S 隐藏</td><td>详情页可见</td></tr>
-        <tr><td>所属站点</td><td>4</td><td>M+S 隐藏</td><td>详情页可见</td></tr>
+        <tr><td>所属机构</td><td>4</td><td>M+S 隐藏</td><td>详情页可见</td></tr>
         <tr><td>操作</td><td>1</td><td>从不</td><td>固定右侧 + 浮层</td></tr>
       </tbody>
     </table>

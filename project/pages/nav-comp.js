@@ -17,7 +17,7 @@
         <tr><td><b>Tabs · Card 路由</b></td><td>同级别页面间</td><td>账号权限 → 角色 / 权限 / 审计 三个 sub-page</td><td>路由变化但保持父级导航位；面包屑追加</td></tr>
         <tr><td><b>面包屑 Breadcrumbs</b></td><td>跨级层级</td><td>≥ 3 级深度的页面（设备 / 详情 / 编辑）</td><td>位置感知 + 快速回退；最后一段不可点</td></tr>
         <tr><td><b>步骤 Steps</b></td><td>线性流程</td><td>WizardPage 5 步配置 / 上传 → 配置 → 推送</td><td>明确进度；可回退到已完成步骤</td></tr>
-        <tr><td><b>Cascader 级联</b></td><td>层级数据筛选</td><td>地区 → 站点 → 设备 三级筛选</td><td>不超过 3 级；4 级以上用 TreeSelect</td></tr>
+        <tr><td><b>Cascader 级联</b></td><td>层级数据筛选</td><td>机构 → 设备分组 → 设备 三级筛选</td><td>不超过 3 级；4 级以上用 TreeSelect</td></tr>
         <tr><td><b>Menu / Dropdown</b></td><td>动作集合</td><td>RowActions 折叠 / 账号菜单</td><td>≤ 8 项主菜单；≥ 9 项分组 + 分隔线</td></tr>
       </tbody>
     </table>

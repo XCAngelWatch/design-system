@@ -417,8 +417,8 @@
   </div>
 
   <div class="subsection">
-    <h3>OpenDesign 列表模式 · 表格与卡片双视图</h3>
-    <p class="lede" style="margin-bottom:12px">Figma 新界面中，应用、广告、设备、设备分组、推送任务都复用同一套列表骨架：筛选区先行、批量条只在勾选后出现、表格/卡片视图保留同一操作语义。</p>
+    <h3>业务列表模式 · 表格与卡片双视图</h3>
+    <p class="lede" style="margin-bottom:12px">应用、广告、设备、设备分组、推送任务复用同一套列表骨架：筛选区先行、批量条只在勾选后出现、表格/卡片视图保留同一操作语义。</p>
     <table class="blueprint-table">
       <thead><tr><th>模式</th><th>出现模块</th><th>规则</th></tr></thead>
       <tbody>

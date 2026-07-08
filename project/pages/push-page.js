@@ -51,7 +51,7 @@
           <tr>
             <td><code>BATCH-202604271402-D419</code></td>
             <td>当前及子机构</td>
-            <td>调度-北京</td>
+            <td>运维-北京</td>
             <td>2026-04-27 14:02</td>
             <td><span class="status-dot online">已完成</span></td>
             <td class="colactions"><button class="btn btn-link">详情</button><button class="btn btn-link">设备清单</button></td>
