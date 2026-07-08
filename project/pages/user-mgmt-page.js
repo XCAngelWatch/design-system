@@ -2,7 +2,7 @@
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["user-mgmt-page"] = `
 <div class="content">
 <section class="section" id="user-mgmt-page">
-  <p class="section-eyebrow">Patterns · 用户管理</p>
+  <p class="section-eyebrow">Patterns · 账号权限</p>
   <h2>账户权限 UserMgmtPage</h2>
   <p class="lede">账户权限页管理账号、机构、角色、菜单权限和数据权限。权限文案必须说明作用域、影响对象和保存后的结果。</p>
 
@@ -11,10 +11,10 @@
       <!-- 左:机构树 -->
       <div class="ota-tree">
         <div class="ot-h">
-          <strong>站点列表</strong>
+          <strong>机构列表</strong>
           <button class="btn btn-text btn-sm" style="padding:0 4px">⟳</button>
         </div>
-        <div class="ot-search"><input class="input" placeholder="搜索站点" /></div>
+        <div class="ot-search"><input class="input" placeholder="搜索机构" /></div>
         <div class="ot-list">
           <div class="ot-row"><span class="ot-arrow">▾</span><span>集团总部</span><span class="ot-count">128</span></div>
           <div class="ot-row sub"><span class="ot-arrow">▾</span><span>华东大区</span><span class="ot-count">42</span></div>
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <!-- 右:用户列表 -->
+      <!-- 右:账号列表 -->
       <div class="ota-main">
         <div class="lp-toolbar">
           <div class="row" style="gap:12px;flex:1;min-width:0">
@@ -40,7 +40,7 @@
 
         <div class="lp-actions">
           <div class="row" style="gap:6px">
-            <button class="btn btn-primary btn-sm">+ 新增</button>
+            <button class="btn btn-primary btn-sm">+ 添加</button>
           </div>
           <span class="meta" style="font-size:12px;color:var(--aw-text-3)">上海运营中心 · 18 名成员</span>
         </div>
@@ -50,7 +50,7 @@
           <table class="dt">
             <thead>
               <tr>
-                <th style="width:120px">站点</th>
+                <th style="width:120px">机构</th>
                 <th style="width:140px">登录账号</th>
                 <th style="width:120px">姓名</th>
                 <th>邮箱</th>
@@ -124,14 +124,14 @@
   </div>
 
   <div class="surface" style="margin-top:24px">
-    <h3 class="card-title">新增 / 编辑用户 Modal</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">沿袭旧项目 <code>dialogForm.vue</code> 的扁平 Form,字段与表格列对齐:站点 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。新建时含密码字段,编辑时不展示(密码用单独的"重置密码"操作)。</p>
+    <h3 class="card-title">添加 / 编辑账号 Modal</h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">沿袭旧项目 <code>dialogForm.vue</code> 的扁平 Form,字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。添加时含密码字段,编辑时不展示(密码用单独的"重置密码"操作)。</p>
     <div class="modal-stage" style="padding:32px">
       <div class="modal-demo" style="width:520px;max-width:100%">
-        <div class="head"><h4>新增用户</h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
+        <div class="head"><h4>添加账号</h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
         <div class="body">
           <div class="form-demo">
-            <div class="form-row"><div class="lbl"><span class="req">*</span>站点</div><div><div class="select" style="width:100%"><span>上海运营中心 ▾</span></div></div></div>
+            <div class="form-row"><div class="lbl"><span class="req">*</span>机构</div><div><div class="select" style="width:100%"><span>上海运营中心 ▾</span></div></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span>登录账号</div><div><input class="input" placeholder="字母 / 下划线开头" /></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span>姓名</div><div><input class="input" /></div></div>
             <div class="form-row"><div class="lbl">邮箱</div><div><input class="input" placeholder="选填" /></div></div>

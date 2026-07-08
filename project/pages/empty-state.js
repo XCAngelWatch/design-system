@@ -4,7 +4,7 @@
 <section class="section" id="empty-state">
   <p class="section-eyebrow">业务组件 · 空状态</p>
   <h2>空状态 Empty State</h2>
-  <p class="lede">空状态不只是"暂无数据"。三类空态对应三类下一步动作 —— 必须可执行、必须有路径。Result 组件强制传 <code>extra</code> prop（CI 阶段拦截），杜绝出现"留白 + 暂无"的死页面。</p>
+  <p class="lede">空状态不只是"当前没有可显示的数据"。三类空态对应三类下一步动作 —— 必须可执行、必须有路径。Result 组件强制传 <code>extra</code> prop（CI 阶段拦截），杜绝出现"留白 + 暂无"的死页面。</p>
 
   <div class="subsection">
     <h3>三类空态</h3>
@@ -12,7 +12,7 @@
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px">类型 · 01</div>
         <h3 style="margin:0 0 8px;font-size:14px">首次空 · First-run</h3>
-        <p style="margin:0 0 12px;font-size:13px;color:var(--aw-text-2);line-height:1.7">系统中尚无数据，引导用户创建首条记录。</p>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--aw-text-2);line-height:1.7">系统中尚无数据，引导管理员添加首条记录。</p>
         <div class="empty-mock">
           <svg viewBox="0 0 60 50" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--aw-text-3);width:48px;height:auto;margin:0 auto 8px;display:block">
             <rect x="10" y="5" width="40" height="38" rx="3"/>
@@ -90,7 +90,7 @@
 import { Empty } from 'antd';
 
 export const TMSEmpty: FC&lt;{ description?: string; extra?: ReactNode }&gt; = ({
-  description = '暂无数据',
+  description = '当前没有可显示的数据',
   extra,
 }) =&gt; (
   &lt;Empty
@@ -151,7 +151,7 @@ type ResultProps = {
       <div class="surface" style="border-left:3px solid var(--aw-danger)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)">✕ DON'T</h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-          <li>不要只显示"暂无数据" / "N/A"</li>
+          <li>不要只显示"当前没有可显示的数据" / "N/A"</li>
           <li>不要混用空态类型（筛选空显示"添加设备"按钮）</li>
           <li>不要在错误空隐藏错误码</li>
           <li>不要在空态用装饰性插画</li>

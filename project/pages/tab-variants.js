@@ -32,7 +32,7 @@
 <div class="popconfirm">
   <div class="popconfirm-bubble">
     <div><span class="pc-icon">⚠</span>确认删除终端 <strong>终端-上海-001</strong>？此操作不可撤销。</div>
-    <div class="pc-actions"><button class="btn btn-sm">取消</button><button class="btn btn-sm btn-danger">确定</button></div>
+    <div class="pc-actions"><button class="btn btn-sm">取消</button><button class="btn btn-sm btn-danger">确认删除</button></div>
   </div>
   <button class="btn btn-ghost-danger btn-sm">删除</button>
 </div>

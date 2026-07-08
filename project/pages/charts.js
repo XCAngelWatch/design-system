@@ -136,7 +136,7 @@
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">空数据</div>
         <h3 style="margin:0 0 8px;font-size:14px">Result 组件</h3>
-        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7">不渲染空白图表。Result 组件 + 文案"暂无数据，先添加首批设备" + 主按钮。</p>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7">不渲染空白图表。Result 组件 + 文案"当前没有可显示的数据，先添加首批设备" + 主按钮。</p>
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">加载</div>
@@ -268,7 +268,7 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
   if (loading) return &lt;Skeleton.Image active style={{ width: '100%', height }} /&gt;;
   if (error)   return &lt;Alert type="error" message="加载失败" description={error.code}
                        action={&lt;button onClick={onRetry}&gt;重试&lt;/button&gt;} /&gt;;
-  if (!option?.series?.length) return &lt;Empty description="暂无数据" /&gt;;
+  if (!option?.series?.length) return &lt;Empty description="当前没有可显示的数据" /&gt;;
 
   return (
     &lt;ReactECharts
@@ -337,7 +337,7 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
         <tr><td><b>tree-shake 改进</b></td><td>features 模块单独提取（<code>LabelLayout</code> / <code>UniversalTransition</code>）</td><td>必须显式 <code>echarts.use()</code>，否则 label / 过渡失效</td></tr>
         <tr><td><b>暗色模式</b></td><td>内置 <code>dark</code> 主题；默认背景透明</td><td>TMS 仍用自注册主题，不用 <code>dark</code> 内置（值差异太大）</td></tr>
         <tr><td><b>动画系统</b></td><td>UniversalTransition 默认开启</td><td>切换 <code>option</code> 时数据流转动画自动；可关闭 <code>animationDuration: 0</code></td></tr>
-        <tr><td><b>无障碍</b></td><td>新增 <code>aria.enabled</code> 默认描述图表内容</td><td>TMS 强制 <code>aria.enabled: true</code>，对接 a11y 页 SR 规范</td></tr>
+        <tr><td><b>无障碍</b></td><td>添加 <code>aria.enabled</code> 默认描述图表内容</td><td>TMS 强制 <code>aria.enabled: true</code>，对接 a11y 页 SR 规范</td></tr>
         <tr><td><b>性能</b></td><td>大数据集 (≥ 100k 点) 渲染提速 30-50%</td><td>大屏可去掉 sampling，直出原始数据</td></tr>
         <tr><td><b>移除项</b></td><td>v6 不再维护 <code>echarts/lib/*</code> 子路径</td><td>所有 import 走 <code>echarts/core</code> + <code>echarts/charts</code> 等顶级目录</td></tr>
       </tbody>

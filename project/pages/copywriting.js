@@ -37,7 +37,7 @@
 
   <div class="subsection">
     <h3>TMS 术语锁定表</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">下表为系统级专有名词，跨四语 zh-CN / en / es / pt 锁定。新增术语必须先 PR 到 <code>@tms/i18n</code> 词表，再在业务代码引用。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">下表为系统级专有名词，跨四语 zh-CN / en / es / pt 锁定。添加术语必须先 PR 到 <code>@tms/i18n</code> 词表，再在业务代码引用。</p>
     <table class="map-table">
       <thead><tr><th>对象</th><th>zh-CN</th><th>en</th><th>es</th><th>pt</th></tr></thead>
       <tbody>
@@ -104,14 +104,14 @@
       <div class="surface" style="border-left:3px solid var(--aw-success)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)">✓ 完整三层</h3>
         <div style="font-size:13px;color:var(--aw-text-2);line-height:1.8;background:var(--aw-fill-1);padding:12px;border-radius:4px">
-          <div><b>推送失败</b> · 网关 GW-007 离线超过 5 分钟。</div>
-          <div style="margin-top:6px;color:var(--aw-text-3);font-size:12px">先恢复网关连接，或选择其他设备重试 · <span class="mono">[E_PUSH_GW_OFFLINE]</span></div>
+          <div><b>推送失败</b> · 终端 DEV-86420075 离线超过 5 分钟。</div>
+          <div style="margin-top:6px;color:var(--aw-text-3);font-size:12px">先恢复设备连接，或选择其他设备重试 · <span class="mono">[E_PUSH_DEVICE_OFFLINE]</span></div>
         </div>
       </div>
       <div class="surface" style="border-left:3px solid var(--aw-danger)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)">✕ 避免</h3>
         <div style="font-size:13px;color:var(--aw-text-2);line-height:1.8;background:var(--aw-fill-1);padding:12px;border-radius:4px">
-          <div>操作失败，请稍后重试。</div>
+          <div>处理未完成，请稍后再试。</div>
           <div style="margin-top:6px;color:var(--aw-text-3);font-size:12px">— 没有"做了什么"，没有"为什么"，没有"怎么办"，运维只能猜</div>
         </div>
       </div>
@@ -120,7 +120,7 @@
 
   <div class="subsection">
     <h3>空状态文案 · Empty Copy</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">空状态必须给"下一步"，不能只说"暂无数据"。三种空态对应不同文案模板。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">空状态必须给"下一步"，不能只说"当前没有可显示的数据"。三种空态对应不同文案模板。</p>
     <table class="map-table">
       <thead><tr><th style="width:22%">空态类型</th><th style="width:32%">推荐文案</th><th>下一步操作</th></tr></thead>
       <tbody>

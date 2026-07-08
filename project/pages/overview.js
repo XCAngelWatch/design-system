@@ -118,7 +118,7 @@
 <div class="pt-row">
   <div class="pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
   <div class="pt-name">空状态可执行<span class="en">Actionable Empty</span></div>
-  <div class="pt-tms">空状态不只是"暂无数据" — 必须给出下一步：「+ 添加设备」/ 「调整筛选」/ 「联系管理员」。Result 组件强制传 <code>extra</code> prop。</div>
+  <div class="pt-tms">空状态不只是"当前没有可显示的数据" — 必须给出下一步：「+ 添加设备」/ 「调整筛选」/ 「联系管理员」。Result 组件强制传 <code>extra</code> prop。</div>
 </div>
 <div class="pt-row">
   <div class="pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/></svg></div>

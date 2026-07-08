@@ -101,7 +101,7 @@ const styles = { color: '#165DFF' };  // ← 硬编码,白标失效</code></pre>
 
   <div class="subsection">
     <h3>i18n 集成</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">所有可见文本必走 i18n。组件内文案（如"加载中…"、"暂无数据"）默认从 <code>locale</code> prop 取，回退到 ConfigProvider 全局，再回退到内置 zh-CN。业务方传 <code>locale</code> 可临时覆盖单组件语言（少见，仅用于嵌入第三方页面）。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">所有可见文本必走 i18n。组件内文案（如"加载中…"、"当前没有可显示的数据"）默认从 <code>locale</code> prop 取，回退到 ConfigProvider 全局，再回退到内置 zh-CN。业务方传 <code>locale</code> 可临时覆盖单组件语言（少见，仅用于嵌入第三方页面）。</p>
     <div class="code-block"><pre><code>// 组件内部文案声明
 type LocaleKeys = {
   emptyText: string;

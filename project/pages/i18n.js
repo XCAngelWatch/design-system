@@ -26,13 +26,13 @@
         <div class="lang-tag"><span>es-419 · Español</span><span class="flag">LA</span></div>
         <div class="stat-mini"><div class="ml">已翻译 keys</div><div class="mn">2,386 / 2,418</div></div>
         <div class="stat-mini"><div class="ml">覆盖率</div><div class="mn" style="color:var(--aw-warning)">98.7%</div></div>
-        <div class="stat-mini"><div class="ml">缺失</div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">32 keys（新增）</div></div>
+        <div class="stat-mini"><div class="ml">缺失</div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">32 keys（添加）</div></div>
       </div>
       <div class="i18n-card">
         <div class="lang-tag"><span>pt-BR · Português</span><span class="flag">BR</span></div>
         <div class="stat-mini"><div class="ml">已翻译 keys</div><div class="mn">2,386 / 2,418</div></div>
         <div class="stat-mini"><div class="ml">覆盖率</div><div class="mn" style="color:var(--aw-warning)">98.7%</div></div>
-        <div class="stat-mini"><div class="ml">缺失</div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">32 keys（新增）</div></div>
+        <div class="stat-mini"><div class="ml">缺失</div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">32 keys（添加）</div></div>
       </div>
     </div>
   </div>
@@ -152,7 +152,7 @@
 
   <div class="subsection">
     <h3>多语种回归对照 · 同一界面 4 列</h3>
-    <p class="lede" style="margin-bottom:12px">每次新增 / 修改 i18n key 后，对照 4 语种长度差异。en 与 zh 较短，es / pt 长 20-40%，是溢出风险来源。</p>
+    <p class="lede" style="margin-bottom:12px">每次添加 / 修改 i18n key 后，对照 4 语种长度差异。en 与 zh 较短，es / pt 长 20-40%，是溢出风险来源。</p>
     <div class="surface" style="padding:0;overflow:hidden">
       <table class="tech-table">
         <thead><tr><th style="width:120px">位置 / Key</th><th>zh-CN</th><th>en-US</th><th>es-419</th><th>pt-BR</th></tr></thead>
@@ -160,7 +160,7 @@
           <tr><td>nav.devices</td><td>设备管理</td><td>Devices</td><td>Dispositivos</td><td>Dispositivos</td></tr>
           <tr><td>nav.ota</td><td>OTA 升级</td><td>OTA Upgrade</td><td>Actualización OTA</td><td>Atualização OTA</td></tr>
           <tr><td>action.batchUpgrade</td><td>批量升级</td><td>Batch Upgrade</td><td>Actualización masiva</td><td>Atualização em lote</td></tr>
-          <tr><td>btn.confirm</td><td>确定</td><td>Confirm</td><td>Confirmar</td><td>Confirmar</td></tr>
+          <tr><td>btn.confirmSave</td><td>确认保存</td><td>Confirm Save</td><td>Confirmar guardado</td><td>Confirmar salvamento</td></tr>
           <tr><td>col.lastOnline</td><td>最后心跳</td><td>Last Online</td><td>Última conexión</td><td>Última conexão</td></tr>
           <tr><td>status.upgrading</td><td>升级中</td><td>Upgrading</td><td>Actualizando</td><td>Atualizando</td></tr>
           <tr><td>placeholder.search</td><td>搜索 SN / 名称 / 负责人</td><td>Search by SN, name, owner</td><td>Buscar por SN, nombre o responsable</td><td>Pesquisar por SN, nome ou responsável</td></tr>

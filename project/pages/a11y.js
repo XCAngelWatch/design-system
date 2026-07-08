@@ -29,14 +29,14 @@
     <table class="map-table">
       <thead><tr><th style="width:24%">快捷键</th><th style="width:30%">动作</th><th>说明</th></tr></thead>
       <tbody>
-        <tr><td><kbd>Cmd</kbd>+<kbd>K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd></td><td>全局搜索（Command Palette）</td><td>跨设备 / 用户 / 操作 / 页面统一搜索</td></tr>
+        <tr><td><kbd>Cmd</kbd>+<kbd>K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd></td><td>全局搜索（Command Palette）</td><td>跨设备 / 账号 / 操作 / 页面统一搜索</td></tr>
         <tr><td><kbd>Cmd</kbd>+<kbd>B</kbd></td><td>切换侧边栏折叠</td><td>临时扩展工作区域</td></tr>
         <tr><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td><td>切换 Light / Dark 主题</td><td>对接 motion 页主题切换流程</td></tr>
         <tr><td><kbd>?</kbd></td><td>打开快捷键参考</td><td>任意非输入框聚焦时</td></tr>
         <tr><td><kbd>g</kbd> <kbd>d</kbd></td><td>跳转设备列表</td><td>Vim 式两键序列</td></tr>
         <tr><td><kbd>g</kbd> <kbd>p</kbd></td><td>跳转推送页</td><td></td></tr>
         <tr><td><kbd>g</kbd> <kbd>o</kbd></td><td>跳转 OTA 页</td><td></td></tr>
-        <tr><td><kbd>g</kbd> <kbd>u</kbd></td><td>跳转用户管理</td><td></td></tr>
+        <tr><td><kbd>g</kbd> <kbd>u</kbd></td><td>跳转账号权限</td><td></td></tr>
         <tr><td><kbd>g</kbd> <kbd>h</kbd></td><td>回到首页 / 仪表盘</td><td></td></tr>
         <tr><td><kbd>/</kbd></td><td>聚焦当前页搜索框</td><td>列表 / 表格</td></tr>
         <tr><td><kbd>n</kbd></td><td>"+ 添加" 主操作</td><td>当前页有添加按钮时</td></tr>
