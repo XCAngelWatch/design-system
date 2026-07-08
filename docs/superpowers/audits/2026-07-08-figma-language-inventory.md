@@ -4,6 +4,10 @@ Source: local OpenDesign `figma/tree.json` for `brand-customertest-3a5d64`.
 
 This inventory is evidence for rewriting visible copy into Android terminal management language. Placeholder design labels such as `title`, `text`, `input`, `2rd-level-title`, and `Button Text` are evidence of structure only and must not be copied as final UI text.
 
+## Filtering Rules
+
+Product-copy frequency tables exclude structural design annotations, component/state labels, upload-control variants, and pure design notes. Real short UI strings such as `台`, `近7日`, `账号`, and `密码` are preserved when they come from visible Figma text.
+
 ## 登陆页
 
 | Text | Count |
@@ -11,7 +15,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 请输入你的账号 | 13 |
 | 请输入你的密码 | 12 |
 | Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 11 |
-| 默认 | 11 |
 | 终端管理系统 | 10 |
 | 记住登陆状态 | 7 |
 | Português | 6 |
@@ -20,7 +23,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 请输入右侧验证码 | 5 |
 | 简体中文 | 5 |
 | English | 5 |
-| 按钮 | 4 |
 | 设计风格参考 | 3 |
 | 记住密码 | 3 |
 | 蓝色渐变玻璃 | 2 |
@@ -29,9 +31,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 用户管理 | 2 |
 | 邮箱验证 | 2 |
 | 登陆框 | 2 |
-| 输出 | 2 |
-| 聚焦 | 2 |
-| 悬停 | 2 |
 | 卡片001-004 | 2 |
 | 搜索 | 2 |
 | NICKWONG | 2 |
@@ -70,7 +69,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 运用了统计数据图表的元素，r | 1 |
 | 语言切换框 | 1 |
 | 语言：英文 | 1 |
-| ·当前网络所在地区语言<br>·历史记录所使用的语言 | 1 |
 | 账号 | 1 |
 | 密码 | 1 |
 | 点击【显示密码】 | 1 |
@@ -79,8 +77,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 输出-最多字符 | 1 |
 | 历史输入账号-最多记录 5 个 | 1 |
 | 单选 | 1 |
-| 点击 | 1 |
-| 禁用 | 1 |
 | 明暗切换 | 1 |
 | 主题切换 | 1 |
 | 消息通知 | 1 |
@@ -151,10 +147,7 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 机构 | 34 |
 | 状态 | 33 |
 | 更新时间 | 19 |
-| 悬停 | 18 |
 | New_param_4011 | 16 |
-| 常态 | 14 |
-| 点击 | 13 |
 | Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 12 |
 | user.png | 12 |
 | 包名 | 11 |
@@ -175,25 +168,15 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 五号 | 7 |
 | P0821-test应用详情 | 6 |
 | 广告图 | 6 |
-| ·详见表格操作概览 | 5 |
 | 删除 | 5 |
 | 详细介绍 | 5 |
-| 选中 | 4 |
-| 展开 | 4 |
-| 收起 | 4 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 4 |
-| 表格模块 | 4 |
 | 上传中 | 4 |
 | 上传失败 | 4 |
 | 上传成功 | 4 |
 | 修改 | 4 |
 | Tactile Ad | 4 |
-| 默认态 | 3 |
-| 悬停态 | 3 |
 | 正常 | 3 |
 | 已输入 | 3 |
-| 表格字段 | 3 |
-| 表格操作 | 3 |
 | 更多 | 3 |
 | P | 3 |
 | 销量统计 | 3 |
@@ -203,23 +186,13 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | superads.jpg | 3 |
 | 正文 | 3 |
 | 字体 | 3 |
-| 点击态 | 2 |
 | 状态-内容过多 | 2 |
-| 失效 | 2 |
 | 输入框 | 2 |
 | 全量状态与对应样式 | 2 |
 | 安装明细 | 2 |
-| 数据录入模块 | 2 |
-| 上传文件组件-单个文件 | 2 |
-| 上传图片组件-单个文件 | 2 |
-| 正常-上传按钮 | 2 |
-| 正常-上传区域 | 2 |
-| 悬停-上传区域 | 2 |
 | 上传中-悬停 | 2 |
 | 上传失败-悬停 | 2 |
 | 上传成功-悬停 | 2 |
-| 悬停-上传按钮 | 2 |
-| 点击-上传按钮 | 2 |
 | 错误 | 2 |
 | 选项悬停 | 2 |
 | 信息展示模块 | 2 |
@@ -253,7 +226,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 展开且选中子菜单<br>·主菜单固定 | 1 |
 | 展开且选中子菜单<br>·主菜单固定<br>·悬停另一个子菜单 | 1 |
 | （注：未开通权限的页签将会不显示） | 1 |
-| 按钮 | 1 |
 | 主按钮 | 1 |
 | 子选项 | 1 |
 | 母选项 | 1 |
@@ -291,9 +263,7 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 图片展示 | 1 |
 | 图标展示与下载 | 1 |
 | 文本框展示 | 1 |
-| ·详见表格状态对应操作概览 | 1 |
 | ·为此状态时，鼠标悬停与点击均无反应 | 1 |
-| 弹窗模块 | 1 |
 | 弹窗按钮 | 1 |
 | 正常-关闭按钮 | 1 |
 | 悬停-关闭按钮 | 1 |
@@ -301,7 +271,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 选择 | 1 |
 | 表格-操作 | 1 |
 | 表格-字段 | 1 |
-| ·详见设备型号与图标概览 | 1 |
 | ·表头图标点击一下为正序，再点击一下为倒序，第三次点击恢复正常 | 1 |
 | 悬停出现气泡提示，<br>点击直接开始下载文件 | 1 |
 | 普通 | 1 |
@@ -332,7 +301,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 卡片操作 | 1 |
 | 卡片功能 | 1 |
 | 卡片图标 | 1 |
-| 卡片模块 | 1 |
 | 正常-图标按钮 | 1 |
 | 悬停-图标按钮 | 1 |
 | 点击-图标按钮 | 1 |
@@ -342,7 +310,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 文本编辑器按钮样式 | 1 |
 | 选择器样式 | 1 |
 | 全屏按钮样式 | 1 |
-| ·当文本框处于输入态时，页面上栏底部会弹出文本编辑器，如图所示 | 1 |
 | 撤销 | 1 |
 | 重做 | 1 |
 | 样式选择 | 1 |
@@ -428,11 +395,9 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 文件说明 | 5 |
 | 可见范围 | 5 |
 | Tactile Ad | 4 |
-| ·详见表格操作概览 | 2 |
 | 修改 | 2 |
 | 更新推送 | 2 |
 | 更多 | 2 |
-| 数据录入模块 | 2 |
 | 配置文件 | 2 |
 | 推送固件包 | 2 |
 | 推送类型 | 2 |
@@ -441,21 +406,13 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 统一：有修改操作，用这一种；如果不能做任何修改，就用表单形式 | 1 |
 | 强制推送那一块改一下单选字段 | 1 |
 | 加一个页面 | 1 |
-| 表格字段 | 1 |
-| 表格模块 | 1 |
 | 悬停出现气泡提示，<br>点击直接开始下载文件 | 1 |
 | 全量状态·对应样式 | 1 |
-| 表格操作 | 1 |
 | 表格字段状态 | 1 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 1 |
 | 下载文件 | 1 |
 | 查看详情 | 1 |
 | 下线 | 1 |
 | 删除 | 1 |
-| 上传文件组件-单个文件 | 1 |
-| 正常-上传按钮 | 1 |
-| 悬停-上传按钮 | 1 |
-| 点击-上传按钮 | 1 |
 | 上传中 | 1 |
 | 上传失败 | 1 |
 | 上传成功 | 1 |
@@ -464,8 +421,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 悬停-单选按钮 | 1 |
 | 已选-单选按钮 | 1 |
 | 卡片功能 | 1 |
-| 卡片模块 | 1 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮（暂定） | 1 |
 | 下载 | 1 |
 | Update_0316_0422 | 1 |
 | 添加升级文件 | 1 |
@@ -501,7 +456,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 账户信息 | 5 |
 | 设备地图 | 5 |
 | 推送设备详情 | 3 |
-| 数据展示模块 | 2 |
 | 添加推送任务 | 2 |
 | 推送任务详情 | 2 |
 | 允许卸载 | 2 |
@@ -513,20 +467,10 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 增值服务 | 2 |
 | 系统管理 | 2 |
 | 先弹窗 | 1 |
-| 弹窗模块 | 1 |
 | 弹窗滚动 | 1 |
 | 代码块 | 1 |
-| ·当弹窗中的内容过多时，用户可以采用滚动的方式对弹窗中的内容进行浏览 | 1 |
-| ·目前系统中不用写代码，只需要浏览代码，因此只设计代码块的展示状态 | 1 |
 | 展示-代码块 | 1 |
 | 饼图展示交互 | 1 |
-| ·当用户将光标放在图例上时，饼图区域会进行放大 | 1 |
-| ·当用户将光标放在饼图对应区域，饼图区域会进行放大，并用气泡的方式对当前部分的总数进行提示 | 1 |
-| 表格字段 | 1 |
-| 表格模块 | 1 |
-| 表格操作 | 1 |
-| ·详见表格操作概览 | 1 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 1 |
 | 查看详情 | 1 |
 | 查看推送设备详情 | 1 |
 | 加一张运营端主页，搜索条件加个客户 | 1 |
@@ -579,11 +523,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 系统版本 | 14 |
 | 设备数 | 13 |
 | Razlon devices manage… | 13 |
-| 表格字段 | 10 |
-| 表格模块 | 10 |
-| 表格操作 | 9 |
-| ·详见表格操作概览 | 9 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 9 |
 | 删除 | 9 |
 | 内存：1.91GB | 9 |
 | 已用存储：16GB | 9 |
@@ -633,7 +572,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 设备状态 | 3 |
 | 设备使用情况 | 2 |
 | 表格对应状态 | 2 |
-| 卡片模块 | 2 |
 | 样式-已选择 | 2 |
 | 样式-未选择 | 2 |
 | 分配<br>设备 | 2 |
@@ -644,7 +582,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 修改参数 | 2 |
 | 设备序列号 | 2 |
 | 是没改页面名字吗？为什么放在应用参数旁边却叫设备管理？ | 1 |
-| 数据录入模块 | 1 |
 | 输入框组件-带固定单位 | 1 |
 | 开关组件 | 1 |
 | 正常-输入框 | 1 |
@@ -753,14 +690,9 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 机构管理 | 5 |
 | 角色管理 | 5 |
 | 账号管理 | 5 |
-| 表格操作 | 4 |
-| ·详见表格操作概览 | 4 |
 | 删除 | 4 |
-| 表格字段 | 4 |
-| 表格模块 | 4 |
 | 添加运营商 | 4 |
 | 角色 | 4 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 3 |
 | 修改 | 3 |
 | 更多 | 3 |
 | DSN | 3 |
@@ -777,7 +709,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 目录里没有账户信息-运营商管理这一项 | 1 |
 | 设备 | 1 |
 | 重置密码 | 1 |
-| 组件状态 | 1 |
 | 穿梭框模块 | 1 |
 | 选项-未选 | 1 |
 | 选项-已选 | 1 |
@@ -790,7 +721,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 已选项-选中 | 1 |
 | 账号 | 1 |
 | 重置<br>密码 | 1 |
-| 数据录入模块 | 1 |
 | 数据录入提示 | 1 |
 | 普通-提示按钮 | 1 |
 | 悬停-提示按钮 | 1 |
@@ -830,11 +760,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 当日激活 | 2 |
 | 七天内激活 | 2 |
 | 30天内激活 | 2 |
-| 表格字段 | 1 |
-| 表格模块 | 1 |
-| 表格操作 | 1 |
-| ·详见表格操作概览 | 1 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 1 |
 | 详情 | 1 |
 | 全部<br>导出 | 1 |
 | 升级文件统计详情 | 1 |
@@ -870,11 +795,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 24 |
 | 推送方式 | 13 |
 | 推送目标 | 13 |
-| 表格字段 | 9 |
-| 表格模块 | 9 |
-| 表格操作 | 9 |
-| ·详见表格操作概览 | 9 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 9 |
 | 推送设备详情 | 9 |
 | 备注 | 8 |
 | 应用包名列表 | 5 |
@@ -952,11 +872,6 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 字典管理 | 6 |
 | 菜单管理 | 6 |
 | 恢复出厂设置 | 6 |
-| 表格字段 | 5 |
-| 表格模块 | 5 |
-| 表格操作 | 5 |
-| ·详见表格操作概览 | 5 |
-| ·最多显示3个选项，若有4个或以上选项，会出现“更多”按钮 | 5 |
 | 删除 | 4 |
 | 请求地址 | 4 |
 | 输入内容 | 4 |
@@ -984,13 +899,9 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 | 时间与日期选择器 | 1 |
 | 信息录入模块 | 1 |
 | 详情 | 1 |
-| 常态 | 1 |
-| 悬停 | 1 |
-| 点击 | 1 |
 | 已选 | 1 |
 | 精确到秒 | 1 |
 | 只需要目录和按钮，菜单全部改成目录；加上拖动列，方便排序（做一个排序开关在入口） | 1 |
-| 数据录入模块 | 1 |
 | 数据录入提示 | 1 |
 | 普通-提示按钮 | 1 |
 | 悬停-提示按钮 | 1 |
