@@ -1,14 +1,14 @@
 # Figma Language Inventory
 
-Source: local OpenDesign `figma/tree.json` for `brand-customertest-3a5d64`. Product-copy evidence is extracted from visible text nodes exported as `TEXT.text`; no node-name fallback is used in product-copy tables.
+Source: local OpenDesign `figma/tree.json` for `brand-customertest-3a5d64` (`/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64/figma/tree.json`). Extraction used exported visible text node values from that local OpenDesign tree as `TEXT.text`; no node-name fallback is used in product-copy tables.
 
-This inventory is evidence for rewriting visible copy into Android terminal management language. Placeholder design labels such as `title`, `text`, `input`, `2rd-level-title`, and `Button Text` are evidence of structure only and must not be copied as final UI text. The inventory is manually curated after extraction to remove placeholders, design states, sample names, asset names, technical sample identifiers, repeated global navigation, and obvious mock data.
+This inventory is evidence for rewriting visible copy into Android terminal management language. Placeholder design labels such as `title`, `text`, `input`, `2rd-level-title`, and `Button Text` are evidence of structure only and must not be copied as final UI text. Module assignment follows the Figma canvas/module heading, then the inventory is manually curated to remove placeholders, design states, sample names, asset names, technical identifiers, repeated global navigation, and mock data.
 
 ## Filtering Rules
 
 Product-copy tables use visible Figma `TEXT.text` only. They are a conservative evidence set: only clear business/domain nouns, real menu or page labels, real fields, real statuses, and real user-facing actions are included.
 
-Structural, component, state, design-review, designer-note, layout, tooling, and demo artifact strings are excluded from product-copy tables. Design-language signals are collected separately when useful.
+Structural, component, state, design-review, designer-note, layout, tooling, and demo artifact strings are excluded from module product-copy tables. Reusable status strings and shell/header controls are preserved in separate sections when useful; design-language signals are collected separately when useful.
 
 ## Design Language Signals
 
@@ -45,13 +45,22 @@ Global shell labels appear repeatedly across canvases and are listed once here i
 | 数据统计 | 38 |
 | 增值服务 | 65 |
 | 系统管理 | 48 |
+| 搜索 | 2 |
+| 明暗切换 | 1 |
+| 消息通知 | 1 |
+| 设置 | 1 |
 
-## Short UI Strings / Units
+## Status Copy / Short UI Strings
 
-Short strings are preserved with context because they are real visible UI copy, but they are not treated as standalone module vocabulary.
+Reusable status strings and short strings are preserved with context because they are real visible UI copy, but they are not treated as standalone module vocabulary.
 
 | String | Context | Count |
 | --- | --- | ---: |
+| 上传中 | Upload progress/status copy | 5 |
+| 上传失败 | Upload failure status copy | 5 |
+| 上传成功 | Upload success status copy | 5 |
+| 错误 | Error status copy | 2 |
+| 已激活 | Activation status copy | 1 |
 | 台 | Dashboard/statistics device count unit | 54 |
 | 500m | Device map distance scale | 11 |
 
@@ -79,13 +88,9 @@ Representative sample names, asset filenames, technical identifiers, and metric 
 | 记住密码 | 3 |
 | 语言切换 | 2 |
 | 邮箱验证 | 2 |
-| 搜索 | 2 |
 | 验证码 | 2 |
 | 账号 | 1 |
 | 密码 | 1 |
-| 明暗切换 | 1 |
-| 消息通知 | 1 |
-| 设置 | 1 |
 | Terminal Management System | 1 |
 
 ## 首页
@@ -128,20 +133,15 @@ Representative sample names, asset filenames, technical identifiers, and metric 
 | 广告图 | 6 |
 | 删除 | 5 |
 | 详细介绍 | 5 |
-| 上传中 | 4 |
-| 上传失败 | 4 |
-| 上传成功 | 4 |
 | 修改 | 4 |
 | 更多 | 3 |
 | 安装明细 | 2 |
-| 错误 | 2 |
 | 筛选 | 2 |
 | 发布 | 2 |
 | 下线 | 2 |
 | 所属机构 | 2 |
 | 已发布 | 2 |
 | 转为正式版 | 1 |
-| 已激活 | 1 |
 | 上架 | 1 |
 | 审核 | 1 |
 | 下架 | 1 |
@@ -182,9 +182,6 @@ Representative sample names, asset filenames, technical identifiers, and metric 
 | 查看详情 | 1 |
 | 下线 | 1 |
 | 删除 | 1 |
-| 上传中 | 1 |
-| 上传失败 | 1 |
-| 上传成功 | 1 |
 | 下载 | 1 |
 | 添加升级文件 | 1 |
 | 包文件 | 1 |
