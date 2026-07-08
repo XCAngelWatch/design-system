@@ -6,9 +6,9 @@ This inventory is evidence for rewriting visible copy into Android terminal mana
 
 ## Filtering Rules
 
-Product-copy tables use visible Figma `TEXT.text` only. They exclude structural, component, state, design-review, designer-note, and visual-language annotations so module tables stay focused on user-facing product copy.
+Product-copy tables use visible Figma `TEXT.text` only. They are a conservative evidence set: only clear business/domain nouns, real menu or page labels, real fields, real statuses, and real user-facing actions are included.
 
-Design-language signals are collected separately when useful. Real short UI strings such as `台`, `近7日`, `账号`, `密码`, `验证码`, `语言切换`, `消息通知`, `设置`, `搜索`, `上传中`, `上传失败`, and `上传成功` are preserved when they come from visible Figma text.
+Structural, component, state, design-review, designer-note, layout, tooling, and demo artifact strings are excluded from product-copy tables. Design-language signals are collected separately when useful.
 
 ## Design Language Signals
 
@@ -35,43 +35,21 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | --- | ---: |
 | 请输入你的账号 | 13 |
 | 请输入你的密码 | 12 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 11 |
 | 终端管理系统 | 10 |
 | 记住登陆状态 | 7 |
-| Português | 6 |
-| NTDKA | 6 |
 | 忘记密码 | 5 |
 | 请输入右侧验证码 | 5 |
-| 简体中文 | 5 |
-| English | 5 |
 | 记住密码 | 3 |
 | 语言切换 | 2 |
-| 用户管理 | 2 |
 | 邮箱验证 | 2 |
 | 搜索 | 2 |
-| NICKWONG | 2 |
-| 设备总数 | 2 |
-| 验证码已发送至邮箱 788adakdsj@Hotmail.com | 2 |
 | 验证码 | 2 |
-| 台 | 2 |
-| Angel Watch ｜ A.1.0  \|  <br>客服电话：0571 - 2312 2323 | 1 |
-| 语言：英文 | 1 |
 | 账号 | 1 |
 | 密码 | 1 |
 | 明暗切换 | 1 |
 | 消息通知 | 1 |
 | 设置 | 1 |
-| TMS | 1 |
 | Terminal Management System | 1 |
-| ｜ | 1 |
-| NICKWON：NICKWONG | 1 |
-| NICKWONGNICKWONGGGGG | 1 |
-| Please enter user | 1 |
-| Remember | 1 |
-| Forget | 1 |
-| •••••••• | 1 |
-| Please enter password | 1 |
-| Please enter code | 1 |
 
 ## 首页
 
@@ -80,46 +58,30 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 台 | 36 |
 | 解锁设备 | 10 |
 | 锁定设备 | 10 |
-| 👏 欢迎回来，NICK | 9 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 9 |
 | 近7日 | 9 |
 | 设备总数 | 9 |
 | 当日激活 | 9 |
 | 设备基础数据 | 8 |
 | 激活设备数 | 7 |
 | 设备激活数 | 7 |
-| 折线图 | 6 |
-| 列表 | 6 |
-| Angel Watch | 4 |
-| 用户手册 | 4 |
-| 通知 | 4 |
-| 折线图｜ 列表 | 3 |
 | 最近访问 | 2 |
-| 2023版 | 2 |
 | 产品动态 | 2 |
 | 查看更多 | 2 |
 | 设备活跃数据 | 2 |
 | 活动 | 2 |
-| 内容最新优惠活动 | 2 |
 | 消息 | 2 |
-| 1 月新系统升级计划通知 | 2 |
 | 活跃设备 | 2 |
 | OTA升级管理 | 2 |
 | 推送任务 | 2 |
 | 账户信息 | 2 |
-| 设备总数<br>12,531 | 1 |
 
 ## 应用市场
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 有言科技 | 41 |
-| Areeba_001 | 35 |
 | 机构 | 34 |
 | 状态 | 33 |
 | 更新时间 | 19 |
-| New_param_4011 | 16 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 12 |
 | 包名 | 11 |
 | 截图 | 11 |
 | 基本信息 | 10 |
@@ -132,10 +94,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 设备型号 | 10 |
 | LANDI P5 | 10 |
 | 加入日期 | 9 |
-| 图标 | 9 |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 7 |
-| T | 7 |
-| 五号 | 7 |
 | P0821-test应用详情 | 6 |
 | 广告图 | 6 |
 | 删除 | 5 |
@@ -145,9 +103,7 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 上传成功 | 4 |
 | 修改 | 4 |
 | Tactile Ad | 4 |
-| 已输入 | 3 |
 | 更多 | 3 |
-| P | 3 |
 | 销量统计 | 3 |
 | 数据统计 | 3 |
 | 增值服务 | 3 |
@@ -156,60 +112,16 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 安装明细 | 2 |
 | 错误 | 2 |
 | 筛选 | 2 |
-| 激活 | 2 |
 | 发布 | 2 |
 | 下线 | 2 |
 | 这里是错误原因 | 2 |
-| Angel Watch | 2 |
 | 所属机构 | 2 |
-| T0511_E1_MP_V1.2_... | 2 |
 | 已发布 | 2 |
-| （注：未开通权限的页签将会不显示） | 1 |
-| 子选项 | 1 |
-| 母选项 | 1 |
 | 转为正式版 | 1 |
-| 滚动 | 1 |
-| 多项选择 | 1 |
-| 展示-文本 | 1 |
-| 常规信息展示 | 1 |
-| 可交互信息展示 | 1 |
-| 图片展示 | 1 |
-| 图标展示与下载 | 1 |
-| 选择 | 1 |
-| 普通 | 1 |
-| 正序 | 1 |
-| 倒序 | 1 |
-| 下拉选择-普通态 | 1 |
 | 已激活 | 1 |
-| 分页器 | 1 |
-| 卡片操作 | 1 |
-| 卡片功能 | 1 |
-| 卡片图标 | 1 |
-| 激活-文本编辑器 | 1 |
-| 撤销 | 1 |
-| 重做 | 1 |
-| 字号选择 | 1 |
-| 加粗 | 1 |
-| 斜体 | 1 |
-| 下划线 | 1 |
-| 删除线 | 1 |
-| 文字颜色 | 1 |
-| 背景颜色 | 1 |
-| 对齐方式 | 1 |
-| 无序列表 | 1 |
-| 有序列表 | 1 |
-| 插入表格 | 1 |
-| 插入图片 | 1 |
-| 插入链接 | 1 |
-| 插入视频 | 1 |
-| 引用 | 1 |
-| 帮助 | 1 |
-| 全屏 | 1 |
 | 上架 | 1 |
-| 版本<br>管理 | 1 |
 | 审核 | 1 |
 | 下架 | 1 |
-| 列表排序 | 1 |
 | 应用升级 | 1 |
 | 添加应用分类 | 1 |
 | 修改应用分类 | 1 |
@@ -223,12 +135,9 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 基线版本 | 15 |
 | 机构 | 14 |
 | 适配机型 | 12 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 9 |
 | 名称 | 9 |
 | 规则信息 | 8 |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 7 |
 | 基本信息 | 7 |
-| Angel Watch | 7 |
 | 可见对象 | 7 |
 | 主页 | 7 |
 | 应用市场 | 7 |
@@ -237,23 +146,19 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 数据中心 | 7 |
 | 账户信息 | 7 |
 | 设备地图 | 7 |
-| employeelist.apk | 6 |
 | 标识 | 6 |
 | 安卓版本 | 6 |
 | FAE_OMNI_CONTROL | 6 |
 | OTPL_ITS_V1.0.2_20220422 | 6 |
 | OTPL_ITS_V1.0.1_20220316 | 6 |
 | 大小 | 6 |
-| 46.40M | 6 |
 | OTPL P3 | 6 |
 | 最后操作时间 | 6 |
 | 状态 | 6 |
 | 操作人 | 5 |
 | 加入日期 | 5 |
-| P | 5 |
 | 是否强制 | 5 |
 | 可见范围 | 5 |
-| Tactile Ad | 4 |
 | 修改 | 2 |
 | 更新推送 | 2 |
 | 更多 | 2 |
@@ -268,7 +173,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 上传中 | 1 |
 | 上传失败 | 1 |
 | 上传成功 | 1 |
-| 卡片功能 | 1 |
 | 下载 | 1 |
 | Update_0316_0422 | 1 |
 | 添加升级文件 | 1 |
@@ -283,18 +187,14 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 批次号 | 14 |
 | 推送时间 | 14 |
 | 消息类型 | 10 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 9 |
 | 指定设备编号 | 8 |
 | DSN | 7 |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 6 |
 | 设备推送结果统计 | 6 |
 | 成功 | 6 |
-| LB09D07P20072 | 6 |
 | 状态 | 6 |
 | 详情 | 6 |
 | Success_OTA | 6 |
 | 失败 | 5 |
-| Angel Watch | 5 |
 | 总数 | 5 |
 | 主页 | 5 |
 | 应用市场 | 5 |
@@ -310,7 +210,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 强制操作 | 2 |
 | 推送目标 | 2 |
 | 应用 | 2 |
-| 销量统计 | 2 |
 | 数据统计 | 2 |
 | 增值服务 | 2 |
 | 系统管理 | 2 |
@@ -325,8 +224,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 消息内容 | 1 |
 | 升级版本 | 1 |
 | 基线版本 | 1 |
-| 独立服务器部署 | 1 |
-| 财务管理 | 1 |
 | 应用管理 | 1 |
 | 广告管理 | 1 |
 | 应用分类 | 1 |
@@ -335,12 +232,9 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 51 |
 | 加入日期 | 28 |
-| VDP-1110 | 24 |
 | 设备型号 | 22 |
 | 版本号 | 22 |
-| Angel Watch | 22 |
 | 主页 | 22 |
 | OTA升级管理 | 22 |
 | 推送任务 | 22 |
@@ -354,23 +248,13 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 联机方案 | 22 |
 | 欠费设备 | 22 |
 | 电池电量 | 21 |
-| 有言科技 | 20 |
-| B2381_B1_V1.1_20211011 | 20 |
 | 备注 | 15 |
 | 机构 | 15 |
 | 型号 | 14 |
 | 系统版本 | 14 |
 | 设备数 | 13 |
-| Razlon devices manage… | 13 |
 | 删除 | 9 |
-| 内存：1.91GB | 9 |
-| 已用存储：16GB | 9 |
 | 名称 | 9 |
-| CPU：1.9GHZ | 8 |
-| 设备屏幕亮度 | 8 |
-| 设备音量 | 8 |
-| O1 | 8 |
-| B1811_ALL_V01_20210906 | 8 |
 | 上线时间 | 8 |
 | 更多 | 7 |
 | 修改 | 7 |
@@ -384,60 +268,27 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 状态 | 6 |
 | 解锁 | 6 |
 | 信息间隔 | 5 |
-| 500m | 4 |
 | 远程 | 4 |
 | 结束 | 4 |
-| 更新<br>信息 | 4 |
-| 关闭<br>日志 | 4 |
-| 取回<br>日志 | 4 |
-| 打开<br>日志 | 4 |
-| 配置<br>日志 | 4 |
-| 清空<br>日志 | 4 |
 | 设备信息 | 4 |
 | 位置上报 | 4 |
 | 设备地图 | 4 |
-| employeelist.apk | 4 |
 | 查看详情 | 3 |
-| 远程<br>控制 | 3 |
-| 软件<br>信息 | 3 |
 | 软件信息 | 3 |
 | 导入设备 | 3 |
 | 包名 | 3 |
-| com.redepos.giotto | 3 |
 | 版本名称 | 3 |
 | 参数模版 | 3 |
 | 记录时间 | 3 |
 | 设备状态 | 3 |
 | 设备使用情况 | 2 |
-| 表格对应状态 | 2 |
-| 分配<br>设备 | 2 |
-| 终点 | 2 |
-| 起点 | 2 |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 2 |
 | 添加设备 | 2 |
 | 修改参数 | 2 |
 | 设备序列号 | 2 |
-| 设置 | 1 |
-| 全部<br>导出 | 1 |
-| 设备连接中，请稍候… | 1 |
-| 弹窗还是新页面，根据内容量来（已确定） | 1 |
 | 锁定 | 1 |
 | 日志 | 1 |
-| 重置<br>密码 | 1 |
-| 远程<br>诊断 | 1 |
-| 设备<br>地图 | 1 |
 | 刷新设备信息 | 1 |
-| 加列：应用名称 | 1 |
 | 详情 | 1 |
-| 设备连接 | 1 |
-| 25MB / 245.59MB | 1 |
-| 当前速度：1.33Mbps | 1 |
-| 预计完成：166s | 1 |
-| 文件上传 | 1 |
-| 开始时间 | 1 |
-| 结束时间 | 1 |
-| 展示更多 | 1 |
-| 展示述职 | 1 |
 | 修改设备 | 1 |
 | 添加型号 | 1 |
 | 添加设备分组 | 1 |
@@ -456,40 +307,22 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 500m | 11 |
-| 运营商管理 | 4 |
-| 开始时间 | 4 |
-| 结束时间 | 4 |
-| VDP-1110 | 4 |
-| 备注 | 3 |
-| 终点 | 2 |
-| 起点 | 2 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 2 |
-| 输入内容 | 2 |
-| 这里是备注内容这里是备注内容 | 1 |
 
 ## 账户信息
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| 有言科技 | 18 |
-| B2381_B1_V1.1_20211011 | 18 |
-| 加入日期 | 18 |
-| VDP-1110 | 18 |
 | 设备型号 | 12 |
 | 版本号 | 12 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 9 |
 | 型号 | 9 |
 | 系统版本 | 9 |
 | 运营商管理 | 8 |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 6 |
 | IMEI-IMSI-icc_id | 6 |
 | 机构 | 6 |
 | 联机时间 | 6 |
 | 状态 | 6 |
 | 登录账号 | 6 |
 | 解锁 | 6 |
-| Angel Watch | 5 |
 | 是否启动缴费充值功能 | 5 |
 | 备注 | 5 |
 | 主页 | 5 |
@@ -519,11 +352,7 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 运营商 | 2 |
 | 设备 | 1 |
 | 重置密码 | 1 |
-| 选项-未选 | 1 |
-| 选项-已选 | 1 |
-| 已选项-正常 | 1 |
 | 账号 | 1 |
-| 重置<br>密码 | 1 |
 | 添加下级机构 | 1 |
 | 修改下级机构 | 1 |
 | 添加设备 | 1 |
@@ -531,8 +360,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 添加运营商账号 | 1 |
 | 修改运营商账号 | 1 |
 | 电子邮箱 | 1 |
-| 这里是备注内容 | 1 |
-| 新功能开发 | 1 |
 | 定位应用SHA1值 | 1 |
 | 定位Key值 | 1 |
 | 显示地图Key值 | 1 |
@@ -544,122 +371,43 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | Visible Product Copy | Count |
 | --- | ---: |
 | 台 | 18 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 8 |
 | 近7日 | 6 |
-| 折线图 | 6 |
-| 列表 | 6 |
-| 活跃设备数 | 4 |
 | 设备活跃数据 | 4 |
 | 活跃设备 | 4 |
-| 当日活跃 | 4 |
-| 七天内活跃 | 4 |
-| 30天内活跃 | 4 |
-| 设备活跃统计详情 | 2 |
-| 设备激活数据 | 2 |
-| 激活设备 | 2 |
 | 当日激活 | 2 |
-| 七天内激活 | 2 |
-| 30天内激活 | 2 |
-| 详情 | 1 |
-| 全部<br>导出 | 1 |
-| 升级文件统计详情 | 1 |
 
 ## 增值服务
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 47 |
-| 推送文件到设备 | 28 |
 | 增值服务 | 28 |
-| Angel Watch | 27 |
 | 主页 | 27 |
 | OTA升级管理 | 27 |
 | 推送任务 | 27 |
 | 应用市场 | 27 |
 | 数据中心 | 27 |
-| 客户管理 | 27 |
 | 设备地图 | 27 |
-| 销量统计 | 27 |
 | 数据统计 | 27 |
 | 系统管理 | 27 |
-| 独立服务器部署 | 27 |
-| 财务管理 | 27 |
-| 获取设备日志 | 27 |
-| 锁定解锁设备 | 27 |
-| 数据流量控制 | 27 |
-| 重置设备密码 | 27 |
 | 恢复出厂设置 | 27 |
-| APN设置 | 27 |
-| WIFI设置 | 27 |
-| 应用黑白名单 | 27 |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 24 |
-| 推送方式 | 13 |
-| 推送目标 | 13 |
-| 推送设备详情 | 9 |
-| 备注 | 8 |
-| 应用包名列表 | 5 |
-| 推送<br>设备<br>详情 | 4 |
 | 修改 | 4 |
 | 更多 | 4 |
 | 删除 | 4 |
-| 推送<br>到设备 | 3 |
-| 安全性 | 3 |
-| 网络名称 | 3 |
-| 名单类型 | 3 |
-| 名单名称 | 3 |
 | 文件名称 | 3 |
-| 适配机型 | 3 |
-| 处理该文件的应用包名 | 3 |
-| 推送到设备 | 2 |
-| Test | 2 |
 | 机构 | 2 |
-| 密码 | 2 |
-| com.hunantv.imgo.activity | 2 |
 | 详情 | 1 |
-| 目标设备<br>详情 | 1 |
-| 推送<br>APN<br>到设备 | 1 |
-| 从设备<br>删除APN | 1 |
-| 从设备<br>端取消保存 | 1 |
-| 从设备<br>中删除 | 1 |
-| 添加获取设备日志 | 1 |
-| 消息内容 | 1 |
-| 推送任务详情 | 1 |
-| 添加锁定解锁设备 | 1 |
-| 添加数据流量控制 | 1 |
-| 重置锁屏密码 | 1 |
-| 添加重置设备密码 | 1 |
-| 添加恢复出厂设置 | 1 |
-| 推送APN到设备 | 1 |
-| 从设备删除APN | 1 |
-| 立刻连接 | 1 |
-| 从设备端取消保存 | 1 |
-| 打开/关闭WIFI | 1 |
-| 添加WIFI设置 | 1 |
-| 修改WIFI设置 | 1 |
-| 这里是备注内容 | 1 |
-| 立刻启用 | 1 |
-| 从设备中删除 | 1 |
-| 添加应用黑白名单 | 1 |
-| 修改应用黑白名单 | 1 |
-| 文件 | 1 |
-| 输入内容 | 1 |
-| 请用逗号“，”分隔每个App包名，比如：<br>com.xxxx.aaa,<br>com.xxxx.bbb,com.xxxx.ccc | 1 |
 
 ## 系统管理
 
 | Visible Product Copy | Count |
 | --- | ---: |
-| Angel Watch ｜ A.1.0 \| 客服电话：0571 - 2312 2323 | 13 |
 | 系统管理 | 12 |
-| Angel Watch ｜ A.1.0  \|  客服电话：0571 - 2312 2323 | 6 |
-| Angel Watch | 6 |
 | 主页 | 6 |
 | 应用市场 | 6 |
 | OTA升级管理 | 6 |
 | 推送任务 | 6 |
 | 数据中心 | 6 |
 | 账户信息 | 6 |
-| 销量统计 | 6 |
 | 数据统计 | 6 |
 | 增值服务 | 6 |
 | 独立服务器部署 | 6 |
@@ -680,7 +428,6 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 显示排序 | 3 |
 | 菜单名称ID | 3 |
 | ID | 3 |
-| 图标 | 3 |
 | 添加数据字典 | 2 |
 | 修改数据字典 | 2 |
 | 类型 | 2 |
@@ -692,19 +439,10 @@ These are tone and visual-language signals from the Figma file, not final UI cop
 | 字典排序 | 2 |
 | 上级菜单ID | 2 |
 | 详情 | 1 |
-| 已选 | 1 |
-| 精确到秒 | 1 |
 | 添加OSS节点 | 1 |
 | 修改OSS节点 | 1 |
 | 开始时间 | 1 |
 | 结束时间 | 1 |
-| 日 | 1 |
-| 一 | 1 |
-| 二 | 1 |
-| 三 | 1 |
-| 四 | 1 |
-| 五 | 1 |
-| 六 | 1 |
 | 请求参数 | 1 |
 | 登录信息 | 1 |
 | 请求方式 | 1 |
