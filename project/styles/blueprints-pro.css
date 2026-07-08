@@ -1,7 +1,7 @@
 /* AngelWatch Design System - business blueprint coverage
-   Shared styles for OpenDesign/Figma module coverage pages. */
+   Shared styles for module coverage and blueprint pages. */
 
-.figma-coverage .coverage-table,
+.module-coverage .coverage-table,
 .blueprint-table {
   width: 100%;
   border-collapse: collapse;
@@ -11,8 +11,8 @@
   background: var(--aw-bg);
 }
 
-.figma-coverage .coverage-table th,
-.figma-coverage .coverage-table td,
+.module-coverage .coverage-table th,
+.module-coverage .coverage-table td,
 .blueprint-table th,
 .blueprint-table td {
   padding: 10px 12px;
@@ -22,14 +22,14 @@
   font-size: 12px;
 }
 
-.figma-coverage .coverage-table th,
+.module-coverage .coverage-table th,
 .blueprint-table th {
   background: var(--aw-fill-1);
   color: var(--aw-text-2);
   font-weight: 600;
 }
 
-.figma-coverage .coverage-table tr:last-child td,
+.module-coverage .coverage-table tr:last-child td,
 .blueprint-table tr:last-child td {
   border-bottom: 0;
 }
