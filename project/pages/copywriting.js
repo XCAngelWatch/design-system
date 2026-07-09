@@ -80,24 +80,24 @@
   </div>
 
   <div class="subsection">
-    <h3>采纳生产措辞(Figma vs 生产)</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">Figma 推导的英文在多处不如旧生产系统已落地措辞专业。新系统<b>采纳生产措辞</b>,并在术语锁定表显式记录,防 Figma 推导回潮。</p>
+    <h3>术语锁定补充(四语)</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">以下术语四语锁定,直接引用,不另起译法。</p>
     <table class="map-table">
-      <thead><tr><th>概念</th><th>Figma 推</th><th>采纳(生产)</th><th>es</th><th>pt</th></tr></thead>
+      <thead><tr><th>概念</th><th>zh</th><th>en</th><th>es</th><th>pt</th></tr></thead>
       <tbody>
-        <tr><td>围栏</td><td>Fence</td><td><b>Geofence</b></td><td>Geocerca</td><td>Cerca geográfica</td></tr>
-        <tr><td>已上架</td><td>Released</td><td><b>Published</b></td><td>Publicado</td><td>Publicados</td></tr>
-        <tr><td>已下架</td><td>Removed</td><td><b>Unpublished</b></td><td>Inédito</td><td>Não publicado</td></tr>
-        <tr><td>基线版本</td><td>Baseline</td><td><b>Original Version</b></td><td>Versión original</td><td>—</td></tr>
-        <tr><td>系统版本</td><td>System Version</td><td><b>Build Number</b></td><td>—</td><td>—</td></tr>
+        <tr><td>围栏</td><td>围栏</td><td><b>Geofence</b></td><td>Geocerca</td><td>Cerca geográfica</td></tr>
+        <tr><td>已上架</td><td>已上架</td><td><b>Published</b></td><td>Publicado</td><td>Publicados</td></tr>
+        <tr><td>已下架</td><td>已下架</td><td><b>Unpublished</b></td><td>Inédito</td><td>Não publicado</td></tr>
+        <tr><td>基线版本</td><td>基线版本</td><td><b>Original Version</b></td><td>Versión original</td><td>—</td></tr>
+        <tr><td>系统版本</td><td>系统版本</td><td><b>Build Number</b></td><td>—</td><td>—</td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0">⚠ es/pt 旧系统存在机翻错译(title→"Titile"/"Noble";save→"Ahorrar";password 用 "bits";es 混入葡语)。迁移时<b>必须母语人工复审</b>,覆盖≠质量。语言名走 <code>Intl.DisplayNames</code>,不进 i18n key 池(旧 250+ lan_* 是反模式)。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0">es/pt 翻译须母语审校。语言名走 <code>Intl.DisplayNames</code>,不进 i18n key 池。</p>
   </div>
 
   <div class="subsection">
-    <h3>状态枚举四语(已落地,直接引用)</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">以下状态枚举在旧生产系统四语齐全,新系统直接引用并用语义化 key(如 <code>push.status.notPushed</code>),不用数字索引。</p>
+    <h3>状态枚举四语</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">以下状态枚举四语锁定,用语义化 key(如 <code>push.status.notPushed</code>),不用数字索引。</p>
     <table class="map-table">
       <thead><tr><th>枚举</th><th>zh</th><th>en</th><th>es</th><th>pt</th></tr></thead>
       <tbody>
@@ -107,7 +107,7 @@
         <tr><td>监控触发时机</td><td>开机 / 亮屏 / 灭屏 / 每 N 分钟 / 网络切换 / 收到推送</td><td>boot / screen on / off / every N min / network switch / push</td><td>—</td><td>—</td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><b>机构作用域文案(高价值业务规则)</b>:取消推送仅对待执行生效;重新推送仅对失败/已过期生效;终止推送仅对执行中生效。机构层级向下管理、母机构管理子机构、数据隔离。"指定机构及子机构"含子;"指定机构"仅直属不含子。Track Query 轨迹查询旧系统无,需基于 Figma 独立四语本地化。</p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><b>机构作用域文案(业务规则)</b>:取消推送仅对待执行生效;重新推送仅对失败/已过期生效;终止推送仅对执行中生效。机构层级向下管理、母机构管理子机构、数据隔离。"指定机构及子机构"含子;"指定机构"仅直属不含子。Track Query 轨迹查询需独立四语本地化。</p>
   </div>
 
   <div class="subsection">

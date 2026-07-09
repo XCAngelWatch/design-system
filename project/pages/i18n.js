@@ -38,6 +38,76 @@
   </div>
 
   <div class="subsection">
+    <h3>组件级中英对照 · Bilingual Component Showcase</h3>
+    <p class="lede" style="margin-bottom:12px">同一组件在 zh-CN 与 en-US 下的视觉对照。英文比中文短 20–40%,但词义不可缩写(Mgt ✗ → Management ✓)。按钮 / 表头 / 表单 label / 状态用 Title Case;句子用 sentence case。</p>
+    <div class="demo-grid cols-2">
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:10px">Button</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
+            <div class="row"><button class="btn btn-primary">保存</button><button class="btn">取消</button><button class="btn btn-ghost-danger">删除</button></div>
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
+            <div class="row"><button class="btn btn-primary">Save</button><button class="btn">Cancel</button><button class="btn btn-ghost-danger">Delete</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:10px">Table Header</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
+            <table class="dt"><thead><tr><th>设备</th><th>所属机构</th><th>状态</th><th>操作</th></tr></thead></table>
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
+            <table class="dt"><thead><tr><th>Device</th><th>Organization</th><th>Status</th><th>Actions</th></tr></thead></table>
+          </div>
+        </div>
+      </div>
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:10px">Status Tag</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
+            <div class="row"><span class="status-dot online">在线</span><span class="status-dot offline">离线</span><span class="status-dot fault">故障</span><span class="status-dot locked">已锁定</span></div>
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
+            <div class="row"><span class="status-dot online">Online</span><span class="status-dot offline">Offline</span><span class="status-dot fault">Faulty</span><span class="status-dot locked">Locked</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:10px">Form Label</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
+            <div class="form-demo"><div class="form-row"><div class="lbl"><span class="req">*</span>设备名称</div><div><input class="input" placeholder="请输入设备名称" /></div></div></div>
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
+            <div class="form-demo"><div class="form-row"><div class="lbl"><span class="req">*</span>Device Name</div><div><input class="input" placeholder="Enter device name" /></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="surface" style="margin-top:12px;padding:14px">
+      <h4 style="margin:0 0 8px;font-size:14px">英文排版规范 English Typography Rules</h4>
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
+        <li><b>大小写</b>:按钮 / 表头 / 表单 label / 状态标签用 Title Case(Save Changes、Last Online、Device Name);说明文 / placeholder / 错误信息用 sentence case(Enter device name)。</li>
+        <li><b>不缩写</b>:Mgt ✗ → Management ✓;Conf ✗ → Configuration ✓;Desc ✗ → Description ✓;Operate(动词)作列名 → Actions(名词)✓;Detail(单数)作列名 → Details(复数)✓。</li>
+        <li><b>标点</b>:英文用半角(<code>. , : ? !</code>)与半角空格;禁止全角(<code>,。:</code>)混入英文。中英混排时中英文之间加半角空格(“<code>AngelWatch 设计系统</code>”而非“<code>AngelWatch设计系统</code>”)。</li>
+        <li><b>复数</b>:列表列名 / 计数用复数(Devices、Push Tasks、Applications);单数仅用于明确单实体(Device Detail、Account Information)。</li>
+        <li><b>动词</b>:操作按钮用动词原形(Save、Cancel、Delete、Export);不用 -ing 做按钮(Saving ✗)。状态可用 -ing(Upgrading、Syncing)。</li>
+        <li><b>专有词</b>:OTA、WIFI、IMEI、SN、APN 全大写保留;Wi-Fi Settings(英文用 Wi-Fi,中文业务词保留 WIFI)。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="subsection">
     <h3>Figma 国外版翻译证据 · 页面级对照</h3>
     <p class="lede" style="margin-bottom:12px">Figma 的“国外版翻译”不是单纯词典，而是中文页面与国外版页面的并排证据。实现时必须按页面族做 4 语种回归，不能只确认 key 存在。</p>
     <div class="surface" style="padding:0;overflow:hidden">
@@ -71,7 +141,7 @@
   <span class="k">"device.detail.alert.lowBattery"</span>: <span class="v">"Battery below threshold (current: {<span class="k">value</span>}%)"</span>,
   <span class="k">"device.status.online"</span>: <span class="v">"Online"</span>,
   <span class="k">"device.status.upgrading"</span>: <span class="v">"Upgrading"</span>,
-  <span class="k">"device.status.fault"</span>: <span class="v">"Fault"</span>,
+  <span class="k">"device.status.fault"</span>: <span class="v">"Faulty"</span>,
   <span class="k">"device.status.offline"</span>: <span class="v">"Offline"</span>,
   <span class="k">"device.status.locked"</span>: <span class="v">"Locked"</span>,
   <span class="c">// 复数：i18next 自动选取 _one / _other</span>

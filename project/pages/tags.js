@@ -11,7 +11,7 @@
 <div style="display:flex;flex-direction:column;gap:10px">
   <span class="status-dot online">在线 · Online</span>
   <span class="status-dot upgrading">升级中 · Upgrading 42%</span>
-  <span class="status-dot fault">故障 · Fault</span>
+  <span class="status-dot fault">故障 · Faulty</span>
   <span class="status-dot offline">离线 · Offline · 12 分钟前</span>
 </div>
     </div>

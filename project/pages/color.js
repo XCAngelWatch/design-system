@@ -189,7 +189,7 @@
 
   <div class="subsection">
     <h3>Dark mode tokens</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6">暗色主题为正式交付。运维人员夜班高频使用，沿袭旧 Vue 版本的暗色习惯。值参照旧 <span class="mono">theme.scss</span>，更新到新品牌锚点。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6">暗色主题为正式交付。运维人员夜班高频使用，沿用 TMS 暗色习惯。值更新到新品牌锚点。</p>
     <table class="map-table dark-map">
       <thead><tr><th style="width:34%">Token</th><th>Light</th><th>Dark</th><th style="width:18%">语义</th></tr></thead>
       <tbody>
@@ -202,7 +202,7 @@
         <tr><td><code>--aw-text-2</code></td><td><span class="swatch-inline" style="background:#4B5563"></span><code>#4B5563</code></td><td><span class="swatch-inline" style="background:#fff;opacity:.72"></span><code>rgba(255,255,255,.72)</code></td><td>正文</td></tr>
         <tr><td><code>--aw-text-3</code></td><td><span class="swatch-inline" style="background:#6B7280"></span><code>#6B7280</code></td><td><span class="swatch-inline" style="background:#fff;opacity:.52"></span><code>rgba(255,255,255,.52)</code></td><td>说明 / 占位</td></tr>
         <tr><td><code>--aw-text-4</code></td><td><span class="swatch-inline" style="background:#9CA3AF"></span><code>#9CA3AF</code></td><td><span class="swatch-inline" style="background:#fff;opacity:.32"></span><code>rgba(255,255,255,.32)</code></td><td>禁用 / 离线</td></tr>
-        <tr class="map-group"><td colspan="4">背景 · 沿袭旧项目 #14171D / #1B1F27</td></tr>
+        <tr class="map-group"><td colspan="4">背景 · TMS 暗色 #14171D / #1B1F27</td></tr>
         <tr><td><code>--aw-bg-page</code></td><td><span class="swatch-inline" style="background:#F5F7FA"></span><code>#F5F7FA</code></td><td><span class="swatch-inline" style="background:#0F1115"></span><code>#0F1115</code></td><td>页面底</td></tr>
         <tr><td><code>--aw-bg</code></td><td><span class="swatch-inline" style="background:#FFFFFF"></span><code>#FFFFFF</code></td><td><span class="swatch-inline" style="background:#14171D"></span><code>#14171D</code></td><td>卡片 / 表格</td></tr>
         <tr><td><code>--aw-fill-1</code></td><td><span class="swatch-inline" style="background:#FAFAFA"></span><code>#FAFAFA</code></td><td><span class="swatch-inline" style="background:#1B1F27"></span><code>#1B1F27</code></td><td>表头 / hover</td></tr>

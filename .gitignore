@@ -23,3 +23,7 @@ Desktop.ini
 # Logs (defensive — project is build-less but tools may emit logs)
 *.log
 .ace-tool/
+
+# Open Design daemon process artifacts (regenerated locally, not design-system content)
+critique.json
+.od-skills/

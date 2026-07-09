@@ -4,7 +4,7 @@
 
 - Figma file: `/Users/david/Documents/workspaces/xctech/tms25/code/Angelwatch体验重构-设计执行 去除tms1.0内容.fig`
 - OpenDesign package: `/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64/`
-- Extracted evidence: `figma/tokens.json`, `figma/tree.json`, `brand.json`, and `docs/superpowers/audits/2026-07-08-figma-language-inventory.md`
+- Extracted evidence: `figma/tokens.json`, `figma/tree.json`, `brand.json`, and `docs/decisions/audits/2026-07-08-figma-language-inventory.md`
 
 This file is an implementation note for the design-system repository. Runtime pages must continue to reference repository files and `--aw-*` variables only; they must not depend on the local absolute paths above.
 
@@ -63,10 +63,10 @@ Reference hex values from the source package:
 - Prefer dense information surfaces: filter bars, tables, cards, drawers, and result details are the dominant UI structures.
 - Translate Figma evidence into reusable module rules. Do not recreate every frame, import old-system pages, or restore removed status-transition content.
 
-### Spacing & shell 数值锚点(来自旧 tms_web_ui 证据)
+### Spacing & shell 数值
 
-- **Spacing scale**:4px base unit —— `4 / 8 / 12 / 16 / 20 / 24`(+ `10 / 15 / 30 / 40` 衍生)。证据:`tms_web_ui/src/styles/common.scss`。运行时用 `--aw-*` 或 antd 4px 步长,不硬编码像素。
-- **Shell 尺寸**:侧栏展开 ~240–247px / 折叠 64px / 顶栏 60px / 菜单项 40px(展开 logo 200×50 / 折叠 40×40)。证据:`tms_web_ui/src/pages/layout/index.vue`。
-- **表格密度**:单元格 padding ~`9px 16px`、表头底色用 `--aw-fill-2`(旧 `#F2F3F5`)非纯白、分页器 32×32 按钮。证据:`tms_web_ui/src/styles/elementReset/tableReset.scss`。
-- **Tab 标签栏**:旧系统最终选"仅面包屑,无 tab strip"的克制姿态(数据存 store 但未渲染)。企业 TMS 后台面包屑 + 侧栏定位通常足够,tab strip 为可选增量。
+- **Spacing scale**:4px base unit —— `4 / 8 / 12 / 16 / 20 / 24`(+ `10 / 15 / 30 / 40` 衍生)。运行时用 `--aw-*` 或 antd 4px 步长,不硬编码像素。
+- **Shell 尺寸**:侧栏展开 ~240–247px / 折叠 64px / 顶栏 60px / 菜单项 40px(展开 logo 200×50 / 折叠 40×40)。
+- **表格密度**:单元格 padding ~`9px 16px`、表头底色用 `--aw-fill-2` 非纯白、分页器 32×32 按钮。
+- **Tab 标签栏**:企业 TMS 后台用"仅面包屑,无 tab strip";面包屑 + 侧栏定位通常足够,tab strip 为可选增量。
 

@@ -25,7 +25,7 @@ Do not stage these files during this plan unless a task explicitly modifies them
 
 Implement from:
 
-- `docs/superpowers/specs/2026-07-08-figma-copy-design-language-design.md`
+- `docs/decisions/specs/2026-07-08-figma-copy-design-language-design.md`
 
 Canonical product positioning:
 
@@ -37,7 +37,7 @@ Angel Watch TMS 是面向安卓设备的终端管理系统，支撑 Android 终�
 
 Create:
 
-- `docs/superpowers/audits/2026-07-08-figma-language-inventory.md` — generated Figma text inventory and module vocabulary evidence.
+- `docs/decisions/audits/2026-07-08-figma-language-inventory.md` — generated Figma text inventory and module vocabulary evidence.
 
 Modify:
 
@@ -165,8 +165,8 @@ from pathlib import Path
 import re, sys
 bad_terms = ['运输', '物流', 'fleet', 'transportation', 'logistics']
 allowed_files = {
-    'docs/superpowers/specs/2026-07-08-figma-copy-design-language-design.md',
-    'docs/superpowers/plans/2026-07-08-figma-copy-design-language-merge.md',
+    'docs/decisions/specs/2026-07-08-figma-copy-design-language-design.md',
+    'docs/decisions/plans/2026-07-08-figma-copy-design-language-merge.md',
 }
 bad = []
 for path in Path('project/pages').glob('*.js'):
@@ -289,20 +289,20 @@ If baseline fails because of existing dirty `project/index.html`, inspect before
 ### Task 1: Generate Figma Language Inventory
 
 **Files:**
-- Create: `docs/superpowers/audits/2026-07-08-figma-language-inventory.md`
+- Create: `docs/decisions/audits/2026-07-08-figma-language-inventory.md`
 
 - [ ] **Step 1: Generate inventory from local OpenDesign tree**
 
 Run:
 
 ```bash
-mkdir -p docs/superpowers/audits
+mkdir -p docs/decisions/audits
 python3 - <<'PY'
 import json, collections, re
 from pathlib import Path
 root = Path('/Users/david/Library/Application Support/Open Design/namespaces/release-stable/data/projects/brand-customertest-3a5d64')
 tree = root / 'figma/tree.json'
-out = Path('docs/superpowers/audits/2026-07-08-figma-language-inventory.md')
+out = Path('docs/decisions/audits/2026-07-08-figma-language-inventory.md')
 targets = ['登陆页','首页','应用市场','OTA升级管理','推送任务','数据中心','设备地图','账户信息','数据统计','增值服务','系统管理']
 if not tree.exists():
     out.write_text('# Figma Language Inventory\n\nLocal OpenDesign tree was not found. Use the module vocabulary from the approved spec.\n')
@@ -347,14 +347,14 @@ print(out)
 PY
 ```
 
-Expected: `docs/superpowers/audits/2026-07-08-figma-language-inventory.md` is created and includes sections for the 11 Figma modules.
+Expected: `docs/decisions/audits/2026-07-08-figma-language-inventory.md` is created and includes sections for the 11 Figma modules.
 
 - [ ] **Step 2: Review inventory headings**
 
 Run:
 
 ```bash
-rg -n '^## ' docs/superpowers/audits/2026-07-08-figma-language-inventory.md
+rg -n '^## ' docs/decisions/audits/2026-07-08-figma-language-inventory.md
 ```
 
 Expected headings include:
@@ -378,7 +378,7 @@ Expected headings include:
 Run:
 
 ```bash
-git add docs/superpowers/audits/2026-07-08-figma-language-inventory.md
+git add docs/decisions/audits/2026-07-08-figma-language-inventory.md
 git commit -m "docs: add figma language inventory"
 ```
 
@@ -1025,7 +1025,7 @@ Expected: implementation files are committed. Pre-existing `.gitignore`, `projec
 If any validation fix was needed after Task 6, stage only implementation files and commit:
 
 ```bash
-git add project/pages/*.js docs/superpowers/audits/2026-07-08-figma-language-inventory.md
+git add project/pages/*.js docs/decisions/audits/2026-07-08-figma-language-inventory.md
 git commit -m "test: validate figma copy language merge"
 ```
 

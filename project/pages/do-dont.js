@@ -27,7 +27,7 @@
         <tr><td>Empty 默认图</td><td>antd 自带彩色插画</td><td>TMS 单色线性 + Result.extra 必填</td></tr>
         <tr><td>Result 状态图</td><td>antd 自带彩色插画</td><td>TMS 单色线性 (登录 + 错误页 仅 2 处使用)</td></tr>
         <tr><td>Compact 算法高度</td><td>antd <code>compactAlgorithm</code> 24px</td><td>TMS 自定义 28px (中间值, 不套 antd 算法)</td></tr>
-        <tr><td>暗色算法</td><td>antd <code>darkAlgorithm</code> 派生</td><td>TMS 手写 token (沿袭旧 Vue 项目)</td></tr>
+        <tr><td>暗色算法</td><td>antd <code>darkAlgorithm</code> 派生</td><td>TMS 手写 token</td></tr>
         <tr><td>Tag 预设色</td><td>13 色 (含 volcano/lime/yellow)</td><td>10 色 (8 标签色 + 4 状态色; 禁 volcano/lime/yellow)</td></tr>
         <tr><td>getPopupContainer</td><td>document.body</td><td>node.parentElement (跟随滚动)</td></tr>
         <tr><td>renderEmpty</td><td>antd 默认 Empty</td><td><code>&lt;TMSEmpty /&gt;</code> (统一 Result 组件)</td></tr>
@@ -106,13 +106,13 @@
         <tr><td>远程服务</td><td>推送到设备、从设备删除、恢复出厂、取回日志</td><td>处理、操作、执行等缺少对象和后果的按钮</td></tr>
       </tbody>
     </table>
-    <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong>Figma 合并红线：</strong>只能把本地 Figma 当作业务证据和模式来源。禁止把旧系统、废案、临时方案、设计占位词或逐帧截图目录迁入站点；每一处迁移都必须落到 token、组件规则、页面模板或模块蓝图。</div></div>
+    <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong>Figma 红线：</strong>只能把 Figma 当作业务证据和模式来源。禁止把废案、临时方案、设计占位词或逐帧截图目录迁入站点；每一处迁移都必须落到 token、组件规则、页面模板或模块蓝图。</div></div>
     <table class="map-table" style="margin-top:12px">
       <thead><tr><th style="width:22%">冲突类型</th><th style="width:34%">处理顺序</th><th>说明</th></tr></thead>
       <tbody>
         <tr><td>业务模块 / 字段 / 状态</td><td>Figma 优先</td><td>例如围栏、APN、WIFI、OSS、设备推送结果统计，当前项目缺失时必须补齐。</td></tr>
         <tr><td>工程架构 / 路由 / token</td><td>当前仓库优先</td><td>不得破坏 file:// SPA、--aw-* token、AntD v6 和无构建约束。</td></tr>
-        <tr><td>废案 / 旧系统 / 临时方案</td><td>排除</td><td>即使来自 Figma，也不作为设计系统依据。</td></tr>
+        <tr><td>废案 / 临时方案</td><td>排除</td><td>即使来自 Figma，也不作为设计系统依据。</td></tr>
         <tr><td>拼写 / 术语别名</td><td>规范化后采用</td><td>例如“登陆”统一为“登录”，“参数模版”统一为“参数模板”。</td></tr>
       </tbody>
     </table>

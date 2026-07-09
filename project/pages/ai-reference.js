@@ -32,14 +32,14 @@
           <td>需要确认颜色、字体、间距、圆角和暗色主题时</td>
         </tr>
         <tr>
-          <td><a href="../docs/superpowers/audits/2026-07-08-figma-project-diff-conflicts.md">Figma 差异与冲突清单</a></td>
+          <td><a href="../docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md">Figma 差异与冲突清单</a></td>
           <td>Figma 与当前项目的冲突、缺口和处理决定</td>
           <td>需要判断某个 Figma 内容是否应当迁入时</td>
         </tr>
         <tr>
-          <td><a href="../docs/superpowers/audits/2026-07-09-angelwatch-external-design-system-audit.md">外部品牌包审计</a></td>
+          <td><a href="../docs/decisions/audits/2026-07-09-angelwatch-external-design-system-audit.md">外部品牌包审计</a></td>
           <td>design-system-angelwatch 可合并内容与禁用内容</td>
-          <td>需要参考旧站抽取 token、尺寸或界面 kit 时</td>
+          <td>需要 token、尺寸或界面 kit 参考时</td>
         </tr>
       </tbody>
     </table>

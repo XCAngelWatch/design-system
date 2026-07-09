@@ -19,7 +19,7 @@
   </div>
 
   <div class="subsection">
-    <h3>operationType 词汇表(真实 27+ 种)</h3>
+    <h3>operationType 词汇表(27+ 种)</h3>
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">增值服务按 <code>operationType</code> 组织(同一推送引擎的不同实例)。UI 用人类可读标签,但保留 code 映射。批次列表与设备详情按 operationType 动态追加列(如 17/19 追加 appName+appVersion,33 追加 scanCodeLicenseState)。</p>
     <div class="bp-grid">
       <div class="bp-card"><h4>设备控制</h4><p>1 设备日志 · 2 设备锁定 · 3 设备密码 · 12 清警告 · 13 全部刷新 · 24 修改型号 · 30 查找设备 · 51 设备名称</p></div>

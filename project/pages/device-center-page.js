@@ -58,7 +58,7 @@
 
   <div class="subsection">
     <h3>设备详情字段族与远程指令</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">真实后端字段(对齐旧 tms_web_ui <code>device/detail.vue</code>);落地时按 Tab 分组,字段拆 label + value formatter,不做"固件版本 vX / 电量 20%"式拼接翻译。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">设备详情字段;按 Tab 分组,字段拆 label + value formatter,不做"固件版本 vX / 电量 20%"式拼接翻译。</p>
     <div class="bp-grid">
       <div class="bp-card"><h4>详情 Tab 结构</h4><p>状态信息 / 基本信息 / 应用信息 / 位置信息(地图 lazy) / 用户证书信息(lazy) / 硬件告警(lazy)。</p></div>
       <div class="bp-card"><h4>基本信息 35 字段</h4><p>SN · 基带版本 modemVersion · 备注 · 添加/激活/到期时间 · 型号 · 客户名 tenantName · 硬件版本 · 机构 · 存储状态 · 主/子 SDK 版本 · 厂商 · KSN · IMEI-IMSI-icc_id · 内核版本 · 系统版本 · 内部版本 · 固件版本 · 编译信息 buildInfo · 安卓版本 · 网络类型 · 平台 · wifi/蓝牙地址 · 内网 IP · wifi SSID · 经纬度 · KPP 支持 · MDM/资源包版本。</p></div>

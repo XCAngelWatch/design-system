@@ -71,13 +71,13 @@
 
   <div class="subsection">
     <h3>围栏结构与绘制</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">真实围栏数据结构(对齐旧 <code>map/fence/changeMap.vue</code>);术语用 <b>Geofence / Geocerca</b>(非 Figma 的 Fence)。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">围栏数据结构;术语用 <b>Geofence / Geocerca</b>。</p>
     <div class="bp-grid">
-      <div class="bp-card"><h4>围栏列表真实列</h4><p>名称 / shape 类型(circle 圆形 / polygon 多边形)/ eventType(enter 进 / leave 出 / enter_leave 进出)/ 机构 / 备注 / deviceCount 关联设备数 / 操作(设置权限 / 修改 / 删除)。</p></div>
+      <div class="bp-card"><h4>围栏列表列</h4><p>名称 / shape 类型(circle 圆形 / polygon 多边形)/ eventType(enter 进 / leave 出 / enter_leave 进出)/ 机构 / 备注 / deviceCount 关联设备数 / 操作(设置权限 / 修改 / 删除)。</p></div>
       <div class="bp-card"><h4>数据结构</h4><p>circle = <code>{radius, center:{longitude, latitude}}</code>;polygon = <code>{vertices:[{latitude, longitude}]}</code>。地图组件回调 getCircle / getPolygon 填表单。</p></div>
       <div class="bp-card"><h4>绘制表单</h4><p>shape radio(circle / polygon) → eventType radio(进 / 出 / 进出) → radius(circle 时输入) → name(必填,≤50) → remark(≤200)。必须有保存 / 取消 / 编辑 / 清空。</p></div>
       <div class="bp-card"><h4>告警 badge</h4><p>围栏列表顶部展示告警数 badge,点击跳转围栏警告日志;警告关联设备、围栏、触发时间、当前位置、处理状态。关联设备在独立页面配置(fence/addDeviceList)。</p></div>
-      <div class="bp-card"><h4>门店管理</h4><p>map/store:add / change / log。门店是机构级地理对象,新系统 map-page 应覆盖(旧系统已落地)。</p></div>
+      <div class="bp-card"><h4>门店管理</h4><p>map/store:add / change / log。门店是机构级地理对象,map-page 覆盖。</p></div>
       <div class="bp-card"><h4>事件文案四语</h4><p>进围栏 Entered / Ingresó / Entrou;出围栏 Exited / Salido / Saiu;进出 enter_leave。位置上报 Report Location,经纬度拆 lng / lat 两字段。</p></div>
     </div>
   </div>

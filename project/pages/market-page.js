@@ -47,7 +47,7 @@
 
   <div class="subsection">
     <h3>状态与操作矩阵(版本包真实状态)</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">版本包状态含签名子态(kpp / APK 签名中与签名错误),是真实业务;采纳生产措辞 <b>Published / Unpublished</b>(非 Figma 的 Released / Removed)。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">版本包状态含签名子态(kpp / APK 签名中与签名错误)。已上架 = <b>Published</b>,已下架 = <b>Unpublished</b>。</p>
     <table class="blueprint-table">
       <thead><tr><th>状态</th><th>主操作</th><th>禁用操作</th><th>反馈组件</th></tr></thead>
       <tbody>
@@ -63,7 +63,7 @@
 
   <div class="subsection">
     <h3>添加应用四段表单</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">真实表单结构(对齐旧 <code>app/manage/addApp.vue</code>);APK 签名解析应在后端完成,不在前端用 JSZip 解析。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">添加应用四段表单;APK 签名解析在后端完成,不在前端解析。</p>
     <div class="bp-grid">
       <div class="bp-card"><h4>① 基础信息</h4><p>机构 / APK 包(上传后自动解析 packageName+versionCode+versionName)/ logo / 9:16 截图 / 应用名 / 分类 / 开发者 / 简介 / 详情 / 备注。</p></div>
       <div class="bp-card"><h4>② 权限配置</h4><p>禁止卸载 uninstallFlag / 禁止清除数据 clearDataFlag(switch,正常 active=true 语义,不沿用旧后端反转)。</p></div>

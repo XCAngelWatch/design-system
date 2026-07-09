@@ -1483,7 +1483,7 @@
   line-height: 1.5;
 }
 
-/* ===== ListPage 通用工具栏 / 翻页(沿袭旧 tms-base 风格) ===== */
+/* ===== ListPage 通用工具栏 / 翻页 ===== */
 .lp-toolbar {
   padding: 14px 16px;
   background: var(--aw-fill-1);

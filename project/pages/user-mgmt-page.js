@@ -45,7 +45,7 @@
           <span class="meta" style="font-size:12px;color:var(--aw-text-3)">上海运营中心 · 18 名成员</span>
         </div>
 
-        <!-- 列严格沿袭旧项目 columns: store / username / name / email / role / remark / account_status / operate -->
+        <!-- 列:store / username / name / email / role / remark / account_status / operate -->
         <div class="table-wrap" style="border:0;border-radius:0;flex:1;overflow:auto">
           <table class="dt">
             <thead>
@@ -125,7 +125,7 @@
 
   <div class="surface" style="margin-top:24px">
     <h3 class="card-title">添加 / 编辑账号 Modal</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">沿袭旧项目 <code>dialogForm.vue</code> 的扁平 Form,字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。真实表单还含 <b>时区 timeZone</b>(zone select,UTC±HH:MM 15 分钟粒度)与 <b>MFA 谷歌验证器 mfaSecretKey</b>(可解绑,二次确认);新增账号后自动生成密码并支持一键复制;账号状态 code '0' 正常 / '9' 禁用。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">账号表单字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。表单还含 <b>时区 timeZone</b>(zone select,UTC±HH:MM 15 分钟粒度)与 <b>MFA 谷歌验证器 mfaSecretKey</b>(可解绑,二次确认);新增账号后自动生成密码并支持一键复制;账号状态 code '0' 正常 / '9' 禁用。</p>
     <div class="modal-stage" style="padding:32px">
       <div class="modal-demo" style="width:520px;max-width:100%">
         <div class="head"><h4>添加账号</h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>

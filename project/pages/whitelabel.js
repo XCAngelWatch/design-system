@@ -122,8 +122,8 @@
   </div>
 
   <div class="subsection">
-    <h3>租户白标配置 schema(参考旧 website.js 字段分类)</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">旧 <code>tms_web_ui/src/const/website.js</code> 把租户配置分四类,新系统沿用此分类但弃糟粕(<code>encPassword</code> 前端硬编码密钥 + 外部 S3 URL,新系统自托管)。</p>
+    <h3>租户白标配置 schema</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">租户配置分四类。图片资源自托管,禁外部 CDN/S3;密钥由后端管理,禁前端硬编码。</p>
     <div class="bp-grid">
       <div class="bp-card"><h4>① 品牌资源</h4><p>title / subtitle / homeLogo / loginBoxLogo / background / titleIcon / expandingMenuBar / closingMenuBar / imgUrl。全部自托管,禁外部 CDN/S3。</p></div>
       <div class="bp-card"><h4>② 运行开关</h4><p>validateCode / passwordEnc(后端管,禁前端硬编码)/ register / connectSync / domainAutoTenant / websocket / dynamicCodeCache / whiteList / whiteTagList。</p></div>

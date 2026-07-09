@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <!-- 表格(沿袭旧项目 columns: name / store / new_version / base_version / size / adapter_model / create_time / state / operate) -->
+        <!-- 列:name / store / new_version / base_version / size / adapter_model / create_time / state / operate -->
         <div class="table-wrap" style="border:0;border-radius:0;flex:1;overflow:auto">
           <table class="dt">
             <thead>

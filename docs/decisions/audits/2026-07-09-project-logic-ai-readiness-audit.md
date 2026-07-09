@@ -153,3 +153,19 @@
 ## 修复后 AI 独立执行就绪度
 
 修复前 6.5/10 → 修复后约 **7.5/10**。一个全新 AI agent 拿到 GitHub 仓库后:能被 `CLAUDE.md` 引导到 `AI_DESIGN_SYSTEM.md`;能读到权威顺序、页面范式、落地三体职责;能用 `--aw-*` token 与 `brand-spec` 映射写出与运行时一致的色值;能从 `config-provider.js` / `color.js` 拿到 antd 覆盖可复制示例。剩余摩擦:sibling 仓库落地代码不可达(需跨仓库)、Figma 业务证据不在仓库内(需提交 evidence)、Pages 网页 .md 链接 404(需部署决策)。
+
+## 2026-07-09 复评(P0/P1/P2 业务知识落地 + 去过程化 + 业务知识锚点索引后)
+
+本轮又做了三件提升 AI 可读性的事:
+
+1. **业务知识落地**:`docs/ai-coding-design-reference.md` 9 个模块字段锚点段全部补齐真实字段/状态机/枚举(设备 35 字段 + 16 指令、应用四段表单 + 版本包签名态、OTA 文件生命周期、推送批次/设备状态含已过期/已终止、27 operationType + 扫码授权子机、围栏 shape/eventType/数据结构、账号 MFA/时区 + 角色 dsType、操作日志真实列);`pages/*.js` mock 同步;`copywriting.js` 状态枚举四语 + 术语锁定;`data-format.js` 领域字典(时区/错误码/国家);`brand-spec.md` spacing scale + shell 尺寸。AI 现在能从仓库直接读到**权威业务字段与状态**,不必臆造。
+2. **去过程化**:清除 49 处"对齐旧系统/真实后端/采纳生产/弃糟粕/证据指针/P0-P2/前瞻字段/机翻错译"等中间判断措辞,参考内容现为最终权威表述。
+3. **业务知识锚点索引**:`AI_DESIGN_SYSTEM.md` 新增"业务知识锚点"表(模块→权威内容→文件),`CLAUDE.md`/`AGENTS.md`/`README.md` AI 入口段把 `ai-coding-design-reference.md` 标注为"字段/状态机/枚举/operationType/领域字典权威"并指向索引表。AI 一步就能定位每个模块的权威字段在哪。
+
+**复评就绪度:约 8.5/10**。剩余阻碍(均为结构性,非内容):
+- sibling 仓库 `tms2.5-web-react` 落地代码不在本仓库(AI 只能以本仓库为契约,跨仓库对齐需另行接入)。
+- Figma/OpenDesign 业务证据源不在仓库内(已用 `ai-coding-reference.md` 内联结论缓解,但原始证据仍需提交 evidence 文件才能让 AI"看到"帧级细节)。
+- GitHub Pages 上 AI 入口页的 `../X.md` 链接 404(只影响人类网页浏览;**AI clone 仓库后直接读根 .md,不受影响**)。
+- 文档引用本地绝对路径(`/Users/david/...`、`.fig`、OpenDesign 数据目录)——已声明"本地不可达、结论已内联",AI 读内联结论即可。
+
+结论:一个全新 AI 拿到 GitHub 链接 → `CLAUDE.md` 自动加载 → 指向 `AI_DESIGN_SYSTEM.md` → "业务知识锚点"表定位到 `ai-coding-reference.md` 对应段 + `pages/*.js` mock → 拿到权威字段/状态机/枚举/operationType + `--aw-*` token + `config-provider.js` 可复制示例 → 可独立实现业务页面。内容层 AI 可读性已足够;剩余阻碍在"跨仓库落地代码"与"原始 Figma 证据"两个仓库外因素。

@@ -4,7 +4,7 @@
 <section class="section" id="dark">
   <p class="section-eyebrow">Foundations · 暗黑模式</p>
   <h2>暗色主题 Dark Mode</h2>
-  <p class="lede">暗色主题在 TMS 是一等公民，不是切换插件。token 通过 <code>[data-theme="dark"]</code> 完整覆盖，所有组件都参与 dark 视觉回归。运维夜班高频使用，沿袭旧 Vue 版本的暗色习惯。</p>
+  <p class="lede">暗色主题在 TMS 是一等公民，不是切换插件。token 通过 <code>[data-theme="dark"]</code> 完整覆盖，所有组件都参与 dark 视觉回归。运维夜班高频使用，沿用 TMS 暗色习惯。</p>
 
   <div class="subsection">
     <h3>使用场景</h3>
@@ -73,7 +73,7 @@
     <h3>为什么不用 antd <code>darkAlgorithm</code></h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">antd v5+ 提供 <code>theme.darkAlgorithm</code>，传入 light token 自动派生 dark token。TMS <b>不</b>用 darkAlgorithm，原因有三：</p>
     <ul style="margin:0 0 12px;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-      <li><b>沿袭旧 Vue 项目的暗色习惯</b>：运维人员对 <code>#0F1115 → #14171D → #1B1F27</code> 三档背景已经形成肌肉记忆；darkAlgorithm 的派生结果是 <code>#141414 → #1F1F1F → #262626</code>，迁移会破坏既有习惯</li>
+      <li><b>沿用 TMS 暗色习惯</b>：运维人员对 <code>#0F1115 → #14171D → #1B1F27</code> 三档背景已经形成肌肉记忆；darkAlgorithm 的派生结果是 <code>#141414 → #1F1F1F → #262626</code>，迁移会破坏既有习惯</li>
       <li><b>状态色饱和度不一致</b>：darkAlgorithm 对状态色提亮幅度大（如 success <code>#52C41A → #6ABE39</code>），TMS 偏好更克制（<code>#389E0D → #52C41A</code>），保留"企业级"视觉</li>
       <li><b>白标场景灵活性</b>：每个租户的暗色主色不是单纯亮度变化（如某租户 light <code>#165DFF</code> / dark <code>#4080FF</code>，但有租户 light <code>#CF1322</code> / dark <code>#FF4D4F</code>），手写 token 表更灵活</li>
     </ul>

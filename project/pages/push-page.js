@@ -18,7 +18,7 @@
       <button class="btn btn-text btn-sm" style="flex-shrink:0">← 返回</button>
     </div>
 
-    <!-- 列严格沿袭旧项目 push/components/log.vue 的 columns: batchId / targetMode / createBy / pushTime / batchState / 操作 -->
+    <!-- 列:batchId / targetMode / createBy / pushTime / batchState / 操作 -->
     <div class="table-wrap" style="border:0;border-radius:0">
       <table class="dt">
         <thead>
@@ -105,7 +105,7 @@
 
   <div class="surface" style="margin-top:24px">
     <h3 class="card-title">推送方式 · targetMode 枚举</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">沿袭旧项目 <code>push/components/pushMap.js</code> 的 8 种 targetMode,定义"指令的目标范围"。前端按 batchState 渲染状态点,按 targetMode 渲染人类可读标签。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">8 种 targetMode 定义"指令的目标范围"。前端按 batchState 渲染状态点,按 targetMode 渲染人类可读标签。</p>
     <table class="dt">
       <thead>
         <tr><th style="width:80px">key</th><th style="width:200px">value</th><th style="width:140px">中文</th><th>语义 / 触发位置</th></tr>

@@ -29,7 +29,7 @@ open project/index.html
 
 ## AI 编程入口
 
-本仓库是 AI-first 的。AI agent 拿到仓库后先读 [`AI_DESIGN_SYSTEM.md`](AI_DESIGN_SYSTEM.md)（权威顺序、页面范式、外部参考边界、提交前校验），再按需进入 [`docs/ai-coding-design-reference.md`](docs/ai-coding-design-reference.md)（业务字段与组件选型）和 [`brand-spec.md`](brand-spec.md)（品牌 token 证据）。网页端 AI 导航页：`project/index.html#/ai-reference`。落地代码在 sibling 仓库 `tms2.5-web-react`（不在本仓库），AI 以本仓库的 `--aw-*` token 与 `pages/*.js` 范式为契约到 sibling 仓库对齐。
+本仓库是 AI-first 的。AI agent 拿到仓库后先读 [`AI_DESIGN_SYSTEM.md`](AI_DESIGN_SYSTEM.md)（权威顺序、页面范式、**业务知识锚点索引**、外部参考边界、提交前校验），再按需进入 [`docs/ai-coding-design-reference.md`](docs/ai-coding-design-reference.md)（**业务字段 / 状态机 / 枚举 / operationType / 领域字典权威**）和 [`brand-spec.md`](brand-spec.md)（品牌 token 与布局姿态）。网页端 AI 导航页：`project/index.html#/ai-reference`。落地代码在 sibling 仓库 `tms2.5-web-react`（不在本仓库），AI 以本仓库的 `--aw-*` token 与 `pages/*.js` 范式为契约到 sibling 仓库对齐。
 
 ## 部署
 
@@ -44,10 +44,13 @@ open project/index.html
 ```text
 design-system/
 ├── README.md                         说明文档
-├── AI_DESIGN_SYSTEM.md               AI 编程首读入口（权威顺序 / 页面范式 / 验收）
+├── AI_DESIGN_SYSTEM.md               AI 编程首读入口（权威顺序 / 页面范式 / 业务知识锚点 / 验收）
 ├── brand-spec.md                     品牌 token 与布局姿态证据
 ├── CLAUDE.md                         Claude Code 工作指南
 ├── AGENTS.md                         Codex / 通用 agent 工作指南
+├── docs/                             参考与决策记录
+│   ├── ai-coding-design-reference.md 业务字段 / 状态机 / 枚举 / operationType / 领域字典权威
+│   └── decisions/                    审计 / 计划 / 规格（过程记录，历史存档）
 ├── .github/workflows/pages.yml       GitHub Pages 自动部署
 └── project/
     ├── index.html                    SPA shell：favicon、16 个 CSS link、主题恢复脚本、路由器入口

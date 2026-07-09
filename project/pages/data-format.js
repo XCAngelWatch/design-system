@@ -145,8 +145,8 @@
   </div>
 
   <div class="subsection">
-    <h3>领域字典源(对齐旧 tms_web_ui const/)</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">以下字典在旧生产系统已落地,新系统应纳入 <code>@tms/dict</code> 并升级 schema,不照搬旧扁平结构。</p>
+    <h3>领域字典源</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">以下字典纳入 <code>@tms/dict</code>,用对象数组 schema,不用扁平 string[]。</p>
     <table class="map-table">
       <thead><tr><th>字典</th><th>旧 schema</th><th>升级方向</th><th>样例</th></tr></thead>
       <tbody>
