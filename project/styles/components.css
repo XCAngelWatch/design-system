@@ -874,7 +874,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
   border: 1px solid var(--aw-border-2);
 }
 .login-mock .panel-left {
-  background: linear-gradient(135deg, #0E42D2 0%, #165DFF 50%, #4080FF 100%);
+  background: linear-gradient(135deg, var(--aw-primary-active) 0%, var(--aw-primary) 50%, var(--aw-primary-hover) 100%);
   color: white; padding: 40px; position: relative;
   display: flex; flex-direction: column; justify-content: space-between;
   overflow: hidden;

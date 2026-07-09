@@ -6,11 +6,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 AI-first design-system reference documentation site for AngelWatch TMS (设备终端管理系统),组织成 **静态 SPA(单页面应用)**。它的目标不是发布运行时组件库,而是为 AI agent 与开发者在系统设计、页面开发、组件实现时提供可检索、可引用、可对齐的设计知识库。
 
-`index.html` 是 shell,所有 62 个 section(导览 2 / 基础 13 / 通用组件 14 / 业务组件 12 / 页面模板 13 / 生态 2 / 规范 6)拆为 `pages/<id>.js` 片段(每个文件就是一段把 HTML 字符串注册到 `window.__AW_PAGES__` 的 JS),通过 hash 路由(`#/color`、`#/buttons` 等)由 `pages/_router.js` 用动态 `<script>` 注入而非 fetch 加载。
+`index.html` 是 shell,所有 66 个 section(导览 2 / 基础 13 / 通用组件 14 / 业务组件 12 / 页面模板 16 / 生态 2 / 规范 7)拆为 `pages/<id>.js` 片段(每个文件就是一段把 HTML 字符串注册到 `window.__AW_PAGES__` 的 JS),通过 hash 路由(`#/color`、`#/buttons` 等)由 `pages/_router.js` 用动态 `<script>` 注入而非 fetch 加载。
 
 **Pure HTML + CSS + 一份 vanilla JS 路由器,无构建,无 NPM 依赖,无 HTTP 服务器要求 —— `file://` 直接打开 `index.html` 即可。** 共用部分(品牌区 / 侧边栏 / toolbar / 主题切换 / 路由)在 `pages/_router.js`,差异部分(每个 section 的 HTML 内容)在 `pages/<id>.js`。
 
 设计系统本身不是组件库 —— 它的样式与规范最终通过 `@tms/design-tokens` + `ConfigProvider.theme` 落地到 sibling 仓库 `tms2.5-web-react` 的 `packages/web` 应用代码。
+
+## AI 入口(先读这里)
+
+本仓库是 AI-first 的。AI agent 拿到本仓库后,**先读 `AI_DESIGN_SYSTEM.md`**(根目录,汇总权威顺序、页面范式、外部参考边界与提交前校验),再按需进入:
+
+- 网页端 AI 导航:`project/index.html#/ai-reference`(把列表 / 统计 / 账户权限 / 地图 / 推送 / i18n 范式串成一条路径)
+- 业务字段与组件选型证据:`docs/ai-coding-design-reference.md`
+- 品牌 token 与布局姿态证据:`brand-spec.md`(其 `--bg/--accent` 等是**证据 token**,运行时实现一律用 `project/styles/tokens.css` 的 `--aw-*`,见下方映射)
+- Figma / 外部参考差异与合并边界:`docs/superpowers/audits/`
+
+权威顺序:当前仓库规则(`project/` + `--aw-*` + AntD v6 + 静态 SPA + `file://`)> 本地 Figma / OpenDesign 业务证据 > `design-system-angelwatch` 旧站品牌包 > 线上旧 Vue 2 / Element UI。Figma 中标记为旧系统 / 废案 / 临时方案 / 占位图层 / 测试数据的内容不得进入最终规范。
 
 ## Deployment
 
@@ -74,16 +85,16 @@ grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-g
 project/
 ├── index.html             SPA shell (~40 行) — favicon + 16 个 CSS link + 早期主题恢复脚本 +
 │                          空 sidebar/toolbar/slot 容器 + <script src="pages/_router.js">
-├── pages/                 62 个 fragment + 1 个 router
+├── pages/                 66 个 fragment + 1 个 router
 │   ├── _router.js         共用 (~270 行) — ROUTES 表 / sidebar / toolbar 渲染 /
 │   │                      hash 路由 / 动态 <script> 加载 / 主题持久化(localStorage)
 │   ├── overview.js / cases.js  Hero + 实践案例                              (导览 2)
 │   ├── color.js ~ responsive.js       色 / 暗黑 / i18n / 字 / 距 / 图标…     (基础 13)
 │   ├── buttons.js ~ skeleton.js       按钮 / 输入 / 表格 / 反馈 / 上传…    (通用 14)
 │   ├── status-matrix.js ~ charts.js   设备 / 状态 / 行操作 / 图表 …        (业务 12)
-│   ├── shell.js ~ device-center-page.js  Login / List / OTA / 市场 / 数据中心… (模板 13)
+│   ├── shell.js ~ ops-page  Shell / Login / List / OTA / 市场 / 数据中心 / 地图 / 增值服务 / 运营… (模板 16)
 │   ├── ecosystem.js / tech-stack.js                                          (生态 2)
-│   └── do-dont.js ~ config-provider.js                                       (规范 6)
+│   └── ai-reference.js ~ config-provider.js   AI 入口 / 红线 / 白标 / 数据格式 / 文案 / API / ConfigProvider (规范 7)
 └── styles/                16 个 CSS — 7 基础骨架 + 9 业务扩展(*-pro.css)
     ├── tokens.css         设计 token (色/字/距/圆角/阴影/动效) — :root + [data-theme="dark"]
     ├── system.css         全局 reset + 基础排版 + 应用 grid (.app, .app-side, .app-main)
@@ -110,7 +121,7 @@ project/
 
 1. `index.html` 加载,`<head>` inline script 立即从 `localStorage('aw-theme')` 恢复主题(避免 FOUC)
 2. `<body>` 含空容器:`<aside id="app-side">` / `<div id="app-toolbar">` / `<div id="app-slot">`
-3. `<script src="pages/_router.js">` 执行,渲染 sidebar(品牌区 + 62 条 7 组导航,链接形如 `#/X`)+ toolbar(面包屑 + 主题切换)
+3. `<script src="pages/_router.js">` 执行,渲染 sidebar(品牌区 + 66 条 7 组导航,链接形如 `#/X`)+ toolbar(面包屑 + 主题切换)
 4. 监听 `hashchange`:`#/color` → 动态 `<script src="pages/color.js">` 注入到 `<head>` → script 执行后 `window.__AW_PAGES__['color']` 已注册 → 取出 HTML 字符串 inject 到 `#app-slot`
 5. 已加载的 script(标签 + 全局变量)永久缓存,二次访问无重复加载
 6. 因为是 `<script>` 注入而非 `fetch()`,**完全在 file:// 下工作**
@@ -130,7 +141,7 @@ project/
 ### 新增/修改一个 section
 
 1. 编辑 `pages/<id>.js`:`pages/<id>.js` 中模板字面量包裹的 HTML 部分。**只改字符串里的 HTML,别动 `(window.__AW_PAGES__ = ...)` 那行**
-2. HTML 内禁止出现 `` ` ``(backtick)、`${...}`、`\` —— 否则破坏 template literal。当前 62 个文件均干净
+2. HTML 内禁止出现 `` ` ``(backtick)、`${...}`、`\` —— 否则破坏 template literal。当前 66 个文件均干净
 3. 跨片段链接用 `href="#/other-id"`(注意带 `/`,纯 `#xxx` 是 in-page 锚点,路由不会拦截)
 4. 用 `var(--aw-*)` 引用所有颜色,Light/Dark 自动跟随
 
@@ -196,8 +207,14 @@ project/
 
 ## 落地链接(信息性)
 
-- 设计 token → `packages/design-tokens/` in `tms2.5-web-react`
-- antd `theme.components` 覆盖 → `packages/design-tokens/src/antd.ts`
-- 应用消费 → `packages/web`
+落地代码在 sibling 仓库 `tms2.5-web-react`(不在本仓库,无法直接验证;AI 落地时以本仓库的 `--aw-*` token 与 `pages/*.js` 范式为契约,到 sibling 仓库对齐):
+
+- 设计 token 源 → `packages/design-tokens/`(`tokens.json` + 生成的 CSS 变量)
+- antd `theme.token` 覆盖(主色 / 字号 / 圆角 / 间距)→ `packages/design-tokens/src/antd.ts`
+- antd `theme.components` 覆盖(Button / Tag / Table / Menu 等组件级)→ `packages/design-tokens/src/components.ts`
+- 应用消费入口(`<ConfigProvider>` 包裹 + locale + renderEmpty)→ `packages/web/src/app/AntdConfig.tsx`(参考 `pages/config-provider.js` 的可复制示例)
+- 业务页面消费 → `packages/web`(用 antd v6 原生 + `src/components/` 业务封装,不用 Pro Components)
+
+> 职责切分:`antd.ts` 只管 `theme.token`,`components.ts` 只管 `theme.components`,`AntdConfig.tsx` 是消费入口。三者分层,不要把 `theme.components` 写进 `antd.ts`。
 
 设计系统改动后,如果同步 `@tms/design-tokens` 的 `tokens.json`,同一仓库的 `packages/web` 会自动跟随。

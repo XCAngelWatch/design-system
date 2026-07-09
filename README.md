@@ -2,7 +2,7 @@
 
 本项目是 AngelWatch TMS（设备终端管理系统）的 **AI-first 设计系统参考文档站**，用静态 SPA 的形式沉淀系统设计、页面模板、组件规范、设计 token、交互约束与落地规则。它的目标不是发布运行时组件库，而是为 AI 与开发者在业务系统设计和开发时提供可检索、可引用、可对齐的设计知识库。
 
-当前站点覆盖设计 token、基础规范、通用组件、业务组件、页面模板、生态选型与规范红线，共 **62 个 section**，按 `导览(2) / 基础(13) / 通用组件(14) / 业务组件(12) / 页面模板(13) / 生态(2) / 规范(6)` 组织。
+当前站点覆盖设计 token、基础规范、通用组件、业务组件、页面模板、生态选型与规范红线，共 **66 个 section**，按 `导览(2) / 基础(13) / 通用组件(14) / 业务组件(12) / 页面模板(16) / 生态(2) / 规范(7)` 组织。
 
 站点是 **纯静态 SPA**：`project/index.html` 是 shell，`project/pages/<id>.js` 是页面片段，`project/pages/_router.js` 通过 hash 路由和动态 `<script>` 注入加载片段。无构建、无 NPM 依赖、无 HTTP 服务器要求，`file://` 直接打开即可。
 
@@ -27,6 +27,10 @@ open project/index.html
 
 放进任何静态服务器（Nginx / Apache / Caddy / 内网 CDN）也可分发；部署产物就是 `project/` 原文件。
 
+## AI 编程入口
+
+本仓库是 AI-first 的。AI agent 拿到仓库后先读 [`AI_DESIGN_SYSTEM.md`](AI_DESIGN_SYSTEM.md)（权威顺序、页面范式、外部参考边界、提交前校验），再按需进入 [`docs/ai-coding-design-reference.md`](docs/ai-coding-design-reference.md)（业务字段与组件选型）和 [`brand-spec.md`](brand-spec.md)（品牌 token 证据）。网页端 AI 导航页：`project/index.html#/ai-reference`。落地代码在 sibling 仓库 `tms2.5-web-react`（不在本仓库），AI 以本仓库的 `--aw-*` token 与 `pages/*.js` 范式为契约到 sibling 仓库对齐。
+
 ## 部署
 
 `.github/workflows/pages.yml` 在 push 到 `main` 时把 `project/` 发布到 GitHub Pages，也支持在 Actions 页面手动 `workflow_dispatch`。
@@ -40,13 +44,15 @@ open project/index.html
 ```text
 design-system/
 ├── README.md                         说明文档
+├── AI_DESIGN_SYSTEM.md               AI 编程首读入口（权威顺序 / 页面范式 / 验收）
+├── brand-spec.md                     品牌 token 与布局姿态证据
 ├── CLAUDE.md                         Claude Code 工作指南
-├── AGENTS.md                         Codex 工作指南
+├── AGENTS.md                         Codex / 通用 agent 工作指南
 ├── .github/workflows/pages.yml       GitHub Pages 自动部署
 └── project/
     ├── index.html                    SPA shell：favicon、16 个 CSS link、主题恢复脚本、路由器入口
     ├── favicon.ico                   站点图标
-    ├── pages/                        62 个 fragment + 1 个 router
+    ├── pages/                        66 个 fragment + 1 个 router
     │   ├── _router.js                ROUTES 表、sidebar、toolbar、hash 路由、主题持久化
     │   ├── overview.js / cases.js    导览：概览、实践案例
     │   ├── color.js ... responsive.js
@@ -56,11 +62,11 @@ design-system/
     │   ├── status-matrix.js ... charts.js
     │   │                             业务组件：设备状态、DataCard、Cascader、表单校验、Tabs、Result、空状态、页头、错误页、Loading、RowActions、图表
     │   ├── shell.js ... device-center-page.js
-    │   │                             页面模板：应用外壳、登录、列表、详情、表单、树列表、向导、仪表盘、推送、OTA、用户管理、市场、数据中心
+    │   │                             页面模板：应用外壳、登录、列表、详情、表单、树列表、向导、仪表盘、推送、OTA、用户管理、市场、数据中心、设备地图、增值服务、运营与系统管理
     │   ├── ecosystem.js / tech-stack.js
     │   │                             生态：集成方案、技术栈速查
-    │   └── do-dont.js ... config-provider.js
-    │                                 规范：红线、白标、数据格式、文案、组件 API、ConfigProvider
+    │   └── ai-reference.js ... config-provider.js
+    │                                 规范：AI 开发入口、红线、白标、数据格式、文案、组件 API、ConfigProvider
     └── styles/                       16 个 CSS：基础骨架 7 + 业务扩展 9
         ├── tokens.css                设计 token：:root + [data-theme="dark"]
         ├── system.css                全局 reset、排版、应用 grid
@@ -107,8 +113,8 @@ design-system/
 设计系统不是发布到业务侧的组件库；它是视觉与交互契约，最终通过 sibling 仓库 `tms2.5-web-react` 中的代码落地：
 
 1. **Token**：`@tms/design-tokens` / `packages/design-tokens/` 生成 CSS 变量与 antd token。
-2. **antd 覆盖**：`packages/design-tokens/src/antd.ts` 收口 `ConfigProvider.theme.token` 与 `theme.components`。
-3. **应用消费**：`packages/web` 使用 antd v6 原生组件 + 业务封装组件。
+2. **antd 覆盖**：`packages/design-tokens/src/antd.ts` 收口 `ConfigProvider.theme.token`（主色 / 字号 / 圆角 / 间距）；`packages/design-tokens/src/components.ts` 收口 `theme.components`（Button / Tag / Table / Menu 等组件级覆盖）。两者分层，不要把 `theme.components` 写进 `antd.ts`。
+3. **应用消费**：`packages/web/src/app/AntdConfig.tsx` 是 `<ConfigProvider>` 消费入口（参考 `project/pages/config-provider.js` 可复制示例）；业务页面用 antd v6 原生 + `src/components/` 业务封装。
 4. **生态集成**：图表、地图、虚拟表格、代码编辑器等复杂能力优先采用白名单 NPM 包，再套用本系统 token。
 
 ### 组件选型优先级

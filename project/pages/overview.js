@@ -7,10 +7,10 @@
     <h1>面向<em>Android 终端管理</em>的统一视觉与交互语言。</h1>
     <p>基于 Ant Design v6，为设备管理、应用分发、OTA 升级、推送任务和数据监控校准高密度后台体验。它是运维人员与 IT 管理员每天高频使用的设计规范源；Light + Dark 双主题，zh-CN / en / es / pt 四语言，均自托管，内网部署，离线可用。</p>
     <div class="hero-meta">
-<div><strong>240</strong>设计 Token</div>
+<div><strong>120</strong>设计 Token</div>
 <div><strong>33+</strong>核心组件</div>
 <div><strong>10</strong>生态集成</div>
-<div><strong>10</strong>页面模式</div>
+<div><strong>16</strong>页面模板</div>
     </div>
 </div>
 </section>
@@ -32,7 +32,7 @@
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 02</div>
   <h3 style="margin:0 0 6px;font-size:15px">确定性 · Certainty</h3>
   <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">设计师与用户都需要确定 —— 用足够精简的规则、组件与模式，跨产品保持一致，把学习成本与运营成本压到最低。</p>
-  <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">在 TMS 落地：</b>Token 三层金字塔 + 33 个核心组件 + 10 个页面模板封装为唯一信源；ListPage / DetailPage / FormPage 的"骨架"在所有业务页保持完全一致，PM 切场景只需要换字段而非换布局。</p>
+  <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">在 TMS 落地：</b>Token 三层金字塔 + 33 个核心组件 + 16 个页面模板封装为唯一信源；ListPage / DetailPage / FormPage 的"骨架"在所有业务页保持完全一致，PM 切场景只需要换字段而非换布局。</p>
 </div>
 <div class="surface" style="border-left:3px solid var(--aw-primary)">
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 03</div>
@@ -46,6 +46,30 @@
   <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">用户与系统共同生长 —— 灵活、包容、可演进；不预设场景终点，留出扩展空间。</p>
   <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">在 TMS 落地：</b>白标 / 多租户 / i18n 四语 / 暗色主题作为一等公民贯穿 token；扩展色板留 8 个业务自定义色相位；新组件必须先映射到 alias token 再落地，避免私有方言扩散。</p>
 </div>
+    </div>
+  </section>
+
+  <!-- AI ENTRY -->
+  <section class="section">
+    <p class="section-eyebrow">AI Entry · 可读取入口</p>
+    <h2>让未来 AI 先读入口，再参考页面范式</h2>
+    <p class="lede">当前设计系统不仅是视觉展示页，也是一套给 AI 编程使用的可检索知识库。新页面开发优先读取 Markdown 入口，再进入对应网页路由复用字段、状态、布局和交互范式。</p>
+    <div class="demo-grid cols-3" style="margin-top:18px">
+      <div class="surface">
+        <div class="tag-meta">Markdown</div>
+        <h3 style="margin:0 0 6px;font-size:15px">AI 首读文件</h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.6"><a href="../AI_DESIGN_SYSTEM.md">AI_DESIGN_SYSTEM.md</a> 汇总权威顺序、外部参考边界、页面范式和提交前校验。</p>
+      </div>
+      <div class="surface">
+        <div class="tag-meta">Web Route</div>
+        <h3 style="margin:0 0 6px;font-size:15px">网页开发入口</h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.6"><a href="#/ai-reference">AI 开发入口</a> 把列表、统计、账户权限、地图、推送和 i18n 的参考路由串起来。</p>
+      </div>
+      <div class="surface">
+        <div class="tag-meta">Evidence</div>
+        <h3 style="margin:0 0 6px;font-size:15px">证据边界</h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.6">Figma 用于业务证据，design-system-angelwatch 用于旧站 token 和 kit 对照，旧 Vue / Element 代码不进入当前实现。</p>
+      </div>
     </div>
   </section>
 

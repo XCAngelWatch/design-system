@@ -32,6 +32,23 @@ Reference hex values from the source package:
 - Secondary accent observed in the source package: `#0FC6C2`
 - Dark primary adaptation retained by the current site: `#4080FF`
 
+### Runtime mapping（落地时用 --aw-*，不要用本文件的证据变量名）
+
+本文件的 `--bg / --surface / --fg / --muted / --border / --accent` 是**证据 token**，仅用于记录品牌来源。运行时页面与 sibling 仓库实现一律使用 `project/styles/tokens.css` 的 `--aw-*` 体系。对应关系：
+
+| 证据 token | 运行时 `--aw-*` | 说明 |
+| --- | --- | --- |
+| `--bg` (`#F7F8FA`) | `--aw-bg-page` | 页面底色；运行时实际值为 `#F5F7FA`（antd v6 neutral，以 tokens.css 为准） |
+| `--surface` (`#FFFFFF`) | `--aw-bg` / `--aw-bg-elevated` | 卡片 / 面板 / 抽屉底 |
+| `--fg` (`#1D2129`) | `--aw-text-1` | 主文字；运行时实际值为 `#1F2937` |
+| `--muted` (`#86909C`) | `--aw-text-2` / `--aw-text-3` | 次级 / 辅助文字 |
+| `--border` (`#E5E6EB`) | `--aw-border-2` / `--aw-border-3` | 表格线 / 卡片线 / 分割线 |
+| `--accent` (`#165DFF`) | `--aw-primary` | 主色（主按钮 / 选中态 / 链接 / sidebar indicator） |
+| (secondary `#0FC6C2`) | 暂无对应 `--aw-*` | 辅助强调，仅图表 / 少量状态用，按需在 tokens.css 扩展 |
+| (dark `#4080FF`) | `--aw-primary`（`[data-theme="dark"]`） | 暗色主色已在 tokens.css 深色块覆盖 |
+
+> 若本文件 hex 与 `tokens.css` 不一致，**以 `tokens.css` 为唯一实现值**；本文件 hex 仅作旧站溯源。状态色（success / warning / danger / info）见 `tokens.css` 的 `--aw-success*` / `--aw-warning*` / `--aw-danger*` / `--aw-info*`，均为 antd v6 "-7" 阶企业克制色。
+
 ## Fonts
 
 - Display: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif`

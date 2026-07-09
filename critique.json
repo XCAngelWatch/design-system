@@ -1,26 +1,26 @@
 {
   "kind": "critique-panel",
-  "score": 4.4,
+  "score": 4.5,
   "axes": {
     "clarity": {
       "score": 5,
-      "notes": "本轮把国外版翻译、统计详情、账户权限三块从后续建议推进到页面级证据、字段矩阵和实现约束，AI 编程参考可直接引用。"
+      "notes": "本轮新增 AI_DESIGN_SYSTEM.md 和网页端 AI 开发入口，把 Figma、当前项目、design-system-angelwatch 的权威顺序和读取路径明确下来。"
     },
     "hierarchy": {
-      "score": 4,
-      "notes": "i18n 负责翻译证据，charts 负责统计组件模式，dash-page 负责入口，user-mgmt-page 负责账户权限页面细节，职责清晰。"
+      "score": 5,
+      "notes": "Markdown 总入口、网页入口、Figma 差异审计、外部品牌包审计和业务参考文档分工清楚，未来 AI 可以按层级读取。"
     },
     "typography": {
       "score": 4,
-      "notes": "新增内容复用现有表格、卡片、说明和告警样式，没有引入新的字体或视觉层。"
+      "notes": "网页新增内容复用现有表格、卡片、说明和告警样式，没有引入新的字体、字号或视觉层。"
     },
     "motion": {
       "score": 4,
-      "notes": "本轮为静态设计系统内容，没有新增动效；保持现有站点交互模型和 file:// 约束。"
+      "notes": "本轮为静态设计系统和文档入口，没有新增动效；保持现有 hash 路由、主题切换和 file:// 约束。"
     },
     "brand": {
       "score": 5,
-      "notes": "新增内容继续使用 --aw-* token、表格/树/抽屉等企业后台结构；Figma 证据被转译为系统规则而非逐帧复刻。"
+      "notes": "外部品牌包被限定为 token 和界面姿态参考，当前实现仍使用 --aw-* token 与企业后台信息密度，未迁入旧 Vue/Element 代码。"
     }
   }
 }

@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  // === 65 routes (id → label, group) ===
+  // === 66 routes (id → label, group) ===
   var ROUTES = [
     ['overview',         '设计系统概览',                            '导览'],
     ['cases',            '终端管理实践案例',                        '导览'],
@@ -74,6 +74,7 @@
     ['ops-page',         '运营与系统管理 OpsPage',       '页面模板'],
     ['ecosystem',        '生态库集成',                      '生态'],
     ['tech-stack',       '技术栈速查',                      '生态'],
+    ['ai-reference',     'AI 开发入口',                     '规范'],
     ['do-dont',          '规范红线',                        '规范'],
     ['whitelabel',       '白标与租户主题',                 '规范'],
     ['data-format',      '数据格式',                        '规范'],
