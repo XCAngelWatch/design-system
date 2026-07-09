@@ -91,6 +91,16 @@
   </div>
 
   <div class="surface" style="margin-top:24px">
+    <h3 class="card-title">设备推送结果统计</h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">每个推送批次必须展示成功、失败、总数和进行中数量。统计卡点击后进入推送设备详情，默认筛选对应状态。</p>
+    <div class="bp-grid">
+      <div class="bp-card"><h4>总数</h4><p><span class="mono">1,284</span> 台目标设备。用于核对批次影响范围。</p></div>
+      <div class="bp-card"><h4>成功</h4><p><span class="mono">1,216</span> 台已确认接收。允许查看设备清单和导出结果。</p></div>
+      <div class="bp-card"><h4>失败</h4><p><span class="mono">34</span> 台执行失败。必须提供失败原因、重试失败项和下载失败清单。</p></div>
+    </div>
+  </div>
+
+  <div class="surface" style="margin-top:24px">
     <h3 class="card-title">推送方式 · targetMode 枚举</h3>
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">沿袭旧项目 <code>push/components/pushMap.js</code> 的 8 种 targetMode,定义"指令的目标范围"。前端按 batchState 渲染状态点,按 targetMode 渲染人类可读标签。</p>
     <table class="dt">

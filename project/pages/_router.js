@@ -13,7 +13,7 @@
 (function () {
   'use strict';
 
-  // === 62 routes (id → label, group) ===
+  // === 65 routes (id → label, group) ===
   var ROUTES = [
     ['overview',         '设计系统概览',                            '导览'],
     ['cases',            '终端管理实践案例',                        '导览'],
@@ -69,6 +69,9 @@
     ['user-mgmt-page',   '账户权限 UserMgmtPage',           '页面模板'],
     ['market-page',      '应用市场 MarketPage',         '页面模板'],
     ['device-center-page', '数据中心 DeviceCenterPage',  '页面模板'],
+    ['map-page',         '设备地图 MapPage',            '页面模板'],
+    ['service-page',     '增值服务 ServicePage',        '页面模板'],
+    ['ops-page',         '运营与系统管理 OpsPage',       '页面模板'],
     ['ecosystem',        '生态库集成',                      '生态'],
     ['tech-stack',       '技术栈速查',                      '生态'],
     ['do-dont',          '规范红线',                        '规范'],

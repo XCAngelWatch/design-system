@@ -45,6 +45,41 @@
 </div>
     </div>
   </div>
+
+  <div class="subsection">
+    <h3>统计详情入口 · 从首页到明细</h3>
+    <p class="lede" style="margin-bottom:12px">Figma 数据统计不是独立大屏，而是从首页运营指标进入统计详情。Dashboard 只负责快速判断异常，详情页负责筛选、下钻、导出和追责。</p>
+    <div class="surface" style="padding:0;overflow:hidden">
+      <table class="map-table">
+        <thead><tr><th style="width:18%">首页卡片</th><th style="width:24%">进入详情后默认视图</th><th style="width:26%">筛选继承</th><th>异常处理</th></tr></thead>
+        <tbody>
+          <tr><td><b>活跃设备</b></td><td>设备活跃数据 · 近7日折线 + 活跃设备列表</td><td>机构、设备分组、时间范围、在线状态</td><td>活跃突降时突出近 24 小时离线设备，并给出“查看设备详情”入口。</td></tr>
+          <tr><td><b>激活设备</b></td><td>设备激活数据 · 当日 / 七天 / 30天激活趋势</td><td>机构、设备型号、激活来源、时间范围</td><td>激活异常增长时展示来源分布，不直接给无来源结论。</td></tr>
+          <tr><td><b>固件统计</b></td><td>升级文件统计详情 · 固件版本分布 + 失败明细</td><td>固件版本、适配机型、任务状态、时间范围</td><td>失败率升高时默认打开失败原因分组，并链接 OTA / 推送任务详情。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="demo-grid cols-3" style="margin-top:12px">
+      <div class="surface">
+        <div class="tag-meta">活跃设备详情</div>
+        <h3 style="margin:8px 0;font-size:18px">设备活跃数据</h3>
+        <p style="margin:0 0 10px;font-size:13px;color:var(--aw-text-2);line-height:1.7">默认近7日，点击趋势点后表格只显示该日活跃设备。</p>
+        <div class="row" style="gap:6px"><span class="tag tag-blue">近7日</span><span class="tag">30天</span><span class="tag">自定义</span></div>
+      </div>
+      <div class="surface">
+        <div class="tag-meta">激活设备详情</div>
+        <h3 style="margin:8px 0;font-size:18px">设备激活数据</h3>
+        <p style="margin:0 0 10px;font-size:13px;color:var(--aw-text-2);line-height:1.7">按机构和机型对比，详情表展示激活时间、系统版本和激活来源。</p>
+        <div class="row" style="gap:6px"><span class="tag tag-blue">当日激活</span><span class="tag">七天内激活</span></div>
+      </div>
+      <div class="surface">
+        <div class="tag-meta">固件统计详情</div>
+        <h3 style="margin:8px 0;font-size:18px">升级文件统计详情</h3>
+        <p style="margin:0 0 10px;font-size:13px;color:var(--aw-text-2);line-height:1.7">按固件版本聚合成功、失败、升级中，失败项进入可重试列表。</p>
+        <div class="row" style="gap:6px"><span class="tag tag-blue">成功</span><span class="tag">失败</span><span class="tag">升级中</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 </div>
 `;

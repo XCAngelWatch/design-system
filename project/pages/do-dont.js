@@ -107,6 +107,15 @@
       </tbody>
     </table>
     <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong>Figma 合并红线：</strong>只能把本地 Figma 当作业务证据和模式来源。禁止把旧系统、废案、临时方案、设计占位词或逐帧截图目录迁入站点；每一处迁移都必须落到 token、组件规则、页面模板或模块蓝图。</div></div>
+    <table class="map-table" style="margin-top:12px">
+      <thead><tr><th style="width:22%">冲突类型</th><th style="width:34%">处理顺序</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>业务模块 / 字段 / 状态</td><td>Figma 优先</td><td>例如围栏、APN、WIFI、OSS、设备推送结果统计，当前项目缺失时必须补齐。</td></tr>
+        <tr><td>工程架构 / 路由 / token</td><td>当前仓库优先</td><td>不得破坏 file:// SPA、--aw-* token、AntD v6 和无构建约束。</td></tr>
+        <tr><td>废案 / 旧系统 / 临时方案</td><td>排除</td><td>即使来自 Figma，也不作为设计系统依据。</td></tr>
+        <tr><td>拼写 / 术语别名</td><td>规范化后采用</td><td>例如“登陆”统一为“登录”，“参数模版”统一为“参数模板”。</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 </div>

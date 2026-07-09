@@ -4,7 +4,7 @@
 <section class="section" id="ota-page">
   <p class="section-eyebrow">Patterns · OTA 升级</p>
   <h2>OTA 升级 OtaPage</h2>
-  <p class="lede">OTA 升级页管理升级文件、基线版本、适配机型和更新推送。所有文案必须前置版本、机型、范围和风险，避免只写“更新”或“执行”。</p>
+  <p class="lede">OTA 升级页管理升级文件、基线版本、适配机型、更新推送和推送固件包。所有文案必须前置版本、机型、范围和风险，避免只写“更新”或“执行”。</p>
 
   <div class="surface" style="padding:0;overflow:hidden">
     <div style="display:flex;align-items:stretch;height:560px">
@@ -44,6 +44,7 @@
         <div class="lp-actions">
           <div class="row" style="gap:6px">
             <button class="btn btn-primary btn-sm">+ 添加升级包</button>
+            <button class="btn btn-sm">推送固件包</button>
             <button class="btn btn-sm">推送日志</button>
           </div>
           <div class="row" style="gap:6px">

@@ -32,6 +32,19 @@
         </tbody>
       </table>
     </div>
+    <div class="surface" style="margin-top:14px">
+      <h3 style="margin:0 0 10px;font-size:14px">Figma 词汇 · 规范化映射</h3>
+      <table class="map-table">
+        <thead><tr><th style="width:24%">Figma 原词</th><th style="width:28%">最终规范用词</th><th>处理说明</th></tr></thead>
+        <tbody>
+          <tr><td>登陆页 / 记住登陆状态</td><td>登录页 / 记住登录状态</td><td>Figma 原名用于追溯，最终产品文案统一“登录”。</td></tr>
+          <tr><td>参数模版</td><td>参数模板</td><td>数据中心和 AI 编程文档统一使用“模板”。</td></tr>
+          <tr><td>OTA升级管理</td><td>OTA升级管理 / OTA 升级</td><td>产品导航可保留无空格写法；设计系统说明可加空格提升可读性。</td></tr>
+          <tr><td>WIFI设置</td><td>WIFI设置</td><td>中文业务词按 Figma 保留，英文 i18n 再转为 Wi-Fi。</td></tr>
+          <tr><td>样例包名、文件名、技术 ID</td><td>不进入最终文案</td><td>只作为上传、安装明细、推送记录等结构证据。</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="subsection">

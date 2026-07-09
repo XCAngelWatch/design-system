@@ -1,26 +1,26 @@
 {
   "kind": "critique-panel",
-  "score": 4,
+  "score": 4.4,
   "axes": {
     "clarity": {
-      "score": 4,
-      "notes": "新增内容明确区分本地 Figma、OpenDesign 证据和当前 design-system 的职责。"
+      "score": 5,
+      "notes": "本轮把国外版翻译、统计详情、账户权限三块从后续建议推进到页面级证据、字段矩阵和实现约束，AI 编程参考可直接引用。"
     },
     "hierarchy": {
       "score": 4,
-      "notes": "cases 页承接来源边界，copywriting 页承接文本筛选，do-dont 页承接合并红线，信息层级清晰。"
+      "notes": "i18n 负责翻译证据，charts 负责统计组件模式，dash-page 负责入口，user-mgmt-page 负责账户权限页面细节，职责清晰。"
     },
     "typography": {
       "score": 4,
-      "notes": "沿用现有 map-table、surface、alert 结构，没有引入新的字号或展示样式。"
+      "notes": "新增内容复用现有表格、卡片、说明和告警样式，没有引入新的字体或视觉层。"
     },
     "motion": {
       "score": 4,
-      "notes": "本轮为静态规范内容，没有新增动效；保持现有站点交互模型。"
+      "notes": "本轮为静态设计系统内容，没有新增动效；保持现有站点交互模型和 file:// 约束。"
     },
     "brand": {
-      "score": 4,
-      "notes": "brand-spec.md 使用源包色彩并转换为 OKLch，页面内容继续约束为 --aw-* token 与 #165DFF 主色规则。"
+      "score": 5,
+      "notes": "新增内容继续使用 --aw-* token、表格/树/抽屉等企业后台结构；Figma 证据被转译为系统规则而非逐帧复刻。"
     }
   }
 }

@@ -26,6 +26,36 @@
   </div>
 
   <div class="subsection">
+    <h3>Figma 统计详情模式 · 活跃 / 激活 / 固件</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px">Figma 数据统计 canvas 明确拆成三条统计流：活跃设备、激活设备、固件统计。它们不是只放一张图，而是“概览指标 → 近7日趋势 → 统计详情 → 列表视图 / 导出”的闭环。</p>
+    <table class="map-table">
+      <thead><tr><th style="width:18%">统计流</th><th style="width:22%">Figma 证据词</th><th style="width:28%">图表组合</th><th>详情表字段</th></tr></thead>
+      <tbody>
+        <tr><td><b>活跃设备</b></td><td>当日活跃、七天内活跃、30天内活跃、设备活跃数据、近7日、活跃设备数</td><td>KPI Cards + Line + Bar；默认近7日，可切 30 日</td><td>设备编号、机构、最后活跃时间、活跃天数、在线时长、位置上报状态</td></tr>
+        <tr><td><b>激活设备</b></td><td>当日激活、七天内激活、30天内激活、设备激活数据、激活设备、设备激活数</td><td>KPI Cards + Line + Region Bar；按机构 / 机型下钻</td><td>设备编号、激活时间、所属机构、设备型号、系统版本、激活来源</td></tr>
+        <tr><td><b>固件统计</b></td><td>固件统计、升级文件统计详情、详情、列表视图</td><td>Stacked Bar + Donut + Detail Table；状态色映射成功 / 失败 / 进行中</td><td>固件版本、升级文件、适配机型、目标设备、成功、失败、升级中、失败原因</td></tr>
+      </tbody>
+    </table>
+    <div class="demo-grid cols-3" style="margin-top:12px">
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:8px">入口</div>
+        <h3 style="margin:0 0 8px;font-size:14px">概览卡可点击</h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7">Dashboard 的“活跃设备 / 激活设备 / 固件统计”卡片进入统计详情，保留当前日期范围和机构筛选。</p>
+      </div>
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:8px">分析</div>
+        <h3 style="margin:0 0 8px;font-size:14px">图表与表格同步</h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7">点击折线点或柱条后，详情表同步筛选；表格顶部显示当前筛选条件，支持一键清除。</p>
+      </div>
+      <div class="surface">
+        <div class="tag-meta" style="margin-bottom:8px">交付</div>
+        <h3 style="margin:0 0 8px;font-size:14px">导出带审计条件</h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7">导出 CSV / XLSX 时必须写入统计口径、时间范围、机构、操作者和导出时间，避免离线报表失真。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
     <h3>业务序列色板 · 8 色</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">图表序列专属 8 色，<b>独立于</b> <a href="#/palette" style="color:var(--aw-primary)">palette 页</a>的标签色板 —— 标签色板优化"文字 / 底色对比度 + 业务语义"，图表色板优化"序列间区分度 + 色弱可达"。两者职责不同，token 也分离：标签用 <code>--aw-{hue}-{step}</code>，图表用 <code>--aw-chart-1..8</code>。多系列图表按下表顺序取色，dark 模式自动切提亮变体。</p>
     <div class="chart-color-bar">

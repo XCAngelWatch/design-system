@@ -13,7 +13,8 @@
       <div class="bp-card"><h4>设备分组</h4><p>分组列表、分配设备、卡片布局、导入设备、选中态与冲突处理。</p></div>
       <div class="bp-card"><h4>远程控制</h4><p>设备连接、上传进度、应用程序、设备定位、设备轨迹、设备信息。</p></div>
       <div class="bp-card"><h4>基础资料</h4><p>型号管理、应用参数、参数管理、参数模板、联机方案。</p></div>
-      <div class="bp-card"><h4>详情指标</h4><p>心跳、电池、充电、数据流量、存储、RAM、CPU、亮度、音量、IP 地址。</p></div>
+      <div class="bp-card"><h4>详情指标</h4><p>心跳、电池、充电、数据流量、存储、RAM、CPU、亮度、音量、IP 地址、位置上报。</p></div>
+      <div class="bp-card"><h4>欠费设备</h4><p>欠费设备作为设备治理子集展示，必须保留所属机构、设备型号、状态和可恢复操作。</p></div>
       <div class="bp-card"><h4>状态治理</h4><p>在线、离线、故障、锁定、维护中、未激活、已退役的可操作性差异。</p></div>
     </div>
   </div>
@@ -31,7 +32,7 @@
           <div class="bp-nav-item">联机方案</div>
         </div>
         <div class="bp-main">
-          <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" /><div class="select"><span>全部状态 ▾</span></div><div class="select"><span>所属机构 ▾</span></div><button class="btn">筛选</button></div>
+          <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" /><div class="select"><span>全部状态 ▾</span></div><div class="select"><span>所属机构 ▾</span></div><div class="select"><span>欠费设备 ▾</span></div><button class="btn">筛选</button></div>
           <table class="dt">
             <thead><tr><th>设备</th><th>SN</th><th>所属机构</th><th>状态</th><th>电量</th><th>最后心跳</th><th>操作</th></tr></thead>
             <tbody>

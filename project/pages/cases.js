@@ -16,9 +16,9 @@
         <tr><td>OTA 升级</td><td>升级文件 / 推送确认 / 结果明细</td><td><a href="#/ota-page">ota-page</a> + <a href="#/feedback">feedback</a></td><td>沿用模板页，抽取上传、确认、推送结果规则</td></tr>
         <tr><td>推送任务</td><td>批次列表 / 设备明细 / 结果统计</td><td><a href="#/push-page">push-page</a> + <a href="#/status-matrix">status-matrix</a></td><td>沿用模板页，抽取批量状态与结果明细</td></tr>
         <tr><td>数据中心</td><td>设备列表 / 详情 / 分组 / 远程控制</td><td><a href="#/device-center-page">device-center-page</a> + <a href="#/drawer">drawer</a></td><td>主蓝图页，覆盖设备生命周期与远程控制</td></tr>
-        <tr><td>设备地图</td><td>轨迹筛选 / 地图标注 / 时间范围</td><td>follow-up: map-page</td><td>本轮沉淀字段和筛选规则，后续建地图蓝图</td></tr>
-        <tr><td>账户 / 运营 / 统计 / 系统</td><td>账号 / 机构 / 角色 / 菜单 / 字典</td><td>follow-up: ops-page + <a href="#/user-mgmt-page">user-mgmt-page</a></td><td>本轮沉淀账户权限和运营规则，后续建运营蓝图</td></tr>
-        <tr><td>增值服务</td><td>APN / WIFI / 黑白名单 / 文件推送 / 日志</td><td>follow-up: service-page</td><td>本轮沉淀远程服务规则，后续建服务蓝图</td></tr>
+        <tr><td>设备地图</td><td>设备查询 / 定位查询 / 轨迹查询 / 围栏</td><td><a href="#/map-page">map-page</a> + <a href="#/datepicker">datepicker</a></td><td>地图主视图、时间范围、围栏管理和围栏警告</td></tr>
+        <tr><td>账户 / 运营 / 统计 / 系统</td><td>机构 / 运营商 / 账号 / 统计 / OSS / 日志 / 字典 / 菜单</td><td><a href="#/ops-page">ops-page</a> + <a href="#/user-mgmt-page">user-mgmt-page</a></td><td>权限、运营、统计和系统配置统一为可审计后台规则</td></tr>
+        <tr><td>增值服务</td><td>日志 / 锁定 / 流量 / 密码 / 恢复 / 文件 / APN / WIFI / 黑白名单</td><td><a href="#/service-page">service-page</a> + <a href="#/push-page">push-page</a></td><td>服务配置、推送任务和目标设备详情三段式闭环</td></tr>
       </tbody>
     </table>
     <div class="coverage-notes">
@@ -36,7 +36,7 @@
           <tr><td>当前 design-system</td><td>落地 token、组件规则、路由和页面模板</td><td>优先遵循 Ant Design v6、file://、常青文档与 --aw-* 变量约束。</td></tr>
         </tbody>
       </table>
-      <p style="font-size:12px;color:var(--aw-text-3);line-height:1.7;margin:10px 0 0">本轮把 Figma 证据转译为模块级规则：应用市场、OTA、推送任务、数据中心、账户权限、设备地图、增值服务和系统管理。旧系统、废案和临时方案不进入规范。</p>
+      <p style="font-size:12px;color:var(--aw-text-3);line-height:1.7;margin:10px 0 0">本轮把 Figma 证据转译为模块级规则：应用市场、OTA、推送任务、数据中心、设备地图、增值服务、账户权限、数据统计和系统管理。旧系统、废案和临时方案不进入规范。</p>
     </div>
   </div>
 

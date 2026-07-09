@@ -38,6 +38,25 @@
   </div>
 
   <div class="subsection">
+    <h3>Figma 国外版翻译证据 · 页面级对照</h3>
+    <p class="lede" style="margin-bottom:12px">Figma 的“国外版翻译”不是单纯词典，而是中文页面与国外版页面的并排证据。实现时必须按页面族做 4 语种回归，不能只确认 key 存在。</p>
+    <div class="surface" style="padding:0;overflow:hidden">
+      <table class="tech-table">
+        <thead><tr><th style="width:210px">Figma 对照帧</th><th style="width:220px">必须覆盖的 key 域</th><th>翻译与布局要求</th></tr></thead>
+        <tbody>
+          <tr><td>设备地图-设备查询-轨迹查询 / 已搜索</td><td><code>map.track.*</code>, <code>map.deviceLocation.*</code></td><td>保留“轨迹查询、开始时间、结束时间、起点、终点、设备编号”语义；国外版用 Track Query / Start Time / End Time / Start Point / End Point，日期和坐标必须走 Intl 与数字格式化。</td></tr>
+          <tr><td>设备地图-围栏管理-绘制围栏</td><td><code>map.fence.draw.*</code>, <code>map.fence.alert.*</code></td><td>绘制围栏是强操作流程，按钮必须区分 Save / Cancel / Edit / Delete；围栏名称、告警范围、关联设备要保留 tooltip，避免西语和葡语溢出。</td></tr>
+          <tr><td>应用市场-应用管理</td><td><code>market.app.*</code>, <code>market.version.*</code></td><td>Figma 国外版给出 Draft / Released / Removed 对照。状态词进入统一枚举，不允许每个页面自行翻译“草稿、已上架、已下架”。</td></tr>
+          <tr><td>数据中心-设备管理</td><td><code>device.list.*</code>, <code>device.overdue.*</code></td><td>Device Management、Device Grouping、Model Management、Parameter Management、Online Scheme、Overdue Devices 是侧边栏和表格联动词；表头按最长译文设置最小宽度。</td></tr>
+          <tr><td>数据中心-设备管理-设备详情</td><td><code>device.detail.*</code>, <code>device.telemetry.*</code></td><td>设备详情字段多且单位密集：系统版本、固件版本、电池电量、IP地址、DSN、IMEI-IMSI-icc_id 必须拆成 label key 与 value formatter，不能拼字符串。</td></tr>
+          <tr><td>用户端-主页-主题-侧边栏</td><td><code>nav.*</code>, <code>shell.notice.*</code></td><td>英文导航证据包含 Home、Application Management、OTA Management、Push Task、Data Center、Account Information、Device Map、Statistics、Value-added Services、System Management。产品导航翻译由 nav namespace 统一维护。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong>国外版验收口径：</strong>每个被 Figma 标记为国外版的页面必须保存 zh-CN / en-US / es-419 / pt-BR 四列截图，并核对导航、表头、按钮、状态、日期、数字、单位六类文本。</div></div>
+  </div>
+
+  <div class="subsection">
     <h3>Key 命名约定</h3>
     <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6"><span class="mono">namespace.module.element.state</span>。namespace 与左侧菜单一一对应；模块名小写驼峰；不允许英文单词大写或下划线。每条 key 必须有 zh-CN 与 en-US，否则 lint 阻断 PR。</p>
     <div class="i18n-keys"><span class="c">// locales/en-US/device.json — 节选</span>
