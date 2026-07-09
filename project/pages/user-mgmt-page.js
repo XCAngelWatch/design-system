@@ -125,7 +125,7 @@
 
   <div class="surface" style="margin-top:24px">
     <h3 class="card-title">添加 / 编辑账号 Modal</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">沿袭旧项目 <code>dialogForm.vue</code> 的扁平 Form,字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。添加时含密码字段,编辑时不展示(密码用单独的"重置密码"操作)。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px">沿袭旧项目 <code>dialogForm.vue</code> 的扁平 Form,字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。真实表单还含 <b>时区 timeZone</b>(zone select,UTC±HH:MM 15 分钟粒度)与 <b>MFA 谷歌验证器 mfaSecretKey</b>(可解绑,二次确认);新增账号后自动生成密码并支持一键复制;账号状态 code '0' 正常 / '9' 禁用。</p>
     <div class="modal-stage" style="padding:32px">
       <div class="modal-demo" style="width:520px;max-width:100%">
         <div class="head"><h4>添加账号</h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
@@ -134,7 +134,9 @@
             <div class="form-row"><div class="lbl"><span class="req">*</span>机构</div><div><div class="select" style="width:100%"><span>上海运营中心 ▾</span></div></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span>登录账号</div><div><input class="input" placeholder="字母 / 下划线开头" /></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span>姓名</div><div><input class="input" /></div></div>
-            <div class="form-row"><div class="lbl">邮箱</div><div><input class="input" placeholder="选填" /></div></div>
+            <div class="form-row"><div class="lbl">邮箱</div><div><input class="input" placeholder="选填,编辑时掩码跳过校验" /></div></div>
+            <div class="form-row"><div class="lbl"><span class="req">*</span>时区</div><div><div class="select" style="width:100%"><span>UTC+08:00 ▾</span></div></div></div>
+            <div class="form-row"><div class="lbl">MFA</div><div><label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--aw-text-2)"><input type="checkbox" /> 启用谷歌验证器(可解绑,二次确认)</label></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span>角色</div><div><div class="select" style="width:100%"><span>选择角色 (可多选) ▾</span></div></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span>密码</div><div><input class="input" type="password" placeholder="≥ 8 位 + 大小写 + 数字 + 符号" /></div></div>
             <div class="form-row"><div class="lbl">备注</div><div><input class="input" placeholder="选填,内部识别用" /></div></div>
@@ -157,8 +159,8 @@
         <tbody>
           <tr><td><b>机构管理</b></td><td>机构管理、添加下级机构、修改下级机构、分配设备、配置权限</td><td>机构编码、机构名称、上级机构、所属运营商、设备数量</td><td>空机构、加载中、无设备可分配、权限配置半选态、保存后刷新组织树。</td></tr>
           <tr><td><b>运营商管理</b></td><td>运营商管理、添加运营商、修改运营商、运营商账号</td><td>运营商名称、运营商别名、网络定位类型、定位应用SHA1值、定位Key值、显示地图Key值</td><td>地图 Key 缺失、定位配置不可用、运营商账号为空、保存后影响设备地图。</td></tr>
-          <tr><td><b>账号管理</b></td><td>登录账号、账号名称、姓名、电子邮箱、重置密码、启用 / 停用</td><td>登录账号、姓名、电子邮箱、角色、机构、状态、备注</td><td>自身账号禁止停用、重置密码二次确认、邮箱格式错误、角色为空不可保存。</td></tr>
-          <tr><td><b>角色管理</b></td><td>角色、配置权限、菜单权限、数据权限</td><td>角色名称、角色描述、菜单权限、数据范围、可管理机构</td><td>半选态、权限冲突、只读角色、删除前检查已绑定账号。</td></tr>
+          <tr><td><b>账号管理</b></td><td>登录账号、账号名称、姓名、电子邮箱、重置密码、启用 / 停用、时区、MFA</td><td>登录账号(5-30)、姓名、电子邮箱、角色、机构、时区 timeZone、MFA mfaSecretKey、状态('0'/'9')、备注</td><td>自身账号禁止停用、重置密码 / 解绑 MFA 二次确认、邮箱格式错误、角色为空不可保存、新增后自动生成密码+复制。</td></tr>
+          <tr><td><b>角色管理</b></td><td>角色、配置权限、菜单权限、数据权限</td><td>角色名称、角色描述、菜单权限、数据权限范围 dsType(0 全部 / 1 自定义 / 2 本级及子级 / 3 本级 / 4 本人)、可管理机构 dsScope</td><td>半选态、权限冲突、只读角色、删除前检查已绑定账号。</td></tr>
         </tbody>
       </table>
     </div>

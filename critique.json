@@ -1,26 +1,26 @@
 {
   "kind": "critique-panel",
-  "score": 4.5,
+  "score": 4.6,
   "axes": {
     "clarity": {
       "score": 5,
-      "notes": "本轮新增 AI_DESIGN_SYSTEM.md 和网页端 AI 开发入口，把 Figma、当前项目、design-system-angelwatch 的权威顺序和读取路径明确下来。"
+      "notes": "hero 改中性企业面后层级清晰:eyebrow → h1(蓝色 em 单点 accent)→ lede → 带标签 stat;Values/原则 卡去左边框 accent,靠 tag-meta + h3 承层级。"
     },
     "hierarchy": {
       "score": 5,
-      "notes": "Markdown 总入口、网页入口、Figma 差异审计、外部品牌包审计和业务参考文档分工清楚，未来 AI 可以按层级读取。"
+      "notes": "全站最大违规(蓝色 hero 铺底 + 7 处左边框 accent 卡)已清除;蓝色现在只在 hero eyebrow + 标题 em 出现两次,符合 accent 至多两次。"
     },
     "typography": {
       "score": 4,
-      "notes": "网页新增内容复用现有表格、卡片、说明和告警样式，没有引入新的字体、字号或视觉层。"
+      "notes": "h1 从 56px 收到 44px(去营销感),stat 加 tabular-nums;仍用 system-ui + PingFang SC,未引入新字体。可进一步打磨但已 on-brand。"
     },
     "motion": {
       "score": 4,
-      "notes": "本轮为静态设计系统和文档入口，没有新增动效；保持现有 hash 路由、主题切换和 file:// 约束。"
+      "notes": "本轮为静态知识库 craft,未新增动效;保持 file:// 与现有 120-320ms 缓动约束。"
     },
     "brand": {
       "score": 5,
-      "notes": "外部品牌包被限定为 token 和界面姿态参考，当前实现仍使用 --aw-* token 与企业后台信息密度，未迁入旧 Vue/Element 代码。"
+      "notes": "修复两条品牌 posture 违规:主色不作大面积铺底(hero 蓝铺底→中性面)、左边框 accent 卡(反 AI-slop 清单点名套路);hero 改 var() 后深色模式自动适配(原蓝 hero 在深色下不适配)。"
     }
   }
 }

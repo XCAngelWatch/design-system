@@ -92,12 +92,15 @@
 
   <div class="surface" style="margin-top:24px">
     <h3 class="card-title">设备推送结果统计</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">每个推送批次必须展示成功、失败、总数和进行中数量。统计卡点击后进入推送设备详情，默认筛选对应状态。</p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">每个推送批次必须展示总数、执行中、成功、失败、已过期、已终止六态统计(对应后端 processingCount/successCount/failCount/expiredCount/terminatedCount)。统计区配 echarts 比例环,点击进入推送设备详情并默认筛选对应状态。</p>
     <div class="bp-grid">
       <div class="bp-card"><h4>总数</h4><p><span class="mono">1,284</span> 台目标设备。用于核对批次影响范围。</p></div>
       <div class="bp-card"><h4>成功</h4><p><span class="mono">1,216</span> 台已确认接收。允许查看设备清单和导出结果。</p></div>
-      <div class="bp-card"><h4>失败</h4><p><span class="mono">34</span> 台执行失败。必须提供失败原因、重试失败项和下载失败清单。</p></div>
+      <div class="bp-card"><h4>失败</h4><p><span class="mono">28</span> 台执行失败。必须提供失败原因、重试失败项(<code>push_task_rePush</code> 权限)和下载失败清单。</p></div>
+      <div class="bp-card"><h4>已过期</h4><p><span class="mono">6</span> 台超时未送达。不可重试,仅查看与导出。</p></div>
+      <div class="bp-card"><h4>已终止</h4><p><span class="mono">4</span> 台被管理员终止(<code>push_task_terminate</code> 权限)。已终止设备不可重试,任务状态可能从"已终止"再次变更,需明示。</p></div>
     </div>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0">批量操作:选中设备后可 <b>重新推送</b>(仅失败/已过期生效)与 <b>终止推送</b>(仅执行中生效);取消推送仅对待执行生效。边界规则见 <a href="#/copywriting">文案规范</a>。</p>
   </div>
 
   <div class="surface" style="margin-top:24px">

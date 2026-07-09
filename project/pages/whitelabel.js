@@ -120,6 +120,18 @@
       <div style="margin-top:6px"><b style="color:var(--aw-text-1)">系统层（设计系统锁定）：</b>所有 --aw-* 语义色 · --aw-space-* · --aw-radius-* · --aw-shadow-* · --aw-dur-* · --aw-ease · --aw-font · --aw-font-mono</div>
     </div>
   </div>
+
+  <div class="subsection">
+    <h3>租户白标配置 schema(参考旧 website.js 字段分类)</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">旧 <code>tms_web_ui/src/const/website.js</code> 把租户配置分四类,新系统沿用此分类但弃糟粕(<code>encPassword</code> 前端硬编码密钥 + 外部 S3 URL,新系统自托管)。</p>
+    <div class="bp-grid">
+      <div class="bp-card"><h4>① 品牌资源</h4><p>title / subtitle / homeLogo / loginBoxLogo / background / titleIcon / expandingMenuBar / closingMenuBar / imgUrl。全部自托管,禁外部 CDN/S3。</p></div>
+      <div class="bp-card"><h4>② 运行开关</h4><p>validateCode / passwordEnc(后端管,禁前端硬编码)/ register / connectSync / domainAutoTenant / websocket / dynamicCodeCache / whiteList / whiteTagList。</p></div>
+      <div class="bp-card"><h4>③ 登录 client</h4><p>formLoginClient / smsLoginClient / socialLoginClient —— 决定登录页可用方式,按租户启用。</p></div>
+      <div class="bp-card"><h4>④ 首页 / 菜单 props</h4><p>fistPage(label/value/params/query/group/close)/ menu.props(label/path/icon/children/id) —— 租户默认首页与可见菜单树。</p></div>
+    </div>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0">所有图片资源必须自托管(品牌 logo 仍引 CDN 属历史遗留,新内容不要再加)。license ∈ MIT / Apache-2.0 / BSD / ISC。</p>
+  </div>
 </section>
 </div>
 `;

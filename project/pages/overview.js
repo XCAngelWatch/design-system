@@ -22,25 +22,25 @@
     <h2>AngelWatch TMS 设计系统</h2>
     <p class="lede">AngelWatch TMS 是面向安卓设备的终端管理系统。本设计系统把设备管理、应用分发、OTA 升级、推送任务、数据监控、账户权限和系统配置沉淀为可复用的页面、组件和文案规范。</p>
     <div class="demo-grid cols-2" style="margin-top:18px">
-<div class="surface" style="border-left:3px solid var(--aw-primary)">
+<div class="surface">
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 01</div>
   <h3 style="margin:0 0 6px;font-size:15px">自然 · Naturalness</h3>
   <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">界面应当感知自然、行为自然 —— 借自然世界的规律降低用户认知负担。</p>
   <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">在 TMS 落地：</b>设备状态用与现实一致的颜色直觉（绿在线 / 红故障 / 黄过渡），动效遵从物理惯性曲线，搜索 / 筛选记住上次选择不要每次重置。</p>
 </div>
-<div class="surface" style="border-left:3px solid var(--aw-primary)">
+<div class="surface">
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 02</div>
   <h3 style="margin:0 0 6px;font-size:15px">确定性 · Certainty</h3>
   <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">设计师与用户都需要确定 —— 用足够精简的规则、组件与模式，跨产品保持一致，把学习成本与运营成本压到最低。</p>
   <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">在 TMS 落地：</b>Token 三层金字塔 + 33 个核心组件 + 16 个页面模板封装为唯一信源；ListPage / DetailPage / FormPage 的"骨架"在所有业务页保持完全一致，PM 切场景只需要换字段而非换布局。</p>
 </div>
-<div class="surface" style="border-left:3px solid var(--aw-primary)">
+<div class="surface">
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 03</div>
   <h3 style="margin:0 0 6px;font-size:15px">意义感 · Meaningful Purpose</h3>
   <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">面向工作的设计要让每一步操作都目标清晰、即时反馈，让用户进入"心流"，不被打断。</p>
   <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">在 TMS 落地：</b>批量推送固件 → 每条进度可见、失败可重试、Result 页给出可执行下一步；不可逆操作必须二次确认且文案明示后果，不出现"确定要继续吗"这种空话。</p>
 </div>
-<div class="surface" style="border-left:3px solid var(--aw-primary)">
+<div class="surface">
   <div class="tag-meta" style="margin-bottom:10px">价值观 · 04</div>
   <h3 style="margin:0 0 6px;font-size:15px">生长性 · Growth</h3>
   <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">用户与系统共同生长 —— 灵活、包容、可演进；不预设场景终点，留出扩展空间。</p>

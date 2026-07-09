@@ -13,7 +13,7 @@
       <div class="bp-card"><h4>账号与角色</h4><p>账号管理、角色管理、配置权限、登录账号、电子邮箱、重置密码。</p></div>
       <div class="bp-card"><h4>数据统计</h4><p>设备活跃数据、活跃设备、激活设备、固件统计、统计详情、近7日趋势和列表视图。</p></div>
       <div class="bp-card"><h4>OSS 节点</h4><p>独立服务器部署、OSS节点、接入国家、节点配置和状态。</p></div>
-      <div class="bp-card"><h4>操作日志</h4><p>请求地址、请求方式、操作方法、请求参数、登录信息、状态、开始时间、结束时间。</p></div>
+      <div class="bp-card"><h4>操作日志</h4><p>类型(正常 / 异常)、机构、操作人、标题、请求地址(IP)、创建时间。支持按类型、操作人、标题、时间范围筛选与导出。</p></div>
       <div class="bp-card"><h4>字典与菜单</h4><p>字典类型、字典名称、字典标签、字典键值、菜单类型、显示排序、上级菜单。</p></div>
     </div>
   </div>
@@ -35,13 +35,13 @@
           <div class="bp-nav-item">菜单管理</div>
         </div>
         <div class="bp-main">
-          <div class="bp-toolbar"><input class="input" placeholder="搜索操作人 / 请求地址 / 操作方法" /><div class="select"><span>开始时间 ▾</span></div><div class="select"><span>结束时间 ▾</span></div><button class="btn">筛选</button></div>
+          <div class="bp-toolbar"><input class="input" placeholder="搜索操作人 / 标题 / 请求地址" /><div class="select"><span>类型 ▾</span></div><div class="select"><span>时间范围 ▾</span></div><button class="btn">筛选</button><button class="btn">导出</button></div>
           <table class="dt">
-            <thead><tr><th>操作人</th><th>请求方式</th><th>操作方法</th><th>请求地址</th><th>状态</th><th>时间</th><th>操作</th></tr></thead>
+            <thead><tr><th>类型</th><th>机构</th><th>操作人</th><th>标题</th><th>请求地址</th><th>时间</th><th>操作</th></tr></thead>
             <tbody>
-              <tr><td>系统管理员</td><td><code>POST</code></td><td>添加 APN 设置</td><td><code>/service/apn</code></td><td><span class="status-dot online">成功</span></td><td>今天 10:12</td><td><a>详情</a></td></tr>
-              <tr><td>设备运维</td><td><code>PUT</code></td><td>修改设备分组</td><td><code>/devices/groups</code></td><td><span class="status-dot online">成功</span></td><td>昨天 18:44</td><td><a>详情</a></td></tr>
-              <tr><td>运营管理员</td><td><code>DELETE</code></td><td>删除字典数据</td><td><code>/system/dictionaries</code></td><td><span class="status-dot fault">失败</span></td><td>周一 11:03</td><td><a>详情</a></td></tr>
+              <tr><td><span class="status-dot online">正常</span></td><td>华东运营中心</td><td>系统管理员</td><td>添加 APN 设置</td><td><code>10.12.3.45</code></td><td>今天 10:12</td><td><a>详情</a></td></tr>
+              <tr><td><span class="status-dot online">正常</span></td><td>华南运营中心</td><td>设备运维</td><td>修改设备分组</td><td><code>10.12.3.50</code></td><td>昨天 18:44</td><td><a>详情</a></td></tr>
+              <tr><td><span class="status-dot fault">异常</span></td><td>华北运营中心</td><td>运营管理员</td><td>删除字典数据</td><td><code>10.12.3.61</code></td><td>周一 11:03</td><td><a>详情</a></td></tr>
             </tbody>
           </table>
         </div>

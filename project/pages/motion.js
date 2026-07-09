@@ -10,19 +10,19 @@
   <div class="subsection" style="margin-top:18px">
     <h3>三条动效原则</h3>
     <div class="demo-grid cols-3">
-      <div class="surface" style="border-left:3px solid var(--aw-primary)">
+      <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">原则 · 01</div>
         <h3 style="margin:0 0 6px;font-size:15px">自然 · Natural</h3>
         <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">遵从自然运动规律，保证视觉连贯，让用户感知到动作是"成立"的 —— 不是任意补间，而是有惯性、有阻尼。</p>
         <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">落地：</b>统一缓动 <code class="mono">cubic-bezier(.34,.69,.1,1)</code>（先快后慢，模拟惯性减速），不用 linear / ease-in。</p>
       </div>
-      <div class="surface" style="border-left:3px solid var(--aw-primary)">
+      <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">原则 · 02</div>
         <h3 style="margin:0 0 6px;font-size:15px">高效 · Efficient</h3>
         <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">中后台场景效率优先 —— 尽量缩短过渡时间，快速完成动画。出场动画必须直接、不夸张。</p>
         <p style="margin:0;font-size:12px;color:var(--aw-text-3);line-height:1.7"><b style="color:var(--aw-text-2)">落地：</b>fast 120ms / base 200ms / slow 320ms 三档封顶；超过 320ms 的动画必须 PR review 论证；不允许 enter / exit 不对称（如进 200ms 出 600ms）。</p>
       </div>
-      <div class="surface" style="border-left:3px solid var(--aw-primary)">
+      <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px">原则 · 03</div>
         <h3 style="margin:0 0 6px;font-size:15px">克制 · Restrained</h3>
         <p style="margin:0 0 8px;font-size:13px;color:var(--aw-text-2);line-height:1.7">动效要有目的，不为博眼球。子要素的过场（图标切换、菜单展开）保持低调，让内容本身成为视觉焦点。</p>

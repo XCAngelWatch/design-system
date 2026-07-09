@@ -34,11 +34,11 @@
         <div class="bp-main">
           <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" /><div class="select"><span>全部状态 ▾</span></div><div class="select"><span>所属机构 ▾</span></div><div class="select"><span>欠费设备 ▾</span></div><button class="btn">筛选</button></div>
           <table class="dt">
-            <thead><tr><th>设备</th><th>SN</th><th>所属机构</th><th>状态</th><th>电量</th><th>最后心跳</th><th>操作</th></tr></thead>
+            <thead><tr><th>SN</th><th>备注</th><th>在线状态</th><th>机构</th><th>型号</th><th>系统版本</th><th>上线时间</th><th>锁屏</th><th>IMEI</th><th>操作</th></tr></thead>
             <tbody>
-              <tr><td><b>终端-上海-001</b></td><td><code>DEV-86420075</code></td><td>上海 / 黄浦</td><td><span class="status-dot online">在线</span></td><td>86%</td><td>28 秒前</td><td><a>详情</a> · <a>远程</a> · <a>日志</a></td></tr>
-              <tr><td><b>终端-广州-007</b></td><td><code>DEV-86420112</code></td><td>华南 / P5 设备组</td><td><span class="status-dot fault">故障</span></td><td>32%</td><td>8 分钟前</td><td><a>诊断</a> · <a>日志</a> · <a>工单</a></td></tr>
-              <tr><td><b>终端-成都-022</b></td><td><code>DEV-86420244</code></td><td>西南 / P8 设备组</td><td><span class="status-dot offline">离线</span></td><td>未知</td><td>1 天前</td><td><a>历史</a> · <span style="color:var(--aw-text-disabled)">远程</span></td></tr>
+              <tr><td><code>DEV-86420075</code></td><td>上海试点机</td><td><span class="status-dot online">在线</span></td><td>上海 / 黄浦</td><td>AX-9 Pro</td><td>Android 13</td><td>28 秒前</td><td><span class="status-dot online">解锁</span></td><td><code>864200...</code></td><td><a>详情</a> · <a>远程</a> · <a>日志</a></td></tr>
+              <tr><td><code>DEV-86420112</code></td><td>P5 收银台</td><td><span class="status-dot fault">故障</span></td><td>华南 / P5</td><td>AX-7</td><td>Android 12</td><td>8 分钟前</td><td><span class="status-dot online">解锁</span></td><td><code>864201...</code></td><td><a>诊断</a> · <a>日志</a> · <a>工单</a></td></tr>
+              <tr><td><code>DEV-86420244</code></td><td>P8 备用机</td><td><span class="status-dot offline">离线</span></td><td>西南 / P8</td><td>AX-9</td><td>Android 13</td><td>1 天前</td><td><span class="status-dot offline">锁定</span></td><td><code>864202...</code></td><td><a>历史</a> · <span style="color:var(--aw-text-disabled)">远程</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -53,6 +53,18 @@
       <div class="bp-step"><div class="num">2</div><div class="name">运行指标</div><div class="desc">电池、充电、流量、存储、RAM、CPU、亮度、音量、IP 一屏可扫读。</div></div>
       <div class="bp-step"><div class="num">3</div><div class="name">远程控制</div><div class="desc">在线才开放应用程序、定位、轨迹、设备信息和上传进度入口。</div></div>
       <div class="bp-step"><div class="num">4</div><div class="name">审计记录</div><div class="desc">推送、修改、锁定、解锁、重置等写操作都要能追溯操作者和时间。</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3>设备详情字段族与远程指令</h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">真实后端字段(对齐旧 tms_web_ui <code>device/detail.vue</code>);落地时按 Tab 分组,字段拆 label + value formatter,不做"固件版本 vX / 电量 20%"式拼接翻译。</p>
+    <div class="bp-grid">
+      <div class="bp-card"><h4>详情 Tab 结构</h4><p>状态信息 / 基本信息 / 应用信息 / 位置信息(地图 lazy) / 用户证书信息(lazy) / 硬件告警(lazy)。</p></div>
+      <div class="bp-card"><h4>基本信息 35 字段</h4><p>SN · 基带版本 modemVersion · 备注 · 添加/激活/到期时间 · 型号 · 客户名 tenantName · 硬件版本 · 机构 · 存储状态 · 主/子 SDK 版本 · 厂商 · KSN · IMEI-IMSI-icc_id · 内核版本 · 系统版本 · 内部版本 · 固件版本 · 编译信息 buildInfo · 安卓版本 · 网络类型 · 平台 · wifi/蓝牙地址 · 内网 IP · wifi SSID · 经纬度 · KPP 支持 · MDM/资源包版本。</p></div>
+      <div class="bp-card"><h4>设备状态三字段</h4><p><code>onlineFlag</code>(在线/离线,在线判定"在线 {0}h 内")+ <code>state</code>(0 解锁 / 1 锁定,标签"屏幕状态 / Screen Lock")+ <code>registeredFlag</code>(已激活 / 未激活)。不是单枚举。</p></div>
+      <div class="bp-card"><h4>远程控制 16 指令</h4><p>软件信息 · 流量控制 · 设备日志 · 应用安装 · 应用卸载 · 设备密码 · 设备锁定 · 全部刷新 · 恢复出厂 · WIFI 设置 · 调试开关 · 清警告 · 蓝牙开关 · 修改型号 · 消息通知 · 查找设备 · logcat。仅在线开放,每项复用推送引擎生成推送任务。</p></div>
+      <div class="bp-card"><h4>参数模板</h4><p>名称 · 备注 · version 版本 · operator 操作人 · 时间 · 操作(设置设备 / 修改 / 复制 / 导入 / 删除)+ 顶部唯一参数配置开关(开启二次确认)。</p></div>
     </div>
   </div>
 

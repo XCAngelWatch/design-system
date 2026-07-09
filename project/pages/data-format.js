@@ -143,6 +143,20 @@
       </div>
     </div>
   </div>
+
+  <div class="subsection">
+    <h3>领域字典源(对齐旧 tms_web_ui const/)</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px">以下字典在旧生产系统已落地,新系统应纳入 <code>@tms/dict</code> 并升级 schema,不照搬旧扁平结构。</p>
+    <table class="map-table">
+      <thead><tr><th>字典</th><th>旧 schema</th><th>升级方向</th><th>样例</th></tr></thead>
+      <tbody>
+        <tr><td>时区 zone</td><td><code>string[]</code> UTC±HH:MM,15 分钟粒度,113 项(含 UTC-13:45)</td><td>对象数组 + IANA 名映射,供 timezone select</td><td><span class="mono">UTC+08:00 / UTC-05:00 / UTC+00:00</span></td></tr>
+        <tr><td>错误码 errorCode</td><td><code>{code→message}</code> + <code>default</code> 兜底</td><td>扩 OTA/推送/设备领域 + 接 i18n(旧仅英文写死)</td><td><span class="mono">401/404/429 + default</span></td></tr>
+        <tr><td>国家 country</td><td><code>string[]</code> ISO-3166 alpha-2,240+ 项</td><td><code>{code, name_en, name_zh}</code> 对象数组</td><td><span class="mono">CN / US / JP / DE / BR</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0">语言名不进字典池,用 <code>Intl.DisplayNames(locale, {'{type:"language"}'}).of(code)</code>。时区 15 分钟粒度比标准 IANA 更适合"运维手动选偏移"场景。</p>
+  </div>
 </section>
 </div>
 `;

@@ -19,6 +19,21 @@
   </div>
 
   <div class="subsection">
+    <h3>operationType 词汇表(真实 27+ 种)</h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">增值服务按 <code>operationType</code> 组织(同一推送引擎的不同实例)。UI 用人类可读标签,但保留 code 映射。批次列表与设备详情按 operationType 动态追加列(如 17/19 追加 appName+appVersion,33 追加 scanCodeLicenseState)。</p>
+    <div class="bp-grid">
+      <div class="bp-card"><h4>设备控制</h4><p>1 设备日志 · 2 设备锁定 · 3 设备密码 · 12 清警告 · 13 全部刷新 · 24 修改型号 · 30 查找设备 · 51 设备名称</p></div>
+      <div class="bp-card"><h4>应用</h4><p>17 应用安装 · 19 应用卸载 · 48 清除应用数据 · appHidden(隐藏应用)</p></div>
+      <div class="bp-card"><h4>网络</h4><p>5 流量控制 · 20 蓝牙开关 · 40 热点 · 52 GPS 开关 · 53 电源键开关 · apnSetting · wifiSetting</p></div>
+      <div class="bp-card"><h4>系统</h4><p>6 恢复出厂 · 29 调试开关 · 49 电源模式 · screenSaver · bootInterface · desktopShortcut</p></div>
+      <div class="bp-card"><h4>文件 / 媒体</h4><p>7 文件推送 · 38 壁纸 · filePush · statusBarPanelConfig</p></div>
+      <div class="bp-card"><h4>诊断 / 日志</h4><p>14 OTA 日志 · 15 软件信息 · 31 logcat · 54 logcat 配置 · 43 上报用户证书</p></div>
+      <div class="bp-card"><h4>扫码授权(独立子状态机)</h4><p>operationType=33,8 态:0 未激活 / 1 正在激活 / 2 已激活 / 3 无效 / 4 网络不通 / 5 已过期 / 6 服务器异常 / -1 未知。</p></div>
+      <div class="bp-card"><h4>focus / 资源</h4><p>46 / 47 focus 资源推送 · userCert 用户证书 · resourcePackage 资源包(壁纸/铃声)</p></div>
+    </div>
+  </div>
+
+  <div class="subsection">
     <h3>主列表结构</h3>
     <div class="bp-shell">
       <div class="bp-shell-head"><strong>增值服务 / APN 设置</strong><div class="row"><button class="btn">推送记录</button><button class="btn btn-primary">+ 添加 APN</button></div></div>

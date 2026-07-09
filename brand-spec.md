@@ -62,3 +62,11 @@ Reference hex values from the source package:
 - Treat `#165DFF` as a high-signal primary for selected states, primary actions, links, and the sidebar indicator; do not use it as a large decorative wash.
 - Prefer dense information surfaces: filter bars, tables, cards, drawers, and result details are the dominant UI structures.
 - Translate Figma evidence into reusable module rules. Do not recreate every frame, import old-system pages, or restore removed status-transition content.
+
+### Spacing & shell 数值锚点(来自旧 tms_web_ui 证据)
+
+- **Spacing scale**:4px base unit —— `4 / 8 / 12 / 16 / 20 / 24`(+ `10 / 15 / 30 / 40` 衍生)。证据:`tms_web_ui/src/styles/common.scss`。运行时用 `--aw-*` 或 antd 4px 步长,不硬编码像素。
+- **Shell 尺寸**:侧栏展开 ~240–247px / 折叠 64px / 顶栏 60px / 菜单项 40px(展开 logo 200×50 / 折叠 40×40)。证据:`tms_web_ui/src/pages/layout/index.vue`。
+- **表格密度**:单元格 padding ~`9px 16px`、表头底色用 `--aw-fill-2`(旧 `#F2F3F5`)非纯白、分页器 32×32 按钮。证据:`tms_web_ui/src/styles/elementReset/tableReset.scss`。
+- **Tab 标签栏**:旧系统最终选"仅面包屑,无 tab strip"的克制姿态(数据存 store 但未渲染)。企业 TMS 后台面包屑 + 侧栏定位通常足够,tab strip 为可选增量。
+
