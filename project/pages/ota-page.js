@@ -81,7 +81,7 @@
                 <td>AW-Pro 5</td>
                 <td>2026-04-27 09:12</td>
                 <td><span class="status-dot is-processing"><span data-i18n="ota-page:text.040">审核中</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.041">详情</span></button><button class="btn btn-link"><span data-i18n="ota-page:text.042">撤回</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.041">详情</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="ota-page:text.042">撤回</span></button></td>
               </tr>
               <tr>
                 <td><strong><span data-i18n="ota-page:text.043">v3.4.2 全量包</span></strong></td>
@@ -200,7 +200,8 @@
 
   <div class="subsection" data-component-contract>
     <h3><span data-i18n="common:component.contract">组件契约</span></h3>
-    <div class="blueprint-notes"><span><a href="#/table">Table</a></span><span><a href="#/data-cards">DataCard</a></span><span><a href="#/upload">Upload</a></span><span><a href="#/progress">Progress</a></span><span><a href="#/feedback">Feedback</a></span><span><a href="#/push-page">PushPage</a></span></div>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a></span><span><a href="#/data-cards">DataCard</a></span><span><a href="#/upload">Upload</a></span><span><a href="#/progress">Progress</a></span><span><a href="#/feedback">Feedback</a></span></div>
+    <div class="blueprint-notes" data-page-dependency><span><a href="#/push-page">PushPage</a></span></div>
   </div>
 </section>
 </div>

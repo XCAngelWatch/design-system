@@ -101,7 +101,8 @@
 
   <div class="subsection" data-component-contract>
     <h3><span data-i18n="service-page:text.111">组件契约</span></h3>
-    <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="service-page:text.112">：服务配置与推送记录</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="service-page:text.113">：配置编辑与设备详情</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="service-page:text.114">：高风险确认</span></span><span><a href="#/avatar-result">Result</a><span data-i18n="service-page:text.115">：部分成功和失败清单</span></span><span><a href="#/push-page">PushPage</a><span data-i18n="service-page:text.116">：任务详情结构</span></span></div>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="service-page:text.112">：服务配置与推送记录</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="service-page:text.113">：配置编辑与设备详情</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="service-page:text.114">：高风险确认</span></span><span><a href="#/avatar-result">Result</a><span data-i18n="service-page:text.115">：部分成功和失败清单</span></span></div>
+    <div class="blueprint-notes" data-page-dependency><span><a href="#/push-page">PushPage</a><span data-i18n="service-page:text.116">：任务详情结构</span></span></div>
   </div>
 </section>
 </div>

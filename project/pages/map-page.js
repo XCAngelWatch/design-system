@@ -9,7 +9,7 @@
   <div class="subsection">
     <h3><span data-i18n="map-page:text.004">覆盖范围</span></h3>
     <div class="bp-grid">
-      <div class="bp-card"><h4><span data-i18n="map-page:text.005">设备查询</span></h4><p><span data-i18n="map-page:text.006">主页面、搜索后状态、设备结果列表、定位入口。搜索字段优先 DSN、设备名称、IMEI。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="map-page:text.005">设备查询</span></h4><p><span data-i18n="map-page:text.006">主页面、搜索后状态、设备结果列表、定位入口。搜索字段优先 SN、设备名称、IMEI。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="map-page:text.007">定位查询</span></h4><p><span data-i18n="map-page:text.008">按设备和时间查询最近位置，展示位置上报时间、运营商、地址摘要和定位来源。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="map-page:text.009">轨迹查询</span></h4><p><span data-i18n="map-page:text.010">使用开始时间、结束时间、起点、终点描述轨迹；结果必须支持时间轴和地图路径联动。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="map-page:text.011">围栏管理</span></h4><p><span data-i18n="map-page:text.012">新增、修改、绘制围栏、主页面。绘制态必须有保存、取消、清空和面积提示。</span></p></div>

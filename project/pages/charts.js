@@ -98,22 +98,22 @@
           <line x1="30" y1="120" x2="270" y2="120" stroke="#D9D9D9"/>
           <line x1="30" y1="40" x2="270" y2="40" stroke="#F0F0F0" stroke-dasharray="2 3"/>
           <line x1="30" y1="80" x2="270" y2="80" stroke="#F0F0F0" stroke-dasharray="2 3"/>
-          <polyline points="30,90 70,72 110,80 150,55 190,38 230,48 270,30" fill="none" stroke="#1677FF" stroke-width="2" stroke-linejoin="round"/>
-          <polyline points="30,100 70,95 110,88 150,70 190,72 230,60 270,55" fill="none" stroke="#5AD8A6" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="30,90 70,72 110,80 150,55 190,38 230,48 270,30" fill="none" stroke="var(--aw-chart-1)" stroke-width="2" stroke-linejoin="round"/>
+          <polyline points="30,100 70,95 110,88 150,70 190,72 230,60 270,55" fill="none" stroke="var(--aw-chart-2)" stroke-width="2" stroke-linejoin="round"/>
           <text x="20" y="125" font-size="10" fill="#6B7280">0</text>
           <text x="20" y="85" font-size="10" fill="#6B7280">5k</text>
           <text x="15" y="45" font-size="10" fill="#6B7280">10k</text>
           <text x="30" y="135" font-size="10" fill="#6B7280">04-22</text>
           <text x="240" y="135" font-size="10" fill="#6B7280">04-28</text>
         </svg>
-        <div style="margin-top:8px;font-size:12px;color:var(--aw-text-3);display:flex;gap:14px"><span><span style="display:inline-block;width:10px;height:2px;background:#1677FF;margin-right:4px;vertical-align:middle"></span><span data-i18n="charts:text.103">在线设备</span></span><span><span style="display:inline-block;width:10px;height:2px;background:#5AD8A6;margin-right:4px;vertical-align:middle"></span><span data-i18n="charts:text.104">心跳数</span></span></div>
+        <div style="margin-top:8px;font-size:12px;color:var(--aw-text-3);display:flex;gap:14px"><span><span style="display:inline-block;width:10px;height:2px;background:var(--aw-chart-1);margin-right:4px;vertical-align:middle"></span><span data-i18n="charts:text.103">在线设备</span></span><span><span style="display:inline-block;width:10px;height:2px;background:var(--aw-chart-2);margin-right:4px;vertical-align:middle"></span><span data-i18n="charts:text.104">心跳数</span></span></div>
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px"><span data-i18n="charts:text.105">占比 · Donut</span></div>
         <svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-          <circle cx="80" cy="70" r="42" fill="none" stroke="#389E0D" stroke-width="22" stroke-dasharray="180 264"/>
-          <circle cx="80" cy="70" r="42" fill="none" stroke="#D48806" stroke-width="22" stroke-dasharray="38 264" stroke-dashoffset="-180"/>
-          <circle cx="80" cy="70" r="42" fill="none" stroke="#CF1322" stroke-width="22" stroke-dasharray="20 264" stroke-dashoffset="-218"/>
+          <circle cx="80" cy="70" r="42" fill="none" stroke="var(--aw-success)" stroke-width="22" stroke-dasharray="180 264"/>
+          <circle cx="80" cy="70" r="42" fill="none" stroke="var(--aw-warning)" stroke-width="22" stroke-dasharray="38 264" stroke-dashoffset="-180"/>
+          <circle cx="80" cy="70" r="42" fill="none" stroke="var(--aw-danger)" stroke-width="22" stroke-dasharray="20 264" stroke-dashoffset="-218"/>
           <circle cx="80" cy="70" r="42" fill="none" stroke="#6B7280" stroke-width="22" stroke-dasharray="26 264" stroke-dashoffset="-238"/>
           <text x="80" y="68" font-size="14" font-weight="600" text-anchor="middle" fill="#1F2937">12,486</text>
           <text x="80" y="84" font-size="10" text-anchor="middle" fill="#6B7280"><tspan data-i18n="charts:text.106">总数</tspan></text>
@@ -130,10 +130,10 @@
         <svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
           <line x1="60" y1="20" x2="60" y2="120" stroke="#D9D9D9"/>
           <line x1="60" y1="120" x2="270" y2="120" stroke="#D9D9D9"/>
-          <rect x="60" y="32" width="180" height="14" rx="2" fill="#1677FF"/>
-          <rect x="60" y="52" width="140" height="14" rx="2" fill="#1677FF"/>
-          <rect x="60" y="72" width="100" height="14" rx="2" fill="#1677FF"/>
-          <rect x="60" y="92" width="60" height="14" rx="2" fill="#1677FF"/>
+          <rect x="60" y="32" width="180" height="14" rx="2" fill="var(--aw-chart-1)"/>
+          <rect x="60" y="52" width="140" height="14" rx="2" fill="var(--aw-chart-1)"/>
+          <rect x="60" y="72" width="100" height="14" rx="2" fill="var(--aw-chart-1)"/>
+          <rect x="60" y="92" width="60" height="14" rx="2" fill="var(--aw-chart-1)"/>
           <text x="55" y="42" font-size="10" text-anchor="end" fill="#4B5563"><tspan data-i18n="charts:text.112">华东</tspan></text>
           <text x="55" y="62" font-size="10" text-anchor="end" fill="#4B5563"><tspan data-i18n="charts:text.113">华南</tspan></text>
           <text x="55" y="82" font-size="10" text-anchor="end" fill="#4B5563"><tspan data-i18n="charts:text.114">华北</tspan></text>
@@ -152,8 +152,8 @@
           <div style="font-size:12px;color:var(--aw-success)"><span data-i18n="charts:text.119">↑ +12 较上一分钟</span></div>
         </div>
         <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-          <polyline points="0,28 20,24 40,30 60,18 80,22 100,16 120,12 140,18 160,10 180,14 200,8" fill="none" stroke="#1677FF" stroke-width="1.5" stroke-linejoin="round"/>
-          <linearGradient id="trendG" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1677FF" stop-opacity="0.18"/><stop offset="100%" stop-color="#1677FF" stop-opacity="0"/></linearGradient>
+          <polyline points="0,28 20,24 40,30 60,18 80,22 100,16 120,12 140,18 160,10 180,14 200,8" fill="none" stroke="var(--aw-chart-1)" stroke-width="1.5" stroke-linejoin="round"/>
+          <linearGradient id="trendG" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="var(--aw-chart-1)" stop-opacity="0.18"/><stop offset="100%" stop-color="var(--aw-chart-1)" stop-opacity="0"/></linearGradient>
           <polygon points="0,28 20,24 40,30 60,18 80,22 100,16 120,12 140,18 160,10 180,14 200,8 200,40 0,40" fill="url(#trendG)"/>
         </svg>
       </div>

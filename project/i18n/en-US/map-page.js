@@ -7,7 +7,7 @@
     "text.003": "The Device Map covers device search, location query, track history, geofence management, and geofence alerts. It is not a regular list page; the main view must be organized around the map, time range, device results, and geofence status.",
     "text.004": "Coverage",
     "text.005": "Device Search",
-    "text.006": "Main page, post-search state, device result list, and location entry. Search fields prioritize DSN, device name, and IMEI.",
+    "text.006": "Main page, post-search state, device result list, and location entry. Search fields prioritize SN, device name, and IMEI.",
     "text.007": "Location Query",
     "text.008": "Query the latest location by device and time; show location report time, operator, address summary, and location source.",
     "text.009": "Track History",

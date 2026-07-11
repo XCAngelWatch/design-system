@@ -35,7 +35,7 @@
 <li><span data-i18n="do-dont:t036">键盘可达（tab 顺序 + focus 可见）+ 13 个全局快捷键</span></li>
 <li><span data-i18n="do-dont:t037">所有可见文本通过</span> <span class="mono">t('namespace.key')</span> <span data-i18n="do-dont:t038">包裹</span></li>
 <li><span data-i18n="do-dont:t039">组件必须同时通过 Light + Dark 视觉回归</span></li>
-<li><span data-i18n="do-dont:t040">批量 / 不可逆操作用 Modal，单条用 Popconfirm</span></li>
+<li><span data-i18n="do-dont:t040">单条可逆操作用 Popconfirm；单条不可逆或批量操作用 Modal</span></li>
 <li><span data-i18n="do-dont:t041">日期 / 数字格式必须用</span> <span class="mono">Intl.*</span> API</li>
 <li><span data-i18n="do-dont:t042">异常态返回 ErrorPage（404/403/500）+ traceId</span></li>
 <li><span data-i18n="do-dont:t043">异步/批量操作给到 Result 终态页</span></li>

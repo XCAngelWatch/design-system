@@ -86,7 +86,8 @@
 
   <div class="subsection" data-component-contract>
     <h3><span data-i18n="ops-page:text.088">组件契约</span></h3>
-    <div class="blueprint-notes"><span><a href="#/tree-comp">Tree</a><span data-i18n="ops-page:text.089">：机构、菜单和权限</span></span><span><a href="#/table">Table</a><span data-i18n="ops-page:text.090">：日志、OSS、字典和统计明细</span></span><span><a href="#/charts">Charts</a><span data-i18n="ops-page:text.091">：活跃设备和固件统计</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="ops-page:text.092">：长表单编辑</span></span><span><a href="#/user-mgmt-page">UserMgmtPage</a><span data-i18n="ops-page:text.093">：账户权限细节</span></span></div>
+    <div class="blueprint-notes"><span><a href="#/tree-comp">Tree</a><span data-i18n="ops-page:text.089">：机构、菜单和权限</span></span><span><a href="#/table">Table</a><span data-i18n="ops-page:text.090">：日志、OSS、字典和统计明细</span></span><span><a href="#/charts">Charts</a><span data-i18n="ops-page:text.091">：活跃设备和固件统计</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="ops-page:text.092">：长表单编辑</span></span></div>
+    <div class="blueprint-notes" data-page-dependency><span><a href="#/user-mgmt-page">UserMgmtPage</a><span data-i18n="ops-page:text.093">：账户权限细节</span></span></div>
   </div>
 </section>
 </div>

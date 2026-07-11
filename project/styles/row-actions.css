@@ -50,13 +50,13 @@
   background: var(--aw-fill-1);
   border-bottom: 1px solid var(--aw-border-2);
   text-align: left;
-  padding: 10px 14px;
-  font-size: 12px; font-weight: 600;
+  padding: 10px 12px;
+  font-size: 13px; font-weight: 500;
   color: var(--aw-text-2);
 }
 .ra-table .colactions { text-align: right; white-space: nowrap; }
 .ra-table td {
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--aw-border-3);
   color: var(--aw-text-1);
   vertical-align: middle;

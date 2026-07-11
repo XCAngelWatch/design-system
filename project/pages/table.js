@@ -423,7 +423,7 @@
       <thead><tr><th><span data-i18n="table:text.308">模式</span></th><th><span data-i18n="table:text.309">出现模块</span></th><th><span data-i18n="table:text.310">规则</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="table:text.311">筛选区</span></td><td><span data-i18n="table:text.312">应用管理 / OTA / 设备管理 / 推送任务</span></td><td><span data-i18n="table:text.313">常用 3-4 字段直接展示，高级筛选折叠；搜索字段永远在第一位。</span></td></tr>
-        <tr><td><span data-i18n="table:text.314">表格视图</span></td><td><span data-i18n="table:text.315">应用列表 / 设备列表 / 日志 / 字典</span></td><td><span data-i18n="table:text.316">状态列靠近主对象；操作列固定右侧；超过 4 个动作交给 RowActions。</span></td></tr>
+        <tr><td><span data-i18n="table:text.314">表格视图</span></td><td><span data-i18n="table:text.315">应用列表 / 设备列表 / 日志 / 字典</span></td><td><span data-i18n="table:text.316">状态列靠近主对象；操作列固定右侧；达到 4 个动作时交给 RowActions 折叠。</span></td></tr>
         <tr><td><span data-i18n="table:text.317">卡片视图</span></td><td><span data-i18n="table:text.318">应用管理 / 广告管理 / 设备管理 / 设备分组</span></td><td><span data-i18n="table:text.319">卡片保留主状态、关键字段、最近操作；批量勾选入口在左上角。</span></td></tr>
         <tr><td><span data-i18n="table:text.320">批量条</span></td><td><span data-i18n="table:text.321">分配设备 / 推送设备 / 导出日志</span></td><td><span data-i18n="table:text.322">只在选中后出现，显示已选数量、清空入口和 2-3 个高频批量动作。</span></td></tr>
         <tr><td><span data-i18n="table:text.323">状态列</span></td><td><span data-i18n="table:text.324">应用审核 / OTA 推送 / 设备在线 / 任务结果</span></td><td><span data-i18n="table:text.325">状态文案与操作可用性绑定；不能只改变颜色而不改变可操作项。</span></td></tr>

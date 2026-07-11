@@ -32,9 +32,9 @@
 <div class="popconfirm">
   <div class="popconfirm-bubble">
     <div><span class="pc-icon">⚠</span><span data-i18n="tab-variants:text.023">确认停用终端 </span><strong><span data-i18n="tab-variants:text.024">终端-上海-001</span></strong><span data-i18n="tab-variants:text.025">？停用后可由管理员重新启用。</span></div>
-    <div class="pc-actions"><button class="btn btn-sm"><span data-i18n="tab-variants:text.026">取消</span></button><button class="btn btn-sm btn-primary"><span data-i18n="tab-variants:text.027">确认停用</span></button></div>
+    <div class="pc-actions"><button class="btn btn-sm"><span data-i18n="tab-variants:text.026">取消</span></button><button class="btn btn-sm btn-danger"><span data-i18n="tab-variants:text.027">确认停用</span></button></div>
   </div>
-  <button class="btn btn-sm"><span data-i18n="tab-variants:text.028">停用</span></button>
+  <button class="btn btn-sm btn-ghost-danger"><span data-i18n="tab-variants:text.028">停用</span></button>
 </div>
 <div class="popconfirm">
   <div class="popconfirm-bubble">

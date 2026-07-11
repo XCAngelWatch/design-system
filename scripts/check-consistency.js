@@ -12,14 +12,26 @@ const blueprints = [
   'shell', 'login-page', 'list-page', 'detail-page', 'form-page', 'tree-list', 'wizard-page', 'dash-page',
   'device-center-page', 'market-page', 'ota-page', 'push-page', 'user-mgmt-page', 'map-page', 'service-page', 'ops-page'
 ];
+const componentRoutes = new Set([
+  'buttons', 'inputs', 'menu', 'nav-comp', 'table', 'tags', 'feedback', 'progress', 'datepicker', 'upload',
+  'tree-comp', 'drawer', 'toast', 'skeleton', 'status-matrix', 'data-cards', 'row-actions', 'charts', 'cascader',
+  'advanced-form', 'tab-variants', 'avatar-result', 'empty-state', 'error-page', 'loading-levels', 'page-header',
+  'dark', 'i18n', 'a11y', 'whitelabel', 'tech-stack'
+]);
 
 function readPage(id) {
   return fs.readFileSync(path.join(pagesDir, id + '.js'), 'utf8');
 }
 
 for (const id of blueprints) {
-  if (!readPage(id).includes('data-component-contract')) {
+  const source = readPage(id);
+  if (!source.includes('data-component-contract')) {
     errors.push(id + ': missing component contract');
+  }
+  const contractSection = (source.match(/<div class="subsection" data-component-contract>[\s\S]*?<\/div>\s*<\/div>/) || [''])[0];
+  const contract = contractSection.replace(/<div class="blueprint-notes" data-page-dependency>[\s\S]*?<\/div>/g, '');
+  for (const match of contract.matchAll(/href="#\/([^"]+)"/g)) {
+    if (!componentRoutes.has(match[1])) errors.push(id + ': page dependency mixed into component contract: ' + match[1]);
   }
 }
 
@@ -36,6 +48,46 @@ for (const id of ['market-page', 'ota-page', 'push-page', 'user-mgmt-page', 'ser
   if (/class="status-dot (?:online|offline)"/.test(source)) {
     errors.push(id + ': non-connection status must use an is-* semantic modifier');
   }
+}
+
+for (const file of pageFiles) {
+  const id = file.slice(0, -3);
+  const source = readPage(id);
+  for (const table of source.matchAll(/<table\b[^>]*class="[^"]*\bdt\b[^"]*"[^>]*>([\s\S]*?)<\/table>/g)) {
+    const markup = table[1];
+    const header = (markup.match(/<thead>[\s\S]*?<\/thead>/) || [''])[0];
+    if (/<th\b[^>]*>[\s\S]*?(?:操作|Actions?)[\s\S]*?<\/th>/i.test(header) &&
+        !/<th\b[^>]*class="[^"]*\bcolactions\b/.test(header)) {
+      errors.push(file + ': operation header must use colactions');
+    }
+  }
+  for (const button of source.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)) {
+    const attrs = button[1];
+    const label = button[2].replace(/<[^>]+>/g, '').trim();
+    if (/(?:删除|停用|下架|驳回|撤回|解绑|重启|回滚)/.test(label) && !/danger/.test(attrs)) {
+      errors.push(file + ': destructive button must use a danger style: ' + label);
+    }
+  }
+  if (/<(?:span|div)\b[^>]*style="[^"]*cursor\s*:\s*pointer/i.test(source)) {
+    errors.push(file + ': clickable span/div must use a semantic button or link');
+  }
+}
+
+if (readPage('map-page').includes('DSN')) errors.push('map-page: device identifier must use SN, not DSN');
+
+const tablePage = readPage('table');
+if (tablePage.includes('共 12,486 项') && tablePage.includes('20 条/页') && !tablePage.includes('>625<')) {
+  errors.push('table: pagination total/page-size must resolve to page 625');
+}
+
+const rowActionsPage = readPage('row-actions');
+if (!rowActionsPage.includes('操作 ≥ 4 时') || !rowActionsPage.includes('前 3 个动作明示')) {
+  errors.push('row-actions: collapse threshold must be 3 visible actions, collapse at 4');
+}
+
+const componentsCss = fs.readFileSync(path.join(root, 'project/styles/components.css'), 'utf8');
+if (!/\.btn-link:disabled[\s\S]*?background:\s*transparent/.test(componentsCss)) {
+  errors.push('components.css: disabled link buttons must retain the link appearance');
 }
 
 const routeBlock = router.match(/var ROUTES = \[([\s\S]*?)\];/);

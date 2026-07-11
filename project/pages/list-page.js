@@ -24,7 +24,7 @@
 </div>
 <div class="table-wrap">
   <table class="dt">
-    <thead><tr><th style="width:36px"></th><th><span data-i18n="list-page:text.020">设备名称</span></th><th>SN</th><th><span data-i18n="list-page:text.021">状态</span></th><th><span data-i18n="list-page:text.022">版本</span></th><th class="colactions"><span data-i18n="list-page:text.023">操作</span></th></tr></thead>
+    <thead><tr><th style="width:36px"><label class="check"><input type="checkbox" aria-label="全选当前页" data-i18n-aria-label="common:selectCurrentPage" /><span class="box"></span></label></th><th><span data-i18n="list-page:text.020">设备名称</span></th><th>SN</th><th><span data-i18n="list-page:text.021">状态</span></th><th><span data-i18n="list-page:text.022">版本</span></th><th class="colactions"><span data-i18n="list-page:text.023">操作</span></th></tr></thead>
     <tbody>
       <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="list-page:text.024">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span class="status-dot online"><span data-i18n="list-page:text.025">在线</span></span></td><td>v3.4.2</td><td class="colactions"><button class="btn btn-link"><span data-i18n="list-page:text.026">详情</span></button></td></tr>
       <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="list-page:text.027">终端-北京-014</span></td><td><code>DEV-86420089</code></td><td><span class="status-dot upgrading"><span data-i18n="list-page:text.028">升级中</span></span></td><td>v3.4.1</td><td class="colactions"><button class="btn btn-link"><span data-i18n="list-page:text.029">详情</span></button></td></tr>
@@ -32,7 +32,7 @@
   </table>
 </div>
 <div class="row" style="justify-content:flex-end;margin-top:12px">
-  <div class="pager"><span class="total"><span data-i18n="list-page:text.030">共 12,486 项</span></span><button class="page">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><button class="page">›</button></div>
+  <div class="pager"><span class="total"><span data-i18n="list-page:text.030">共 12,486 项</span></span><button class="page" disabled aria-label="上一页" data-i18n-aria-label="common:paginationPrevious">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><button class="page" aria-label="下一页" data-i18n-aria-label="common:paginationNext">›</button></div>
 </div>
     </div>
   </div>

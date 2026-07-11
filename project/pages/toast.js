@@ -26,7 +26,7 @@
 </div>
 <div style="padding:60px 0 0;position:relative;height:200px">
   <div style="position:relative;display:inline-block">
-    <span class="status-dot fault" style="cursor:pointer;border-bottom:1px dotted var(--aw-danger)"><span data-i18n="toast:text.014">故障</span></span>
+    <button class="inline-action status-dot fault" style="border-bottom:1px dotted var(--aw-danger)" aria-expanded="true"><span data-i18n="toast:text.014">故障</span></button>
     <div class="popover">
       <div class="ttl"><span data-i18n="toast:text.015">故障详情 · DEV-86420144</span></div>
       <div style="font-size:12px;color:var(--aw-text-2);line-height:1.6">

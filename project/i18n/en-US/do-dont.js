@@ -41,7 +41,7 @@
   "t037": "Wrap all visible text with",
   "t038": "",
   "t039": "Run visual regression in both Light + Dark themes",
-  "t040": "Use Modal for bulk / irreversible actions and Popconfirm for single-row actions",
+  "t040": "Use Popconfirm for reversible single-item actions; use Modal for irreversible or bulk actions",
   "t041": "Date / number formatting must use",
   "t042": "Return ErrorPage (404/403/500) + traceId for exception states",
   "t043": "Send async/batch operations to a Result end-state page",

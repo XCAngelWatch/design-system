@@ -51,7 +51,7 @@
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
-            <table class="dt"><thead><tr><th>Device</th><th>Organization</th><th>Status</th><th>Actions</th></tr></thead></table>
+            <table class="dt"><thead><tr><th>Device</th><th>Organization</th><th>Status</th><th class="colactions">Actions</th></tr></thead></table>
           </div>
         </div>
       </div>

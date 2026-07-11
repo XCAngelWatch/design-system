@@ -69,7 +69,7 @@
                 <td><span data-i18n="user-mgmt-page:text.032">管理员</span></td>
                 <td><span data-i18n="user-mgmt-page:text.033">主负责人</span></td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.034">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.035">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.036">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.037">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.035">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.036">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.037">停用</span></button></td>
               </tr>
               <tr>
                 <td><span data-i18n="user-mgmt-page:text.038">上海运营中心</span></td>
@@ -79,7 +79,7 @@
                 <td><span data-i18n="user-mgmt-page:text.040">运维</span></td>
                 <td>—</td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.041">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.042">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.043">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.044">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.042">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.043">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.044">停用</span></button></td>
               </tr>
               <tr>
                 <td><span data-i18n="user-mgmt-page:text.045">上海运营中心</span></td>
@@ -89,7 +89,7 @@
                 <td><span data-i18n="user-mgmt-page:text.047">审计</span></td>
                 <td><span data-i18n="user-mgmt-page:text.048">每月 1 号导报表</span></td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.049">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.050">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.051">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.052">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.050">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.051">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.052">停用</span></button></td>
               </tr>
               <tr>
                 <td><span data-i18n="user-mgmt-page:text.053">上海运营中心</span></td>
@@ -99,7 +99,7 @@
                 <td><span data-i18n="user-mgmt-page:text.055">主管</span></td>
                 <td><span data-i18n="user-mgmt-page:text.056">分管华东</span></td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.057">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.058">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.059">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.060">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.058">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.059">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.060">停用</span></button></td>
               </tr>
               <tr>
                 <td><span data-i18n="user-mgmt-page:text.061">上海运营中心</span></td>
@@ -109,7 +109,7 @@
                 <td><span data-i18n="user-mgmt-page:text.063">临时账号</span></td>
                 <td><span data-i18n="user-mgmt-page:text.064">合同至 2026-06</span></td>
                 <td><span class="status-dot is-neutral"><span data-i18n="user-mgmt-page:text.065">已停用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.066">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.067">启用</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.068">删除</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.066">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.067">启用</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.068">删除</span></button></td>
               </tr>
             </tbody>
           </table>
@@ -128,7 +128,7 @@
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px"><span data-i18n="user-mgmt-page:text.071">账号表单字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。表单还含</span> <b><span data-i18n="user-mgmt-page:text.072">时区 timeZone</span></b><span data-i18n="user-mgmt-page:text.073">(zone select,UTC±HH:MM 15 分钟粒度)与</span> <b><span data-i18n="user-mgmt-page:text.074">MFA 谷歌验证器 mfaSecretKey</span></b><span data-i18n="user-mgmt-page:text.075">(可解绑,二次确认);新增账号后自动生成密码并支持一键复制;账号状态 code '0' 正常 / '9' 禁用。</span></p>
     <div class="modal-stage" style="padding:32px">
       <div class="modal-demo" style="width:520px;max-width:100%">
-        <div class="head"><h4><span data-i18n="user-mgmt-page:text.076">添加账号</span></h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
+        <div class="head"><h4><span data-i18n="user-mgmt-page:text.076">添加账号</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
         <div class="body">
           <div class="form-demo">
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.077">机构</span></div><div><div class="select" style="width:100%"><span><span data-i18n="user-mgmt-page:text.078">上海运营中心 ▾</span></span></div></div></div>

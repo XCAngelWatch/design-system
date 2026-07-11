@@ -416,9 +416,18 @@
   }
 
   function enhanceDemoSemantics(root) {
+    root.querySelectorAll('.bp-toolbar').forEach(function (toolbar) {
+      if (!toolbar.querySelector('input, .select') || toolbar.querySelector('[data-demo-reset-filters]')) return;
+      var reset = document.createElement('button');
+      reset.className = 'btn';
+      reset.setAttribute('data-demo-reset-filters', '');
+      reset.textContent = tCommon('reset', null, '重置');
+      toolbar.appendChild(reset);
+    });
     root.querySelectorAll('.select').forEach(function (select) {
-      select.setAttribute('role', 'button');
+      select.setAttribute('role', 'combobox');
       select.setAttribute('tabindex', '0');
+      select.setAttribute('aria-haspopup', 'listbox');
       select.setAttribute('aria-expanded', select.classList.contains('is-open') ? 'true' : 'false');
     });
     root.querySelectorAll('.tabs, .tabs-card, .tabs-route').forEach(function (tabs) {
@@ -434,10 +443,14 @@
       pager.setAttribute('role', 'navigation');
       pager.setAttribute('aria-label', tCommon('pagination', null, '分页'));
       pager.querySelectorAll('.page').forEach(function (page) {
+        var pageText = page.textContent.trim();
+        if (pageText === '‹') page.setAttribute('aria-label', tCommon('paginationPrevious', null, '上一页'));
+        if (pageText === '›') page.setAttribute('aria-label', tCommon('paginationNext', null, '下一页'));
         if (page.classList.contains('is-active') || page.classList.contains('active')) {
           page.setAttribute('aria-current', 'page');
         }
       });
+      syncPagerState(pager);
     });
     root.querySelectorAll('.switch').forEach(function (toggle) {
       toggle.setAttribute('role', 'switch');
@@ -445,14 +458,30 @@
       toggle.setAttribute('aria-checked', toggle.classList.contains('is-on') ? 'true' : 'false');
     });
     root.querySelectorAll('button[title]').forEach(function (button) {
-      if (!button.getAttribute('aria-label') && !button.textContent.trim()) {
+      if (!button.getAttribute('aria-label')) {
         button.setAttribute('aria-label', button.getAttribute('title'));
+      }
+    });
+    root.querySelectorAll('.skel, .skeleton').forEach(function (skeleton) {
+      var container = skeleton.closest('[data-loading-region]') || skeleton.parentElement;
+      if (container) {
+        container.setAttribute('aria-busy', 'true');
+        container.setAttribute('aria-label', container.getAttribute('aria-label') || tCommon('loading', null, '加载中...'));
       }
     });
     root.querySelectorAll('.toast').forEach(function (toast) {
       var urgent = toast.classList.contains('error') || toast.classList.contains('warning');
       toast.setAttribute('role', urgent ? 'alert' : 'status');
       toast.setAttribute('aria-live', urgent ? 'assertive' : 'polite');
+    });
+    root.querySelectorAll('a:not([href])').forEach(function (link) {
+      if (link.closest('.tabs, .tabs-card, .tabs-route, .crumbs')) return;
+      link.setAttribute('role', 'button');
+      link.setAttribute('tabindex', link.getAttribute('aria-disabled') === 'true' ? '-1' : '0');
+    });
+    root.querySelectorAll('table').forEach(function (table) {
+      var firstRowCheckbox = table.querySelector('tbody input[type="checkbox"]');
+      if (firstRowCheckbox) syncTableSelection(firstRowCheckbox);
     });
   }
 
@@ -487,6 +516,19 @@
     }
   }
 
+  function syncPagerState(pager) {
+    var numeric = Array.prototype.slice.call(pager.querySelectorAll('.page')).filter(function (item) {
+      return /^\d+$/.test(item.textContent.trim());
+    });
+    var activeIndex = numeric.findIndex(function (item) {
+      return item.classList.contains('is-active') || item.classList.contains('active');
+    });
+    var previous = Array.prototype.find.call(pager.querySelectorAll('.page'), function (item) { return item.textContent.trim() === '‹'; });
+    var next = Array.prototype.find.call(pager.querySelectorAll('.page'), function (item) { return item.textContent.trim() === '›'; });
+    if (previous) previous.disabled = activeIndex <= 0;
+    if (next) next.disabled = activeIndex < 0 || activeIndex >= numeric.length - 1;
+  }
+
   function wireDemoInteractions(root) {
     if (!root) return;
     enhanceDemoSemantics(root);
@@ -501,6 +543,33 @@
 
       var routeLink = target.closest && target.closest('a[href^="#/"]');
       if (routeLink) return;
+
+      var passwordToggle = target.closest && target.closest('[data-demo-toggle-password]');
+      if (passwordToggle && root.contains(passwordToggle)) {
+        var passwordInput = passwordToggle.parentElement.querySelector('input');
+        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordToggle.setAttribute('aria-pressed', passwordInput.type === 'text' ? 'true' : 'false');
+        return;
+      }
+
+      var captcha = target.closest && target.closest('[data-demo-refresh-captcha]');
+      if (captcha && root.contains(captcha)) {
+        captcha.textContent = String(Math.random()).slice(2, 7);
+        pulse(captcha);
+        return;
+      }
+
+      var resetFilters = target.closest && target.closest('[data-demo-reset-filters]');
+      if (resetFilters && root.contains(resetFilters)) {
+        var toolbar = resetFilters.closest('.bp-toolbar');
+        toolbar.querySelectorAll('input').forEach(function (input) { input.value = ''; });
+        toolbar.querySelectorAll('.select.is-open').forEach(function (select) {
+          select.classList.remove('is-open');
+          select.setAttribute('aria-expanded', 'false');
+        });
+        showDemoToast(root, tCommon('demo.filtersReset', null, '筛选条件已重置'));
+        return;
+      }
 
       var select = target.closest && target.closest('.select');
       if (select && root.contains(select)) {
@@ -533,6 +602,7 @@
         setSingleActive(targetPage, '.page', 'is-active');
         pager.querySelectorAll('.page').forEach(function (item) { item.removeAttribute('aria-current'); });
         targetPage.setAttribute('aria-current', 'page');
+        syncPagerState(pager);
         var pageLabel = /^\d+$/.test(text) ? formatNumber(Number(text), getCurrentLocale()) : text;
         showDemoToast(root, tCommon('demo.pageClicked', { page: pageLabel }, '分页点击：{page}'));
         return;
@@ -555,7 +625,7 @@
         return;
       }
 
-      var button = target.closest && target.closest('button, .btn');
+      var button = target.closest && target.closest('button, .btn, a[role="button"]');
       if (button && root.contains(button) && !button.disabled) {
         event.preventDefault();
         pulse(button);
@@ -577,8 +647,25 @@
     };
 
     root.onkeydown = function (event) {
+      if (event.key === 'Escape') {
+        root.querySelectorAll('.select.is-open').forEach(function (select) {
+          select.classList.remove('is-open');
+          select.setAttribute('aria-expanded', 'false');
+        });
+        return;
+      }
+      if ((event.key === 'ArrowLeft' || event.key === 'ArrowRight') && event.target.getAttribute('role') === 'tab') {
+        var group = event.target.closest('[role="tablist"]');
+        var tabs = Array.prototype.slice.call(group.querySelectorAll('[role="tab"]'));
+        var current = tabs.indexOf(event.target);
+        var next = event.key === 'ArrowLeft' ? (current - 1 + tabs.length) % tabs.length : (current + 1) % tabs.length;
+        event.preventDefault();
+        tabs[next].focus();
+        tabs[next].click();
+        return;
+      }
       if (event.key !== 'Enter' && event.key !== ' ') return;
-      var control = event.target.closest && event.target.closest('.select, .switch, [role="tab"]');
+      var control = event.target.closest && event.target.closest('.select, .switch, [role="tab"], a[role="button"]');
       if (!control || !root.contains(control)) return;
       event.preventDefault();
       control.click();
