@@ -54,6 +54,7 @@
   font-size: 12px; font-weight: 600;
   color: var(--aw-text-2);
 }
+.ra-table .colactions { text-align: right; white-space: nowrap; }
 .ra-table td {
   padding: 12px 14px;
   border-bottom: 1px solid var(--aw-border-3);
@@ -71,8 +72,9 @@
 
 /* ---------- ra-row + ra-btn ---------- */
 .ra-row {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 6px;
 }
 .ra-btn {

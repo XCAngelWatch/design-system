@@ -31,7 +31,7 @@
           <div class="bp-nav-item"><span data-i18n="map-page:text.025">围栏警告</span></div>
         </div>
         <div class="bp-main">
-          <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / DSN / IMEI" data-i18n-placeholder="map-page:text.026" /><div class="select"><span><span data-i18n="map-page:text.027">开始时间 ▾</span></span></div><div class="select"><span><span data-i18n="map-page:text.028">结束时间 ▾</span></span></div><button class="btn"><span data-i18n="map-page:text.029">查询</span></button></div>
+          <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" data-i18n-placeholder="map-page:text.026" /><div class="select"><span><span data-i18n="map-page:text.027">开始时间 ▾</span></span></div><div class="select"><span><span data-i18n="map-page:text.028">结束时间 ▾</span></span></div><button class="btn"><span data-i18n="map-page:text.029">查询</span></button></div>
           <div class="surface" style="min-height:280px;padding:0;overflow:hidden">
             <div style="height:280px;position:relative;background:var(--aw-fill-1);border-bottom:1px solid var(--aw-border-3)">
               <div style="position:absolute;inset:0;background-image:linear-gradient(var(--aw-border-3) 1px, transparent 1px),linear-gradient(90deg,var(--aw-border-3) 1px, transparent 1px);background-size:32px 32px;opacity:.55"></div>
@@ -44,7 +44,7 @@
               </div>
             </div>
             <table class="dt" style="border:0;border-radius:0">
-              <thead><tr><th><span data-i18n="map-page:text.035">设备</span></th><th>DSN</th><th><span data-i18n="map-page:text.036">位置上报</span></th><th><span data-i18n="map-page:text.037">围栏状态</span></th><th><span data-i18n="map-page:text.038">操作</span></th></tr></thead>
+              <thead><tr><th><span data-i18n="map-page:text.035">设备</span></th><th>SN</th><th><span data-i18n="map-page:text.036">位置上报</span></th><th><span data-i18n="map-page:text.037">围栏状态</span></th><th class="colactions"><span data-i18n="map-page:text.038">操作</span></th></tr></thead>
               <tbody>
                 <tr><td><span data-i18n="map-page:text.039">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span data-i18n="map-page:text.040">28 秒前</span></td><td><span class="status-dot is-success"><span data-i18n="map-page:text.041">围栏内</span></span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.042">定位</span></button><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.043">轨迹</span></button></td></tr>
                 <tr><td><span data-i18n="map-page:text.044">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span data-i18n="map-page:text.045">8 分钟前</span></td><td><span class="status-dot is-warning"><span data-i18n="map-page:text.046">触发警告</span></span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.047">查看警告</span></button><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.048">轨迹</span></button></td></tr>

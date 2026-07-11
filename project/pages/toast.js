@@ -10,10 +10,10 @@
     <div class="surface">
 <h3 style="margin:0 0 12px;font-size:14px">Message / Notification</h3>
 <div class="toast-stack">
-  <div class="toast success"><div class="ico">✓</div><div class="body"><strong><span data-i18n="toast:text.004">已保存</span></strong><span data-i18n="toast:text.005">设备配置已生效</span></div><div class="close">×</div></div>
-  <div class="toast info"><div class="ico">i</div><div class="body"><strong><span data-i18n="toast:text.006">OTA 推送已发起</span></strong><small><span data-i18n="toast:text.007">共 1,284 台设备 · 预计 02:12 完成</span></small></div><div class="close">×</div></div>
-  <div class="toast warning"><div class="ico">!</div><div class="body"><strong><span data-i18n="toast:text.008">低电量预警</span></strong><span data-i18n="toast:text.009">批次中 18 台设备电量 &lt; 20%</span></div><div class="close">×</div></div>
-  <div class="toast warning"><div class="ico">!</div><div class="body"><strong><span data-i18n="toast:text.010">推送结果需要处理</span></strong><span data-i18n="toast:text.011">34 台失败；打开 Result 查看明细</span></div><div class="close">×</div></div>
+  <div class="toast success"><div class="ico">✓</div><div class="body"><strong><span data-i18n="toast:text.004">已保存</span></strong><span data-i18n="toast:text.005">设备配置已生效</span></div><button class="close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
+  <div class="toast info"><div class="ico">i</div><div class="body"><strong><span data-i18n="toast:text.006">OTA 推送已发起</span></strong><small><span data-i18n="toast:text.007">共 1,284 台设备 · 预计 02:12 完成</span></small></div><button class="close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
+  <div class="toast warning"><div class="ico">!</div><div class="body"><strong><span data-i18n="toast:text.008">低电量预警</span></strong><span data-i18n="toast:text.009">批次中 18 台设备电量 &lt; 20%</span></div><button class="close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
+  <div class="toast warning"><div class="ico">!</div><div class="body"><strong><span data-i18n="toast:text.010">推送结果需要处理</span></strong><span data-i18n="toast:text.011">34 台失败；打开 Result 查看明细</span></div><button class="close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
 </div>
     </div>
     <div class="surface">
@@ -96,7 +96,7 @@
                 <button class="btn btn-link btn-sm" style="padding:0;color:var(--aw-text-3)"><span data-i18n="toast:text.084">查看任务</span></button>
               </div>
             </div>
-            <div class="close">×</div>
+            <button class="close" aria-label="关闭" data-i18n-aria-label="common:close">×</button>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
                 <div class="track"><div class="fill" style="width:30%"></div></div>
               </div>
             </div>
-            <div class="close">−</div>
+            <button class="close" aria-label="收起" data-i18n-aria-label="common:collapse">−</button>
           </div>
         </div>
       </div>
@@ -137,7 +137,7 @@
                 <button class="btn btn-link btn-sm" style="padding:0"><span data-i18n="toast:text.096">重试失败项</span></button>
               </div>
             </div>
-            <div class="close">×</div>
+            <button class="close" aria-label="关闭" data-i18n-aria-label="common:close">×</button>
           </div>
         </div>
       </div>

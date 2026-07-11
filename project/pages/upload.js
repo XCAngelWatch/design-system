@@ -24,12 +24,12 @@
     <div class="name">angelwatch-firmware-v3.5.0-rc1.zip</div>
     <div class="progress" style="margin-top:2px"><div class="track"><div class="fill" style="width:67%"></div></div><div class="pct" style="font-size:11px">67%</div></div>
   </div>
-  <div class="actions"><span style="cursor:pointer;font-size:14px">×</span></div>
+  <div class="actions"><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
 </div>
 <div class="upload-item">
   <div class="file-ico" style="background:var(--aw-danger-bg);color:var(--aw-danger)">CSV</div>
   <div class="meta"><div class="name">devices-batch-import.csv</div><div class="info" style="color:var(--aw-danger)"><span data-i18n="upload:text.007">校验失败：第 14 行格式错误</span></div></div>
-  <div class="actions"><span style="cursor:pointer;color:var(--aw-primary);font-size:12px"><span data-i18n="upload:text.008">重试</span></span></div>
+  <div class="actions"><button class="inline-action"><span data-i18n="upload:text.008">重试</span></button></div>
 </div>
     </div>
   </div>
@@ -103,7 +103,7 @@
       <div class="up-chunk-row" style="margin-top:10px">
         <span class="file-ico" style="background:var(--aw-warning-bg);color:var(--aw-warning)">BIN</span>
         <div class="up-chunk-meta">
-          <div class="name">angelwatch-firmware-v3.5.0-rc2.bin <span class="tag-meta" style="background:var(--aw-warning-bg);color:#D48806;margin-left:4px"><span data-i18n="upload:text.026">已暂停</span></span></div>
+          <div class="name">angelwatch-firmware-v3.5.0-rc2.bin <span class="tag-meta" style="background:var(--aw-warning-bg);color:var(--aw-warning);margin-left:4px"><span data-i18n="upload:text.026">已暂停</span></span></div>
           <div class="up-chunk-bar">
             <div class="chk done"></div><div class="chk done"></div><div class="chk done"></div><div class="chk done"></div>
             <div class="chk paused"></div>

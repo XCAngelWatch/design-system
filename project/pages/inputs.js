@@ -29,11 +29,11 @@
     <label class="check"><input type="checkbox" /><span class="box"></span><span data-i18n="inputs:text.011">强制升级</span></label>
   </div>
   <div style="display:flex;gap:18px">
-    <label class="check radio"><input type="checkbox" checked /><span class="box"></span><span data-i18n="inputs:text.012">立即推送</span></label>
-    <label class="check radio"><input type="checkbox" /><span class="box"></span><span data-i18n="inputs:text.013">定时推送</span></label>
+    <label class="check radio"><input type="radio" name="push-timing" checked /><span class="box"></span><span data-i18n="inputs:text.012">立即推送</span></label>
+    <label class="check radio"><input type="radio" name="push-timing" /><span class="box"></span><span data-i18n="inputs:text.013">定时推送</span></label>
   </div>
   <div style="display:flex;gap:14px;align-items:center">
-    <span class="switch is-on" id="sw1"></span>
+    <button class="switch is-on" id="sw1" aria-label="允许远程控制" data-i18n-aria-label="inputs:text.014"></button>
     <span style="font-size:13px;color:var(--aw-text-2)"><span data-i18n="inputs:text.014">允许远程控制</span></span>
   </div>
 </div>

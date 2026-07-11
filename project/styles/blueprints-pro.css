@@ -167,7 +167,15 @@
 
 .bp-main {
   padding: 14px;
+  min-width: 0;
 }
+
+.bp-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.bp-table-scroll > .dt { min-width: 720px; }
 
 .bp-toolbar {
   display: flex;

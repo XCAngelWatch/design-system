@@ -7,13 +7,13 @@
   <p class="lede"><span data-i18n="drawer:text.003">从右侧滑入，承载快速编辑、详情预览。</span><strong><span data-i18n="drawer:text.004">比 Modal 更适合 TMS 高频操作</span></strong><span data-i18n="drawer:text.005">——保留页面上下文，可继续看到列表。默认 480px 宽。</span></p>
   <div style="background:var(--aw-fill-1);border-radius:6px;padding:32px;display:flex;justify-content:flex-end">
     <div class="drawer-demo">
-<div class="head"><h4><span data-i18n="drawer:text.006">编辑设备 · 终端-上海-001</span></h4><span style="cursor:pointer;font-size:18px;color:var(--aw-text-3)">×</span></div>
+<div class="head"><h4><span data-i18n="drawer:text.006">编辑设备 · 终端-上海-001</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
 <div class="body">
   <div class="form-demo">
     <div class="form-row"><div class="lbl"><span class="req" style="color:var(--aw-danger)">*</span><span data-i18n="drawer:text.007">设备名称</span></div><div><input class="input" value="终端-上海-001" data-i18n-value="drawer:attr.008.value" /></div></div>
     <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.009">所属机构</span></div><div><div class="select" style="width:100%"><span><span data-i18n="drawer:text.010">上海 / 黄浦营业厅</span></span></div></div></div>
     <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.011">分组标签</span></div><div><div class="row"><span class="tag tag-blue"><span data-i18n="drawer:text.012">VIP 网点</span></span><span class="tag"><span data-i18n="drawer:text.013">实验组</span></span><button class="btn btn-text btn-sm"><span data-i18n="drawer:text.014">+ 添加</span></button></div></div></div>
-    <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.015">允许远程</span></div><div class="row"><span class="switch is-on"></span><span style="font-size:12px;color:var(--aw-text-3)"><span data-i18n="drawer:text.016">远程控制 + 远程截屏</span></span></div></div>
+    <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.015">允许远程</span></div><div class="row"><button class="switch is-on" aria-label="允许远程" data-i18n-aria-label="drawer:text.015"></button><span style="font-size:12px;color:var(--aw-text-3)"><span data-i18n="drawer:text.016">远程控制 + 远程截屏</span></span></div></div>
     <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.017">备注</span></div><div><input class="input" placeholder="可选" data-i18n-placeholder="drawer:attr.018.placeholder" /></div></div>
   </div>
 </div>

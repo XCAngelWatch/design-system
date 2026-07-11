@@ -124,11 +124,18 @@
 .btn-text:hover { background: var(--aw-fill-2); color: var(--aw-text-1); border-color: transparent; }
 .btn-link { background: transparent; border-color: transparent; color: var(--aw-primary); padding: 0 4px; }
 .btn-link:hover { color: var(--aw-primary-hover); border-color: transparent; background: transparent; }
+.btn-link.btn-danger-link { color: var(--aw-danger); }
+.btn-link.btn-danger-link:hover { color: var(--aw-danger-hover); background: var(--aw-danger-bg); }
 .btn-sm { height: 24px; padding: 0 8px; font-size: 13px; }
 .btn-lg { height: 40px; padding: 0 16px; font-size: 15px; }
 .btn:disabled, .btn[disabled] {
   background: var(--aw-fill-2); color: var(--aw-text-disabled);
   border-color: var(--aw-border-2); cursor: not-allowed;
+}
+.btn-link:disabled, .btn-link[disabled] {
+  background: transparent;
+  border-color: transparent;
+  color: var(--aw-text-disabled);
 }
 .btn-primary:disabled { background: var(--aw-fill-2); color: var(--aw-text-disabled); border-color: var(--aw-border-2); }
 
@@ -177,6 +184,7 @@
   transition: border-color var(--aw-dur-fast);
 }
 .select:hover { border-color: var(--aw-primary-hover); }
+.select:focus-visible { border-color: var(--aw-primary); box-shadow: 0 0 0 2px var(--aw-primary-bg); outline: 0; }
 .select::after {
   content: ''; position: absolute; right: 10px; top: 50%;
   width: 8px; height: 8px;
@@ -314,6 +322,7 @@
 }
 .pager .page:hover { color: var(--aw-primary); border-color: var(--aw-primary); }
 .pager .page.is-active { color: var(--aw-primary); border-color: var(--aw-primary); }
+.pager .page:disabled { color: var(--aw-text-disabled); border-color: var(--aw-border-3); background: var(--aw-fill-1); cursor: not-allowed; }
 .pager .total { font-size: 13px; color: var(--aw-text-3); margin-right: 8px; }
 
 /* ===== Table ===== */
@@ -334,6 +343,22 @@ table.dt tbody tr:last-child td { border-bottom: 0; }
 table.dt .colactions { white-space: nowrap; text-align: right; }
 table.dt .colactions .btn-link { font-size: 13px; }
 table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--aw-text-2); }
+
+.icon-btn,
+.dialog-close,
+.inline-action {
+  border: 0;
+  background: transparent;
+  color: var(--aw-text-3);
+  cursor: pointer;
+  font: inherit;
+}
+.icon-btn:hover,
+.dialog-close:hover,
+.inline-action:hover { color: var(--aw-primary); }
+.dialog-close { width: 28px; height: 28px; display: inline-grid; place-items: center; font-size: 18px; border-radius: var(--aw-radius-sm); }
+.dialog-close:hover { background: var(--aw-fill-2); }
+.inline-action { padding: 0; color: var(--aw-primary); }
 
 /* ===== Card ===== */
 .card {
@@ -819,7 +844,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
 .toast .body { color: var(--aw-text-1); line-height: 1.5; }
 .toast .body strong { display: block; margin-bottom: 1px; font-weight: 600; }
 .toast .body small { color: var(--aw-text-3); font-size: 12px; display: block; margin-top: 2px; }
-.toast .close { color: var(--aw-text-4); cursor: pointer; padding: 0 2px; line-height: 1; }
+.toast .close { border: 0; background: transparent; color: var(--aw-text-4); cursor: pointer; padding: 0 2px; line-height: 1; font: inherit; }
 .toast.success .ico { background: var(--aw-success); }
 .toast.info .ico { background: var(--aw-info); }
 .toast.warning .ico { background: var(--aw-warning); }

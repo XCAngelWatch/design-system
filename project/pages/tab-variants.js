@@ -27,14 +27,14 @@
 
   <div class="subsection">
     <h3><span data-i18n="tab-variants:text.019">Popconfirm · 轻量二次确认</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6"><span data-i18n="tab-variants:text.020">破坏性操作分级：单条删除、就地切换、状态翻转用 </span><b>Popconfirm</b><span data-i18n="tab-variants:text.021">（轻、就近、不阻塞），批量删除、不可逆 OTA 推送、删除组织等用 </span><b>Modal</b><span data-i18n="tab-variants:text.022">（重、要求用户离开当前焦点）。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6"><span data-i18n="tab-variants:text.020">确认强度按可逆性和影响范围分级：单条可逆的启停、状态翻转使用 </span><b>Popconfirm</b><span data-i18n="tab-variants:text.021">（轻、就近、不阻塞）；单条不可逆删除、批量操作、OTA 推送和删除组织使用 </span><b>Modal</b><span data-i18n="tab-variants:text.022">（阻塞，明确影响范围，默认焦点在取消）。</span></p>
     <div style="display:flex;gap:64px;align-items:flex-end;padding:64px 24px;background:var(--aw-fill-1);border-radius:var(--aw-radius);justify-content:center">
 <div class="popconfirm">
   <div class="popconfirm-bubble">
-    <div><span class="pc-icon">⚠</span><span data-i18n="tab-variants:text.023">确认删除终端 </span><strong><span data-i18n="tab-variants:text.024">终端-上海-001</span></strong><span data-i18n="tab-variants:text.025">？此操作不可撤销。</span></div>
-    <div class="pc-actions"><button class="btn btn-sm"><span data-i18n="tab-variants:text.026">取消</span></button><button class="btn btn-sm btn-danger"><span data-i18n="tab-variants:text.027">确认删除</span></button></div>
+    <div><span class="pc-icon">⚠</span><span data-i18n="tab-variants:text.023">确认停用终端 </span><strong><span data-i18n="tab-variants:text.024">终端-上海-001</span></strong><span data-i18n="tab-variants:text.025">？停用后可由管理员重新启用。</span></div>
+    <div class="pc-actions"><button class="btn btn-sm"><span data-i18n="tab-variants:text.026">取消</span></button><button class="btn btn-sm btn-primary"><span data-i18n="tab-variants:text.027">确认停用</span></button></div>
   </div>
-  <button class="btn btn-ghost-danger btn-sm"><span data-i18n="tab-variants:text.028">删除</span></button>
+  <button class="btn btn-sm"><span data-i18n="tab-variants:text.028">停用</span></button>
 </div>
 <div class="popconfirm">
   <div class="popconfirm-bubble">

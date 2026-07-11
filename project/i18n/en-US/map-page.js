@@ -27,7 +27,7 @@
     "text.023": "Track History",
     "text.024": "Geofence Management",
     "text.025": "Geofence Alerts",
-    "text.026": "Search device name / DSN / IMEI",
+    "text.026": "Search device name / SN / IMEI",
     "text.027": "Start Time ▾",
     "text.028": "End Time ▾",
     "text.029": "Search",

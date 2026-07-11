@@ -34,12 +34,12 @@
     <div style="font-size:13px;color:var(--aw-text-3)"><span data-i18n="table:text.040">已选 1 / 共 12,486 项</span></div>
     <div class="pager">
 <span class="total"><span data-i18n="table:text.041">共 12,486 项</span></span>
-<button class="page">‹</button>
+<button class="page" disabled aria-label="上一页" data-i18n-aria-label="common:paginationPrevious">‹</button>
 <button class="page is-active">1</button>
 <button class="page">2</button>
 <button class="page">3</button>
 <button class="page">…</button>
-<button class="page">250</button>
+<button class="page">625</button>
 <button class="page">›</button>
 <div class="select" style="margin-left:8px;min-width:96px"><span><span data-i18n="table:text.042">20 条/页</span></span></div>
     </div>
@@ -155,7 +155,7 @@
         </tbody>
       </table>
       <div class="col-cfg-panel">
-        <div class="ccp-h"><span data-i18n="table:text.098">列设置 </span><span style="float:right;color:var(--aw-text-3);font-weight:400;cursor:pointer">×</span></div>
+        <div class="ccp-h"><span data-i18n="table:text.098">列设置 </span><button class="dialog-close" style="float:right" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
         <div class="ccp-l"><span data-i18n="table:text.099">已选 5 / 共 8 列 · 拖拽排序</span></div>
         <div class="ccp-list">
           <div class="ccp-it locked"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked disabled /><span class="box"></span></label><span class="nm"><span data-i18n="table:text.100">设备名称</span></span><span class="lock"><span data-i18n="table:text.101">锁定</span></span></div>
@@ -265,8 +265,8 @@
         <thead><tr><th style="width:160px"><span data-i18n="table:text.166">行数</span></th><th style="width:200px"><span data-i18n="table:text.167">渲染策略</span></th><th><span data-i18n="table:text.168">说明</span></th></tr></thead>
         <tbody>
           <tr><td><span data-i18n="table:text.169">&lt; 1,000 行</span></td><td><span class="tag-meta"><span data-i18n="table:text.170">原生 DOM</span></span></td><td><span data-i18n="table:text.171">antd Table 默认行为，性能足够。开启 </span><code>fixed: 'left' / 'right'</code><span data-i18n="table:text.172"> 即可冻结</span></td></tr>
-          <tr><td><span data-i18n="table:text.173">1,000 – 50,000 行</span></td><td><span class="tag-meta" style="background:#FFFBE6;color:#D48806"><span data-i18n="table:text.174">虚拟列表</span></span></td><td><span data-i18n="table:text.175">切换到 </span><code>@tanstack/react-virtual</code><span data-i18n="table:text.176">，仅渲染可视区 + buffer。冻结列单独渲染层</span></td></tr>
-          <tr><td><span data-i18n="table:text.177">&gt; 50,000 行</span></td><td><span class="tag-meta" style="background:#FFF1F0;color:#CF1322"><span data-i18n="table:text.178">服务端分页</span></span></td><td><span data-i18n="table:text.179">禁用全选跨页，分页大小默认 100。提示文案："数据量过大，请使用筛选缩小范围"</span></td></tr>
+          <tr><td><span data-i18n="table:text.173">1,000 – 50,000 行</span></td><td><span class="tag-meta" style="background:var(--aw-warning-bg);color:var(--aw-warning)"><span data-i18n="table:text.174">虚拟列表</span></span></td><td><span data-i18n="table:text.175">切换到 </span><code>@tanstack/react-virtual</code><span data-i18n="table:text.176">，仅渲染可视区 + buffer。冻结列单独渲染层</span></td></tr>
+          <tr><td><span data-i18n="table:text.177">&gt; 50,000 行</span></td><td><span class="tag-meta" style="background:var(--aw-danger-bg);color:var(--aw-danger)"><span data-i18n="table:text.178">服务端分页</span></span></td><td><span data-i18n="table:text.179">禁用全选跨页，分页大小默认 100。提示文案："数据量过大，请使用筛选缩小范围"</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -312,7 +312,7 @@
 
     <div class="page-tri-card" style="margin-top:14px">
       <div class="ptc-cap"><span data-i18n="table:text.191">窄容器态</span></div>
-      <div class="ptc-body" style="background:#F0F2F5">
+      <div class="ptc-body" style="background:var(--aw-bg-page)">
         <div class="pager-mobile">
           <div class="pm-prev"><span data-i18n="table:text.192">‹ 上一页</span></div>
           <div class="pm-dots"><span class="d"></span><span class="d"></span><span class="d"></span><span class="d cur"></span><span class="d"></span><span class="d"></span><span class="d"></span></div>

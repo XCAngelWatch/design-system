@@ -21,10 +21,10 @@
 <section class="section" id="row-actions">
   <p class="section-eyebrow"><span data-i18n="row-actions:text.001">业务模式 · 行操作</span></p>
   <h2><span data-i18n="row-actions:text.002">行操作 RowActions</span></h2>
-  <p class="lede"><span data-i18n="row-actions:text.003">表格 / 卡片每条记录的尾列动作。顺序固定为查看 → 编辑 → 业务动作 → 启停 → 删除，并统一 tooltip 与危险确认阈值，避免每个业务页各写一套。</span></p>
+  <p class="lede"><span data-i18n="row-actions:text.003">表格 / 卡片每条记录的尾列动作。表格统一使用右对齐文字按钮，顺序固定为查看 → 编辑 → 业务动作 → 启停 → 删除，并统一危险确认阈值。</span></p>
 
   <div class="subsection">
-    <h3><span data-i18n="row-actions:text.004">标准动作集合</span></h3>
+    <h3><span data-i18n="row-actions:text.004">动作词汇与语义</span></h3>
     <div class="surface">
       <div class="ra-grid">
         <div class="ra-cell"><div class="ra-icn">${ICN.detail}</div><div class="ra-name"><span data-i18n="row-actions:text.005">详情</span></div><code>view</code></div>
@@ -41,7 +41,7 @@
         <div class="ra-cell"><div class="ra-icn">${ICN.more}</div><div class="ra-name"><span data-i18n="row-actions:text.016">更多</span></div><code>more</code></div>
       </div>
     </div>
-    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="row-actions:text.017">视觉规范：</span></strong><span data-i18n="row-actions:text.018">16×16 SVG 单色图标 · 6px 间距 · 图标默认 </span><code>--aw-text-2</code><span data-i18n="row-actions:text.019">，hover 转 </span><code>--aw-primary</code><span data-i18n="row-actions:text.020">，danger 类型 hover 转 </span><code>--aw-danger</code><span data-i18n="row-actions:text.021">。Tooltip hover 200ms 延迟出现。</span></div></div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="row-actions:text.017">使用边界：</span></strong><span data-i18n="row-actions:text.018">上方图标仅用于动作词汇和开发映射；表格尾列使用文字按钮，紧凑卡片才允许 16×16 单色图标。危险动作使用 </span><code>--aw-danger</code><span data-i18n="row-actions:text.019">，禁用态使用 </span><code>--aw-text-disabled</code><span data-i18n="row-actions:text.020">，图标按钮必须提供 Tooltip 和 aria-label</span><span data-i18n="row-actions:text.021">。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -49,19 +49,19 @@
     <div class="surface" style="padding:0;overflow:hidden">
       <table class="ra-table">
         <thead>
-          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th style="width:160px"><span data-i18n="row-actions:text.027">操作</span></th></tr>
+          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th style="width:200px" class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
         </thead>
         <tbody>
           <tr>
             <td><span data-i18n="row-actions:text.028">终端-上海-001</span></td><td><code>DEV-86420075</code></td>
             <td><span class="status-dot online"><span data-i18n="row-actions:text.029">在线</span></span></td>
             <td>v3.4.2</td><td><span data-i18n="row-actions:text.030">AngelWatch / 华东 / 上海</span></td>
-            <td>
+            <td class="colactions">
               <div class="ra-row">
-                <button class="ra-btn" title="详情" data-i18n-title="row-actions:text.005">${ICN.detail}</button>
-                <button class="ra-btn" title="编辑" data-i18n-title="row-actions:text.006">${ICN.edit}</button>
-                <button class="ra-btn" title="推送" data-i18n-title="row-actions:text.008">${ICN.push}</button>
-                <button class="ra-btn" title="日志" data-i18n-title="row-actions:text.010">${ICN.log}</button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.008">推送</span></button>
+                <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
               </div>
             </td>
           </tr>
@@ -69,12 +69,12 @@
             <td><span data-i18n="row-actions:text.031">终端-北京-014</span></td><td><code>DEV-86420089</code></td>
             <td><span class="status-dot upgrading"><span data-i18n="row-actions:text.032">升级中</span></span></td>
             <td>v3.4.1</td><td><span data-i18n="row-actions:text.033">AngelWatch / 华北 / 北京</span></td>
-            <td>
+            <td class="colactions">
               <div class="ra-row">
-                <button class="ra-btn" title="详情" data-i18n-title="row-actions:text.005">${ICN.detail}</button>
-                <button class="ra-btn" title="编辑" data-i18n-title="row-actions:text.006">${ICN.edit}</button>
-                <button class="ra-btn dim" title="推送（升级中不可用）" data-i18n-title="row-actions:text.034" disabled>${ICN.push}</button>
-                <button class="ra-btn" title="日志" data-i18n-title="row-actions:text.010">${ICN.log}</button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
+                <button class="btn btn-link" title="推送（升级中不可用）" data-i18n-title="row-actions:text.034" disabled><span data-i18n="row-actions:text.008">推送</span></button>
+                <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
               </div>
             </td>
           </tr>
@@ -82,12 +82,12 @@
             <td><span data-i18n="row-actions:text.035">终端-广州-007</span></td><td><code>DEV-86420112</code></td>
             <td><span class="status-dot offline"><span data-i18n="row-actions:text.036">离线</span></span></td>
             <td>v3.3.8</td><td><span data-i18n="row-actions:text.037">AngelWatch / 华南 / 广州</span></td>
-            <td>
+            <td class="colactions">
               <div class="ra-row">
-                <button class="ra-btn" title="详情" data-i18n-title="row-actions:text.005">${ICN.detail}</button>
-                <button class="ra-btn" title="编辑" data-i18n-title="row-actions:text.006">${ICN.edit}</button>
-                <button class="ra-btn" title="日志" data-i18n-title="row-actions:text.010">${ICN.log}</button>
-                <button class="ra-btn danger" title="删除" data-i18n-title="row-actions:text.007">${ICN.del}</button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
+                <button class="btn btn-link"><span data-i18n="row-actions:text.010">日志</span></button>
+                <button class="btn btn-link btn-danger-link" title="删除" data-i18n-title="row-actions:text.007"><span data-i18n="row-actions:text.007">删除</span></button>
               </div>
             </td>
           </tr>
@@ -103,16 +103,16 @@
         <thead><tr><th style="width:200px"><span data-i18n="row-actions:text.039">场景</span></th><th style="width:160px"><span data-i18n="row-actions:text.040">交互形态</span></th><th><span data-i18n="row-actions:text.041">说明</span></th></tr></thead>
         <tbody>
           <tr><td><span data-i18n="row-actions:text.042">单条 · 非破坏性</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.043">查看日志、复制 SN、下载</span></small></td><td><span class="tag-meta"><span data-i18n="row-actions:text.044">直接执行</span></span></td><td><span data-i18n="row-actions:text.045">无确认 · 仅 toast 反馈结果</span></td></tr>
-          <tr><td><span data-i18n="row-actions:text.046">单条 · 可逆</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.047">启停、重置缓存</span></small></td><td><span class="tag-meta" style="background:#FFFBE6;color:#D48806">Popconfirm</span></td><td><span data-i18n="row-actions:text.048">悬浮 popover · 一句话确认 · 单击外部取消</span></td></tr>
-          <tr><td><span data-i18n="row-actions:text.049">单条 · 不可逆</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.050">删除设备、注销证书</span></small></td><td><span class="tag-meta" style="background:#FFF1F0;color:#CF1322">Modal</span></td><td><span data-i18n="row-actions:text.051">阻塞确认 · 必须列出影响范围 · 红色危险按钮</span></td></tr>
-          <tr><td><span data-i18n="row-actions:text.052">批量 · 任意操作</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.053">批量启停、批量推送、批量删除</span></small></td><td><span class="tag-meta" style="background:#FFF1F0;color:#CF1322"><span data-i18n="row-actions:text.054">Modal · 含明细</span></span></td><td><span data-i18n="row-actions:text.055">必须显示选中数量与影响范围；删除类需二次输入"确认"或勾选确认框</span></td></tr>
+          <tr><td><span data-i18n="row-actions:text.046">单条 · 可逆</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.047">启停、重置缓存</span></small></td><td><span class="tag-meta" style="background:var(--aw-warning-bg);color:var(--aw-warning)">Popconfirm</span></td><td><span data-i18n="row-actions:text.048">悬浮 popover · 一句话确认 · 单击外部取消</span></td></tr>
+          <tr><td><span data-i18n="row-actions:text.049">单条 · 不可逆</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.050">删除设备、注销证书</span></small></td><td><span class="tag-meta" style="background:var(--aw-danger-bg);color:var(--aw-danger)">Modal</span></td><td><span data-i18n="row-actions:text.051">阻塞确认 · 必须列出影响范围 · 红色危险按钮</span></td></tr>
+          <tr><td><span data-i18n="row-actions:text.052">批量 · 任意操作</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="row-actions:text.053">批量启停、批量推送、批量删除</span></small></td><td><span class="tag-meta" style="background:var(--aw-danger-bg);color:var(--aw-danger)"><span data-i18n="row-actions:text.054">Modal · 含明细</span></span></td><td><span data-i18n="row-actions:text.055">必须显示选中数量与影响范围；删除类需二次输入"确认"或勾选确认框</span></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="row-actions:text.056">折叠态 · 操作 &gt; 4 时</span></h3>
+    <h3><span data-i18n="row-actions:text.056">折叠态 · 操作 ≥ 4 时</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">前 3 个动作明示，第 4+ 个收入 ⋯ 下拉。设备核心动作（详情、编辑、推送）固定在前 3 位，不进下拉。</span></p>
     <div class="surface">
       <div class="ra-row">
@@ -140,8 +140,8 @@
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.066">反例</span></h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.067">不要把"删除"做成主色按钮：</span></strong><span data-i18n="row-actions:text.068">主色 </span><code>#165DFF</code><span data-i18n="row-actions:text.069"> 是积极动作（提交 / 确认），删除应走 ghost-danger 或纯红 icon。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要在表格行尾列堆超过 6 个图标：</span></strong><span data-i18n="row-actions:text.071">横向滚动一定让其中几个失踪。超过 4 个用折叠。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要把"详情"做成超链接文字而其他做成图标：</span></strong><span data-i18n="row-actions:text.073">形态混用导致动作权重不可识别，统一图标 + tooltip。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要在表格行尾平铺 4 个以上动作：</span></strong><span data-i18n="row-actions:text.071">前 3 个使用文字按钮，其余动作收入更多菜单。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要在同一操作列混用文字与图标：</span></strong><span data-i18n="row-actions:text.073">表格统一文字按钮；只有紧凑卡片允许统一图标 + Tooltip。</span></div></div>
   </div>
 
   <div class="subsection">

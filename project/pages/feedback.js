@@ -40,7 +40,7 @@
       <h3 class="card-title"><span data-i18n="feedback:text.069">Modal · 弹窗</span></h3>
       <div class="modal-stage">
         <div class="modal-demo">
-          <div class="head"><h4><span data-i18n="feedback:text.070">确认删除设备</span></h4><span style="color:var(--aw-text-3);cursor:pointer;font-size:18px">×</span></div>
+          <div class="head"><h4><span data-i18n="feedback:text.070">确认删除设备</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
           <div class="body"><span data-i18n="feedback:text.071">将删除 </span><strong><span data-i18n="feedback:text.072">终端-上海-001</span></strong><span data-i18n="feedback:text.073"> 及其所有历史数据。此操作不可撤销，确认继续？</span></div>
           <div class="foot"><button class="btn"><span data-i18n="feedback:text.074">取消</span></button><button class="btn btn-danger"><span data-i18n="feedback:text.075">确认删除</span></button></div>
         </div>
@@ -67,12 +67,12 @@
         <div class="mv-cap"><span data-i18n="feedback:text.082">①  内嵌 Tabs · 设备详情快查</span></div>
         <div class="mv-body">
           <div class="modal-demo" style="width:560px;max-width:100%">
-            <div class="head"><h4><span data-i18n="feedback:text.083">设备详情 · 终端-上海-001</span></h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
+            <div class="head"><h4><span data-i18n="feedback:text.083">设备详情 · 终端-上海-001</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
             <div class="tabs" style="padding:0 14px;border-bottom:1px solid var(--aw-border-3)">
               <div class="tab is-active"><span data-i18n="feedback:text.084">基础信息</span></div>
               <div class="tab"><span data-i18n="feedback:text.085">实时状态</span></div>
               <div class="tab"><span data-i18n="feedback:text.086">操作日志 </span><span class="tag-meta" style="margin-left:4px">12</span></div>
-              <div class="tab"><span data-i18n="feedback:text.087">告警 </span><span class="tag-meta" style="margin-left:4px;background:#FFF1F0;color:#CF1322">3</span></div>
+              <div class="tab"><span data-i18n="feedback:text.087">告警 </span><span class="tag-meta" style="margin-left:4px;background:var(--aw-danger-bg);color:var(--aw-danger)">3</span></div>
             </div>
             <div class="body">
               <div class="form-demo">
@@ -91,7 +91,7 @@
         <div class="mv-cap"><span data-i18n="feedback:text.094">②  内嵌表单分组 · 多 collapse panel</span></div>
         <div class="mv-body">
           <div class="modal-demo" style="width:560px;max-width:100%">
-            <div class="head"><h4><span data-i18n="feedback:text.095">新建 OTA 策略</span></h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
+            <div class="head"><h4><span data-i18n="feedback:text.095">新建 OTA 策略</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
             <div class="body" style="max-height:280px;overflow:auto">
               <div class="cps-h"><span class="ar">▾</span><span data-i18n="feedback:text.096">基础信息</span><span class="cps-sub"><span data-i18n="feedback:text.097">名称 / 描述 / 适用机型</span></span></div>
               <div class="cps-c">
@@ -114,7 +114,7 @@
         <div class="mv-cap"><span data-i18n="feedback:text.113">③  内嵌表格选择 · 批量挑选设备</span></div>
         <div class="mv-body">
           <div class="modal-demo" style="width:680px;max-width:100%">
-            <div class="head"><h4><span data-i18n="feedback:text.114">选择目标设备</span></h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
+            <div class="head"><h4><span data-i18n="feedback:text.114">选择目标设备</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
             <div class="body" style="padding:0">
               <div style="padding:12px 16px;border-bottom:1px solid var(--aw-border-3);display:flex;gap:8px">
                 <input class="input" placeholder="搜索设备名称 / SN" style="flex:1" data-i18n-placeholder="feedback:attr.115.placeholder" />
@@ -158,7 +158,7 @@
         <div class="mv-cap"><span data-i18n="feedback:text.134">⑤  多步 Modal · Wizard 在 Modal 内</span></div>
         <div class="mv-body">
           <div class="modal-demo" style="width:560px;max-width:100%">
-            <div class="head"><h4><span data-i18n="feedback:text.135">批量推送向导</span></h4><span style="cursor:pointer;color:var(--aw-text-3);font-size:18px">×</span></div>
+            <div class="head"><h4><span data-i18n="feedback:text.135">批量推送向导</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
             <div style="padding:14px 16px 0">
               <div class="ls-steps">
                 <div class="st done"><span data-i18n="feedback:text.136">①  选择策略</span></div><div class="st-line"></div>

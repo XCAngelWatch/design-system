@@ -415,8 +415,81 @@
     }
   }
 
+  function enhanceDemoSemantics(root) {
+    root.querySelectorAll('.select').forEach(function (select) {
+      select.setAttribute('role', 'button');
+      select.setAttribute('tabindex', '0');
+      select.setAttribute('aria-expanded', select.classList.contains('is-open') ? 'true' : 'false');
+    });
+    root.querySelectorAll('.tabs, .tabs-card, .tabs-route').forEach(function (tabs) {
+      tabs.setAttribute('role', 'tablist');
+      tabs.querySelectorAll('a').forEach(function (tab) {
+        var active = tab.classList.contains('active') || tab.classList.contains('is-active');
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    });
+    root.querySelectorAll('.pager').forEach(function (pager) {
+      pager.setAttribute('role', 'navigation');
+      pager.setAttribute('aria-label', tCommon('pagination', null, '分页'));
+      pager.querySelectorAll('.page').forEach(function (page) {
+        if (page.classList.contains('is-active') || page.classList.contains('active')) {
+          page.setAttribute('aria-current', 'page');
+        }
+      });
+    });
+    root.querySelectorAll('.switch').forEach(function (toggle) {
+      toggle.setAttribute('role', 'switch');
+      toggle.setAttribute('tabindex', '0');
+      toggle.setAttribute('aria-checked', toggle.classList.contains('is-on') ? 'true' : 'false');
+    });
+    root.querySelectorAll('button[title]').forEach(function (button) {
+      if (!button.getAttribute('aria-label') && !button.textContent.trim()) {
+        button.setAttribute('aria-label', button.getAttribute('title'));
+      }
+    });
+    root.querySelectorAll('.toast').forEach(function (toast) {
+      var urgent = toast.classList.contains('error') || toast.classList.contains('warning');
+      toast.setAttribute('role', urgent ? 'alert' : 'status');
+      toast.setAttribute('aria-live', urgent ? 'assertive' : 'polite');
+    });
+  }
+
+  function syncTabs(tab) {
+    var group = tab.closest('.tabs, .tabs-card, .tabs-route');
+    if (!group) return;
+    group.querySelectorAll('a').forEach(function (item) {
+      var active = item === tab;
+      item.classList.toggle('active', active);
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-selected', active ? 'true' : 'false');
+      item.setAttribute('tabindex', active ? '0' : '-1');
+    });
+  }
+
+  function syncTableSelection(input) {
+    var table = input.closest('table');
+    if (!table) return;
+    var header = table.querySelector('thead input[type="checkbox"]');
+    var rows = Array.prototype.slice.call(table.querySelectorAll('tbody input[type="checkbox"]'));
+    if (input === header) {
+      rows.forEach(function (item) {
+        item.checked = header.checked;
+        var row = item.closest('tr');
+        if (row) row.classList.toggle('is-selected', item.checked);
+      });
+    }
+    if (header && rows.length) {
+      var selected = rows.filter(function (item) { return item.checked; }).length;
+      header.checked = selected === rows.length;
+      header.indeterminate = selected > 0 && selected < rows.length;
+    }
+  }
+
   function wireDemoInteractions(root) {
     if (!root) return;
+    enhanceDemoSemantics(root);
 
     root.onclick = function (event) {
       var target = event.target;
@@ -433,6 +506,7 @@
       if (select && root.contains(select)) {
         event.preventDefault();
         select.classList.toggle('is-open');
+        select.setAttribute('aria-expanded', select.classList.contains('is-open') ? 'true' : 'false');
         showDemoToast(root, select.classList.contains('is-open') ?
           tCommon('demo.selectExpanded', null, '已展开选择器') :
           tCommon('demo.selectCollapsed', null, '已收起选择器'));
@@ -443,17 +517,41 @@
       if (page && root.contains(page)) {
         event.preventDefault();
         var text = page.textContent.trim();
-        if (!/[‹›…]/.test(text)) setSingleActive(page, '.page', 'is-active');
+        var pager = page.closest('.pager');
+        var targetPage = page;
+        if (text === '‹' || text === '›') {
+          var numeric = Array.prototype.slice.call(pager.querySelectorAll('.page')).filter(function (item) {
+            return /^\d+$/.test(item.textContent.trim());
+          });
+          var activeIndex = numeric.findIndex(function (item) { return item.classList.contains('is-active') || item.classList.contains('active'); });
+          var nextIndex = text === '‹' ? activeIndex - 1 : activeIndex + 1;
+          if (nextIndex < 0 || nextIndex >= numeric.length) return;
+          targetPage = numeric[nextIndex];
+          text = targetPage.textContent.trim();
+        }
+        if (text === '…') return;
+        setSingleActive(targetPage, '.page', 'is-active');
+        pager.querySelectorAll('.page').forEach(function (item) { item.removeAttribute('aria-current'); });
+        targetPage.setAttribute('aria-current', 'page');
         var pageLabel = /^\d+$/.test(text) ? formatNumber(Number(text), getCurrentLocale()) : text;
         showDemoToast(root, tCommon('demo.pageClicked', { page: pageLabel }, '分页点击：{page}'));
         return;
       }
 
-      var tab = target.closest && target.closest('.tabs a, .viewtoggle button, .seg button, .chip');
+      var tab = target.closest && target.closest('.tabs a, .tabs-card a, .tabs-route a, .viewtoggle button, .seg button, .chip');
       if (tab && root.contains(tab)) {
         event.preventDefault();
-        setSingleActive(tab, tab.tagName === 'A' ? 'a' : tab.classList.contains('chip') ? '.chip' : 'button', tab.classList.contains('chip') ? 'active' : 'active');
+        if (tab.tagName === 'A') syncTabs(tab);
+        else setSingleActive(tab, tab.classList.contains('chip') ? '.chip' : 'button', 'active');
         showDemoToast(root, tCommon('demo.viewChanged', { label: tab.textContent.trim() }, '已切换：{label}'));
+        return;
+      }
+
+      var toggle = target.closest && target.closest('.switch');
+      if (toggle && root.contains(toggle)) {
+        toggle.classList.toggle('is-on');
+        toggle.setAttribute('aria-checked', toggle.classList.contains('is-on') ? 'true' : 'false');
+        showDemoToast(root, toggle.classList.contains('is-on') ? tCommon('enabled', null, '已启用') : tCommon('disabled', null, '已停用'));
         return;
       }
 
@@ -470,11 +568,20 @@
     root.onchange = function (event) {
       var input = event.target;
       if (!input.matches || !input.matches('input[type="checkbox"]')) return;
+      syncTableSelection(input);
       var row = input.closest('tr');
       var label = input.closest('label');
       if (row) row.classList.toggle('is-selected', input.checked);
       if (label) label.classList.toggle('is-checked', input.checked);
       showDemoToast(root, input.checked ? tCommon('demo.checked', null, '已选中') : tCommon('demo.unchecked', null, '已取消选中'));
+    };
+
+    root.onkeydown = function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      var control = event.target.closest && event.target.closest('.select, .switch, [role="tab"]');
+      if (!control || !root.contains(control)) return;
+      event.preventDefault();
+      control.click();
     };
   }
 

@@ -47,7 +47,7 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
-            <table class="dt"><thead><tr><th><span data-i18n="i18n:t029">设备</span></th><th><span data-i18n="i18n:t030">所属机构</span></th><th><span data-i18n="i18n:t031">状态</span></th><th><span data-i18n="i18n:t032">操作</span></th></tr></thead></table>
+            <table class="dt"><thead><tr><th><span data-i18n="i18n:t029">设备</span></th><th><span data-i18n="i18n:t030">所属机构</span></th><th><span data-i18n="i18n:t031">状态</span></th><th class="colactions"><span data-i18n="i18n:t032">操作</span></th></tr></thead></table>
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
