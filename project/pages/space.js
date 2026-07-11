@@ -3,9 +3,9 @@
 <div class="content">
 <!-- SPACE -->
 <section class="section" id="space">
-  <p class="section-eyebrow">Foundations · 间距</p>
-  <h2>间距 Spacing</h2>
-  <p class="lede">基于 4-pt 网格。组件内边距 8/12/16；区块间距 20/24/32；页面外缘 16（按规格定义）。</p>
+  <p class="section-eyebrow"><span data-i18n="space:t001">设计基础 · 间距</span></p>
+  <h2><span data-i18n="space:t002">间距 Spacing</span></h2>
+  <p class="lede"><span data-i18n="space:t003">基于 4-pt 网格。组件内边距 8/12/16；区块间距 20/24/32；页面外缘 16（按规格定义）。</span></p>
   <div class="surface">
     <div class="space-row"><div class="label"><b>4</b>px</div><div class="label">--aw-sp-4</div><div class="bar" style="width:4px"></div></div>
     <div class="space-row"><div class="label"><b>8</b>px</div><div class="label">--aw-sp-8</div><div class="bar" style="width:8px"></div></div>

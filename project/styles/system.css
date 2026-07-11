@@ -1,12 +1,20 @@
 /* AngelWatch DS — Documentation chrome + component styles */
 
 /* ============ DOC SHELL ============ */
+:root {
+  --aw-doc-sidebar-width: 240px;
+}
+
+html[lang="en-US"] {
+  --aw-doc-sidebar-width: 272px;
+}
+
 .app {
   display: grid;
   /* minmax(0, 1fr) 让主区列允许收缩到 0 —— 默认 `1fr` = `minmax(auto, 1fr)`,
      会被内部 fixed-width 子元素(如 .modal-demo / .shell-mock 4 卡 grid)
      撑大,导致 .app-main 的 overflow-x:hidden 失效,内容溢出右边 */
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: var(--aw-doc-sidebar-width) minmax(0, 1fr);
   min-height: 100vh;
 }
 .app-side {
@@ -62,6 +70,13 @@
 }
 .nav a.active .dot { opacity: 1; }
 
+html[lang="en-US"] .nav a {
+  min-width: 0;
+  min-height: 34px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
 .theme-toggle {
   margin: 16px 16px 0; padding: 4px;
   background: var(--aw-fill-2);
@@ -81,6 +96,32 @@
 }
 
 .app-main { padding: 0; overflow-x: hidden; }
+
+@media (max-width: 700px) {
+  .app {
+    display: block;
+  }
+  .app-side {
+    position: relative;
+    top: auto;
+    height: auto;
+    max-height: 42vh;
+    overflow-y: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--aw-border-2);
+    padding: 14px 0 18px;
+  }
+  .brand {
+    padding: 0 16px 12px;
+    margin-bottom: 8px;
+  }
+  .nav-section {
+    padding: 10px 16px 4px;
+  }
+  .nav a {
+    padding: 7px 16px;
+  }
+}
 
 /* HERO — 中性企业面:蓝仅作 eyebrow + 标题 em 两次 accent(brand posture: 主色不作大面积铺底) */
 .hero {

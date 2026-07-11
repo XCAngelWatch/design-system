@@ -2,42 +2,42 @@
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["market-page"] = `
 <div class="content">
 <section class="section" id="market-page">
-  <p class="section-eyebrow">页面模板 · 业务蓝图</p>
-  <h2>应用市场 MarketPage</h2>
-  <p class="lede">应用市场覆盖应用管理、广告管理、应用分类、版本管理、审核和安装明细。它把应用市场页面族抽象为列表、卡片、审核、版本与明细规则。</p>
+  <p class="section-eyebrow"><span data-i18n="market-page:text.001">页面蓝图 · 应用市场</span></p>
+  <h2><span data-i18n="market-page:text.002">应用市场 MarketPage</span></h2>
+  <p class="lede"><span data-i18n="market-page:text.003">应用市场覆盖应用管理、广告管理、应用分类、版本管理、审核和安装明细。它把应用市场页面族抽象为列表、卡片、审核、版本与明细规则。</span></p>
 
   <div class="subsection">
-    <h3>覆盖范围</h3>
+    <h3><span data-i18n="market-page:text.004">覆盖范围</span></h3>
     <table class="blueprint-table">
-      <thead><tr><th>页面族</th><th>关键界面</th><th>规范落点</th></tr></thead>
+      <thead><tr><th><span data-i18n="market-page:text.005">页面族</span></th><th><span data-i18n="market-page:text.006">关键界面</span></th><th><span data-i18n="market-page:text.007">规范落点</span></th></tr></thead>
       <tbody>
-        <tr><td>应用管理</td><td>添加、详情、修改、审核、卡片视图</td><td>列表骨架、表单校验、审核反馈、卡片视图</td></tr>
-        <tr><td>版本管理</td><td>版本管理、版本升级、安装明细、升级历史</td><td>版本表格、上传文件、推送结果、安装明细</td></tr>
-        <tr><td>广告管理</td><td>主页、卡片视图、详情、添加、修改</td><td>媒体卡片、上下架状态、时间窗口</td></tr>
-        <tr><td>应用分类</td><td>主页面、添加、修改、状态帧</td><td>轻量表单、排序、禁用态、删除确认</td></tr>
+        <tr><td><span data-i18n="market-page:text.008">应用管理</span></td><td><span data-i18n="market-page:text.009">添加、详情、修改、审核、卡片视图</span></td><td><span data-i18n="market-page:text.010">列表骨架、表单校验、审核反馈、卡片视图</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.011">版本管理</span></td><td><span data-i18n="market-page:text.012">版本管理、版本升级、安装明细、升级历史</span></td><td><span data-i18n="market-page:text.013">版本表格、上传文件、推送结果、安装明细</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.014">广告管理</span></td><td><span data-i18n="market-page:text.015">主页、卡片视图、详情、添加、修改</span></td><td><span data-i18n="market-page:text.016">媒体卡片、上下架状态、时间窗口</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.017">应用分类</span></td><td><span data-i18n="market-page:text.018">主页面、添加、修改、状态帧</span></td><td><span data-i18n="market-page:text.019">轻量表单、排序、禁用态、删除确认</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="subsection">
-    <h3>主列表结构</h3>
+    <h3><span data-i18n="market-page:text.020">主列表结构</span></h3>
     <div class="bp-shell">
-      <div class="bp-shell-head"><strong>应用市场 / 应用管理</strong><div class="row"><button class="btn">导出</button><button class="btn btn-primary">+ 添加应用</button></div></div>
+      <div class="bp-shell-head"><strong><span data-i18n="market-page:text.021">应用市场 / 应用管理</span></strong><div class="row"><button class="btn"><span data-i18n="market-page:text.022">导出</span></button><button class="btn btn-primary"><span data-i18n="market-page:text.023">+ 添加应用</span></button></div></div>
       <div class="bp-shell-body">
         <div class="bp-side">
-          <div class="bp-nav-item active">应用管理</div>
-          <div class="bp-nav-item">广告管理</div>
-          <div class="bp-nav-item">应用分类</div>
-          <div class="bp-nav-item">版本审核</div>
+          <div class="bp-nav-item active"><span data-i18n="market-page:text.024">应用管理</span></div>
+          <div class="bp-nav-item"><span data-i18n="market-page:text.025">广告管理</span></div>
+          <div class="bp-nav-item"><span data-i18n="market-page:text.026">应用分类</span></div>
+          <div class="bp-nav-item"><span data-i18n="market-page:text.027">版本审核</span></div>
         </div>
         <div class="bp-main">
-          <div class="bp-toolbar"><input class="input" placeholder="搜索应用名 / 包名" /><div class="select"><span>全部状态 ▾</span></div><div class="select"><span>全部分类 ▾</span></div><button class="btn">筛选</button></div>
+          <div class="bp-toolbar"><input class="input" placeholder="搜索应用名 / 包名" data-i18n-placeholder="market-page:text.028" /><div class="select"><span><span data-i18n="market-page:text.029">全部状态 ▾</span></span></div><div class="select"><span><span data-i18n="market-page:text.030">全部分类 ▾</span></span></div><button class="btn"><span data-i18n="market-page:text.031">筛选</span></button></div>
           <table class="dt">
-            <thead><tr><th>应用</th><th>机构</th><th>包名</th><th>版本总数</th><th>下载总数</th><th>操作</th></tr></thead>
+            <thead><tr><th><span data-i18n="market-page:text.032">应用</span></th><th><span data-i18n="market-page:text.033">机构</span></th><th><span data-i18n="market-page:text.034">包名</span></th><th><span data-i18n="market-page:text.035">版本总数</span></th><th><span data-i18n="market-page:text.036">下载总数</span></th><th><span data-i18n="market-page:text.037">操作</span></th></tr></thead>
             <tbody>
-              <tr><td><b>Terminal Guard</b></td><td>华北运营中心</td><td><code>com.aw.guard</code></td><td><span class="mono">12</span></td><td><span class="mono">8,642</span></td><td><a>详情</a> · <a>版本</a> · <a>下架</a></td></tr>
-              <tr><td><b>Policy Sync</b></td><td>华南运营中心</td><td><code>com.aw.policy</code></td><td><span class="mono">8</span></td><td><span class="mono">3,210</span></td><td><a>审核</a> · <a>修改</a> · <a>驳回</a></td></tr>
-              <tr><td><b>Device Tools</b></td><td>华东运营中心</td><td><code>com.aw.tools</code></td><td><span class="mono">5</span></td><td><span class="mono">1,088</span></td><td><a>详情</a> · <a>重新上架</a></td></tr>
+              <tr><td><b>Terminal Guard</b></td><td><span data-i18n="market-page:text.038">华北运营中心</span></td><td><code>com.aw.guard</code></td><td><span class="mono">12</span></td><td><span class="mono">8,642</span></td><td><a><span data-i18n="market-page:text.039">详情</span></a> · <a><span data-i18n="market-page:text.040">版本</span></a> · <a><span data-i18n="market-page:text.041">下架</span></a></td></tr>
+              <tr><td><b>Policy Sync</b></td><td><span data-i18n="market-page:text.042">华南运营中心</span></td><td><code>com.aw.policy</code></td><td><span class="mono">8</span></td><td><span class="mono">3,210</span></td><td><a><span data-i18n="market-page:text.043">审核</span></a> · <a><span data-i18n="market-page:text.044">修改</span></a> · <a><span data-i18n="market-page:text.045">驳回</span></a></td></tr>
+              <tr><td><b>Device Tools</b></td><td><span data-i18n="market-page:text.046">华东运营中心</span></td><td><code>com.aw.tools</code></td><td><span class="mono">5</span></td><td><span class="mono">1,088</span></td><td><a><span data-i18n="market-page:text.047">详情</span></a> · <a><span data-i18n="market-page:text.048">重新上架</span></a></td></tr>
             </tbody>
           </table>
         </div>
@@ -46,37 +46,37 @@
   </div>
 
   <div class="subsection">
-    <h3>状态与操作矩阵(版本包真实状态)</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">版本包状态含签名子态(kpp / APK 签名中与签名错误)。已上架 = <b>Published</b>,已下架 = <b>Unpublished</b>。</p>
+    <h3><span data-i18n="market-page:text.049">状态与操作矩阵(版本包真实状态)</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px"><span data-i18n="market-page:text.050">版本包状态含签名子态(kpp / APK 签名中与签名错误)。已上架 =</span> <b>Published</b><span data-i18n="market-page:text.051">,已下架 =</span> <b>Unpublished</b><span data-i18n="market-page:text.101">。</span></p>
     <table class="blueprint-table">
-      <thead><tr><th>状态</th><th>主操作</th><th>禁用操作</th><th>反馈组件</th></tr></thead>
+      <thead><tr><th><span data-i18n="market-page:text.052">状态</span></th><th><span data-i18n="market-page:text.053">主操作</span></th><th><span data-i18n="market-page:text.054">禁用操作</span></th><th><span data-i18n="market-page:text.055">反馈组件</span></th></tr></thead>
       <tbody>
-        <tr><td>草稿 / 签名中 / 签名错误</td><td>编辑、删除、重新签名</td><td>上架、推送</td><td>签名错误用 danger Tag + 错误码 tooltip</td></tr>
-        <tr><td>审核中</td><td>审核通过 / 驳回</td><td>下架、推送安装</td><td>Modal 表单，必须填写审核意见</td></tr>
-        <tr><td>已上架 Published</td><td>版本管理 / 下架 / 推送安装</td><td>删除</td><td>Popconfirm 或 Modal.confirm</td></tr>
-        <tr><td>已拒绝 / 取消上架</td><td>编辑、删除、重新申请上架</td><td>推送安装</td><td>Toast + 拒绝原因</td></tr>
-        <tr><td>已下架 Unpublished</td><td>重新上架 / 修改</td><td>推送安装</td><td>Toast 只提示操作结果</td></tr>
-        <tr><td>版本升级中</td><td>查看进度 / 安装明细</td><td>删除版本包</td><td>Result 部分成功承接失败设备</td></tr>
+        <tr><td><span data-i18n="market-page:text.056">草稿 / 签名中 / 签名错误</span></td><td><span data-i18n="market-page:text.057">编辑、删除、重新签名</span></td><td><span data-i18n="market-page:text.058">上架、推送</span></td><td><span data-i18n="market-page:text.059">签名错误用 danger Tag + 错误码 tooltip</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.060">审核中</span></td><td><span data-i18n="market-page:text.061">审核通过 / 驳回</span></td><td><span data-i18n="market-page:text.062">下架、推送安装</span></td><td><span data-i18n="market-page:text.063">Modal 表单，必须填写审核意见</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.064">已上架 Published</span></td><td><span data-i18n="market-page:text.065">版本管理 / 下架 / 推送安装</span></td><td><span data-i18n="market-page:text.066">删除</span></td><td><span data-i18n="market-page:text.067">Popconfirm 或 Modal.confirm</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.068">已拒绝 / 取消上架</span></td><td><span data-i18n="market-page:text.069">编辑、删除、重新申请上架</span></td><td><span data-i18n="market-page:text.070">推送安装</span></td><td><span data-i18n="market-page:text.071">Toast + 拒绝原因</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.072">已下架 Unpublished</span></td><td><span data-i18n="market-page:text.073">重新上架 / 修改</span></td><td><span data-i18n="market-page:text.074">推送安装</span></td><td><span data-i18n="market-page:text.075">Toast 只提示操作结果</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.076">版本升级中</span></td><td><span data-i18n="market-page:text.077">查看进度 / 安装明细</span></td><td><span data-i18n="market-page:text.078">删除版本包</span></td><td><span data-i18n="market-page:text.079">Result 部分成功承接失败设备</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="subsection">
-    <h3>添加应用四段表单</h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px">添加应用四段表单;APK 签名解析在后端完成,不在前端解析。</p>
+    <h3><span data-i18n="market-page:text.080">添加应用四段表单</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px"><span data-i18n="market-page:text.081">添加应用四段表单;APK 签名解析在后端完成,不在前端解析。</span></p>
     <div class="bp-grid">
-      <div class="bp-card"><h4>① 基础信息</h4><p>机构 / APK 包(上传后自动解析 packageName+versionCode+versionName)/ logo / 9:16 截图 / 应用名 / 分类 / 开发者 / 简介 / 详情 / 备注。</p></div>
-      <div class="bp-card"><h4>② 权限配置</h4><p>禁止卸载 uninstallFlag / 禁止清除数据 clearDataFlag(switch,正常 active=true 语义,不沿用旧后端反转)。</p></div>
-      <div class="bp-card"><h4>③ 签名配置</h4><p>是否签名 needSigner / 签名方式 certificateType(1 谷歌 / 2 AW / 3 证书链)/ 证书 certificateId / 使用证书机构 usingDeptId。</p></div>
-      <div class="bp-card"><h4>④ 规则信息</h4><p>适配机型 deviceModelId(多选)/ 可见范围 ruleType(0-7,同推送 targetMode)/ 可见对象 rule(5 分组 / 6,7 机构树 / 其他 textarea)。</p></div>
-      <div class="bp-card"><h4>版本与自动策略</h4><p>版本列表列:versionName / versionCode / 操作人 / 大小 / 下载数 / 适配机型 / 备注 / 状态 / 操作。自动安装 autoInstallFlag / 自动更新 autoUpdateFlag 开关开启需二次确认。同应用不同版本高版本优先显示;更新版本签名须一致。</p></div>
-      <div class="bp-card"><h4>应用分类</h4><p>名称 / logo / <b>ordinal 排序</b>字段 / 操作。轻量表单 + 删除确认。</p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.082">① 基础信息</span></h4><p><span data-i18n="market-page:text.083">机构 / APK 包(上传后自动解析 packageName+versionCode+versionName)/ logo / 9:16 截图 / 应用名 / 分类 / 开发者 / 简介 / 详情 / 备注。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.084">② 权限配置</span></h4><p><span data-i18n="market-page:text.085">禁止卸载 uninstallFlag / 禁止清除数据 clearDataFlag(switch,正常 active=true 语义,不沿用旧后端反转)。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.086">③ 签名配置</span></h4><p><span data-i18n="market-page:text.087">是否签名 needSigner / 签名方式 certificateType(1 谷歌 / 2 AW / 3 证书链)/ 证书 certificateId / 使用证书机构 usingDeptId。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.088">④ 规则信息</span></h4><p><span data-i18n="market-page:text.089">适配机型 deviceModelId(多选)/ 可见范围 ruleType(0-7,同推送 targetMode)/ 可见对象 rule(5 分组 / 6,7 机构树 / 其他 textarea)。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.090">版本与自动策略</span></h4><p><span data-i18n="market-page:text.091">版本列表列:versionName / versionCode / 操作人 / 大小 / 下载数 / 适配机型 / 备注 / 状态 / 操作。自动安装 autoInstallFlag / 自动更新 autoUpdateFlag 开关开启需二次确认。同应用不同版本高版本优先显示;更新版本签名须一致。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.092">应用分类</span></h4><p><span data-i18n="market-page:text.093">名称 / logo /</span> <b><span data-i18n="market-page:text.094">ordinal 排序</span></b><span data-i18n="market-page:text.095">字段 / 操作。轻量表单 + 删除确认。</span></p></div>
     </div>
   </div>
 
   <div class="subsection">
-    <h3>组件映射</h3>
-    <div class="blueprint-notes"><span><a href="#/table">Table</a>：列表和安装明细</span><span><a href="#/data-cards">DataCard</a>：应用卡片视图</span><span><a href="#/feedback">Feedback</a>：审核和上下架确认</span><span><a href="#/upload">Upload</a>：版本包上传</span></div>
+    <h3><span data-i18n="market-page:text.096">组件映射</span></h3>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="market-page:text.097">：列表和安装明细</span></span><span><a href="#/data-cards">DataCard</a><span data-i18n="market-page:text.098">：应用卡片视图</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="market-page:text.099">：审核和上下架确认</span></span><span><a href="#/upload">Upload</a><span data-i18n="market-page:text.100">：版本包上传</span></span></div>
   </div>
 </section>
 </div>

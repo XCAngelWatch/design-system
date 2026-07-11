@@ -1,0 +1,42 @@
+/* project/i18n/en-US/datepicker.js */
+(function (root) {
+  'use strict';
+  root.__AW_I18N__.register('en-US', 'datepicker', {
+    "text.001": "Common Components · Date/Time Selection",
+    "text.002": "DatePicker / TimePicker · Date and time selection",
+    "text.003": "Log queries, alarm filters, metric intervals, and OTA rollout windows all start with time-range filtering. Date, time, and date-time ranges must support shortcuts, clearing, and confirmation to reduce mistakes.",
+    "text.004": "Input State · Clickable Preview",
+    "text.005": "Select date",
+    "text.006": "Quick range",
+    "text.007": "Today",
+    "text.008": "Yesterday",
+    "text.009": "Last 7 days",
+    "text.010": "Last 30 days",
+    "text.011": "This month",
+    "text.012": "This quarter",
+    "text.013": "Clicking on the chip, date grid, and time items will update the input state above. This site only simulates state switching and does not persist business data.",
+    "text.014": "Calendar panel",
+    "text.015": "April 2026",
+    "text.016": "Sun",
+    "text.017": "Mon",
+    "text.018": "Tue",
+    "text.019": "Wed",
+    "text.020": "Thu",
+    "text.021": "Fri",
+    "text.022": "Sat",
+    "text.023": "Time selection · TimePicker",
+    "text.024": "Common rollout time",
+    "text.025": "Low peak default",
+    "text.026": "Morning window",
+    "text.027": "Noon inspection",
+    "text.028": "Night maintenance",
+    "text.029": "Three rows of roller panels",
+    "text.030": "Date time range",
+    "text.031": "Start",
+    "text.032": "End",
+    "text.033": "Strategy",
+    "text.034": "The timeout is delayed to the same window the next day",
+    "text.035": "Clear",
+    "text.036": "Confirm Time"
+  });
+})(typeof window !== 'undefined' ? window : globalThis);

@@ -22,12 +22,16 @@
 <link rel="stylesheet" href="styles/result-pro.css?v=1777279768" />
 <link rel="stylesheet" href="styles/blueprints-pro.css?v=1777279768" />
 <script>
-  // Early theme restore — runs before <body> to avoid FOUC
+  // Early preference restore — runs before <body> to avoid FOUC / wrong language.
   try {
     var t = localStorage.getItem('aw-theme');
     if (t === 'dark' || t === 'light') {
       document.documentElement.setAttribute('data-theme', t);
     }
+  } catch (e) {}
+  try {
+    var l = localStorage.getItem('aw-locale');
+    document.documentElement.setAttribute('lang', l === 'en-US' ? 'en-US' : 'zh-CN');
   } catch (e) {}
 </script>
 </head>
@@ -39,6 +43,8 @@
     <div id="app-slot"></div>
   </main>
 </div>
+<script src="i18n/runtime.js"></script>
+<script src="i18n/common.en-US.js"></script>
 <script src="pages/_router.js"></script>
 </body>
 </html>
