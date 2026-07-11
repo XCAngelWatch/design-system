@@ -264,9 +264,9 @@
       <table class="tech-table">
         <thead><tr><th style="width:160px"><span data-i18n="table:text.166">行数</span></th><th style="width:200px"><span data-i18n="table:text.167">渲染策略</span></th><th><span data-i18n="table:text.168">说明</span></th></tr></thead>
         <tbody>
-          <tr><td><span data-i18n="table:text.169">&lt; 1,000 行</span></td><td><span class="tag-meta"><span data-i18n="table:text.170">原生 DOM</span></span></td><td><span data-i18n="table:text.171">antd Table 默认行为，性能足够。开启 </span><code>fixed: 'left' / 'right'</code><span data-i18n="table:text.172"> 即可冻结</span></td></tr>
-          <tr><td><span data-i18n="table:text.173">1,000 – 50,000 行</span></td><td><span class="tag-meta" style="background:var(--aw-warning-bg);color:var(--aw-warning)"><span data-i18n="table:text.174">虚拟列表</span></span></td><td><span data-i18n="table:text.175">切换到 </span><code>@tanstack/react-virtual</code><span data-i18n="table:text.176">，仅渲染可视区 + buffer。冻结列单独渲染层</span></td></tr>
-          <tr><td><span data-i18n="table:text.177">&gt; 50,000 行</span></td><td><span class="tag-meta" style="background:var(--aw-danger-bg);color:var(--aw-danger)"><span data-i18n="table:text.178">服务端分页</span></span></td><td><span data-i18n="table:text.179">禁用全选跨页，分页大小默认 100。提示文案："数据量过大，请使用筛选缩小范围"</span></td></tr>
+          <tr><td><span data-i18n="table:text.169">常规分页数据</span></td><td><span class="tag-meta"><span data-i18n="table:text.170">标准 Table</span></span></td><td><span data-i18n="table:text.171">使用 antd Table 默认渲染；固定列通过 </span><code>fixed: 'left' / 'right'</code><span data-i18n="table:text.172"> 配置</span></td></tr>
+          <tr><td><span data-i18n="table:text.173">固定行高的大数据</span></td><td><span class="tag-meta" style="background:var(--aw-warning-bg);color:var(--aw-warning)"><span data-i18n="table:text.174">antd 原生 virtual</span></span></td><td><span data-i18n="table:text.175">开启 </span><code>virtual + scroll.x + scroll.y</code><span data-i18n="table:text.176">，x/y 必须是数值；继续复用固定列、选择和展开能力</span></td></tr>
+          <tr><td><span data-i18n="table:text.177">超大远程数据集</span></td><td><span class="tag-meta" style="background:var(--aw-danger-bg);color:var(--aw-danger)"><span data-i18n="table:text.178">服务端分页</span></span></td><td><span data-i18n="table:text.179">按性能测试决定分页大小和虚拟化；禁止一次性加载全部数据，跨页选择必须明示范围</span></td></tr>
         </tbody>
       </table>
     </div>

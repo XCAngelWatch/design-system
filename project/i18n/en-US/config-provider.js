@@ -22,8 +22,8 @@
   "t018": "Component layer · theme.components",
   "t019": "Not in theme; use",
   "t020": "or",
-  "t021": "0 (manual close)",
-  "t022": "· once at startup",
+  "t021": "Configured by feedback type",
+  "t022": "· static notification APIs are forbidden",
   "t023": "onBlur (required) / onChange (format)",
   "t024": "· default",
   "t025": "antd built-in zh / en",
@@ -92,6 +92,8 @@
   "t088": "Do not let",
   "t089": "fall back to body by default (popups drift on long pages)",
   "t090": ".",
-  "t091": ")"
+  "t091": ")",
+  "t092": "Scrolling to the first error belongs to each Form instance:",
+  "t093": "; custom form controls must forward id and ref."
 });
 })(typeof window !== 'undefined' ? window : globalThis);

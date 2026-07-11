@@ -85,6 +85,47 @@ if (!rowActionsPage.includes('操作 ≥ 4 时') || !rowActionsPage.includes('�
   errors.push('row-actions: collapse threshold must be 3 visible actions, collapse at 4');
 }
 
+const configProviderPage = readPage('config-provider');
+for (const forbidden of ['notification.config(', 'theme.darkAlgorithm', 'scrollToFirstError: true']) {
+  if (configProviderPage.includes(forbidden)) errors.push('config-provider: obsolete or misplaced API remains: ' + forbidden);
+}
+if (!configProviderPage.includes('&lt;App notification=')) {
+  errors.push('config-provider: root example must provide antd App context for feedback APIs');
+}
+if (!configProviderPage.includes('tmsThemeToken[themeMode]')) {
+  errors.push('config-provider: AntD Light/Dark tokens must switch with the runtime theme');
+}
+
+const techStackPage = readPage('tech-stack');
+if (/1k 行|@tanstack\/react-table \+ react-virtual/.test(techStackPage)) {
+  errors.push('tech-stack: table virtualization must prefer native antd virtual and measured thresholds');
+}
+if (/@tanstack\/react-table|@tanstack\/react-virtual/.test(readPage('ecosystem'))) {
+  errors.push('ecosystem: obsolete TanStack table engine guidance remains');
+}
+
+const overviewPage = readPage('overview');
+if (/不可逆[\s\S]*Popconfirm[\s\S]*或[\s\S]*Modal\.confirm/.test(overviewPage)) {
+  errors.push('overview: irreversible confirmation rule must not present Popconfirm and Modal as interchangeable');
+}
+
+const detailPage = readPage('detail-page');
+if (detailPage.includes('class="crumbs"') && detailPage.includes('detail-page:text.004')) {
+  errors.push('detail-page: do not show an equivalent Back button together with breadcrumbs');
+}
+
+const apiPage = readPage('api');
+for (const semanticProp of ['&lt;code&gt;classNames&lt;/code&gt;', '&lt;code&gt;styles&lt;/code&gt;']) {
+  if (!apiPage.replace(/<code>/g, '&lt;code&gt;').replace(/<\/code>/g, '&lt;/code&gt;').includes(semanticProp)) {
+    errors.push('api: AntD v6 Semantic DOM prop missing: ' + semanticProp);
+  }
+}
+
+const marketPage = readPage('market-page');
+if (!/text\.035[\s\S]*class="colnum"|class="colnum"[\s\S]*text\.035/.test(marketPage)) {
+  errors.push('market-page: numeric count columns must use colnum alignment');
+}
+
 const componentsCss = fs.readFileSync(path.join(root, 'project/styles/components.css'), 'utf8');
 if (!/\.btn-link:disabled[\s\S]*?background:\s*transparent/.test(componentsCss)) {
   errors.push('components.css: disabled link buttons must retain the link appearance');

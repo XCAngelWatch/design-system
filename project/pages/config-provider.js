@@ -22,7 +22,7 @@
 <tr><td>Button.fontWeight</td><td>400</td><td>500</td><td><code>theme.components.Button.fontWeight</code></td></tr>
 <tr><td>Button.primaryShadow</td><td><span class="mono">0 2px 0 rgba(...)</span></td><td><span class="mono">none</span></td><td><code>theme.components.Button.primaryShadow</code></td></tr>
 <tr><td>Pagination.pageSize</td><td>10</td><td>20</td><td><span data-i18n="config-provider:t019">不在 theme，需</span> <code>&lt;Pagination defaultPageSize={20}&gt;</code> <span data-i18n="config-provider:t020">或</span> <code>&lt;Table pagination={{ pageSize: 20 }} /&gt;</code></td></tr>
-<tr><td>Notification.duration</td><td>4.5s</td><td><span data-i18n="config-provider:t021">0 (手动关闭)</span></td><td><code>notification.config({ duration: 0 })</code> <span data-i18n="config-provider:t022">· 启动时 1 次</span></td></tr>
+<tr><td>Notification.duration</td><td>4.5s</td><td><span data-i18n="config-provider:t021">按反馈类型配置</span></td><td><code>App.useApp().notification</code> <span data-i18n="config-provider:t022">· 禁止静态 notification API</span></td></tr>
 <tr><td>Form.validateTrigger</td><td>onChange</td><td><span data-i18n="config-provider:t023">onBlur (必填) / onChange (格式)</span></td><td><code>&lt;Form validateTrigger="onBlur"&gt;</code> <span data-i18n="config-provider:t024">· 默认</span></td></tr>
 <tr><td>Form.validateMessages</td><td><span data-i18n="config-provider:t025">antd 内置 zh / en</span></td><td><span data-i18n="config-provider:t026">TMS 文案三层模板</span></td><td><code>theme</code> <span data-i18n="config-provider:t027">不管，需</span> <code>&lt;ConfigProvider form.validateMessages={{...}} /&gt;</code></td></tr>
 <tr><td><span data-i18n="config-provider:t028">Tag 预设色</span></td><td><span data-i18n="config-provider:t029">13 (含 volcano/lime/yellow)</span></td><td><span data-i18n="config-provider:t030">8 个标签色 + 4 个状态色</span></td><td><span data-i18n="config-provider:t031">不在 antd ConfigProvider 内禁用，由业务仓库 lint / 代码审查拦截</span> <code>color="volcano"</code> <span data-i18n="config-provider:t032">等</span></td></tr>
@@ -41,18 +41,16 @@
 <h3><span data-i18n="config-provider:t045">完整 ConfigProvider 示例</span></h3>
 <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><code>packages/web/src/app/AntdConfig.tsx</code> <span data-i18n="config-provider:t046">是项目的</span><b><span data-i18n="config-provider:t047">单一入口</span></b><span data-i18n="config-provider:t048">。任何项目根都要包一层这个组件，自定义 hook / API 不能跳过。</span></p>
 <div class="code-block"><pre><code>// packages/web/src/app/AntdConfig.tsx
-import { ConfigProvider, notification, theme } from 'antd';
+import { App, ConfigProvider } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
 import { tmsThemeToken, tmsComponentOverrides } from '@tms/design-tokens';
 import { TMSEmpty } from '@/components/Empty';
 import { tmsValidateMessages } from '@/i18n/validate';
 
-// Run once at startup: disable auto-close for global notifications
-notification.config({ duration: 0, placement: 'topRight', maxCount: 3 });
-
-export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale }&gt; = ({
+export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale; themeMode: 'light' | 'dark' }&gt; = ({
   children,
   locale = zhCN,
+  themeMode,
 }) =&gt; {
   return (
     &lt;ConfigProvider
@@ -60,7 +58,7 @@ export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale }&gt; = ({
       // === Token layer ===
       theme={{
         token: {
-          ...tmsThemeToken,             // colorPrimary / motionEaseInOut / wireframe ...
+          ...tmsThemeToken[themeMode],  // explicit Light/Dark token set from tokens.json
           motionEaseInOut: 'cubic-bezier(0.34, 0.69, 0.1, 1)',
           motionDurationFast: '120ms',
           motionDurationMid:  '200ms',
@@ -76,8 +74,7 @@ export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale }&gt; = ({
           Modal:      { borderRadiusLG: 8, paddingContentHorizontalLG: 24 },
           Tag:        { defaultBg: '#F5F5F5', defaultColor: '#4B5563' },
         },
-        // Dark mode: do not use antd darkAlgorithm; custom tokens are overridden by [data-theme="dark"] CSS selectors
-        // algorithm: undefined  ← omit it and keep defaultAlgorithm
+        algorithm: undefined,           // TMS supplies explicit Light/Dark tokens
       }}
       // === Rendering layer ===
       renderEmpty={() =&gt; &lt;TMSEmpty /&gt;}
@@ -86,21 +83,21 @@ export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale }&gt; = ({
       // === Form layer ===
       form={{
         validateMessages: tmsValidateMessages, // Three-tier error-copy template; see the copywriting page
-        scrollToFirstError: true,
         requiredMark: true,
       }}
     &gt;
-      {children}
+      &lt;App notification={{ placement: 'topRight', maxCount: 3 }}&gt;{children}&lt;/App&gt;
     &lt;/ConfigProvider&gt;
   );
 };</code></pre></div>
 <p style="font-size:12px;color:var(--aw-text-3);max-width:720px;line-height:1.7;margin:10px 0 0"><code>Pagination.pageSize</code> <span data-i18n="config-provider:t049">是页面级默认值，不是</span> <code>ConfigProvider</code> <span data-i18n="config-provider:t050">prop；应在</span> <code>&lt;Table pagination={{ defaultPageSize: 20, pageSizeOptions: [20, 50, 100, 200] }} /&gt;</code> <span data-i18n="config-provider:t051">或</span> <code>&lt;Pagination /&gt;</code> <span data-i18n="config-provider:t052">调用处设置。</span></p>
+<p style="font-size:12px;color:var(--aw-text-3);max-width:720px;line-height:1.7;margin:6px 0 0"><span data-i18n="config-provider:t092">滚动到首个错误属于 Form 实例行为：</span><code>&lt;Form scrollToFirstError&gt;</code><span data-i18n="config-provider:t093">；自建表单控件必须透传 id 与 ref。</span></p>
 </div>
 <div class="subsection">
 <h3><span data-i18n="config-provider:t053">嵌套 ConfigProvider · 局部覆盖</span></h3>
 <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="config-provider:t054">单点需要不同主题（如监控大屏强制暗色 / 危险操作面板品牌色变红 / 多租户白标）时，子树嵌一层</span> <code>&lt;ConfigProvider&gt;</code><span data-i18n="config-provider:t055">。子级 token 自动继承父级，只覆盖差异项。</span></p>
-<div class="code-block"><pre><code>// Example 1: force dark theme for a monitoring dashboard subtree
-&lt;ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}&gt;
+<div class="code-block"><pre><code>// Example 1: force the explicit TMS dark token set for a monitoring subtree
+&lt;ConfigProvider theme={{ algorithm: undefined, token: tmsThemeToken.dark }}&gt;
   &lt;DashboardScreen /&gt;
 &lt;/ConfigProvider&gt;
 

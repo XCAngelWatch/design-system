@@ -46,6 +46,8 @@ type InputProps = {
 <tbody>
 <tr><td><code>className</code></td><td><code>string</code></td><td><span data-i18n="api:t034">追加根节点 className，业务方覆盖样式入口</span></td></tr>
 <tr><td><code>style</code></td><td><code>CSSProperties</code></td><td><span data-i18n="api:t035">追加根节点 inline style；优先级高于 className</span></td></tr>
+<tr><td><code>classNames</code></td><td><code>SemanticClassNames</code></td><td><span data-i18n="api:t112">AntD v6 语义节点 class 映射；包装组件必须透传支持的 semantic key</span></td></tr>
+<tr><td><code>styles</code></td><td><code>SemanticStyles</code></td><td><span data-i18n="api:t113">AntD v6 语义节点样式映射；禁止依赖内部 DOM 层级选择器</span></td></tr>
 <tr><td><code>id</code></td><td><code>string</code></td><td><span data-i18n="api:t036">根节点 id；表单 label 关联用</span></td></tr>
 <tr><td><code>data-*</code></td><td><code>string</code></td><td><span data-i18n="api:t037">透传到根节点；E2E 测试 / 埋点用</span> <code>data-testid</code></td></tr>
 <tr><td><code>aria-*</code></td><td><code>string</code></td><td><span data-i18n="api:t038">透传到根节点；a11y 增强</span></td></tr>
@@ -152,6 +154,7 @@ function Modal(props: ModalProps &amp; { centered?: boolean }) {
 <li><span data-i18n="api:t096">所有有值组件支持受控 + 非受控两种模式</span></li>
 <li><span data-i18n="api:t097">所有组件 forwardRef 到根节点</span></li>
 <li><span data-i18n="api:t098">透传</span> <code>className</code> / <code>style</code> / <code>data-*</code> / <code>aria-*</code></li>
+<li><span data-i18n="api:t114">包装 AntD 组件时透传 classNames / styles Semantic DOM API</span></li>
 <li><span data-i18n="api:t099">主题 token 通过 useToken hook，禁硬编码</span></li>
 <li><span data-i18n="api:t100">Slot props 用语义名（</span><code>extra</code> / <code>footer</code><span data-i18n="api:t111">）</span></li>
 <li><span data-i18n="api:t101">废弃 API 走两阶段周期</span></li>

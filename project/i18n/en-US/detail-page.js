@@ -4,8 +4,7 @@
   root.__AW_I18N__.register('en-US', 'detail-page', {
     "text.001": "Page Blueprints · DetailPage",
     "text.002": "Detail Page",
-    "text.003": "Back button + summary header (KV pairs) + tabs (basic information / status / logs / alerts / firmware history).",
-    "text.004": "← Back",
+    "text.003": "Breadcrumbs + summary header (KV pairs) + tabs (basic information / status / logs / alerts / firmware history). Regular detail pages do not also show an equivalent Back button.",
     "text.005": "Device Management",
     "text.006": "Device-Shanghai-001",
     "text.007": "Term",

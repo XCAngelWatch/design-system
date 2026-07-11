@@ -111,8 +111,8 @@
 <!-- 6. VirtualTable -->
 <div class="eco-card">
 <div class="eco-h"><div class="eco-num">06</div><div class="eco-t"><span data-i18n="ecosystem:t048">VirtualTable · 虚拟表格</span></div></div>
-<div class="eco-use"><span data-i18n="ecosystem:t049">5 万行+ 设备列表流畅滚动 · 列冻结 · 列拖拽宽度</span></div>
-<div class="eco-pkg"><code>@tanstack/react-table</code> + <code>@tanstack/react-virtual</code><span class="eco-pkg-note"><span data-i18n="ecosystem:t050">spike-1 已采纳为 AppTable Facade 内核</span></span></div>
+<div class="eco-use"><span data-i18n="ecosystem:t049">大数据设备列表流畅滚动 · 列冻结 · 列拖拽宽度</span></div>
+<div class="eco-pkg"><code>antd Table virtual</code><span class="eco-pkg-note"><span data-i18n="ecosystem:t050">AppTable 默认内核；x/y 使用数值滚动范围</span></span></div>
 <div class="eco-mock vt-mock">
 <div class="vt-head"><span>SN</span><span><span data-i18n="ecosystem:t051">状态</span></span><span><span data-i18n="ecosystem:t052">固件</span></span><span><span data-i18n="ecosystem:t053">心跳</span></span></div>
 <div class="vt-row"><span class="mono">DEV-86420075</span><span><span class="status-dot online"><span data-i18n="ecosystem:t054">在线</span></span></span><span>v3.4.2</span><span><span data-i18n="ecosystem:t055">刚刚</span></span></div>

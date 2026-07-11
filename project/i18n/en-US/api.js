@@ -112,6 +112,9 @@
   "t108": "Do not introduce breaking API changes without deprecation",
   "t109": "Do not hard-code antd private tokens inside components",
   "t110": "Do not use ImperativeHandle instead of passing values through props",
-  "t111": ")"
+  "t111": ")",
+  "t112": "AntD v6 semantic-node class mapping; wrappers must pass through supported semantic keys",
+  "t113": "AntD v6 semantic-node style mapping; never depend on internal DOM hierarchy selectors",
+  "t114": "Pass through the classNames / styles Semantic DOM API when wrapping AntD components"
 });
 })(typeof window !== 'undefined' ? window : globalThis);

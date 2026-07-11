@@ -51,7 +51,7 @@
   "t047": "Warning: visual reference only · Production nodes use customNode + Zustand",
   "t048": "VirtualTable · Virtual table",
   "t049": "Smooth scrolling for 50k+ device rows · Frozen columns · Draggable column widths",
-  "t050": "spike-1 was adopted as the AppTable Facade core",
+  "t050": "Default AppTable engine; x/y use numeric scroll bounds",
   "t051": "Status",
   "t052": "Firmware",
   "t053": "Heartbeat",

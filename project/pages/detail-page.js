@@ -5,11 +5,11 @@
 <section class="section" id="detail-page">
   <p class="section-eyebrow"><span data-i18n="detail-page:text.001">页面蓝图 · DetailPage</span></p>
   <h2><span data-i18n="detail-page:text.002">详情页 DetailPage</span></h2>
-  <p class="lede"><span data-i18n="detail-page:text.003">返回按钮 + 摘要头（KV 键值对） + 标签页（基础信息 / 状态 / 日志 / 告警 / 固件历史）。</span></p>
+  <p class="lede"><span data-i18n="detail-page:text.003">面包屑 + 摘要头（KV 键值对） + 标签页（基础信息 / 状态 / 日志 / 告警 / 固件历史）。普通详情页不同时放置等价返回按钮。</span></p>
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 DetailPage</div>
     <div class="frame-body" style="padding:20px">
-<div class="row" style="margin-bottom:14px"><button class="btn btn-text"><span data-i18n="detail-page:text.004">← 返回</span></button><div class="crumbs"><a><span data-i18n="detail-page:text.005">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="detail-page:text.006">终端-上海-001</span></span></div></div>
+<div class="crumbs" style="margin-bottom:14px"><a><span data-i18n="detail-page:text.005">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="detail-page:text.006">终端-上海-001</span></span></div>
 <div class="surface" style="padding:18px;margin-bottom:0">
   <div class="row" style="gap:18px;align-items:flex-start">
     <div style="width:56px;height:56px;border-radius:6px;background:var(--aw-primary-bg);color:var(--aw-primary);display:grid;place-items:center;font-size:20px;font-weight:600"><span data-i18n="detail-page:text.007">终</span></div>
