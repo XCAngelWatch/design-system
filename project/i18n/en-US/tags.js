@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'tags', {
     "text.001": "Common Components · Tag / Status",
     "text.002": "Tag and Status",
-    "text.003": "The device status is presented as \"dot + text\" to facilitate scanning in dense tables; the classification labels use color blocks and are limited to 4 semantic colors.",
+    "text.003": "Device connectivity uses dot + text; other business outcomes use is-* semantic statuses. Five semantic Tag colors express status, while the eight-color extended palette is reserved for categories with no positive or negative meaning.",
     "text.004": "Status Dot",
     "text.005": "Online",
     "text.006": "Upgrading 42%",

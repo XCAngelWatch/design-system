@@ -28,6 +28,7 @@
   --aw-warning-bg: #FFFBE6;    /* antd gold-1   */
   --aw-warning-border: #FFE58F;/* antd gold-3   */
   --aw-danger: #CF1322;        /* antd red-7    */
+  --aw-danger-hover: #C8242A;  /* danger action hover */
   --aw-danger-bg: #FFF1F0;     /* antd red-1    */
   --aw-danger-border: #FFA39E; /* antd red-3    */
   --aw-info: #0958D9;          /* antd blue-7   */
@@ -131,6 +132,7 @@
   --aw-warning-bg: #2B2111;
   --aw-warning-border: #594214;
   --aw-danger: #FF4D4F;         /* antd red-6   */
+  --aw-danger-hover: #FF7875;
   --aw-danger-bg: #2A1215;
   --aw-danger-border: #58181C;
   --aw-info: #4DABF7;

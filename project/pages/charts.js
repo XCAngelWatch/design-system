@@ -359,17 +359,17 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="charts:text.175">v6 关键变更 · 升级要点</span></h3>
+    <h3><span data-i18n="charts:text.175">当前集成约束</span></h3>
     <table class="map-table">
-      <thead><tr><th style="width:24%"><span data-i18n="charts:text.176">特性</span></th><th style="width:34%"><span data-i18n="charts:text.177">v6 行为</span></th><th><span data-i18n="charts:text.178">影响 / 处理</span></th></tr></thead>
+      <thead><tr><th style="width:24%"><span data-i18n="charts:text.176">特性</span></th><th style="width:34%"><span data-i18n="charts:text.177">当前约束</span></th><th><span data-i18n="charts:text.178">实现方式</span></th></tr></thead>
       <tbody>
-        <tr><td><b><span data-i18n="charts:text.179">TypeScript 类型重构</span></b></td><td><span data-i18n="charts:text.180">所有 option 字段类型导出更精确</span></td><td><span data-i18n="charts:text.181">从 v5 升要把 </span><code>EChartsOption</code><span data-i18n="charts:text.182"> import 路径调整到 </span><code>echarts/types/dist/echarts</code></td></tr>
+        <tr><td><b><span data-i18n="charts:text.179">TypeScript 类型</span></b></td><td><span data-i18n="charts:text.180">所有 option 字段使用官方导出类型</span></td><td><span data-i18n="charts:text.181">统一从公开入口导入 </span><code>EChartsOption</code><span data-i18n="charts:text.182">，禁止依赖内部文件结构</span></td></tr>
         <tr><td><b><span data-i18n="charts:text.183">tree-shake 改进</span></b></td><td><span data-i18n="charts:text.184">features 模块单独提取（</span><code>LabelLayout</code> / <code>UniversalTransition</code><span data-i18n="charts:text.242">）</span></td><td><span data-i18n="charts:text.185">必须显式 </span><code>echarts.use()</code><span data-i18n="charts:text.186">，否则 label / 过渡失效</span></td></tr>
         <tr><td><b><span data-i18n="charts:text.187">暗色模式</span></b></td><td><span data-i18n="charts:text.188">内置 </span><code>dark</code><span data-i18n="charts:text.189"> 主题；默认背景透明</span></td><td><span data-i18n="charts:text.190">TMS 仍用自注册主题，不用 </span><code>dark</code><span data-i18n="charts:text.191"> 内置（值差异太大）</span></td></tr>
         <tr><td><b><span data-i18n="charts:text.192">动画系统</span></b></td><td><span data-i18n="charts:text.193">UniversalTransition 默认开启</span></td><td><span data-i18n="charts:text.194">切换 </span><code>option</code><span data-i18n="charts:text.195"> 时数据流转动画自动；可关闭 </span><code>animationDuration: 0</code></td></tr>
         <tr><td><b><span data-i18n="charts:text.196">无障碍</span></b></td><td><span data-i18n="charts:text.197">添加 </span><code>aria.enabled</code><span data-i18n="charts:text.198"> 默认描述图表内容</span></td><td><span data-i18n="charts:text.199">TMS 强制 </span><code>aria.enabled: true</code><span data-i18n="charts:text.200">，对接 a11y 页 SR 规范</span></td></tr>
         <tr><td><b><span data-i18n="charts:text.201">性能</span></b></td><td><span data-i18n="charts:text.202">大数据集 (≥ 100k 点) 渲染提速 30-50%</span></td><td><span data-i18n="charts:text.203">大屏可去掉 sampling，直出原始数据</span></td></tr>
-        <tr><td><b><span data-i18n="charts:text.204">移除项</span></b></td><td><span data-i18n="charts:text.205">v6 不再维护 </span><code>echarts/lib/*</code><span data-i18n="charts:text.206"> 子路径</span></td><td><span data-i18n="charts:text.207">所有 import 走 </span><code>echarts/core</code> + <code>echarts/charts</code><span data-i18n="charts:text.208"> 等顶级目录</span></td></tr>
+        <tr><td><b><span data-i18n="charts:text.204">导入路径</span></b></td><td><span data-i18n="charts:text.205">不使用 </span><code>echarts/lib/*</code><span data-i18n="charts:text.206"> 内部子路径</span></td><td><span data-i18n="charts:text.207">所有 import 走 </span><code>echarts/core</code> + <code>echarts/charts</code><span data-i18n="charts:text.208"> 等公开目录</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -408,7 +408,7 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
           <li><span data-i18n="charts:text.230">不要从 CDN 加载 echarts / 地图瓦片</span></li>
           <li><span data-i18n="charts:text.231">不要全量 </span><code>import * from 'echarts'</code><span data-i18n="charts:text.232">（包体爆炸 1.2 MB）</span></li>
-          <li><span data-i18n="charts:text.233">不要用 echarts v5 子路径 </span><code>echarts/lib/*</code><span data-i18n="charts:text.234">（v6 已移除）</span></li>
+          <li><span data-i18n="charts:text.233">不要使用内部子路径 </span><code>echarts/lib/*</code><span data-i18n="charts:text.234">，统一从稳定公开入口导入</span></li>
           <li><span data-i18n="charts:text.235">不要引入其他图表库（</span><code>@ant-design/charts</code> / <code>chart.js</code> / <code>recharts</code><span data-i18n="charts:text.236"> / d3 直绘）—— 统一 echarts，避免取色 / 主题分裂</span></li>
           <li><span data-i18n="charts:text.237">不要在 series 内硬编码 hex（用 token 或 status 色变量）</span></li>
           <li><span data-i18n="charts:text.238">不要切主题后重新 setOption（用 theme 名切换即可）</span></li>

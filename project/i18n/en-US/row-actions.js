@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'row-actions', {
     "text.001": "Business Patterns · Row Actions",
     "text.002": "RowActions",
-    "text.003": "Tail-column actions for each record in tables and cards. A unified icon set, tooltip behavior, and dangerous-confirmation threshold prevent each business page from inventing its own icons and labels.",
+    "text.003": "Actions in the tail column of each table/card record. Keep the order View → Edit → Business action → Enable/disable → Delete, with one tooltip and danger-confirmation contract across business pages.",
     "text.004": "Standard Action Set",
     "text.005": "Details",
     "text.006": "Edit",

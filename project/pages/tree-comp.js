@@ -167,6 +167,7 @@
       <div style="margin-top:4px"><span data-i18n="tree-comp:text.083">深度缩进：每层 16px (depth-N: padding-left = 12 + N × 16)</span></div>
     </div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/tree-list">TreeListLayout</a></span><span><a href="#/user-mgmt-page">UserMgmtPage</a></span><span><a href="#/ops-page">OpsPage</a></span></div></div>
 </section>
 </div>
 `;

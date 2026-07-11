@@ -12,7 +12,7 @@
 <div class="login-mock">
   <div class="panel-left">
     <div class="lp-brand">
-      <div class="lg"><img src="https://uitmss3.eu.aw-iot.com/tms/tms-web-ui/images/angle.png" alt="AngelWatch" /></div>
+      <div class="lg"><img src="favicon.ico" alt="AngelWatch" /></div>
       <div class="nm">AngelWatch<small>Device Management System</small></div>
     </div>
     <div class="lp-tag">
@@ -194,6 +194,10 @@
     <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><strong><span data-i18n="login-page:text.085">背景图、ICP、产品名、Logo 均为白标 token</span></strong><span data-i18n="login-page:text.086">，参见</span> <a href="#/whitelabel" style="color:var(--aw-primary)"><span data-i18n="login-page:text.087">白标 / 租户主题</span></a> <span data-i18n="login-page:text.088">章节。</span></div></div>
     <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="login-page:text.089">MFA / 邮箱验证 / 强制改密</span></strong><span data-i18n="login-page:text.090">由后端在登录返回中标注</span> <code>nextStep</code><span data-i18n="login-page:text.091">，前端按 step 路由跳转，禁止前端单方面决定流程顺序。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="login-page:text.092">反例：</span></strong><span data-i18n="login-page:text.093">不要把"忘记密码"做成新弹窗叠在登录卡上 — 多步流程在原表单区切换更稳，避免移动端遮挡。</span></div></div>
+  </div>
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/inputs">Input</a></span><span><a href="#/feedback">Feedback</a></span><span><a href="#/i18n">i18n</a></span><span><a href="#/a11y">Accessibility</a></span><span><a href="#/whitelabel">Whitelabel</a></span></div>
   </div>
 </section>
 </div>

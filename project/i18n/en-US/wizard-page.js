@@ -12,7 +12,7 @@
     "text.008": "Configure Policy",
     "text.009": "In progress",
     "text.010": "Confirm Submission",
-    "text.011": "Pending",
+    "text.011": "Not Started",
     "text.012": "Push Policy",
     "text.013": "Push Time",
     "text.014": "Push Now",

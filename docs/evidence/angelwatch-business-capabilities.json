@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "authorityOrder": [
+    "current-repository-contract",
+    "approved-figma-evidence",
+    "confirmed-business-fields",
+    "legacy-vue-evidence"
+  ],
+  "requiredContractFields": ["fields", "states", "actions", "permissions", "confirmation", "feedback", "routes"],
+  "capabilities": [
+    {
+      "id": "device-lifecycle",
+      "module": "数据中心",
+      "disposition": "adopt",
+      "sources": ["figma:数据中心", "docs/ai-coding-design-reference.md#数据中心"],
+      "fields": ["sn", "onlineFlag", "state", "registeredFlag", "deviceModel", "systemVersion", "organization", "lastOnlineTime"],
+      "states": ["连接状态", "屏幕锁状态", "激活状态", "运行异常状态"],
+      "actions": ["查看", "编辑", "诊断", "远程处理", "修改分组", "查看日志"],
+      "permissions": ["设备查看", "设备编辑", "远程控制", "设备分组"],
+      "confirmation": "恢复出厂等强副作用动作使用 Modal；轻量可逆动作使用 Popconfirm。",
+      "feedback": "异步远程动作进入推送任务；连接错误使用 Alert 或 Result。",
+      "routes": ["device-center-page", "detail-page", "status-matrix"]
+    },
+    {
+      "id": "remote-control-session",
+      "module": "数据中心",
+      "disposition": "adapt",
+      "sources": ["figma:数据中心/远程", "legacy:src/views/device/deviceMgt/diagnosis.vue", "legacy:src/views/device/deviceMgt/diagnosisControl.vue"],
+      "fields": ["sn", "sessionId", "connectionState", "startedAt", "endedAt", "operator", "logUrl"],
+      "states": ["等待设备", "连接中", "进行中", "设备拒绝", "超时", "中断", "已结束"],
+      "actions": ["发起诊断", "建立会话", "结束会话", "获取日志", "查看历史"],
+      "permissions": ["远程诊断", "远程控制", "日志下载"],
+      "confirmation": "发起控制前确认设备与操作者；退出进行中会话必须确认。",
+      "feedback": "连接进度使用 Notification；终态使用 Alert 或 Result；历史可从设备详情继续追踪。",
+      "routes": ["device-center-page", "progress", "feedback"]
+    },
+    {
+      "id": "app-distribution",
+      "module": "应用市场",
+      "disposition": "adopt",
+      "sources": ["figma:应用市场", "docs/ai-coding-design-reference.md#应用市场"],
+      "fields": ["appName", "packageName", "versionCount", "downloadCount", "appPackageStatus", "certificateType", "ruleType"],
+      "states": ["草稿", "签名中", "签名错误", "审核中", "已上架", "已拒绝", "已下架"],
+      "actions": ["查看", "编辑", "版本管理", "审核", "上架", "下架", "推送安装"],
+      "permissions": ["应用查看", "应用编辑", "应用审核", "应用推送"],
+      "confirmation": "审核、上下架、自动安装和自动更新使用 Modal。",
+      "feedback": "上传解析错误使用 Alert；安装结果使用 Result。",
+      "routes": ["market-page", "upload", "avatar-result"]
+    },
+    {
+      "id": "ota-distribution",
+      "module": "OTA升级管理",
+      "disposition": "adopt",
+      "sources": ["figma:OTA升级管理", "docs/ai-coding-design-reference.md#OTA升级管理"],
+      "fields": ["version", "baseVersion", "androidVersion", "deviceModel", "force", "targetMode", "targetValue", "delayPushFlag"],
+      "states": ["草稿", "审核中", "已上架", "已拒绝", "驳回", "已下架", "定期上架"],
+      "actions": ["上传", "编辑", "申请上架", "审核", "下架", "推送"],
+      "permissions": ["OTA编辑", "OTA审核", "OTA推送", "数据初始化提示"],
+      "confirmation": "上下架和推送前展示目标范围、风险与预计设备数。",
+      "feedback": "文件状态留在 OTA 页面；设备执行结果进入推送任务和 Result。",
+      "routes": ["ota-page", "push-page", "advanced-form"]
+    },
+    {
+      "id": "push-task",
+      "module": "推送任务",
+      "disposition": "adopt",
+      "sources": ["figma:推送任务", "docs/ai-coding-design-reference.md#推送任务"],
+      "fields": ["batchNo", "operationType", "targetMode", "targetValue", "batchState", "deviceState", "failureReason"],
+      "states": ["执行中", "成功", "部分成功", "失败", "设备已过期", "设备已终止"],
+      "actions": ["查看详情", "失败诊断", "重试失败项", "终止执行中设备", "下载失败清单"],
+      "permissions": ["push_task_rePush", "push_task_terminate"],
+      "confirmation": "终止任务使用 Modal；重试前展示生效设备数和跳过项。",
+      "feedback": "进度使用 Notification；部分成功和失败终态使用 Result。",
+      "routes": ["push-page", "status-matrix", "avatar-result"]
+    },
+    {
+      "id": "assignment-conflict",
+      "module": "跨模块分配",
+      "disposition": "adapt",
+      "sources": ["figma:账户信息/配置权限", "figma:数据中心/设备分组", "legacy:shared tree/list assignment"],
+      "fields": ["targetScope", "selectedIds", "conflictIds", "conflictSource", "resolution"],
+      "states": ["未分配", "部分分配", "已分配", "冲突", "跳过"],
+      "actions": ["筛选", "批量选择", "导入", "查看冲突来源", "跳过冲突", "覆盖"],
+      "permissions": ["对象分配", "冲突覆盖"],
+      "confirmation": "覆盖前展示来源策略、对象数量和影响范围。",
+      "feedback": "部分成功使用 Result，保留失败和冲突明细。",
+      "routes": ["tree-list", "cascader", "user-mgmt-page", "device-center-page"]
+    },
+    {
+      "id": "geofence-and-track",
+      "module": "设备地图",
+      "disposition": "adopt",
+      "sources": ["figma:设备地图", "docs/ai-coding-design-reference.md#设备地图"],
+      "fields": ["shape", "eventType", "radius", "vertices", "deviceCount", "startTime", "endTime"],
+      "states": ["定位有效", "定位过期", "无轨迹", "设备离线", "地图资源错误"],
+      "actions": ["设备查询", "轨迹查询", "绘制围栏", "关联设备", "查看告警"],
+      "permissions": ["地图查看", "围栏编辑", "围栏设备分配"],
+      "confirmation": "删除围栏和覆盖设备关联使用 Modal。",
+      "feedback": "地图资源错误使用局部 Alert；无数据使用 Empty；查询进度使用局部 Loading。",
+      "routes": ["map-page", "datepicker", "empty-state"]
+    },
+    {
+      "id": "account-permission",
+      "module": "账户与权限",
+      "disposition": "adopt",
+      "sources": ["figma:账户信息", "docs/ai-coding-design-reference.md#系统-运营"],
+      "fields": ["username", "roleIds", "timeZone", "mfaSecretKey", "status", "dsType", "dsScope"],
+      "states": ["正常", "禁用", "MFA已绑定", "MFA未绑定", "权限冲突"],
+      "actions": ["创建账号", "编辑", "重置密码", "解绑MFA", "配置权限", "停用"],
+      "permissions": ["账号管理", "角色管理", "权限配置", "MFA解绑"],
+      "confirmation": "重置密码、停用、删除角色和解绑 MFA 使用 Modal。",
+      "feedback": "创建后展示临时密码和复制动作；权限保存展示 diff 与冲突。",
+      "routes": ["user-mgmt-page", "ops-page", "tree-comp"]
+    },
+    {
+      "id": "alert-remediation",
+      "module": "设备与围栏告警",
+      "disposition": "adapt",
+      "sources": ["figma:设备地图/围栏警告", "current:device detail hardware warning", "legacy:watchSystem/alarmList"],
+      "fields": ["alarmType", "alarmLevel", "deviceId", "occurredAt", "handler", "handledAt", "handleResult"],
+      "states": ["待处理", "处理中", "已处理", "无需处理"],
+      "actions": ["定位设备", "查看详情", "执行修复", "记录结果", "复核"],
+      "permissions": ["告警查看", "告警处置", "远程修复"],
+      "confirmation": "修复动作按其副作用级别确认；仅记录结果不弹强确认。",
+      "feedback": "处置进度使用 Notification；终态写入审计记录并保留处理链。",
+      "routes": ["map-page", "device-center-page", "ops-page"]
+    }
+  ],
+  "legacyCandidates": [
+    {"id":"legacy-mdm","label":"MDM 独立子系统","disposition":"pending","corePageAllowed":false,"reason":"旧系统独有，当前有效 Figma 页面清单未确认独立模块。"},
+    {"id":"legacy-resource-package","label":"Resource Package 独立模块","disposition":"pending","corePageAllowed":false,"reason":"仅保留文件分发通用流程，不能恢复旧导航。"},
+    {"id":"legacy-watch-focus","label":"Watch System / Focus Resources","disposition":"exclude","corePageAllowed":false,"reason":"旧系统实现和命名不进入当前规范；仅抽象通用告警处置。"},
+    {"id":"legacy-kiosk-launcher","label":"Kiosk / Launcher","disposition":"pending","corePageAllowed":false,"reason":"当前有效 Figma 业务清单未确认，不能加入应用市场蓝图。"},
+    {"id":"legacy-remote-iframe","label":"旧远控 iframe 与轮询实现","disposition":"exclude","corePageAllowed":false,"reason":"外部控制台、凭据表单和轮询实现存在安全与架构问题。"}
+  ]
+}

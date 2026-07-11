@@ -29,7 +29,7 @@
     "t033": "Online",
     "t034": "Offline",
     "t035": "Fault",
-    "t036": "Locked",
+    "t036": "Screen Locked",
     "t037": "Device Name",
     "t039": "English Typography Rules",
     "t040": "Case",

@@ -44,9 +44,19 @@
         <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="progress:text.012">选择设备</span></div><div class="sub"><span data-i18n="progress:text.013">1,284 台</span></div></div>
         <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="progress:text.014">选择固件包</span></div><div class="sub">v3.5.0</div></div>
         <div class="step active"><div class="num">3</div><div class="lbl"><span data-i18n="progress:text.015">配置策略</span></div><div class="sub"><span data-i18n="progress:text.016">设置中</span></div></div>
-        <div class="step"><div class="num">4</div><div class="lbl"><span data-i18n="progress:text.017">确认提交</span></div><div class="sub"><span data-i18n="progress:text.018">待执行</span></div></div>
+        <div class="step"><div class="num">4</div><div class="lbl"><span data-i18n="progress:text.017">确认提交</span></div><div class="sub"><span data-i18n="progress:text.018">未开始</span></div></div>
       </div>
     </div>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="progress:session.title">远程会话进度 · Remote Session</span></h3>
+    <div class="steps">
+      <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="progress:session.waiting">等待设备</span></div><div class="sub"><span data-i18n="progress:session.waitingSub">校验在线与占用</span></div></div>
+      <div class="step active"><div class="num">2</div><div class="lbl"><span data-i18n="progress:session.connecting">建立连接</span></div><div class="sub"><span data-i18n="progress:session.connectingSub">等待设备确认</span></div></div>
+      <div class="step"><div class="num">3</div><div class="lbl"><span data-i18n="progress:session.active">会话中</span></div><div class="sub"><span data-i18n="progress:session.activeSub">显示操作者与时长</span></div></div>
+      <div class="step"><div class="num">4</div><div class="lbl"><span data-i18n="progress:session.ended">结束与日志</span></div><div class="sub"><span data-i18n="progress:session.endedSub">可从历史继续追踪</span></div></div>
+    </div>
+    <p style="font-size:13px;color:var(--aw-text-2);line-height:1.7;margin-top:12px"><span data-i18n="progress:session.rule">设备拒绝、超时、服务异常和用户中断是会话终态，不得混入推送批次四态。关闭页面不能丢失任务入口。</span></p>
   </div>
 </section>
 </div>

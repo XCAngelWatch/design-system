@@ -19,6 +19,6 @@
     "text.015": "Configure strategy",
     "text.016": "Setting up",
     "text.017": "Confirm submission",
-    "text.018": "Pending"
+    "text.018": "Not Started"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

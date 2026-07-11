@@ -167,6 +167,20 @@
       </div>
     </div>
   </div>
+
+  <div class="subsection">
+    <h3><span data-i18n="advanced-form:asset.title">配置资产工作流 · Asset Configuration</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="advanced-form:asset.desc">应用包、OTA 文件和设备配置共享一条表单契约：上传解析、字段校验、目标范围、影响确认、提交追踪。解析得到的标识和版本必须只读，前端不解析 APK 签名或证书。</span></p>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="advanced-form:asset.stage">阶段</span></th><th><span data-i18n="advanced-form:asset.required">必须展示</span></th><th><span data-i18n="advanced-form:asset.failure">失败处理</span></th></tr></thead>
+      <tbody>
+        <tr><td><span data-i18n="advanced-form:asset.upload">上传与解析</span></td><td><span data-i18n="advanced-form:asset.uploadRequired">文件名、大小、校验值、解析字段和来源</span></td><td><span data-i18n="advanced-form:asset.uploadFailure">Alert 保留错误码，允许替换文件</span></td></tr>
+        <tr><td><span data-i18n="advanced-form:asset.scope">目标范围</span></td><td><span data-i18n="advanced-form:asset.scopeRequired">机构、分组、设备、适配机型和预计数量</span></td><td><span data-i18n="advanced-form:asset.scopeFailure">指出非法值、重复项和冲突来源</span></td></tr>
+        <tr><td><span data-i18n="advanced-form:asset.review">影响确认</span></td><td><span data-i18n="advanced-form:asset.reviewRequired">变更摘要、风险、跳过项和权限</span></td><td><span data-i18n="advanced-form:asset.reviewFailure">阻止提交并聚焦首个可修复问题</span></td></tr>
+        <tr><td><span data-i18n="advanced-form:asset.track">提交追踪</span></td><td><span data-i18n="advanced-form:asset.trackRequired">任务号、进度入口和返回路径</span></td><td><span data-i18n="advanced-form:asset.trackFailure">终态进入 Result，保留失败明细</span></td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 </div>
 `;

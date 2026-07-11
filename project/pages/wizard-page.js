@@ -15,7 +15,7 @@
       <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="wizard-page:text.005">选择设备</span></div><div class="sub"><span data-i18n="wizard-page:text.006">1,284 台</span></div></div>
       <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="wizard-page:text.007">选择固件包</span></div><div class="sub">v3.5.0</div></div>
       <div class="step active"><div class="num">3</div><div class="lbl"><span data-i18n="wizard-page:text.008">配置策略</span></div><div class="sub"><span data-i18n="wizard-page:text.009">设置中</span></div></div>
-      <div class="step"><div class="num">4</div><div class="lbl"><span data-i18n="wizard-page:text.010">确认提交</span></div><div class="sub"><span data-i18n="wizard-page:text.011">待执行</span></div></div>
+      <div class="step"><div class="num">4</div><div class="lbl"><span data-i18n="wizard-page:text.010">确认提交</span></div><div class="sub"><span data-i18n="wizard-page:text.011">未开始</span></div></div>
     </div>
   </div>
   <div class="body">
@@ -34,6 +34,10 @@
   </div>
 </div>
     </div>
+  </div>
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/progress">Progress</a></span><span><a href="#/inputs">Input</a></span><span><a href="#/advanced-form">Validation</a></span><span><a href="#/feedback">Feedback</a></span></div>
   </div>
 </section>
 </div>

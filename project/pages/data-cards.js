@@ -43,6 +43,7 @@
     </div>
     <div class="blueprint-notes"><span><span data-i18n="data-cards:text.047">卡片不是替代表格，而是高频巡检视图</span></span><span><span data-i18n="data-cards:text.048">卡片动作必须与表格操作列一致</span></span><span><span data-i18n="data-cards:text.049">禁用态要展示原因</span></span></div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/dash-page">DashboardPage</a></span><span><a href="#/device-center-page">DeviceCenterPage</a></span><span><a href="#/market-page">MarketPage</a></span></div></div>
 </section>
 </div>
 `;

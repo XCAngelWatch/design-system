@@ -6,7 +6,7 @@
   <h2><span data-i18n="page-header:text.002">页头 PageHeader</span></h2>
   <p class="lede"><span data-i18n="page-header:text.003">每个业务页的顶部都是相同骨架 —— 面包屑 + 主标题 + 副标题 / 状态 + 主次操作。这套结构由 </span><code>PageHeader</code><span data-i18n="page-header:text.004"> 组件统一封装，保证 100% 一致。运维切换业务页时不用重新找“主操作在哪”。</span></p>
 
-  <div class="alert warning" style="margin:10px 0 18px"><div class="ico">!</div><div class="content"><strong><span data-i18n="page-header:text.005">这是 TMS 自建组件，不是 antd 提供。</span></strong><span data-i18n="page-header:text.006">antd v4 曾内置 </span><code>&lt;PageHeader /&gt;</code><span data-i18n="page-header:text.007">，v5 起官方移除（迁移到 </span><code>@ant-design/pro-components</code><span data-i18n="page-header:text.008"> 的 </span><code>&lt;ProPageHeader /&gt;</code><span data-i18n="page-header:text.009">）。TMS 在 do-dont 页禁用 ProComponents（peer-dep 冲突），因此</span><b><span data-i18n="page-header:text.010">必须自建</span></b><span data-i18n="page-header:text.011">。代码集中在 </span><code class="mono">packages/web/src/components/PageHeader.tsx</code><span data-i18n="page-header:text.012">。新人查 antd 官方文档找不到 PageHeader 是正常的。</span></div></div>
+  <div class="alert warning" style="margin:10px 0 18px"><div class="ico">!</div><div class="content"><strong><span data-i18n="page-header:text.005">这是 TMS 自建组件，不是 antd 提供。</span></strong><span data-i18n="page-header:text.006">当前 Ant Design 不提供 </span><code>&lt;PageHeader /&gt;</code><span data-i18n="page-header:text.007">；项目也不引入 </span><code>@ant-design/pro-components</code><span data-i18n="page-header:text.008"> 作为替代，其 </span><code>&lt;ProPageHeader /&gt;</code><span data-i18n="page-header:text.009"> 会引入被禁用的 ProComponents 依赖。因此</span><b><span data-i18n="page-header:text.010">必须自建</span></b><span data-i18n="page-header:text.011">，代码集中在 </span><code class="mono">packages/web/src/components/PageHeader.tsx</code><span data-i18n="page-header:text.012">。</span></div></div>
 
   <div class="subsection">
     <h3><span data-i18n="page-header:text.013">结构 · 6 个槽位</span></h3>
@@ -153,6 +153,7 @@
       </div>
     </div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/list-page">ListPage</a></span><span><a href="#/detail-page">DetailPage</a></span><span><a href="#/form-page">FormPage</a></span></div></div>
 </section>
 </div>
 `;

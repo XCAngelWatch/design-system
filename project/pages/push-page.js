@@ -37,7 +37,7 @@
             <td><span data-i18n="push-page:text.016">按机型</span></td>
             <td><span data-i18n="push-page:text.017">运维-上海</span></td>
             <td>2026-04-27 14:25</td>
-            <td><span class="status-dot online"><span data-i18n="push-page:text.018">已完成</span></span></td>
+            <td><span class="status-dot is-success"><span data-i18n="push-page:text.018">成功</span></span></td>
             <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.019">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.020">设备清单</span></button></td>
           </tr>
           <tr>
@@ -45,15 +45,15 @@
             <td><span data-i18n="push-page:text.021">按分组</span></td>
             <td><span data-i18n="push-page:text.022">运维-上海</span></td>
             <td>2026-04-27 14:18</td>
-            <td><span class="status-dot upgrading"><span data-i18n="push-page:text.023">推送中</span></span></td>
-            <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.024">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.025">取消</span></button></td>
+            <td><span class="status-dot is-processing"><span data-i18n="push-page:text.023">执行中</span></span></td>
+            <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.024">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.025">设备清单</span></button></td>
           </tr>
           <tr>
             <td><code>BATCH-202604271402-D419</code></td>
             <td><span data-i18n="push-page:text.026">当前及子机构</span></td>
             <td><span data-i18n="push-page:text.027">运维-北京</span></td>
             <td>2026-04-27 14:02</td>
-            <td><span class="status-dot online"><span data-i18n="push-page:text.028">已完成</span></span></td>
+            <td><span class="status-dot is-success"><span data-i18n="push-page:text.028">成功</span></span></td>
             <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.029">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.030">设备清单</span></button></td>
           </tr>
           <tr>
@@ -61,7 +61,7 @@
             <td><span data-i18n="push-page:text.031">单设备</span></td>
             <td><span data-i18n="push-page:text.032">运维-广州</span></td>
             <td>2026-04-27 13:50</td>
-            <td><span class="status-dot fault"><span data-i18n="push-page:text.033">部分失败</span></span></td>
+            <td><span class="status-dot is-warning"><span data-i18n="push-page:text.033">部分成功</span></span></td>
             <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.034">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.035">失败诊断</span></button></td>
           </tr>
           <tr>
@@ -69,15 +69,15 @@
             <td><span data-i18n="push-page:text.036">全部</span></td>
             <td><span data-i18n="push-page:text.037">系统调度</span></td>
             <td>2026-04-27 13:20</td>
-            <td><span class="status-dot online"><span data-i18n="push-page:text.038">已完成</span></span></td>
-            <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.039">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.040">设备清单</span></button></td>
+            <td><span class="status-dot is-error"><span data-i18n="push-page:text.038">失败</span></span></td>
+            <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.039">详情</span></button><button class="btn btn-link"><span data-i18n="push-page:text.040">失败诊断</span></button></td>
           </tr>
           <tr>
             <td><code>BATCH-202604271215-9B7E</code></td>
             <td><span data-i18n="push-page:text.041">按设备号</span></td>
             <td><span data-i18n="push-page:text.042">运维-成都</span></td>
             <td>2026-04-27 12:15</td>
-            <td><span class="status-dot offline"><span data-i18n="push-page:text.043">已撤回</span></span></td>
+            <td><span class="status-dot is-success"><span data-i18n="push-page:text.043">成功</span></span></td>
             <td class="colactions"><button class="btn btn-link"><span data-i18n="push-page:text.044">详情</span></button></td>
           </tr>
         </tbody>
@@ -97,10 +97,10 @@
       <div class="bp-card"><h4><span data-i18n="push-page:text.048">总数</span></h4><p><span class="mono">1,284</span> <span data-i18n="push-page:text.049">台目标设备。用于核对批次影响范围。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="push-page:text.050">成功</span></h4><p><span class="mono">1,216</span> <span data-i18n="push-page:text.051">台已确认接收。允许查看设备清单和导出结果。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="push-page:text.052">失败</span></h4><p><span class="mono">28</span> <span data-i18n="push-page:text.053">台执行失败。必须提供失败原因、重试失败项(</span><code>push_task_rePush</code> <span data-i18n="push-page:text.054">权限)和下载失败清单。</span></p></div>
-      <div class="bp-card"><h4><span data-i18n="push-page:text.055">已过期</span></h4><p><span class="mono">6</span> <span data-i18n="push-page:text.056">台超时未送达。不可重试,仅查看与导出。</span></p></div>
-      <div class="bp-card"><h4><span data-i18n="push-page:text.057">已终止</span></h4><p><span class="mono">4</span> <span data-i18n="push-page:text.058">台被管理员终止(</span><code>push_task_terminate</code> <span data-i18n="push-page:text.059">权限)。已终止设备不可重试,任务状态可能从"已终止"再次变更,需明示。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="push-page:text.055">已过期</span></h4><p><span class="mono">6</span> <span data-i18n="push-page:text.056">台超时未送达。具备 push_task_rePush 权限时可重新推送，并保留原失败原因。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="push-page:text.057">已终止</span></h4><p><span class="mono">4</span> <span data-i18n="push-page:text.058">台被管理员终止(</span><code>push_task_terminate</code> <span data-i18n="push-page:text.059">权限)。已终止是设备结果终态，不可重试。</span></p></div>
     </div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><span data-i18n="push-page:text.060">批量操作:选中设备后可</span> <b><span data-i18n="push-page:text.061">重新推送</span></b><span data-i18n="push-page:text.062">(仅失败/已过期生效)与</span> <b><span data-i18n="push-page:text.063">终止推送</span></b><span data-i18n="push-page:text.064">(仅执行中生效);取消推送仅对待执行生效。边界规则见</span> <a href="#/copywriting"><span data-i18n="push-page:text.065">文案规范</span></a><span data-i18n="push-page:text.086">。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><span data-i18n="push-page:text.060">批量操作:选中设备后可</span> <b><span data-i18n="push-page:text.061">重新推送</span></b><span data-i18n="push-page:text.062">(仅失败/已过期且具备 push_task_rePush 权限时生效)与</span> <b><span data-i18n="push-page:text.063">终止推送</span></b><span data-i18n="push-page:text.064">(仅执行中且具备 push_task_terminate 权限时生效)。边界规则见</span> <a href="#/copywriting"><span data-i18n="push-page:text.065">文案规范</span></a><span data-i18n="push-page:text.086">。</span></p>
   </div>
 
   <div class="surface" style="margin-top:24px">
@@ -121,6 +121,23 @@
         <tr><td><code>7</code></td><td><code>current_store</code></td><td><span data-i18n="push-page:text.084">仅当前机构</span></td><td><span data-i18n="push-page:text.085">不含子机构</span></td></tr>
       </tbody>
     </table>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="push-page:target.title">目标范围校验</span></h3>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="push-page:target.mode">范围模式</span></th><th><span data-i18n="push-page:target.validation">校验</span></th><th><span data-i18n="push-page:target.summary">提交摘要</span></th></tr></thead>
+      <tbody>
+        <tr><td><span data-i18n="push-page:target.devices">设备编号 / 范围表达式</span></td><td><span data-i18n="push-page:target.devicesValidation">禁止中文逗号、自动去重、校验区间和重叠</span></td><td><span data-i18n="push-page:target.devicesSummary">有效、重复、非法和无权限数量</span></td></tr>
+        <tr><td><span data-i18n="push-page:target.groups">设备分组</span></td><td><span data-i18n="push-page:target.groupsValidation">分组存在、可访问且设备不为空</span></td><td><span data-i18n="push-page:target.groupsSummary">分组名称、设备数和冲突数</span></td></tr>
+        <tr><td><span data-i18n="push-page:target.orgs">机构范围</span></td><td><span data-i18n="push-page:target.orgsValidation">明确是否包含子机构并校验数据权限</span></td><td><span data-i18n="push-page:target.orgsSummary">机构路径、作用域和预计设备数</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="push-page:target.rule">重试摘要必须区分可重试失败、已过期、已终止和无权限设备；已终止永远不可重试。</span></p>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a></span><span><a href="#/status-matrix">Status</a></span><span><a href="#/toast">Notification</a></span><span><a href="#/avatar-result">Result</a></span><span><a href="#/row-actions">RowActions</a></span></div>
   </div>
 </section>
 </div>

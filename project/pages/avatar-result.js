@@ -27,7 +27,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="avatar-result:text.012">Result · 结果页（操作终态）</span></h3>
-    <p class="lede" style="margin-bottom:12px"><span data-i18n="avatar-result:text.013">异步 / 批量操作的整页终态展示。区别于 Toast / Modal，Result 占据整个内容区，意味着"上一步操作已结束，决定下一步"。</span></p>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="avatar-result:text.013">异步 / 批量操作的整页终态展示。区别于 Message / Notification / Modal，Result 占据整个内容区，意味着"上一步操作已结束，决定下一步"。</span></p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
 <div class="result-mock success">
   <div class="ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -103,8 +103,8 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="avatar-result:text.065">Result 与 Toast / Modal / Alert 的边界</span></h3>
-    <div class="alert info"><div class="ico">i</div><div class="content"><strong><span data-i18n="avatar-result:text.066">判断口诀：</span></strong><span data-i18n="avatar-result:text.067">"操作的下一步动作是回到列表 / 重试 / 跳转其他页面" → Result。"操作完成后用户继续在原页面工作" → Toast。"操作前需要决策" → Modal。"持续提示与上下文相关" → Alert。详细对照参见 </span><a href="#/toast" style="color:var(--aw-primary)"><span data-i18n="avatar-result:text.068">Toast 章节</span></a><span data-i18n="avatar-result:text.069">。</span></div></div>
+    <h3><span data-i18n="avatar-result:text.065">Result 与 Message / Notification / Modal / Alert 的边界</span></h3>
+    <div class="alert info"><div class="ico">i</div><div class="content"><strong><span data-i18n="avatar-result:text.066">判断口诀：</span></strong><span data-i18n="avatar-result:text.067">"下一步是回到列表 / 重试 / 跳转" → Result。"继续在原页工作" → Message。"异步任务仍在运行" → Notification。"操作前需要决策" → Modal。"持续提示与上下文相关" → Alert。详细对照参见 </span><a href="#/toast" style="color:var(--aw-primary)"><span data-i18n="avatar-result:text.068">消息与通知章节</span></a><span data-i18n="avatar-result:text.069">。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -128,6 +128,17 @@
   <div class="dl-item"><div class="dl-l"><span data-i18n="avatar-result:text.089">负责人</span></div><div class="dl-v"><div class="avatar avatar-sm avatar-fb-1" style="display:inline-grid;vertical-align:middle"><span data-i18n="avatar-result:text.090">王</span></div><span data-i18n="avatar-result:text.091"> 王志强</span></div></div>
 </div>
     </div>
+  </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/push-page">PushPage</a></span><span><a href="#/service-page">ServicePage</a></span><span><a href="#/ota-page">OtaPage</a></span></div></div>
+  <div class="subsection">
+    <h3><span data-i18n="avatar-result:assignment.title">分配结果维度 · Assignment Result</span></h3>
+    <div class="demo-grid cols-4">
+      <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.success">成功</span></div><strong>1,204</strong><p><span data-i18n="avatar-result:assignment.successDesc">已按目标范围生效</span></p></div>
+      <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.failed">失败</span></div><strong>18</strong><p><span data-i18n="avatar-result:assignment.failedDesc">保留错误码与可重试原因</span></p></div>
+      <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.conflict">冲突</span></div><strong>27</strong><p><span data-i18n="avatar-result:assignment.conflictDesc">展示来源策略和覆盖权限</span></p></div>
+      <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.skipped">跳过</span></div><strong>35</strong><p><span data-i18n="avatar-result:assignment.skippedDesc">离线、无权限或用户选择</span></p></div>
+    </div>
+    <p style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="avatar-result:assignment.rule">总数必须等于成功、失败、冲突和跳过之和；重试只作用于可重试失败项，覆盖冲突需要独立权限。</span></p>
   </div>
 </section>
 </div>

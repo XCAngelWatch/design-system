@@ -13,7 +13,7 @@
     <div class="ss-card">
 <div class="ss-thumb">
   <div class="ss-sb exp">
-    <div class="ss-logo"><div class="lg"><img src="https://uitmss3.eu.aw-iot.com/tms/tms-web-ui/images/angle.png" alt="" /></div><span class="lg-text">AngelWatch</span></div>
+    <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div><span class="lg-text">AngelWatch</span></div>
     <div class="ss-menu">
       <div class="ss-grp">MAIN</div>
       <div class="ss-it"><span class="dot"></span><span><span data-i18n="shell:text.005">首页</span></span></div>
@@ -38,7 +38,7 @@
     <div class="ss-card">
 <div class="ss-thumb">
   <div class="ss-sb exp col">
-    <div class="ss-logo"><div class="lg"><img src="https://uitmss3.eu.aw-iot.com/tms/tms-web-ui/images/angle.png" alt="" /></div></div>
+    <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div></div>
     <div class="ss-menu">
       <div class="ss-it"><span class="dot"></span></div>
       <div class="ss-it"><span class="dot"></span></div>
@@ -56,7 +56,7 @@
     <div class="ss-card dark">
 <div class="ss-thumb">
   <div class="ss-sb exp dark">
-    <div class="ss-logo"><div class="lg"><img src="https://uitmss3.eu.aw-iot.com/tms/tms-web-ui/images/angle.png" alt="" /></div><span class="lg-text">AngelWatch</span></div>
+    <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div><span class="lg-text">AngelWatch</span></div>
     <div class="ss-menu">
       <div class="ss-grp">MAIN</div>
       <div class="ss-it"><span class="dot"></span><span><span data-i18n="shell:text.018">首页</span></span></div>
@@ -81,7 +81,7 @@
     <div class="ss-card dark">
 <div class="ss-thumb">
   <div class="ss-sb exp col dark">
-    <div class="ss-logo"><div class="lg"><img src="https://uitmss3.eu.aw-iot.com/tms/tms-web-ui/images/angle.png" alt="" /></div></div>
+    <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div></div>
     <div class="ss-menu">
       <div class="ss-it"><span class="dot"></span></div>
       <div class="ss-it"><span class="dot"></span></div>
@@ -104,7 +104,7 @@
 <div class="shell-mock v12">
   <div class="sb">
     <div class="logo-region">
-      <div class="b"><img src="https://uitmss3.eu.aw-iot.com/tms/tms-web-ui/images/angle.png" alt="AngelWatch" /></div>
+      <div class="b"><img src="favicon.ico" alt="AngelWatch" /></div>
       <div class="nm"><span class="pname">AngelWatch</span><span class="pdesc">TMS Console</span></div>
     </div>
     <div class="menu">
@@ -181,6 +181,10 @@
 <span data-i18n="shell:text.097">· 折叠按钮在 Topbar，快捷键</span> <code>⌘ + B</code><br/>
 <span data-i18n="shell:text.098">· 自定义滚动条：默认 0px；hover sidebar 时显示 4px</span> <code>#DEE1E6</code>
     </div>
+  </div>
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/menu">Menu</a></span><span><a href="#/nav-comp">Navigation</a></span><span><a href="#/dark">Theme</a></span><span><a href="#/i18n">i18n</a></span><span><a href="#/whitelabel">Whitelabel</a></span></div>
   </div>
 </section>
 </div>

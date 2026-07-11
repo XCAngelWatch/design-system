@@ -21,7 +21,7 @@
 <section class="section" id="row-actions">
   <p class="section-eyebrow"><span data-i18n="row-actions:text.001">业务模式 · 行操作</span></p>
   <h2><span data-i18n="row-actions:text.002">行操作 RowActions</span></h2>
-  <p class="lede"><span data-i18n="row-actions:text.003">表格 / 卡片每条记录的尾列动作。统一图标集合 + tooltip + 危险确认阈值，避免每个业务页各写各的图标和文案。</span></p>
+  <p class="lede"><span data-i18n="row-actions:text.003">表格 / 卡片每条记录的尾列动作。顺序固定为查看 → 编辑 → 业务动作 → 启停 → 删除，并统一 tooltip 与危险确认阈值，避免每个业务页各写一套。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.004">标准动作集合</span></h3>
@@ -151,6 +151,7 @@
       <div style="margin-top:4px" data-i18n="row-actions:text.076">--aw-radius (按钮) · --aw-shadow-2 (下拉) · --aw-dur-fast (过渡)</div>
     </div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/list-page">ListPage</a></span><span><a href="#/device-center-page">DeviceCenterPage</a></span><span><a href="#/user-mgmt-page">UserMgmtPage</a></span></div></div>
 </section>
 </div>
 `;

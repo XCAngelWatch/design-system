@@ -54,9 +54,9 @@
           <table class="dt">
             <thead><tr><th><span data-i18n="service-page:text.053">名称</span></th><th><span data-i18n="service-page:text.054">机构</span></th><th><span data-i18n="service-page:text.055">状态</span></th><th><span data-i18n="service-page:text.056">最后操作时间</span></th><th><span data-i18n="service-page:text.057">操作人</span></th><th><span data-i18n="service-page:text.058">操作</span></th></tr></thead>
             <tbody>
-              <tr><td><b><span data-i18n="service-page:text.059">欧洲默认 APN</span></b></td><td><span data-i18n="service-page:text.060">EU / 默认机构</span></td><td><span class="status-dot online"><span data-i18n="service-page:text.061">已启用</span></span></td><td><span data-i18n="service-page:text.062">今天 10:12</span></td><td><span data-i18n="service-page:text.063">运营管理员</span></td><td><a><span data-i18n="service-page:text.064">推送到设备</span></a> · <a><span data-i18n="service-page:text.065">从设备删除</span></a> · <a><span data-i18n="service-page:text.066">详情</span></a></td></tr>
-              <tr><td><b><span data-i18n="service-page:text.067">备用 APN</span></b></td><td><span data-i18n="service-page:text.068">华东一区</span></td><td><span class="status-dot upgrading"><span data-i18n="service-page:text.069">推送中</span></span></td><td><span data-i18n="service-page:text.070">昨天 18:44</span></td><td><span data-i18n="service-page:text.071">设备运维</span></td><td><a><span data-i18n="service-page:text.072">推送记录</span></a> · <a><span data-i18n="service-page:text.073">设备详情</span></a></td></tr>
-              <tr><td><b><span data-i18n="service-page:text.074">测试 APN</span></b></td><td><span data-i18n="service-page:text.075">测试机构</span></td><td><span class="status-dot offline"><span data-i18n="service-page:text.076">已停用</span></span></td><td><span data-i18n="service-page:text.077">周一 11:03</span></td><td><span data-i18n="service-page:text.078">系统管理员</span></td><td><a><span data-i18n="service-page:text.079">修改</span></a> · <a><span data-i18n="service-page:text.080">删除</span></a></td></tr>
+              <tr><td><b><span data-i18n="service-page:text.059">欧洲默认 APN</span></b></td><td><span data-i18n="service-page:text.060">EU / 默认机构</span></td><td><span class="status-dot is-success"><span data-i18n="service-page:text.061">已启用</span></span></td><td><span data-i18n="service-page:text.062">今天 10:12</span></td><td><span data-i18n="service-page:text.063">运营管理员</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.066">详情</span></button><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.064">推送到设备</span></button><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.065">从设备删除</span></button></td></tr>
+              <tr><td><b><span data-i18n="service-page:text.067">备用 APN</span></b></td><td><span data-i18n="service-page:text.068">华东一区</span></td><td><span class="status-dot is-processing"><span data-i18n="service-page:text.069">推送中</span></span></td><td><span data-i18n="service-page:text.070">昨天 18:44</span></td><td><span data-i18n="service-page:text.071">设备运维</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.073">设备详情</span></button><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.072">推送记录</span></button></td></tr>
+              <tr><td><b><span data-i18n="service-page:text.074">测试 APN</span></b></td><td><span data-i18n="service-page:text.075">测试机构</span></td><td><span class="status-dot is-neutral"><span data-i18n="service-page:text.076">已停用</span></span></td><td><span data-i18n="service-page:text.077">周一 11:03</span></td><td><span data-i18n="service-page:text.078">系统管理员</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.079">修改</span></button><button class="btn btn-link btn-sm"><span data-i18n="service-page:text.080">删除</span></button></td></tr>
             </tbody>
           </table>
         </div>
@@ -88,7 +88,19 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="service-page:text.111">组件映射</span></h3>
+    <h3><span data-i18n="service-page:engine.title">统一远程服务引擎</span></h3>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="service-page:engine.layer">层级</span></th><th><span data-i18n="service-page:engine.contract">统一契约</span></th><th><span data-i18n="service-page:engine.variant">业务差异</span></th></tr></thead>
+      <tbody>
+        <tr><td><span data-i18n="service-page:engine.action">动作定义</span></td><td><span data-i18n="service-page:engine.actionContract">人类可读标签、operationType 映射、风险级别和权限</span></td><td><span data-i18n="service-page:engine.actionVariant">参数字段和设备能力要求</span></td></tr>
+        <tr><td><span data-i18n="service-page:engine.target">目标范围</span></td><td><span data-i18n="service-page:engine.targetContract">设备、分组、机构、冲突和预计数量</span></td><td><span data-i18n="service-page:engine.targetVariant">是否要求在线、激活或特定机型</span></td></tr>
+        <tr><td><span data-i18n="service-page:engine.result">执行结果</span></td><td><span data-i18n="service-page:engine.resultContract">复用推送批次与设备结果、重试和终止规则</span></td><td><span data-i18n="service-page:engine.resultVariant">按 operationType 追加明细列</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="service-page:text.111">组件契约</span></h3>
     <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="service-page:text.112">：服务配置与推送记录</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="service-page:text.113">：配置编辑与设备详情</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="service-page:text.114">：高风险确认</span></span><span><a href="#/avatar-result">Result</a><span data-i18n="service-page:text.115">：部分成功和失败清单</span></span><span><a href="#/push-page">PushPage</a><span data-i18n="service-page:text.116">：任务详情结构</span></span></div>
   </div>
 </section>

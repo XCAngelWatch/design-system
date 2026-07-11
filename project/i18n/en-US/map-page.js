@@ -85,7 +85,7 @@
     "text.081": "map/store:add / change / log. Stores are organization-level geographic objects covered by map-page.",
     "text.082": "Event Copy in Four Languages",
     "text.083": "Entered geofence: Entered / Ingresó / Entrou; exited geofence: Exited / Salido / Saiu; enter_leave remains enter_leave. Report Location; split longitude and latitude into lng / lat fields.",
-    "text.084": "Component Mapping",
+    "text.084": "Component Contract",
     "text.085": ": start time / end time",
     "text.086": ": query results and geofence alerts",
     "text.087": ": device details and alert details",

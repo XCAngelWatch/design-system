@@ -112,7 +112,7 @@
     "text.108": "Medium",
     "text.109": "Secondary confirmation when pushing to devices or deleting from devices",
     "text.110": "Push records + push target details.",
-    "text.111": "Component Mapping",
+    "text.111": "Component Contract",
     "text.112": ": service configuration and push records",
     "text.113": ": configuration editing and device details",
     "text.114": ": high-risk confirmation",

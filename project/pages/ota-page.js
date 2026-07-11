@@ -80,7 +80,7 @@
                 <td>245 MB</td>
                 <td>AW-Pro 5</td>
                 <td>2026-04-27 09:12</td>
-                <td><span class="status-dot upgrading"><span data-i18n="ota-page:text.040">审核中</span></span></td>
+                <td><span class="status-dot is-processing"><span data-i18n="ota-page:text.040">审核中</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.041">详情</span></button><button class="btn btn-link"><span data-i18n="ota-page:text.042">撤回</span></button></td>
               </tr>
               <tr>
@@ -91,7 +91,7 @@
                 <td>198 MB</td>
                 <td>AW-Pro 5/7</td>
                 <td>2026-04-26 02:00</td>
-                <td><span class="status-dot online"><span data-i18n="ota-page:text.045">已上架</span></span></td>
+                <td><span class="status-dot is-success"><span data-i18n="ota-page:text.045">已上架</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.046">详情</span></button><button class="btn btn-link"><span data-i18n="ota-page:text.047">推送</span></button></td>
               </tr>
               <tr>
@@ -102,7 +102,7 @@
                 <td>245 MB</td>
                 <td>AW-Pro 5</td>
                 <td>2026-04-25 18:30</td>
-                <td><span class="status-dot maint"><span data-i18n="ota-page:text.050">定期上架</span></span></td>
+                <td><span class="status-dot is-processing"><span data-i18n="ota-page:text.050">定期上架</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.051">详情</span></button><button class="btn btn-link"><span data-i18n="ota-page:text.052">编辑</span></button></td>
               </tr>
               <tr>
@@ -113,7 +113,7 @@
                 <td>195 MB</td>
                 <td>AW-Pro 7</td>
                 <td>2026-04-24 21:55</td>
-                <td><span class="status-dot fault"><span data-i18n="ota-page:text.055">已拒绝</span></span></td>
+                <td><span class="status-dot is-error"><span data-i18n="ota-page:text.055">已拒绝</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.056">详情</span></button><button class="btn btn-link"><span data-i18n="ota-page:text.057">重新提交</span></button></td>
               </tr>
               <tr>
@@ -124,7 +124,7 @@
                 <td>134 MB</td>
                 <td>AW-Mini</td>
                 <td>2026-04-23 11:08</td>
-                <td><span class="status-dot offline"><span data-i18n="ota-page:text.060">已下架</span></span></td>
+                <td><span class="status-dot is-neutral"><span data-i18n="ota-page:text.060">已下架</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="ota-page:text.061">详情</span></button><button class="btn btn-link"><span data-i18n="ota-page:text.062">推送</span></button></td>
               </tr>
             </tbody>
@@ -144,7 +144,7 @@
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px"><span data-i18n="ota-page:text.065">工具栏右侧</span> <code>☰ ⊞</code> <span data-i18n="ota-page:text.066">切换视图模式。卡片视图把每条 OTA 包渲染为带封面 + 元数据的卡(适合现场调研一眼扫过几十条版本),用户偏好持久化到 localStorage。</span></p>
     <div class="ota-card-grid">
       <div class="ota-card">
-        <div class="oc-cover"><span class="oc-version">v3.5.0</span><span class="status-dot upgrading" style="margin-top:6px"><span data-i18n="ota-page:text.067">审核中</span></span></div>
+        <div class="oc-cover"><span class="oc-version">v3.5.0</span><span class="status-dot is-processing" style="margin-top:6px"><span data-i18n="ota-page:text.067">审核中</span></span></div>
         <div class="oc-body">
           <strong><span data-i18n="ota-page:text.068">v3.5.0 灰度包</span></strong>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.069">基线</span></span><code>v3.4.2</code></div>
@@ -154,7 +154,7 @@
         </div>
       </div>
       <div class="ota-card">
-        <div class="oc-cover oc-success"><span class="oc-version">v3.4.2</span><span class="status-dot online" style="margin-top:6px"><span data-i18n="ota-page:text.074">已上架</span></span></div>
+        <div class="oc-cover oc-success"><span class="oc-version">v3.4.2</span><span class="status-dot is-success" style="margin-top:6px"><span data-i18n="ota-page:text.074">已上架</span></span></div>
         <div class="oc-body">
           <strong><span data-i18n="ota-page:text.075">v3.4.2 全量包</span></strong>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.076">基线</span></span><code>v3.4.1</code></div>
@@ -164,7 +164,7 @@
         </div>
       </div>
       <div class="ota-card">
-        <div class="oc-cover oc-warn"><span class="oc-version">v3.5.0</span><span class="status-dot maint" style="margin-top:6px"><span data-i18n="ota-page:text.081">定期上架</span></span></div>
+        <div class="oc-cover oc-warn"><span class="oc-version">v3.5.0</span><span class="status-dot is-processing" style="margin-top:6px"><span data-i18n="ota-page:text.081">定期上架</span></span></div>
         <div class="oc-body">
           <strong><span data-i18n="ota-page:text.082">v3.5.0 定期上架包</span></strong>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.083">基线</span></span><code>v3.4.2</code></div>
@@ -174,7 +174,7 @@
         </div>
       </div>
       <div class="ota-card">
-        <div class="oc-cover oc-danger"><span class="oc-version">v3.4.0</span><span class="status-dot fault" style="margin-top:6px"><span data-i18n="ota-page:text.088">已拒绝</span></span></div>
+        <div class="oc-cover oc-danger"><span class="oc-version">v3.4.0</span><span class="status-dot is-error" style="margin-top:6px"><span data-i18n="ota-page:text.088">已拒绝</span></span></div>
         <div class="oc-body">
           <strong><span data-i18n="ota-page:text.089">v3.4.0 回滚包</span></strong>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.090">基线</span></span><code>v3.4.1</code></div>
@@ -184,6 +184,23 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="ota-page:preflight.title">推送前检查 · Preflight</span></h3>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="ota-page:preflight.item">检查项</span></th><th><span data-i18n="ota-page:preflight.pass">通过条件</span></th><th><span data-i18n="ota-page:preflight.block">阻断反馈</span></th></tr></thead>
+      <tbody>
+        <tr><td><span data-i18n="ota-page:preflight.package">升级包</span></td><td><span data-i18n="ota-page:preflight.packagePass">签名、校验值、基线版本和安卓版本有效</span></td><td><span data-i18n="ota-page:preflight.packageBlock">Alert 展示错误码并返回文件处理</span></td></tr>
+        <tr><td><span data-i18n="ota-page:preflight.models">适配机型</span></td><td><span data-i18n="ota-page:preflight.modelsPass">目标设备与适配机型、基线版本匹配</span></td><td><span data-i18n="ota-page:preflight.modelsBlock">列出不匹配设备和跳过数量</span></td></tr>
+        <tr><td><span data-i18n="ota-page:preflight.scope">推送范围</span></td><td><span data-i18n="ota-page:preflight.scopePass">无重复、非法范围或无权限机构</span></td><td><span data-i18n="ota-page:preflight.scopeBlock">聚焦首个错误并保留已选范围</span></td></tr>
+        <tr><td><span data-i18n="ota-page:preflight.risk">风险确认</span></td><td><span data-i18n="ota-page:preflight.riskPass">展示强制、数据初始化、延迟时间和预计设备数</span></td><td><span data-i18n="ota-page:preflight.riskBlock">权限不足时禁用并说明原因</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a></span><span><a href="#/data-cards">DataCard</a></span><span><a href="#/upload">Upload</a></span><span><a href="#/progress">Progress</a></span><span><a href="#/feedback">Feedback</a></span><span><a href="#/push-page">PushPage</a></span></div>
   </div>
 </section>
 </div>

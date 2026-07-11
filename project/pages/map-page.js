@@ -46,8 +46,8 @@
             <table class="dt" style="border:0;border-radius:0">
               <thead><tr><th><span data-i18n="map-page:text.035">设备</span></th><th>DSN</th><th><span data-i18n="map-page:text.036">位置上报</span></th><th><span data-i18n="map-page:text.037">围栏状态</span></th><th><span data-i18n="map-page:text.038">操作</span></th></tr></thead>
               <tbody>
-                <tr><td><span data-i18n="map-page:text.039">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span data-i18n="map-page:text.040">28 秒前</span></td><td><span class="status-dot online"><span data-i18n="map-page:text.041">围栏内</span></span></td><td><a><span data-i18n="map-page:text.042">定位</span></a> · <a><span data-i18n="map-page:text.043">轨迹</span></a></td></tr>
-                <tr><td><span data-i18n="map-page:text.044">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span data-i18n="map-page:text.045">8 分钟前</span></td><td><span class="status-dot upgrading"><span data-i18n="map-page:text.046">触发警告</span></span></td><td><a><span data-i18n="map-page:text.047">查看警告</span></a> · <a><span data-i18n="map-page:text.048">轨迹</span></a></td></tr>
+                <tr><td><span data-i18n="map-page:text.039">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span data-i18n="map-page:text.040">28 秒前</span></td><td><span class="status-dot is-success"><span data-i18n="map-page:text.041">围栏内</span></span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.042">定位</span></button><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.043">轨迹</span></button></td></tr>
+                <tr><td><span data-i18n="map-page:text.044">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span data-i18n="map-page:text.045">8 分钟前</span></td><td><span class="status-dot is-warning"><span data-i18n="map-page:text.046">触发警告</span></span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.047">查看警告</span></button><button class="btn btn-link btn-sm"><span data-i18n="map-page:text.048">轨迹</span></button></td></tr>
               </tbody>
             </table>
           </div>
@@ -83,7 +83,20 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="map-page:text.084">组件映射</span></h3>
+    <h3><span data-i18n="map-page:alertFlow.title">围栏告警处置闭环</span></h3>
+    <div class="case-flow">
+      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name"><span data-i18n="map-page:alertFlow.detect">告警产生</span></div><div class="cf-desc"><span data-i18n="map-page:alertFlow.detectDesc">显示设备、围栏、事件类型、时间和级别。</span></div></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name"><span data-i18n="map-page:alertFlow.locate">地图定位</span></div><div class="cf-desc"><span data-i18n="map-page:alertFlow.locateDesc">定位过期、设备离线或地图失败时给局部反馈。</span></div></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name"><span data-i18n="map-page:alertFlow.handle">执行处置</span></div><div class="cf-desc"><span data-i18n="map-page:alertFlow.handleDesc">进入设备详情或远程动作，按副作用级别确认。</span></div></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name"><span data-i18n="map-page:alertFlow.audit">记录复核</span></div><div class="cf-desc"><span data-i18n="map-page:alertFlow.auditDesc">记录处理人、时间、动作、结果和复核状态。</span></div></div>
+    </div>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="map-page:text.084">组件契约</span></h3>
     <div class="blueprint-notes"><span><a href="#/datepicker">DatePicker</a><span data-i18n="map-page:text.085">：开始时间 / 结束时间</span></span><span><a href="#/table">Table</a><span data-i18n="map-page:text.086">：查询结果与围栏警告</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="map-page:text.087">：设备详情和警告详情</span></span><span><a href="#/tech-stack">Tech Stack</a><span data-i18n="map-page:text.088">：地图、聚合和热力图库</span></span></div>
   </div>
 </section>

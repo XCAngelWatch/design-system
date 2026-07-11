@@ -152,6 +152,7 @@ design-system/
 node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
+node scripts/check-consistency.js
 
 # 2. 全部 page fragments 加载 + 注册校验（无浏览器）
 node -e "

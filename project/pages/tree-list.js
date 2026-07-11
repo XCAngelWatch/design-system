@@ -42,6 +42,22 @@
 </div>
     </div>
   </div>
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/tree-comp">Tree</a></span><span><a href="#/table">Table</a></span><span><a href="#/row-actions">RowActions</a></span><span><a href="#/empty-state">Empty</a></span><span><a href="#/loading-levels">Loading</a></span></div>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="tree-list:conflict.title">批量分配与冲突 · Assignment Conflict</span></h3>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="tree-list:conflict.state">状态</span></th><th><span data-i18n="tree-list:conflict.meaning">含义</span></th><th><span data-i18n="tree-list:conflict.action">可用动作</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag tag-info"><span data-i18n="tree-list:conflict.partial">部分分配</span></span></td><td><span data-i18n="tree-list:conflict.partialDesc">所选对象只有一部分已在当前范围</span></td><td><span data-i18n="tree-list:conflict.partialAction">补充分配或查看差异</span></td></tr>
+        <tr><td><span class="tag tag-warning"><span data-i18n="tree-list:conflict.conflicted">冲突</span></span></td><td><span data-i18n="tree-list:conflict.conflictedDesc">对象已被其他策略、机构或分组占用</span></td><td><span data-i18n="tree-list:conflict.conflictedAction">查看来源、跳过或按权限覆盖</span></td></tr>
+        <tr><td><span class="tag tag-neutral"><span data-i18n="tree-list:conflict.skipped">已跳过</span></span></td><td><span data-i18n="tree-list:conflict.skippedDesc">无权限、离线限制或用户选择不覆盖</span></td><td><span data-i18n="tree-list:conflict.skippedAction">下载清单或返回修改范围</span></td></tr>
+      </tbody>
+    </table>
+    <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><span data-i18n="tree-list:conflict.rule">覆盖操作必须显示冲突来源、影响数量和最终生效范围；不得只给红色标签或静默覆盖。</span></div></div>
+  </div>
 </section>
 </div>
 `;

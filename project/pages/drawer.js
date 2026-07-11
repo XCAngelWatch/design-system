@@ -70,6 +70,7 @@
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="drawer:text.076">不要用 Drawer 做"删除确认"：</span></strong><span data-i18n="drawer:text.077">动作太轻量，且需要阻塞决策。改 Modal 或 Popconfirm。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="drawer:text.078">不要在 Modal 内嵌入 Drawer：</span></strong><span data-i18n="drawer:text.079">层叠交互会让用户迷失返回路径。</span></div></div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/detail-page">DetailPage</a></span><span><a href="#/device-center-page">DeviceCenterPage</a></span><span><a href="#/map-page">MapPage</a></span><span><a href="#/service-page">ServicePage</a></span></div></div>
 </section>
 </div>
 `;

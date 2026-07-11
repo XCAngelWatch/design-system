@@ -1111,20 +1111,6 @@
   height: 360px;
 }
 
-/* sidebar new-tag */
-.new-tag {
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 600;
-  padding: 1px 4px;
-  background: var(--aw-primary);
-  color: white;
-  border-radius: 2px;
-  margin-left: 4px;
-  letter-spacing: 0.4px;
-  vertical-align: middle;
-}
-
 /* ===== Component page (.comp-page) — toolbar + fixed theme toggle ===== */
 .app-main.comp-page {
   background: var(--aw-bg-page);

@@ -81,7 +81,7 @@
     "text.077": "Organization",
     "text.078": "Shanghai Operations Center ▾",
     "text.079": "Login Account",
-    "text.080": "Start with a letter / underscore",
+    "text.080": "5–30 letters or digits, including at least one letter",
     "text.081": "Name",
     "text.082": "Email",
     "text.083": "Optional; skip validation for masked values during edit",
@@ -89,8 +89,6 @@
     "text.085": "Enable Google Authenticator (can be unbound with secondary confirmation)",
     "text.086": "Role",
     "text.087": "Select roles (multi-select) ▾",
-    "text.088": "Password",
-    "text.089": "≥ 8 characters + uppercase/lowercase + number + symbol",
     "text.090": "Remarks",
     "text.091": "Optional, for internal identification",
     "text.092": "Cancel",
@@ -161,6 +159,11 @@
     "text.157": "Location app SHA1 value, location Key value, and display map Key value belong to map capability configuration and must not be mixed into the account basic information form.",
     "text.158": "Assign Devices",
     "text.159": "Table / card dual layout",
-    "text.160": "Figma provides both add-assigned-device and card layouts. The implementation should support filters, batch selection, import, and conflict-device prompts."
+    "text.160": "Figma provides both add-assigned-device and card layouts. The implementation should support filters, batch selection, import, and conflict-device prompts.",
+    "text.161": "Account created · Temporary password shown once",
+    "text.162": "The system automatically generated a temporary password for",
+    "text.163": "",
+    "text.164": "Copy Temporary Password",
+    "text.165": "The user must change it at first login. Once closed, it cannot be viewed again; use Reset Password instead."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

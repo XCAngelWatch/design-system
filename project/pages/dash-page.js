@@ -37,8 +37,8 @@
 <div class="dash-chart">
   <div class="ttl"><span data-i18n="dash-page:text.023">最近活动</span></div>
   <div style="display:flex;flex-direction:column">
-    <div class="row" style="padding:8px 0;border-bottom:1px solid var(--aw-border-3);font-size:13px"><span class="status-dot online"></span><span style="flex:1"><span data-i18n="dash-page:text.024">终端-上海-001 已激活</span></span><span class="mono" style="color:var(--aw-text-3);font-size:11px"><span data-i18n="dash-page:text.025">刚刚</span></span></div>
-    <div class="row" style="padding:8px 0;border-bottom:1px solid var(--aw-border-3);font-size:13px"><span class="status-dot upgrading"></span><span style="flex:1"><span data-i18n="dash-page:text.026">v3.5.0 OTA 推送已发起，影响 1,284 台</span></span><span class="mono" style="color:var(--aw-text-3);font-size:11px"><span data-i18n="dash-page:text.027">2 分钟前</span></span></div>
+    <div class="row" style="padding:8px 0;border-bottom:1px solid var(--aw-border-3);font-size:13px"><span class="status-dot is-success"></span><span style="flex:1"><span data-i18n="dash-page:text.024">终端-上海-001 已激活</span></span><span class="mono" style="color:var(--aw-text-3);font-size:11px"><span data-i18n="dash-page:text.025">刚刚</span></span></div>
+    <div class="row" style="padding:8px 0;border-bottom:1px solid var(--aw-border-3);font-size:13px"><span class="status-dot is-processing"></span><span style="flex:1"><span data-i18n="dash-page:text.026">v3.5.0 OTA 推送已发起，影响 1,284 台</span></span><span class="mono" style="color:var(--aw-text-3);font-size:11px"><span data-i18n="dash-page:text.027">2 分钟前</span></span></div>
     <div class="row" style="padding:8px 0;border-bottom:1px solid var(--aw-border-3);font-size:13px"><span class="status-dot fault"></span><span style="flex:1"><span data-i18n="dash-page:text.028">终端-成都-022 触发故障告警</span></span><span class="mono" style="color:var(--aw-text-3);font-size:11px"><span data-i18n="dash-page:text.029">1 小时前</span></span></div>
     <div class="row" style="padding:8px 0;font-size:13px"><span class="status-dot offline"></span><span style="flex:1"><span data-i18n="dash-page:text.030">终端-广州-007 失联超过 12 分钟</span></span><span class="mono" style="color:var(--aw-text-3);font-size:11px"><span data-i18n="dash-page:text.031">12 分钟前</span></span></div>
   </div>
@@ -76,9 +76,13 @@
         <div class="tag-meta"><span data-i18n="dash-page:text.061">固件统计详情</span></div>
         <h3 style="margin:8px 0;font-size:18px"><span data-i18n="dash-page:text.062">升级文件统计详情</span></h3>
         <p style="margin:0 0 10px;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="dash-page:text.063">按固件版本聚合成功、失败、升级中，失败项进入可重试列表。</span></p>
-        <div class="row" style="gap:6px"><span class="tag tag-blue"><span data-i18n="dash-page:text.064">成功</span></span><span class="tag"><span data-i18n="dash-page:text.065">失败</span></span><span class="tag"><span data-i18n="dash-page:text.066">升级中</span></span></div>
+        <div class="row" style="gap:6px"><span class="tag tag-success"><span data-i18n="dash-page:text.064">成功</span></span><span class="tag tag-danger"><span data-i18n="dash-page:text.065">失败</span></span><span class="tag tag-warning"><span data-i18n="dash-page:text.066">升级中</span></span></div>
       </div>
     </div>
+  </div>
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/data-cards">DataCard</a></span><span><a href="#/charts">Charts</a></span><span><a href="#/table">Table</a></span><span><a href="#/empty-state">Empty</a></span><span><a href="#/loading-levels">Loading</a></span></div>
   </div>
 </section>
 </div>

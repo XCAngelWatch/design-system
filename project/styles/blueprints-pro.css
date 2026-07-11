@@ -212,4 +212,20 @@
     align-items: stretch;
     flex-direction: column;
   }
+
+  /* Keep dense business tables accessible without making the whole page overflow. */
+  .subsection,
+  .surface,
+  .table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .dt,
+  .blueprint-table,
+  .map-table,
+  .status-matrix,
+  .tech-table {
+    min-width: 640px;
+  }
 }

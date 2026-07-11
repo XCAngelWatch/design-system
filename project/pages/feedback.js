@@ -4,14 +4,14 @@
 <section class="section" id="feedback">
   <p class="section-eyebrow"><span data-i18n="feedback:text.001">通用组件 · 反馈</span></p>
   <h2><span data-i18n="feedback:text.002">反馈 Feedback</span></h2>
-  <p class="lede"><span data-i18n="feedback:text.003">提示横条用于持续性的状态信息；toast / message 用于瞬时操作反馈；modal 用于阻塞性的二次确认。下表是"什么时候用什么" 的决策表 —— PR review 出现"应该用 Toast 还是 Modal" 争议时回到这里。</span></p>
+  <p class="lede"><span data-i18n="feedback:text.003">Alert 用于持续状态；Message 用于轻量成功 / 信息；Notification 用于可追踪的异步摘要；Modal 用于阻塞确认；Result 用于异步终态。组件选择争议统一回到下表。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="feedback:text.004">反馈层级决策表</span></h3>
     <table class="map-table">
       <thead><tr><th style="width:18%"><span data-i18n="feedback:text.005">类型</span></th><th style="width:22%"><span data-i18n="feedback:text.006">触发场景</span></th><th style="width:18%"><span data-i18n="feedback:text.007">是否阻塞</span></th><th style="width:18%"><span data-i18n="feedback:text.008">消失方式</span></th><th><span data-i18n="feedback:text.009">选用条件</span></th></tr></thead>
       <tbody>
-        <tr><td><b>Toast / Message</b></td><td><span data-i18n="feedback:text.010">瞬时反馈 —— 保存成功 / 复制成功 / 已收藏</span></td><td><span data-i18n="feedback:text.011">否</span></td><td><span data-i18n="feedback:text.012">3 秒自动消失</span></td><td><span data-i18n="feedback:text.013">结果是</span><b><span data-i18n="feedback:text.014">成功</span></b><span data-i18n="feedback:text.015">且</span><b><span data-i18n="feedback:text.016">无需阅读</span></b><span data-i18n="feedback:text.017">；视觉位置顶部居中</span></td></tr>
+        <tr><td><b>Message</b></td><td><span data-i18n="feedback:text.010">瞬时反馈 —— 保存成功 / 复制成功 / 已收藏</span></td><td><span data-i18n="feedback:text.011">否</span></td><td><span data-i18n="feedback:text.012">3 秒自动消失</span></td><td><span data-i18n="feedback:text.013">结果是</span><b><span data-i18n="feedback:text.014">成功</span></b><span data-i18n="feedback:text.015">且</span><b><span data-i18n="feedback:text.016">无需阅读</span></b><span data-i18n="feedback:text.017">；视觉位置顶部居中</span></td></tr>
         <tr><td><b>Notification</b></td><td><span data-i18n="feedback:text.018">系统主动推送 —— 告警 / 完成回报 / 提醒</span></td><td><span data-i18n="feedback:text.019">否</span></td><td><span data-i18n="feedback:text.020">需手动关闭</span></td><td><span data-i18n="feedback:text.021">用户没在等结果但需要知道；右上角栈，可堆 ≤ 3 条</span></td></tr>
         <tr><td><b><span data-i18n="feedback:text.022">Alert 横条</span></b></td><td><span data-i18n="feedback:text.023">持续状态 —— 系统升级中 / 试用期剩余 / 限制提示</span></td><td><span data-i18n="feedback:text.024">否</span></td><td><span data-i18n="feedback:text.025">常驻直到状态变更</span></td><td><span data-i18n="feedback:text.026">整页或区域级横条；不阻塞操作</span></td></tr>
         <tr><td><b><span data-i18n="feedback:text.027">Inline 校验</span></b></td><td><span data-i18n="feedback:text.028">表单字段错误 —— 邮箱格式 / 密码强度</span></td><td><span data-i18n="feedback:text.029">否</span></td><td><span data-i18n="feedback:text.030">用户修正后消失</span></td><td><span data-i18n="feedback:text.031">字段下方红色文案 + icon；表单提交时聚焦首个错误</span></td></tr>
@@ -22,7 +22,7 @@
         <tr><td><b>ErrorPage</b></td><td><span data-i18n="feedback:text.050">整页失败 —— 404 / 403 / 500 / 离线</span></td><td><span data-i18n="feedback:text.051">是（替换）</span></td><td><span data-i18n="feedback:text.052">用户重试或导航</span></td><td><span data-i18n="feedback:text.053">请求层错误；带 traceId 便于审计</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="feedback:text.054">三条硬规则：</span></b><span data-i18n="feedback:text.055">1) 错误结果</span><b><span data-i18n="feedback:text.056">禁用</span></b><span data-i18n="feedback:text.057"> Toast，必须 Modal / Result / ErrorPage；2) 不可逆操作</span><b><span data-i18n="feedback:text.058">禁用</span></b><span data-i18n="feedback:text.059"> Toast 替代 Modal.confirm；3) Notification 同时存在 ≤ 3 条，超出折叠。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="feedback:text.054">三条硬规则：</span></b><span data-i18n="feedback:text.055">1) 错误终态</span><b><span data-i18n="feedback:text.056">禁用</span></b><span data-i18n="feedback:text.057"> Message，必须 Alert / Result / ErrorPage；2) 不可逆操作</span><b><span data-i18n="feedback:text.058">禁用</span></b><span data-i18n="feedback:text.059"> Notification 替代 Modal.confirm；3) Notification 同时存在 ≤ 3 条，超出汇总。</span></p>
   </div>
 
   <div class="demo-stack">
@@ -185,11 +185,12 @@
     <h3><span data-i18n="feedback:text.153">反馈模式 · 批量动作与部分成功</span></h3>
     <div class="bp-flow">
       <div class="bp-step"><div class="num">1</div><div class="name"><span data-i18n="feedback:text.154">动作前确认</span></div><div class="desc"><span data-i18n="feedback:text.155">推送、删除、重置、恢复出厂等强副作用操作使用 Modal.confirm，并明示影响数量。</span></div></div>
-      <div class="bp-step"><div class="num">2</div><div class="name"><span data-i18n="feedback:text.156">执行中进度</span></div><div class="desc"><span data-i18n="feedback:text.157">大批量任务使用进度弹窗或任务详情页；Toast 只做启动成功提示。</span></div></div>
+      <div class="bp-step"><div class="num">2</div><div class="name"><span data-i18n="feedback:text.156">执行中进度</span></div><div class="desc"><span data-i18n="feedback:text.157">大批量任务使用任务详情页；Notification 只做启动与进度摘要，并提供追踪入口。</span></div></div>
       <div class="bp-step"><div class="num">3</div><div class="name"><span data-i18n="feedback:text.158">终态 Result</span></div><div class="desc"><span data-i18n="feedback:text.159">完成、失败、部分成功都进入 Result 或详情卡；部分成功必须列出失败项。</span></div></div>
       <div class="bp-step"><div class="num">4</div><div class="name"><span data-i18n="feedback:text.160">下一步动作</span></div><div class="desc"><span data-i18n="feedback:text.161">提供重试失败项、下载失败清单、查看日志、返回列表，不让用户猜下一步。</span></div></div>
     </div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/market-page">MarketPage</a></span><span><a href="#/ota-page">OtaPage</a></span><span><a href="#/service-page">ServicePage</a></span><span><a href="#/user-mgmt-page">UserMgmtPage</a></span></div></div>
 </section>
 </div>
 `;

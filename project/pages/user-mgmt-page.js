@@ -68,7 +68,7 @@
                 <td>ops-sh@angelwatch.io</td>
                 <td><span data-i18n="user-mgmt-page:text.032">管理员</span></td>
                 <td><span data-i18n="user-mgmt-page:text.033">主负责人</span></td>
-                <td><span class="status-dot online"><span data-i18n="user-mgmt-page:text.034">启用</span></span></td>
+                <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.034">启用</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.035">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.036">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.037">停用</span></button></td>
               </tr>
               <tr>
@@ -78,7 +78,7 @@
                 <td>zhang.gong@angelwatch.io</td>
                 <td><span data-i18n="user-mgmt-page:text.040">运维</span></td>
                 <td>—</td>
-                <td><span class="status-dot online"><span data-i18n="user-mgmt-page:text.041">启用</span></span></td>
+                <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.041">启用</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.042">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.043">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.044">停用</span></button></td>
               </tr>
               <tr>
@@ -88,7 +88,7 @@
                 <td>li.audit@angelwatch.io</td>
                 <td><span data-i18n="user-mgmt-page:text.047">审计</span></td>
                 <td><span data-i18n="user-mgmt-page:text.048">每月 1 号导报表</span></td>
-                <td><span class="status-dot online"><span data-i18n="user-mgmt-page:text.049">启用</span></span></td>
+                <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.049">启用</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.050">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.051">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.052">停用</span></button></td>
               </tr>
               <tr>
@@ -98,7 +98,7 @@
                 <td>chen.lead@angelwatch.io</td>
                 <td><span data-i18n="user-mgmt-page:text.055">主管</span></td>
                 <td><span data-i18n="user-mgmt-page:text.056">分管华东</span></td>
-                <td><span class="status-dot online"><span data-i18n="user-mgmt-page:text.057">启用</span></span></td>
+                <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.057">启用</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.058">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.059">重置密码</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.060">停用</span></button></td>
               </tr>
               <tr>
@@ -108,7 +108,7 @@
                 <td>wang.temp@angelwatch.io</td>
                 <td><span data-i18n="user-mgmt-page:text.063">临时账号</span></td>
                 <td><span data-i18n="user-mgmt-page:text.064">合同至 2026-06</span></td>
-                <td><span class="status-dot offline"><span data-i18n="user-mgmt-page:text.065">已停用</span></span></td>
+                <td><span class="status-dot is-neutral"><span data-i18n="user-mgmt-page:text.065">已停用</span></span></td>
                 <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.066">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.067">启用</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.068">删除</span></button></td>
               </tr>
             </tbody>
@@ -132,13 +132,12 @@
         <div class="body">
           <div class="form-demo">
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.077">机构</span></div><div><div class="select" style="width:100%"><span><span data-i18n="user-mgmt-page:text.078">上海运营中心 ▾</span></span></div></div></div>
-            <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.079">登录账号</span></div><div><input class="input" placeholder="字母 / 下划线开头" data-i18n-placeholder="user-mgmt-page:text.080" /></div></div>
+            <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.079">登录账号</span></div><div><input class="input" placeholder="5–30 位数字 / 字母，且必须含字母" data-i18n-placeholder="user-mgmt-page:text.080" /></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.081">姓名</span></div><div><input class="input" /></div></div>
             <div class="form-row"><div class="lbl"><span data-i18n="user-mgmt-page:text.082">邮箱</span></div><div><input class="input" placeholder="选填,编辑时掩码跳过校验" data-i18n-placeholder="user-mgmt-page:text.083" /></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.084">时区</span></div><div><div class="select" style="width:100%"><span>UTC+08:00 ▾</span></div></div></div>
-            <div class="form-row"><div class="lbl">MFA</div><div><label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--aw-text-2)"><input type="checkbox" /> <span data-i18n="user-mgmt-page:text.085">启用谷歌验证器(可解绑,二次确认)</span></label></div></div>
+            <div class="form-row"><div class="lbl">MFA</div><div><div class="row"><span class="switch"></span><span style="font-size:13px;color:var(--aw-text-2)" data-i18n="user-mgmt-page:text.085">启用谷歌验证器(可解绑,二次确认)</span></div></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.086">角色</span></div><div><div class="select" style="width:100%"><span><span data-i18n="user-mgmt-page:text.087">选择角色 (可多选) ▾</span></span></div></div></div>
-            <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.088">密码</span></div><div><input class="input" type="password" placeholder="≥ 8 位 + 大小写 + 数字 + 符号" data-i18n-placeholder="user-mgmt-page:text.089" /></div></div>
             <div class="form-row"><div class="lbl"><span data-i18n="user-mgmt-page:text.090">备注</span></div><div><input class="input" placeholder="选填,内部识别用" data-i18n-placeholder="user-mgmt-page:text.091" /></div></div>
           </div>
         </div>
@@ -146,6 +145,15 @@
           <button class="btn"><span data-i18n="user-mgmt-page:text.092">取消</span></button>
           <button class="btn btn-primary"><span data-i18n="user-mgmt-page:text.093">完成添加</span></button>
         </div>
+      </div>
+    </div>
+    <div class="alert success" style="margin-top:12px">
+      <div class="ico">✓</div>
+      <div class="content">
+        <strong><span data-i18n="user-mgmt-page:text.161">账号创建成功 · 临时密码仅显示一次</span></strong>
+        <span data-i18n="user-mgmt-page:text.162">系统自动为</span> <code>ops_new_01</code> <span data-i18n="user-mgmt-page:text.163">生成临时密码</span> <code>Aw-7Kp9-X2mQ</code>。
+        <button class="btn btn-link btn-sm" style="padding:0 4px"><span data-i18n="user-mgmt-page:text.164">复制临时密码</span></button>
+        <span data-i18n="user-mgmt-page:text.165">用户首次登录必须修改密码；关闭后不可再次查看，只能执行重置密码。</span>
       </div>
     </div>
   </div>
@@ -229,6 +237,22 @@
         <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="user-mgmt-page:text.160">Figma 同时给出分配设备添加和卡片布局；实现应支持筛选、批量勾选、导入和冲突设备提示。</span></p>
       </div>
     </div>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="user-mgmt-page:permissionDiff.title">权限保存前 Diff</span></h3>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="user-mgmt-page:permissionDiff.dimension">维度</span></th><th><span data-i18n="user-mgmt-page:permissionDiff.before">保存前</span></th><th><span data-i18n="user-mgmt-page:permissionDiff.after">保存后</span></th><th><span data-i18n="user-mgmt-page:permissionDiff.risk">风险提示</span></th></tr></thead>
+      <tbody>
+        <tr><td><span data-i18n="user-mgmt-page:permissionDiff.functions">功能权限</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.functionsBefore">24 项</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.functionsAfter">新增 3，移除 2</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.functionsRisk">列出受影响菜单和强副作用动作</span></td></tr>
+        <tr><td><span data-i18n="user-mgmt-page:permissionDiff.data">数据范围</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.dataBefore">本级及子级</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.dataAfter">自定义 6 个机构</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.dataRisk">展示失去访问的机构与设备数</span></td></tr>
+        <tr><td><span data-i18n="user-mgmt-page:permissionDiff.conflict">分配冲突</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.conflictBefore">未处理 4 项</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.conflictAfter">覆盖 1，跳过 3</span></td><td><span data-i18n="user-mgmt-page:permissionDiff.conflictRisk">覆盖需要独立权限并记录来源</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/tree-comp">Tree</a></span><span><a href="#/cascader">Cascader</a></span><span><a href="#/table">Table</a></span><span><a href="#/drawer">Drawer</a></span><span><a href="#/feedback">Feedback</a></span><span><a href="#/row-actions">RowActions</a></span></div>
   </div>
 </section>
 </div>

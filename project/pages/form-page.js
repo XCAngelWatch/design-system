@@ -45,6 +45,10 @@
 </div>
     </div>
   </div>
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="common:component.contract">组件契约</span></h3>
+    <div class="blueprint-notes"><span><a href="#/page-header">PageHeader</a></span><span><a href="#/inputs">Input</a></span><span><a href="#/advanced-form">Validation</a></span><span><a href="#/feedback">Feedback</a></span></div>
+  </div>
 </section>
 </div>
 `;

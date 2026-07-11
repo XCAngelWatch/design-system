@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "manifestKind": "canvas-summary",
+  "source": {
+    "fileName": "Angelwatch体验重构-设计执行 去除tms1.0内容",
+    "localExport": "/Users/david/Downloads/temp/code/Angelwatch体验重构-设计执行 去除tms1.0内容.fig",
+    "figmaUrl": "https://www.figma.com/design/NFDu7NlnlVnjLA9fBy385O/Angelwatch体验重构-设计执行-去除tms1.0内容?node-id=3089-210609",
+    "sourceNodeId": "3089:210609",
+    "exportedAt": "2026-07-08T04:33:58.309Z",
+    "frameInventorySource": "docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md",
+    "pageInventoryVerified": true,
+    "frameIdsAvailable": false
+  },
+  "dispositions": ["adopt", "adapt", "exclude", "pending"],
+  "exclusionRules": [
+    "旧系统或 TMS 1.0 内容",
+    "废案或临时方案",
+    "占位图层和内部组件工作区",
+    "测试数据、mock ID、技术文件名",
+    "无法由当前有效 Figma 或当前仓库契约确认的旧系统独有模块"
+  ],
+  "totals": {
+    "approvedInterfaceFrames": 263,
+    "approvedStateFrames": 54
+  },
+  "canvases": [
+    {"id":"cover","name":"封面/目录","disposition":"exclude","approvedInterfaceFrames":0,"stateFrames":0,"mappedRoutes":["overview","cases"],"reason":"仅作文件导航与来源识别，不作为产品 UI 契约。"},
+    {"id":"foundations","name":"基础样式","disposition":"adapt","approvedInterfaceFrames":0,"stateFrames":0,"mappedRoutes":["color","type","space","radius","layout","dark"],"reason":"只提取视觉姿态并映射到 --aw-*，不复制 Figma 固定值。"},
+    {"id":"login","name":"登陆页","disposition":"adapt","approvedInterfaceFrames":0,"stateFrames":0,"mappedRoutes":["login-page"],"reason":"产品文案统一使用“登录”，保留多租户、验证码和语言切换证据。"},
+    {"id":"home","name":"首页","disposition":"adapt","approvedInterfaceFrames":0,"stateFrames":0,"mappedRoutes":["dash-page"],"reason":"采用概览、最近访问、产品动态和统计入口，不复制营销化视觉。"},
+    {"id":"market","name":"应用市场","disposition":"adopt","approvedInterfaceFrames":32,"stateFrames":12,"mappedRoutes":["market-page"],"reason":"应用、广告、分类、版本、审核和安装明细属于当前核心业务。"},
+    {"id":"ota","name":"OTA升级管理","disposition":"adopt","approvedInterfaceFrames":13,"stateFrames":4,"mappedRoutes":["ota-page","push-page"],"reason":"OTA 文件生命周期与推送任务结果分层采用。"},
+    {"id":"push","name":"推送任务","disposition":"adopt","approvedInterfaceFrames":10,"stateFrames":3,"mappedRoutes":["push-page","status-matrix","avatar-result"],"reason":"采用批次、目标设备、结果统计、失败明细与重试闭环。"},
+    {"id":"device","name":"数据中心","disposition":"adopt","approvedInterfaceFrames":72,"stateFrames":13,"mappedRoutes":["device-center-page","detail-page"],"reason":"设备生命周期、详情、分组、参数、联机和远程处理属于当前核心业务。"},
+    {"id":"map","name":"设备地图","disposition":"adopt","approvedInterfaceFrames":13,"stateFrames":0,"mappedRoutes":["map-page"],"reason":"采用定位、轨迹、围栏和告警结果面板。"},
+    {"id":"account","name":"账户信息","disposition":"adopt","approvedInterfaceFrames":18,"stateFrames":6,"mappedRoutes":["user-mgmt-page","ops-page"],"reason":"采用机构、运营商、角色、账号和权限配置。"},
+    {"id":"statistics","name":"数据统计","disposition":"adopt","approvedInterfaceFrames":11,"stateFrames":1,"mappedRoutes":["dash-page","charts","ops-page"],"reason":"采用概览到筛选详情表的统计闭环。"},
+    {"id":"service","name":"增值服务","disposition":"adopt","approvedInterfaceFrames":74,"stateFrames":9,"mappedRoutes":["service-page","push-page"],"reason":"采用设备服务动作并复用统一推送引擎。"},
+    {"id":"system","name":"系统管理","disposition":"adopt","approvedInterfaceFrames":15,"stateFrames":6,"mappedRoutes":["ops-page","user-mgmt-page"],"reason":"采用 OSS、日志、字典和菜单等当前系统能力。"},
+    {"id":"overseas","name":"国外版翻译","disposition":"adopt","approvedInterfaceFrames":5,"stateFrames":0,"mappedRoutes":["i18n","copywriting"],"reason":"作为英文术语和重点页面国际化证据。"},
+    {"id":"temporary","name":"临时 - 方案对比","disposition":"exclude","approvedInterfaceFrames":0,"stateFrames":0,"mappedRoutes":[],"reason":"名称已明确标记临时方案，不进入最终规范。"},
+    {"id":"internal-components","name":"内部组件","disposition":"exclude","approvedInterfaceFrames":0,"stateFrames":0,"mappedRoutes":[],"reason":"仅用于设计文件内部组装，不能覆盖当前 AntD v6 组件契约。"}
+  ]
+}

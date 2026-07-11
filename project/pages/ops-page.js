@@ -39,9 +39,9 @@
           <table class="dt">
             <thead><tr><th><span data-i18n="ops-page:text.035">类型</span></th><th><span data-i18n="ops-page:text.036">机构</span></th><th><span data-i18n="ops-page:text.037">操作人</span></th><th><span data-i18n="ops-page:text.038">标题</span></th><th><span data-i18n="ops-page:text.039">请求地址</span></th><th><span data-i18n="ops-page:text.040">时间</span></th><th><span data-i18n="ops-page:text.041">操作</span></th></tr></thead>
             <tbody>
-              <tr><td><span class="status-dot online"><span data-i18n="ops-page:text.042">正常</span></span></td><td><span data-i18n="ops-page:text.043">华东运营中心</span></td><td><span data-i18n="ops-page:text.044">系统管理员</span></td><td><span data-i18n="ops-page:text.045">添加 APN 设置</span></td><td><code>10.12.3.45</code></td><td><span data-i18n="ops-page:text.046">今天 10:12</span></td><td><a><span data-i18n="ops-page:text.047">详情</span></a></td></tr>
-              <tr><td><span class="status-dot online"><span data-i18n="ops-page:text.048">正常</span></span></td><td><span data-i18n="ops-page:text.049">华南运营中心</span></td><td><span data-i18n="ops-page:text.050">设备运维</span></td><td><span data-i18n="ops-page:text.051">修改设备分组</span></td><td><code>10.12.3.50</code></td><td><span data-i18n="ops-page:text.052">昨天 18:44</span></td><td><a><span data-i18n="ops-page:text.053">详情</span></a></td></tr>
-              <tr><td><span class="status-dot fault"><span data-i18n="ops-page:text.054">异常</span></span></td><td><span data-i18n="ops-page:text.055">华北运营中心</span></td><td><span data-i18n="ops-page:text.056">运营管理员</span></td><td><span data-i18n="ops-page:text.057">删除字典数据</span></td><td><code>10.12.3.61</code></td><td><span data-i18n="ops-page:text.058">周一 11:03</span></td><td><a><span data-i18n="ops-page:text.059">详情</span></a></td></tr>
+              <tr><td><span class="status-dot is-success"><span data-i18n="ops-page:text.042">正常</span></span></td><td><span data-i18n="ops-page:text.043">华东运营中心</span></td><td><span data-i18n="ops-page:text.044">系统管理员</span></td><td><span data-i18n="ops-page:text.045">添加 APN 设置</span></td><td><code>10.12.3.45</code></td><td><span data-i18n="ops-page:text.046">今天 10:12</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="ops-page:text.047">详情</span></button></td></tr>
+              <tr><td><span class="status-dot is-success"><span data-i18n="ops-page:text.048">正常</span></span></td><td><span data-i18n="ops-page:text.049">华南运营中心</span></td><td><span data-i18n="ops-page:text.050">设备运维</span></td><td><span data-i18n="ops-page:text.051">修改设备分组</span></td><td><code>10.12.3.50</code></td><td><span data-i18n="ops-page:text.052">昨天 18:44</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="ops-page:text.053">详情</span></button></td></tr>
+              <tr><td><span class="status-dot is-error"><span data-i18n="ops-page:text.054">异常</span></span></td><td><span data-i18n="ops-page:text.055">华北运营中心</span></td><td><span data-i18n="ops-page:text.056">运营管理员</span></td><td><span data-i18n="ops-page:text.057">删除字典数据</span></td><td><code>10.12.3.61</code></td><td><span data-i18n="ops-page:text.058">周一 11:03</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="ops-page:text.059">详情</span></button></td></tr>
             </tbody>
           </table>
         </div>
@@ -73,7 +73,19 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="ops-page:text.088">组件映射</span></h3>
+    <h3><span data-i18n="ops-page:remediation.title">告警处置记录</span></h3>
+    <table class="map-table">
+      <thead><tr><th><span data-i18n="ops-page:remediation.source">来源</span></th><th><span data-i18n="ops-page:remediation.required">必备字段</span></th><th><span data-i18n="ops-page:remediation.next">下一步</span></th></tr></thead>
+      <tbody>
+        <tr><td><span data-i18n="ops-page:remediation.device">设备硬件告警</span></td><td><span data-i18n="ops-page:remediation.deviceFields">设备、告警类型、级别、时间、处理人、结果</span></td><td><span data-i18n="ops-page:remediation.deviceNext">设备详情、诊断、远程修复</span></td></tr>
+        <tr><td><span data-i18n="ops-page:remediation.fence">围栏告警</span></td><td><span data-i18n="ops-page:remediation.fenceFields">围栏、事件类型、位置、设备、时间、处理状态</span></td><td><span data-i18n="ops-page:remediation.fenceNext">地图定位、轨迹、设备详情</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="ops-page:remediation.rule">操作日志记录“谁做了什么”，告警处置记录“异常如何被处理”；两者可以互链，但不能合并成同一张含糊表。</span></p>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="ops-page:text.088">组件契约</span></h3>
     <div class="blueprint-notes"><span><a href="#/tree-comp">Tree</a><span data-i18n="ops-page:text.089">：机构、菜单和权限</span></span><span><a href="#/table">Table</a><span data-i18n="ops-page:text.090">：日志、OSS、字典和统计明细</span></span><span><a href="#/charts">Charts</a><span data-i18n="ops-page:text.091">：活跃设备和固件统计</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="ops-page:text.092">：长表单编辑</span></span><span><a href="#/user-mgmt-page">UserMgmtPage</a><span data-i18n="ops-page:text.093">：账户权限细节</span></span></div>
   </div>
 </section>

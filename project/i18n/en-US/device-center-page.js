@@ -84,8 +84,8 @@
     "text.080": "(online/offline, online defined as \"online within {0}h\")+",
     "text.081": "(0 unlocked / 1 locked, label \"Screen Lock\")+",
     "text.082": "(activated / inactive). This is not a single enum.",
-    "text.083": "16 Remote Control Commands",
-    "text.084": "Software information · traffic control · device logs · app install · app uninstall · device password · device lock · refresh all · factory reset · WIFI settings · debug switch · clear alerts · Bluetooth switch · modify model · message notification · find device · logcat. Only available online; each item reuses the push engine to create a push task.",
+    "text.083": "Remote-control Quick Commands",
+    "text.084": "Software information · traffic control · device logs · app install · app uninstall · device password · device lock · refresh all · factory reset · WIFI settings · debug switch · clear alerts · Bluetooth switch · modify model · message notification · find device · logcat. Only available online; each item reuses the push engine to create a push task. Treat action keys as the source of truth instead of displaying a drifting count.",
     "text.085": "Parameter Templates",
     "text.086": "Name · remarks · version · operator · time · actions (set device / edit / copy / import / delete) + the only top-level parameter configuration switch (requires secondary confirmation when enabled).",
     "text.087": "Status-driven Actions",
@@ -105,14 +105,15 @@
     "text.101": "Diagnose, logs, report ticket, remote restart",
     "text.102": "Batch upgrade",
     "text.103": "Fault priority is higher than regular push tasks.",
-    "text.104": "Locked",
+    "text.104": "Screen Locked",
     "text.105": "Unlock, view audit",
     "text.106": "Install apps, OTA, factory reset",
-    "text.107": "Locked is a protective state, not an error state.",
-    "text.108": "Component Mapping",
+    "text.107": "state=1 means screen locked. It is an independent protection dimension and does not replace connectivity or activation state.",
+    "text.108": "Component Contract",
     "text.109": ": device lists and software information",
     "text.110": ": Android device card view",
     "text.111": ": editing and remote control",
-    "text.112": ": device status rules"
+    "text.112": ": device status rules",
+    "text.113": "Device offline; remote control is unavailable"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

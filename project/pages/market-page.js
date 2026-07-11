@@ -35,9 +35,9 @@
           <table class="dt">
             <thead><tr><th><span data-i18n="market-page:text.032">应用</span></th><th><span data-i18n="market-page:text.033">机构</span></th><th><span data-i18n="market-page:text.034">包名</span></th><th><span data-i18n="market-page:text.035">版本总数</span></th><th><span data-i18n="market-page:text.036">下载总数</span></th><th><span data-i18n="market-page:text.037">操作</span></th></tr></thead>
             <tbody>
-              <tr><td><b>Terminal Guard</b></td><td><span data-i18n="market-page:text.038">华北运营中心</span></td><td><code>com.aw.guard</code></td><td><span class="mono">12</span></td><td><span class="mono">8,642</span></td><td><a><span data-i18n="market-page:text.039">详情</span></a> · <a><span data-i18n="market-page:text.040">版本</span></a> · <a><span data-i18n="market-page:text.041">下架</span></a></td></tr>
-              <tr><td><b>Policy Sync</b></td><td><span data-i18n="market-page:text.042">华南运营中心</span></td><td><code>com.aw.policy</code></td><td><span class="mono">8</span></td><td><span class="mono">3,210</span></td><td><a><span data-i18n="market-page:text.043">审核</span></a> · <a><span data-i18n="market-page:text.044">修改</span></a> · <a><span data-i18n="market-page:text.045">驳回</span></a></td></tr>
-              <tr><td><b>Device Tools</b></td><td><span data-i18n="market-page:text.046">华东运营中心</span></td><td><code>com.aw.tools</code></td><td><span class="mono">5</span></td><td><span class="mono">1,088</span></td><td><a><span data-i18n="market-page:text.047">详情</span></a> · <a><span data-i18n="market-page:text.048">重新上架</span></a></td></tr>
+              <tr><td><b>Terminal Guard</b></td><td><span data-i18n="market-page:text.038">华北运营中心</span></td><td><code>com.aw.guard</code></td><td><span class="mono">12</span></td><td><span class="mono">8,642</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.039">详情</span></button><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.040">版本</span></button><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.041">下架</span></button></td></tr>
+              <tr><td><b>Policy Sync</b></td><td><span data-i18n="market-page:text.042">华南运营中心</span></td><td><code>com.aw.policy</code></td><td><span class="mono">8</span></td><td><span class="mono">3,210</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.044">修改</span></button><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.043">审核</span></button><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.045">驳回</span></button></td></tr>
+              <tr><td><b>Device Tools</b></td><td><span data-i18n="market-page:text.046">华东运营中心</span></td><td><code>com.aw.tools</code></td><td><span class="mono">5</span></td><td><span class="mono">1,088</span></td><td class="colactions"><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.047">详情</span></button><button class="btn btn-link btn-sm"><span data-i18n="market-page:text.048">重新上架</span></button></td></tr>
             </tbody>
           </table>
         </div>
@@ -54,8 +54,8 @@
         <tr><td><span data-i18n="market-page:text.056">草稿 / 签名中 / 签名错误</span></td><td><span data-i18n="market-page:text.057">编辑、删除、重新签名</span></td><td><span data-i18n="market-page:text.058">上架、推送</span></td><td><span data-i18n="market-page:text.059">签名错误用 danger Tag + 错误码 tooltip</span></td></tr>
         <tr><td><span data-i18n="market-page:text.060">审核中</span></td><td><span data-i18n="market-page:text.061">审核通过 / 驳回</span></td><td><span data-i18n="market-page:text.062">下架、推送安装</span></td><td><span data-i18n="market-page:text.063">Modal 表单，必须填写审核意见</span></td></tr>
         <tr><td><span data-i18n="market-page:text.064">已上架 Published</span></td><td><span data-i18n="market-page:text.065">版本管理 / 下架 / 推送安装</span></td><td><span data-i18n="market-page:text.066">删除</span></td><td><span data-i18n="market-page:text.067">Popconfirm 或 Modal.confirm</span></td></tr>
-        <tr><td><span data-i18n="market-page:text.068">已拒绝 / 取消上架</span></td><td><span data-i18n="market-page:text.069">编辑、删除、重新申请上架</span></td><td><span data-i18n="market-page:text.070">推送安装</span></td><td><span data-i18n="market-page:text.071">Toast + 拒绝原因</span></td></tr>
-        <tr><td><span data-i18n="market-page:text.072">已下架 Unpublished</span></td><td><span data-i18n="market-page:text.073">重新上架 / 修改</span></td><td><span data-i18n="market-page:text.074">推送安装</span></td><td><span data-i18n="market-page:text.075">Toast 只提示操作结果</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.068">已拒绝 / 取消上架</span></td><td><span data-i18n="market-page:text.069">编辑、删除、重新申请上架</span></td><td><span data-i18n="market-page:text.070">推送安装</span></td><td><span data-i18n="market-page:text.071">Alert 持续展示拒绝原因和错误码</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.072">已下架 Unpublished</span></td><td><span data-i18n="market-page:text.073">重新上架 / 修改</span></td><td><span data-i18n="market-page:text.074">推送安装</span></td><td><span data-i18n="market-page:text.075">Message 只提示轻量操作结果</span></td></tr>
         <tr><td><span data-i18n="market-page:text.076">版本升级中</span></td><td><span data-i18n="market-page:text.077">查看进度 / 安装明细</span></td><td><span data-i18n="market-page:text.078">删除版本包</span></td><td><span data-i18n="market-page:text.079">Result 部分成功承接失败设备</span></td></tr>
       </tbody>
     </table>
@@ -75,7 +75,18 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="market-page:text.096">组件映射</span></h3>
+    <h3><span data-i18n="market-page:distribution.title">应用分发闭环</span></h3>
+    <div class="demo-grid cols-4">
+      <div class="surface"><div class="tag-meta">1</div><h4><span data-i18n="market-page:distribution.upload">上传解析</span></h4><p><span data-i18n="market-page:distribution.uploadDesc">后端解析包名、版本、签名与证书信息。</span></p></div>
+      <div class="surface"><div class="tag-meta">2</div><h4><span data-i18n="market-page:distribution.review">审核上架</span></h4><p><span data-i18n="market-page:distribution.reviewDesc">审核意见、签名错误和上下架原因持续可见。</span></p></div>
+      <div class="surface"><div class="tag-meta">3</div><h4><span data-i18n="market-page:distribution.scope">分配范围</span></h4><p><span data-i18n="market-page:distribution.scopeDesc">展示机构、设备、适配机型、冲突和预计数量。</span></p></div>
+      <div class="surface"><div class="tag-meta">4</div><h4><span data-i18n="market-page:distribution.result">安装结果</span></h4><p><span data-i18n="market-page:distribution.resultDesc">进入推送任务，保留失败明细、重试和下载。</span></p></div>
+    </div>
+    <p style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="market-page:distribution.scopeRule">核心蓝图只覆盖当前有效 Figma 已确认的应用、广告、分类、版本、审核和安装明细；未确认的旧模块不得借应用市场入口回流。</span></p>
+  </div>
+
+  <div class="subsection" data-component-contract>
+    <h3><span data-i18n="market-page:text.096">组件契约</span></h3>
     <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="market-page:text.097">：列表和安装明细</span></span><span><a href="#/data-cards">DataCard</a><span data-i18n="market-page:text.098">：应用卡片视图</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="market-page:text.099">：审核和上下架确认</span></span><span><a href="#/upload">Upload</a><span data-i18n="market-page:text.100">：版本包上传</span></span></div>
   </div>
 </section>

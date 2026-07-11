@@ -60,11 +60,11 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
-            <div class="row"><span class="status-dot online"><span data-i18n="i18n:t033">在线</span></span><span class="status-dot offline"><span data-i18n="i18n:t034">离线</span></span><span class="status-dot fault"><span data-i18n="i18n:t035">故障</span></span><span class="status-dot locked"><span data-i18n="i18n:t036">已锁定</span></span></div>
+            <div class="row"><span class="status-dot online"><span data-i18n="i18n:t033">在线</span></span><span class="status-dot offline"><span data-i18n="i18n:t034">离线</span></span><span class="status-dot fault"><span data-i18n="i18n:t035">故障</span></span><span class="status-dot is-neutral"><span data-i18n="i18n:t036">屏幕锁定</span></span></div>
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
-            <div class="row"><span class="status-dot online">Online</span><span class="status-dot offline">Offline</span><span class="status-dot fault">Faulty</span><span class="status-dot locked">Locked</span></div>
+            <div class="row"><span class="status-dot online">Online</span><span class="status-dot offline">Offline</span><span class="status-dot fault">Faulty</span><span class="status-dot is-neutral">Screen Locked</span></div>
           </div>
         </div>
       </div>

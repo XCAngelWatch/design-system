@@ -29,6 +29,7 @@
 </div>
     </div>
   </div>
+  <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/list-page">ListPage</a></span><span><a href="#/dash-page">DashboardPage</a></span></div></div>
 </section>
 </div>
 `;

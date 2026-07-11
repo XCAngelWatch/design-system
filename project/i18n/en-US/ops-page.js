@@ -89,7 +89,7 @@
     "text.085": "Organization, device model, and time range link charts and tables.",
     "text.086": "Export Audit",
     "text.087": "Exporting analytics and audit logs must record operator, time, and filter conditions.",
-    "text.088": "Component Mapping",
+    "text.088": "Component Contract",
     "text.089": ": organizations, menus, and permissions",
     "text.090": ": logs, OSS, dictionaries, and analytics details",
     "text.091": ": active devices and firmware statistics",

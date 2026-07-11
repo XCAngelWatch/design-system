@@ -96,13 +96,13 @@
 <table class="map-table">
 <thead><tr><th><span data-i18n="copywriting:t119">枚举</span></th><th>zh</th><th>en</th><th>es</th><th>pt</th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="copywriting:t120">推送状态</span></td><td data-i18n-ignore>未推送 / 执行中 / 成功 / 失败 / 已过期 / 已终止</td><td>Pending / In Progress / Succeeded / Failed / Expired / Terminated</td><td>No empujado / En proceso / Logrado / Fallido / Caducado / Terminado</td><td>Não Empurrado / ... / Encerrado</td></tr>
+<tr><td><span data-i18n="copywriting:t120">推送批次 / 设备结果</span></td><td data-i18n-ignore>批次：执行中 / 成功 / 部分成功 / 失败；设备：执行中 / 成功 / 失败 / 已过期 / 已终止</td><td>Batch: In Progress / Success / Partial Success / Failed; Device: In Progress / Success / Failed / Expired / Terminated</td><td>Batch: En proceso / Éxito / Éxito parcial / Fallido; Device: En proceso / Éxito / Fallido / Caducado / Terminado</td><td>Batch: Em andamento / Sucesso / Sucesso parcial / Falha; Device: Em andamento / Sucesso / Falha / Expirado / Encerrado</td></tr>
 <tr><td><span data-i18n="copywriting:t122">告警级别</span></td><td data-i18n-ignore>通知 / 一般 / 重要 / 紧急</td><td>Notification / General / Important / Critical</td><td>—</td><td>—</td></tr>
 <tr><td><span data-i18n="copywriting:t124">电池健康</span></td><td data-i18n-ignore>正常 / 预警 / 建议更换 / 严重老化 / 未知</td><td>Normal / Warning / Replace Soon / Severely Aged / Unknown</td><td>—</td><td>—</td></tr>
 <tr><td><span data-i18n="copywriting:t126">监控触发时机</span></td><td data-i18n-ignore>开机 / 亮屏 / 灭屏 / 每 N 分钟 / 网络切换 / 收到推送</td><td>boot / screen on / off / every N min / network switch / push</td><td>—</td><td>—</td></tr>
 </tbody>
 </table>
-<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><b><span data-i18n="copywriting:t128">机构作用域文案(业务规则)</span></b><span data-i18n="copywriting:t129">:取消推送仅对待执行生效;重新推送仅对失败/已过期生效;终止推送仅对执行中生效。机构层级向下管理、母机构管理子机构、数据隔离。"指定机构及子机构"含子;"指定机构"仅直属不含子。Track History 轨迹查询需独立四语本地化。</span></p>
+<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><b><span data-i18n="copywriting:t128">机构作用域文案(业务规则)</span></b><span data-i18n="copywriting:t129">:重新推送仅对失败/已过期且具备 push_task_rePush 权限时生效;终止推送仅对执行中且具备 push_task_terminate 权限时生效。机构层级向下管理、母机构管理子机构、数据隔离。"指定机构及子机构"含子;"指定机构"仅直属不含子。Track History 轨迹查询需独立四语本地化。</span></p>
 </div>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t130">人称与语气</span></h3>
