@@ -79,11 +79,14 @@ const forbiddenPatterns = [
   ['legacy runtime S3', /uitmss3\.eu\.aw-iot\.com/]
 ];
 
-for (const name of fs.readdirSync(pagesDir)) {
-  if (!name.endsWith('.js')) continue;
-  const source = fs.readFileSync(path.join(pagesDir, name), 'utf8');
-  for (const [label, pattern] of forbiddenPatterns) {
-    if (pattern.test(source)) errors.push('project/pages/' + name + ': forbidden ' + label);
+for (const relativeDir of ['project/pages', 'project/styles']) {
+  const directory = path.join(root, relativeDir);
+  for (const name of fs.readdirSync(directory)) {
+    if (!/\.(?:js|css)$/.test(name)) continue;
+    const source = fs.readFileSync(path.join(directory, name), 'utf8');
+    for (const [label, pattern] of forbiddenPatterns) {
+      if (pattern.test(source)) errors.push(relativeDir + '/' + name + ': forbidden ' + label);
+    }
   }
 }
 

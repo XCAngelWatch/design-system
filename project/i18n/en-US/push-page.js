@@ -87,6 +87,20 @@
     "text.083": "Includes sub-organizations recursively",
     "text.084": "Current Organization Only",
     "text.085": "Excludes sub-organizations",
-    "text.086": "."
+    "text.086": ".",
+    "target.title": "Target Scope Validation",
+    "target.mode": "Scope Mode",
+    "target.validation": "Validation",
+    "target.summary": "Submission Summary",
+    "target.devices": "Device IDs / Range Expression",
+    "target.devicesValidation": "Reject Chinese commas, deduplicate, and validate ranges and overlaps",
+    "target.devicesSummary": "Valid, duplicate, invalid, and unauthorized counts",
+    "target.groups": "Device Groups",
+    "target.groupsValidation": "Groups exist, are accessible, and contain devices",
+    "target.groupsSummary": "Group name, device count, and conflict count",
+    "target.orgs": "Organization Scope",
+    "target.orgsValidation": "State whether sub-organizations are included and validate data permissions",
+    "target.orgsSummary": "Organization path, scope, and estimated device count",
+    "target.rule": "Retry summaries must distinguish retryable failures, expired, terminated, and unauthorized devices. Terminated devices are never retryable."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

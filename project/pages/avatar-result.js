@@ -132,7 +132,7 @@
   <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/push-page">PushPage</a></span><span><a href="#/service-page">ServicePage</a></span><span><a href="#/ota-page">OtaPage</a></span></div></div>
   <div class="subsection">
     <h3><span data-i18n="avatar-result:assignment.title">分配结果维度 · Assignment Result</span></h3>
-    <div class="demo-grid cols-4">
+    <div class="demo-grid cols-2">
       <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.success">成功</span></div><strong>1,204</strong><p><span data-i18n="avatar-result:assignment.successDesc">已按目标范围生效</span></p></div>
       <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.failed">失败</span></div><strong>18</strong><p><span data-i18n="avatar-result:assignment.failedDesc">保留错误码与可重试原因</span></p></div>
       <div class="surface"><div class="tag-meta"><span data-i18n="avatar-result:assignment.conflict">冲突</span></div><strong>27</strong><p><span data-i18n="avatar-result:assignment.conflictDesc">展示来源策略和覆盖权限</span></p></div>

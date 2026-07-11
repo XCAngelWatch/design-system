@@ -126,6 +126,23 @@
     "text.122": "Do not add green ✓ feedback to every field; it creates visual noise",
     "text.123": "Do not leave the Submit button clickable while submitting",
     "text.124": "Do not run async validation onChange without debounce",
-    "text.125": "(optional)"
+    "text.125": "(optional)",
+    "asset.title": "Asset Configuration Workflow",
+    "asset.desc": "App packages, OTA files, and device configurations share one form contract: upload parsing, field validation, target scope, impact review, and submission tracking. Parsed identifiers and versions are read-only; the frontend must not parse APK signatures or certificates.",
+    "asset.stage": "Stage",
+    "asset.required": "Required Content",
+    "asset.failure": "Failure Handling",
+    "asset.upload": "Upload and Parse",
+    "asset.uploadRequired": "Filename, size, checksum, parsed fields, and source",
+    "asset.uploadFailure": "Keep the error code in an Alert and allow file replacement",
+    "asset.scope": "Target Scope",
+    "asset.scopeRequired": "Organizations, groups, devices, compatible models, and estimated count",
+    "asset.scopeFailure": "Identify invalid values, duplicates, and conflict sources",
+    "asset.review": "Impact Review",
+    "asset.reviewRequired": "Change summary, risks, skipped items, and permissions",
+    "asset.reviewFailure": "Block submission and focus the first fixable issue",
+    "asset.track": "Submission Tracking",
+    "asset.trackRequired": "Task ID, progress entry, and return path",
+    "asset.trackFailure": "Use Result for terminal states and retain failure details"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

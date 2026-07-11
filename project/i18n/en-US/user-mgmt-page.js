@@ -164,6 +164,23 @@
     "text.162": "The system automatically generated a temporary password for",
     "text.163": "",
     "text.164": "Copy Temporary Password",
-    "text.165": "The user must change it at first login. Once closed, it cannot be viewed again; use Reset Password instead."
+    "text.165": "The user must change it at first login. Once closed, it cannot be viewed again; use Reset Password instead.",
+    "permissionDiff.title": "Permission Diff Before Saving",
+    "permissionDiff.dimension": "Dimension",
+    "permissionDiff.before": "Before",
+    "permissionDiff.after": "After",
+    "permissionDiff.risk": "Risk Notice",
+    "permissionDiff.functions": "Function Permissions",
+    "permissionDiff.functionsBefore": "24 items",
+    "permissionDiff.functionsAfter": "3 added, 2 removed",
+    "permissionDiff.functionsRisk": "List affected menus and high-impact actions",
+    "permissionDiff.data": "Data Scope",
+    "permissionDiff.dataBefore": "Current and sub-organizations",
+    "permissionDiff.dataAfter": "6 custom organizations",
+    "permissionDiff.dataRisk": "Show organizations and device counts losing access",
+    "permissionDiff.conflict": "Assignment Conflicts",
+    "permissionDiff.conflictBefore": "4 unresolved",
+    "permissionDiff.conflictAfter": "1 overridden, 3 skipped",
+    "permissionDiff.conflictRisk": "Override requires a separate permission and records the source"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

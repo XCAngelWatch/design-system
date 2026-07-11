@@ -76,7 +76,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="market-page:distribution.title">应用分发闭环</span></h3>
-    <div class="demo-grid cols-4">
+    <div class="demo-grid cols-2">
       <div class="surface"><div class="tag-meta">1</div><h4><span data-i18n="market-page:distribution.upload">上传解析</span></h4><p><span data-i18n="market-page:distribution.uploadDesc">后端解析包名、版本、签名与证书信息。</span></p></div>
       <div class="surface"><div class="tag-meta">2</div><h4><span data-i18n="market-page:distribution.review">审核上架</span></h4><p><span data-i18n="market-page:distribution.reviewDesc">审核意见、签名错误和上下架原因持续可见。</span></p></div>
       <div class="surface"><div class="tag-meta">3</div><h4><span data-i18n="market-page:distribution.scope">分配范围</span></h4><p><span data-i18n="market-page:distribution.scopeDesc">展示机构、设备、适配机型、冲突和预计数量。</span></p></div>

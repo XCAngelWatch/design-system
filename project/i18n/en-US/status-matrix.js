@@ -74,6 +74,18 @@
     "text.070": "Permission Assignment",
     "text.071": "Unassigned / Partially Assigned / Assigned / Conflict",
     "text.072": "Accounts, Organizations, Device Groups",
-    "text.073": "Conflict states must show the source; a red tag alone is not enough."
+    "text.073": "Conflict states must show the source; a red tag alone is not enough.",
+    "domain.session": "Remote Session",
+    "domain.sessionStates": "Waiting / Connecting / Active / Ended / Failed",
+    "domain.sessionScenes": "Device diagnostics and remote control",
+    "domain.sessionRule": "Session state is independent from device connectivity and push-batch state.",
+    "domain.alert": "Alert Remediation",
+    "domain.alertStates": "Pending / In Progress / Resolved / No Action Required",
+    "domain.alertScenes": "Geofence alerts and hardware alerts",
+    "domain.alertRule": "Record the handler, handling time, action, and result.",
+    "domain.asset": "Configuration Asset",
+    "domain.assetStates": "Draft / Active / Disabled / Conflict",
+    "domain.assetScenes": "Parameters, policies, and device assignments",
+    "domain.assetRule": "Version and assignment states must not reuse online or offline styles."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -40,6 +40,7 @@ node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
 node scripts/check-consistency.js
+node scripts/check-evidence.js
 
 # 3. 全部 page fragments 加载 + 注册校验(无浏览器,Node 静默测试)
 node -e "

@@ -102,6 +102,16 @@
     "text.098": ": app card view",
     "text.099": ": review and publish/unpublish confirmation",
     "text.100": ": version package upload",
-    "text.101": "."
+    "text.101": ".",
+    "distribution.title": "App Distribution Lifecycle",
+    "distribution.upload": "Upload and Parse",
+    "distribution.uploadDesc": "The backend parses package, version, signature, and certificate information.",
+    "distribution.review": "Review and Publish",
+    "distribution.reviewDesc": "Keep review comments, signature errors, and publish/unpublish reasons visible.",
+    "distribution.scope": "Assignment Scope",
+    "distribution.scopeDesc": "Show organizations, devices, compatible models, conflicts, and estimated count.",
+    "distribution.result": "Installation Result",
+    "distribution.resultDesc": "Continue in Push Tasks with failure details, retries, and downloads.",
+    "distribution.scopeRule": "The core blueprint covers only apps, ads, categories, versions, reviews, and installation details confirmed by current approved Figma evidence. Unconfirmed legacy modules must not flow back through the App Market entry."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

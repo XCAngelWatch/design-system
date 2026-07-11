@@ -19,6 +19,16 @@
     "text.015": "Configure strategy",
     "text.016": "Setting up",
     "text.017": "Confirm submission",
-    "text.018": "Not Started"
+    "text.018": "Not Started",
+    "session.title": "Remote Session Progress",
+    "session.waiting": "Waiting for Device",
+    "session.waitingSub": "Check online and occupancy",
+    "session.connecting": "Establish Connection",
+    "session.connectingSub": "Wait for device confirmation",
+    "session.active": "Session Active",
+    "session.activeSub": "Show operator and duration",
+    "session.ended": "End and Logs",
+    "session.endedSub": "Continue tracking from history",
+    "session.rule": "Device rejection, timeout, service errors, and user interruption are session terminal states. They must not be mixed into the four push-batch states. Closing the page must not lose the task entry."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

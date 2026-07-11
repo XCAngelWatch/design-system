@@ -114,6 +114,20 @@
     "text.110": ": Android device card view",
     "text.111": ": editing and remote control",
     "text.112": ": device status rules",
-    "text.113": "Device offline; remote control is unavailable"
+    "text.113": "Device offline; remote control is unavailable",
+    "session.title": "Diagnostics and Remote Session Contract",
+    "session.phase": "Phase",
+    "session.guard": "Prerequisites",
+    "session.feedback": "Feedback and Next Step",
+    "session.start": "Start",
+    "session.startGuard": "Device is online, activated, not occupied by another session, and the operator has permission",
+    "session.startFeedback": "Confirm the device and operator, then create a session record",
+    "session.connect": "Connect",
+    "session.connectGuard": "Wait for device confirmation and show the timeout boundary",
+    "session.connectFeedback": "Use Notification for progress; use Alert for rejection or timeout",
+    "session.active": "Active",
+    "session.activeGuard": "Pin SN, operator, start time, and session duration",
+    "session.activeFeedback": "Confirm before leaving; logs remain viewable or downloadable after the session",
+    "session.security": "The design system defines secure session states and audit boundaries only. Do not reuse the legacy external iframe, hidden credentials, or high-frequency polling implementation."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

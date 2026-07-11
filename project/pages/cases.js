@@ -112,6 +112,21 @@
   </div>
 
   <div class="subsection">
+    <h3 data-i18n="cases:case6.title">案例 · 06 · 设备异常到安全远控</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case6.desc">围栏或硬件告警进入设备详情，校验在线、激活、屏幕锁和占用状态后发起诊断；会话关闭后仍能从记录查看日志和处置结果。</p>
+    <div class="case-flow">
+      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case6.step1.name">告警定位</div><div class="cf-desc" data-i18n="cases:case6.step1.desc">地图或告警列表固定显示设备、来源、级别、时间和当前位置有效性。</div></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case6.step2.name">会话前检查</div><div class="cf-desc" data-i18n="cases:case6.step2.desc">校验在线、激活、占用和权限；禁用动作必须说明具体原因。</div></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case6.step3.name">连接与诊断</div><div class="cf-desc" data-i18n="cases:case6.step3.desc">Notification 展示等待设备和连接进度，拒绝、超时或服务异常进入持续反馈。</div></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case6.step4.name">日志与复核</div><div class="cf-desc" data-i18n="cases:case6.step4.desc">结束会话后记录操作者、时长、动作、日志和处置结果，并返回告警复核。</div></div>
+    </div>
+    <div class="case-tags"><span>map-page</span><span>device-center-page</span><span>progress</span><span>feedback</span><span>ops-page</span></div>
+  </div>
+
+  <div class="subsection">
     <h3 data-i18n="cases:patterns.title">跨案例的共用模式</h3>
     <table class="map-table">
       <thead><tr><th style="width:30%" data-i18n="cases:patterns.th.pattern">模式</th><th data-i18n="cases:patterns.th.used">出现于</th></tr></thead>
@@ -124,6 +139,8 @@
         <tr><td data-i18n="cases:patterns.tenant.pattern">租户切换整页 reload</td><td data-i18n="cases:patterns.tenant.used">案例 4</td></tr>
         <tr><td data-i18n="cases:patterns.error.pattern">错误信息三层（做了什么 + 为什么 + 怎么办）</td><td data-i18n="cases:patterns.error.used">所有案例</td></tr>
         <tr><td data-i18n="cases:patterns.theme.pattern">Light / Dark 双主题视觉同等支持</td><td data-i18n="cases:patterns.theme.used">所有案例</td></tr>
+        <tr><td data-i18n="cases:patterns.session.pattern">远程会话状态与推送批次分离</td><td data-i18n="cases:patterns.session.used">案例 06</td></tr>
+        <tr><td data-i18n="cases:patterns.conflict.pattern">冲突来源 + 跳过/覆盖 + 部分成功</td><td data-i18n="cases:patterns.conflict.used">设备分组 / 权限配置 / 应用与 OTA 分配</td></tr>
       </tbody>
     </table>
   </div>

@@ -94,6 +94,17 @@
     "text.090": ": logs, OSS, dictionaries, and analytics details",
     "text.091": ": active devices and firmware statistics",
     "text.092": ": long-form editing",
-    "text.093": ": account permission details"
+    "text.093": ": account permission details",
+    "remediation.title": "Alert Remediation Records",
+    "remediation.source": "Source",
+    "remediation.required": "Required Fields",
+    "remediation.next": "Next Step",
+    "remediation.device": "Device Hardware Alert",
+    "remediation.deviceFields": "Device, alert type, level, time, handler, and result",
+    "remediation.deviceNext": "Device details, diagnostics, and remote remediation",
+    "remediation.fence": "Geofence Alert",
+    "remediation.fenceFields": "Geofence, event type, location, device, time, and handling state",
+    "remediation.fenceNext": "Map location, track history, and device details",
+    "remediation.rule": "Audit logs record who did what; remediation records explain how an issue was handled. They can cross-link but must not be merged into one ambiguous table."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

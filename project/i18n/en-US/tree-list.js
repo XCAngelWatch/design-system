@@ -39,6 +39,20 @@
     "text.035": "Xuhui Branch",
     "text.036": "Device-Shanghai-022",
     "text.037": "Offline",
-    "text.038": "Pudong Branch"
+    "text.038": "Pudong Branch",
+    "conflict.title": "Batch Assignment and Conflicts",
+    "conflict.state": "State",
+    "conflict.meaning": "Meaning",
+    "conflict.action": "Available Actions",
+    "conflict.partial": "Partially Assigned",
+    "conflict.partialDesc": "Only some selected objects are already within the current scope",
+    "conflict.partialAction": "Complete assignment or view the difference",
+    "conflict.conflicted": "Conflict",
+    "conflict.conflictedDesc": "The object is occupied by another policy, organization, or group",
+    "conflict.conflictedAction": "View source, skip, or override with permission",
+    "conflict.skipped": "Skipped",
+    "conflict.skippedDesc": "No permission, offline restriction, or the user chose not to override",
+    "conflict.skippedAction": "Download the list or return to edit the scope",
+    "conflict.rule": "Overrides must show the conflict source, affected count, and final effective scope. Never use only a red tag or silently override."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

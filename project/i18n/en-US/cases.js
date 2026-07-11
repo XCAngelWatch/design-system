@@ -96,6 +96,16 @@
   "case5.step3.desc": "Select anomalous rows, bulk mark them as under review, show row-level Tags, and lift anomaly groups to the top.",
   "case5.step4.name": "Export CSV / PDF",
   "case5.step4.desc": "Export opens a Modal for full CSV or PDF summary. After progress completes, do not auto-download; show a Download button and 24h expiry notice.",
+  "case6.title": "Case · 06 · From Device Alert to Secure Remote Control",
+  "case6.desc": "A geofence or hardware alert opens device details, validates online, activation, screen-lock, and occupancy states, then starts diagnostics. After closing the session, logs and remediation results remain available from the record.",
+  "case6.step1.name": "Locate Alert",
+  "case6.step1.desc": "The map or alert list pins device, source, level, time, and current-location validity.",
+  "case6.step2.name": "Pre-session Checks",
+  "case6.step2.desc": "Validate online, activation, occupancy, and permissions. Disabled actions must explain the exact reason.",
+  "case6.step3.name": "Connect and Diagnose",
+  "case6.step3.desc": "Notification shows device waiting and connection progress; rejection, timeout, or service errors use persistent feedback.",
+  "case6.step4.name": "Logs and Review",
+  "case6.step4.desc": "After ending the session, record operator, duration, actions, logs, and remediation result, then return to alert review.",
   "patterns.title": "Shared Patterns Across Cases",
   "patterns.th.pattern": "Pattern",
   "patterns.th.used": "Used in",
@@ -114,6 +124,10 @@
   "patterns.error.pattern": "Three-layer error message: what happened + why + what to do",
   "patterns.error.used": "All cases",
   "patterns.theme.pattern": "Equal visual support for Light and Dark themes",
-  "patterns.theme.used": "All cases"
+  "patterns.theme.used": "All cases",
+  "patterns.session.pattern": "Keep remote-session states separate from push-batch states",
+  "patterns.session.used": "Case 06",
+  "patterns.conflict.pattern": "Conflict source + skip/override + partial success",
+  "patterns.conflict.used": "Device groups / permission configuration / app and OTA assignment"
 });
 })(typeof window !== 'undefined' ? window : globalThis);

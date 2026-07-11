@@ -117,6 +117,19 @@
     "text.113": ": configuration editing and device details",
     "text.114": ": high-risk confirmation",
     "text.115": ": partial success and failure list",
-    "text.116": ": task detail structure"
+    "text.116": ": task detail structure",
+    "engine.title": "Unified Remote Service Engine",
+    "engine.layer": "Layer",
+    "engine.contract": "Shared Contract",
+    "engine.variant": "Business Variant",
+    "engine.action": "Action Definition",
+    "engine.actionContract": "Human-readable label, operationType mapping, risk level, and permission",
+    "engine.actionVariant": "Parameter fields and device capability requirements",
+    "engine.target": "Target Scope",
+    "engine.targetContract": "Devices, groups, organizations, conflicts, and estimated count",
+    "engine.targetVariant": "Whether online, activation, or a specific model is required",
+    "engine.result": "Execution Result",
+    "engine.resultContract": "Reuse push-batch and device results, retry rules, and termination rules",
+    "engine.resultVariant": "Append detail columns by operationType"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

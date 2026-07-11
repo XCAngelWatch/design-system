@@ -92,6 +92,16 @@
     "text.088": "12 seconds ago",
     "text.089": "Owner",
     "text.090": "W",
-    "text.091": " Wang Zhiqiang"
+    "text.091": " Wang Zhiqiang",
+    "assignment.title": "Assignment Result Dimensions",
+    "assignment.success": "Succeeded",
+    "assignment.successDesc": "Effective in the target scope",
+    "assignment.failed": "Failed",
+    "assignment.failedDesc": "Keep error codes and retryable reasons",
+    "assignment.conflict": "Conflict",
+    "assignment.conflictDesc": "Show the source policy and override permission",
+    "assignment.skipped": "Skipped",
+    "assignment.skippedDesc": "Offline, no permission, or user choice",
+    "assignment.rule": "Total must equal succeeded, failed, conflicted, and skipped. Retry applies only to retryable failures; overriding conflicts requires a separate permission."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

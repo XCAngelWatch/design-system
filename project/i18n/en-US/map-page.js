@@ -90,6 +90,15 @@
     "text.086": ": query results and geofence alerts",
     "text.087": ": device details and alert details",
     "text.088": ": map, clustering, and heatmap libraries",
-    "text.089": "."
+    "text.089": ".",
+    "alertFlow.title": "Geofence Alert Remediation Lifecycle",
+    "alertFlow.detect": "Alert Raised",
+    "alertFlow.detectDesc": "Show device, geofence, event type, time, and level.",
+    "alertFlow.locate": "Locate on Map",
+    "alertFlow.locateDesc": "Provide local feedback for stale locations, offline devices, or map failures.",
+    "alertFlow.handle": "Take Action",
+    "alertFlow.handleDesc": "Open device details or a remote action and confirm based on side-effect level.",
+    "alertFlow.audit": "Record and Review",
+    "alertFlow.auditDesc": "Record handler, time, action, result, and review state."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

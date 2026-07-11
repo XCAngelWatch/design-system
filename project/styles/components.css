@@ -979,3 +979,17 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
 
 /* Dot indicators / icons */
 .glyph-svg { display: inline-block; vertical-align: middle; }
+
+@media (max-width: 760px) {
+  .demo-grid.cols-2,
+  .demo-grid.cols-3,
+  .fp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

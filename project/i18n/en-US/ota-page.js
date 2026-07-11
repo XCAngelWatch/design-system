@@ -95,6 +95,22 @@
     "text.091": "Model",
     "text.092": "Size",
     "text.093": "Details",
-    "text.094": "Resubmit"
+    "text.094": "Resubmit",
+    "preflight.title": "Push Preflight",
+    "preflight.item": "Check",
+    "preflight.pass": "Pass Condition",
+    "preflight.block": "Blocking Feedback",
+    "preflight.package": "Upgrade Package",
+    "preflight.packagePass": "Signature, checksum, baseline version, and Android version are valid",
+    "preflight.packageBlock": "Show the error code in an Alert and return to file handling",
+    "preflight.models": "Compatible Models",
+    "preflight.modelsPass": "Target devices match compatible models and baseline versions",
+    "preflight.modelsBlock": "List incompatible devices and the skipped count",
+    "preflight.scope": "Push Scope",
+    "preflight.scopePass": "No duplicates, invalid ranges, or unauthorized organizations",
+    "preflight.scopeBlock": "Focus the first error and retain the selected scope",
+    "preflight.risk": "Risk Review",
+    "preflight.riskPass": "Show force mode, data initialization, scheduled time, and estimated device count",
+    "preflight.riskBlock": "Disable unavailable options and explain permission failures"
   });
 })(typeof window !== 'undefined' ? window : globalThis);
