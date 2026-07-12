@@ -9,7 +9,7 @@
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 ListPage</div>
     <div class="frame-body" style="padding:20px">
-<div class="crumbs" style="margin-bottom:12px"><a><span data-i18n="list-page:text.004">首页</span></a><span class="sep">/</span><a><span data-i18n="list-page:text.005">数据中心</span></a><span class="sep">/</span><span class="current"><span data-i18n="list-page:text.006">设备管理</span></span></div>
+<div class="crumbs" style="margin-bottom:12px"><a href="#/overview"><span data-i18n="list-page:text.004">首页</span></a><span class="sep">/</span><a href="#/device-center-page"><span data-i18n="list-page:text.005">数据中心</span></a><span class="sep">/</span><span class="current"><span data-i18n="list-page:text.006">设备管理</span></span></div>
 <h3 style="margin:0 0 14px;font-size:18px"><span data-i18n="list-page:text.007">设备管理</span></h3>
 <div class="search-mock" style="margin-bottom:12px">
   <div class="field"><label><span data-i18n="list-page:text.008">设备 SN</span></label><div class="ipt"></div></div>
@@ -32,7 +32,7 @@
   </table>
 </div>
 <div class="row" style="justify-content:flex-end;margin-top:12px">
-  <div class="pager"><span class="total"><span data-i18n="list-page:text.030">共 12,486 项</span></span><button class="page" disabled aria-label="上一页" data-i18n-aria-label="common:paginationPrevious">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><button class="page" aria-label="下一页" data-i18n-aria-label="common:paginationNext">›</button></div>
+  <div class="pager" data-total-pages="625"><span class="total"><span data-i18n="list-page:text.030">共 12,486 项</span></span><button class="page" disabled aria-label="上一页" data-i18n-aria-label="common:paginationPrevious">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><span class="page" aria-hidden="true">…</span><button class="page">625</button><button class="page" aria-label="下一页" data-i18n-aria-label="common:paginationNext">›</button></div>
 </div>
     </div>
   </div>

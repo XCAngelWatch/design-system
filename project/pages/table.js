@@ -32,13 +32,13 @@
 
   <div class="row" style="margin-top:14px;justify-content:space-between">
     <div style="font-size:13px;color:var(--aw-text-3)"><span data-i18n="table:text.040">已选 1 / 共 12,486 项</span></div>
-    <div class="pager">
+    <div class="pager" data-total-pages="625">
 <span class="total"><span data-i18n="table:text.041">共 12,486 项</span></span>
 <button class="page" disabled aria-label="上一页" data-i18n-aria-label="common:paginationPrevious">‹</button>
 <button class="page is-active">1</button>
 <button class="page">2</button>
 <button class="page">3</button>
-<button class="page">…</button>
+<span class="page" aria-hidden="true">…</span>
 <button class="page">625</button>
 <button class="page">›</button>
 <div class="select" style="margin-left:8px;min-width:96px"><span><span data-i18n="table:text.042">20 条/页</span></span></div>
@@ -280,17 +280,17 @@
     <div class="page-tri-card">
       <div class="ptc-cap"><span data-i18n="table:text.185">完整态 · 桌面默认</span></div>
       <div class="ptc-body">
-        <div class="pager">
+        <div class="pager" data-current-page="5" data-total-pages="625">
           <span class="total"><span data-i18n="table:text.186">共 12,486 条 · 第 5 / 625 页</span></span>
           <button class="page">‹</button>
           <button class="page">1</button>
-          <button class="page">…</button>
+          <span class="page" aria-hidden="true">…</span>
           <button class="page">3</button>
           <button class="page">4</button>
           <button class="page is-active">5</button>
           <button class="page">6</button>
           <button class="page">7</button>
-          <button class="page">…</button>
+          <span class="page" aria-hidden="true">…</span>
           <button class="page">625</button>
           <button class="page">›</button>
           <div class="select" style="margin-left:8px;min-width:96px"><span><span data-i18n="table:text.187">20 条/页 ▾</span></span></div>
@@ -302,7 +302,7 @@
     <div class="page-tri-card" style="margin-top:14px">
       <div class="ptc-cap"><span data-i18n="table:text.190">简洁态 · 卡片 / Dialog 内表</span></div>
       <div class="ptc-body">
-        <div class="pager pager-simple">
+        <div class="pager pager-simple" data-current-page="5" data-total-pages="625">
           <button class="page">‹</button>
           <span class="cur">5 / 625</span>
           <button class="page">›</button>
@@ -394,7 +394,7 @@
         <tr><td><span data-i18n="table:text.274">可选条数</span></td><td>10 / 20 / 50 / 100</td></tr>
         <tr><td><span data-i18n="table:text.275">跳页</span></td><td><span data-i18n="table:text.276">≥ 5 页时显示"跳到第 __ 页"输入框</span></td></tr>
         <tr><td><span data-i18n="table:text.277">边界态</span></td><td><span data-i18n="table:text.278">仅 1 页：隐藏 pager；总条 0：仅显示"共 0 项"</span></td></tr>
-        <tr><td><span data-i18n="table:text.279">大数据集</span></td><td><span data-i18n="table:text.280">≥ 10,000 条：游标分页 (cursor-based)，禁随机跳页</span></td></tr>
+        <tr><td><span data-i18n="table:text.279">大数据集</span></td><td><span data-i18n="table:text.280">总量稳定且支持 count：服务端页码分页，可跳页；高频变更或深分页成本高：游标分页，不提供随机跳页</span></td></tr>
         <tr><td><span data-i18n="table:text.281">选中态跨页</span></td><td><span data-i18n="table:text.282">"已选 28 / 共 12,486 项 · 跨页选中"明示</span></td></tr>
         <tr><td><span data-i18n="table:text.283">持久化</span></td><td>URL <code>?page=3&amp;pageSize=50</code></td></tr>
       </tbody>

@@ -8,7 +8,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="a11y:t004">键盘可达 · Keyboard</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="a11y:t005">所有交互组件必须可仅用键盘完成全部操作 —— 不依赖鼠标。Tab 顺序按视觉阅读顺序（左→右、上→下）。focus ring 永远可见，</span><b><span data-i18n="a11y:t006">非</span></b> <code>:focus-visible</code> only.</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="a11y:t005">所有交互组件必须可仅用键盘完成全部操作 —— 不依赖鼠标。Tab 顺序按视觉阅读顺序（左→右、上→下）。键盘或程序化焦点必须显示 focus ring，并</span><b><span data-i18n="a11y:t006">使用</span></b> <code>:focus-visible</code>.</p>
     <table class="map-table">
       <thead><tr><th style="width:18%"><span data-i18n="a11y:t007">按键</span></th><th style="width:30%"><span data-i18n="a11y:t008">行为</span></th><th><span data-i18n="a11y:t009">语境</span></th></tr></thead>
       <tbody>
@@ -51,8 +51,8 @@
     <div class="demo-grid cols-3">
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="a11y:t052">焦点环</span></div>
-        <h3 style="margin:0 0 8px;font-size:14px"><span data-i18n="a11y:t053">永远可见</span></h3>
-        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="a11y:t054">2px outline + 2px offset，颜色</span> <code>--aw-primary</code>.<b><span data-i18n="a11y:t055">不</span></b><span data-i18n="a11y:t056">限定</span> <code>:focus-visible</code><span data-i18n="a11y:t057">，因鼠标 + 键盘混用用户也需可见。Dark 模式自动跟随 token 提亮。</span></p>
+        <h3 style="margin:0 0 8px;font-size:14px"><span data-i18n="a11y:t053">键盘导航可见</span></h3>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="a11y:t054">2px outline + 2px offset，颜色</span> <code>--aw-primary</code>. <b><span data-i18n="a11y:t055">使用</span></b> <code>:focus-visible</code><span data-i18n="a11y:t056">，仅在键盘或程序化焦点时显示</span><span data-i18n="a11y:t057">；鼠标点击不额外显示焦点环。Dark 模式自动跟随 token 提亮。</span></p>
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="a11y:t058">焦点陷阱</span></div>
@@ -163,7 +163,7 @@
       <div class="surface" style="border-left:3px solid var(--aw-success)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)">✓ DO</h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-          <li><span data-i18n="a11y:t131">所有交互组件键盘可达 + focus ring 永远可见</span></li>
+          <li><span data-i18n="a11y:t131">所有交互组件键盘可达，键盘或程序化焦点始终显示 focus ring</span></li>
           <li><span data-i18n="a11y:t132">icon-only 按钮必带</span> <code>aria-label</code></li>
           <li><span data-i18n="a11y:t133">表单字段</span> <code>&lt;label htmlFor&gt;</code> <span data-i18n="a11y:t134">关联</span></li>
           <li><span data-i18n="a11y:t135">状态信息色 + 形 + 文字三重编码</span></li>

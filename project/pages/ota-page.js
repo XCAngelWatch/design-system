@@ -64,7 +64,7 @@
                 <th style="width:120px"><span data-i18n="ota-page:text.030">机构</span></th>
                 <th style="width:120px"><span data-i18n="ota-page:text.031">新版本</span></th>
                 <th style="width:120px"><span data-i18n="ota-page:text.032">基线版本</span></th>
-                <th style="width:80px"><span data-i18n="ota-page:text.033">大小</span></th>
+                <th class="colnum" style="width:80px"><span data-i18n="ota-page:text.033">大小</span></th>
                 <th style="width:120px"><span data-i18n="ota-page:text.034">适配机型</span></th>
                 <th style="width:140px"><span data-i18n="ota-page:text.035">创建时间</span></th>
                 <th style="width:100px"><span data-i18n="ota-page:text.036">状态</span></th>
@@ -77,7 +77,7 @@
                 <td><span data-i18n="ota-page:text.039">上海运营中心</span></td>
                 <td><code style="color:var(--aw-primary)">v3.5.0</code></td>
                 <td><code>v3.4.2</code></td>
-                <td>245 MB</td>
+                <td class="colnum">245 MB</td>
                 <td>AW-Pro 5</td>
                 <td>2026-04-27 09:12</td>
                 <td><span class="status-dot is-processing"><span data-i18n="ota-page:text.040">审核中</span></span></td>
@@ -88,7 +88,7 @@
                 <td><span data-i18n="ota-page:text.044">集团总部</span></td>
                 <td><code>v3.4.2</code></td>
                 <td><code>v3.4.1</code></td>
-                <td>198 MB</td>
+                <td class="colnum">198 MB</td>
                 <td>AW-Pro 5/7</td>
                 <td>2026-04-26 02:00</td>
                 <td><span class="status-dot is-success"><span data-i18n="ota-page:text.045">已上架</span></span></td>
@@ -99,7 +99,7 @@
                 <td><span data-i18n="ota-page:text.049">上海运营中心</span></td>
                 <td><code>v3.5.0</code></td>
                 <td><code>v3.4.2</code></td>
-                <td>245 MB</td>
+                <td class="colnum">245 MB</td>
                 <td>AW-Pro 5</td>
                 <td>2026-04-25 18:30</td>
                 <td><span class="status-dot is-processing"><span data-i18n="ota-page:text.050">定期上架</span></span></td>
@@ -110,7 +110,7 @@
                 <td><span data-i18n="ota-page:text.054">华南大区</span></td>
                 <td><code style="color:var(--aw-danger)">v3.4.0</code></td>
                 <td><code>v3.4.1</code></td>
-                <td>195 MB</td>
+                <td class="colnum">195 MB</td>
                 <td>AW-Pro 7</td>
                 <td>2026-04-24 21:55</td>
                 <td><span class="status-dot is-error"><span data-i18n="ota-page:text.055">已拒绝</span></span></td>
@@ -121,7 +121,7 @@
                 <td><span data-i18n="ota-page:text.059">集团总部</span></td>
                 <td><code>v2.8.5</code></td>
                 <td><code>v2.8.4</code></td>
-                <td>134 MB</td>
+                <td class="colnum">134 MB</td>
                 <td>AW-Mini</td>
                 <td>2026-04-23 11:08</td>
                 <td><span class="status-dot is-neutral"><span data-i18n="ota-page:text.060">已下架</span></span></td>
@@ -133,7 +133,7 @@
 
         <div class="lp-pager">
           <span class="meta"><span data-i18n="ota-page:text.063">共 38 条</span></span>
-          <div class="pager"><button class="page">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><button class="page">›</button></div>
+          <div class="pager" data-total-pages="2"><button class="page">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">›</button></div>
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.069">基线</span></span><code>v3.4.2</code></div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.070">机型</span></span>AW-Pro 5</div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.071">大小</span></span>245 MB</div>
-          <div class="oc-foot"><a><span data-i18n="ota-page:text.072">详情</span></a><a><span data-i18n="ota-page:text.073">撤回</span></a></div>
+          <div class="oc-foot"><button class="inline-action"><span data-i18n="ota-page:text.072">详情</span></button><button class="inline-action danger"><span data-i18n="ota-page:text.073">撤回</span></button></div>
         </div>
       </div>
       <div class="ota-card">
@@ -160,7 +160,7 @@
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.076">基线</span></span><code>v3.4.1</code></div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.077">机型</span></span>AW-Pro 5 / 7</div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.078">大小</span></span>198 MB</div>
-          <div class="oc-foot"><a><span data-i18n="ota-page:text.079">详情</span></a><a><span data-i18n="ota-page:text.080">推送</span></a></div>
+          <div class="oc-foot"><button class="inline-action"><span data-i18n="ota-page:text.079">详情</span></button><button class="inline-action"><span data-i18n="ota-page:text.080">推送</span></button></div>
         </div>
       </div>
       <div class="ota-card">
@@ -170,7 +170,7 @@
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.083">基线</span></span><code>v3.4.2</code></div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.084">机型</span></span>AW-Pro 5</div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.085">大小</span></span>245 MB</div>
-          <div class="oc-foot"><a><span data-i18n="ota-page:text.086">详情</span></a><a><span data-i18n="ota-page:text.087">编辑</span></a></div>
+          <div class="oc-foot"><button class="inline-action"><span data-i18n="ota-page:text.086">详情</span></button><button class="inline-action"><span data-i18n="ota-page:text.087">编辑</span></button></div>
         </div>
       </div>
       <div class="ota-card">
@@ -180,7 +180,7 @@
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.090">基线</span></span><code>v3.4.1</code></div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.091">机型</span></span>AW-Pro 7</div>
           <div class="oc-row"><span class="oc-l"><span data-i18n="ota-page:text.092">大小</span></span>195 MB</div>
-          <div class="oc-foot"><a><span data-i18n="ota-page:text.093">详情</span></a><a><span data-i18n="ota-page:text.094">重新提交</span></a></div>
+          <div class="oc-foot"><button class="inline-action"><span data-i18n="ota-page:text.093">详情</span></button><button class="inline-action"><span data-i18n="ota-page:text.094">重新提交</span></button></div>
         </div>
       </div>
     </div>

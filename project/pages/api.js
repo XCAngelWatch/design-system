@@ -87,8 +87,8 @@ function DeviceCard(props) {
   );
 }
 
-// All custom components should inherit nested ConfigProvider themes
-&lt;ConfigProvider theme={{ token: { colorPrimary: '#CF1322' } }}&gt;
+// resolvedDangerTheme comes from @tms/design-tokens and follows the active mode
+&lt;ConfigProvider theme={resolvedDangerTheme}&gt;
   &lt;DeviceCard /&gt;   {/* automatically receives the red brand theme */}
 &lt;/ConfigProvider&gt;
 

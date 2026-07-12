@@ -16,7 +16,7 @@
     "text.012": "Permissions",
     "text.013": "Audit",
     "text.014": "Basic information tab content...",
-    "text.015": "Route · View switcher (does not change the URL, but changes query parameters)",
+    "text.015": "Route · Keep the current route and synchronize the view through a query parameter",
     "text.016": "List",
     "text.017": "Cards",
     "text.018": "Map",

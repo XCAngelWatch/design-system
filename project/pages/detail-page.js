@@ -9,7 +9,7 @@
   <div class="frame" style="background:var(--aw-bg)">
     <div class="frame-head">📐 DetailPage</div>
     <div class="frame-body" style="padding:20px">
-<div class="crumbs" style="margin-bottom:14px"><a><span data-i18n="detail-page:text.005">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="detail-page:text.006">终端-上海-001</span></span></div>
+<div class="crumbs" style="margin-bottom:14px"><a href="#/device-center-page"><span data-i18n="detail-page:text.005">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="detail-page:text.006">终端-上海-001</span></span></div>
 <div class="surface" style="padding:18px;margin-bottom:0">
   <div class="row" style="gap:18px;align-items:flex-start">
     <div style="width:56px;height:56px;border-radius:6px;background:var(--aw-primary-bg);color:var(--aw-primary);display:grid;place-items:center;font-size:20px;font-weight:600"><span data-i18n="detail-page:text.007">终</span></div>

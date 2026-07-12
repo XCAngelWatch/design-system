@@ -117,7 +117,6 @@
 
         <div class="lp-pager">
           <span class="meta"><span data-i18n="user-mgmt-page:text.069">共 18 名</span></span>
-          <div class="pager"><button class="page is-active">1</button><button class="page">2</button><button class="page">›</button></div>
         </div>
       </div>
     </div>

@@ -87,7 +87,7 @@
               <tr><td><code>DEV-86420089</code></td><td><span data-i18n="avatar-result:text.047">终端-北京-014</span></td><td><span data-i18n="avatar-result:text.048">设备离线</span></td><td><code>OTA-DEV-OFFLINE</code></td><td class="colactions"><button class="btn btn-link btn-sm" style="padding:0"><span data-i18n="avatar-result:text.049">详情</span></button></td></tr>
               <tr><td><code>DEV-86420112</code></td><td><span data-i18n="avatar-result:text.050">终端-广州-007</span></td><td><span data-i18n="avatar-result:text.051">磁盘空间不足</span></td><td><code>OTA-DISK-FULL</code></td><td class="colactions"><button class="btn btn-link btn-sm" style="padding:0"><span data-i18n="avatar-result:text.052">详情</span></button></td></tr>
               <tr><td><code>DEV-86420144</code></td><td><span data-i18n="avatar-result:text.053">终端-成都-022</span></td><td><span data-i18n="avatar-result:text.054">证书过期</span></td><td><code>OTA-CERT-EXPIRED</code></td><td class="colactions"><button class="btn btn-link btn-sm" style="padding:0"><span data-i18n="avatar-result:text.055">详情</span></button></td></tr>
-              <tr><td colspan="5" style="text-align:center;color:var(--aw-text-3);font-size:12px;padding:12px"><span data-i18n="avatar-result:text.056">还有 30 项 · </span><a href="#" style="color:var(--aw-primary)"><span data-i18n="avatar-result:text.057">展开查看全部</span></a></td></tr>
+              <tr><td colspan="5" style="text-align:center;color:var(--aw-text-3);font-size:12px;padding:12px"><span data-i18n="avatar-result:text.056">还有 30 项 · </span><button class="btn btn-link btn-sm"><span data-i18n="avatar-result:text.057">展开查看全部</span></button></td></tr>
             </tbody>
           </table>
         </div>

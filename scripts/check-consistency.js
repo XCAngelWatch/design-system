@@ -71,6 +71,13 @@ for (const file of pageFiles) {
   if (/<(?:span|div)\b[^>]*style="[^"]*cursor\s*:\s*pointer/i.test(source)) {
     errors.push(file + ': clickable span/div must use a semantic button or link');
   }
+  if (/href="#"/.test(source)) {
+    errors.push(file + ': href="#" conflicts with the hash router; use a button or a real route');
+  }
+  const withoutTabs = source.replace(/<div\b[^>]*class="[^"]*\btabs(?:-card|-route)?\b[^"]*"[^>]*>[\s\S]*?<\/div>/g, '');
+  if (/<a\b(?![^>]*\bhref=)[^>]*>/.test(withoutTabs)) {
+    errors.push(file + ': action anchors without href must use button elements');
+  }
 }
 
 if (readPage('map-page').includes('DSN')) errors.push('map-page: device identifier must use SN, not DSN');
@@ -94,6 +101,14 @@ if (!configProviderPage.includes('&lt;App notification=')) {
 }
 if (!configProviderPage.includes('tmsThemeToken[themeMode]')) {
   errors.push('config-provider: AntD Light/Dark tokens must switch with the runtime theme');
+}
+if (!configProviderPage.includes('tmsComponentOverrides[themeMode]')) {
+  errors.push('config-provider: component tokens must switch with the runtime theme');
+}
+for (const typeName of ['Locale', 'FC', 'ReactNode']) {
+  if (!new RegExp('import type \\{[^}]*\\b' + typeName + '\\b[^}]*\\}').test(configProviderPage)) {
+    errors.push('config-provider: complete example is missing type import ' + typeName);
+  }
 }
 
 const techStackPage = readPage('tech-stack');
@@ -122,8 +137,99 @@ for (const semanticProp of ['&lt;code&gt;classNames&lt;/code&gt;', '&lt;code&gt;
 }
 
 const marketPage = readPage('market-page');
-if (!/text\.035[\s\S]*class="colnum"|class="colnum"[\s\S]*text\.035/.test(marketPage)) {
+const marketCountHeader = Array.from(marketPage.matchAll(/<th\b([^>]*)>([\s\S]*?)<\/th>/g))
+  .find((match) => match[2].includes('market-page:text.035'));
+if (!marketCountHeader || !/\bcolnum\b/.test(marketCountHeader[1])) {
   errors.push('market-page: numeric count columns must use colnum alignment');
+}
+
+for (const id of ['detail-page', 'list-page', 'tree-list', 'nav-comp']) {
+  const source = readPage(id);
+  for (const crumbs of source.matchAll(/<div\b[^>]*class="[^"]*\bcrumbs\b[^"]*"[^>]*>([\s\S]*?)<\/div>/g)) {
+    if (/<a\b(?![^>]*\bhref=)[^>]*>/.test(crumbs[1])) {
+      errors.push(id + ': breadcrumb anchors must have a real href or use span');
+    }
+  }
+}
+
+if (router.includes("root.querySelectorAll('.select').forEach")) {
+  errors.push('router: static select mocks must not claim combobox semantics without option data');
+}
+if (!router.includes(".select[data-demo-options]")) {
+  errors.push('router: interactive select semantics must require explicit option data');
+}
+if (/slice\(2,\s*7\)/.test(router)) {
+  errors.push('router: captcha generator must produce the documented six-character value');
+}
+if (!router.includes("button.getAttribute('aria-disabled') !== 'true'")) {
+  errors.push('router: aria-disabled demo actions must not remain clickable');
+}
+
+for (const [id, totalPages] of [['list-page', 625], ['table', 625], ['ota-page', 2], ['push-page', 65]]) {
+  if (!readPage(id).includes('data-total-pages="' + totalPages + '"')) {
+    errors.push(id + ': pager must declare the total page count derived from the documented default page size');
+  }
+}
+const userPagerBlock = (readPage('user-mgmt-page').match(/<div class="lp-pager">[\s\S]*?user-mgmt-page:text\.069[\s\S]*?<\/div>/) || [''])[0];
+if (/<div class="pager"/.test(userPagerBlock)) {
+  errors.push('user-mgmt-page: one-page result sets must hide pagination controls');
+}
+if (!/<button\b[^>]*disabled/.test(readPage('data-cards'))) errors.push('data-cards: unavailable actions must use native disabled buttons');
+for (const option of readPage('wizard-page').matchAll(/<label\b([^>]*)>([\s\S]*?)<\/label>/g)) {
+  if (/\bcheck radio\b/.test(option[1]) && /type="checkbox"/.test(option[2])) {
+    errors.push('wizard-page: mutually exclusive scheduling choices must use radio inputs');
+  }
+}
+for (const requiredRuntimeContract of [
+  'table input[type="checkbox"]',
+  "label:not([for])",
+  "tCommon('increaseValue'",
+  "tCommon('previousMonth'"
+]) {
+  if (!router.includes(requiredRuntimeContract)) {
+    errors.push('router: missing shared accessibility enhancement ' + requiredRuntimeContract);
+  }
+}
+if (/<button\b[^>]*class="[^"]*\bpage\b[^"]*"[^>]*>…<\/button>/.test(tablePage)) {
+  errors.push('table: pagination ellipses must not be focusable buttons');
+}
+if (/\sonclick=/.test(router)) {
+  errors.push('router: inline event handlers are forbidden');
+}
+for (const tabsContract of ['aria-controls', "setAttribute('role', 'tabpanel')", 'data-demo-query']) {
+  if (!router.includes(tabsContract) && !readPage('tab-variants').includes(tabsContract)) {
+    errors.push('tabs: missing interactive contract ' + tabsContract);
+  }
+}
+for (const pressedContract of ["setAttribute('aria-pressed', 'false')", "setAttribute('aria-pressed', 'true')"]) {
+  if (!router.includes(pressedContract)) errors.push('router: selection buttons must expose ' + pressedContract);
+}
+const toastPage = readPage('toast');
+if (!/role="tooltip"/.test(toastPage) || !/aria-describedby="checksum-tip"/.test(toastPage)) {
+  errors.push('toast: tooltip trigger and tooltip must expose their relationship');
+}
+if (!/aria-controls="fault-popover"/.test(toastPage) || !/role="dialog"/.test(toastPage)) {
+  errors.push('toast: popover disclosure must expose its controlled dialog');
+}
+if (/≥\s*10,000[^<]*游标分页/.test(tablePage)) {
+  errors.push('table: pagination strategy must not conflict with the 12,486-item page-number example');
+}
+const otaSizeHeader = Array.from(readPage('ota-page').matchAll(/<th\b([^>]*)>([\s\S]*?)<\/th>/g))
+  .find((match) => match[2].includes('ota-page:text.033'));
+if (!otaSizeHeader || !/\bcolnum\b/.test(otaSizeHeader[1])) {
+  errors.push('ota-page: file-size column must use numeric alignment');
+}
+const darkCatalog = fs.readFileSync(path.join(root, 'project/i18n/en-US/dark.js'), 'utf8');
+if (!/"t071":\s*"does"[\s\S]*?"t072":\s*" not use darkAlgorithm/.test(darkCatalog)) {
+  errors.push('dark: English copy must preserve the decision not to use darkAlgorithm');
+}
+const a11yPage = readPage('a11y');
+const extrasCss = fs.readFileSync(path.join(root, 'project/styles/components-extras.css'), 'utf8');
+if (!a11yPage.includes('<code>:focus-visible</code>') || !/:focus-visible[\s\S]*outline:\s*2px solid var\(--aw-primary\)/.test(extrasCss)) {
+  errors.push('a11y: documented focus-visible ring must be implemented in shared CSS');
+}
+if (/focus ring 永远可见/.test(a11yPage + overviewPage) || /focus ring is always visible/i.test(fs.readFileSync(path.join(root, 'project/i18n/en-US/a11y.js'), 'utf8'))) {
+  errors.push('a11y: focus-ring copy must distinguish keyboard focus from pointer clicks');
 }
 
 const componentsCss = fs.readFileSync(path.join(root, 'project/styles/components.css'), 'utf8');

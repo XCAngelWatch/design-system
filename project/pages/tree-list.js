@@ -25,7 +25,7 @@
     <div class="tnode depth-1"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-list:text.016">华西大区</span></span><span class="count">984</span></div>
   </div>
   <div class="right">
-    <div class="crumbs"><a><span data-i18n="tree-list:text.017">机构树</span></a><span class="sep">/</span><a><span data-i18n="tree-list:text.018">华东大区</span></a><span class="sep">/</span><span class="current"><span data-i18n="tree-list:text.019">上海</span></span></div>
+    <div class="crumbs"><a href="#/tree-comp"><span data-i18n="tree-list:text.017">机构树</span></a><span class="sep">/</span><span><span data-i18n="tree-list:text.018">华东大区</span></span><span class="sep">/</span><span class="current"><span data-i18n="tree-list:text.019">上海</span></span></div>
     <div class="row" style="justify-content:space-between"><h3 style="margin:0;font-size:16px"><span data-i18n="tree-list:text.020">上海 · 设备列表 (2,401)</span></h3><div class="row"><button class="btn btn-sm"><span data-i18n="tree-list:text.021">+ 添加设备</span></button><button class="btn btn-sm"><span data-i18n="tree-list:text.022">批量推送</span></button></div></div>
     <div class="table-wrap" style="flex:1;overflow:hidden">
       <table class="dt">

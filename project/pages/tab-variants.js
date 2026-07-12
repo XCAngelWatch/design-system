@@ -19,8 +19,8 @@
   <div class="surface" style="padding:18px;border-top-left-radius:0;font-size:13px;color:var(--aw-text-2)"><span data-i18n="tab-variants:text.014">基本信息选项卡内容…</span></div>
 </div>
 <div>
-  <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px"><span data-i18n="tab-variants:text.015">Route · 视图切换（不变更 URL，但改变 query 参数）</span></p>
-  <div class="tabs-route"><a class="active"><span data-i18n="tab-variants:text.016">列表</span></a><a><span data-i18n="tab-variants:text.017">卡片</span></a><a><span data-i18n="tab-variants:text.018">地图</span></a></div>
+  <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px"><span data-i18n="tab-variants:text.015">Route · 保留当前路由，通过 query 参数同步视图</span></p>
+  <div class="tabs-route"><a class="active" data-demo-query="list"><span data-i18n="tab-variants:text.016">列表</span></a><a data-demo-query="cards"><span data-i18n="tab-variants:text.017">卡片</span></a><a data-demo-query="map"><span data-i18n="tab-variants:text.018">地图</span></a></div>
 </div>
     </div>
   </div>

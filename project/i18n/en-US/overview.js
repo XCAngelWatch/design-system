@@ -73,7 +73,7 @@
   "rule.truth.text2": "and must not be inferred separately in lists, details, or cards. SSE updates the React Query store.",
   "rule.focus.name": "Focus First",
   "rule.focus.en": "Keyboard path",
-  "rule.focus.text": "All interactive components are keyboard reachable: Tab order is natural, Esc closes overlays, Enter confirms, and arrow keys navigate dropdowns or tables. Focus rings stay visible.",
+  "rule.focus.text": "All interactive components are keyboard reachable: Tab order is natural, Esc closes overlays, Enter confirms, and arrow keys navigate dropdowns or tables. Keyboard or programmatic focus always shows a focus ring.",
   "rule.semantic.name": "Semantic Feedback",
   "rule.semantic.en": "Toast vs Modal",
   "rule.semantic.text1": "Success uses a green auto-dismiss Toast; warning uses a yellow manually dismissed Toast; errors use a red Modal requiring confirmation. Do not use",

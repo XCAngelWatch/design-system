@@ -13,6 +13,8 @@
 (function () {
   'use strict';
 
+  var demoControlId = 0;
+
   // === 66 routes (id → label, group) across 6 navigation groups ===
   var ROUTES = [
     ['overview',              '设计系统概览',                        '导览'],
@@ -273,9 +275,11 @@
     scope.querySelectorAll(selector).forEach(function (item) {
       item.classList.remove(cls);
       item.classList.remove('is-active');
+      if (item.matches('button, .chip')) item.setAttribute('aria-pressed', 'false');
     });
     el.classList.add(cls);
     el.classList.add('is-active');
+    if (el.matches('button, .chip')) el.setAttribute('aria-pressed', 'true');
   }
 
   function setOutput(root, name, value) {
@@ -417,14 +421,14 @@
 
   function enhanceDemoSemantics(root) {
     root.querySelectorAll('.bp-toolbar').forEach(function (toolbar) {
-      if (!toolbar.querySelector('input, .select') || toolbar.querySelector('[data-demo-reset-filters]')) return;
+      if (!toolbar.querySelector('input, .select[data-demo-options]') || toolbar.querySelector('[data-demo-reset-filters]')) return;
       var reset = document.createElement('button');
       reset.className = 'btn';
       reset.setAttribute('data-demo-reset-filters', '');
       reset.textContent = tCommon('reset', null, '重置');
       toolbar.appendChild(reset);
     });
-    root.querySelectorAll('.select').forEach(function (select) {
+    root.querySelectorAll('.select[data-demo-options]').forEach(function (select) {
       select.setAttribute('role', 'combobox');
       select.setAttribute('tabindex', '0');
       select.setAttribute('aria-haspopup', 'listbox');
@@ -432,12 +436,56 @@
     });
     root.querySelectorAll('.tabs, .tabs-card, .tabs-route').forEach(function (tabs) {
       tabs.setAttribute('role', 'tablist');
+      if (!tabs.id) tabs.id = 'demo-tabs-' + (++demoControlId);
+      var panel = tabs.nextElementSibling;
+      var hasVisiblePanel = panel && !panel.matches('.tabs, .tabs-card, .tabs-route') &&
+        (panel.classList.contains('surface') || panel.hasAttribute('data-demo-tab-panel') || /内容|content/i.test(panel.textContent));
+      if (!hasVisiblePanel) {
+        panel = document.createElement('div');
+        panel.className = 'demo-tab-panel-sr';
+        panel.setAttribute('data-demo-tab-panel-generated', '');
+        tabs.insertAdjacentElement('afterend', panel);
+      }
+      if (!panel.id) panel.id = 'demo-tab-panel-' + demoControlId;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('tabindex', '0');
+      var queryView = null;
+      if (tabs.classList.contains('tabs-route')) {
+        queryView = new URLSearchParams((location.hash.split('?')[1] || '')).get('view');
+      }
+      var activeTab = null;
       tabs.querySelectorAll('a').forEach(function (tab) {
-        var active = tab.classList.contains('active') || tab.classList.contains('is-active');
+        var active = queryView ? tab.getAttribute('data-demo-query') === queryView :
+          (tab.classList.contains('active') || tab.classList.contains('is-active'));
+        tab.classList.toggle('active', active);
+        tab.classList.toggle('is-active', active);
+        if (!tab.id) tab.id = 'demo-tab-' + (++demoControlId);
         tab.setAttribute('role', 'tab');
         tab.setAttribute('tabindex', active ? '0' : '-1');
         tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.setAttribute('aria-controls', panel.id);
+        if (active) activeTab = tab;
       });
+      if (!activeTab) activeTab = tabs.querySelector('a');
+      if (activeTab) {
+        activeTab.classList.add('active', 'is-active');
+        activeTab.setAttribute('tabindex', '0');
+        activeTab.setAttribute('aria-selected', 'true');
+        panel.setAttribute('aria-labelledby', activeTab.id);
+        if (panel.hasAttribute('data-demo-tab-panel-generated')) {
+          panel.textContent = tCommon('demo.tabPanel', { label: activeTab.textContent.trim() }, '当前视图：{label}');
+        }
+      }
+    });
+    root.querySelectorAll('.chip, .viewtoggle button, [data-demo-action="time-select"], [data-demo-action="time-part"]').forEach(function (button) {
+      button.setAttribute('aria-pressed', button.classList.contains('active') || button.classList.contains('is-active') ? 'true' : 'false');
+    });
+    root.querySelectorAll('button[aria-expanded]').forEach(function (button) {
+      var popup = button.nextElementSibling;
+      if (!popup || !popup.classList.contains('popover')) return;
+      if (!popup.id) popup.id = 'demo-popover-' + (++demoControlId);
+      button.setAttribute('aria-controls', popup.id);
+      popup.hidden = button.getAttribute('aria-expanded') !== 'true';
     });
     root.querySelectorAll('.pager').forEach(function (pager) {
       pager.setAttribute('role', 'navigation');
@@ -461,6 +509,57 @@
       if (!button.getAttribute('aria-label')) {
         button.setAttribute('aria-label', button.getAttribute('title'));
       }
+    });
+    root.querySelectorAll('button:not([aria-label])').forEach(function (button) {
+      var buttonText = button.textContent.trim();
+      var demoAction = button.getAttribute('data-demo-action');
+      if (demoAction === 'month-prev') button.setAttribute('aria-label', tCommon('previousMonth', null, '上个月'));
+      else if (demoAction === 'month-next') button.setAttribute('aria-label', tCommon('nextMonth', null, '下个月'));
+      else if (buttonText === '▲') button.setAttribute('aria-label', tCommon('increaseValue', null, '增加数值'));
+      else if (buttonText === '▼') button.setAttribute('aria-label', tCommon('decreaseValue', null, '减少数值'));
+    });
+    root.querySelectorAll('label:not([for])').forEach(function (label) {
+      if (label.querySelector('input, textarea, select')) return;
+      var parent = label.parentElement;
+      var controls = parent ? parent.querySelectorAll('input, textarea, select') : [];
+      if (controls.length !== 1) return;
+      var control = controls[0];
+      if (!control.id) control.id = 'demo-control-' + (++demoControlId);
+      label.setAttribute('for', control.id);
+    });
+    root.querySelectorAll('.form-row').forEach(function (row) {
+      var label = row.querySelector('.lbl');
+      var control = row.querySelector('input, textarea, select');
+      if (!label || !control || control.closest('label')) return;
+      if (!label.id) label.id = 'demo-label-' + (++demoControlId);
+      if (!control.getAttribute('aria-labelledby') && !control.getAttribute('aria-label')) {
+        control.setAttribute('aria-labelledby', label.id);
+      }
+    });
+    root.querySelectorAll('input, textarea, select').forEach(function (control) {
+      if (control.getAttribute('aria-label') || control.getAttribute('aria-labelledby') || control.closest('label')) return;
+      if (control.id && root.querySelector('label[for="' + control.id + '"]')) return;
+      var placeholder = control.getAttribute('placeholder');
+      if (placeholder) control.setAttribute('aria-label', placeholder);
+    });
+    root.querySelectorAll('table input[type="checkbox"]').forEach(function (checkbox) {
+      if (checkbox.getAttribute('aria-label')) return;
+      var row = checkbox.closest('tr');
+      if (!row || row.closest('thead')) {
+        checkbox.setAttribute('aria-label', tCommon('selectAll', null, '选择全部行'));
+        return;
+      }
+      var cells = row.querySelectorAll('td');
+      var label = cells.length > 1 ? cells[1].textContent.trim() : '';
+      checkbox.setAttribute('aria-label', label ?
+        tCommon('selectRow', { label: label }, '选择行：{label}') :
+        tCommon('selectItem', null, '选择项目'));
+    });
+    root.querySelectorAll('.ccp-it input[type="checkbox"]').forEach(function (checkbox) {
+      if (checkbox.getAttribute('aria-label')) return;
+      var item = checkbox.closest('.ccp-it');
+      var name = item && item.querySelector('.nm');
+      checkbox.setAttribute('aria-label', name ? name.textContent.trim() : tCommon('selectItem', null, '选择项目'));
     });
     root.querySelectorAll('.skel, .skeleton').forEach(function (skeleton) {
       var container = skeleton.closest('[data-loading-region]') || skeleton.parentElement;
@@ -495,6 +594,16 @@
       item.setAttribute('aria-selected', active ? 'true' : 'false');
       item.setAttribute('tabindex', active ? '0' : '-1');
     });
+    var panelId = tab.getAttribute('aria-controls');
+    var panel = panelId && document.getElementById(panelId);
+    if (panel) {
+      panel.setAttribute('aria-labelledby', tab.id);
+      panel.textContent = tCommon('demo.tabPanel', { label: tab.textContent.trim() }, '当前视图：{label}');
+    }
+    if (group.classList.contains('tabs-route') && tab.getAttribute('data-demo-query')) {
+      var routeId = getRouteFromHash() || DEFAULT_ROUTE;
+      history.replaceState(null, '', '#/' + routeId + '?view=' + encodeURIComponent(tab.getAttribute('data-demo-query')));
+    }
   }
 
   function syncTableSelection(input) {
@@ -516,17 +625,91 @@
     }
   }
 
-  function syncPagerState(pager) {
+  function getPagerModel(pager) {
     var numeric = Array.prototype.slice.call(pager.querySelectorAll('.page')).filter(function (item) {
       return /^\d+$/.test(item.textContent.trim());
     });
-    var activeIndex = numeric.findIndex(function (item) {
+    var active = numeric.find(function (item) {
       return item.classList.contains('is-active') || item.classList.contains('active');
     });
+    var simpleLabel = pager.querySelector('.cur');
+    var simpleMatch = simpleLabel && simpleLabel.textContent.match(/(\d+)\s*\/\s*(\d+)/);
+    if (!pager.dataset.totalPages) {
+      pager.dataset.totalPages = simpleMatch ? simpleMatch[2] : String(numeric.reduce(function (max, item) {
+          return Math.max(max, Number(item.textContent.trim()));
+        }, 1));
+    }
+    if (!pager.dataset.currentPage) {
+      pager.dataset.currentPage = simpleMatch ? simpleMatch[1] : (active ? active.textContent.trim() : '1');
+    }
+    if (!pager.dataset.windowed) {
+      pager.dataset.windowed = Array.prototype.some.call(pager.querySelectorAll('.page'), function (item) {
+        return item.textContent.trim() === '…';
+      }) ? 'true' : 'false';
+    }
+    return {
+      current: Number(pager.dataset.currentPage),
+      total: Number(pager.dataset.totalPages),
+      windowed: pager.dataset.windowed === 'true'
+    };
+  }
+
+  function getPagerItems(current, total) {
+    if (total <= 5) {
+      return Array.from({ length: total }, function (_, index) { return index + 1; });
+    }
+    if (current <= 3) return [1, 2, 3, '…', total];
+    if (current >= total - 2) return [1, '…', total - 2, total - 1, total];
+    return [1, '…', current, '…', total];
+  }
+
+  function renderPager(pager, requestedPage) {
+    var model = getPagerModel(pager);
+    var current = Math.max(1, Math.min(model.total, requestedPage));
+    pager.dataset.currentPage = String(current);
+
+    var simpleLabel = pager.querySelector('.cur');
+    if (simpleLabel && !pager.querySelector('.page.is-active, .page.active')) {
+      simpleLabel.textContent = current + ' / ' + model.total;
+    } else if (model.windowed) {
+      var next = Array.prototype.find.call(pager.querySelectorAll('.page'), function (item) {
+        return item.textContent.trim() === '›';
+      });
+      var anchor = next || pager.querySelector('.select');
+      Array.prototype.slice.call(pager.querySelectorAll('.page')).forEach(function (item) {
+        var text = item.textContent.trim();
+        if (text !== '‹' && text !== '›') item.remove();
+      });
+      getPagerItems(current, model.total).forEach(function (value) {
+        var item = document.createElement(value === '…' ? 'span' : 'button');
+        item.className = 'page';
+        item.textContent = String(value);
+        if (value === '…') {
+          item.setAttribute('aria-hidden', 'true');
+        } else if (value === current) {
+          item.classList.add('is-active');
+          item.setAttribute('aria-current', 'page');
+        }
+        pager.insertBefore(item, anchor || null);
+      });
+    } else {
+      pager.querySelectorAll('.page').forEach(function (item) {
+        var isCurrent = Number(item.textContent.trim()) === current;
+        item.classList.toggle('is-active', isCurrent);
+        item.classList.remove('active');
+        if (isCurrent) item.setAttribute('aria-current', 'page');
+        else item.removeAttribute('aria-current');
+      });
+    }
+    syncPagerState(pager);
+  }
+
+  function syncPagerState(pager) {
+    var model = getPagerModel(pager);
     var previous = Array.prototype.find.call(pager.querySelectorAll('.page'), function (item) { return item.textContent.trim() === '‹'; });
     var next = Array.prototype.find.call(pager.querySelectorAll('.page'), function (item) { return item.textContent.trim() === '›'; });
-    if (previous) previous.disabled = activeIndex <= 0;
-    if (next) next.disabled = activeIndex < 0 || activeIndex >= numeric.length - 1;
+    if (previous) previous.disabled = model.current <= 1;
+    if (next) next.disabled = model.current >= model.total;
   }
 
   function wireDemoInteractions(root) {
@@ -548,14 +731,29 @@
       if (passwordToggle && root.contains(passwordToggle)) {
         var passwordInput = passwordToggle.parentElement.querySelector('input');
         passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-        passwordToggle.setAttribute('aria-pressed', passwordInput.type === 'text' ? 'true' : 'false');
+        var passwordVisible = passwordInput.type === 'text';
+        passwordToggle.setAttribute('aria-pressed', passwordVisible ? 'true' : 'false');
+        passwordToggle.setAttribute('aria-label', passwordVisible ?
+          tCommon('hidePassword', null, '隐藏密码') :
+          tCommon('showPassword', null, '显示密码'));
         return;
       }
 
       var captcha = target.closest && target.closest('[data-demo-refresh-captcha]');
       if (captcha && root.contains(captcha)) {
-        captcha.textContent = String(Math.random()).slice(2, 7);
+        var alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        var captchaCode = '';
+        for (var captchaIndex = 0; captchaIndex < 6; captchaIndex++) {
+          captchaCode += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        }
+        captcha.textContent = captchaCode;
         pulse(captcha);
+        return;
+      }
+
+      var retry = target.closest && target.closest('[data-demo-retry]');
+      if (retry && root.contains(retry)) {
+        location.reload();
         return;
       }
 
@@ -571,7 +769,7 @@
         return;
       }
 
-      var select = target.closest && target.closest('.select');
+      var select = target.closest && target.closest('.select[data-demo-options]');
       if (select && root.contains(select)) {
         event.preventDefault();
         select.classList.toggle('is-open');
@@ -587,25 +785,44 @@
         event.preventDefault();
         var text = page.textContent.trim();
         var pager = page.closest('.pager');
-        var targetPage = page;
+        var pagerModel = getPagerModel(pager);
+        var targetPageNumber;
         if (text === '‹' || text === '›') {
-          var numeric = Array.prototype.slice.call(pager.querySelectorAll('.page')).filter(function (item) {
-            return /^\d+$/.test(item.textContent.trim());
-          });
-          var activeIndex = numeric.findIndex(function (item) { return item.classList.contains('is-active') || item.classList.contains('active'); });
-          var nextIndex = text === '‹' ? activeIndex - 1 : activeIndex + 1;
-          if (nextIndex < 0 || nextIndex >= numeric.length) return;
-          targetPage = numeric[nextIndex];
-          text = targetPage.textContent.trim();
+          targetPageNumber = pagerModel.current + (text === '‹' ? -1 : 1);
+        } else if (/^\d+$/.test(text)) {
+          targetPageNumber = Number(text);
+        } else {
+          return;
         }
-        if (text === '…') return;
-        setSingleActive(targetPage, '.page', 'is-active');
-        pager.querySelectorAll('.page').forEach(function (item) { item.removeAttribute('aria-current'); });
-        targetPage.setAttribute('aria-current', 'page');
-        syncPagerState(pager);
-        var pageLabel = /^\d+$/.test(text) ? formatNumber(Number(text), getCurrentLocale()) : text;
+        if (targetPageNumber < 1 || targetPageNumber > pagerModel.total) return;
+        renderPager(pager, targetPageNumber);
+        var pageLabel = formatNumber(targetPageNumber, getCurrentLocale());
         showDemoToast(root, tCommon('demo.pageClicked', { page: pageLabel }, '分页点击：{page}'));
         return;
+      }
+
+      var stepButton = target.closest && target.closest('.num-input .step button');
+      if (stepButton && root.contains(stepButton)) {
+        var numberInput = stepButton.closest('.num-input').querySelector('input');
+        if (!numberInput || numberInput.disabled) return;
+        var currentValue = Number(numberInput.value);
+        if (!Number.isFinite(currentValue)) return;
+        var nextValue = currentValue + (stepButton.textContent.trim() === '▲' ? 1 : -1);
+        numberInput.value = String(nextValue);
+        pulse(stepButton);
+        showDemoToast(root, tCommon('demo.valueChanged', { value: formatNumber(nextValue, getCurrentLocale()) }, '数值已调整为 {value}'));
+        return;
+      }
+
+      var disclosure = target.closest && target.closest('button[aria-expanded]');
+      if (disclosure && root.contains(disclosure)) {
+        var popup = disclosure.nextElementSibling;
+        if (popup && popup.classList.contains('popover')) {
+          var expanded = disclosure.getAttribute('aria-expanded') !== 'true';
+          disclosure.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          popup.hidden = !expanded;
+          return;
+        }
       }
 
       var tab = target.closest && target.closest('.tabs a, .tabs-card a, .tabs-route a, .viewtoggle button, .seg button, .chip');
@@ -626,7 +843,7 @@
       }
 
       var button = target.closest && target.closest('button, .btn, a[role="button"]');
-      if (button && root.contains(button) && !button.disabled) {
+      if (button && root.contains(button) && !button.disabled && button.getAttribute('aria-disabled') !== 'true') {
         event.preventDefault();
         pulse(button);
         showDemoToast(root, tCommon('demo.buttonClicked', {
@@ -665,7 +882,7 @@
         return;
       }
       if (event.key !== 'Enter' && event.key !== ' ') return;
-      var control = event.target.closest && event.target.closest('.select, .switch, [role="tab"], a[role="button"]');
+      var control = event.target.closest && event.target.closest('.select[data-demo-options], .switch, [role="tab"], a[role="button"]');
       if (!control || !root.contains(control)) return;
       event.preventDefault();
       control.click();
@@ -687,7 +904,7 @@
            '<h2 style="margin:0 0 12px;color:var(--aw-danger)">' + tCommon('loadFailed', null, '加载失败') + '</h2>' +
            '<p style="color:var(--aw-text-2);margin:0 0 16px">' + tCommon('loadFailedBody', { route: routeId }, '无法加载 pages/{route}.js') + '</p>' +
            '<p style="color:var(--aw-text-3);font-size:13px;line-height:1.7">' + tCommon('checkFile', null, '检查文件是否存在,或刷新页面重试。') + '</p>' +
-           '<button class="btn" onclick="location.reload()">' + tCommon('retry', null, '重试') + '</button>' +
+           '<button class="btn" data-demo-retry>' + tCommon('retry', null, '重试') + '</button>' +
            '</div></div>';
   }
 

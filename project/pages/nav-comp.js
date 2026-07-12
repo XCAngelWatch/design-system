@@ -29,7 +29,7 @@
     <div class="demo-grid">
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="nav-comp:text.044">面包屑 · 跨级位置</span></div>
-        <div class="crumbs"><a><span data-i18n="nav-comp:text.045">首页</span></a><span class="sep">/</span><a><span data-i18n="nav-comp:text.046">数据中心</span></a><span class="sep">/</span><a><span data-i18n="nav-comp:text.047">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="nav-comp:text.048">终端-上海-001</span></span></div>
+        <div class="crumbs"><a href="#/overview"><span data-i18n="nav-comp:text.045">首页</span></a><span class="sep">/</span><a href="#/device-center-page"><span data-i18n="nav-comp:text.046">数据中心</span></a><span class="sep">/</span><a href="#/list-page"><span data-i18n="nav-comp:text.047">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="nav-comp:text.048">终端-上海-001</span></span></div>
       </div>
       <div class="surface" style="padding:0">
         <div class="tag-meta" style="margin:14px 14px 0"><span data-i18n="nav-comp:text.049">Tabs · 同对象视图</span></div>

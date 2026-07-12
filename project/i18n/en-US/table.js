@@ -281,7 +281,7 @@
     "text.277": "Boundary state",
     "text.278": "Only 1 page: Hide pager; Total items 0: Only display \"Total 0 items\"",
     "text.279": "Big data set",
-    "text.280": "≥ 10,000 items: Cursor paging (cursor-based), random page jumps are prohibited",
+    "text.280": "Stable totals with count support: use server-side page-number pagination and allow page jumps. Frequently changing data or expensive deep pagination: use cursor pagination without random page jumps.",
     "text.281": "Cross-page selection",
     "text.282": "\"28 selected / 12,486 items in total · Cross-page selection\" expressly stated",
     "text.283": "Persistence",

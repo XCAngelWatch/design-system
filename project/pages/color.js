@@ -363,7 +363,7 @@ export const componentOverrides = {
                 </div>
               </div>
               <div class="nd-frame nested2">
-                <div class="nd-label inner2"><code>&lt;ConfigProvider theme={'{ token: { colorPrimary: '#CF1322' } }'}&gt;</code> <span data-i18n="color:t199">· 危险主题</span></div>
+                <div class="nd-label inner2"><code>&lt;ConfigProvider theme={resolvedDangerTheme}&gt;</code> <span data-i18n="color:t199">· 危险主题</span></div>
                 <div class="nd-inner-danger">
                   <button class="nd-btn-danger"><span data-i18n="color:t200">立即处理</span></button>
                   <button class="nd-btn-ghost"><span data-i18n="color:t201">稍后</span></button>

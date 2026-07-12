@@ -20,15 +20,15 @@
 <h3 style="margin:0 0 12px;font-size:14px">Tooltip &amp; Popover</h3>
 <div style="padding:16px 0 0">
   <div class="tip-demo">
-    <span style="border-bottom:1px dotted var(--aw-text-3)"><span data-i18n="toast:text.012">SHA-256 校验和</span></span>
-    <div class="tip"><span data-i18n="toast:text.013">服务端会比对此值，一致才允许下发到设备</span></div>
+    <button class="inline-action" style="border-bottom:1px dotted var(--aw-text-3)" aria-describedby="checksum-tip"><span data-i18n="toast:text.012">SHA-256 校验和</span></button>
+    <div class="tip" id="checksum-tip" role="tooltip"><span data-i18n="toast:text.013">服务端会比对此值，一致才允许下发到设备</span></div>
   </div>
 </div>
 <div style="padding:60px 0 0;position:relative;height:200px">
   <div style="position:relative;display:inline-block">
-    <button class="inline-action status-dot fault" style="border-bottom:1px dotted var(--aw-danger)" aria-expanded="true"><span data-i18n="toast:text.014">故障</span></button>
-    <div class="popover">
-      <div class="ttl"><span data-i18n="toast:text.015">故障详情 · DEV-86420144</span></div>
+    <button class="inline-action status-dot fault" style="border-bottom:1px dotted var(--aw-danger)" aria-expanded="true" aria-controls="fault-popover"><span data-i18n="toast:text.014">故障</span></button>
+    <div class="popover" id="fault-popover" role="dialog" aria-labelledby="fault-popover-title">
+      <div class="ttl" id="fault-popover-title"><span data-i18n="toast:text.015">故障详情 · DEV-86420144</span></div>
       <div style="font-size:12px;color:var(--aw-text-2);line-height:1.6">
         <div style="display:flex;justify-content:space-between"><span><span data-i18n="toast:text.016">错误码</span></span><code class="mono">E-AGT-0142</code></div>
         <div style="display:flex;justify-content:space-between"><span><span data-i18n="toast:text.017">触发时间</span></span><span><span data-i18n="toast:text.018">1 小时前</span></span></div>

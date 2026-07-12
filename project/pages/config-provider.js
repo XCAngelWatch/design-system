@@ -42,6 +42,8 @@
 <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><code>packages/web/src/app/AntdConfig.tsx</code> <span data-i18n="config-provider:t046">是项目的</span><b><span data-i18n="config-provider:t047">单一入口</span></b><span data-i18n="config-provider:t048">。任何项目根都要包一层这个组件，自定义 hook / API 不能跳过。</span></p>
 <div class="code-block"><pre><code>// packages/web/src/app/AntdConfig.tsx
 import { App, ConfigProvider } from 'antd';
+import type { Locale } from 'antd/es/locale';
+import type { FC, ReactNode } from 'react';
 import zhCN from 'antd/locale/zh_CN';
 import { tmsThemeToken, tmsComponentOverrides } from '@tms/design-tokens';
 import { TMSEmpty } from '@/components/Empty';
@@ -65,15 +67,7 @@ export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale; themeMode
           motionDurationSlow: '320ms',
           wireframe: false,             // Explicit guard against antd default changes
         },
-        components: {
-          ...tmsComponentOverrides,
-          Button:     { fontWeight: 500, primaryShadow: 'none', defaultBorderColor: '#D9D9D9' },
-          Table:      { headerBg: '#FAFAFA', cellPaddingBlock: 10, cellPaddingInline: 12 },
-          Pagination: { itemSize: 32 },
-          Form:       { labelColor: '#4B5563', verticalLabelPadding: '0 0 4px' },
-          Modal:      { borderRadiusLG: 8, paddingContentHorizontalLG: 24 },
-          Tag:        { defaultBg: '#F5F5F5', defaultColor: '#4B5563' },
-        },
+        components: tmsComponentOverrides[themeMode], // Mode-specific component tokens from the same source
         algorithm: undefined,           // TMS supplies explicit Light/Dark tokens
       }}
       // === Rendering layer ===
@@ -102,7 +96,7 @@ export const AntdConfig: FC&lt;{ children: ReactNode; locale?: Locale; themeMode
 &lt;/ConfigProvider&gt;
 
 // Example 2: danger panel with a red regional theme
-&lt;ConfigProvider theme={{ token: { colorPrimary: '#CF1322' } }}&gt;
+&lt;ConfigProvider theme={{ token: { colorPrimary: tmsThemeToken[themeMode].colorError } }}&gt;
   &lt;DangerPanel&gt;
     &lt;Button type="primary"&gt;Resolve Now&lt;/Button&gt;
   &lt;/DangerPanel&gt;

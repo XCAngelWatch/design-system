@@ -180,11 +180,12 @@
   border-radius: var(--aw-radius);
   background: var(--aw-bg);
   display: inline-flex; align-items: center;
-  font-size: 14px; cursor: pointer; min-width: 160px;
+  font-size: 14px; cursor: default; min-width: 160px;
   transition: border-color var(--aw-dur-fast);
 }
-.select:hover { border-color: var(--aw-primary-hover); }
-.select:focus-visible { border-color: var(--aw-primary); box-shadow: 0 0 0 2px var(--aw-primary-bg); outline: 0; }
+.select[data-demo-options] { cursor: pointer; }
+.select[data-demo-options]:hover { border-color: var(--aw-primary-hover); }
+.select[data-demo-options]:focus-visible { border-color: var(--aw-primary); box-shadow: 0 0 0 2px var(--aw-primary-bg); outline: 0; }
 .select::after {
   content: ''; position: absolute; right: 10px; top: 50%;
   width: 8px; height: 8px;
@@ -360,6 +361,8 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
 .dialog-close { width: 28px; height: 28px; display: inline-grid; place-items: center; font-size: 18px; border-radius: var(--aw-radius-sm); }
 .dialog-close:hover { background: var(--aw-fill-2); }
 .inline-action { padding: 0; color: var(--aw-primary); }
+.inline-action.danger { color: var(--aw-danger); }
+.inline-action.danger:hover { color: var(--aw-danger-hover); }
 
 /* ===== Card ===== */
 .card {
@@ -953,7 +956,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
 .login-mock .lr-field { margin-bottom: 16px; }
 .login-mock .lr-field label { display: block; font-size: 12px; color: var(--aw-text-2); margin-bottom: 6px; }
 .login-mock .lr-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; font-size: 12px; }
-.login-mock .lr-row a { color: var(--aw-primary); text-decoration: none; }
+.login-mock .lr-row .inline-action { color: var(--aw-primary); }
 .login-mock .lr-langs { position: absolute; top: 16px; right: 16px; display: flex; gap: 4px; font-size: 11px; }
 .login-mock .lr-langs span { padding: 2px 8px; color: var(--aw-text-3); cursor: pointer; }
 .login-mock .lr-langs span.active { color: var(--aw-text-1); font-weight: 500; }

@@ -86,7 +86,7 @@
 
     <div class="lp-pager">
       <span class="meta"><span data-i18n="push-page:text.045">共 1,284 条</span></span>
-      <div class="pager"><button class="page">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><button class="page">…</button><button class="page">25</button><button class="page">›</button></div>
+      <div class="pager" data-total-pages="65"><button class="page">‹</button><button class="page is-active">1</button><button class="page">2</button><button class="page">3</button><span class="page" aria-hidden="true">…</span><button class="page">65</button><button class="page">›</button></div>
     </div>
   </div>
 
