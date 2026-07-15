@@ -135,7 +135,7 @@
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.081">姓名</span></div><div><input class="input" /></div></div>
             <div class="form-row"><div class="lbl"><span data-i18n="user-mgmt-page:text.082">邮箱</span></div><div><input class="input" placeholder="选填,编辑时掩码跳过校验" data-i18n-placeholder="user-mgmt-page:text.083" /></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.084">时区</span></div><div><div class="select" style="width:100%"><span>UTC+08:00 ▾</span></div></div></div>
-            <div class="form-row"><div class="lbl">MFA</div><div><div class="row"><span class="switch"></span><span style="font-size:13px;color:var(--aw-text-2)" data-i18n="user-mgmt-page:text.085">启用谷歌验证器(可解绑,二次确认)</span></div></div></div>
+            <div class="form-row"><div class="lbl">MFA</div><div><div class="row"><button type="button" class="switch" role="switch" aria-checked="false" aria-label="启用谷歌验证器" data-i18n-aria-label="user-mgmt-page:text.085"></button><span style="font-size:13px;color:var(--aw-text-2)" data-i18n="user-mgmt-page:text.085">启用谷歌验证器(可解绑,二次确认)</span></div></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.086">角色</span></div><div><div class="select" style="width:100%"><span><span data-i18n="user-mgmt-page:text.087">选择角色 (可多选) ▾</span></span></div></div></div>
             <div class="form-row"><div class="lbl"><span data-i18n="user-mgmt-page:text.090">备注</span></div><div><input class="input" placeholder="选填,内部识别用" data-i18n-placeholder="user-mgmt-page:text.091" /></div></div>
           </div>

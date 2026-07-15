@@ -48,18 +48,6 @@
   color: var(--aw-danger);
   font-size: 12.5px;
 }
-.ls-ipt-row { display: flex; gap: 8px; }
-.ls-cap-img {
-  width: 84px; height: 32px;
-  background: linear-gradient(135deg, #E8F3FF, #CCDFF7);
-  border: 1px solid var(--aw-border-2);
-  border-radius: var(--aw-radius);
-  display: grid; place-items: center;
-  font-family: var(--aw-font-mono); font-size: 13px;
-  color: var(--aw-primary); font-weight: 600;
-  letter-spacing: 1.5px; cursor: pointer;
-  flex-shrink: 0;
-}
 .ls-select {
   height: 32px; padding: 0 11px;
   border: 1px solid var(--aw-border-1); border-radius: var(--aw-radius);
@@ -231,8 +219,4 @@
 
 
 /* ---------- Dark theme adjustments ---------- */
-[data-theme="dark"] .ls-cap-img {
-  background: linear-gradient(135deg, rgba(74,139,224,0.16), rgba(74,139,224,0.04));
-  color: var(--aw-primary);
-}
 [data-theme="dark"] .pz-hole { background: rgba(0,0,0,0.6); }

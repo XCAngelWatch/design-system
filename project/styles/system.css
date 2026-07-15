@@ -5,7 +5,7 @@
   --aw-doc-sidebar-width: 240px;
 }
 
-html[lang="en-US"] {
+html[lang]:not([lang^="zh"]) {
   --aw-doc-sidebar-width: 272px;
 }
 
@@ -70,7 +70,7 @@ html[lang="en-US"] {
 }
 .nav a.active .dot { opacity: 1; }
 
-html[lang="en-US"] .nav a {
+html[lang]:not([lang^="zh"]) .nav a {
   min-width: 0;
   min-height: 34px;
   line-height: 1.35;

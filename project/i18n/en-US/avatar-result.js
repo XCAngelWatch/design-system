@@ -37,7 +37,7 @@
     "text.033": "Batch Push Completed · Partial Failure",
     "text.034": " succeeded",
     "text.035": " failed",
-    "text.036": "1,284 total devices",
+    "text.036": " total",
     "text.037": "Completion rate 97.4% · Failure rate 2.6%",
     "text.038": "Failure Details (34 items)",
     "text.039": "Device SN",

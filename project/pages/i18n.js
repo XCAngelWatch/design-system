@@ -31,7 +31,7 @@
     <div class="demo-grid cols-2">
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px">Button</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
             <div class="row"><button class="btn btn-primary"><span data-i18n="i18n:t026">保存</span></button><button class="btn"><span data-i18n="i18n:t027">取消</span></button><button class="btn btn-ghost-danger"><span data-i18n="i18n:t028">删除</span></button></div>
@@ -44,7 +44,7 @@
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px">Table Header</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
             <table class="dt"><thead><tr><th><span data-i18n="i18n:t029">设备</span></th><th><span data-i18n="i18n:t030">所属机构</span></th><th><span data-i18n="i18n:t031">状态</span></th><th class="colactions"><span data-i18n="i18n:t032">操作</span></th></tr></thead></table>
@@ -57,7 +57,7 @@
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px">Status Tag</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
             <div class="row"><span class="status-dot online"><span data-i18n="i18n:t033">在线</span></span><span class="status-dot offline"><span data-i18n="i18n:t034">离线</span></span><span class="status-dot fault"><span data-i18n="i18n:t035">故障</span></span><span class="status-dot is-neutral"><span data-i18n="i18n:t036">屏幕锁定</span></span></div>
@@ -70,7 +70,7 @@
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:10px">Form Label</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
             <div class="form-demo"><div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="i18n:t037">设备名称</span></div><div><input class="input" placeholder="请输入设备名称"  data-i18n-placeholder="i18n:a038"/></div></div></div>

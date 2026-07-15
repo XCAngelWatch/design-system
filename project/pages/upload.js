@@ -16,7 +16,10 @@
 <div class="upload-item success">
   <div class="file-ico">ZIP</div>
   <div class="meta"><div class="name">angelwatch-firmware-v3.5.0-stable.zip</div><div class="info"><span data-i18n="upload:text.006">218.4 MB · sha256: a3f2d8…b7c1 · 已校验</span></div></div>
-  <div class="actions"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--aw-success)" stroke-width="2.5"><path d="M5 12l5 5 9-11"/></svg></div>
+  <div class="upload-file-actions">
+    <span class="upload-complete"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5 9-11"/></svg><span data-i18n="upload:text.084">已完成</span></span>
+    <button type="button" class="inline-action upload-download"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 20h14"/></svg><span data-i18n="upload:text.083">下载</span></button>
+  </div>
 </div>
 <div class="upload-item">
   <div class="file-ico">ZIP</div>
@@ -31,6 +34,24 @@
   <div class="meta"><div class="name">devices-batch-import.csv</div><div class="info" style="color:var(--aw-danger)"><span data-i18n="upload:text.007">校验失败：第 14 行格式错误</span></div></div>
   <div class="actions"><button class="inline-action"><span data-i18n="upload:text.008">重试</span></button></div>
 </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3><span data-i18n="upload:text.085">下载动作 · 状态与能力契约</span></h3>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="upload:text.086">“上传完成”不等于“允许下载”。下载入口必须由服务端持久化状态、当前用户权限和资源有效性共同决定。</span></p>
+    <div class="surface" style="padding:0;overflow:auto">
+      <table class="tech-table">
+        <thead><tr><th><span data-i18n="upload:text.087">文件状态</span></th><th><span data-i18n="upload:text.088">下载呈现</span></th><th><span data-i18n="upload:text.089">交互与数据契约</span></th></tr></thead>
+        <tbody>
+          <tr><td><span data-i18n="upload:text.090">仅在本地选择</span></td><td><span data-i18n="upload:text.091">不显示下载</span></td><td><span data-i18n="upload:text.092">浏览器本地对象只用于预览；服务端未持久化前不得伪装成可下载资源。</span></td></tr>
+          <tr><td><span data-i18n="upload:text.093">已持久化且有权限</span></td><td><span data-i18n="upload:text.094">显示“下载”</span></td><td><span data-i18n="upload:text.095">仅在服务端明确返回可下载能力后显示，不能只根据上传成功状态推断。</span></td></tr>
+          <tr><td><span data-i18n="upload:text.096">准备中 / 下载中</span></td><td><span data-i18n="upload:text.097">Loading 并禁用重复点击</span></td><td><span data-i18n="upload:text.098">一次只发起一个请求；失败后恢复可操作态，并展示可执行的重试原因。</span></td></tr>
+          <tr><td><span data-i18n="upload:text.099">权限不足</span></td><td><span data-i18n="upload:text.100">按场景隐藏或禁用并说明原因</span></td><td><span data-i18n="upload:text.101">接口拒绝后刷新下载能力，禁止继续复用旧地址或仅依赖前端权限判断。</span></td></tr>
+          <tr><td><span data-i18n="upload:text.102">已删除 / 已过期</span></td><td><span data-i18n="upload:text.103">移除入口或禁用并给出恢复路径</span></td><td><span data-i18n="upload:text.104">下载时重新获取短时有效地址，不在页面状态或本地存储中长期保存。</span></td></tr>
+          <tr><td><span data-i18n="upload:text.105">完整性与有效期</span></td><td><span data-i18n="upload:text.106">按业务显示摘要、版本与有效期</span></td><td><span data-i18n="upload:text.107">具体字段名先进入业务能力契约；下载完成后按服务端提供的摘要校验文件完整性。</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 

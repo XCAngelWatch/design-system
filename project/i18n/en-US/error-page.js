@@ -4,11 +4,10 @@
   root.__AW_I18N__.register('en-US', 'error-page', {
     "text.001": "Business Patterns · Error Page",
     "text.002": "ErrorPage",
-    "text.003": "Use three official error pages with one illustration style: minimal linear artwork in monochrome brand blue. 404 means page not found; 403 distinguishes unauthenticated from unauthorized access; 500 includes a copyable Trace ID for support tickets.",
+    "text.003": "Use one minimal linear illustration style across the three official error pages. Do not remove every button: keep only the primary action that can actually recover the flow, and demote supporting actions to secondary or text buttons.",
     "text.004": "Page Not Found",
     "text.005": "Check the URL, or re-enter from the left navigation. If a shared link has expired, contact the sender.",
     "text.006": "Back to Home",
-    "text.007": "Contact Administrator",
     "text.008": "Access Denied",
     "text.009": "This page requires ",
     "text.010": " permission. Contact a workspace administrator to request access, or switch organization.",
@@ -21,6 +20,21 @@
     "text.017": "Copy Trace ID",
     "text.018": "ERROR · 404",
     "text.019": "ERROR · 403",
-    "text.020": "ERROR · 500"
+    "text.020": "ERROR · 500",
+    "text.021": "This example assumes an available approval flow and another accessible organization. Hide each button when its condition is not met.",
+    "text.022": "Action Availability Contract",
+    "text.023": "Scenario",
+    "text.024": "Action",
+    "text.025": "Display Condition",
+    "text.026": "Back to Home",
+    "text.027": "Always provide a stable in-product recovery path.",
+    "text.028": "Contact Support",
+    "text.029": "Show only when the product has a valid configured support link or contact. Do not render a decorative button.",
+    "text.030": "Request Access / Switch Organization",
+    "text.031": "Require an available access-approval flow and at least one other accessible organization respectively. Hide the action when its capability is absent.",
+    "text.032": "Retry / Copy Trace ID",
+    "text.033": "Retry must be safe and recoverable. Offer copy only when the server returns a Trace ID.",
+    "text.034": "Principle:",
+    "text.035": "Error-page actions come from runtime capabilities and context; do not hard-code a fixed button set from the error code alone."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -4,8 +4,8 @@
 <section class="section" id="drawer">
   <p class="section-eyebrow"><span data-i18n="drawer:text.001">通用组件 · 抽屉</span></p>
   <h2><span data-i18n="drawer:text.002">抽屉 Drawer</span></h2>
-  <p class="lede"><span data-i18n="drawer:text.003">从右侧滑入，承载快速编辑、详情预览。</span><strong><span data-i18n="drawer:text.004">比 Modal 更适合 TMS 高频操作</span></strong><span data-i18n="drawer:text.005">——保留页面上下文，可继续看到列表。默认 480px 宽。</span></p>
-  <div style="background:var(--aw-fill-1);border-radius:6px;padding:32px;display:flex;justify-content:flex-end">
+  <p class="lede"><span data-i18n="drawer:text.003">右侧滑入抽屉仅用于需要保留列表上下文的快速详情与轻量编辑。</span><strong><span data-i18n="drawer:text.004">它不是 Modal 或完整页面的默认替代</span></strong><span data-i18n="drawer:text.005">；复杂创建、跨步骤流程和高风险确认继续使用页面或 Modal。默认 480px 宽。</span></p>
+  <div class="drawer-stage">
     <div class="drawer-demo">
 <div class="head"><h4><span data-i18n="drawer:text.006">编辑设备 · 终端-上海-001</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
 <div class="body">
@@ -13,11 +13,26 @@
     <div class="form-row"><div class="lbl"><span class="req" style="color:var(--aw-danger)">*</span><span data-i18n="drawer:text.007">设备名称</span></div><div><input class="input" value="终端-上海-001" data-i18n-value="drawer:attr.008.value" /></div></div>
     <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.009">所属机构</span></div><div><div class="select" style="width:100%"><span><span data-i18n="drawer:text.010">上海 / 黄浦营业厅</span></span></div></div></div>
     <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.011">分组标签</span></div><div><div class="row"><span class="tag tag-blue"><span data-i18n="drawer:text.012">VIP 网点</span></span><span class="tag"><span data-i18n="drawer:text.013">实验组</span></span><button class="btn btn-text btn-sm"><span data-i18n="drawer:text.014">+ 添加</span></button></div></div></div>
-    <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.015">允许远程</span></div><div class="row"><button class="switch is-on" aria-label="允许远程" data-i18n-aria-label="drawer:text.015"></button><span style="font-size:12px;color:var(--aw-text-3)"><span data-i18n="drawer:text.016">远程控制 + 远程截屏</span></span></div></div>
+    <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.015">允许远程</span></div><div class="row"><button type="button" class="switch is-on" role="switch" aria-checked="true" aria-label="允许远程" data-i18n-aria-label="drawer:text.015"></button><span style="font-size:12px;color:var(--aw-text-3)"><span data-i18n="drawer:text.016">远程控制 + 远程截屏</span></span></div></div>
     <div class="form-row"><div class="lbl"><span data-i18n="drawer:text.017">备注</span></div><div><input class="input" placeholder="可选" data-i18n-placeholder="drawer:attr.018.placeholder" /></div></div>
   </div>
 </div>
 <div class="foot"><button class="btn"><span data-i18n="drawer:text.019">取消</span></button><button class="btn btn-primary"><span data-i18n="drawer:text.020">保存</span></button></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3><span data-i18n="drawer:text.080">交互闭环 · 焦点、关闭与滚动</span></h3>
+    <div class="surface" style="padding:0;overflow:hidden">
+      <table class="tech-table">
+        <thead><tr><th style="width:120px"><span data-i18n="drawer:text.089">阶段</span></th><th><span data-i18n="drawer:text.090">必须满足的契约</span></th></tr></thead>
+        <tbody>
+          <tr><td><span data-i18n="drawer:text.081">打开</span></td><td><span data-i18n="drawer:text.082">记录触发器，焦点移入标题或首个可操作控件；使用焦点圈定，背景内容不可交互。</span></td></tr>
+          <tr><td><span data-i18n="drawer:text.083">关闭</span></td><td><span data-i18n="drawer:text.084">只读抽屉允许 Esc / 遮罩关闭；编辑态有未保存变更时必须确认。关闭后焦点还原到触发器。</span></td></tr>
+          <tr><td><span data-i18n="drawer:text.085">滚动</span></td><td><span data-i18n="drawer:text.086">锁定页面滚动，仅 body 区滚动；标题与操作栏固定可见，不允许整页和抽屉双滚动。</span></td></tr>
+          <tr><td><span data-i18n="drawer:text.087">移动端</span></td><td><span data-i18n="drawer:text.088">视口小于等于 768px 时使用全宽抽屉，保留明确关闭按钮与安全区内边距。</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -38,7 +53,7 @@
         </tbody>
       </table>
     </div>
-    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="drawer:text.047">判断口诀：</span></strong><span data-i18n="drawer:text.048">"用户需要边看边做" → Drawer；"用户必须现在就决定" → Modal。如果还在犹豫，默认 Drawer（保留上下文是 TMS 高频操作的核心需求）。</span></div></div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="drawer:text.047">判断口诀：</span></strong><span data-i18n="drawer:text.048">"用户需要边看列表边查看或轻量编辑" → Drawer；"用户必须现在就决定" → Modal；"任务跨步骤或需要独立 URL" → 完整页面。无法证明需要保留上下文时，不新增 Drawer。</span></div></div>
   </div>
 
   <div class="subsection">

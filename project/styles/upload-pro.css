@@ -45,6 +45,33 @@
 }
 .up-inline .x:hover { background: var(--aw-fill-2); color: var(--aw-danger); }
 
+.upload-file-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  white-space: nowrap;
+}
+.upload-complete {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--aw-success);
+  font-size: 12px;
+}
+.upload-download {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 4px;
+  color: var(--aw-primary);
+  border-radius: var(--aw-radius-sm);
+  font-size: 13px;
+}
+.upload-download:hover { color: var(--aw-primary-hover); background: var(--aw-primary-bg); }
+.upload-download svg { flex-shrink: 0; }
+
 .up-inline-row {
   display: flex; align-items: center; gap: 8px;
 }
@@ -248,3 +275,8 @@
 [data-theme="dark"] .upp-audio,
 [data-theme="dark"] .upp-apk,
 [data-theme="dark"] .up-inline-empty { background: rgba(255,255,255,0.04); }
+
+@media (max-width: 560px) {
+  .upload-item { grid-template-columns: 32px minmax(0, 1fr); }
+  .upload-item .upload-file-actions { grid-column: 2; justify-content: flex-start; }
+}

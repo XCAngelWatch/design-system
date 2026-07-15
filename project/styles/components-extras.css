@@ -133,11 +133,18 @@
   padding: 1px 6px;
   border-radius: 3px;
 }
+.errorpage-card .ep-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
 /* ===== i18n section ===== */
 .i18n-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 .i18n-card {
@@ -1203,35 +1210,63 @@
   background: var(--aw-bg);
 }
 
-html[lang="en-US"] .btn {
+html[lang]:not([lang^="zh"]) .btn {
   min-height: 32px;
   height: auto;
   white-space: normal;
   line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
-html[lang="en-US"] .form-row > .lbl { min-width: 132px; white-space: normal; }
-html[lang="en-US"] .tabs { overflow-x: auto; }
-html[lang="en-US"] .tabs a { flex: 0 0 auto; white-space: nowrap; }
-html[lang="en-US"] .tag,
-html[lang="en-US"] .status-dot { white-space: nowrap; }
-html[lang="en-US"] .card-title,
-html[lang="en-US"] .surface h3,
-html[lang="en-US"] .surface h4 { overflow-wrap: anywhere; }
-html[lang="en-US"] .actions,
-html[lang="en-US"] .dt-actions,
-html[lang="en-US"] .lp-actions,
-html[lang="en-US"] .pc-actions,
-html[lang="en-US"] .ph-actions { flex-wrap: wrap; }
-html[lang="en-US"] table th {
+html[lang]:not([lang^="zh"]) .form-row { grid-template-columns: minmax(132px, auto) minmax(0, 1fr); }
+html[lang]:not([lang^="zh"]) .form-row > .lbl { min-width: 132px; white-space: normal; overflow-wrap: break-word; word-break: normal; }
+html[lang]:not([lang^="zh"]) .tabs { overflow-x: auto; }
+html[lang]:not([lang^="zh"]) .tabs a { flex: 0 0 auto; white-space: nowrap; }
+html[lang]:not([lang^="zh"]) .tag,
+html[lang]:not([lang^="zh"]) .status-dot { white-space: nowrap; }
+html[lang]:not([lang^="zh"]) .card-title,
+html[lang]:not([lang^="zh"]) .surface h3,
+html[lang]:not([lang^="zh"]) .surface h4 { overflow-wrap: break-word; word-break: normal; }
+html[lang]:not([lang^="zh"]) .actions,
+html[lang]:not([lang^="zh"]) .dt-actions,
+html[lang]:not([lang^="zh"]) .lp-actions,
+html[lang]:not([lang^="zh"]) .pc-actions,
+html[lang]:not([lang^="zh"]) .ph-actions { flex-wrap: wrap; }
+html[lang]:not([lang^="zh"]) table th {
   white-space: normal;
   line-height: 1.35;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
-html[lang="en-US"] table .mono { white-space: nowrap; }
-html[lang="en-US"] .i18n-table-scroll {
+html[lang]:not([lang^="zh"]) table .mono { white-space: nowrap; }
+html[lang]:not([lang^="zh"]) table .colactions .btn { white-space: nowrap; }
+html[lang]:not([lang^="zh"]) .i18n-table-scroll {
   overflow-x: auto;
   max-width: 100%;
 }
-html[lang="en-US"] .i18n-table-scroll > table { min-width: 720px; }
+html[lang]:not([lang^="zh"]) .i18n-table-scroll > table { min-width: 720px; }
+
+.i18n-pair-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.i18n-pair-grid > * { min-width: 0; }
+
+@media (max-width: 640px) {
+  .i18n-pair-grid { grid-template-columns: minmax(0, 1fr); }
+  .i18n-grid,
+  .i18n-overflow,
+  .errorpage-grid { grid-template-columns: minmax(0, 1fr); }
+  html[lang]:not([lang^="zh"]) .form-row { grid-template-columns: minmax(0, 1fr); }
+  html[lang]:not([lang^="zh"]) .form-row > .lbl { min-width: 0; text-align: left; }
+  .errorpage-card .ep-actions { width: 100%; }
+}
+
+@media (min-width: 641px) and (max-width: 960px) {
+  .i18n-overflow,
+  .errorpage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 
 @media (max-width: 700px) {
   .app-main.comp-page .comp-toolbar {

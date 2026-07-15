@@ -25,6 +25,11 @@
     "attr.021.placeholder": "Optional, up to 100 words",
     "text.022": "Used for internal identification only; it will not be pushed to the device.",
     "text.023": "Save",
-    "text.024": "Cancel"
+    "text.024": "Cancel",
+    "text.025": "Allow device screenshots",
+    "text.026": "Locked by policy (read only)",
+    "text.027": "Saving settings",
+    "text.028": "Async switches must be controlled: ",
+    "text.029": "enter loading and block repeated clicks during submission. If the server rejects the update, roll back to the previous state and show the reason with a retry path."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

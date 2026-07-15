@@ -5,7 +5,7 @@
 <section class="section" id="login-page">
   <p class="section-eyebrow"><span data-i18n="login-page:text.001">页面蓝图 · LoginPage</span></p>
   <h2><span data-i18n="login-page:text.002">登录页 LoginPage</span></h2>
-  <p class="lede"><span data-i18n="login-page:text.003">登录页服务于 Android 终端管理后台，重点是安全进入系统、选择语言、记住账号和处理验证码。视觉上保持冷静、轻盈、科技感，不使用营销化大段文案。</span></p>
+  <p class="lede"><span data-i18n="login-page:text.003">默认登录使用账号与密码，不常驻验证码，也不改成邮箱登录。验证码只在后端风控命中时出现；邮箱保留为二次验证与找回密码渠道。</span></p>
   <div class="frame">
     <div class="frame-head"><span data-i18n="login-page:text.004">📐 LoginPage · 默认（单租户）</span></div>
     <div class="frame-body" style="padding:0">
@@ -37,9 +37,8 @@
     <div class="lr-form">
       <h3><span data-i18n="login-page:text.010">欢迎回来</span></h3>
       <div class="sub"><span data-i18n="login-page:text.011">登录到 TMS 控制台</span></div>
-      <div class="lr-field"><label><span data-i18n="login-page:text.012">账号</span></label><input class="input" placeholder="账号 / 邮箱 / 工号" data-i18n-placeholder="login-page:text.013" /></div>
+      <div class="lr-field"><label><span data-i18n="login-page:text.012">账号</span></label><input class="input" placeholder="登录账号 / 工号" data-i18n-placeholder="login-page:text.013" /></div>
       <div class="lr-field"><label><span data-i18n="login-page:text.014">密码</span></label><div style="position:relative"><input class="input" type="password" value="••••••••" /><button class="icon-btn" data-demo-toggle-password style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:28px;height:28px" aria-label="显示密码" data-i18n-aria-label="common:showPassword">👁</button></div></div>
-      <div class="lr-field"><label><span data-i18n="login-page:text.015">验证码</span></label><div class="row" style="gap:8px"><input class="input" placeholder="6 位字符" style="flex:1" data-i18n-placeholder="login-page:text.016" /><button class="captcha-button" data-demo-refresh-captcha style="width:100px;height:32px;background:var(--aw-primary-bg);border:1px solid var(--aw-border-2);border-radius:6px;font-family:var(--aw-font-mono);font-size:14px;color:var(--aw-primary);font-weight:600;letter-spacing:2px;cursor:pointer" aria-label="刷新验证码" data-i18n-aria-label="common:refreshCaptcha">7K2N9A</button></div></div>
       <div class="lr-row"><label class="check"><input type="checkbox" checked /><span class="box"></span><span data-i18n="login-page:text.017">记住账号</span></label><button class="inline-action"><span data-i18n="login-page:text.018">忘记密码？</span></button></div>
       <button class="btn btn-primary btn-lg" style="width:100%"><span data-i18n="login-page:text.019">登录</span></button>
       <div style="margin-top:18px;font-size:12px;color:var(--aw-text-3);text-align:center"><span data-i18n="login-page:text.020">使用 SSO 登录 ·</span> <button class="inline-action"><span data-i18n="login-page:text.021">单点登录 →</span></button></div>
@@ -61,7 +60,6 @@
           <div class="ls-sub"><span data-i18n="login-page:text.026">登录到 TMS 控制台</span></div>
           <div class="ls-fld"><div class="ls-lab"><span data-i18n="login-page:text.027">账号</span></div><div class="ls-ipt"><span data-i18n="login-page:text.028">运维-上海</span></div></div>
           <div class="ls-fld"><div class="ls-lab"><span data-i18n="login-page:text.029">密码</span></div><div class="ls-ipt">••••••••</div></div>
-          <div class="ls-fld"><div class="ls-lab"><span data-i18n="login-page:text.030">验证码</span></div><div class="ls-ipt-row"><div class="ls-ipt small"><span data-i18n="login-page:text.031">6 位字符</span></div><div class="ls-cap-img">7K2N9</div></div></div>
           <div class="ls-btn"><span data-i18n="login-page:text.032">登录</span></div>
         </div>
       </div>
@@ -136,8 +134,8 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="login-page:text.070">滑块拼图验证码 · blockPuzzle 4 态</span></h3>
-    <p class="lede" style="margin-bottom:16px"><span data-i18n="login-page:text.071">现网生产沿用的滑块拼图（260×130）。失败 3 次后强制刷新背景图，避免被脚本暴力。</span></p>
+    <h3><span data-i18n="login-page:text.070">风控触发 · 滑块拼图验证码 4 态</span></h3>
+    <p class="lede" style="margin-bottom:16px"><span data-i18n="login-page:text.071">默认登录不展示。仅当认证接口返回额外风控验证步骤时进入该流程；失败 3 次后刷新挑战，具体字段名以后端认证契约为准。</span></p>
     <div class="puzzle-grid">
 
       <div class="pz-card">
@@ -192,7 +190,7 @@
     <h3><span data-i18n="login-page:text.082">规范要点</span></h3>
     <div class="alert info"><div class="ico">i</div><div class="content"><strong><span data-i18n="login-page:text.083">语言切换：右上 inline。</span></strong><span data-i18n="login-page:text.084">取代现网 footer popover 形态，符合 antd v6 习惯，且多语种切换不应被埋在最底端。</span></div></div>
     <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><strong><span data-i18n="login-page:text.085">背景图、ICP、产品名、Logo 均为白标 token</span></strong><span data-i18n="login-page:text.086">，参见</span> <a href="#/whitelabel" style="color:var(--aw-primary)"><span data-i18n="login-page:text.087">白标 / 租户主题</span></a> <span data-i18n="login-page:text.088">章节。</span></div></div>
-    <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="login-page:text.089">MFA / 邮箱验证 / 强制改密</span></strong><span data-i18n="login-page:text.090">由后端在登录返回中标注</span> <code>nextStep</code><span data-i18n="login-page:text.091">，前端按 step 路由跳转，禁止前端单方面决定流程顺序。</span></div></div>
+    <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="login-page:text.089">MFA / 邮箱验证 / 强制改密 / 风控验证</span></strong><span data-i18n="login-page:text.090">均由后端认证响应决定；</span><span data-i18n="login-page:text.091">前端只按返回步骤渲染，不把邮箱当作默认登录账号，也不自行常驻验证码。认证字段名必须先进入业务能力契约。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="login-page:text.092">反例：</span></strong><span data-i18n="login-page:text.093">不要把"忘记密码"做成新弹窗叠在登录卡上 — 多步流程在原表单区切换更稳，避免移动端遮挡。</span></div></div>
   </div>
   <div class="subsection" data-component-contract>

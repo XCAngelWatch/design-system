@@ -80,7 +80,7 @@
   "case4.title": "Case · 04 · Multi-tenant Switching",
   "case4.desc": "One administrator manages multiple tenants with different white-label brands: login, switch tenant, update visual branding, and isolate data.",
   "case4.step1.name": "Multi-tenant LoginPage",
-  "case4.step1.desc": "Step one selects a tenant and remembers the previous choice. Step two enters account / password and passes the blockPuzzle slider captcha.",
+  "case4.step1.desc": "Step one selects a tenant and remembers the previous choice. Step two enters account and password; slider verification is appended only when the authentication API returns an additional risk step.",
   "case4.step2.name": "Switch from Shell header",
   "case4.step2.desc": "The tenant badge opens a Dropdown listing authorized tenants. Switching triggers a full page reload, not an in-SPA switch, so logo, primary color, and organization name all update.",
   "case4.step3.name": "Whitelabel token takeover",

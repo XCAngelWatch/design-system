@@ -5,15 +5,14 @@
 <section class="section" id="form-page">
   <p class="section-eyebrow"><span data-i18n="form-page:text.001">页面蓝图 · FormPage</span></p>
   <h2><span data-i18n="form-page:text.002">表单页 FormPage</span></h2>
-  <p class="lede"><span data-i18n="form-page:text.003">头部（返回 + 标题）→ 主体（分组表单，每组带标题分割线 + 双列字段网格） → 底部固定操作栏（取消 + 保存）。用于新建 / 编辑设备、固件、机构等。</span></p>
+  <p class="lede"><span data-i18n="form-page:text.003">头部先提供独立返回路径，再展示标题与状态；主体使用分组表单，底部固定取消与保存操作。用于新建 / 编辑设备、固件、机构等。</span></p>
   <div class="frame">
     <div class="frame-head">📐 FormPage</div>
     <div class="frame-body" style="padding:24px;background:var(--aw-bg-page)">
 <div class="formpage-mock">
   <div class="head">
-    <button class="btn btn-text"><span data-i18n="form-page:text.004">← 返回</span></button>
-    <h3 style="margin:0;font-size:18px"><span data-i18n="form-page:text.005">新建设备</span></h3>
-    <span class="tag"><span data-i18n="form-page:text.006">草稿</span></span>
+    <div class="head-back"><button class="btn btn-text"><span data-i18n="form-page:text.004">← 返回</span></button></div>
+    <div class="head-title"><h3 style="margin:0;font-size:18px"><span data-i18n="form-page:text.005">新建设备</span></h3><span class="tag"><span data-i18n="form-page:text.006">草稿</span></span></div>
   </div>
   <div class="body">
     <div class="fp-section">
@@ -35,9 +34,9 @@
     <div class="fp-section" style="margin-bottom:0">
       <div class="ttl"><span data-i18n="form-page:text.020">权限与策略</span></div>
       <div class="fp-grid">
-        <div><label style="font-size:12px;color:var(--aw-text-2);display:block;margin-bottom:6px"><span data-i18n="form-page:text.021">允许远程控制</span></label><div class="row"><span class="switch is-on"></span><span style="font-size:13px;color:var(--aw-text-2)"><span data-i18n="form-page:text.022">开启</span></span></div></div>
+        <div><label style="font-size:12px;color:var(--aw-text-2);display:block;margin-bottom:6px"><span data-i18n="form-page:text.021">允许远程控制</span></label><div class="row"><button type="button" class="switch is-on" role="switch" aria-checked="true" aria-label="允许远程控制" data-i18n-aria-label="form-page:text.021"></button><span style="font-size:13px;color:var(--aw-text-2)"><span data-i18n="form-page:text.022">开启</span></span></div></div>
         <div><label style="font-size:12px;color:var(--aw-text-2);display:block;margin-bottom:6px"><span data-i18n="form-page:text.023">心跳间隔</span></label><div class="select" style="width:100%"><span><span data-i18n="form-page:text.024">30 秒</span></span></div></div>
-        <div style="grid-column:span 2"><label style="font-size:12px;color:var(--aw-text-2);display:block;margin-bottom:6px"><span data-i18n="form-page:text.025">备注</span></label><input class="input" placeholder="选填，最多 200 字符" data-i18n-placeholder="form-page:text.026" /></div>
+        <div class="fp-wide"><label style="font-size:12px;color:var(--aw-text-2);display:block;margin-bottom:6px"><span data-i18n="form-page:text.025">备注</span></label><input class="input" placeholder="选填，最多 200 字符" data-i18n-placeholder="form-page:text.026" /></div>
       </div>
     </div>
   </div>
@@ -45,6 +44,7 @@
 </div>
     </div>
   </div>
+  <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="form-page:text.030">粘性底栏：</span></strong><span data-i18n="form-page:text.031">由承载表单正文的滚动容器提供定位上下文，固定在该容器底部而不是浏览器窗口；校验失败后先滚动并聚焦第一个错误字段。</span></div></div>
   <div class="subsection" data-component-contract>
     <h3><span data-i18n="common:component.contract">组件契约</span></h3>
     <div class="blueprint-notes"><span><a href="#/page-header">PageHeader</a></span><span><a href="#/inputs">Input</a></span><span><a href="#/advanced-form">Validation</a></span><span><a href="#/feedback">Feedback</a></span></div>

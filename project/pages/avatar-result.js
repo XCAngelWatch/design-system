@@ -28,7 +28,7 @@
   <div class="subsection">
     <h3><span data-i18n="avatar-result:text.012">Result · 结果页（操作终态）</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="avatar-result:text.013">异步 / 批量操作的整页终态展示。区别于 Message / Notification / Modal，Result 占据整个内容区，意味着"上一步操作已结束，决定下一步"。</span></p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+    <div class="result-state-grid">
 <div class="result-mock success">
   <div class="ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
   <h4><span data-i18n="avatar-result:text.014">批量升级已下发</span></h4>
@@ -67,7 +67,7 @@
             <div class="rp-stats">
               <span class="rp-stat ok"><b>1,250</b><span data-i18n="avatar-result:text.034"> 成功</span></span>
               <span class="rp-stat err"><b>34</b><span data-i18n="avatar-result:text.035"> 失败</span></span>
-              <span class="rp-stat dim"><span data-i18n="avatar-result:text.036">共 1,284 台</span></span>
+              <span class="rp-stat dim"><b>1,284</b><span data-i18n="avatar-result:text.036"> 总数</span></span>
             </div>
           </div>
         </div>

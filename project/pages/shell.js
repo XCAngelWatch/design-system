@@ -137,7 +137,6 @@
       <div class="crumb"><span data-i18n="shell:text.048">数据中心 /</span> <b><span data-i18n="shell:text.049">设备管理</span></b></div>
       <div class="input-mock"><span data-i18n="shell:text.050">⌕ 搜索设备 SN…</span></div>
       <span style="font-size:11px;color:var(--aw-text-3)"><span data-i18n="shell:text.051">中文 ▾</span></span>
-      <div style="width:24px;height:24px;border-radius:50%;background:var(--aw-primary-bg);display:grid;place-items:center;color:var(--aw-primary);font-size:11px;font-weight:600"><span data-i18n="shell:text.052">运</span></div>
     </div>
     <div class="content">
       <div style="font-size:11px;color:var(--aw-text-3)"><span data-i18n="shell:text.053">数据中心 / 设备管理</span></div>
@@ -176,10 +175,25 @@
     <div class="surface" style="font-size:12.5px;line-height:1.7">
 <b style="color:var(--aw-text-1)"><span data-i18n="shell:text.092">布局 &amp; 交互</span></b><br/>
 <span data-i18n="shell:text.093">· 分组标题：全大写英文 + 中文，</span><code>letter-spacing 0.6px</code><span data-i18n="shell:text.099">，</span><code>color #9AA3AE</code><br/>
-<span data-i18n="shell:text.094">· 账号区固定底部，</span><code>#FAFAFA</code> <span data-i18n="shell:text.095">底色 + 头像 + 姓名 + 角色 chip + ⋯ 菜单</span><br/>
+<span data-i18n="shell:text.094">· 账号入口固定在侧栏左下角，Topbar 不再重复放头像；</span><code>#FAFAFA</code> <span data-i18n="shell:text.095">底色 + 完整裁切头像 + 姓名 + 角色 chip + ⋯ 菜单</span><br/>
 <span data-i18n="shell:text.096">· 折叠态 64px：仅 icon 居中；hover 浮出右侧 tooltip 卡片</span><br/>
 <span data-i18n="shell:text.097">· 折叠按钮在 Topbar，快捷键</span> <code>⌘ + B</code><br/>
 <span data-i18n="shell:text.098">· 自定义滚动条：默认 0px；hover sidebar 时显示 4px</span> <code>#DEE1E6</code>
+    </div>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="shell:text.100">响应式账户入口</span></h3>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="shell:text.101">桌面侧栏与移动导航共用同一账户能力；布局可以变化，但账户入口、头像回退和全局设置不能丢失或重复。</span></p>
+    <div class="surface" style="padding:0;overflow:auto">
+      <table class="tech-table">
+        <thead><tr><th><span data-i18n="shell:text.102">场景</span></th><th><span data-i18n="shell:text.103">入口位置</span></th><th><span data-i18n="shell:text.104">规则</span></th></tr></thead>
+        <tbody>
+          <tr><td><span data-i18n="shell:text.105">桌面展开态</span></td><td><span data-i18n="shell:text.106">侧栏左下角</span></td><td><span data-i18n="shell:text.107">显示完整裁切头像或文字回退、姓名、角色与更多菜单；Topbar 不重复头像。</span></td></tr>
+          <tr><td><span data-i18n="shell:text.108">桌面折叠态</span></td><td><span data-i18n="shell:text.109">侧栏底部头像</span></td><td><span data-i18n="shell:text.110">保留键盘与点击入口，打开同一账户菜单；姓名和角色仅视觉隐藏。</span></td></tr>
+          <tr><td><span data-i18n="shell:text.111">移动端</span></td><td><span data-i18n="shell:text.112">导航抽屉底部</span></td><td><span data-i18n="shell:text.113">Topbar 只提供菜单触发器；抽屉底部集中放置账户、组织切换、语言与主题操作，并避开安全区。</span></td></tr>
+          <tr><td><span data-i18n="shell:text.114">头像资源</span></td><td><span data-i18n="shell:text.115">所有断点一致</span></td><td><span data-i18n="shell:text.116">图片使用 cover 完整填充圆形容器；加载失败、缺失或内容不可辨识时回退为姓名首字，不使用品牌图标代替用户。</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="subsection" data-component-contract>

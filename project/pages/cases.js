@@ -85,7 +85,7 @@
     <h3 data-i18n="cases:case4.title">案例 · 04 · 多租户切换</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case4.desc">同一管理员管多个租户（不同品牌白标）。登录 → 切租户 → 视觉品牌随租户变 → 数据隔离。</p>
     <div class="case-flow">
-      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case4.step1.name">LoginPage 多租户</div><div class="cf-desc" data-i18n="cases:case4.step1.desc">登录页第一步选租户并记住上次选择，第二步输入账号 / 密码，再通过 blockPuzzle 滑块验证码。</div></div>
+      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case4.step1.name">LoginPage 多租户</div><div class="cf-desc" data-i18n="cases:case4.step1.desc">登录页第一步选租户并记住上次选择，第二步输入账号 / 密码；仅在认证接口返回额外风控步骤时追加滑块验证。</div></div>
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case4.step2.name">Shell 顶部切换</div><div class="cf-desc" data-i18n="cases:case4.step2.desc">右上角租户徽章打开 Dropdown，列出有权限的租户；切换后整页 reload，而不是 SPA 内部切换，logo、主色、机构名全部替换。</div></div>
       <div class="cf-arrow">→</div>

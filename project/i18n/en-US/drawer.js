@@ -4,9 +4,9 @@
   root.__AW_I18N__.register('en-US', 'drawer', {
     "text.001": "Common Components · Drawer",
     "text.002": "Drawer",
-    "text.003": "Slides in from the right for quick editing and detail previews. ",
-    "text.004": "Better than Modal for high-frequency TMS work",
-    "text.005": " — it keeps page context visible and preserves access to the list. Default width is 480px.",
+    "text.003": "Right-side Drawers are limited to quick details and lightweight edits that need the list context to remain visible. ",
+    "text.004": "A Drawer is not the default replacement for a Modal or full page",
+    "text.005": "; complex creation, multi-step flows, and high-risk confirmations continue to use a page or Modal. Default width is 480px.",
     "text.006": "Editing device · Device-Shanghai-001",
     "text.007": "Device name",
     "attr.008.value": "Device-Shanghai-001",
@@ -49,7 +49,7 @@
     "text.045": "Delete confirmation, batch push, status switching",
     "text.046": "Edit device, view log details, set panel",
     "text.047": "Judgment formula:",
-    "text.048": "\"The user needs to watch and act at the same time\" → Drawer; \"The user must decide now\" → Modal. If you are still hesitating, default to Drawer (preserving context is a core requirement for high-frequency TMS work).",
+    "text.048": "\"The user needs the list while viewing or making a lightweight edit\" → Drawer; \"The user must decide now\" → Modal; \"The task spans steps or needs its own URL\" → full page. Do not add a Drawer unless preserving context is demonstrably useful.",
     "text.049": "Drawer width variant",
     "text.050": "Settings/Notification Center in the upper right corner",
     "text.051": "M · 480px (Default)",
@@ -80,6 +80,17 @@
     "text.076": "Do not use Drawer to do \"delete confirmation\":",
     "text.077": "The action is too lightweight and requires blocking decisions. Change Modal or Popconfirm.",
     "text.078": "Do not embed Drawer within Modal:",
-    "text.079": "Cascading interactions can cause users to lose track of their return path."
+    "text.079": "Cascading interactions can cause users to lose track of their return path.",
+    "text.080": "Interaction Lifecycle · Focus, Close, and Scroll",
+    "text.081": "Open",
+    "text.082": "Record the trigger, move focus to the title or first operable control, trap focus, and make background content inert.",
+    "text.083": "Close",
+    "text.084": "Read-only Drawers may close with Esc or the mask. Editing Drawers must confirm unsaved changes. Restore focus to the trigger after closing.",
+    "text.085": "Scroll",
+    "text.086": "Lock page scrolling and scroll only the body. Keep the header and action bar visible; never create page and Drawer double scrolling.",
+    "text.087": "Mobile",
+    "text.088": "Use a full-width Drawer at viewports up to 768px, with an explicit close button and safe-area padding.",
+    "text.089": "Stage",
+    "text.090": "Required Contract"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

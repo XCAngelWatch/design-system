@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'form-page', {
     "text.001": "Page Blueprints · FormPage",
     "text.002": "Form Page",
-    "text.003": "Header (back + title) -> body (grouped form, each group with a title divider + two-column field grid) -> fixed footer action bar (cancel + save). Use it for creating or editing devices, firmware packages, organizations, and similar entities.",
+    "text.003": "The header provides a separate back path before the title and status. The body uses grouped forms, and the fixed footer contains cancel and save actions. Use it for creating or editing devices, firmware packages, organizations, and similar entities.",
     "text.004": "← Back",
     "text.005": "Add Device",
     "text.006": "Draft",
@@ -30,6 +30,8 @@
     "text.026": "Optional, up to 200 characters",
     "text.027": "Cancel",
     "text.028": "Save Draft",
-    "text.029": "Save and Activate"
+    "text.029": "Save and Activate",
+    "text.030": "Sticky action footer:",
+    "text.031": "The form-content scroll container provides the positioning context. Pin the footer to that container, not the browser viewport. After validation fails, scroll to and focus the first invalid field."
   });
 })(typeof window !== 'undefined' ? window : globalThis);
