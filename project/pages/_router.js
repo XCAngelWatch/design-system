@@ -510,16 +510,19 @@
       tree.setAttribute('role', 'tree');
       tree.setAttribute('aria-label', tree.getAttribute('aria-label') || tCommon('demo.tree', null, '层级树'));
       var nodes = Array.prototype.filter.call(tree.children, function (item) { return item.classList.contains('tnode'); });
-      var activeNode = nodes.find(function (node) { return node.classList.contains('selected'); }) || nodes[0];
       nodes.forEach(function (node) {
         var depthClass = Array.prototype.find.call(node.classList, function (name) { return /^depth-\d+$/.test(name); });
         var level = depthClass ? Number(depthClass.split('-')[1]) + 1 : 1;
         node.setAttribute('role', 'treeitem');
         node.setAttribute('aria-level', String(level));
-        node.setAttribute('tabindex', node === activeNode ? '0' : '-1');
+        node.setAttribute('tabindex', '-1');
         node.querySelectorAll('svg').forEach(function (icon) { icon.setAttribute('aria-hidden', 'true'); });
         syncTreeNodeState(node);
       });
+      syncTreeVisibility(tree);
+      var activeNode = nodes.find(function (node) { return node.classList.contains('selected') && !node.hidden; }) ||
+        nodes.find(function (node) { return !node.hidden; });
+      if (activeNode) activeNode.setAttribute('tabindex', '0');
     });
     root.querySelectorAll('button[title]').forEach(function (button) {
       if (!button.getAttribute('aria-label')) {
@@ -615,31 +618,112 @@
     }
   }
 
-  function getTreeNodes(node) {
-    var tree = node.closest('[role="tree"]');
+  function getTreeLevel(node) {
+    return Number(node.getAttribute('aria-level')) || 1;
+  }
+
+  function getAllTreeNodes(tree) {
     return tree ? Array.prototype.filter.call(tree.children, function (item) { return item.classList.contains('tnode'); }) : [];
   }
 
+  function getTreeParent(node) {
+    var nodes = getAllTreeNodes(node.closest('[role="tree"]'));
+    var index = nodes.indexOf(node);
+    var level = getTreeLevel(node);
+    for (var i = index - 1; i >= 0; i--) {
+      if (getTreeLevel(nodes[i]) < level) return nodes[i];
+    }
+    return null;
+  }
+
+  function getTreeDescendants(node) {
+    var nodes = getAllTreeNodes(node.closest('[role="tree"]'));
+    var index = nodes.indexOf(node);
+    var level = getTreeLevel(node);
+    var descendants = [];
+    for (var i = index + 1; i < nodes.length; i++) {
+      if (getTreeLevel(nodes[i]) <= level) break;
+      descendants.push(nodes[i]);
+    }
+    return descendants;
+  }
+
+  function getImmediateTreeChildren(node) {
+    var childLevel = getTreeLevel(node) + 1;
+    return getTreeDescendants(node).filter(function (item) { return getTreeLevel(item) === childLevel; });
+  }
+
+  function syncTreeVisibility(tree) {
+    var collapsedLevels = [];
+    getAllTreeNodes(tree).forEach(function (node) {
+      var level = getTreeLevel(node);
+      while (collapsedLevels.length && collapsedLevels[collapsedLevels.length - 1] >= level) {
+        collapsedLevels.pop();
+      }
+      node.hidden = collapsedLevels.length > 0;
+      if (node.hidden) node.setAttribute('aria-hidden', 'true');
+      else node.removeAttribute('aria-hidden');
+      if (!node.classList.contains('leaf') && !node.classList.contains('expanded')) {
+        collapsedLevels.push(level);
+      }
+    });
+  }
+
+  function getTreeNodes(node) {
+    var tree = node.closest('[role="tree"]');
+    return getAllTreeNodes(tree).filter(function (item) { return !item.hidden; });
+  }
+
   function focusTreeNode(node) {
-    getTreeNodes(node).forEach(function (item) { item.setAttribute('tabindex', item === node ? '0' : '-1'); });
+    getAllTreeNodes(node.closest('[role="tree"]')).forEach(function (item) {
+      item.setAttribute('tabindex', item === node ? '0' : '-1');
+    });
     node.focus();
   }
 
   function selectTreeNode(node) {
-    getTreeNodes(node).forEach(function (item) {
+    getAllTreeNodes(node.closest('[role="tree"]')).forEach(function (item) {
       item.classList.toggle('selected', item === node);
       syncTreeNodeState(item);
     });
     focusTreeNode(node);
   }
 
+  function setTreeCheckState(node, checked, partial) {
+    var check = node.querySelector('.check');
+    if (!check) return false;
+    check.classList.toggle('checked', checked && !partial);
+    check.classList.toggle('partial', partial);
+    syncTreeNodeState(node);
+    return true;
+  }
+
+  function updateTreeAncestors(node) {
+    var parent = getTreeParent(node);
+    while (parent) {
+      var children = getImmediateTreeChildren(parent).filter(function (item) { return item.querySelector('.check'); });
+      if (children.length && parent.querySelector('.check')) {
+        var allChecked = children.every(function (item) { return item.querySelector('.check').classList.contains('checked'); });
+        var someChecked = children.some(function (item) {
+          var check = item.querySelector('.check');
+          return check.classList.contains('checked') || check.classList.contains('partial');
+        });
+        setTreeCheckState(parent, allChecked, !allChecked && someChecked);
+      }
+      parent = getTreeParent(parent);
+    }
+  }
+
   function toggleTreeCheck(node) {
     var check = node.querySelector('.check');
     if (!check) return false;
-    var checked = check.classList.contains('checked');
-    check.classList.remove('partial');
-    check.classList.toggle('checked', !checked);
-    syncTreeNodeState(node);
+    var nextChecked = check.classList.contains('partial') || !check.classList.contains('checked');
+    setTreeCheckState(node, nextChecked, false);
+    var tree = node.closest('[role="tree"]');
+    if (!tree.hasAttribute('data-check-strictly')) {
+      getTreeDescendants(node).forEach(function (item) { setTreeCheckState(item, nextChecked, false); });
+      updateTreeAncestors(node);
+    }
     return true;
   }
 
@@ -895,6 +979,7 @@
         if (target.closest('.caret') && !treeNode.classList.contains('leaf')) {
           treeNode.classList.toggle('expanded');
           syncTreeNodeState(treeNode);
+          syncTreeVisibility(treeNode.closest('[role="tree"]'));
           focusTreeNode(treeNode);
           return;
         }
@@ -954,13 +1039,31 @@
           event.preventDefault();
           treeNode.classList.remove('expanded');
           syncTreeNodeState(treeNode);
+          syncTreeVisibility(treeNode.closest('[role="tree"]'));
           return;
+        }
+        if (event.key === 'ArrowLeft') {
+          var parentNode = getTreeParent(treeNode);
+          if (parentNode) {
+            event.preventDefault();
+            focusTreeNode(parentNode);
+            return;
+          }
         }
         if (event.key === 'ArrowRight' && !treeNode.classList.contains('leaf') && !treeNode.classList.contains('expanded')) {
           event.preventDefault();
           treeNode.classList.add('expanded');
           syncTreeNodeState(treeNode);
+          syncTreeVisibility(treeNode.closest('[role="tree"]'));
           return;
+        }
+        if (event.key === 'ArrowRight' && treeNode.classList.contains('expanded')) {
+          var firstChild = getImmediateTreeChildren(treeNode).find(function (item) { return !item.hidden; });
+          if (firstChild) {
+            event.preventDefault();
+            focusTreeNode(firstChild);
+            return;
+          }
         }
         if (event.key === 'Enter') {
           event.preventDefault();

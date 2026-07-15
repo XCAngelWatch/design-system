@@ -237,6 +237,27 @@ if (!/\.btn-link:disabled[\s\S]*?background:\s*transparent/.test(componentsCss))
   errors.push('components.css: disabled link buttons must retain the link appearance');
 }
 
+const uploadProCss = fs.readFileSync(path.join(root, 'project/styles/upload-pro.css'), 'utf8');
+if (!/\.upload-item \.upload-file-actions,\s*\.upload-item \.actions\s*\{[^}]*grid-column:\s*2/.test(uploadProCss)) {
+  errors.push('upload: mobile layout must keep both completed and in-progress actions in the metadata column');
+}
+
+const treePage = readPage('tree-comp');
+const treeProCss = fs.readFileSync(path.join(root, 'project/styles/tree-pro.css'), 'utf8');
+for (const treeRuntimeContract of [
+  'function syncTreeVisibility',
+  'function updateTreeAncestors',
+  "tree.hasAttribute('data-check-strictly')"
+]) {
+  if (!router.includes(treeRuntimeContract)) errors.push('tree: missing runtime contract ' + treeRuntimeContract);
+}
+if (!treePage.includes('class="body" data-check-strictly')) {
+  errors.push('tree: checkStrictly example must declare independent check behavior');
+}
+if (!/\.tnode\[hidden\]\s*\{\s*display:\s*none/.test(treeProCss)) {
+  errors.push('tree: collapsed descendants must be removed from visual layout');
+}
+
 const routeBlock = router.match(/var ROUTES = \[([\s\S]*?)\];/);
 const routeIds = new Set(routeBlock ? Array.from(routeBlock[1].matchAll(/\['([^']+)',/g), (match) => match[1]) : []);
 for (const file of pageFiles) {

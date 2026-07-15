@@ -278,5 +278,6 @@
 
 @media (max-width: 560px) {
   .upload-item { grid-template-columns: 32px minmax(0, 1fr); }
-  .upload-item .upload-file-actions { grid-column: 2; justify-content: flex-start; }
+  .upload-item .upload-file-actions,
+  .upload-item .actions { grid-column: 2; justify-content: flex-start; }
 }

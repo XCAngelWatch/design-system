@@ -95,7 +95,7 @@
           <div class="tree-comp">
             <div class="body">
               <div class="tnode expanded"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><span class="lbl"><span data-i18n="tree-comp:text.052">集团</span></span></div>
-              <div class="tnode depth-1"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.053">华东大区</span></span></div>
+              <div class="tnode expanded depth-1"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.053">华东大区</span></span></div>
               <div class="tnode depth-2 selected"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.054">上海</span></span></div>
             </div>
           </div>
@@ -117,7 +117,7 @@
         <div class="tm-cap"><span data-i18n="tree-comp:text.059">复选独立 · checkStrictly</span></div>
         <div class="tm-body">
           <div class="tree-comp">
-            <div class="body">
+            <div class="body" data-check-strictly>
               <div class="tnode expanded"><div class="caret">›</div><div class="check"></div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><span class="lbl"><span data-i18n="tree-comp:text.060">集团</span></span></div>
               <div class="tnode expanded depth-1"><div class="caret">›</div><div class="check checked"></div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.061">华东大区</span></span></div>
               <div class="tnode depth-2"><div class="caret">›</div><div class="check"></div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.062">上海</span></span></div>
@@ -136,7 +136,7 @@
       <div class="tree-comp" style="max-width:420px">
         <div class="body">
           <div class="tnode expanded"><div class="grip-h">⋮⋮</div><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><span class="lbl"><span data-i18n="tree-comp:text.066">集团</span></span></div>
-          <div class="tnode dragging"><div class="grip-h">⋮⋮</div><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.067">华南大区</span><span class="info-mini"><span data-i18n="tree-comp:text.068">拖拽中</span></span></span></div>
+          <div class="tnode dragging depth-1"><div class="grip-h">⋮⋮</div><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.067">华南大区</span><span class="info-mini"><span data-i18n="tree-comp:text.068">拖拽中</span></span></span></div>
           <div class="tnode drop-into depth-1"><div class="grip-h">⋮⋮</div><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.069">华东大区</span></span><span class="info-mini"><span data-i18n="tree-comp:text.070">将作为子节点</span></span></div>
           <div class="drop-line"></div>
           <div class="tnode depth-1"><div class="grip-h">⋮⋮</div><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.071">华北大区</span></span></div>
