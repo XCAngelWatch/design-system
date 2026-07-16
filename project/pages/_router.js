@@ -145,6 +145,61 @@
     return new Intl.NumberFormat(locale || getCurrentLocale()).format(value);
   }
 
+  function padDatePart(value) {
+    return String(value).padStart(2, '0');
+  }
+
+  function formatDateValue(year, month, day) {
+    return year + '-' + padDatePart(month + 1) + '-' + padDatePart(day);
+  }
+
+  function renderCalendarMonth(root, monthDate) {
+    var calendar = root.querySelector('.calendar');
+    var grid = calendar && calendar.querySelector('.grid');
+    var label = calendar && calendar.querySelector('[data-demo-output="month-label"]');
+    if (!grid || !label) return;
+
+    var year = monthDate.getFullYear();
+    var month = monthDate.getMonth();
+    var firstWeekday = new Date(year, month, 1).getDay();
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var daysInPreviousMonth = new Date(year, month, 0).getDate();
+    var cellCount = Math.max(35, Math.ceil((firstWeekday + daysInMonth) / 7) * 7);
+    var selectedDate = getOutput(root, 'date', '');
+    var rangeStart = getOutput(root, 'range-start', '');
+    var rangeEnd = getOutput(root, 'range-end', '');
+
+    grid.querySelectorAll('.day').forEach(function (day) { day.remove(); });
+    for (var cell = 0; cell < cellCount; cell++) {
+      var dayNumber = cell - firstWeekday + 1;
+      if (dayNumber < 1 || dayNumber > daysInMonth) {
+        var muted = document.createElement('div');
+        muted.className = 'day muted';
+        muted.textContent = dayNumber < 1 ? daysInPreviousMonth + dayNumber : dayNumber - daysInMonth;
+        grid.appendChild(muted);
+        continue;
+      }
+
+      var dateValue = formatDateValue(year, month, dayNumber);
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'day';
+      button.setAttribute('data-demo-action', 'date-select');
+      button.setAttribute('data-date', dateValue);
+      button.setAttribute('aria-label', new Intl.DateTimeFormat(getCurrentLocale(), {
+        year: 'numeric', month: 'long', day: 'numeric'
+      }).format(new Date(year, month, dayNumber)));
+      if (dateValue >= rangeStart && dateValue <= rangeEnd) button.classList.add('in-range');
+      if (dateValue === selectedDate) button.classList.add('selected');
+      if (dateValue === '2026-04-27') button.classList.add('today');
+      button.textContent = String(dayNumber);
+      grid.appendChild(button);
+    }
+
+    label.textContent = formatMonth(monthDate, getCurrentLocale());
+    label.setAttribute('data-calendar-month', year + '-' + padDatePart(month + 1));
+  }
+
   // === sidebar grouping ===
   function groupRoutes() {
     var groups = {};
@@ -166,12 +221,14 @@
     groupRoutes().forEach(function (g) {
       var name = g[0], items = g[1];
       if (!items.length) return;
+      var groupLabelId = 'nav-group-' + GROUP_KEYS[name];
       html.push('');
-      html.push('<div class="nav-section">' + getGroupLabel(name) + '</div>');
-      html.push('<nav class="nav">');
+      html.push('<div class="nav-section" id="' + groupLabelId + '">' + getGroupLabel(name) + '</div>');
+      html.push('<nav class="nav" aria-labelledby="' + groupLabelId + '">');
       items.forEach(function (it) {
         var cls = it.id === activeId ? ' class="active"' : '';
-        html.push('  <a href="#/' + it.id + '"' + cls + '><span class="dot"></span>' + getRouteLabel(it.id) + '</a>');
+        var current = it.id === activeId ? ' aria-current="page"' : '';
+        html.push('  <a href="#/' + it.id + '"' + cls + current + '><span class="dot"></span>' + getRouteLabel(it.id) + '</a>');
       });
       html.push('</nav>');
     });
@@ -384,15 +441,12 @@
 
     if (action === 'month-prev' || action === 'month-next') {
       var label = root.querySelector('[data-demo-output="month-label"]');
-      var months = [new Date(2026, 2, 1), new Date(2026, 3, 1), new Date(2026, 4, 1)];
-      var idx = label && label.getAttribute('data-month-index') ? parseInt(label.getAttribute('data-month-index'), 10) : 1;
-      if (isNaN(idx)) idx = 1;
-      idx = action === 'month-prev' ? Math.max(0, idx - 1) : Math.min(months.length - 1, idx + 1);
-      var monthLabel = formatMonth(months[idx], getCurrentLocale());
-      if (label) {
-        label.textContent = monthLabel;
-        label.setAttribute('data-month-index', String(idx));
-      }
+      var monthValue = label && label.getAttribute('data-calendar-month') || '2026-04';
+      var monthParts = monthValue.split('-');
+      var monthDate = new Date(Number(monthParts[0]), Number(monthParts[1]) - 1, 1);
+      monthDate.setMonth(monthDate.getMonth() + (action === 'month-prev' ? -1 : 1));
+      renderCalendarMonth(root, monthDate);
+      var monthLabel = formatMonth(monthDate, getCurrentLocale());
       showDemoToast(root, tCommon('demo.monthChanged', { month: monthLabel }, '切换到 {month}'));
       return;
     }
@@ -419,6 +473,18 @@
     }
   }
 
+  function getDemoSelectPopup(select) {
+    var popupId = select.getAttribute('data-demo-options');
+    return popupId ? document.getElementById(popupId) : null;
+  }
+
+  function setDemoSelectExpanded(select, expanded) {
+    select.classList.toggle('is-open', expanded);
+    select.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    var popup = getDemoSelectPopup(select);
+    if (popup) popup.hidden = !expanded;
+  }
+
   function enhanceDemoSemantics(root) {
     root.querySelectorAll('.bp-toolbar').forEach(function (toolbar) {
       if (!toolbar.querySelector('input, .select[data-demo-options]') || toolbar.querySelector('[data-demo-reset-filters]')) return;
@@ -429,10 +495,11 @@
       toolbar.appendChild(reset);
     });
     root.querySelectorAll('.select[data-demo-options]').forEach(function (select) {
-      select.setAttribute('role', 'combobox');
-      select.setAttribute('tabindex', '0');
-      select.setAttribute('aria-haspopup', 'listbox');
-      select.setAttribute('aria-expanded', select.classList.contains('is-open') ? 'true' : 'false');
+      if (select.tagName !== 'BUTTON') {
+        select.setAttribute('role', 'button');
+        select.setAttribute('tabindex', '0');
+      }
+      setDemoSelectExpanded(select, select.getAttribute('aria-expanded') === 'true');
     });
     root.querySelectorAll('.tabs, .tabs-card, .tabs-route').forEach(function (tabs) {
       var tabItems = getTabItems(tabs);
@@ -880,6 +947,15 @@
     if (next) next.disabled = model.current >= model.total;
   }
 
+  function handleDemoFiles(root, dropzone, files) {
+    if (!dropzone || !files || !files.length) return;
+    var fileName = files[0].name;
+    var title = dropzone.querySelector('.title');
+    if (title) title.textContent = fileName;
+    dropzone.classList.remove('dragover');
+    showDemoToast(root, tCommon('demo.fileSelected', { file: fileName }, '已选择文件：{file}'));
+  }
+
   function wireDemoInteractions(root) {
     if (!root) return;
     enhanceDemoSemantics(root);
@@ -918,8 +994,7 @@
         var toolbar = resetFilters.closest('.bp-toolbar');
         toolbar.querySelectorAll('input').forEach(function (input) { input.value = ''; });
         toolbar.querySelectorAll('.select.is-open').forEach(function (select) {
-          select.classList.remove('is-open');
-          select.setAttribute('aria-expanded', 'false');
+          setDemoSelectExpanded(select, false);
         });
         showDemoToast(root, tCommon('demo.filtersReset', null, '筛选条件已重置'));
         return;
@@ -928,9 +1003,9 @@
       var select = target.closest && target.closest('.select[data-demo-options]');
       if (select && root.contains(select)) {
         event.preventDefault();
-        select.classList.toggle('is-open');
-        select.setAttribute('aria-expanded', select.classList.contains('is-open') ? 'true' : 'false');
-        showDemoToast(root, select.classList.contains('is-open') ?
+        var selectExpanded = select.getAttribute('aria-expanded') !== 'true';
+        setDemoSelectExpanded(select, selectExpanded);
+        showDemoToast(root, selectExpanded ?
           tCommon('demo.selectExpanded', null, '已展开选择器') :
           tCommon('demo.selectCollapsed', null, '已收起选择器'));
         return;
@@ -999,6 +1074,23 @@
         return;
       }
 
+      var treeRetry = target.closest && target.closest('[data-demo-tree-retry]');
+      if (treeRetry && root.contains(treeRetry)) {
+        event.preventDefault();
+        pulse(treeRetry);
+        showDemoToast(root, tCommon('demo.treeRetry', null, '正在重试加载节点'));
+        return;
+      }
+
+      var treeClear = target.closest && target.closest('[data-demo-tree-clear]');
+      if (treeClear && root.contains(treeClear)) {
+        event.preventDefault();
+        var treeSearch = treeClear.closest('.tree-comp').querySelector('.search input');
+        if (treeSearch) treeSearch.value = '';
+        showDemoToast(root, tCommon('demo.treeSearchCleared', null, '已清空树搜索条件'));
+        return;
+      }
+
       var treeNode = target.closest && target.closest('.tnode[role="treeitem"]');
       if (treeNode && root.contains(treeNode)) {
         if (target.closest('.caret') && isTreeNodeExpandable(treeNode)) {
@@ -1029,6 +1121,10 @@
 
     root.onchange = function (event) {
       var input = event.target;
+      if (input.matches && input.matches('[data-demo-file-input]')) {
+        handleDemoFiles(root, input.closest('[data-demo-upload]'), input.files);
+        return;
+      }
       if (!input.matches || !input.matches('input[type="checkbox"]')) return;
       syncTableSelection(input);
       var row = input.closest('tr');
@@ -1038,11 +1134,32 @@
       showDemoToast(root, input.checked ? tCommon('demo.checked', null, '已选中') : tCommon('demo.unchecked', null, '已取消选中'));
     };
 
+    root.ondragover = function (event) {
+      var dropzone = event.target.closest && event.target.closest('[data-demo-upload]');
+      if (!dropzone || !root.contains(dropzone)) return;
+      event.preventDefault();
+      dropzone.classList.add('dragover');
+    };
+
+    root.ondragleave = function (event) {
+      var dropzone = event.target.closest && event.target.closest('[data-demo-upload]');
+      if (!dropzone || !root.contains(dropzone)) return;
+      if (!event.relatedTarget || !dropzone.contains(event.relatedTarget)) {
+        dropzone.classList.remove('dragover');
+      }
+    };
+
+    root.ondrop = function (event) {
+      var dropzone = event.target.closest && event.target.closest('[data-demo-upload]');
+      if (!dropzone || !root.contains(dropzone)) return;
+      event.preventDefault();
+      handleDemoFiles(root, dropzone, event.dataTransfer && event.dataTransfer.files);
+    };
+
     root.onkeydown = function (event) {
       if (event.key === 'Escape') {
         root.querySelectorAll('.select.is-open').forEach(function (select) {
-          select.classList.remove('is-open');
-          select.setAttribute('aria-expanded', 'false');
+          setDemoSelectExpanded(select, false);
         });
         return;
       }
@@ -1188,10 +1305,6 @@
         resolve(true);
         return;
       }
-      if (loadedLocaleScripts[routeId] === false) {
-        resolve(false);
-        return;
-      }
       if (loadedLocaleScripts[routeId]) {
         loadedLocaleScripts[routeId].push({ resolve: resolve, reject: reject });
         return;
@@ -1206,7 +1319,7 @@
       };
       script.onerror = function () {
         var waiters = loadedLocaleScripts[routeId] || [];
-        loadedLocaleScripts[routeId] = false;
+        delete loadedLocaleScripts[routeId];
         waiters.forEach(function (w) {
           w.reject(new Error('failed to load i18n/en-US/' + routeId + '.js'));
         });
@@ -1225,6 +1338,7 @@
 
   function finishRouteRender(slot, options) {
     wireDemoInteractions(slot);
+    slot.setAttribute('aria-busy', 'false');
     if (options.preserveScroll) {
       requestAnimationFrame(function () {
         window.scrollTo(0, options.scrollY || 0);
@@ -1236,6 +1350,14 @@
       return;
     }
     window.scrollTo(0, 0);
+    if (options.focusHeading) {
+      requestAnimationFrame(function () {
+        var heading = slot.querySelector('.section h2, h2');
+        if (!heading) return;
+        heading.setAttribute('tabindex', '-1');
+        heading.focus({ preventScroll: true });
+      });
+    }
   }
 
   function loadRoute(routeId, options) {
@@ -1246,6 +1368,8 @@
     var slot = document.getElementById('app-slot');
     var sidebar = document.getElementById('app-side');
     var toolbar = document.getElementById('app-toolbar');
+
+    slot.setAttribute('aria-busy', 'true');
 
     // Update sidebar + toolbar synchronously (no flicker)
     if (sidebar) sidebar.innerHTML = buildSidebar(routeId);
@@ -1278,9 +1402,9 @@
     });
   }
 
-  function navigate() {
+  function navigate(event) {
     var route = getRouteFromHash();
-    loadRoute(route || DEFAULT_ROUTE);
+    loadRoute(route || DEFAULT_ROUTE, { focusHeading: Boolean(event && event.type === 'hashchange') });
   }
 
   function init() {

@@ -12,13 +12,13 @@
     <div class="i18n-grid">
       <div class="i18n-card">
         <div class="lang-tag"><span><span data-i18n="i18n:t008">zh-CN · 简体中文</span></span><span class="flag">CN</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,289 / 6,289</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,292 / 6,292</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t010">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t011">来源</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)"><span data-i18n="i18n:t012">基准语言</span></div></div>
       </div>
       <div class="i18n-card">
         <div class="lang-tag"><span>en-US · English</span><span class="flag">US</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,289 / 6,289</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,292 / 6,292</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t014">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t015">维护人</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">Localization Team</div></div>
       </div>
@@ -186,7 +186,7 @@
     <p class="lede" style="margin-bottom:12px"><span data-i18n="i18n:t106">英文复数使用 one/other 两态；中文无复数变化。i18next 内置复数后缀选择；如采用 ICU MessageFormat，需额外插件 / 配置。全部复数 key 用</span> <code>_one</code> / <code>_other</code> <span data-i18n="i18n:t107">后缀。</span></p>
     <div class="surface" style="padding:14px">
       <div style="font-family:var(--aw-font-mono);font-size:12px;line-height:1.7;color:var(--aw-text-2)">
-        <div style="color:var(--aw-text-3)">// locales/<lang>/device.json</div>
+        <div style="color:var(--aw-text-3)">// locales/&lt;lang&gt;/device.json</div>
         <div><b style="color:var(--aw-primary)">zh-CN</b>:  <span style="color:var(--aw-success)">"upgrade.confirm"</span>: <span style="color:#CF1322"><span data-i18n="i18n:t108">"升级 {{count}} 台设备？"</span></span>  <span style="color:var(--aw-text-4)"><span data-i18n="i18n:t109">// 中文不区分单复数</span></span></div>
         <div style="margin-top:6px"><b style="color:var(--aw-primary)">en-US</b>:</div>
         <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#CF1322">"Upgrade 1 device?"</span></div>

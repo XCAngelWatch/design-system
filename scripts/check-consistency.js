@@ -106,9 +106,62 @@ for (const file of pageFiles) {
 
 if (readPage('map-page').includes('DSN')) errors.push('map-page: device identifier must use SN, not DSN');
 
+const codingReference = fs.readFileSync(path.join(root, 'docs/ai-coding-design-reference.md'), 'utf8');
+if (/\bDSN\b/.test(codingReference)) errors.push('ai coding reference: device identifier must use SN, not DSN');
+
+const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+if (!/大数据表格[\s\S]*antd Table 原生 `virtual`/.test(readme)) {
+  errors.push('README: large tables must prefer native antd Table virtual support');
+}
+
+const rawCodeLiterals = [
+  ['api', "<button></button>"],
+  ['dark', '<head>'],
+  ['responsive', '<ResolutionGuard />'],
+  ['i18n', '<lang>']
+];
+for (const [pageId, literal] of rawCodeLiterals) {
+  if (readPage(pageId).includes(literal)) errors.push(pageId + ': code literal must be HTML-escaped: ' + literal);
+}
+
+const uploadPage = readPage('upload');
+if (!/<label class="upload-drop" data-demo-upload>[\s\S]*<input class="visually-hidden" type="file"[^>]*data-demo-file-input/.test(uploadPage) ||
+    !router.includes('function handleDemoFiles') || !router.includes('root.ondrop')) {
+  errors.push('upload: primary dropzone must support keyboard file selection and drag/drop');
+}
+
+const cascaderPage = readPage('cascader');
+if (!/<button[^>]*class="select"[^>]*data-demo-options="cascader-demo-popup"[^>]*aria-controls="cascader-demo-popup"/.test(cascaderPage) ||
+    !/<div class="cascader-pop" id="cascader-demo-popup">/.test(cascaderPage) ||
+    !router.includes('function setDemoSelectExpanded')) {
+  errors.push('cascader: demo trigger must control the popup with native button semantics');
+}
+
+const advancedFormPage = readPage('advanced-form');
+if ((advancedFormPage.match(/class="[^"]*is-error[^"]*"/g) || []).length !==
+    (advancedFormPage.match(/aria-invalid="true"/g) || []).length ||
+    (advancedFormPage.match(/aria-describedby="[^"]+-error"/g) || []).length < 2) {
+  errors.push('advanced-form: every error input must expose aria-invalid and an error description');
+}
+if (!/id="af-disabled"[^>]*disabled[\s\S]*?<div class="step"><button type="button" disabled>▲<\/button><button type="button" disabled>▼<\/button>/.test(advancedFormPage)) {
+  errors.push('advanced-form: disabled NumberInput must disable both stepper buttons');
+}
+
+const workflow = fs.readFileSync(path.join(root, '.github/workflows/pages.yml'), 'utf8');
+for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'check-consistency.js', 'check-evidence.js']) {
+  if (!workflow.includes(command)) errors.push('pages workflow: missing validation command ' + command);
+}
+
 const tablePage = readPage('table');
 if (tablePage.includes('共 12,486 项') && tablePage.includes('20 条/页') && !tablePage.includes('>625<')) {
   errors.push('table: pagination total/page-size must resolve to page 625');
+}
+
+const datepickerPage = readPage('datepicker');
+if (!datepickerPage.includes('data-calendar-month="2026-04"') ||
+    !router.includes('function renderCalendarMonth') ||
+    !router.includes("button.setAttribute('data-date', dateValue)")) {
+  errors.push('datepicker: month navigation must rebuild date buttons for the displayed month');
 }
 
 const rowActionsPage = readPage('row-actions');
@@ -329,6 +382,10 @@ if (!/\.tnode\[hidden\]\s*\{\s*display:\s*none/.test(treeProCss)) {
 }
 if (!componentsCss.includes('.tnode.tree-terminal:not(.loading):not(.err) .caret')) {
   errors.push('tree: inferred terminal nodes must not expose an expandable caret');
+}
+if (!/<button[^>]*class="retry-link"[^>]*data-demo-tree-retry/.test(treePage) ||
+    !router.includes("target.closest('[data-demo-tree-retry]')")) {
+  errors.push('tree: lazy-load retry must be a button with a dedicated handler');
 }
 
 const routeBlock = router.match(/var ROUTES = \[([\s\S]*?)\];/);

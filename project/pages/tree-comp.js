@@ -64,7 +64,7 @@
         <div class="body">
           <div class="tnode expanded"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><span class="lbl"><span data-i18n="tree-comp:text.038">AngelWatch 集团</span></span></div>
           <div class="tnode loading depth-1"><div class="caret"><div class="tree-spin"></div></div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.039">华东大区</span></span><span class="info-mini"><span data-i18n="tree-comp:text.040">加载中…</span></span></div>
-          <div class="tnode err depth-1"><div class="caret">!</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.041">华北大区</span></span><span class="info-mini err"><span data-i18n="tree-comp:text.042">加载失败</span></span><span class="retry-link"><span data-i18n="tree-comp:text.043">重试</span></span></div>
+          <div class="tnode err depth-1"><div class="caret">!</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.041">华北大区</span></span><span class="info-mini err"><span data-i18n="tree-comp:text.042">加载失败</span></span><button type="button" class="retry-link" data-demo-tree-retry><span data-i18n="tree-comp:text.043">重试</span></button></div>
           <div class="tnode depth-1" data-tree-expandable><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.044">华南大区</span></span><span class="count">2,816</span></div>
         </div>
       </div>
@@ -80,7 +80,7 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           <div class="te-h"><span data-i18n="tree-comp:text.047">未找到匹配的机构</span></div>
           <div class="te-s"><span data-i18n="tree-comp:text.048">尝试输入完整城市名 / 营业厅名</span></div>
-          <div class="te-act"><span class="retry-link"><span data-i18n="tree-comp:text.049">清空查询</span></span></div>
+          <div class="te-act"><button type="button" class="retry-link" data-demo-tree-clear><span data-i18n="tree-comp:text.049">清空查询</span></button></div>
         </div>
       </div>
     </div>

@@ -101,7 +101,7 @@
 }
 
 @media (max-width: 1023px) {
-  /* stop adapting -- render <ResolutionGuard /> instead */
+  /* stop adapting -- render &lt;ResolutionGuard /&gt; instead */
   body { display: none; }
   .resolution-guard { display: flex; }
 }</code></pre></div>

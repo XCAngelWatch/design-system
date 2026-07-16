@@ -30,7 +30,7 @@
     <div class="surface">
 <h3 style="margin:0 0 12px;font-size:14px"><span data-i18n="datepicker:text.014">日历面板</span></h3>
 <div class="calendar">
-  <div class="head"><button class="nav-btn" data-demo-action="month-prev">‹</button><span data-demo-output="month-label"><span data-i18n="datepicker:text.015">2026 年 4 月</span></span><button class="nav-btn" data-demo-action="month-next">›</button></div>
+  <div class="head"><button class="nav-btn" data-demo-action="month-prev">‹</button><span data-demo-output="month-label" data-calendar-month="2026-04"><span data-i18n="datepicker:text.015">2026 年 4 月</span></span><button class="nav-btn" data-demo-action="month-next">›</button></div>
   <div class="grid">
     <div class="dow"><span data-i18n="datepicker:text.016">日</span></div><div class="dow"><span data-i18n="datepicker:text.017">一</span></div><div class="dow"><span data-i18n="datepicker:text.018">二</span></div><div class="dow"><span data-i18n="datepicker:text.019">三</span></div><div class="dow"><span data-i18n="datepicker:text.020">四</span></div><div class="dow"><span data-i18n="datepicker:text.021">五</span></div><div class="dow"><span data-i18n="datepicker:text.022">六</span></div>
     <div class="day muted">29</div><div class="day muted">30</div><div class="day muted">31</div>

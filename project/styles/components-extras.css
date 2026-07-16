@@ -403,6 +403,7 @@
   overflow: hidden;
   width: fit-content;
 }
+.cascader-pop[hidden] { display: none; }
 .cascader-col {
   width: 160px;
   border-right: 1px solid var(--aw-border-3);
@@ -546,6 +547,9 @@
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+.num-input input[type="number"] { appearance: textfield; }
+.num-input input[type="number"]::-webkit-inner-spin-button,
+.num-input input[type="number"]::-webkit-outer-spin-button { appearance: none; margin: 0; }
 .num-input .suffix {
   display: grid; place-items: center;
   padding: 0 10px;
@@ -569,7 +573,8 @@
   display: grid; place-items: center;
 }
 .num-input .step button:first-child { border-bottom: 1px solid var(--aw-border-3); }
-.num-input .step button:hover { background: var(--aw-fill-2); color: var(--aw-primary); }
+.num-input .step button:not(:disabled):hover { background: var(--aw-fill-2); color: var(--aw-primary); }
+.num-input .step button:disabled { color: var(--aw-text-disabled); cursor: not-allowed; }
 .num-input.is-error { border-color: var(--aw-danger); }
 .num-input + .help-err {
   font-size: 11px;

@@ -10,21 +10,21 @@
     <h3><span data-i18n="advanced-form:text.003">NumberInput · 数字输入（带步进 + 单位）</span></h3>
     <div style="display:flex;gap:24px;flex-wrap:wrap">
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.004">心跳间隔</span></label>
-  <div class="num-input"><input value="30" /><div class="step"><button>▲</button><button>▼</button></div><span class="suffix" data-i18n="advanced-form:text.005">秒</span></div>
+  <label for="af-heartbeat" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.004">心跳间隔</span></label>
+  <div class="num-input"><input id="af-heartbeat" type="number" value="30" /><div class="step"><button type="button">▲</button><button type="button">▼</button></div><span class="suffix" data-i18n="advanced-form:text.005">秒</span></div>
 </div>
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.006">告警阈值（电量）</span></label>
-  <div class="num-input"><input value="15" /><div class="step"><button>▲</button><button>▼</button></div><span class="suffix">%</span></div>
+  <label for="af-battery-threshold" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.006">告警阈值（电量）</span></label>
+  <div class="num-input"><input id="af-battery-threshold" type="number" value="15" /><div class="step"><button type="button">▲</button><button type="button">▼</button></div><span class="suffix">%</span></div>
 </div>
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.007">超时时间（错误态）</span></label>
-  <div class="num-input is-error"><input value="9999" /><div class="step"><button>▲</button><button>▼</button></div><span class="suffix">ms</span></div>
-  <div class="help-err"><span data-i18n="advanced-form:text.008">超过最大允许值 5000 ms</span></div>
+  <label for="af-timeout" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.007">超时时间（错误态）</span></label>
+  <div class="num-input is-error"><input id="af-timeout" type="number" value="9999" aria-invalid="true" aria-describedby="af-timeout-error" /><div class="step"><button type="button">▲</button><button type="button">▼</button></div><span class="suffix">ms</span></div>
+  <div class="help-err" id="af-timeout-error"><span data-i18n="advanced-form:text.008">超过最大允许值 5000 ms</span></div>
 </div>
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.009">禁用</span></label>
-  <div class="num-input" style="background:var(--aw-fill-2);opacity:0.6"><input value="50" disabled /><div class="step"><button>▲</button><button>▼</button></div><span class="suffix" data-i18n="advanced-form:text.010">个</span></div>
+  <label for="af-disabled" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.009">禁用</span></label>
+  <div class="num-input" style="background:var(--aw-fill-2);opacity:0.6"><input id="af-disabled" type="number" value="50" disabled /><div class="step"><button type="button" disabled>▲</button><button type="button" disabled>▼</button></div><span class="suffix" data-i18n="advanced-form:text.010">个</span></div>
 </div>
     </div>
   </div>
@@ -34,24 +34,24 @@
     <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6"><span data-i18n="advanced-form:text.012">表单输入呈现 4 种校验态：default（无）、success（异步唯一性校验通过）、warning（值落在边界但允许）、error（必填或格式错），另有 info 用于辅助提示文案。</span></p>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:780px">
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.013">设备 SN</span> <span style="color:var(--aw-danger)">*</span></label>
-  <input class="input is-success" value="DEV-86420075" />
-  <div class="help-msg success"><span data-i18n="advanced-form:text.014">✓ SN 可用，未被注册</span></div>
+  <label for="af-device-sn" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.013">设备 SN</span> <span style="color:var(--aw-danger)">*</span></label>
+  <input id="af-device-sn" class="input is-success" value="DEV-86420075" aria-describedby="af-device-sn-help" />
+  <div class="help-msg success" id="af-device-sn-help"><span data-i18n="advanced-form:text.014">✓ SN 可用，未被注册</span></div>
 </div>
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.015">终端组名称</span> <span style="color:var(--aw-danger)">*</span></label>
-  <input class="input is-warning" value="OTA 灰度组" data-i18n-value="advanced-form:text.016" />
-  <div class="help-msg warning"><span data-i18n="advanced-form:text.017">⚠ 已有 3 个同名组，建议加区域后缀以便区分</span></div>
+  <label for="af-group-name" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.015">终端组名称</span> <span style="color:var(--aw-danger)">*</span></label>
+  <input id="af-group-name" class="input is-warning" value="OTA 灰度组" data-i18n-value="advanced-form:text.016" aria-describedby="af-group-name-help" />
+  <div class="help-msg warning" id="af-group-name-help"><span data-i18n="advanced-form:text.017">⚠ 已有 3 个同名组，建议加区域后缀以便区分</span></div>
 </div>
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.018">推送时间窗</span></label>
-  <input class="input is-error" value="02:00 - 01:30" />
-  <div class="help-msg error"><span data-i18n="advanced-form:text.019">✗ 结束时间早于开始时间</span></div>
+  <label for="af-push-window" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.018">推送时间窗</span></label>
+  <input id="af-push-window" class="input is-error" value="02:00 - 01:30" aria-invalid="true" aria-describedby="af-push-window-error" />
+  <div class="help-msg error" id="af-push-window-error"><span data-i18n="advanced-form:text.019">✗ 结束时间早于开始时间</span></div>
 </div>
 <div>
-  <label style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.020">备注</span> <span style="color:var(--aw-text-3);font-weight:400" data-i18n="advanced-form:text.021">（选填）</span></label>
-  <input class="input" placeholder="请输入备注…" data-i18n-placeholder="advanced-form:text.022" />
-  <div class="help-msg" style="color:var(--aw-text-3)"><span data-i18n="advanced-form:text.023">最多 200 字符；支持 Markdown 链接</span></div>
+  <label for="af-note" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.020">备注</span> <span style="color:var(--aw-text-3);font-weight:400" data-i18n="advanced-form:text.021">（选填）</span></label>
+  <input id="af-note" class="input" placeholder="请输入备注…" data-i18n-placeholder="advanced-form:text.022" aria-describedby="af-note-help" />
+  <div class="help-msg" id="af-note-help" style="color:var(--aw-text-3)"><span data-i18n="advanced-form:text.023">最多 200 字符；支持 Markdown 链接</span></div>
 </div>
     </div>
   </div>

@@ -7,11 +7,12 @@
   <p class="lede"><span data-i18n="upload:text.003">固件包上传、批量导入设备 CSV——大文件场景。支持拖拽，显示进度与校验和。</span></p>
 
   <div class="surface">
-    <div class="upload-drop">
+    <label class="upload-drop" data-demo-upload>
 <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></div>
 <div class="title"><span data-i18n="upload:text.004">点击或拖拽固件包到此处上传</span></div>
 <div class="sub"><span data-i18n="upload:text.005">支持 .zip / .bin · 单个文件不超过 500 MB · 仅限内网</span></div>
-    </div>
+<input class="visually-hidden" type="file" accept=".zip,.bin" data-demo-file-input />
+    </label>
     <div class="upload-list">
 <div class="upload-item success">
   <div class="file-ico">ZIP</div>

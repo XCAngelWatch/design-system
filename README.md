@@ -134,7 +134,7 @@ design-system/
 1. **Token**：`@tms/design-tokens` / `packages/design-tokens/` 生成 CSS 变量与 antd token。
 2. **antd 覆盖**：`packages/design-tokens/src/antd.ts` 收口 `ConfigProvider.theme.token`（主色 / 字号 / 圆角 / 间距）；`packages/design-tokens/src/components.ts` 收口 `theme.components`（Button / Tag / Table / Menu 等组件级覆盖）。两者分层，不要把 `theme.components` 写进 `antd.ts`。
 3. **应用消费**：`packages/web/src/app/AntdConfig.tsx` 是 `<ConfigProvider>` 消费入口（参考 `project/pages/config-provider.js` 可复制示例）；业务页面用 antd v6 原生 + `src/components/` 业务封装。
-4. **生态集成**：图表、地图、虚拟表格、代码编辑器等复杂能力优先采用白名单 NPM 包，再套用本系统 token。
+4. **生态集成**：图表、地图、代码编辑器等复杂能力可采用白名单 NPM 包，再套用本系统 token；大数据表格先按实测阈值使用 antd Table 原生 `virtual`，只有原生能力无法满足已验证需求时才评估白名单扩展。
 
 ### 组件选型优先级
 

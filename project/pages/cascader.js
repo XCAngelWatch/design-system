@@ -11,10 +11,10 @@
     <h3><span data-i18n="cascader:text.004">Cascader · 级联选择</span></h3>
     <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start">
 <div>
-  <div class="select" style="width:340px"><span data-i18n="cascader:text.005">华东一区 / 上海运营中心 / P5 设备组 / DEV-86420075</span></div>
+  <button type="button" class="select" style="width:340px" data-demo-options="cascader-demo-popup" aria-controls="cascader-demo-popup" aria-expanded="true"><span data-i18n="cascader:text.005">华东一区 / 上海运营中心 / P5 设备组 / DEV-86420075</span></button>
   <p style="font-size:12px;color:var(--aw-text-3);margin:8px 0 0;max-width:340px;line-height:1.6"><span data-i18n="cascader:text.006">点击展开 popover；最多 4 级深度；面包屑回填到输入框；支持搜索"DEV"直接定位叶子。</span></p>
 </div>
-<div class="cascader-pop">
+<div class="cascader-pop" id="cascader-demo-popup">
   <div class="cascader-col">
     <div class="search"><input placeholder="搜索机构 / 设备…" data-i18n-placeholder="cascader:text.007" /></div>
     <div class="item active"><span data-i18n="cascader:text.008">华东一区</span><span class="arrow">›</span></div>

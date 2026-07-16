@@ -93,7 +93,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="dark:t093">切换流程 · FOUC 防护</span></h3>
-    <div class="code-block"><pre><code>// 1. Inline script in <head> -- must run before any rendering
+    <div class="code-block"><pre><code>// 1. Inline script in &lt;head&gt; -- must run before any rendering
 &lt;script&gt;
   try {
     var t = localStorage.getItem('aw-theme');

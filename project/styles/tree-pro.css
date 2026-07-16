@@ -74,6 +74,10 @@
 /* 错误重试 link */
 .retry-link {
   margin-left: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
   font-size: 11.5px; color: var(--aw-primary);
   cursor: pointer;
 }

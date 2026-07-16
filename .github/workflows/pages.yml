@@ -23,6 +23,64 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate static site
+        run: |
+          node scripts/check-i18n.js
+          node scripts/i18n-runtime.test.js
+          node scripts/i18n-contract.test.js
+          node scripts/check-consistency.js
+          node scripts/check-evidence.js
+          git ls-files -z '*.js' | xargs -0 -n1 node --check
+          node - <<'NODE'
+          global.window = {};
+          const fs = require('fs');
+          const files = fs.readdirSync('project/pages').filter(file => file.endsWith('.js') && file !== '_router.js');
+          let registered = 0;
+          for (const file of files) {
+            require('./project/pages/' + file);
+            if (window.__AW_PAGES__[file.slice(0, -3)]) registered++;
+          }
+          if (registered !== files.length) process.exit(1);
+          console.log(registered + ' / ' + files.length + ' pages registered');
+          NODE
+          python3 - <<'PY'
+          import glob
+          import re
+
+          source = open('project/pages/_router.js').read()
+          routes = set(re.findall(r"\['([^']+)',", re.search(r'var ROUTES = \[([\s\S]*?)\];', source).group(1)))
+          pages = {path.split('/')[-1].rsplit('.', 1)[0] for path in glob.glob('project/pages/*.js') if not path.endswith('_router.js')}
+          if routes != pages:
+              raise SystemExit(f'route mismatch: only router={routes - pages}, only disk={pages - routes}')
+          print('router and page fragments match')
+          PY
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+
+          class Counter(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.tags = {}
+              def handle_starttag(self, tag, attrs):
+                  opened, closed = self.tags.get(tag, (0, 0))
+                  self.tags[tag] = (opened + 1, closed)
+              def handle_endtag(self, tag):
+                  opened, closed = self.tags.get(tag, (0, 0))
+                  self.tags[tag] = (opened, closed + 1)
+
+          void = {'meta', 'link', 'br', 'hr', 'img', 'input', 'source', 'track', 'wbr', 'area', 'base', 'col', 'embed', 'param', 'circle', 'rect', 'path', 'line', 'polygon', 'ellipse', 'use', 'marker', 'stop', 'text', 'image', 'tspan'}
+          parser = Counter()
+          parser.feed(open('project/index.html').read())
+          unbalanced = {tag: counts for tag, counts in parser.tags.items() if tag not in void and counts[0] != counts[1]}
+          if unbalanced:
+              raise SystemExit(f'unbalanced index.html: {unbalanced}')
+          print('index.html balanced')
+          PY
+          if grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\.0/|撤回 v1|（同 v1' project/; then
+            echo 'Forbidden evergreen pattern found'
+            exit 1
+          fi
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
