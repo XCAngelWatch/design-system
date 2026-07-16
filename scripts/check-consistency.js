@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 const root = path.resolve(__dirname, '..');
 const pagesDir = path.join(root, 'project/pages');
@@ -21,6 +22,29 @@ const componentRoutes = new Set([
 
 function readPage(id) {
   return fs.readFileSync(path.join(pagesDir, id + '.js'), 'utf8');
+}
+
+function getEnglishCatalogStats() {
+  const catalogs = {};
+  const sandbox = {
+    window: {
+      __AW_I18N__: {
+        register(locale, namespace, catalog) {
+          if (locale === 'en-US') catalogs[namespace] = catalog;
+        }
+      }
+    }
+  };
+  const catalogFiles = [path.join(root, 'project/i18n/common.en-US.js')]
+    .concat(fs.readdirSync(path.join(root, 'project/i18n/en-US'))
+      .filter((name) => name.endsWith('.js'))
+      .map((name) => path.join(root, 'project/i18n/en-US', name)));
+  for (const file of catalogFiles) {
+    vm.runInNewContext(fs.readFileSync(file, 'utf8'), sandbox, { filename: file });
+  }
+  const common = Object.keys(catalogs.common || {}).length;
+  const total = Object.values(catalogs).reduce((sum, catalog) => sum + Object.keys(catalog).length, 0);
+  return { common, routes: total - common, total };
 }
 
 for (const id of blueprints) {
@@ -237,6 +261,44 @@ if (!/\.btn-link:disabled[\s\S]*?background:\s*transparent/.test(componentsCss))
   errors.push('components.css: disabled link buttons must retain the link appearance');
 }
 
+const switchOnRuleIndex = componentsCss.indexOf('.switch.is-on {');
+const switchFocusRuleIndex = componentsCss.indexOf('.switch:focus-visible {');
+if (switchOnRuleIndex < 0 || switchFocusRuleIndex < switchOnRuleIndex) {
+  errors.push('switch: focus-visible styling must follow the active-state shadow reset');
+}
+
+const feedbackPage = readPage('feedback');
+if (feedbackPage.includes('<div class="tab is-active">') &&
+    (!router.includes('function getTabItems') || !router.includes("item.matches('a, [data-demo-tab]')") || router.includes("item.matches('a, .tab')"))) {
+  errors.push('tabs: visual-only tab rows must not receive interactive tab semantics without real panels');
+}
+
+const formPageRule = componentsCss.match(/\.formpage-mock\s*\{([^}]*)\}/);
+const formBodyRule = componentsCss.match(/\.formpage-mock \.body\s*\{([^}]*)\}/);
+const formFootRule = componentsCss.match(/\.formpage-mock \.foot\s*\{([^}]*)\}/);
+if (!formPageRule || !/grid-template-rows:\s*auto minmax\(0, 1fr\) auto/.test(formPageRule[1]) ||
+    !formBodyRule || !/overflow-y:\s*auto/.test(formBodyRule[1]) ||
+    !formFootRule || /position:\s*sticky/.test(formFootRule[1])) {
+  errors.push('form-page: the body must own scrolling while the action footer stays outside the scroll region');
+}
+
+for (const safeAreaInset of ['top', 'right', 'bottom', 'left']) {
+  if (!componentsCss.includes('env(safe-area-inset-' + safeAreaInset + ')')) {
+    errors.push('drawer: mobile chrome is missing safe-area-inset-' + safeAreaInset);
+  }
+}
+const drawerInteractionTable = (readPage('drawer').match(/drawer:text\.080[\s\S]*?<\/table>/) || [''])[0];
+if (!/class="surface" style="padding:0;overflow:auto"/.test(drawerInteractionTable)) {
+  errors.push('drawer: the interaction contract table must remain horizontally scrollable on mobile');
+}
+
+const i18nStats = getEnglishCatalogStats();
+const i18nTotalLabel = i18nStats.total.toLocaleString('en-US') + ' / ' + i18nStats.total.toLocaleString('en-US');
+const i18nPage = readPage('i18n');
+if ((i18nPage.match(new RegExp(i18nTotalLabel.replace(',', '\\,'), 'g')) || []).length !== 2) {
+  errors.push('i18n: coverage cards must match the current ' + i18nStats.total + '-key catalog total');
+}
+
 const uploadProCss = fs.readFileSync(path.join(root, 'project/styles/upload-pro.css'), 'utf8');
 if (!/\.upload-item \.upload-file-actions,\s*\.upload-item \.actions\s*\{[^}]*grid-column:\s*2/.test(uploadProCss)) {
   errors.push('upload: mobile layout must keep both completed and in-progress actions in the metadata column');
@@ -246,6 +308,7 @@ const treePage = readPage('tree-comp');
 const treeProCss = fs.readFileSync(path.join(root, 'project/styles/tree-pro.css'), 'utf8');
 for (const treeRuntimeContract of [
   'function syncTreeVisibility',
+  'function isTreeNodeExpandable',
   'function updateTreeAncestors',
   "tree.hasAttribute('data-check-strictly')"
 ]) {
@@ -254,8 +317,18 @@ for (const treeRuntimeContract of [
 if (!treePage.includes('class="body" data-check-strictly')) {
   errors.push('tree: checkStrictly example must declare independent check behavior');
 }
+if (!/tree-comp:text\.055[\s\S]*?class="body" data-check-on-select/.test(treePage) ||
+    !router.includes('function activateTreeNode') || (router.match(/activateTreeNode\(treeNode\)/g) || []).length < 2) {
+  errors.push('tree: checkOnSelect example must toggle checks when its rows are activated');
+}
+if ((treePage.match(/data-tree-expandable/g) || []).length < 6) {
+  errors.push('tree: collapsed or lazy branches must preserve explicit expandability metadata');
+}
 if (!/\.tnode\[hidden\]\s*\{\s*display:\s*none/.test(treeProCss)) {
   errors.push('tree: collapsed descendants must be removed from visual layout');
+}
+if (!componentsCss.includes('.tnode.tree-terminal:not(.loading):not(.err) .caret')) {
+  errors.push('tree: inferred terminal nodes must not expose an expandable caret');
 }
 
 const routeBlock = router.match(/var ROUTES = \[([\s\S]*?)\];/);

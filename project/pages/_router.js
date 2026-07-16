@@ -435,6 +435,8 @@
       select.setAttribute('aria-expanded', select.classList.contains('is-open') ? 'true' : 'false');
     });
     root.querySelectorAll('.tabs, .tabs-card, .tabs-route').forEach(function (tabs) {
+      var tabItems = getTabItems(tabs);
+      if (!tabItems.length) return;
       tabs.setAttribute('role', 'tablist');
       if (!tabs.id) tabs.id = 'demo-tabs-' + (++demoControlId);
       var panel = tabs.nextElementSibling;
@@ -454,7 +456,7 @@
         queryView = new URLSearchParams((location.hash.split('?')[1] || '')).get('view');
       }
       var activeTab = null;
-      tabs.querySelectorAll('a').forEach(function (tab) {
+      tabItems.forEach(function (tab) {
         var active = queryView ? tab.getAttribute('data-demo-query') === queryView :
           (tab.classList.contains('active') || tab.classList.contains('is-active'));
         tab.classList.toggle('active', active);
@@ -466,7 +468,7 @@
         tab.setAttribute('aria-controls', panel.id);
         if (active) activeTab = tab;
       });
-      if (!activeTab) activeTab = tabs.querySelector('a');
+      if (!activeTab) activeTab = tabItems[0];
       if (activeTab) {
         activeTab.classList.add('active', 'is-active');
         activeTab.setAttribute('tabindex', '0');
@@ -517,8 +519,8 @@
         node.setAttribute('aria-level', String(level));
         node.setAttribute('tabindex', '-1');
         node.querySelectorAll('svg').forEach(function (icon) { icon.setAttribute('aria-hidden', 'true'); });
-        syncTreeNodeState(node);
       });
+      nodes.forEach(syncTreeNodeState);
       syncTreeVisibility(tree);
       var activeNode = nodes.find(function (node) { return node.classList.contains('selected') && !node.hidden; }) ||
         nodes.find(function (node) { return !node.hidden; });
@@ -605,10 +607,13 @@
 
   function syncTreeNodeState(node) {
     var check = node.querySelector('.check');
+    var expandable = isTreeNodeExpandable(node);
     node.setAttribute('aria-selected', node.classList.contains('selected') ? 'true' : 'false');
-    if (!node.classList.contains('leaf')) {
+    node.classList.toggle('tree-terminal', !expandable);
+    if (expandable) {
       node.setAttribute('aria-expanded', node.classList.contains('expanded') ? 'true' : 'false');
     } else {
+      node.classList.remove('expanded');
       node.removeAttribute('aria-expanded');
     }
     if (check) {
@@ -653,6 +658,11 @@
     return getTreeDescendants(node).filter(function (item) { return getTreeLevel(item) === childLevel; });
   }
 
+  function isTreeNodeExpandable(node) {
+    if (node.classList.contains('leaf')) return false;
+    return node.hasAttribute('data-tree-expandable') || getImmediateTreeChildren(node).length > 0;
+  }
+
   function syncTreeVisibility(tree) {
     var collapsedLevels = [];
     getAllTreeNodes(tree).forEach(function (node) {
@@ -663,7 +673,7 @@
       node.hidden = collapsedLevels.length > 0;
       if (node.hidden) node.setAttribute('aria-hidden', 'true');
       else node.removeAttribute('aria-hidden');
-      if (!node.classList.contains('leaf') && !node.classList.contains('expanded')) {
+      if (isTreeNodeExpandable(node) && !node.classList.contains('expanded')) {
         collapsedLevels.push(level);
       }
     });
@@ -727,10 +737,25 @@
     return true;
   }
 
+  function activateTreeNode(node) {
+    var tree = node.closest('[role="tree"]');
+    if (tree && tree.hasAttribute('data-check-on-select') && toggleTreeCheck(node)) {
+      focusTreeNode(node);
+      return;
+    }
+    selectTreeNode(node);
+  }
+
+  function getTabItems(group) {
+    return Array.prototype.filter.call(group.children, function (item) {
+      return item.matches('a, [data-demo-tab]');
+    });
+  }
+
   function syncTabs(tab) {
     var group = tab.closest('.tabs, .tabs-card, .tabs-route');
     if (!group) return;
-    group.querySelectorAll('a').forEach(function (item) {
+    getTabItems(group).forEach(function (item) {
       var active = item === tab;
       item.classList.toggle('active', active);
       item.classList.toggle('is-active', active);
@@ -956,10 +981,10 @@
         }
       }
 
-      var tab = target.closest && target.closest('.tabs a, .tabs-card a, .tabs-route a, .viewtoggle button, .seg button, .chip');
+      var tab = target.closest && target.closest('[role="tab"], .viewtoggle button, .seg button, .chip');
       if (tab && root.contains(tab)) {
         event.preventDefault();
-        if (tab.tagName === 'A') syncTabs(tab);
+        if (tab.getAttribute('role') === 'tab') syncTabs(tab);
         else setSingleActive(tab, tab.classList.contains('chip') ? '.chip' : 'button', 'active');
         showDemoToast(root, tCommon('demo.viewChanged', { label: tab.textContent.trim() }, '已切换：{label}'));
         return;
@@ -976,7 +1001,7 @@
 
       var treeNode = target.closest && target.closest('.tnode[role="treeitem"]');
       if (treeNode && root.contains(treeNode)) {
-        if (target.closest('.caret') && !treeNode.classList.contains('leaf')) {
+        if (target.closest('.caret') && isTreeNodeExpandable(treeNode)) {
           treeNode.classList.toggle('expanded');
           syncTreeNodeState(treeNode);
           syncTreeVisibility(treeNode.closest('[role="tree"]'));
@@ -988,7 +1013,7 @@
           focusTreeNode(treeNode);
           return;
         }
-        selectTreeNode(treeNode);
+        activateTreeNode(treeNode);
         return;
       }
 
@@ -1050,7 +1075,7 @@
             return;
           }
         }
-        if (event.key === 'ArrowRight' && !treeNode.classList.contains('leaf') && !treeNode.classList.contains('expanded')) {
+        if (event.key === 'ArrowRight' && isTreeNodeExpandable(treeNode) && !treeNode.classList.contains('expanded')) {
           event.preventDefault();
           treeNode.classList.add('expanded');
           syncTreeNodeState(treeNode);
@@ -1067,7 +1092,7 @@
         }
         if (event.key === 'Enter') {
           event.preventDefault();
-          selectTreeNode(treeNode);
+          activateTreeNode(treeNode);
           return;
         }
         if (event.key === ' ') {

@@ -23,7 +23,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="drawer:text.080">交互闭环 · 焦点、关闭与滚动</span></h3>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface" style="padding:0;overflow:auto">
       <table class="tech-table">
         <thead><tr><th style="width:120px"><span data-i18n="drawer:text.089">阶段</span></th><th><span data-i18n="drawer:text.090">必须满足的契约</span></th></tr></thead>
         <tbody>

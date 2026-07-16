@@ -12,13 +12,13 @@
     <div class="i18n-grid">
       <div class="i18n-card">
         <div class="lang-tag"><span><span data-i18n="i18n:t008">zh-CN · 简体中文</span></span><span class="flag">CN</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">5,931 / 5,931</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,289 / 6,289</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t010">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t011">来源</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)"><span data-i18n="i18n:t012">基准语言</span></div></div>
       </div>
       <div class="i18n-card">
         <div class="lang-tag"><span>en-US · English</span><span class="flag">US</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">5,931 / 5,931</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,289 / 6,289</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t014">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t015">维护人</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">Localization Team</div></div>
       </div>

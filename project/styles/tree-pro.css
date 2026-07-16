@@ -34,7 +34,7 @@
   height: 16px;
   border-radius: 4px;
 }
-.tnode:not(.leaf) .caret:hover { background: var(--aw-fill-2); color: var(--aw-text-1); }
+.tnode:not(.leaf):not(.tree-terminal) .caret:hover { background: var(--aw-fill-2); color: var(--aw-text-1); }
 .tnode .check { width: 16px; height: 16px; }
 .tnode .check.checked::after { top: 2px; left: 4.5px; width: 4px; height: 7px; }
 .tnode .check.partial::after { top: 6px; left: 3px; width: 8px; }
