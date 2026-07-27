@@ -22,6 +22,31 @@
   </div>
 
   <div class="subsection">
+    <h3><span data-i18n="drawer:versionLogs.title">版本操作记录抽屉 · L 720px</span></h3>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="drawer:versionLogs.description">从操作记录页的版本名称进入，保留版本列表上下文；抽屉只承载版本摘要与只读审计表格。</span></p>
+    <div class="drawer-stage">
+      <div class="drawer-demo" style="width:720px">
+        <div class="head"><h4><span data-i18n="drawer:versionLogs.drawerTitle">3.4.2 · 操作记录</span> <span class="tag-meta">v342</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
+        <div class="body">
+          <div class="demo-grid cols-2" style="margin-bottom:12px">
+            <div class="surface" style="padding:12px"><small><span data-i18n="drawer:versionLogs.packageName">应用包名</span></small><div style="margin-top:6px"><code>com.aw.guard</code></div></div>
+            <div class="surface" style="padding:12px"><small><span data-i18n="drawer:versionLogs.lifecycleStatus">生命周期状态</span></small><div style="margin-top:6px"><span class="tag tag-green"><span data-i18n="drawer:versionLogs.published">已上架</span></span></div></div>
+          </div>
+          <div class="surface" style="padding:0;overflow:auto">
+            <table class="tech-table">
+              <thead><tr><th><span data-i18n="drawer:versionLogs.time">操作时间</span></th><th><span data-i18n="drawer:versionLogs.operator">操作人</span></th><th><span data-i18n="drawer:versionLogs.action">动作</span></th><th><span data-i18n="drawer:versionLogs.detail">详情</span></th></tr></thead>
+              <tbody>
+                <tr><td><span class="mono">2026-07-21 10:32</span></td><td><span data-i18n="drawer:versionLogs.operatorAdmin">管理员</span></td><td><span data-i18n="drawer:versionLogs.publishAction">审核通过</span></td><td><span data-i18n="drawer:versionLogs.publishDetail">版本审核通过并上架</span></td></tr>
+                <tr><td><span class="mono">2026-07-21 09:18</span></td><td><span data-i18n="drawer:versionLogs.operatorSystem">系统</span></td><td><span data-i18n="drawer:versionLogs.signAction">完成签名</span></td><td><span data-i18n="drawer:versionLogs.signDetail">APK 签名校验成功</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
     <h3><span data-i18n="drawer:text.080">交互闭环 · 焦点、关闭与滚动</span></h3>
     <div class="surface" style="padding:0;overflow:auto">
       <table class="tech-table">
@@ -69,7 +94,7 @@
 
 
   <div class="subsection">
-    <h3><span data-i18n="drawer:text.057">业务抽屉模式 · 详情、编辑、远程控制</span></h3>
+    <h3><span data-i18n="drawer:text.057">业务抽屉模式 · 详情、编辑、日志与远程控制</span></h3>
     <table class="blueprint-table">
       <thead><tr><th><span data-i18n="drawer:text.058">抽屉类型</span></th><th><span data-i18n="drawer:text.059">宽度</span></th><th><span data-i18n="drawer:text.060">典型内容</span></th><th><span data-i18n="drawer:text.061">关闭规则</span></th></tr></thead>
       <tbody>
@@ -77,6 +102,7 @@
         <tr><td><span data-i18n="drawer:text.065">编辑表单</span></td><td>480-720px</td><td><span data-i18n="drawer:text.066">设备、分组、应用分类、参数模板的创建与修改</span></td><td><span data-i18n="drawer:text.067">有未保存变更时关闭前二次确认。</span></td></tr>
         <tr><td><span data-i18n="drawer:text.068">远程控制</span></td><td><span data-i18n="drawer:text.069">720px 或全屏</span></td><td><span data-i18n="drawer:text.070">应用程序、设备信息、定位、轨迹、上传进度</span></td><td><span data-i18n="drawer:text.071">离线设备禁用入口；进行中任务关闭后转入任务详情。</span></td></tr>
         <tr><td><span data-i18n="drawer:text.072">分配设备</span></td><td>720px</td><td><span data-i18n="drawer:text.073">树筛选、表格勾选、导入设备、已选列表</span></td><td><span data-i18n="drawer:text.074">提交前展示已选数量，失败进入部分成功 Result。</span></td></tr>
+        <tr><td><span data-i18n="drawer:versionLogs.businessPattern">版本操作记录</span></td><td>720px</td><td><span data-i18n="drawer:versionLogs.businessContent">版本摘要、操作时间、操作人、动作与详情</span></td><td><span data-i18n="drawer:versionLogs.businessCloseRule">只读；允许 Esc / 点击遮罩关闭，关闭后焦点返回版本名称。</span></td></tr>
       </tbody>
     </table>
   </div>

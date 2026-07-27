@@ -14,7 +14,7 @@
     "text.010": "List skeleton, form validation, review feedback, card view",
     "text.011": "Version Management",
     "text.012": "Version management, version upgrade, installation details, upgrade history",
-    "text.013": "Version table, file upload, push results, installation details",
+    "text.013": "Version table, file upload, operation-log Drawer, push results, installation details",
     "text.014": "Ad Management",
     "text.015": "Home, card view, details, add, edit",
     "text.016": "Media cards, publish/unpublish status, time windows",
@@ -112,6 +112,14 @@
     "distribution.scopeDesc": "Show organizations, devices, compatible models, conflicts, and estimated count.",
     "distribution.result": "Installation Result",
     "distribution.resultDesc": "Continue in Push Tasks with failure details, retries, and downloads.",
-    "distribution.scopeRule": "The core blueprint covers only apps, ads, categories, versions, reviews, and installation details confirmed by current approved Figma evidence. Unconfirmed legacy modules must not flow back through the App Market entry."
+    "distribution.scopeRule": "The core blueprint covers only apps, ads, categories, versions, reviews, and installation details confirmed by current approved Figma evidence. Unconfirmed legacy modules must not flow back through the App Market entry.",
+    "versionLogs.title": "Version Operation Log Interaction",
+    "versionLogs.entryTitle": "Entry · Select a Version First",
+    "versionLogs.entryDescription": "The Operation Logs tab shows a version list, never an empty log table. Each version name is an explicit primary link.",
+    "versionLogs.drawerTitle": "Open · Preserve List Context",
+    "versionLogs.drawerDescription": "Click a version name to open a 720px read-only Drawer. Use full width on mobile and allow Esc or mask click to close.",
+    "versionLogs.contentTitle": "Content · Version Context and Audit Table",
+    "versionLogs.contentDescription": "Pin the package name, version code, and lifecycle status at the top. Below, list operator, action, and detail in reverse chronological order.",
+    "versionLogs.contract": ": version operation logs"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

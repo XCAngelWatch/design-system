@@ -12,11 +12,20 @@
       <thead><tr><th><span data-i18n="market-page:text.005">页面族</span></th><th><span data-i18n="market-page:text.006">关键界面</span></th><th><span data-i18n="market-page:text.007">规范落点</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="market-page:text.008">应用管理</span></td><td><span data-i18n="market-page:text.009">添加、详情、修改、审核、卡片视图</span></td><td><span data-i18n="market-page:text.010">列表骨架、表单校验、审核反馈、卡片视图</span></td></tr>
-        <tr><td><span data-i18n="market-page:text.011">版本管理</span></td><td><span data-i18n="market-page:text.012">版本管理、版本升级、安装明细、升级历史</span></td><td><span data-i18n="market-page:text.013">版本表格、上传文件、推送结果、安装明细</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.011">版本管理</span></td><td><span data-i18n="market-page:text.012">版本管理、版本升级、安装明细、升级历史</span></td><td><span data-i18n="market-page:text.013">版本表格、上传文件、操作记录抽屉、推送结果、安装明细</span></td></tr>
         <tr><td><span data-i18n="market-page:text.014">广告管理</span></td><td><span data-i18n="market-page:text.015">主页、卡片视图、详情、添加、修改</span></td><td><span data-i18n="market-page:text.016">媒体卡片、上下架状态、时间窗口</span></td></tr>
         <tr><td><span data-i18n="market-page:text.017">应用分类</span></td><td><span data-i18n="market-page:text.018">主页面、添加、修改、状态帧</span></td><td><span data-i18n="market-page:text.019">轻量表单、排序、禁用态、删除确认</span></td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="subsection">
+    <h3><span data-i18n="market-page:versionLogs.title">版本操作记录交互</span></h3>
+    <div class="bp-grid">
+      <div class="bp-card"><h4><span data-i18n="market-page:versionLogs.entryTitle">入口 · 先选择版本</span></h4><p><span data-i18n="market-page:versionLogs.entryDescription">操作记录 Tab 展示版本列表，不展示空日志表。版本名称是明确的主链接。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:versionLogs.drawerTitle">展开 · 保留列表上下文</span></h4><p><span data-i18n="market-page:versionLogs.drawerDescription">点击版本名称打开 720px 只读 Drawer；移动端使用全宽，允许 Esc 与遮罩关闭。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:versionLogs.contentTitle">内容 · 版本摘要加审计表格</span></h4><p><span data-i18n="market-page:versionLogs.contentDescription">顶部固定显示包名、版本号与生命周期状态，下方按时间倒序展示操作人、动作和详情。</span></p></div>
+    </div>
   </div>
 
   <div class="subsection">
@@ -87,7 +96,7 @@
 
   <div class="subsection" data-component-contract>
     <h3><span data-i18n="market-page:text.096">组件契约</span></h3>
-    <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="market-page:text.097">：列表和安装明细</span></span><span><a href="#/data-cards">DataCard</a><span data-i18n="market-page:text.098">：应用卡片视图</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="market-page:text.099">：审核和上下架确认</span></span><span><a href="#/upload">Upload</a><span data-i18n="market-page:text.100">：版本包上传</span></span></div>
+    <div class="blueprint-notes"><span><a href="#/table">Table</a><span data-i18n="market-page:text.097">：列表和安装明细</span></span><span><a href="#/data-cards">DataCard</a><span data-i18n="market-page:text.098">：应用卡片视图</span></span><span><a href="#/feedback">Feedback</a><span data-i18n="market-page:text.099">：审核和上下架确认</span></span><span><a href="#/upload">Upload</a><span data-i18n="market-page:text.100">：版本包上传</span></span><span><a href="#/drawer">Drawer</a><span data-i18n="market-page:versionLogs.contract">：版本操作记录</span></span></div>
   </div>
 </section>
 </div>
