@@ -1210,11 +1210,6 @@ kbd {
   font-size: 14px;
   color: var(--aw-text-1);
 }
-.ph-mock .ph-meta {
-  font-size: 11px;
-  color: var(--aw-text-3);
-  font-family: var(--aw-font-mono);
-}
 .ph-mock .ph-acts {
   display: flex;
   gap: 6px;
