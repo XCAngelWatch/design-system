@@ -3,14 +3,14 @@
 <div class="content">
 <section class="section" id="table">
   <p class="section-eyebrow"><span data-i18n="table:text.001">通用组件 · 表格 / 分页</span></p>
-  <h2><span data-i18n="table:text.002">表格 Table</span></h2>
+  <h2 role="heading" aria-level="1"><span data-i18n="table:text.002">表格 Table</span></h2>
   <p class="lede"><span data-i18n="table:text.003">设备列表的核心组件。行高 40px（含 padding），表头浅灰背景，hover 高亮。操作列右对齐，使用文字按钮。</span></p>
 
   <div class="table-wrap">
     <table class="dt">
 <thead>
   <tr>
-    <th style="width:36px"><label class="check"><input type="checkbox" /><span class="box"></span></label></th>
+    <th scope="col" style="width:36px"><span class="visually-hidden" data-i18n="table:text.329">选择列</span><label class="check"><input type="checkbox" /><span class="box"></span></label></th>
     <th><span data-i18n="table:text.004">设备名称</span></th>
     <th>SN</th>
     <th><span data-i18n="table:text.005">状态</span></th>
@@ -21,11 +21,11 @@
   </tr>
 </thead>
 <tbody>
-  <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td><span data-i18n="table:text.010">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span class="status-dot online"><span data-i18n="table:text.011">在线</span></span></td><td>v3.4.2</td><td><span data-i18n="table:text.012">上海 / 黄浦</span></td><td><span data-i18n="table:text.013">刚刚</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.014">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.015">推送</span></button></td></tr>
-  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.016">终端-北京-014</span></td><td><code>DEV-86420089</code></td><td><span class="status-dot upgrading"><span data-i18n="table:text.017">升级中</span></span></td><td>v3.4.1 → v3.5.0</td><td><span data-i18n="table:text.018">北京 / 海淀</span></td><td><span data-i18n="table:text.019">2 分钟前</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.020">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.021">推送</span></button></td></tr>
-  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.022">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span class="status-dot offline"><span data-i18n="table:text.023">离线</span></span></td><td>v3.3.8</td><td><span data-i18n="table:text.024">广州 / 天河</span></td><td><span data-i18n="table:text.025">12 分钟前</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.026">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.027">推送</span></button></td></tr>
-  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.028">终端-成都-022</span></td><td><code>DEV-86420144</code></td><td><span class="status-dot fault"><span data-i18n="table:text.029">故障</span></span></td><td>v3.4.0</td><td><span data-i18n="table:text.030">成都 / 高新</span></td><td><span data-i18n="table:text.031">1 小时前</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.032">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.033">推送</span></button></td></tr>
-  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.034">终端-深圳-031</span></td><td><code>DEV-86420178</code></td><td><span class="status-dot online"><span data-i18n="table:text.035">在线</span></span></td><td>v3.4.2</td><td><span data-i18n="table:text.036">深圳 / 南山</span></td><td><span data-i18n="table:text.037">刚刚</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.038">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.039">推送</span></button></td></tr>
+  <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td><span data-i18n="table:text.010">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span class="status-dot online"><span data-i18n="table:text.011">在线</span></span></td><td>v3.4.2</td><td><span data-i18n="table:text.012">上海 / 黄浦</span></td><td><span data-i18n="table:text.013">刚刚</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.014">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.015">更多</span></button></td></tr>
+  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.016">终端-北京-014</span></td><td><code>DEV-86420089</code></td><td><span class="status-dot upgrading"><span data-i18n="table:text.017">升级中</span></span></td><td>v3.4.1 → v3.5.0</td><td><span data-i18n="table:text.018">北京 / 海淀</span></td><td><span data-i18n="table:text.019">2 分钟前</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.020">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.021">更多</span></button></td></tr>
+  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.022">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span class="status-dot offline"><span data-i18n="table:text.023" style="color:var(--aw-text-3)">离线</span></span></td><td>v3.3.8</td><td><span data-i18n="table:text.024">广州 / 天河</span></td><td><span data-i18n="table:text.025">12 分钟前</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.026">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.027">更多</span></button></td></tr>
+  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.028">终端-成都-022</span></td><td><code>DEV-86420144</code></td><td><span class="status-dot fault"><span data-i18n="table:text.029">故障</span></span></td><td>v3.4.0</td><td><span data-i18n="table:text.030">成都 / 高新</span></td><td><span data-i18n="table:text.031">1 小时前</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.032">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.033">更多</span></button></td></tr>
+  <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.034">终端-深圳-031</span></td><td><code>DEV-86420178</code></td><td><span class="status-dot online"><span data-i18n="table:text.035">在线</span></span></td><td>v3.4.2</td><td><span data-i18n="table:text.036">深圳 / 南山</span></td><td><span data-i18n="table:text.037">刚刚</span></td><td class="colactions"><button class="btn btn-link"><span data-i18n="table:text.038">详情</span></button><button class="btn btn-link"><span data-i18n="table:text.039">更多</span></button></td></tr>
 </tbody>
     </table>
   </div>
@@ -52,7 +52,7 @@
   <div style="font-size:13px;color:var(--aw-text-3);margin-bottom:8px"><span data-i18n="table:text.044">Loading · 骨架屏占位</span></div>
   <div class="table-wrap">
     <table class="dt">
-      <thead><tr><th style="width:36px"></th><th><span data-i18n="table:text.045">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.046">状态</span></th><th><span data-i18n="table:text.047">OTA 版本</span></th><th class="colactions"><span data-i18n="table:text.048">操作</span></th></tr></thead>
+      <thead><tr><th scope="col" style="width:36px"><span class="visually-hidden" data-i18n="table:text.329">选择列</span></th><th><span data-i18n="table:text.045">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.046">状态</span></th><th><span data-i18n="table:text.047">OTA 版本</span></th><th class="colactions"><span data-i18n="table:text.048">操作</span></th></tr></thead>
       <tbody>
         <tr><td><div class="skel" style="height:14px;width:14px;border-radius:3px"></div></td><td><div class="skel mid"></div></td><td><div class="skel short"></div></td><td><div class="skel" style="width:60px"></div></td><td><div class="skel short"></div></td><td class="colactions"><div class="skel short" style="margin-left:auto"></div></td></tr>
         <tr><td><div class="skel" style="height:14px;width:14px;border-radius:3px"></div></td><td><div class="skel mid"></div></td><td><div class="skel short"></div></td><td><div class="skel" style="width:60px"></div></td><td><div class="skel short"></div></td><td class="colactions"><div class="skel short" style="margin-left:auto"></div></td></tr>
@@ -67,14 +67,14 @@
   <div style="font-size:13px;color:var(--aw-text-3);margin-bottom:8px"><span data-i18n="table:text.049">Empty · 无数据</span></div>
   <div class="table-wrap">
     <table class="dt">
-      <thead><tr><th style="width:36px"></th><th><span data-i18n="table:text.050">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.051">状态</span></th><th><span data-i18n="table:text.052">OTA 版本</span></th><th class="colactions"><span data-i18n="table:text.053">操作</span></th></tr></thead>
+      <thead><tr><th scope="col" style="width:36px"><span class="visually-hidden" data-i18n="table:text.329">选择列</span></th><th><span data-i18n="table:text.050">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.051">状态</span></th><th><span data-i18n="table:text.052">OTA 版本</span></th><th class="colactions"><span data-i18n="table:text.053">操作</span></th></tr></thead>
     </table>
     <div style="padding:48px 24px;text-align:center;background:var(--aw-bg)">
       <div style="width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:var(--aw-fill-2);display:grid;place-items:center;color:var(--aw-text-4)">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </div>
       <div style="font-size:14px;color:var(--aw-text-2);margin-bottom:4px;font-weight:500"><span data-i18n="table:text.054">未找到匹配的设备</span></div>
-      <div style="font-size:12px;color:var(--aw-text-4);margin-bottom:14px"><span data-i18n="table:text.055">尝试调整筛选条件，或清空所有筛选项重新查询</span></div>
+      <div style="font-size:12px;color:var(--aw-text-3);margin-bottom:14px"><span data-i18n="table:text.055">尝试调整筛选条件，或清空所有筛选项重新查询</span></div>
       <div class="row" style="justify-content:center"><button class="btn btn-sm"><span data-i18n="table:text.056">清空筛选</span></button><button class="btn btn-primary btn-sm"><span data-i18n="table:text.057">+ 添加设备</span></button></div>
     </div>
   </div>
@@ -84,7 +84,7 @@
   <div style="font-size:13px;color:var(--aw-text-3);margin-bottom:8px"><span data-i18n="table:text.058">Error · 加载失败</span></div>
   <div class="table-wrap">
     <table class="dt">
-      <thead><tr><th style="width:36px"></th><th><span data-i18n="table:text.059">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.060">状态</span></th><th><span data-i18n="table:text.061">OTA 版本</span></th><th class="colactions"><span data-i18n="table:text.062">操作</span></th></tr></thead>
+      <thead><tr><th scope="col" style="width:36px"><span class="visually-hidden" data-i18n="table:text.329">选择列</span></th><th><span data-i18n="table:text.059">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.060">状态</span></th><th><span data-i18n="table:text.061">OTA 版本</span></th><th class="colactions"><span data-i18n="table:text.062">操作</span></th></tr></thead>
     </table>
     <div style="padding:48px 24px;text-align:center;background:var(--aw-bg)">
       <div style="width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:var(--aw-danger-bg);display:grid;place-items:center;color:var(--aw-danger)">
@@ -110,7 +110,7 @@
           <tbody>
             <tr><td>SH-001</td><td><span class="status-dot online"><span data-i18n="table:text.071">在线</span></span></td><td>v3.4.2</td></tr>
             <tr><td>BJ-014</td><td><span class="status-dot upgrading"><span data-i18n="table:text.072">升级中</span></span></td><td>v3.4.1</td></tr>
-            <tr><td>GZ-007</td><td><span class="status-dot offline"><span data-i18n="table:text.073">离线</span></span></td><td>v3.3.8</td></tr>
+            <tr><td>GZ-007</td><td><span class="status-dot offline"><span data-i18n="table:text.073" style="color:var(--aw-text-3)">离线</span></span></td><td>v3.3.8</td></tr>
             <tr><td>CD-022</td><td><span class="status-dot fault"><span data-i18n="table:text.074">故障</span></span></td><td>v3.4.0</td></tr>
           </tbody>
         </table>
@@ -122,7 +122,7 @@
           <tbody>
             <tr><td>SH-001</td><td><span class="status-dot online"><span data-i18n="table:text.079">在线</span></span></td><td>v3.4.2</td></tr>
             <tr><td>BJ-014</td><td><span class="status-dot upgrading"><span data-i18n="table:text.080">升级中</span></span></td><td>v3.4.1</td></tr>
-            <tr><td>GZ-007</td><td><span class="status-dot offline"><span data-i18n="table:text.081">离线</span></span></td><td>v3.3.8</td></tr>
+            <tr><td>GZ-007</td><td><span class="status-dot offline"><span data-i18n="table:text.081" style="color:var(--aw-text-3)">离线</span></span></td><td>v3.3.8</td></tr>
           </tbody>
         </table>
       </div>
@@ -142,10 +142,10 @@
   <div class="subsection">
     <h3><span data-i18n="table:text.087">列设置 · 显隐 + 拖拽排序 + 持久化</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="table:text.088">表头右上 ⚙ 触发抽屉。用户开关列、拖拽排序后写入 </span><code>localStorage['aw.table.&lt;tableId&gt;.cols']</code><span data-i18n="table:text.089">。新部署服务时旧字段被移除则自动剔除，新字段自动追加到末尾。</span></p>
-    <div class="surface" style="padding:0;display:grid;grid-template-columns:1fr 280px;gap:0">
+    <div class="surface table-config-layout" style="padding:0">
       <table class="dt" style="border-radius:0;border-right:1px solid var(--aw-border-2)">
         <thead><tr>
-          <th><label class="check"><input type="checkbox" /><span class="box"></span></label></th>
+          <th scope="col"><span class="visually-hidden" data-i18n="table:text.329">选择列</span><label class="check"><input type="checkbox" /><span class="box"></span></label></th>
           <th><span data-i18n="table:text.090">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.091">状态</span></th><th><span data-i18n="table:text.092">OTA 版本</span></th>
           <th class="colactions"><span data-i18n="table:text.093">⚙ 列设置</span></th>
         </tr></thead>
@@ -158,7 +158,7 @@
         <div class="ccp-h"><span data-i18n="table:text.098">列设置 </span><button class="dialog-close" style="float:right" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
         <div class="ccp-l"><span data-i18n="table:text.099">已选 5 / 共 8 列 · 拖拽排序</span></div>
         <div class="ccp-list">
-          <div class="ccp-it locked"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked disabled /><span class="box"></span></label><span class="nm"><span data-i18n="table:text.100">设备名称</span></span><span class="lock"><span data-i18n="table:text.101">锁定</span></span></div>
+          <div class="ccp-it locked" style="opacity:1"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked disabled /><span class="box"></span></label><span class="nm"><span data-i18n="table:text.100">设备名称</span></span><span class="lock"><span data-i18n="table:text.101" style="color:var(--aw-text-2)">锁定</span></span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm">SN</span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm"><span data-i18n="table:text.102">状态</span></span></div>
           <div class="ccp-it"><span class="grip">⋮⋮</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label><span class="nm"><span data-i18n="table:text.103">OTA 版本</span></span></div>
@@ -175,7 +175,7 @@
   <div class="subsection">
     <h3><span data-i18n="table:text.110">列冻结 · 左 / 右 / 双向</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="table:text.111">业务表格列数多时（10+），左侧冻结"设备名称 / SN"作为锚定，右侧冻结"操作"列保证可达。冻结列与正常列之间有 1px 阴影分隔，滚动时阴影加深。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface responsive-table" style="padding:0">
       <div class="frozen-table-wrap">
         <table class="dt">
           <thead><tr>
@@ -212,7 +212,7 @@
   <div class="subsection">
     <h3><span data-i18n="table:text.133">列宽拖拽</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="table:text.134">表头分隔条 hover 出现拖拽 cursor，按住拖动调整宽度。最小 60px，最大 480px。释放后写入 localStorage。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface responsive-table" style="padding:0">
       <table class="dt dt-resizable">
         <thead><tr>
           <th style="width:160px"><span data-i18n="table:text.135">设备名称</span><div class="col-resizer"></div></th>
@@ -233,9 +233,9 @@
   <div class="subsection">
     <h3><span data-i18n="table:text.147">批量操作条 · sticky 进出动效</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="table:text.148">勾选 ≥ 1 行时，操作条从表格顶部 120ms 滑入；取消所有选择 / 完成操作后滑出。位置 sticky top:0，覆盖表头但保留下拉阴影。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface responsive-table" style="padding:0">
       <div class="batch-bar">
-        <div class="bb-l"><b><span data-i18n="table:text.149">已选 4 项</span></b><span class="bb-sub"><span data-i18n="table:text.150">/ 12,486 总计 · 跨页选中</span></span></div>
+        <div class="bb-l"><b><span data-i18n="table:text.149">已选 4 项</span></b><span class="bb-sub"><span data-i18n="table:text.150" style="color:var(--aw-text-2)">/ 12,486 总计 · 跨页选中</span></span></div>
         <div class="bb-r">
           <button class="btn btn-sm"><span data-i18n="table:text.151">批量推送</span></button>
           <button class="btn btn-sm"><span data-i18n="table:text.152">批量启停</span></button>
@@ -246,13 +246,13 @@
       </div>
       <table class="dt" style="border-radius:0">
         <thead><tr>
-          <th><label class="check"><input type="checkbox" checked /><span class="box"></span></label></th>
+          <th scope="col"><span class="visually-hidden" data-i18n="table:text.329">选择列</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label></th>
           <th><span data-i18n="table:text.156">设备名称</span></th><th>SN</th><th><span data-i18n="table:text.157">状态</span></th><th><span data-i18n="table:text.158">OTA 版本</span></th>
         </tr></thead>
         <tbody>
           <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td><span data-i18n="table:text.159">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span class="status-dot online"><span data-i18n="table:text.160">在线</span></span></td><td>v3.4.2</td></tr>
           <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td><span data-i18n="table:text.161">终端-北京-014</span></td><td><code>DEV-86420089</code></td><td><span class="status-dot upgrading"><span data-i18n="table:text.162">升级中</span></span></td><td>v3.4.1</td></tr>
-          <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.163">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span class="status-dot offline"><span data-i18n="table:text.164">离线</span></span></td><td>v3.3.8</td></tr>
+          <tr><td><label class="check"><input type="checkbox" /><span class="box"></span></label></td><td><span data-i18n="table:text.163">终端-广州-007</span></td><td><code>DEV-86420112</code></td><td><span class="status-dot offline"><span data-i18n="table:text.164" style="color:var(--aw-text-3)">离线</span></span></td><td>v3.3.8</td></tr>
         </tbody>
       </table>
     </div>
@@ -260,7 +260,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="table:text.165">虚拟化降级策略</span></h3>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface responsive-table" style="padding:0">
       <table class="tech-table">
         <thead><tr><th style="width:160px"><span data-i18n="table:text.166">行数</span></th><th style="width:200px"><span data-i18n="table:text.167">渲染策略</span></th><th><span data-i18n="table:text.168">说明</span></th></tr></thead>
         <tbody>
@@ -294,7 +294,7 @@
           <button class="page">625</button>
           <button class="page">›</button>
           <div class="select" style="margin-left:8px;min-width:96px"><span><span data-i18n="table:text.187">20 条/页 ▾</span></span></div>
-          <span class="goto"><span data-i18n="table:text.188">跳至 </span><input class="input" style="width:48px;height:28px;padding:0 8px;font-size:12px" value="5" /><span data-i18n="table:text.189"> 页</span></span>
+          <span class="goto"><span data-i18n="table:text.188">跳至 </span><input class="input" style="width:48px;height:28px;padding:0 8px;font-size:12px" value="5" aria-label="跳转页码" data-i18n-aria-label="table:text.328" /><span data-i18n="table:text.189"> 页</span></span>
         </div>
       </div>
     </div>
@@ -328,7 +328,7 @@
   <div class="subsection">
     <h3><span data-i18n="table:text.198">反例</span></h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="table:text.199">不要在虚拟列表中使用 colspan 跨行：</span></strong><span data-i18n="table:text.200">虚拟化只渲染可视区，跨行单元格在滚动时会撕裂。改用普通行 + 视觉分组（hr 分隔）。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="table:text.201">不要把"操作"列设宽超过 240px：</span></strong><span data-i18n="table:text.202">会让横滚出现且与冻结右列冲突。&gt; 4 个动作走 </span><a href="#/row-actions" style="color:var(--aw-primary)"><span data-i18n="table:text.203">RowActions 折叠态</span></a><span data-i18n="table:text.326">。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="table:text.201">不要把"操作"列设宽超过 240px：</span></strong><span data-i18n="table:text.202">这通常意味着表格内明示了过多操作。只保留 1 个高频操作，其余进入 </span><a href="#/row-actions" style="color: var(--aw-primary-text)"><span data-i18n="table:text.203">RowActions 折叠态</span></a><span data-i18n="table:text.326">。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -351,7 +351,7 @@
         <tr><td>SN / IMEI / IP</td><td>left</td><td>160</td><td>2</td><td><span data-i18n="table:text.220">monospace + 复制按钮 hover 显</span></td></tr>
         <tr><td><span data-i18n="table:text.221">状态</span></td><td>left</td><td>96</td><td><span data-i18n="table:text.222">1（不隐藏）</span></td><td><span data-i18n="table:text.223">状态色 + 圆点 + 文字三重编码</span></td></tr>
         <tr><td><span data-i18n="table:text.224">数字 / 时间戳</span></td><td>right</td><td>100-140</td><td>3</td><td><code>tabular-nums</code><span data-i18n="table:text.225">；时间戳带 tooltip 绝对时间</span></td></tr>
-        <tr><td><span data-i18n="table:text.226">操作</span></td><td>right</td><td>140</td><td><span data-i18n="table:text.227">1（不隐藏）</span></td><td><code>fixed: 'right'</code><span data-i18n="table:text.228">；≤ 3 个直接展示，≥ 4 折叠</span></td></tr>
+        <tr><td><span data-i18n="table:text.226">操作</span></td><td>right</td><td>140</td><td><span data-i18n="table:text.227">1（不隐藏）</span></td><td><code>fixed: 'right'</code><span data-i18n="table:text.228">；只明示 1 个高频操作 + 更多</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -423,7 +423,7 @@
       <thead><tr><th><span data-i18n="table:text.308">模式</span></th><th><span data-i18n="table:text.309">出现模块</span></th><th><span data-i18n="table:text.310">规则</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="table:text.311">筛选区</span></td><td><span data-i18n="table:text.312">应用管理 / OTA / 设备管理 / 推送任务</span></td><td><span data-i18n="table:text.313">常用 3-4 字段直接展示，高级筛选折叠；搜索字段永远在第一位。</span></td></tr>
-        <tr><td><span data-i18n="table:text.314">表格视图</span></td><td><span data-i18n="table:text.315">应用列表 / 设备列表 / 日志 / 字典</span></td><td><span data-i18n="table:text.316">状态列靠近主对象；操作列固定右侧；达到 4 个动作时交给 RowActions 折叠。</span></td></tr>
+        <tr><td><span data-i18n="table:text.314">表格视图</span></td><td><span data-i18n="table:text.315">应用列表 / 设备列表 / 日志 / 字典</span></td><td><span data-i18n="table:text.316">状态列靠近主对象；操作列固定右侧；RowActions 只明示 1 个高频操作 + 更多。</span></td></tr>
         <tr><td><span data-i18n="table:text.317">卡片视图</span></td><td><span data-i18n="table:text.318">应用管理 / 广告管理 / 设备管理 / 设备分组</span></td><td><span data-i18n="table:text.319">卡片保留主状态、关键字段、最近操作；批量勾选入口在左上角。</span></td></tr>
         <tr><td><span data-i18n="table:text.320">批量条</span></td><td><span data-i18n="table:text.321">分配设备 / 推送设备 / 导出日志</span></td><td><span data-i18n="table:text.322">只在选中后出现，显示已选数量、清空入口和 2-3 个高频批量动作。</span></td></tr>
         <tr><td><span data-i18n="table:text.323">状态列</span></td><td><span data-i18n="table:text.324">应用审核 / OTA 推送 / 设备在线 / 任务结果</span></td><td><span data-i18n="table:text.325">状态文案与操作可用性绑定；不能只改变颜色而不改变可操作项。</span></td></tr>

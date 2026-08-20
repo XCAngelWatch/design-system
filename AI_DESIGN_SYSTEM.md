@@ -6,10 +6,10 @@
 
 > `CLAUDE.md` 与 `AGENTS.md` 是仓库操作规则权威，分别供 Claude Code / Codex 等 agent 自动加载；本文件是设计意图首读入口，三者互补。
 
-1. `AI_DESIGN_SYSTEM.md`：当前入口，说明权威顺序、页面范式和验收命令。
+1. `AI_DESIGN_SYSTEM.md`：当前入口，说明分域权威边界、页面范式和验收命令。
 2. `CLAUDE.md` / `AGENTS.md`：仓库架构、静态 SPA 规则、禁用模式、运行校验、落地链接三体职责。
-3. `docs/ai-coding-design-reference.md`：业务字段、状态机、枚举、operationType 词汇、领域字典与组件选择的权威锚点(详见下方"业务知识锚点")。
-4. `docs/evidence/angelwatch-business-capabilities.json`：机器可读的字段、状态、动作、权限、确认、反馈和路由契约。
+3. `docs/ai-coding-design-reference.md`：从既有设计与实现整理出的业务观察和组件选择参考；字段、状态、权限与 API 仍须回到后端/OpenAPI 核验。
+4. `docs/evidence/angelwatch-business-capabilities.json`：带来源的机器可读设计快照；记录观察到的字段、状态、动作、权限及其设计映射，但不是业务契约。
 5. `docs/evidence/figma-frame-manifest.json`：Figma canvas 覆盖、路由映射和 adopt / adapt / exclude / pending 结论。
 6. `brand-spec.md`：品牌 token、字体、布局姿态和证据摘要（含证据 token → `--aw-*` 运行时映射）。
 7. `docs/decisions/audits/2026-07-11-figma-legacy-gap-audit.md`：Figma 与旧系统的业务缺口、可借鉴流程和 TMS 1.0 隔离决定。
@@ -23,13 +23,19 @@
 - `project/index.html#/table`、`#/drawer`、`#/feedback`、`#/tree-comp`：高频组件范式。
 - `project/index.html#/dash-page`、`#/charts`、`#/user-mgmt-page`、`#/map-page`、`#/service-page`、`#/ops-page`：业务页面范式。
 
-## 权威顺序
+## 分域权威边界
 
-1. 当前仓库规则最高：`project/pages/`、`project/styles/`、`--aw-*` token、Ant Design v6、静态 SPA、`file://` 可用。
-2. 本地 Figma / OpenDesign 是业务证据来源：模块、字段、页面族、状态和操作流以它为准。
-3. `design-system-angelwatch` 是旧站抽取出的品牌包和界面 kit，只用于补充 token、尺寸、密度和页面姿态。
-4. 线上旧 Vue 2 / Element UI 实现不能覆盖业务仓库当前的 React + AntD v6 约束。
-5. Figma 中明确标记为旧系统、废案、临时方案、占位图层、测试数据的内容不得进入最终规范。
+不存在一条可覆盖所有问题的“仓库最高”全局排序，先判断正在解决哪类问题：
+
+| 问题域 | 权威来源 | 本仓库的角色 |
+| --- | --- | --- |
+| 视觉 token、组件交互、无障碍、布局 | 当前 Design System 规范与 `contracts/` | 制定并检查设计契约 |
+| 业务字段、状态、权限、API | 后端实现、OpenAPI 与后端领域契约 | 只保存带来源的设计观察；冲突时不得自行裁决 |
+| 产品信息架构、页面范围、用户流程 | 已批准产品需求与 Figma / OpenDesign | 映射为页面蓝图；不把 mock 反向提升为产品决定 |
+| 当前消费者实现事实 | `tms2.5-web-ui` 当前源码与测试 | 记录同步目标，不虚构尚不存在的包、目录或能力 |
+| 历史背景 | `design-system-angelwatch` 与旧 Vue 2 / Element UI | 仅作历史证据，不能覆盖以上现行来源 |
+
+后端/OpenAPI 或产品来源暂缺时，必须标记“待核验”并停止固化对应业务决定，不能用本仓 `project/pages/`、说明文档或 evidence manifest 互相引用完成自证。Figma 中标记为旧系统、废案、临时方案、占位图层、测试数据的内容不得进入最终规范。
 
 ## 当前产品定位
 
@@ -51,8 +57,10 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统。核心场景是�
 
 ## Ant Design v6 落地边界
 
+当前唯一已验证消费者是 sibling 单应用仓库 `tms2.5-web-ui`。源契约为 `contracts/tms-web-ui.json`；消费者将其原样镜像到 `docs/design-system/source-contract.json`，实现入口分别是 `src/styles/tokens.css`、`src/theme/antd.ts`、`src/theme/components.ts` 与 `src/App.tsx`。不要假设存在 monorepo、`packages/web` 或已发布 token 包。
+
 - 应用根结构使用 `ConfigProvider > App`，反馈实例从 `App.useApp()` 获取；禁止静态 Message / Notification / Modal API 绕过上下文。
-- `--aw-*` 与 AntD Light/Dark/tenant theme token 必须由同一设计 token 源生成并同步切换；TMS 暗色不使用 `darkAlgorithm` 自动派生。
+- `--aw-*` 与 AntD Light/Dark theme token 必须遵循同一 consumer contract；当前 AntD theme 从活动 CSS 变量构建并同步切换。未来若加入 tenant 或生成器，必须先扩展机器契约；TMS 暗色不使用 `darkAlgorithm` 自动派生。
 - `scrollToFirstError` 配置在具体 Form；自建表单控件透传 `value/onChange/id/ref/disabled/status`。
 - 大数据表格优先使用 AntD 原生 `virtual`；同时设置数值型 `scroll.x` 与 `scroll.y`，不按固定行数切换第二套表格内核。
 - 包装 AntD v6 组件需透传 `classNames/styles` Semantic DOM API；禁止依赖内部 DOM 层级选择器。
@@ -66,13 +74,13 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统。核心场景是�
 - 为 `placeholder` / `title` / `aria-label` / `alt` / `value` 使用对应 `data-i18n-*` 属性。
 - 同步维护 `project/i18n/en-US/<route>.js`，namespace 与 route id 一致。
 - 运行 `node scripts/check-i18n.js --routes=<route>`；完成前运行 `node scripts/check-i18n.js`。
-- 业务 React / AntD 应用按同一术语契约落地到 `ConfigProvider locale` + i18next / react-i18next，可扩展更多 locale，但不得复制第二套页面。
+- 业务 React / AntD 应用将产品确认的术语落地到 `ConfigProvider locale` + i18next / react-i18next，可扩展更多 locale，但不得复制第二套页面；本仓只约束其多语言呈现与无障碍方式。
 
-## 业务知识锚点(字段 / 状态机 / 枚举权威)
+## 业务设计快照索引（非业务契约）
 
-实现业务页面前,先到 `docs/ai-coding-design-reference.md` 的"模块字段锚点"段 + 对应 `project/pages/*.js` mock 查权威字段与状态,不要自己臆造。
+以下内容用于快速定位已有设计观察和交互示例。实现业务页面前，先用索引找到相关快照，再以现行后端/OpenAPI 核验字段、状态、权限与 API，以已批准产品需求/Figma 核验信息架构与流程；有冲突或缺少来源时不要自行臆造。
 
-| 模块 | 权威内容 | 文件 |
+| 模块 | 已记录的设计观察（实现前需核验） | 文件 |
 | --- | --- | --- |
 | 设备 / 数据中心 | 设备列表列、详情 35 字段、详情 Tab、设备状态三字段(onlineFlag/state/registeredFlag)、远程控制快捷指令、参数模板字段 | `docs/ai-coding-design-reference.md` 数据中心段 + `pages/device-center-page.js` |
 | 应用市场 | 应用列表列(版本总数/下载总数)、版本包状态(含签名子态)、添加应用四段表单、自动安装/更新、应用分类排序 | `docs/ai-coding-design-reference.md` 应用市场段 + `pages/market-page.js` |
@@ -85,13 +93,13 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统。核心场景是�
 | 远程会话 | 等待设备/连接/进行/拒绝/超时/中断/结束、操作者、会话日志和安全边界 | `docs/evidence/angelwatch-business-capabilities.json` + `pages/device-center-page.js` + `pages/progress.js` |
 | 分配与告警 | 设备/机构/权限分配冲突、覆盖权限、围栏/硬件告警处置和审计链 | `docs/evidence/angelwatch-business-capabilities.json` + `pages/tree-list.js` + `pages/ops-page.js` |
 | 状态枚举四语 | 推送/告警/电池健康/监控触发时机枚举的 zh/en/es/pt | `pages/copywriting.js` 术语锁定补充 + 状态枚举四语 |
-| 领域字典 | 时区(UTC±HH:MM 113 项)/错误码(code→message+default)/国家(ISO-3166) | `pages/data-format.js` 领域字典源 |
+| 领域字典 | 时区保存 IANA 标识符；可用时由 `Intl.supportedValuesOf('timeZone')` 提供候选，否则使用产品明确支持的 fallback 集，并由 `Intl.DateTimeFormat` 显示；禁止固化固定数量的 UTC offset 清单。错误码与国家等业务值仍由后端/OpenAPI 核验 | `pages/data-format.js` 设计展示参考 |
 | 术语锁定 | Geofence / Published / Unpublished / Original Version / Build Number 等四语锁定 | `pages/copywriting.js` |
 | 布局姿态 | spacing scale(4px base)、shell 尺寸、表头底色、tab strip 克制 | `brand-spec.md` Spacing & shell |
 
 ## 外部参考合并边界
 
-> 以下 `/Users/david/...`、`.fig`、OpenDesign app 数据目录路径是**本机本地源**,不在本仓库内,线上 / 其他机器 / 仅拿到 GitHub 链接的 AI **无法访问**。这些源的可合并结论已提炼并内联到本文件、`docs/ai-coding-design-reference.md` 与 `pages/*.js` 范式中;AI 落地时直接读这些内联结论即可,不需要访问本地源。`brand-spec.md` 同样含本地源路径,其 `--aw-*` 运行时映射已在该文件给出。
+> 以下 `/Users/david/...`、`.fig`、OpenDesign app 数据目录路径是**本机本地源**,不在本仓库内,线上 / 其他机器 / 仅拿到 GitHub 链接的 AI **无法访问**。已提炼到本文件、`docs/ai-coding-design-reference.md`、evidence manifest 与 `pages/*.js` 的内容只是可追溯设计快照；它可以离线指导视觉与交互，但不能替代后端/OpenAPI 的业务契约或产品/Figma 的信息架构与流程决定。`brand-spec.md` 同样含本地源路径,其 `--aw-*` 运行时映射已在该文件给出。
 
 `/Users/david/Documents/workspaces/xctech/tms25/code/design-system-angelwatch` 里可使用的内容：
 
@@ -110,7 +118,7 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统。核心场景是�
 ## 实现新页面时的提示词
 
 ```text
-按 AngelWatch TMS 设计系统实现 [模块名] 页面。先读取 AI_DESIGN_SYSTEM.md、AGENTS.md、docs/ai-coding-design-reference.md 和 docs/evidence/angelwatch-business-capabilities.json。使用当前 project/pages 的页面范式和 project/styles 的 --aw-* token，不复制旧 Vue/Element 代码，不使用 Pro Components，不硬编码业务颜色。页面必须包含筛选、表格或卡片、详情或抽屉、状态、批量操作、空 / 加载 / 错误 / 部分成功状态，并通过静态 SPA 校验。
+按 AngelWatch TMS 设计系统实现 [模块名] 页面。先读取 AI_DESIGN_SYSTEM.md、AGENTS.md、docs/ai-coding-design-reference.md 和 docs/evidence/angelwatch-business-capabilities.json；再用后端/OpenAPI 核验字段、状态、权限与 API，用已批准产品需求/Figma 核验信息架构与流程。使用当前 project/pages 的页面范式和 project/styles 的 --aw-* token，不复制旧 Vue/Element 代码，不使用 Pro Components，不硬编码业务颜色。页面按已确认流程覆盖需要的空 / 加载 / 错误 / 部分成功状态，并通过静态 SPA 校验。
 ```
 
 实现组件时的提示词：
@@ -128,6 +136,7 @@ node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
 node scripts/check-consistency.js
+node scripts/check-consumer-contract.js
 node scripts/check-evidence.js
 ```
 
@@ -164,7 +173,7 @@ print('match ✓' if ids_in_js == files else 'MISMATCH ✗')
 - `project/` 不出现版本徽章、状态机图、旧 TMS 1.0 回归内容。
 - `project/pages` 与 `project/styles` 不重新引入旧主色作为主色依据。
 - 新页面只链接到已有组件 / 页面范式，不复制一套独立规则。
-- 新业务能力必须在 `angelwatch-business-capabilities.json` 中有字段、状态、动作、权限、确认、反馈和路由契约。
+- 新业务能力必须先取得可追溯的后端/OpenAPI 业务契约与已批准产品/Figma 流程来源，再把必要观察更新为 `angelwatch-business-capabilities.json` 的设计快照；该快照不能反过来批准业务能力。
 - `pending` / `exclude` 的旧系统候选不得进入核心页面或产品导航。
 - 新页面文案必须同步 `data-i18n` 与 `project/i18n/en-US/<id>.js`，并通过 `check-i18n`。
 - 新文案不得包含 Figma 的占位词、测试 ID、废案名或临时方案名。

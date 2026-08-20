@@ -2,6 +2,8 @@
 
 本项目是 AngelWatch TMS（设备终端管理系统）的 **AI-first 设计系统参考文档站**，用静态 SPA 的形式沉淀系统设计、页面蓝图、组件规范、设计 token、交互约束与落地规则。它的目标不是发布运行时组件库，而是为 AI 与开发者在业务系统设计和开发时提供可检索、可引用、可对齐的设计知识库。
 
+本仓库的规范权威严格限定为**视觉 token、组件交互、无障碍和布局**。业务字段、状态、权限与 API 由后端/OpenAPI 决定；产品信息架构、页面范围与用户流程由已批准产品需求和 Figma / OpenDesign 决定。本仓页面中的业务 mock 与 evidence manifest 只保存带来源的设计快照，不是业务契约。
+
 当前站点覆盖设计 token、设计基础、通用组件、业务模式、页面蓝图与工程落地规则，共 **66 个 section**，按 `导览(3) / 设计基础(13) / 通用组件(14) / 业务模式(12) / 页面蓝图(16) / 工程落地(8)` 组织。
 
 站点是 **纯静态 SPA**：`project/index.html` 是 shell，`project/pages/<id>.js` 是页面片段，`project/pages/_router.js` 通过 hash 路由和动态 `<script>` 注入加载片段。无构建、无 NPM 依赖、无 HTTP 服务器要求，`file://` 直接打开即可。
@@ -29,7 +31,18 @@ open project/index.html
 
 ## AI 编程入口
 
-本仓库是 AI-first 的。AI agent 拿到仓库后先读 [`AI_DESIGN_SYSTEM.md`](AI_DESIGN_SYSTEM.md)（权威顺序、页面范式、**业务知识锚点索引**、外部参考边界、提交前校验），再按需进入 [`docs/ai-coding-design-reference.md`](docs/ai-coding-design-reference.md)（业务字段 / 状态 / 枚举 / operationType / 领域字典权威）、[`docs/evidence/angelwatch-business-capabilities.json`](docs/evidence/angelwatch-business-capabilities.json)（机器可读业务契约）和 [`brand-spec.md`](brand-spec.md)（品牌 token 与布局姿态）。网页端 AI 导航页：`project/index.html#/ai-reference`。落地代码在 sibling 仓库 `tms2.5-web-react`（不在本仓库），AI 以本仓库的 `--aw-*` token 与 `pages/*.js` 范式为契约到 sibling 仓库对齐。
+本仓库是 AI-first 的。AI agent 拿到仓库后先读 [`AI_DESIGN_SYSTEM.md`](AI_DESIGN_SYSTEM.md)（分域权威边界、页面范式、业务设计快照索引、外部参考边界、提交前校验），再按需进入 [`docs/ai-coding-design-reference.md`](docs/ai-coding-design-reference.md)（从既有设计与实现整理的业务观察）、[`docs/evidence/angelwatch-business-capabilities.json`](docs/evidence/angelwatch-business-capabilities.json)（带来源的机器可读设计快照）和 [`brand-spec.md`](brand-spec.md)（品牌 token 与布局姿态）。业务实现仍须分别查后端/OpenAPI 和已批准产品需求/Figma。网页端 AI 导航页：`project/index.html#/ai-reference`。当前落地代码在 sibling 单应用仓库 `tms2.5-web-ui`；Design System 消费者契约见 [`contracts/tms-web-ui.json`](contracts/tms-web-ui.json)。
+
+## 权威边界
+
+| 问题域 | 首要来源 | Design System 的职责 |
+| --- | --- | --- |
+| 视觉 token、组件交互、无障碍、布局 | 本仓现行规范与 `contracts/` | 制定、展示并检查设计契约 |
+| 业务字段、状态、权限、API | 后端实现、OpenAPI、后端领域契约 | 保存设计观察并指向来源，不裁决业务冲突 |
+| 信息架构、页面范围、用户流程 | 已批准产品需求、Figma / OpenDesign | 映射页面蓝图，不把 mock 提升为产品决定 |
+| 消费者实现事实 | `tms2.5-web-ui` 当前源码与测试 | 记录真实同步目标，不提前虚构包或目录 |
+
+来源缺失或冲突时保持待核验，不允许通过本仓页面、说明文档和 evidence manifest 的循环引用完成“机器自证”。
 
 ## 部署
 
@@ -44,13 +57,14 @@ open project/index.html
 ```text
 design-system/
 ├── README.md                         说明文档
-├── AI_DESIGN_SYSTEM.md               AI 编程首读入口（权威顺序 / 页面范式 / 业务知识锚点 / 验收）
+├── AI_DESIGN_SYSTEM.md               AI 编程首读入口（分域权威 / 页面范式 / 设计快照索引 / 验收）
 ├── brand-spec.md                     品牌 token 与布局姿态证据
 ├── CLAUDE.md                         Claude Code 工作指南
 ├── AGENTS.md                         Codex / 通用 agent 工作指南
+├── contracts/tms-web-ui.json         Design System 消费者机器契约（token / 断点 / 密度 / 交互）
 ├── docs/                             参考与决策记录
-│   ├── ai-coding-design-reference.md 业务字段 / 状态机 / 枚举 / operationType / 领域字典权威
-│   ├── evidence/                    Figma 覆盖清单 + 机器可读业务能力契约
+│   ├── ai-coding-design-reference.md 从设计与实现整理的业务观察（非后端/OpenAPI 契约）
+│   ├── evidence/                    带来源的 Figma 与业务能力设计快照
 │   └── decisions/                    审计 / 计划 / 规格（过程记录，历史存档）
 ├── .github/workflows/pages.yml       GitHub Pages 自动部署
 └── project/
@@ -129,18 +143,19 @@ design-system/
 
 ## 落地关系
 
-设计系统不是发布到业务侧的组件库；它是视觉与交互契约，最终通过 sibling 仓库 `tms2.5-web-react` 中的代码落地：
+设计系统不是发布到业务侧的组件库；它只提供视觉 token、组件交互、无障碍与布局契约，当前由 sibling 单应用仓库 `tms2.5-web-ui` 落地：
 
-1. **Token**：`@tms/design-tokens` / `packages/design-tokens/` 生成 CSS 变量与 antd token。
-2. **antd 覆盖**：`packages/design-tokens/src/antd.ts` 收口 `ConfigProvider.theme.token`（主色 / 字号 / 圆角 / 间距）；`packages/design-tokens/src/components.ts` 收口 `theme.components`（Button / Tag / Table / Menu 等组件级覆盖）。两者分层，不要把 `theme.components` 写进 `antd.ts`。
-3. **应用消费**：`packages/web/src/app/AntdConfig.tsx` 是 `<ConfigProvider>` 消费入口（参考 `project/pages/config-provider.js` 可复制示例）；业务页面用 antd v6 原生 + `src/components/` 业务封装。
-4. **生态集成**：图表、地图、代码编辑器等复杂能力可采用白名单 NPM 包，再套用本系统 token；大数据表格先按实测阈值使用 antd Table 原生 `virtual`，只有原生能力无法满足已验证需求时才评估白名单扩展。
+1. **源契约**：`contracts/tms-web-ui.json` 只记录 Design System 职责内的 token、断点、密度、分页、RowActions、PageHeader 与反馈规则；消费者原样镜像到 `docs/design-system/source-contract.json`。
+2. **Token**：源值在本仓 `project/styles/tokens.css`；消费者镜像在 `src/styles/tokens.css`。
+3. **antd 覆盖**：消费者 `src/theme/antd.ts` 组装 `ConfigProvider.theme.token`，`src/theme/components.ts` 收口 `theme.components`。
+4. **应用消费**：消费者 `src/App.tsx` 是 `<ConfigProvider> > <App>` 入口；业务页面使用 antd v6 原生组件与 `src/components/` 业务封装。
+5. **生态集成**：图表、地图、代码编辑器等复杂能力只有完成依赖审批后才进入白名单并套用本系统 token；`tech-stack` 的候选清单不是白名单。大数据表格先按实测阈值使用 antd Table 原生 `virtual`，只有原生能力无法满足已验证需求时才评估扩展。
 
 ### 组件选型优先级
 
 1. **antd v6 原生**：Form、Table、Layout、Menu、Modal、Drawer、Select、Cascader 等优先使用原生组件。
 2. **业务自建**：antd 不覆盖的场景再封装 `src/components/`，命名以业务语义为主。
-3. **第三方 NPM 包**：仅限生态白名单；license 必须属于 MIT / Apache-2.0 / BSD / ISC。
+3. **第三方 NPM 包**：仅限完成架构、安全与许可证审批后进入的生态白名单；候选清单本身不构成批准。
 
 `@ant-design/pro-components` 不作为新页面选型；统一采用 antd 原生能力 + 业务封装。
 
@@ -154,6 +169,7 @@ node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
 node scripts/check-consistency.js
+node scripts/check-consumer-contract.js
 node scripts/check-evidence.js
 
 # 2. 全部 page fragments 加载 + 注册校验（无浏览器）

@@ -65,7 +65,7 @@
   align-items: center;
   gap: 5px;
   padding: 0 4px;
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   border-radius: var(--aw-radius-sm);
   font-size: 13px;
 }
@@ -87,9 +87,9 @@
 .upload-drop.dragover {
   border-color: var(--aw-primary);
   background: var(--aw-primary-bg);
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
 }
-.upload-drop.dragover .ico { color: var(--aw-primary); }
+.upload-drop.dragover .ico { color: var(--aw-primary-text); }
 
 
 /* ---------- 大文件分片 ---------- */
@@ -211,7 +211,7 @@
 .upp-play {
   width: 32px; height: 32px;
   border-radius: 50%;
-  background: var(--aw-primary); color: white;
+  background: var(--aw-primary-solid); color: var(--aw-text-on-brand);
   border: 0;
   display: grid; place-items: center;
   cursor: pointer;

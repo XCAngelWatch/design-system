@@ -74,7 +74,7 @@
     "text.070": "Add / Edit Account Modal",
     "text.071": "Account form fields align with table columns: organization / login account / name / email / role / remarks / enable-disable. The form also includes",
     "text.072": "Time zone timeZone",
-    "text.073": " (zone select, UTC±HH:MM in 15-minute increments) and",
+    "text.073": " (IANA zone select, such as Asia/Shanghai; prefer the user setting, then the tenant default, and render through Intl with automatic DST handling) and",
     "text.074": "MFA Google Authenticator mfaSecretKey",
     "text.075": " (can be unbound with secondary confirmation); after adding an account, automatically generate a password and support one-click copy; account status code '0' means normal and '9' means disabled.",
     "text.076": "Add Account",

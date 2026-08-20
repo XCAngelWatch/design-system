@@ -12,10 +12,10 @@
 <div class="crumbs" style="margin-bottom:14px"><a href="#/device-center-page"><span data-i18n="detail-page:text.005">设备管理</span></a><span class="sep">/</span><span class="current"><span data-i18n="detail-page:text.006">终端-上海-001</span></span></div>
 <div class="surface" style="padding:18px;margin-bottom:0">
   <div class="row" style="gap:18px;align-items:flex-start">
-    <div style="width:56px;height:56px;border-radius:6px;background:var(--aw-primary-bg);color:var(--aw-primary);display:grid;place-items:center;font-size:20px;font-weight:600"><span data-i18n="detail-page:text.007">终</span></div>
+    <div style="width:56px;height:56px;border-radius:6px;background:var(--aw-primary-bg);color: var(--aw-primary-text);display:grid;place-items:center;font-size:20px;font-weight:600"><span data-i18n="detail-page:text.007">终</span></div>
     <div style="flex:1">
       <div class="row" style="margin-bottom:10px"><h3 style="margin:0;font-size:18px"><span data-i18n="detail-page:text.008">终端-上海-001</span></h3><span class="status-dot online"><span data-i18n="detail-page:text.009">在线</span></span><span class="tag tag-blue">Android 11</span></div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px 24px;font-size:13px">
+      <div class="detail-summary-grid">
         <div><div style="color:var(--aw-text-3);font-size:12px">SN</div><code>DEV-86420075-IMEI</code></div>
         <div><div style="color:var(--aw-text-3);font-size:12px"><span data-i18n="detail-page:text.010">所属机构</span></div><span data-i18n="detail-page:text.011">上海 / 黄浦</span></div>
         <div><div style="color:var(--aw-text-3);font-size:12px"><span data-i18n="detail-page:text.012">固件</span></div>v3.4.2</div>

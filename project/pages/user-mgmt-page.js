@@ -6,8 +6,8 @@
   <h2><span data-i18n="user-mgmt-page:text.002">账户权限 UserMgmtPage</span></h2>
   <p class="lede"><span data-i18n="user-mgmt-page:text.003">账户权限页管理账号、机构、角色、菜单权限和数据权限。权限文案必须说明作用域、影响对象和保存后的结果。</span></p>
 
-  <div class="surface" style="padding:0;overflow:hidden">
-    <div style="display:flex;align-items:stretch;height:560px">
+  <div class="surface blueprint-shell-surface" style="padding:0">
+    <div class="blueprint-split-shell">
       <!-- 左:机构树 -->
       <div class="ota-tree">
         <div class="ot-h">
@@ -31,8 +31,8 @@
       <div class="ota-main">
         <div class="lp-toolbar">
           <div class="row" style="gap:12px;flex:1;min-width:0">
-            <div style="min-width:160px"><label><span data-i18n="user-mgmt-page:text.014">姓名</span></label><input class="input" placeholder="搜索姓名" data-i18n-placeholder="user-mgmt-page:text.015" /></div>
-            <div style="min-width:160px"><label><span data-i18n="user-mgmt-page:text.016">登录账号</span></label><input class="input" placeholder="账号 / 工号" data-i18n-placeholder="user-mgmt-page:text.017" /></div>
+            <div class="filter-field"><label><span data-i18n="user-mgmt-page:text.014">姓名</span></label><input class="input" placeholder="搜索姓名" data-i18n-placeholder="user-mgmt-page:text.015" /></div>
+            <div class="filter-field"><label><span data-i18n="user-mgmt-page:text.016">登录账号</span></label><input class="input" placeholder="账号 / 工号" data-i18n-placeholder="user-mgmt-page:text.017" /></div>
             <button class="btn btn-primary btn-sm"><span data-i18n="user-mgmt-page:text.018">查询</span></button>
             <button class="btn btn-sm"><span data-i18n="user-mgmt-page:text.019">重置</span></button>
           </div>
@@ -124,7 +124,7 @@
 
   <div class="surface" style="margin-top:24px">
     <h3 class="card-title"><span data-i18n="user-mgmt-page:text.070">添加 / 编辑账号 Modal</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px"><span data-i18n="user-mgmt-page:text.071">账号表单字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。表单还含</span> <b><span data-i18n="user-mgmt-page:text.072">时区 timeZone</span></b><span data-i18n="user-mgmt-page:text.073">(zone select,UTC±HH:MM 15 分钟粒度)与</span> <b><span data-i18n="user-mgmt-page:text.074">MFA 谷歌验证器 mfaSecretKey</span></b><span data-i18n="user-mgmt-page:text.075">(可解绑,二次确认);新增账号后自动生成密码并支持一键复制;账号状态 code '0' 正常 / '9' 禁用。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 14px"><span data-i18n="user-mgmt-page:text.071">账号表单字段与表格列对齐:机构 / 登录账号 / 姓名 / 邮箱 / 角色 / 备注 / 启停。表单还含</span> <b><span data-i18n="user-mgmt-page:text.072">时区 timeZone</span></b><span data-i18n="user-mgmt-page:text.073">（IANA zone select，如 Asia/Shanghai；优先用户偏好，其次租户默认，展示经 Intl 并自动处理 DST）与</span> <b><span data-i18n="user-mgmt-page:text.074">MFA 谷歌验证器 mfaSecretKey</span></b><span data-i18n="user-mgmt-page:text.075">(可解绑,二次确认);新增账号后自动生成密码并支持一键复制;账号状态 code '0' 正常 / '9' 禁用。</span></p>
     <div class="modal-stage" style="padding:32px">
       <div class="modal-demo" style="width:520px;max-width:100%">
         <div class="head"><h4><span data-i18n="user-mgmt-page:text.076">添加账号</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
@@ -134,7 +134,7 @@
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.079">登录账号</span></div><div><input class="input" placeholder="5–30 位数字 / 字母，且必须含字母" data-i18n-placeholder="user-mgmt-page:text.080" /></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.081">姓名</span></div><div><input class="input" /></div></div>
             <div class="form-row"><div class="lbl"><span data-i18n="user-mgmt-page:text.082">邮箱</span></div><div><input class="input" placeholder="选填,编辑时掩码跳过校验" data-i18n-placeholder="user-mgmt-page:text.083" /></div></div>
-            <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.084">时区</span></div><div><div class="select" style="width:100%"><span>UTC+08:00 ▾</span></div></div></div>
+            <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.084">时区</span></div><div><div class="select" style="width:100%"><span>Asia/Shanghai ▾</span></div></div></div>
             <div class="form-row"><div class="lbl">MFA</div><div><div class="row"><button type="button" class="switch" role="switch" aria-checked="false" aria-label="启用谷歌验证器" data-i18n-aria-label="user-mgmt-page:text.085"></button><span style="font-size:13px;color:var(--aw-text-2)" data-i18n="user-mgmt-page:text.085">启用谷歌验证器(可解绑,二次确认)</span></div></div></div>
             <div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="user-mgmt-page:text.086">角色</span></div><div><div class="select" style="width:100%"><span><span data-i18n="user-mgmt-page:text.087">选择角色 (可多选) ▾</span></span></div></div></div>
             <div class="form-row"><div class="lbl"><span data-i18n="user-mgmt-page:text.090">备注</span></div><div><input class="input" placeholder="选填,内部识别用" data-i18n-placeholder="user-mgmt-page:text.091" /></div></div>
@@ -160,7 +160,7 @@
   <div class="subsection">
     <h3><span data-i18n="user-mgmt-page:text.094">Figma 账户信息证据矩阵</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="user-mgmt-page:text.095">Figma 账户信息 canvas 覆盖机构管理、运营商管理、账号管理、角色管理和配置权限。设计系统落地时按“对象类型 + 作用域 + 可执行操作”拆分，不把所有权限放进一个通用表单。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface responsive-table" style="padding:0">
       <table class="map-table">
         <thead><tr><th style="width:18%"><span data-i18n="user-mgmt-page:text.096">对象</span></th><th style="width:28%"><span data-i18n="user-mgmt-page:text.097">Figma 证据帧 / 词</span></th><th style="width:28%"><span data-i18n="user-mgmt-page:text.098">关键字段</span></th><th><span data-i18n="user-mgmt-page:text.099">必须覆盖的状态</span></th></tr></thead>
         <tbody>
@@ -175,8 +175,8 @@
 
   <div class="subsection">
     <h3><span data-i18n="user-mgmt-page:text.116">配置权限 Drawer · 菜单权限 + 数据权限</span></h3>
-    <div class="surface" style="padding:0;overflow:hidden">
-      <div style="display:grid;grid-template-columns:280px minmax(0,1fr);min-height:360px">
+    <div class="surface" style="padding:0">
+      <div class="user-permission-layout">
         <div style="border-right:1px solid var(--aw-border-2);padding:16px;background:var(--aw-fill-1)">
           <h4 style="margin:0 0 12px;font-size:14px"><span data-i18n="user-mgmt-page:text.117">权限对象</span></h4>
           <div class="ot-row act"><span><span data-i18n="user-mgmt-page:text.118">上海运营中心</span></span><span class="ot-count"><span data-i18n="user-mgmt-page:text.119">机构</span></span></div>
@@ -192,7 +192,7 @@
             </div>
             <button class="btn btn-primary btn-sm"><span data-i18n="user-mgmt-page:text.126">保存权限</span></button>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="user-role-grid">
             <div class="surface" style="box-shadow:none">
               <div class="tag-meta" style="margin-bottom:10px"><span data-i18n="user-mgmt-page:text.127">菜单权限</span></div>
               <div class="ot-row"><span class="ot-arrow">▾</span><span><span data-i18n="user-mgmt-page:text.128">数据中心</span></span><span class="ot-count"><span data-i18n="user-mgmt-page:text.129">半选</span></span></div>

@@ -86,6 +86,7 @@
     "text.082": "--aw-primary (selected · checked · drop indicator) · --aw-primary-bg (selected background)",
     "text.083": "Depth indentation: 16px per layer (depth-N: padding-left = 12 + N × 16)",
     "text.084": "checkStrictly:",
-    "text.085": "."
+    "text.085": ".",
+    "attr.086.ariaLabel": "Search organizations or groups"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

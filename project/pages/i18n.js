@@ -4,21 +4,21 @@
 <!-- I18N -->
 <section class="section" id="i18n">
   <p class="section-eyebrow"><span data-i18n="i18n:t001">设计基础 · 国际化</span></p>
-  <h2><span data-i18n="i18n:t002">多语言 Internationalization</span></h2>
-  <p class="lede"><span data-i18n="i18n:t003">本静态文档站支持 zh-CN / en-US 双语言，站点自身使用无依赖 data-i18n runtime 与 route catalog；业务 React 落地再使用</span> <span class="mono">ConfigProvider locale</span><span data-i18n="i18n:t004">与</span> <span class="mono">react-i18next</span> <span data-i18n="i18n:t005">。所有可见文本必须通过 leaf-only data-i18n 或业务侧</span> <span class="mono">t('namespace.key')</span> <span data-i18n="i18n:t006">管理，禁止硬编码。</span></p>
+  <h2 role="heading" aria-level="1"><span data-i18n="i18n:t002">多语言 Internationalization</span></h2>
+  <p class="lede"><span data-i18n="i18n:t003">本静态文档站支持 zh-CN / en-US 双语言，使用无依赖 data-i18n runtime 与 route catalog；业务消费者支持 zh_CN / en / es / pt / fr / ru，通过</span> <span class="mono">ConfigProvider locale</span><span data-i18n="i18n:t004">与</span> <span class="mono">react-i18next</span> <span data-i18n="i18n:t005">协同。所有可见文本必须通过 leaf-only data-i18n 或业务侧</span> <span class="mono">t('namespace.key')</span> <span data-i18n="i18n:t006">管理，禁止硬编码。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="i18n:t007">翻译覆盖</span></h3>
     <div class="i18n-grid">
       <div class="i18n-card">
         <div class="lang-tag"><span><span data-i18n="i18n:t008">zh-CN · 简体中文</span></span><span class="flag">CN</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,316 / 6,316</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,182 / 6,182</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t010">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t011">来源</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)"><span data-i18n="i18n:t012">基准语言</span></div></div>
       </div>
       <div class="i18n-card">
         <div class="lang-tag"><span>en-US · English</span><span class="flag">US</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,316 / 6,316</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,182 / 6,182</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t014">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t015">维护人</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">Localization Team</div></div>
       </div>
@@ -34,7 +34,7 @@
         <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
-            <div class="row"><button class="btn btn-primary"><span data-i18n="i18n:t026">保存</span></button><button class="btn"><span data-i18n="i18n:t027">取消</span></button><button class="btn btn-ghost-danger"><span data-i18n="i18n:t028">删除</span></button></div>
+            <div class="row"><button class="btn btn-primary"><span data-i18n-ignore>保存</span></button><button class="btn"><span data-i18n-ignore>取消</span></button><button class="btn btn-ghost-danger"><span data-i18n-ignore>删除</span></button></div>
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
@@ -47,11 +47,11 @@
         <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
-            <table class="dt"><thead><tr><th><span data-i18n="i18n:t029">设备</span></th><th><span data-i18n="i18n:t030">所属机构</span></th><th><span data-i18n="i18n:t031">状态</span></th><th class="colactions"><span data-i18n="i18n:t032">操作</span></th></tr></thead></table>
+            <div class="i18n-demo-table-scroll"><table class="dt"><thead><tr><th><span data-i18n-ignore>设备</span></th><th><span data-i18n-ignore>所属机构</span></th><th><span data-i18n-ignore>状态</span></th><th class="colactions"><span data-i18n-ignore>操作</span></th></tr></thead></table></div>
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
-            <table class="dt"><thead><tr><th>Device</th><th>Organization</th><th>Status</th><th class="colactions">Actions</th></tr></thead></table>
+            <div class="i18n-demo-table-scroll"><table class="dt"><thead><tr><th>Device</th><th>Organization</th><th>Status</th><th class="colactions">Actions</th></tr></thead></table></div>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
         <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
-            <div class="row"><span class="status-dot online"><span data-i18n="i18n:t033">在线</span></span><span class="status-dot offline"><span data-i18n="i18n:t034">离线</span></span><span class="status-dot fault"><span data-i18n="i18n:t035">故障</span></span><span class="status-dot is-neutral"><span data-i18n="i18n:t036">屏幕锁定</span></span></div>
+            <div class="row"><span class="status-dot online"><span data-i18n-ignore>在线</span></span><span class="status-dot offline"><span data-i18n-ignore>离线</span></span><span class="status-dot fault"><span data-i18n-ignore>故障</span></span><span class="status-dot is-neutral"><span data-i18n-ignore>屏幕锁定</span></span></div>
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
@@ -73,7 +73,7 @@
         <div class="i18n-pair-grid">
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">zh-CN</div>
-            <div class="form-demo"><div class="form-row"><div class="lbl"><span class="req">*</span><span data-i18n="i18n:t037">设备名称</span></div><div><input class="input" placeholder="请输入设备名称"  data-i18n-placeholder="i18n:a038"/></div></div></div>
+            <div class="form-demo"><div class="form-row"><div class="lbl" data-i18n-ignore><span class="req">*</span>设备名称</div><div><input class="input" placeholder="请输入设备名称" data-i18n-ignore /></div></div></div>
           </div>
           <div>
             <div style="font-size:11px;color:var(--aw-text-3);margin-bottom:6px">en-US</div>
@@ -98,7 +98,7 @@
   <div class="subsection">
     <h3><span data-i18n="i18n:t055">Figma 国外版翻译证据 · 页面级对照</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="i18n:t056">Figma 的“国外版翻译”不是单纯词典，而是中文页面与英文页面的并排证据。实现时必须按页面族做 zh-CN / en-US 双语回归，不能只确认 key 存在。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface i18n-table-scroll" style="padding:0">
       <table class="tech-table">
         <thead><tr><th style="width:210px"><span data-i18n="i18n:t057">Figma 对照帧</span></th><th style="width:220px"><span data-i18n="i18n:t058">必须覆盖的 key 域</span></th><th><span data-i18n="i18n:t059">翻译与布局要求</span></th></tr></thead>
         <tbody>
@@ -111,7 +111,7 @@
         </tbody>
       </table>
     </div>
-    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="i18n:t072">国外版验收口径：</span></strong><span data-i18n="i18n:t073">每个被 Figma 标记为国外版的页面必须保存 zh-CN / en-US 双列截图，并核对导航、表头、按钮、状态、日期、数字、单位六类文本。</span></div></div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="i18n:t072">国外版验收口径：</span></strong><span data-i18n="i18n:t073">每个被 Figma 标记为国外版的页面必须保存 zh-CN / en-US 双列截图，并核对导航、表头、按钮、状态、日期、数字、单位七类文本。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -156,10 +156,10 @@
       <div class="surface" style="padding:14px">
         <h4><span data-i18n="i18n:t083">3. 日期 / 数字格式</span></h4>
         <div style="font-family:var(--aw-font-mono);font-size:11px;display:grid;grid-template-columns:50px 1fr;gap:4px 8px;color:var(--aw-text-2)">
-          <span style="color:var(--aw-text-3)">zh-CN</span><span>2026/04/12 14:30:08 · 12,486</span>
-          <span style="color:var(--aw-text-3)">en-US</span><span>04/12/2026 2:30 PM · 12,486</span>
+          <span style="color:var(--aw-text-3)">zh-CN</span><span>2026/04/12 14:30:08 GMT+8 · 12,486</span>
+          <span style="color:var(--aw-text-3)">en-US</span><span>Apr 12, 2026, 2:30:08 PM GMT+8 · 12,486</span>
         </div>
-        <p style="font-size:11px;color:var(--aw-text-3);margin:8px 0 0"><span data-i18n="i18n:t084">必须用</span> <span class="mono">Intl.DateTimeFormat / NumberFormat</span><span data-i18n="i18n:t085">，禁止字符串拼接。</span></p>
+        <p style="font-size:11px;color:var(--aw-text-3);margin:8px 0 0"><span data-i18n="i18n:t084">必须用</span> <span class="mono">Intl.DateTimeFormat / NumberFormat</span><span data-i18n="i18n:t085">并传入策略解析出的 IANA timeZone，禁止字符串拼接或无声明地默用运行环境时区。</span></p>
       </div>
     </div>
   </div>
@@ -167,7 +167,7 @@
   <div class="subsection">
     <h3><span data-i18n="i18n:t086">长文本溢出 · 三处常见兜底</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="i18n:t087">侧栏菜单、按钮、表头是 i18n 长文本灾区。每处的兜底策略不同。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface i18n-table-scroll" style="padding:0">
       <table class="tech-table">
         <thead><tr><th style="width:140px"><span data-i18n="i18n:t088">位置</span></th><th style="width:200px"><span data-i18n="i18n:t089">兜底策略</span></th><th><span data-i18n="i18n:t090">说明</span></th></tr></thead>
         <tbody>
@@ -187,10 +187,10 @@
     <div class="surface" style="padding:14px">
       <div style="font-family:var(--aw-font-mono);font-size:12px;line-height:1.7;color:var(--aw-text-2)">
         <div style="color:var(--aw-text-3)">// locales/&lt;lang&gt;/device.json</div>
-        <div><b style="color:var(--aw-primary)">zh-CN</b>:  <span style="color:var(--aw-success)">"upgrade.confirm"</span>: <span style="color:#CF1322"><span data-i18n="i18n:t108">"升级 {{count}} 台设备？"</span></span>  <span style="color:var(--aw-text-4)"><span data-i18n="i18n:t109">// 中文不区分单复数</span></span></div>
-        <div style="margin-top:6px"><b style="color:var(--aw-primary)">en-US</b>:</div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span style="color:#CF1322">"Upgrade 1 device?"</span></div>
-        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span style="color:#CF1322">"Upgrade {{count}} devices?"</span></div>
+        <div><b style="color: var(--aw-primary-text)">zh-CN</b>:  <span style="color:var(--aw-success)">"upgrade.confirm"</span>: <span class="i18n-code-string"><span data-i18n-ignore>"升级 {{count}} 台设备？"</span></span>  <span style="color:var(--aw-text-4)"><span data-i18n-ignore>// 中文不区分单复数</span></span></div>
+        <div style="margin-top:6px"><b style="color: var(--aw-primary-text)">en-US</b>:</div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_one"</span>: <span class="i18n-code-string">"Upgrade 1 device?"</span></div>
+        <div style="padding-left:16px"><span style="color:var(--aw-success)">"upgrade.confirm_other"</span>: <span class="i18n-code-string">"Upgrade {{count}} devices?"</span></div>
         <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="i18n:t110">// 调用</span></div>
         <div>t(<span style="color:var(--aw-success)">'upgrade.confirm'</span>, { count })  <span style="color:var(--aw-text-4)"><span data-i18n="i18n:t111">// i18next 自动取 _one / _other</span></span></div>
       </div>
@@ -202,38 +202,44 @@
     <h3><span data-i18n="i18n:t114">Intl 完整样例 · 日期 / 数字 / 货币</span></h3>
     <div class="surface" style="padding:14px">
       <div style="font-family:var(--aw-font-mono);font-size:12px;line-height:1.85;color:var(--aw-text-2)">
-        <div style="color:var(--aw-text-3)"><span data-i18n="i18n:t115">// 日期</span></div>
-        <div>new <b>Intl.DateTimeFormat</b>(locale, { dateStyle: <span style="color:#CF1322">'medium'</span>, timeStyle: <span style="color:#CF1322">'short'</span> }).format(d)</div>
+        <div style="color:var(--aw-text-3)"><span data-i18n="i18n:t115">// 日期：instant 来自 RFC 3339；timeZone 按用户 / 租户 → 运行时 IANA → UTC 解析</span></div>
+        <div>const instant = new Date(<span class="i18n-code-string">'2026-04-12T06:30:00Z'</span>)</div>
+        <div>const preferredZone = user.timeZone ?? tenant.timeZone</div>
+        <div>const runtimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone</div>
+        <div>const isIanaZone = zone =&gt; { try { return !!zone &amp;&amp; !!new Intl.DateTimeFormat(<span class="i18n-code-string">'en'</span>, { timeZone: zone }) } catch { return false } }</div>
+        <div>const timeZone = isIanaZone(preferredZone) ? preferredZone : isIanaZone(runtimeZone) ? runtimeZone : <span class="i18n-code-string">'UTC'</span></div>
+        <div>new <b>Intl.DateTimeFormat</b>(locale, { dateStyle: <span class="i18n-code-string">'medium'</span>, timeStyle: <span class="i18n-code-string">'short'</span>, timeZone }).format(instant)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)"><span data-i18n="i18n:t116">→ zh-CN: 2026年4月12日 14:30 · en-US: Apr 12, 2026, 2:30 PM</span></div>
         <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="i18n:t117">// 数字 (千分位)</span></div>
         <div>new <b>Intl.NumberFormat</b>(locale).format(12486)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)">→ zh-CN/en-US: 12,486</div>
         <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="i18n:t118">// 货币</span></div>
-        <div>new <b>Intl.NumberFormat</b>(locale, { style: <span style="color:#CF1322">'currency'</span>, currency: <span style="color:#CF1322">'USD'</span> }).format(1234.5)</div>
+        <div>new <b>Intl.NumberFormat</b>(locale, { style: <span class="i18n-code-string">'currency'</span>, currency: <span class="i18n-code-string">'USD'</span> }).format(1234.5)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)">→ zh-CN: US$1,234.50 · en-US: $1,234.50</div>
         <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="i18n:t119">// 相对时间</span></div>
-        <div>new <b>Intl.RelativeTimeFormat</b>(locale, { numeric: <span style="color:#CF1322">'auto'</span> }).format(-2, <span style="color:#CF1322">'minute'</span>)</div>
+        <div>new <b>Intl.RelativeTimeFormat</b>(locale, { numeric: <span class="i18n-code-string">'auto'</span> }).format(-2, <span class="i18n-code-string">'minute'</span>)</div>
         <div style="padding-left:16px;color:var(--aw-text-4)"><span data-i18n="i18n:t120">→ zh-CN: 2 分钟前 · en-US: 2 minutes ago</span></div>
       </div>
     </div>
     <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong><span data-i18n="i18n:t121">禁止字符串拼接：</span></strong><code>&#96;&#36;{y}-&#36;{m}-&#36;{d}&#96;</code> <span data-i18n="i18n:t122">在不同 locale 下顺序错乱。所有日期 / 数字必须经 Intl 输出。</span></div></div>
+    <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><strong><span data-i18n="i18n:t150">传输边界：</span></strong><span data-i18n="i18n:t151">API / 存储传递 RFC 3339 UTC instant，计划任务与偏好传递 IANA zone id；</span><code>Intl.DateTimeFormat</code><span data-i18n="i18n:t152">只负责用户展示，</span><span data-i18n="i18n:t153">不得把本地化字符串再提交为接口时间值。</span></div></div>
   </div>
 
   <div class="subsection">
     <h3><span data-i18n="i18n:t123">双语回归对照 · 同一界面 2 列</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="i18n:t124">每次添加 / 修改 i18n key 后，对照 zh-CN 与 en-US 的长度差异。英文通常更长，按钮、表头和侧栏是主要溢出风险。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface i18n-table-scroll" style="padding:0">
       <table class="tech-table">
         <thead><tr><th style="width:120px"><span data-i18n="i18n:t125">位置 / Key</span></th><th>zh-CN</th><th>en-US</th></tr></thead>
         <tbody>
-          <tr><td>nav.devices</td><td><span data-i18n="i18n:t126">设备管理</span></td><td>Devices</td></tr>
-          <tr><td>nav.ota</td><td><span data-i18n="i18n:t127">OTA 升级</span></td><td>OTA Upgrade</td></tr>
-          <tr><td>action.batchUpgrade</td><td><span data-i18n="i18n:t128">批量升级</span></td><td>Batch Upgrade</td></tr>
-          <tr><td>btn.saveSettings</td><td><span data-i18n="i18n:t129">保存设置</span></td><td>Save Settings</td></tr>
-          <tr><td>col.lastOnline</td><td><span data-i18n="i18n:t130">最后心跳</span></td><td>Last Heartbeat</td></tr>
-          <tr><td>status.upgrading</td><td><span data-i18n="i18n:t131">升级中</span></td><td>Upgrading</td></tr>
-          <tr><td>placeholder.search</td><td><span data-i18n="i18n:t132">搜索 SN / 名称 / 负责人</span></td><td>Search by SN, name, or owner</td></tr>
-          <tr><td>tooltip.battery</td><td><span data-i18n="i18n:t133">电池电量低于 20%</span></td><td>Battery below 20%</td></tr>
+          <tr><td>nav.devices</td><td data-i18n-ignore>设备管理</td><td>Devices</td></tr>
+          <tr><td>nav.ota</td><td data-i18n-ignore>OTA 升级</td><td>OTA Upgrade</td></tr>
+          <tr><td>action.batchUpgrade</td><td data-i18n-ignore>批量升级</td><td>Batch Upgrade</td></tr>
+          <tr><td>btn.saveSettings</td><td data-i18n-ignore>保存设置</td><td>Save Settings</td></tr>
+          <tr><td>col.lastOnline</td><td data-i18n-ignore>最后心跳</td><td>Last Heartbeat</td></tr>
+          <tr><td>status.upgrading</td><td data-i18n-ignore>升级中</td><td>Upgrading</td></tr>
+          <tr><td>placeholder.search</td><td data-i18n-ignore>搜索 SN / 名称 / 负责人</td><td>Search by SN, name, or owner</td></tr>
+          <tr><td>tooltip.battery</td><td data-i18n-ignore>电池电量低于 20%</td><td>Battery below 20%</td></tr>
         </tbody>
       </table>
     </div>
@@ -244,7 +250,7 @@
     <h3><span data-i18n="i18n:t136">反例</span></h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="i18n:t137">禁止</span> <code>'已删除 ' + n + ' 台设备'</code> <span data-i18n="i18n:t138">这样的字符串拼接：</span></strong><span data-i18n="i18n:t139">无法翻译为复数语言；改用 i18next 复数 key 与</span> <code>{{count}}</code> <span data-i18n="i18n:t140">占位符。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="i18n:t141">禁止把字段名写死成英文：</span></strong><span data-i18n="i18n:t142">如</span> <code>label: "Battery"</code><span data-i18n="i18n:t143">。所有用户可见文本必须</span> <code>t('field.battery')</code><span data-i18n="i18n:t144">，包括 placeholder、tooltip、错误信息。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="i18n:t145">禁止从浏览器 Date 拼日期：</span></strong><code>d.toLocaleDateString()</code> <span data-i18n="i18n:t146">看似支持 i18n 但格式不可控（不同浏览器输出不同）。一律 Intl。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="i18n:t145">禁止无声明的时区默认：</span></strong><code>d.toLocaleDateString()</code> <span data-i18n="i18n:t146">会隐式采用运行环境。消费者必须声明策略：优先用户 / 租户 IANA zone；未配置时显式使用 resolvedOptions().timeZone，无法解析再回退 UTC。</span></div></div>
   </div>
 
   <div class="subsection">

@@ -50,7 +50,7 @@
   width: 26px; height: 26px;
   border-radius: 6px;
   background: var(--aw-primary-bg);
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   display: grid; place-items: center;
   font-family: var(--aw-font-mono);
   font-size: 12px;
@@ -81,7 +81,7 @@
   padding: 1px 6px;
   border-radius: 3px;
   font-size: 11px;
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   margin-right: 4px;
 }
 .eco-card .eco-pkg-note {
@@ -109,7 +109,7 @@
 /* ---------- Mock-specific styles ---------- */
 /* Map mock — handled inline in SVG */
 /* Terminal mock */
-.term-mock { background: #1F2937; padding: 0; min-height: 140px; }
+.eco-card .term-mock { background: #1F2937; padding: 0; min-height: 140px; }
 .term-bar {
   height: 22px;
   background: #2D3748;
@@ -179,17 +179,16 @@
 .tree-mock .tn.dragging {
   background: var(--aw-bg);
   border: 1px dashed var(--aw-primary);
-  opacity: 0.85;
   box-shadow: 0 4px 12px rgba(0,82,204,0.18);
 }
 .tree-mock .tn.dragging .ghost {
   margin-left: auto;
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   font-size: 11px;
 }
 .tree-mock .tn.drop-target {
   background: var(--aw-primary-bg);
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   font-weight: 500;
 }
 .tree-mock .tn .drop-line {
@@ -253,7 +252,7 @@
   border-right: 1px solid var(--aw-border-3);
   font-family: var(--aw-font-mono);
 }
-.sf-l .sf-key { color: var(--aw-primary); margin-top: 4px; }
+.sf-l .sf-key { color: var(--aw-primary-text); margin-top: 4px; }
 .sf-l .sf-val { color: var(--aw-text-2); padding-left: 12px; font-size: 10px; }
 .sf-r .sf-row {
   display: flex; align-items: center; gap: 10px;
@@ -278,8 +277,8 @@
 .sf-r .sf-btn {
   height: 24px;
   padding: 0 12px;
-  background: var(--aw-primary);
-  color: white;
+  background: var(--aw-primary-solid);
+  color: var(--aw-text-on-brand);
   border-radius: 4px;
   display: inline-flex; align-items: center;
   font-size: 11px;
@@ -287,7 +286,7 @@
 }
 
 /* CodeEditor mock */
-.code-mock {
+.eco-card .code-mock {
   background: #1F2329;
   padding: 8px 0;
   min-height: 140px;
@@ -371,7 +370,7 @@
   margin-bottom: -1px;
 }
 .export-mock .ex-tab.act {
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   border-bottom-color: var(--aw-primary);
   font-weight: 500;
 }
@@ -450,7 +449,7 @@
 }
 .tech-table tr.tech-group td {
   background: linear-gradient(90deg, var(--aw-primary-bg) 0%, transparent 100%);
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   font-weight: 600;
   font-size: 12px;
   padding: 8px 14px;

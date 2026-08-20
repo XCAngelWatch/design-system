@@ -110,7 +110,7 @@
           <div class="ls-h"><span data-i18n="login-page:text.059">邮箱验证</span></div>
           <div class="ls-sub"><span data-i18n="login-page:text.060">已发送验证码到 david@***.com</span></div>
           <div class="ls-otp"><span>4</span><span>2</span><span>9</span><span></span><span></span><span></span></div>
-          <div class="ls-link disabled"><span data-i18n="login-page:text.061">重新发送（54s）</span></div>
+          <button type="button" class="ls-link disabled" disabled><span data-i18n="login-page:text.061">重新发送（54s）</span></button>
           <div class="ls-btn"><span data-i18n="login-page:text.062">提交</span></div>
         </div>
       </div>
@@ -189,7 +189,7 @@
   <div class="subsection">
     <h3><span data-i18n="login-page:text.082">规范要点</span></h3>
     <div class="alert info"><div class="ico">i</div><div class="content"><strong><span data-i18n="login-page:text.083">语言切换：右上 inline。</span></strong><span data-i18n="login-page:text.084">取代现网 footer popover 形态，符合 antd v6 习惯，且多语种切换不应被埋在最底端。</span></div></div>
-    <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><strong><span data-i18n="login-page:text.085">背景图、ICP、产品名、Logo 均为白标 token</span></strong><span data-i18n="login-page:text.086">，参见</span> <a href="#/whitelabel" style="color:var(--aw-primary)"><span data-i18n="login-page:text.087">白标 / 租户主题</span></a> <span data-i18n="login-page:text.088">章节。</span></div></div>
+    <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><strong><span data-i18n="login-page:text.085">背景图、ICP、产品名、Logo 均为白标 token</span></strong><span data-i18n="login-page:text.086">，参见</span> <a href="#/whitelabel" style="color: var(--aw-primary-text)"><span data-i18n="login-page:text.087">白标 / 租户主题</span></a> <span data-i18n="login-page:text.088">章节。</span></div></div>
     <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="login-page:text.089">MFA / 邮箱验证 / 强制改密 / 风控验证</span></strong><span data-i18n="login-page:text.090">均由后端认证响应决定；</span><span data-i18n="login-page:text.091">前端只按返回步骤渲染，不把邮箱当作默认登录账号，也不自行常驻验证码。认证字段名必须先进入业务能力契约。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="login-page:text.092">反例：</span></strong><span data-i18n="login-page:text.093">不要把"忘记密码"做成新弹窗叠在登录卡上 — 多步流程在原表单区切换更稳，避免移动端遮挡。</span></div></div>
   </div>

@@ -3,8 +3,8 @@
 <div class="content">
 <section class="section" id="data-format">
 <p class="section-eyebrow"><span data-i18n="data-format:t001">工程落地 · 数据格式</span></p>
-<h2><span data-i18n="data-format:t002">数据格式 Data Format</span></h2>
-<p class="lede"><span data-i18n="data-format:t003">数字、日期、设备标识、文件大小、敏感数据、空值、错误 —— 七类高频展示数据的格式收口规范。所有格式化必须走</span> <code>Intl.*</code> <span data-i18n="data-format:t004">API 或</span> <code>@tms/format</code> <span data-i18n="data-format:t005">工具包，禁止手写</span> <code>toLocaleString</code> <span data-i18n="data-format:t006">散落在业务代码。</span></p>
+<h2 role="heading" aria-level="1"><span data-i18n="data-format:t002">数据格式 Data Format</span></h2>
+<p class="lede"><span data-i18n="data-format:t003">数字、日期、设备标识、文件大小、敏感数据、空值、错误 —— 七类高频展示数据的格式收口规范。所有用户展示格式必须走</span> <code>Intl.*</code> <span data-i18n="data-format:t004">API 或消费者仓库的</span> <code>src/utils/format.ts</code> <span data-i18n="data-format:t005">统一工具，禁止手写</span> <code>toLocaleString</code> <span data-i18n="data-format:t006">散落在业务代码。</span></p>
 <div class="subsection">
 <h3><span data-i18n="data-format:t007">数字 · Number</span></h3>
 <table class="map-table">
@@ -21,16 +21,17 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="data-format:t030">日期与时间 · Date &amp; Time</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t031">系统统一 ISO 8601 风格</span> <code>yyyy-MM-dd HH:mm:ss</code><span data-i18n="data-format:t032">，24 小时制。运维场景必须显示秒（故障定位精度）。时区显式标注 UTC 偏移</span> <code>+08:00</code><span data-i18n="data-format:t033">，多租户跨时区场景必标，禁止默认浏览器时区。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t031">接口与存储传输时间点使用 RFC 3339 UTC instant，例如</span> <code>2026-04-28T06:32:18Z</code><span data-i18n="data-format:t032">；计划任务与用户偏好另存 IANA 时区，例如</span> <code>Asia/Shanghai</code><span data-i18n="data-format:t033">。消费者必须声明展示时区策略：优先用户 / 租户 IANA zone；尚未配置时可显式采用 Intl.DateTimeFormat().resolvedOptions().timeZone 作为 IANA fallback，无法解析再回退 UTC。不得用固定偏移冒充 IANA / DST 规则。</span></p>
 <table class="map-table">
 <thead><tr><th style="width:24%"><span data-i18n="data-format:t034">场景</span></th><th style="width:34%"><span data-i18n="data-format:t035">格式</span></th><th><span data-i18n="data-format:t036">使用规则</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t037">完整日期时间</span></td><td><span class="mono">2026-04-28 14:32:18 +08:00</span></td><td><span data-i18n="data-format:t038">故障日志 / 审计 / 推送时间 / 操作记录 —— 一切需要精确定位的场景</span></td></tr>
-<tr><td><span data-i18n="data-format:t039">仅日期</span></td><td><span class="mono">2026-04-28</span></td><td><span data-i18n="data-format:t040">报表 / 筛选条件 / 截止日期</span></td></tr>
-<tr><td><span data-i18n="data-format:t041">仅时间</span></td><td><span class="mono">14:32:18</span></td><td><span data-i18n="data-format:t042">同日内的事件序列；秒位非必须时省略</span> <span class="mono">14:32</span></td></tr>
+<tr><td><span data-i18n="data-format:t037">传输 / 存储时间点</span></td><td><span class="mono">2026-04-28T06:32:18Z</span></td><td><span data-i18n="data-format:t038">API、持久化与机器日志使用可排序的 UTC instant；展示前解析为时间点</span></td></tr>
+<tr><td><span data-i18n="data-format:t178">用户完整日期时间</span></td><td><span class="mono">zh-CN: 2026/04/28 14:32:18 GMT+8<br/>en-US: Apr 28, 2026, 2:32:18 PM GMT+8</span></td><td><span data-i18n="data-format:t179">故障日志 / 审计 / 推送 / 操作记录使用 Intl 与策略解析出的 IANA timeZone；需要精确定位时显示秒和时区名 / 偏移</span></td></tr>
+<tr><td><span data-i18n="data-format:t039">仅日期</span></td><td><span class="mono">zh-CN: 2026/04/28<br/>en-US: Apr 28, 2026</span></td><td><span data-i18n="data-format:t040">报表 / 筛选条件 / 截止日期使用 Intl dateStyle；不要手拼固定顺序</span></td></tr>
+<tr><td><span data-i18n="data-format:t041">仅时间</span></td><td><span class="mono">zh-CN: 14:32<br/>en-US: 2:32 PM</span></td><td><span data-i18n="data-format:t042">同日事件序列使用 Intl timeStyle / hourCycle；秒位只在精度场景保留</span></td></tr>
 <tr><td><span data-i18n="data-format:t043">相对时间</span></td><td><span data-i18n="data-format:t044">"刚刚 / 5 分钟前 / 2 小时前 / 昨天 14:32"</span></td><td><span data-i18n="data-format:t045">实时性 ≤ 7 天的列表；超 7 天回退绝对时间。tooltip 始终显示绝对时间</span></td></tr>
 <tr><td><span data-i18n="data-format:t046">当日切换</span></td><td><span data-i18n="data-format:t047">"今天 14:32" / "昨天 14:32"</span></td><td><span data-i18n="data-format:t048">设备最近心跳 / 最近上线 等高频比对场景</span></td></tr>
-<tr><td><span data-i18n="data-format:t049">时间区间</span></td><td><span class="mono">2026-04-01 ~ 2026-04-28</span></td><td><span data-i18n="data-format:t050">RangePicker 默认分隔符波浪号；半角破折号 - 易与负号混淆</span></td></tr>
+<tr><td><span data-i18n="data-format:t049">时间区间</span></td><td><span class="mono">Intl.DateTimeFormat(...).formatRange(start, end)</span></td><td><span data-i18n="data-format:t050">优先使用 locale 感知的 formatRange；组件分隔符不得代替日期本身的本地化</span></td></tr>
 <tr><td><span data-i18n="data-format:t051">持续时长</span></td><td><span data-i18n="data-format:t052">"3天 5小时 12分" / "5h 12m" / "23s"</span></td><td><span data-i18n="data-format:t053">OTA 累计耗时 / 离线时长 / 升级用时；超 24h 用"天/小时/分"，否则用</span> <span class="mono">h/m/s</span></td></tr>
 </tbody>
 </table>
@@ -114,9 +115,9 @@
 <div class="surface" style="border-left:3px solid var(--aw-success)">
 <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)">✓ DO</h3>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-<li><span data-i18n="data-format:t142">所有数字 / 日期通过</span> <code>@tms/format</code> <span data-i18n="data-format:t143">包格式化</span></li>
+<li><span data-i18n="data-format:t142">所有数字 / 日期通过</span> <code>Intl.*</code> / <code>src/utils/format.ts</code> <span data-i18n="data-format:t143">统一格式化</span></li>
 <li><span data-i18n="data-format:t144">表格数字列右对齐 +</span> <code>font-variant-numeric: tabular-nums</code></li>
-<li><span data-i18n="data-format:t145">跨时区场景显式标注</span> <code>+HH:mm</code> <span data-i18n="data-format:t146">偏移</span></li>
+<li><span data-i18n="data-format:t145">消费者声明展示时区策略：</span> <code>user / tenant IANA → resolvedOptions().timeZone → UTC</code> <span data-i18n="data-format:t146">，并按目标 instant 派生当时偏移</span></li>
 <li><span data-i18n="data-format:t147">设备 SN / IMEI / IP / MAC 一律 monospace</span></li>
 <li><span data-i18n="data-format:t148">空值统一用 em dash</span> <span class="mono">—</span></li>
 <li><span data-i18n="data-format:t149">脱敏规则前后端一致（前端不能能解还原）</span></li>
@@ -126,7 +127,7 @@
 <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)">✕ DON'T</h3>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
 <li><span data-i18n="data-format:t150">不要在业务代码写</span> <code>new Date().toLocaleString()</code></li>
-<li><span data-i18n="data-format:t151">不要用 12 小时制 + AM/PM（运维场景容易出错）</span></li>
+<li><span data-i18n="data-format:t151">不要强制所有 locale 使用 24 小时制；遵循 locale / 用户 hourCycle，审计导出可另定 24 小时机器格式</span></li>
 <li><span data-i18n="data-format:t152">不要并存"暂无 / N/A / 无 / 空"多种空值表达</span></li>
 <li><span data-i18n="data-format:t153">不要用</span> <span class="mono">$</span> <span data-i18n="data-format:t154">表示 CNY，用</span> <span class="mono">¥</span> <span data-i18n="data-format:t155">或 ISO 代码</span></li>
 <li><span data-i18n="data-format:t156">不要在表格内换行展示长 ID（用 monospace + ellipsis + tooltip）</span></li>
@@ -137,16 +138,16 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="data-format:t158">领域字典源</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t159">以下字典纳入</span> <code>@tms/dict</code><span data-i18n="data-format:t160">,用对象数组 schema,不用扁平 string[]。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t159">领域值由 API / 后端契约或国际标准维护；前端只在类型化模块中保存稳定 code 与 UI 映射，</span><span data-i18n="data-format:t160">不复制一份自封闭的扁平字符串字典。</span></p>
 <table class="map-table">
 <thead><tr><th><span data-i18n="data-format:t161">字典</span></th><th><span data-i18n="data-format:t162">旧 schema</span></th><th><span data-i18n="data-format:t163">升级方向</span></th><th><span data-i18n="data-format:t164">样例</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t165">时区 zone</span></td><td><code>string[]</code> <span data-i18n="data-format:t166">UTC±HH:MM,15 分钟粒度,113 项(含 UTC-13:45)</span></td><td><span data-i18n="data-format:t167">对象数组 + IANA 名映射,供 timezone select</span></td><td><span class="mono">UTC+08:00 / UTC-05:00 / UTC+00:00</span></td></tr>
+<tr><td><span data-i18n="data-format:t165">时区 zone</span></td><td><code>UTC±HH:MM string[]</code> <span data-i18n="data-format:t166">固定偏移（不含 DST / 历史规则）</span></td><td><span data-i18n="data-format:t167">存 IANA zone id；显示当前偏移时按目标 instant 动态派生</span></td><td><span class="mono">Asia/Shanghai / America/New_York / Etc/UTC</span></td></tr>
 <tr><td><span data-i18n="data-format:t168">错误码 errorCode</span></td><td><code>{code→message}</code> + <code>default</code> <span data-i18n="data-format:t169">兜底</span></td><td><span data-i18n="data-format:t170">扩 OTA/推送/设备领域 + 接 i18n(旧仅英文写死)</span></td><td><span class="mono">401/404/429 + default</span></td></tr>
-<tr><td><span data-i18n="data-format:t171">国家 country</span></td><td><code>string[]</code> <span data-i18n="data-format:t172">ISO-3166 alpha-2,240+ 项</span></td><td><code>{code, name_en, name_zh}</code> <span data-i18n="data-format:t173">对象数组</span></td><td><span class="mono">CN / US / JP / DE / BR</span></td></tr>
+<tr><td><span data-i18n="data-format:t171">国家 country</span></td><td><code>{code, name_en, name_zh}</code> <span data-i18n="data-format:t172">手工复制多语言名称</span></td><td><code>ISO-3166 alpha-2 code</code> + <code>Intl.DisplayNames</code> <span data-i18n="data-format:t173">按 locale 展示</span></td><td><span class="mono">CN / US / JP / DE / BR</span></td></tr>
 </tbody>
 </table>
-<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><span data-i18n="data-format:t174">语言名不进字典池,用</span> <code>Intl.DisplayNames(locale, {'{type:"language"}'}).of(code)</code><span data-i18n="data-format:t175">。时区 15 分钟粒度比标准 IANA 更适合"运维手动选偏移"场景。</span></p>
+<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><span data-i18n="data-format:t174">语言名 / 国家名优先用</span> <code>Intl.DisplayNames</code><span data-i18n="data-format:t175">。时区选择值必须是 IANA zone id；未配置时把运行时 resolvedOptions().timeZone 作为显式 IANA fallback，无法解析再用 UTC。UTC 偏移只是某个 instant 下的派生展示值，不能作为时区身份。</span></p>
 </div>
 </section>
 </div>

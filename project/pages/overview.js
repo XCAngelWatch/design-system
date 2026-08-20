@@ -5,7 +5,7 @@
   <div class="hero-inner">
     <div class="hero-eyebrow" data-i18n="overview:hero.eyebrow">AngelWatch · TMS 设计系统</div>
     <h1><span data-i18n="overview:hero.titlePrefix">面向</span><em data-i18n="overview:hero.titleEm">Android 终端管理</em><span data-i18n="overview:hero.titleSuffix">的统一视觉与交互语言。</span></h1>
-    <p data-i18n="overview:hero.desc">基于 Ant Design v6，为设备管理、应用分发、OTA 升级、推送任务和数据监控校准高密度后台体验。它是运维人员与 IT 管理员每天高频使用的设计规范源；Light + Dark 双主题，zh-CN / en-US 双语言，均自托管，内网部署，离线可用。</p>
+    <p data-i18n="overview:hero.desc">基于 Ant Design v6，为设备管理、应用分发、OTA 升级、推送任务和数据监控校准高密度后台体验。它提供 Light / Dark 与 zh-CN / en-US，可在内网离线运行；字体由 local() / 系统字体栈解析，不发网络请求。若需跨机确定性，先提交有许可证记录的 WOFF2。</p>
     <div class="hero-meta">
       <div><strong>120</strong><span data-i18n="overview:hero.meta.tokens">设计 Token</span></div>
       <div><strong>26</strong><span data-i18n="overview:hero.meta.components">组件与模式</span></div>

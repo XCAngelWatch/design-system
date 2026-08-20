@@ -33,12 +33,12 @@
         <div class="bp-main">
           <div class="bp-toolbar"><input class="input" placeholder="搜索设备名称 / SN / IMEI" data-i18n-placeholder="map-page:text.026" /><div class="select"><span><span data-i18n="map-page:text.027">开始时间 ▾</span></span></div><div class="select"><span><span data-i18n="map-page:text.028">结束时间 ▾</span></span></div><button class="btn"><span data-i18n="map-page:text.029">查询</span></button></div>
           <div class="surface" style="min-height:280px;padding:0;overflow:hidden">
-            <div style="height:280px;position:relative;background:var(--aw-fill-1);border-bottom:1px solid var(--aw-border-3)">
-              <div style="position:absolute;inset:0;background-image:linear-gradient(var(--aw-border-3) 1px, transparent 1px),linear-gradient(90deg,var(--aw-border-3) 1px, transparent 1px);background-size:32px 32px;opacity:.55"></div>
-              <div style="position:absolute;left:12%;top:28%;padding:6px 8px;border-radius:999px;background:var(--aw-bg);border:1px solid var(--aw-primary);color:var(--aw-primary);font-size:12px;box-shadow:var(--aw-shadow-2)"><span data-i18n="map-page:text.030">DEV-86420075 · 在线</span></div>
-              <div style="position:absolute;left:54%;top:48%;padding:6px 8px;border-radius:999px;background:var(--aw-bg);border:1px solid var(--aw-warning);color:var(--aw-warning);font-size:12px;box-shadow:var(--aw-shadow-2)"><span data-i18n="map-page:text.031">围栏警告 · 待处理</span></div>
-              <div style="position:absolute;left:32%;top:18%;width:220px;height:120px;border:2px dashed var(--aw-primary);border-radius:18px;background:var(--aw-primary-bg)"></div>
-              <div style="position:absolute;right:12px;bottom:12px;width:220px;border:1px solid var(--aw-border-3);border-radius:var(--aw-radius);background:var(--aw-bg);padding:10px;font-size:12px;color:var(--aw-text-2)">
+            <div class="map-demo-canvas">
+              <div class="map-demo-grid"></div>
+              <div class="map-demo-fence" aria-hidden="true"></div>
+              <div class="map-demo-pin device"><span data-i18n="map-page:text.030">DEV-86420075 · 在线</span></div>
+              <div class="map-demo-pin warning"><span data-i18n="map-page:text.031">围栏警告 · 待处理</span></div>
+              <div class="map-demo-result">
                 <strong style="display:block;color:var(--aw-text-1);margin-bottom:6px"><span data-i18n="map-page:text.032">定位结果</span></strong>
                 <span data-i18n="map-page:text.033">终端-上海-001 · 位置上报 28 秒前</span><br/><span data-i18n="map-page:text.034">运营商：上海 / 黄浦 · 来源：GPS</span>
               </div>

@@ -60,7 +60,7 @@
         <tr><td><code>--aw-dur-slow</code></td><td>320ms</td><td><code>motionDurationSlow</code></td><td><span data-i18n="motion:t040">0.3s ⚠ 多 20ms</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><span data-i18n="motion:t041">⚠ 所有标记的项必须在</span> <a href="#/config-provider" style="color:var(--aw-primary)">ConfigProvider</a> <span data-i18n="motion:t042">中显式覆盖到 antd token，否则 antd 内置组件用 antd 默认（视觉与 TMS 自有组件不一致）。详见 config-provider 页代码示例。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><span data-i18n="motion:t041">⚠ 所有标记的项必须在</span> <a href="#/config-provider" style="color: var(--aw-primary-text)">ConfigProvider</a> <span data-i18n="motion:t042">中显式覆盖到 antd token，否则 antd 内置组件用 antd 默认（视觉与 TMS 自有组件不一致）。详见 config-provider 页代码示例。</span></p>
   </div>
 
   <div class="subsection">

@@ -4,14 +4,14 @@
 <section class="section" id="feedback">
   <p class="section-eyebrow"><span data-i18n="feedback:text.001">通用组件 · 反馈</span></p>
   <h2><span data-i18n="feedback:text.002">反馈 Feedback</span></h2>
-  <p class="lede"><span data-i18n="feedback:text.003">Alert 用于持续状态；Message 用于轻量成功 / 信息；Notification 用于可追踪的异步摘要；Modal 用于阻塞确认；Result 用于异步终态。组件选择争议统一回到下表。</span></p>
+  <p class="lede"><span data-i18n="feedback:text.003">Alert 用于持续状态；Message 用于无需长时间阅读的即时操作反馈（成功或可原地重试的失败）；Notification 用于可追踪的异步摘要；Modal 用于阻塞确认；Result 用于异步终态。组件选择争议统一回到下表。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="feedback:text.004">反馈层级决策表</span></h3>
     <table class="map-table">
       <thead><tr><th style="width:18%"><span data-i18n="feedback:text.005">类型</span></th><th style="width:22%"><span data-i18n="feedback:text.006">触发场景</span></th><th style="width:18%"><span data-i18n="feedback:text.007">是否阻塞</span></th><th style="width:18%"><span data-i18n="feedback:text.008">消失方式</span></th><th><span data-i18n="feedback:text.009">选用条件</span></th></tr></thead>
       <tbody>
-        <tr><td><b>Message</b></td><td><span data-i18n="feedback:text.010">瞬时反馈 —— 保存成功 / 复制成功 / 已收藏</span></td><td><span data-i18n="feedback:text.011">否</span></td><td><span data-i18n="feedback:text.012">3 秒自动消失</span></td><td><span data-i18n="feedback:text.013">结果是</span><b><span data-i18n="feedback:text.014">成功</span></b><span data-i18n="feedback:text.015">且</span><b><span data-i18n="feedback:text.016">无需阅读</span></b><span data-i18n="feedback:text.017">；视觉位置顶部居中</span></td></tr>
+        <tr><td><b>Message</b></td><td><span data-i18n="feedback:text.010">瞬时反馈 —— 保存 / 复制成功，或可原地重试的操作失败</span></td><td><span data-i18n="feedback:text.011">否</span></td><td><span data-i18n="feedback:text.012">3 秒自动消失</span></td><td><span data-i18n="feedback:text.013">结果简短、</span><b><span data-i18n="feedback:text.014">当前上下文仍可见</span></b><span data-i18n="feedback:text.015">且</span><b><span data-i18n="feedback:text.016">无需下一步说明</span></b><span data-i18n="feedback:text.017">；不得作为页面 / 区域加载失败的唯一反馈</span></td></tr>
         <tr><td><b>Notification</b></td><td><span data-i18n="feedback:text.018">系统主动推送 —— 告警 / 完成回报 / 提醒</span></td><td><span data-i18n="feedback:text.019">否</span></td><td><span data-i18n="feedback:text.020">需手动关闭</span></td><td><span data-i18n="feedback:text.021">用户没在等结果但需要知道；右上角栈，可堆 ≤ 3 条</span></td></tr>
         <tr><td><b><span data-i18n="feedback:text.022">Alert 横条</span></b></td><td><span data-i18n="feedback:text.023">持续状态 —— 系统升级中 / 试用期剩余 / 限制提示</span></td><td><span data-i18n="feedback:text.024">否</span></td><td><span data-i18n="feedback:text.025">常驻直到状态变更</span></td><td><span data-i18n="feedback:text.026">整页或区域级横条；不阻塞操作</span></td></tr>
         <tr><td><b><span data-i18n="feedback:text.027">Inline 校验</span></b></td><td><span data-i18n="feedback:text.028">表单字段错误 —— 邮箱格式 / 密码强度</span></td><td><span data-i18n="feedback:text.029">否</span></td><td><span data-i18n="feedback:text.030">用户修正后消失</span></td><td><span data-i18n="feedback:text.031">字段下方红色文案 + icon；表单提交时聚焦首个错误</span></td></tr>
@@ -22,7 +22,7 @@
         <tr><td><b>ErrorPage</b></td><td><span data-i18n="feedback:text.050">整页失败 —— 404 / 403 / 500 / 离线</span></td><td><span data-i18n="feedback:text.051">是（替换）</span></td><td><span data-i18n="feedback:text.052">用户重试或导航</span></td><td><span data-i18n="feedback:text.053">请求层错误；带 traceId 便于审计</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="feedback:text.054">三条硬规则：</span></b><span data-i18n="feedback:text.055">1) 错误终态</span><b><span data-i18n="feedback:text.056">禁用</span></b><span data-i18n="feedback:text.057"> Message，必须 Alert / Result / ErrorPage；2) 不可逆操作</span><b><span data-i18n="feedback:text.058">禁用</span></b><span data-i18n="feedback:text.059"> Notification 替代 Modal.confirm；3) Notification 同时存在 ≤ 3 条，超出汇总。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="feedback:text.054">三条硬规则：</span></b><span data-i18n="feedback:text.055">1) 页面 / 区域加载失败</span><b><span data-i18n="feedback:text.056">禁止仅用</span></b><span data-i18n="feedback:text.057"> Message，必须保留 Alert / Result / ErrorPage 与重试入口；2) 不可逆操作</span><b><span data-i18n="feedback:text.058">禁用</span></b><span data-i18n="feedback:text.059"> Notification 替代 Modal.confirm；3) Notification 同时存在 ≤ 3 条，超出汇总。</span></p>
   </div>
 
   <div class="demo-stack">
@@ -121,7 +121,7 @@
                 <div class="select" style="min-width:120px"><span><span data-i18n="feedback:text.116">全部状态 ▾</span></span></div>
               </div>
               <table class="dt" style="border-radius:0;border:0">
-                <thead><tr><th style="width:36px"><label class="check"><input type="checkbox" checked /><span class="box"></span></label></th><th><span data-i18n="feedback:text.117">设备名称</span></th><th>SN</th><th><span data-i18n="feedback:text.118">状态</span></th></tr></thead>
+                <thead><tr><th scope="col" style="width:36px"><span class="visually-hidden" data-i18n="common:selectionColumn">选择列</span><label class="check"><input type="checkbox" checked /><span class="box"></span></label></th><th><span data-i18n="feedback:text.117">设备名称</span></th><th>SN</th><th><span data-i18n="feedback:text.118">状态</span></th></tr></thead>
                 <tbody>
                   <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td><span data-i18n="feedback:text.119">终端-上海-001</span></td><td><code>DEV-86420075</code></td><td><span class="status-dot online"><span data-i18n="feedback:text.120">在线</span></span></td></tr>
                   <tr><td><label class="check"><input type="checkbox" checked /><span class="box"></span></label></td><td><span data-i18n="feedback:text.121">终端-北京-014</span></td><td><code>DEV-86420089</code></td><td><span class="status-dot online"><span data-i18n="feedback:text.122">在线</span></span></td></tr>
@@ -178,7 +178,7 @@
 
     <div class="alert info" style="margin-top:14px"><div class="ico">i</div><div class="content"><strong><span data-i18n="feedback:text.147">底部按钮顺序：</span></strong><span data-i18n="feedback:text.148">左到右 = 取消 / 次操作（保存草稿 / 上一步）/ 主操作（提交 / 下一步）。主操作始终最右、primary 色。</span></div></div>
     <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="feedback:text.149">Modal 内 Modal：</span></strong><span data-i18n="feedback:text.150">原则禁止。如必须二次确认（如"确定要放弃当前编辑吗？"），用 Popconfirm 嵌入到主 Modal 关闭按钮上。</span></div></div>
-    <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><span data-i18n="feedback:text.151">详细 Modal vs Drawer 取舍参见 </span><a href="#/drawer" style="color:var(--aw-primary)"><span data-i18n="feedback:text.152">Drawer 章节</span></a><span data-i18n="feedback:text.162">。</span></div></div>
+    <div class="alert info" style="margin-top:8px"><div class="ico">i</div><div class="content"><span data-i18n="feedback:text.151">详细 Modal vs Drawer 取舍参见 </span><a href="#/drawer" style="color: var(--aw-primary-text)"><span data-i18n="feedback:text.152">Drawer 章节</span></a><span data-i18n="feedback:text.162">。</span></div></div>
   </div>
 
   <div class="subsection">

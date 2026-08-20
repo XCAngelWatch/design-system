@@ -11,7 +11,7 @@
 <div class="eco-card">
 <div class="eco-h"><div class="eco-num">01</div><div class="eco-t"><span data-i18n="ecosystem:t008">RealtimeChart · 实时图表</span></div></div>
 <div class="eco-use"><span data-i18n="ecosystem:t009">Dashboard 趋势图 · OTA 推送进度大盘 · 网络流量监控</span></div>
-<div class="eco-pkg"><code>echarts</code> + <code>echarts-for-react</code><span class="eco-pkg-note"><span data-i18n="ecosystem:t010">ECharts v6 · Apache 2.0 · 业务统一通过</span> <code>&lt;TMSChart /&gt;</code> <span data-i18n="ecosystem:t011">包装层调用，详见</span> <a href="#/charts" style="color:var(--aw-primary)"><span data-i18n="ecosystem:t012">Charts 页</span></a></span></div>
+<div class="eco-pkg"><code>echarts</code> + <code>echarts-for-react</code><span class="eco-pkg-note"><span data-i18n="ecosystem:t010">ECharts v6 · Apache 2.0 · 业务统一通过</span> <code>&lt;TMSChart /&gt;</code> <span data-i18n="ecosystem:t011">包装层调用，详见</span> <a href="#/charts" style="color: var(--aw-primary-text)"><span data-i18n="ecosystem:t012">Charts 页</span></a></span></div>
 <div class="eco-mock">
 <svg preserveaspectratio="none" style="width:100%;height:100%" viewbox="0 0 360 130">
 <defs><lineargradient id="eg1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#165DFF" stop-opacity="0.32"></stop><stop offset="100%" stop-color="#165DFF" stop-opacity="0"></stop></lineargradient></defs>

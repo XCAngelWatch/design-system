@@ -24,7 +24,7 @@
 </div>
 <div>
   <label for="af-disabled" style="font-size:12px;color:var(--aw-text-3);display:block;margin-bottom:4px"><span data-i18n="advanced-form:text.009">禁用</span></label>
-  <div class="num-input" style="background:var(--aw-fill-2);opacity:0.6"><input id="af-disabled" type="number" value="50" disabled /><div class="step"><button type="button" disabled>▲</button><button type="button" disabled>▼</button></div><span class="suffix" data-i18n="advanced-form:text.010">个</span></div>
+  <div class="num-input" style="background:var(--aw-fill-2)" aria-disabled="true"><input id="af-disabled" type="number" value="50" disabled /><div class="step"><button type="button" disabled>▲</button><button type="button" disabled>▼</button></div><span class="suffix" data-i18n="advanced-form:text.010">个</span></div>
 </div>
     </div>
   </div>

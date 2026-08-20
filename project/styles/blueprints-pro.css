@@ -1,6 +1,10 @@
 /* AngelWatch Design System - business blueprint coverage
    Shared styles for module coverage and blueprint pages. */
 
+.section :where(a[href]) {
+  color: var(--aw-primary-text);
+}
+
 .module-coverage .coverage-table,
 .blueprint-table {
   width: 100%;
@@ -56,6 +60,16 @@
   font-size: 12px;
 }
 
+.coverage-notes a,
+.blueprint-notes a {
+  color: var(--aw-primary-text);
+}
+
+[data-theme="dark"] .coverage-notes a,
+[data-theme="dark"] .blueprint-notes a {
+  color: var(--aw-primary-hover);
+}
+
 .bp-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -104,8 +118,8 @@
   height: 22px;
   margin-bottom: 8px;
   border-radius: 50%;
-  background: var(--aw-primary);
-  color: var(--aw-bg);
+  background: var(--aw-primary-solid);
+  color: var(--aw-text-on-brand);
   font-size: 11px;
   font-weight: 700;
 }
@@ -161,13 +175,18 @@
 
 .bp-nav-item.active {
   background: var(--aw-primary-bg);
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   font-weight: 600;
 }
 
 .bp-main {
   padding: 14px;
   min-width: 0;
+  overflow-x: auto;
+}
+
+.bp-main > table.dt {
+  min-width: 640px;
 }
 
 .bp-table-scroll {
@@ -175,7 +194,7 @@
   overflow-x: auto;
 }
 
-.bp-table-scroll > .dt { min-width: 720px; }
+.bp-table-scroll > table.dt { min-width: 720px; }
 
 .bp-toolbar {
   display: flex;
@@ -194,6 +213,91 @@
   gap: 8px;
 }
 
+/* The documentation shell must not hide layout defects. Wide demos own their
+   scrolling locally; ordinary content remains fully visible to the page. */
+.app-main.comp-page > #app-slot > .content {
+  width: 100%;
+  overflow-x: visible;
+}
+
+.section,
+.subsection,
+.surface,
+.frame,
+.frame-body,
+.bp-main {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.responsive-table,
+.table-wrap,
+.bp-table-scroll,
+.frozen-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.responsive-table > :is(table.dt, .blueprint-table, .map-table, .status-matrix, .tech-table),
+.table-wrap > table.dt,
+.bp-table-scroll > table.dt {
+  min-width: 640px;
+}
+
+.detail-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px 24px;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.cascader-demo-layout {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.tenant-theme-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.blueprint-shell-surface {
+  overflow: hidden;
+}
+
+.blueprint-split-shell {
+  display: flex;
+  align-items: stretch;
+  height: 560px;
+}
+
+.filter-field {
+  flex: 1 1 140px;
+  min-width: 140px;
+}
+
+.table-config-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+
+.user-permission-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  min-height: 360px;
+}
+
+.user-role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
 @media (max-width: 960px) {
   .bp-grid,
   .bp-flow {
@@ -208,6 +312,58 @@
     border-right: 0;
     border-bottom: 1px solid var(--aw-border-3);
   }
+
+  .datacard-grid,
+  .loading-row,
+  .ota-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cascader-demo-layout,
+  .table-config-layout,
+  .user-permission-layout,
+  .tenant-theme-compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .table-config-layout > table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .detail-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cascader-demo-layout .cascader-pop {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .lp-toolbar,
+  .lp-actions,
+  .lp-pager {
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .lp-toolbar > .row,
+  .lp-actions > .row {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .cascader-demo-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cascader-demo-layout .cascader-pop {
+    max-width: 100%;
+    overflow-x: auto;
+  }
 }
 
 @media (max-width: 640px) {
@@ -221,19 +377,218 @@
     flex-direction: column;
   }
 
-  /* Keep dense business tables accessible without making the whole page overflow. */
-  .subsection,
-  .surface,
-  .table-wrap {
-    max-width: 100%;
-    overflow-x: auto;
+  .app-main.comp-page > #app-slot > .content {
+    padding: 20px 16px;
   }
 
-  .dt,
-  .blueprint-table,
-  .map-table,
-  .status-matrix,
-  .tech-table {
-    min-width: 640px;
+  .datacard-grid,
+  .loading-row,
+  .ota-card-grid,
+  .user-role-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transfer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .transfer-arrows {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cascader-pop {
+    width: 100%;
+  }
+
+  .cascader-col {
+    min-width: 142px;
+    width: 45vw;
+  }
+
+  .search-mock-v2 .row1,
+  .search-mock-v2.expanded .row1 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filter-field {
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  .lp-toolbar > .row,
+  .lp-actions > .row {
+    gap: 8px !important;
+  }
+
+  .lp-toolbar > .row > *,
+  .lp-actions > .row > * {
+    flex: 1 1 140px;
+    min-width: 0 !important;
+  }
+
+  .lp-actions > .row .btn,
+  .lp-toolbar > .row > .btn {
+    flex: 0 1 auto;
+  }
+
+  .lp-pager .pager {
+    width: 100%;
+  }
+
+  .user-permission-layout > :first-child {
+    max-height: 240px;
+    overflow-y: auto;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--aw-border-3);
+  }
+
+  .blueprint-split-shell {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .blueprint-split-shell > .ota-tree {
+    flex: 0 0 auto;
+    max-height: 240px;
+    border-right: 0;
+    border-bottom: 1px solid var(--aw-border-3);
+  }
+
+  .blueprint-split-shell > .ota-main {
+    min-height: 480px;
+  }
+
+  .tenant-theme-compare {
+    gap: 12px !important;
+  }
+
+  .detail-summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Documentation examples must expose their own overflow instead of relying on
+   the page shell to crop a wide table, code sample, or comparison canvas. */
+.theme-compare {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: visible;
+}
+
+.theme-compare :is(.tc-col, .tc-stack, .table-wrap),
+.i18n-pair-grid,
+.i18n-pair-grid > * {
+  min-width: 0;
+}
+
+.theme-compare .table-wrap {
+  width: 100%;
+}
+
+.content pre,
+.section pre {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.surface:has(> table) {
+  max-width: 100%;
+  overflow-x: auto !important;
+  overscroll-behavior-inline: contain;
+}
+
+.surface > [style*="font-family:var(--aw-font-mono)"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.hero-inner,
+.hero-meta {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.menu-h-mock,
+.tabs-card,
+.tabs-route {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.menu-h-mock > *,
+.tabs-card > *,
+.tabs-route > * {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 960px) {
+  .content :is(p, li, .alert),
+  .section :is(p, li, .alert) {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  table.map-table,
+  table.status-matrix {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    overscroll-behavior-inline: contain;
+  }
+
+  .theme-compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .token-pyramid .pyramid-legend {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .icon-lib-grid {
+    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  }
+
+  .icon-size-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dark-layer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 40px 24px 36px;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(32px, 10vw, 40px);
+    overflow-wrap: anywhere;
+  }
+
+  .hero-meta {
+    gap: 18px 24px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta > * {
+    flex: 1 1 92px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .token-pyramid {
+    padding: 20px 16px;
+  }
+
+  .dark-layer-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

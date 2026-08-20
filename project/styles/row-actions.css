@@ -29,7 +29,7 @@
   display: grid; place-items: center;
   color: var(--aw-text-2);
 }
-.ra-cell:hover .ra-icn { color: var(--aw-primary); }
+.ra-cell:hover .ra-icn { color: var(--aw-primary-text); }
 .ra-cell.danger:hover .ra-icn { color: var(--aw-danger); }
 .ra-cell.warn:hover .ra-icn { color: var(--aw-warning); }
 .ra-cell .ra-name { font-size: 12.5px; color: var(--aw-text-1); font-weight: 500; }
@@ -88,7 +88,7 @@
   transition: all var(--aw-dur-fast) var(--aw-ease);
   position: relative;
 }
-.ra-btn:hover { background: var(--aw-fill-2); color: var(--aw-primary); }
+.ra-btn:hover { background: var(--aw-fill-2); color: var(--aw-primary-text); }
 .ra-btn.warn:hover { color: var(--aw-warning); background: var(--aw-warning-bg); }
 .ra-btn.danger:hover { color: var(--aw-danger); background: var(--aw-danger-bg); }
 .ra-btn.dim, .ra-btn[disabled] {
@@ -129,7 +129,7 @@
 }
 .ra-mit svg { color: var(--aw-text-2); flex-shrink: 0; }
 .ra-mit:hover { background: var(--aw-fill-1); }
-.ra-mit:hover svg { color: var(--aw-primary); }
+.ra-mit:hover svg { color: var(--aw-primary-text); }
 .ra-mit.warn { color: var(--aw-warning); }
 .ra-mit.warn svg { color: var(--aw-warning); }
 .ra-mit.warn:hover { background: var(--aw-warning-bg); }

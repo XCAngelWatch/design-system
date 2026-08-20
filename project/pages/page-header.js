@@ -3,10 +3,10 @@
 <div class="content">
 <section class="section" id="page-header">
   <p class="section-eyebrow"><span data-i18n="page-header:text.001">业务模式 · 页头</span></p>
-  <h2><span data-i18n="page-header:text.002">页头 PageHeader</span></h2>
-  <p class="lede"><span data-i18n="page-header:text.003">每个业务页的顶部都是相同骨架 —— 面包屑 + 主标题 / 状态 + 主次操作。这套结构由 </span><code>PageHeader</code><span data-i18n="page-header:text.004"> 组件统一封装，保证 100% 一致。运维切换业务页时不用重新找“主操作在哪”。</span></p>
+  <h2 role="heading" aria-level="1"><span data-i18n="page-header:text.002">页头 PageHeader</span></h2>
+  <p class="lede"><span data-i18n="page-header:text.003">每个业务页的顶部都应复用相同骨架 —— 面包屑 + 主标题 / 状态 + 主次操作。这套结构由 </span><code>PageHeader</code><span data-i18n="page-header:text.004"> 组件统一封装；新增或迁移页面以此为验收目标。运维切换业务页时不应重新寻找“主操作在哪”。</span></p>
 
-  <div class="alert warning" style="margin:10px 0 18px"><div class="ico">!</div><div class="content"><strong><span data-i18n="page-header:text.005">这是 TMS 自建组件，不是 antd 提供。</span></strong><span data-i18n="page-header:text.006">当前 Ant Design 不提供 </span><code>&lt;PageHeader /&gt;</code><span data-i18n="page-header:text.007">；项目也不引入 </span><code>@ant-design/pro-components</code><span data-i18n="page-header:text.008"> 作为替代，其 </span><code>&lt;ProPageHeader /&gt;</code><span data-i18n="page-header:text.009"> 会引入被禁用的 ProComponents 依赖。因此</span><b><span data-i18n="page-header:text.010">必须自建</span></b><span data-i18n="page-header:text.011">，代码集中在 </span><code class="mono">packages/web/src/components/PageHeader.tsx</code><span data-i18n="page-header:text.012">。</span></div></div>
+  <div class="alert warning" style="margin:10px 0 18px"><div class="ico">!</div><div class="content"><strong><span data-i18n="page-header:text.005">这是 TMS 自建组件，不是 antd 提供。</span></strong><span data-i18n="page-header:text.006">当前 Ant Design 不提供 </span><code>&lt;PageHeader /&gt;</code><span data-i18n="page-header:text.007">；项目也不引入 </span><code>@ant-design/pro-components</code><span data-i18n="page-header:text.008"> 作为替代，其 </span><code>&lt;ProPageHeader /&gt;</code><span data-i18n="page-header:text.009"> 会引入被禁用的 ProComponents 依赖。因此</span><b><span data-i18n="page-header:text.010">必须自建</span></b><span data-i18n="page-header:text.011">，当前实现位于 </span><code class="mono">tms2.5-web-ui/src/components/PageHeader/PageHeader.tsx</code><span data-i18n="page-header:text.012">。</span></div></div>
 
   <div class="subsection">
     <h3><span data-i18n="page-header:text.013">结构 · 5 个槽位</span></h3>
@@ -40,7 +40,7 @@
       <thead><tr><th style="width:18%"><span data-i18n="page-header:text.027">页面类型</span></th><th style="width:24%"><span data-i18n="page-header:text.028">面包屑</span></th><th style="width:22%"><span data-i18n="page-header:text.029">主标题</span></th><th style="width:18%"><span data-i18n="page-header:text.030">操作</span></th><th><span data-i18n="page-header:text.031">底部 Tabs</span></th></tr></thead>
       <tbody>
         <tr><td><b>ListPage</b></td><td><span data-i18n="page-header:text.032">1 级 (e.g. “设备管理”)</span></td><td><span data-i18n="page-header:text.033">资源类目名</span></td><td><span data-i18n="page-header:text.034">主：+ 添加 / 次：导入 / 导出</span></td><td><span data-i18n="page-header:text.035">视图切换 (Tab)</span></td></tr>
-        <tr><td><b>DetailPage</b></td><td><span data-i18n="page-header:text.036">2-3 级 + 当前对象名</span></td><td><span data-i18n="page-header:text.037">对象名 + 状态</span></td><td><span data-i18n="page-header:text.038">对象动作（编辑 / 删除 / 推送）</span></td><td><span data-i18n="page-header:text.039">视图（基础 / 状态 / 日志 / 告警 / OTA）</span></td></tr>
+        <tr><td><b>DetailPage</b></td><td><span data-i18n="page-header:text.036">2-3 级 + 当前对象名</span></td><td><span data-i18n="page-header:text.037">对象名 + 状态</span></td><td><span data-i18n="page-header:text.038">编辑 / 推送等对象动作；删除 / 解绑 / 重启下沉危险区域</span></td><td><span data-i18n="page-header:text.039">视图（基础 / 状态 / 日志 / 告警 / OTA）</span></td></tr>
         <tr><td><b>FormPage</b></td><td><span data-i18n="page-header:text.040">2 级 + “新建” / “编辑”</span></td><td><span data-i18n="page-header:text.041">“新建 X” / “编辑 X”</span></td><td><span data-i18n="page-header:text.042">主：保存 / 次：取消 / 草稿</span></td><td><span data-i18n="page-header:text.043">无</span></td></tr>
         <tr><td><b>DashboardPage</b></td><td><span data-i18n="page-header:text.044">无 (顶级)</span></td><td><span data-i18n="page-header:text.045">“仪表盘”</span></td><td><span data-i18n="page-header:text.046">右：时间范围切换 / 刷新</span></td><td><span data-i18n="page-header:text.047">主题切换 (Tab)</span></td></tr>
       </tbody>

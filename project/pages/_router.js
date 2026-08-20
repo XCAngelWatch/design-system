@@ -268,7 +268,80 @@
               '<span class="sep">/</span>' +
               '<span class="leaf">' + bcLeaf + '</span>') +
              '</div>';
-    return bc + '<div class="toolbar-controls">' + buildLocaleToggle() + buildThemeToggle() + '</div>';
+    var navToggle = '<button type="button" class="doc-nav-toggle" data-doc-nav-toggle aria-controls="app-side" aria-expanded="false" aria-label="' +
+      tCommon('navigation.open', null, '打开导航') + '">' +
+      '<span aria-hidden="true"><i></i><i></i><i></i></span></button>';
+    var navBackdrop = '<button type="button" class="doc-nav-backdrop" data-doc-nav-close tabindex="-1" aria-hidden="true" aria-label="' +
+      tCommon('navigation.close', null, '关闭导航') + '"></button>';
+    return navToggle + bc + '<div class="toolbar-controls">' + buildLocaleToggle() + buildThemeToggle() + '</div>' + navBackdrop;
+  }
+
+  function isDrawerNavigation() {
+    return window.matchMedia('(max-width: 1100px)').matches;
+  }
+
+  function getNavToggle() {
+    return document.querySelector('[data-doc-nav-toggle]');
+  }
+
+  function syncNavigationDrawer(open, options) {
+    options = options || {};
+    var sidebar = document.getElementById('app-side');
+    var toggle = getNavToggle();
+    if (!sidebar || !toggle) return;
+    var drawerMode = isDrawerNavigation();
+    var nextOpen = drawerMode && Boolean(open);
+    document.body.classList.toggle('doc-nav-open', nextOpen);
+    toggle.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
+    toggle.setAttribute('aria-label', nextOpen ?
+      tCommon('navigation.close', null, '关闭导航') :
+      tCommon('navigation.open', null, '打开导航'));
+    if (drawerMode && !nextOpen) {
+      sidebar.setAttribute('aria-hidden', 'true');
+      sidebar.setAttribute('inert', '');
+    } else {
+      sidebar.removeAttribute('aria-hidden');
+      sidebar.removeAttribute('inert');
+    }
+    if (nextOpen && options.focusActive !== false) {
+      var active = sidebar.querySelector('.nav a.active');
+      var navFocusTarget = active || sidebar.querySelector('a[href]');
+      window.setTimeout(function () {
+        if (navFocusTarget) navFocusTarget.focus({ preventScroll: true });
+      }, 220);
+    } else if (options.restoreFocus) {
+      toggle.focus({ preventScroll: true });
+    }
+  }
+
+  function revealActiveNavigation() {
+    var sidebar = document.getElementById('app-side');
+    var active = sidebar && sidebar.querySelector('.nav a.active');
+    if (!sidebar || !active) return;
+    window.requestAnimationFrame(function () {
+      var desiredTop = active.offsetTop - Math.max(24, (sidebar.clientHeight - active.offsetHeight) / 2);
+      sidebar.scrollTop = Math.max(0, desiredTop);
+    });
+  }
+
+  function wireNavigationDrawer() {
+    var sidebar = document.getElementById('app-side');
+    var toggle = getNavToggle();
+    var backdrop = document.querySelector('[data-doc-nav-close]');
+    if (!sidebar || !toggle) return;
+    toggle.onclick = function () {
+      syncNavigationDrawer(!document.body.classList.contains('doc-nav-open'));
+    };
+    if (backdrop) backdrop.onclick = function () {
+      syncNavigationDrawer(false, { restoreFocus: true });
+    };
+    sidebar.onclick = function (event) {
+      if (event.target.closest && event.target.closest('a[href^="#/"]')) {
+        syncNavigationDrawer(false, { focusActive: false });
+      }
+    };
+    syncNavigationDrawer(document.body.classList.contains('doc-nav-open'), { focusActive: false });
+    revealActiveNavigation();
   }
 
   // === theme handling ===
@@ -556,9 +629,14 @@
       button.setAttribute('aria-controls', popup.id);
       popup.hidden = button.getAttribute('aria-expanded') !== 'true';
     });
-    root.querySelectorAll('.pager').forEach(function (pager) {
+    var pagers = root.querySelectorAll('.pager');
+    pagers.forEach(function (pager, pagerIndex) {
       pager.setAttribute('role', 'navigation');
-      pager.setAttribute('aria-label', tCommon('pagination', null, '分页'));
+      var paginationLabel = tCommon('pagination', null, '分页');
+      pager.setAttribute(
+        'aria-label',
+        pagers.length > 1 ? paginationLabel + ' ' + (pagerIndex + 1) : paginationLabel
+      );
       pager.querySelectorAll('.page').forEach(function (page) {
         var pageText = page.textContent.trim();
         if (pageText === '‹') page.setAttribute('aria-label', tCommon('paginationPrevious', null, '上一页'));
@@ -649,12 +727,17 @@
       var name = item && item.querySelector('.nm');
       checkbox.setAttribute('aria-label', name ? name.textContent.trim() : tCommon('selectItem', null, '选择项目'));
     });
+    var loadingRegions = [];
     root.querySelectorAll('.skel, .skeleton').forEach(function (skeleton) {
-      var container = skeleton.closest('[data-loading-region]') || skeleton.parentElement;
-      if (container) {
-        container.setAttribute('aria-busy', 'true');
-        container.setAttribute('aria-label', container.getAttribute('aria-label') || tCommon('loading', null, '加载中...'));
-      }
+      skeleton.setAttribute('aria-hidden', 'true');
+      var container = skeleton.closest('[data-loading-region], .table-wrap, .surface') || skeleton.parentElement;
+      if (container && loadingRegions.indexOf(container) === -1) loadingRegions.push(container);
+    });
+    loadingRegions.forEach(function (container) {
+      container.setAttribute('role', 'status');
+      container.setAttribute('aria-live', 'polite');
+      container.setAttribute('aria-busy', 'true');
+      container.setAttribute('aria-label', container.getAttribute('aria-label') || tCommon('loading', null, '加载中...'));
     });
     root.querySelectorAll('.toast').forEach(function (toast) {
       var urgent = toast.classList.contains('error') || toast.classList.contains('warning');
@@ -670,6 +753,54 @@
       var firstRowCheckbox = table.querySelector('tbody input[type="checkbox"]');
       if (firstRowCheckbox) syncTableSelection(firstRowCheckbox);
     });
+    function refreshScrollableRegions() {
+      root.querySelectorAll('[data-demo-scroll-region]').forEach(function (container) {
+        container.removeAttribute('data-demo-scroll-region');
+        container.removeAttribute('tabindex');
+        container.removeAttribute('role');
+        container.removeAttribute('aria-label');
+      });
+      var focusableSelector = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        'summary',
+        'iframe',
+        '[contenteditable="true"]',
+        '[tabindex]:not([tabindex="-1"])'
+      ].join(',');
+      function isRenderedFocusable(element) {
+        if (element.matches('[disabled], [aria-hidden="true"]')) return false;
+        var style = window.getComputedStyle(element);
+        return style.display !== 'none' && style.visibility !== 'hidden' && element.getClientRects().length > 0;
+      }
+      function hasRenderedFocusableDescendant(container) {
+        return Array.prototype.some.call(container.querySelectorAll(focusableSelector), isRenderedFocusable);
+      }
+      var scrollRegions = [];
+      Array.prototype.slice.call(root.querySelectorAll('*')).reverse().forEach(function (container) {
+        if ((container.matches(focusableSelector) && isRenderedFocusable(container)) || hasRenderedFocusableDescendant(container)) return;
+        if (container.hasAttribute('role') || container.hasAttribute('aria-label') || container.hasAttribute('aria-labelledby')) return;
+        var style = window.getComputedStyle(container);
+        var scrollsHorizontally = /^(auto|scroll)$/.test(style.overflowX) && container.scrollWidth > container.clientWidth + 1;
+        var scrollsVertically = /^(auto|scroll)$/.test(style.overflowY) && container.scrollHeight > container.clientHeight + 1;
+        if (!scrollsHorizontally && !scrollsVertically) return;
+        container.setAttribute('data-demo-scroll-region', '');
+        container.setAttribute('tabindex', '0');
+        container.setAttribute('role', 'region');
+        scrollRegions.push(container);
+      });
+      scrollRegions.reverse().forEach(function (container, index) {
+        container.setAttribute(
+          'aria-label',
+          tCommon('scrollRegion', { index: index + 1 }, '可滚动区域 {index}')
+        );
+      });
+    }
+    refreshScrollableRegions();
+    window.requestAnimationFrame(refreshScrollableRegions);
   }
 
   function syncTreeNodeState(node) {
@@ -1337,6 +1468,17 @@
   }
 
   function finishRouteRender(slot, options) {
+    var visibleHeading = slot.querySelector('.section h2, h2');
+    if (visibleHeading) {
+      visibleHeading.removeAttribute('role');
+      visibleHeading.removeAttribute('aria-level');
+      if (!slot.querySelector('h1')) {
+        var routeHeading = document.createElement('h1');
+        routeHeading.className = 'route-heading-sr';
+        routeHeading.textContent = visibleHeading.textContent.trim();
+        slot.insertBefore(routeHeading, slot.firstChild);
+      }
+    }
     wireDemoInteractions(slot);
     slot.setAttribute('aria-busy', 'false');
     if (options.preserveScroll) {
@@ -1352,7 +1494,7 @@
     window.scrollTo(0, 0);
     if (options.focusHeading) {
       requestAnimationFrame(function () {
-        var heading = slot.querySelector('.section h2, h2');
+        var heading = slot.querySelector('h1, .section h2, h2');
         if (!heading) return;
         heading.setAttribute('tabindex', '-1');
         heading.focus({ preventScroll: true });
@@ -1376,6 +1518,7 @@
     if (toolbar) toolbar.innerHTML = buildToolbar(routeId);
     wireThemeToggle();
     wireLocaleToggle();
+    wireNavigationDrawer();
 
     // Update title
     document.title = (routeId === 'overview' ? '' : (getRouteLabel(routeId) + ' · ')) +
@@ -1409,6 +1552,15 @@
 
   function init() {
     window.addEventListener('hashchange', navigate);
+    window.addEventListener('resize', function () {
+      syncNavigationDrawer(false, { focusActive: false });
+      revealActiveNavigation();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && document.body.classList.contains('doc-nav-open')) {
+        syncNavigationDrawer(false, { restoreFocus: true });
+      }
+    });
     navigate();
   }
 

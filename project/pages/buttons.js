@@ -63,7 +63,7 @@
           <li><span data-i18n="buttons:text.048">批量含数量："删除 28 台设备"</span></li>
           <li><span data-i18n="buttons:text.049">结果导向："保存设置" / "完成创建"</span></li>
           <li><span data-i18n="buttons:text.050">破坏性明示："确认删除"，不写"确定"</span></li>
-          <li><span data-i18n="buttons:text.051">详细文案见 </span><a href="#/copywriting" style="color:var(--aw-primary)"><span data-i18n="buttons:text.052">文案规范</span></a></li>
+          <li><span data-i18n="buttons:text.051">详细文案见 </span><a href="#/copywriting" style="color: var(--aw-primary-text)"><span data-i18n="buttons:text.052">文案规范</span></a></li>
         </ul>
       </div>
       <div class="surface" style="border-left:3px solid var(--aw-danger)">

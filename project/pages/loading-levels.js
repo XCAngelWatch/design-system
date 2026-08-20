@@ -16,20 +16,20 @@
 </div>
 <div style="font-size:11px;color:var(--aw-text-3)"><span data-i18n="loading-levels:text.004">页面初次加载</span></div>
     </div>
-    <div class="loading-tile lt-card">
+    <div class="loading-tile lt-card" aria-busy="true">
 <div class="lt-ttl"><span data-i18n="loading-levels:text.005">L2 · 卡片局部</span></div>
 <div class="lt-content"><span data-i18n="loading-levels:text.006">表格刷新中…</span><br/><span data-i18n="loading-levels:text.007">原内容保留 + 顶部细线滚动</span></div>
 <div style="font-size:11px;color:var(--aw-text-3)"><span data-i18n="loading-levels:text.008">列表筛选 / 排序</span></div>
     </div>
-    <div class="loading-tile lt-page">
+    <div class="loading-tile lt-page" aria-busy="true">
 <div class="lt-ttl" style="position:absolute;top:14px;left:14px"><span data-i18n="loading-levels:text.009">L3 · 页面遮罩</span></div>
 <div class="spinner"></div>
 <div style="font-size:11px;color:var(--aw-text-3);position:absolute;bottom:10px;left:14px"><span data-i18n="loading-levels:text.010">表单提交</span></div>
     </div>
-    <div class="loading-tile lt-fullscreen">
+    <div class="loading-tile lt-fullscreen" aria-busy="true">
 <div class="lt-ttl"><span data-i18n="loading-levels:text.011">L4 · 全屏阻塞</span></div>
 <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div class="spinner"></div><div class="lt-text"><span data-i18n="loading-levels:text.012">批量操作中 12 / 86</span></div></div>
-<div style="font-size:11px;color:rgba(255,255,255,0.5)"><span data-i18n="loading-levels:text.013">不可逆 / 批量操作</span></div>
+<div class="lt-note"><span data-i18n="loading-levels:text.013">不可逆 / 批量操作</span></div>
     </div>
   </div>
 </section>

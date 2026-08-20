@@ -10,7 +10,7 @@
   <div class="section-subtitle"><span data-i18n="shell:text.004">Sidebar States · 4 态对照</span></div>
   <div class="sidebar-states">
     <!-- Light · Expanded -->
-    <div class="ss-card">
+    <div class="ss-card" data-theme="light">
 <div class="ss-thumb">
   <div class="ss-sb exp">
     <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div><span class="lg-text">AngelWatch</span></div>
@@ -35,7 +35,7 @@
 <div class="ss-foot"><div><span class="label">Light · Expanded</span></div><div class="meta">240 × full</div></div>
     </div>
     <!-- Light · Collapsed -->
-    <div class="ss-card">
+    <div class="ss-card" data-theme="light">
 <div class="ss-thumb">
   <div class="ss-sb exp col">
     <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div></div>
@@ -53,7 +53,7 @@
 <div class="ss-foot"><div><span class="label">Light · Collapsed</span></div><div class="meta">64 + tooltip</div></div>
     </div>
     <!-- Dark · Expanded -->
-    <div class="ss-card dark">
+    <div class="ss-card dark" data-theme="dark">
 <div class="ss-thumb">
   <div class="ss-sb exp dark">
     <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div><span class="lg-text">AngelWatch</span></div>
@@ -78,7 +78,7 @@
 <div class="ss-foot"><div><span class="label">Dark · Expanded</span></div><div class="meta">240 × full</div></div>
     </div>
     <!-- Dark · Collapsed -->
-    <div class="ss-card dark">
+    <div class="ss-card dark" data-theme="dark">
 <div class="ss-thumb">
   <div class="ss-sb exp col dark">
     <div class="ss-logo"><div class="lg"><img src="favicon.ico" alt="" /></div></div>
@@ -98,7 +98,7 @@
   </div>
 
   <div class="section-subtitle"><span data-i18n="shell:text.031">Full Shell · 实际渲染（Light）</span></div>
-  <div class="frame">
+  <div class="frame" data-theme="light">
     <div class="frame-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span> <span data-i18n="shell:text.032">&nbsp; tms.angelwatch.io / 数据中心 / 设备管理</span></div>
     <div class="frame-body">
 <div class="shell-mock v12">
@@ -174,7 +174,7 @@
     </div>
     <div class="surface" style="font-size:12.5px;line-height:1.7">
 <b style="color:var(--aw-text-1)"><span data-i18n="shell:text.092">布局 &amp; 交互</span></b><br/>
-<span data-i18n="shell:text.093">· 分组标题：全大写英文 + 中文，</span><code>letter-spacing 0.6px</code><span data-i18n="shell:text.099">，</span><code>color #9AA3AE</code><br/>
+<span data-i18n="shell:text.093">· 分组标题：全大写英文 + 中文，</span><code>letter-spacing 0.6px</code><span data-i18n="shell:text.099">，</span><code>color #667085</code><br/>
 <span data-i18n="shell:text.094">· 账号入口固定在侧栏左下角，Topbar 不再重复放头像；</span><code>#FAFAFA</code> <span data-i18n="shell:text.095">底色 + 完整裁切头像 + 姓名 + 角色 chip + ⋯ 菜单</span><br/>
 <span data-i18n="shell:text.096">· 折叠态 64px：仅 icon 居中；hover 浮出右侧 tooltip 卡片</span><br/>
 <span data-i18n="shell:text.097">· 折叠按钮在 Topbar，快捷键</span> <code>⌘ + B</code><br/>

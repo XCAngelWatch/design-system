@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": "2026-08-14",
+  "sourceRepository": "design-system",
+  "consumerRepository": "tms2.5-web-ui",
+  "consumerCopyPath": "docs/design-system/source-contract.json",
+  "decisionRecord": "docs/decisions/specs/2026-08-14-responsive-consumer-contract.md",
+  "tokens": {
+    "sourceFile": "project/styles/tokens.css",
+    "prefix": "--aw-",
+    "required": [
+      "--aw-primary",
+      "--aw-primary-text",
+      "--aw-primary-solid",
+      "--aw-primary-solid-hover",
+      "--aw-primary-solid-active",
+      "--aw-primary-hover",
+      "--aw-primary-active",
+      "--aw-primary-bg",
+      "--aw-primary-bg-hover",
+      "--aw-primary-border",
+      "--aw-success",
+      "--aw-success-solid",
+      "--aw-warning",
+      "--aw-danger",
+      "--aw-danger-hover",
+      "--aw-danger-solid",
+      "--aw-danger-solid-hover",
+      "--aw-info",
+      "--aw-text-1",
+      "--aw-text-2",
+      "--aw-text-3",
+      "--aw-text-4",
+      "--aw-text-disabled",
+      "--aw-text-on-brand",
+      "--aw-border-1",
+      "--aw-border-2",
+      "--aw-border-3",
+      "--aw-fill-1",
+      "--aw-fill-2",
+      "--aw-fill-3",
+      "--aw-fill-4",
+      "--aw-switch-handle",
+      "--aw-bg",
+      "--aw-bg-page",
+      "--aw-bg-elevated"
+    ],
+    "coreValues": {
+      "light": {
+      "--aw-primary": "#165DFF",
+      "--aw-primary-text": "#165DFF",
+      "--aw-primary-solid": "#165DFF",
+      "--aw-primary-solid-hover": "#0E42D2",
+      "--aw-primary-solid-active": "#0B36AE",
+        "--aw-success": "#237804",
+        "--aw-success-solid": "#237804",
+        "--aw-warning": "#874D00",
+        "--aw-danger": "#CF1322",
+        "--aw-info": "#0958D9",
+      "--aw-danger-hover": "#C8242A",
+      "--aw-danger-solid": "#CF1322",
+      "--aw-danger-solid-hover": "#A8071A",
+      "--aw-text-on-brand": "#FFF",
+      "--aw-switch-handle": "#FFF",
+      "--aw-text-3": "#5F6B7A",
+      "--aw-text-4": "#667085",
+        "--aw-fill-1": "#FAFAFA",
+        "--aw-fill-2": "#F5F5F5",
+        "--aw-fill-3": "#EEEEEE",
+        "--aw-fill-4": "#FCFCFC"
+      },
+      "dark": {
+      "--aw-primary": "#4080FF",
+      "--aw-primary-text": "#6AA1FF",
+      "--aw-primary-solid": "#2858DC",
+      "--aw-primary-solid-hover": "#3666D6",
+      "--aw-primary-solid-active": "#1F49B6",
+        "--aw-success": "#52C41A",
+        "--aw-success-solid": "#237804",
+        "--aw-warning": "#FAAD14",
+        "--aw-danger": "#FF4D4F",
+        "--aw-info": "#4DABF7",
+      "--aw-danger-hover": "#FF7875",
+      "--aw-danger-solid": "#B4232C",
+      "--aw-danger-solid-hover": "#9F1D26",
+      "--aw-text-on-brand": "#FFF",
+      "--aw-switch-handle": "#FFF",
+      "--aw-text-3": "rgb(255 255 255 / 60%)",
+      "--aw-text-4": "rgb(255 255 255 / 52%)",
+        "--aw-fill-1": "#1B1F27",
+        "--aw-fill-2": "#21262F",
+        "--aw-fill-3": "#2A2F38",
+        "--aw-fill-4": "#171A20"
+      }
+    },
+    "antdAliasMappings": {
+      "colorFill": "--aw-fill-3",
+      "colorFillSecondary": "--aw-fill-2",
+      "colorFillTertiary": "--aw-fill-1",
+      "colorFillQuaternary": "--aw-fill-4"
+    },
+    "antdComponentMappings": {
+      "Button.colorPrimary": "--aw-primary-solid",
+      "Button.colorPrimaryHover": "--aw-primary-solid-hover",
+      "Button.colorPrimaryActive": "--aw-primary-solid-active",
+      "Button.colorError": "--aw-danger-solid",
+      "Button.colorErrorHover": "--aw-danger-solid-hover"
+    },
+    "consumerExtensions": {
+      "allowed": true,
+      "rule": "Application-private tokens must be explicitly namespaced or documented and must not redefine source token names. Cross-module semantic tokens are promoted source-first."
+    }
+  },
+  "breakpoints": {
+    "strategy": "desktop-first-with-narrow-screen-support",
+    "canonical": {
+      "xs": 480,
+      "sm": 576,
+      "md": 768,
+      "lg": 992,
+      "xl": 1200,
+      "xxl": 1600
+    },
+    "qaTargetWidths": [390, 480, 576, 768, 1024, 1280, 1366, 1440, 1920],
+    "narrowScreen": {
+      "supported": true,
+      "resolutionGuard": false,
+      "navigation": "mobile-tab-bar-below-md",
+      "table": "preserve-primary-columns-and-use-horizontal-scroll"
+    }
+  },
+  "density": {
+    "smallControlHeight": 24,
+    "compactControlHeight": 28,
+    "defaultControlHeight": 32,
+    "largeControlHeight": 40,
+    "compactRule": "Compact is an application density and must not be implemented by Ant Design compactAlgorithm."
+  },
+  "pagination": {
+    "defaultPageSize": 20,
+    "pageSizeOptions": [20, 50, 100, 200]
+  },
+  "i18n": {
+    "locales": ["zh_CN", "en", "es", "pt", "fr", "ru"],
+    "requiredAllLocaleKeys": ["common.scrollableTable", "common.dangerZone"],
+    "defaultValueLiteralRequiredLocales": ["zh_CN", "en"]
+  },
+  "dateTime": {
+    "transport": "RFC3339-or-ISO-8601-instant",
+    "displayApi": "Intl.DateTimeFormat",
+    "timeZonePriority": ["user-or-tenant-iana", "runtime-resolved-iana", "UTC"],
+    "fixedOffsetAsZoneAllowed": false
+  },
+  "rowActions": {
+    "table": {
+      "visiblePrimaryCount": 1,
+      "collapseSecondaryActions": true
+    },
+    "compactCard": {
+      "maxVisibleCount": 3,
+      "collapseFrom": 4
+    },
+    "dangerLast": true,
+    "dangerConfirmationDefaultFocus": "cancel"
+  },
+  "pageHeader": {
+    "freeTextSubtitle": false,
+    "keyFieldsOnly": true,
+    "maxPrimaryActions": 1,
+    "dangerActionsAllowed": false,
+    "collapseActionsFrom": 4,
+    "longPageSticky": ["detail", "form", "dashboard"],
+    "listPageSticky": false,
+    "compactAfterScrollPx": 60
+  },
+  "feedback": {
+    "providerOrder": ["ConfigProvider", "App"],
+    "api": "App.useApp()",
+    "staticApiAllowed": false,
+    "notification": {
+      "placement": "topRight",
+      "maxCount": 3
+    },
+    "failurePresentation": {
+      "initialOrRefreshLoad": {
+        "toastOnlyAllowed": false,
+        "persistentInlineComponents": ["Alert", "Result"],
+        "retryRequired": true
+      },
+      "singleOperationOnPresentedContent": {
+        "messageAllowed": true
+      }
+    }
+  }
+}

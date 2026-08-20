@@ -104,7 +104,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="avatar-result:text.065">Result 与 Message / Notification / Modal / Alert 的边界</span></h3>
-    <div class="alert info"><div class="ico">i</div><div class="content"><strong><span data-i18n="avatar-result:text.066">判断口诀：</span></strong><span data-i18n="avatar-result:text.067">"下一步是回到列表 / 重试 / 跳转" → Result。"继续在原页工作" → Message。"异步任务仍在运行" → Notification。"操作前需要决策" → Modal。"持续提示与上下文相关" → Alert。详细对照参见 </span><a href="#/toast" style="color:var(--aw-primary)"><span data-i18n="avatar-result:text.068">消息与通知章节</span></a><span data-i18n="avatar-result:text.069">。</span></div></div>
+    <div class="alert info"><div class="ico">i</div><div class="content"><strong><span data-i18n="avatar-result:text.066">判断口诀：</span></strong><span data-i18n="avatar-result:text.067">"下一步是回到列表 / 重试 / 跳转" → Result。"继续在原页工作" → Message。"异步任务仍在运行" → Notification。"操作前需要决策" → Modal。"持续提示与上下文相关" → Alert。详细对照参见 </span><a href="#/toast" style="color: var(--aw-primary-text)"><span data-i18n="avatar-result:text.068">消息与通知章节</span></a><span data-i18n="avatar-result:text.069">。</span></div></div>
   </div>
 
   <div class="subsection">

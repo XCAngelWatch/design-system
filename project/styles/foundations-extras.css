@@ -5,7 +5,8 @@
    ============================================================ */
 
 /* ---------- Sidebar tokens — Light = pure white, Dark unchanged ---------- */
-:root {
+:root,
+[data-theme="light"] {
   --aw-sidebar-gradient: #FFFFFF;
   --aw-sidebar-header-bg: #FAFAFA;
   --aw-sidebar-divider: #EFF1F4;
@@ -67,14 +68,14 @@
   display: flex; flex-direction: column; line-height: 1.15;
 }
 .shell-mock.v12 .sb .logo-region .nm .pname { color: var(--aw-sidebar-logo-text); font-size: 13px; font-weight: 600; }
-.shell-mock.v12 .sb .logo-region .nm .pdesc { color: var(--aw-sidebar-text-default); font-size: 10px; margin-top: 1px; opacity: 0.75; }
+.shell-mock.v12 .sb .logo-region .nm .pdesc { color: var(--aw-sidebar-text-default); font-size: 10px; margin-top: 1px; }
 
 .shell-mock.v12 .sb .menu { flex: 1; min-height: 0; overflow: hidden; padding: 6px 0; }
 
 .shell-mock.v12 .sb .group {
   padding: 14px 16px 6px;
   font-size: 10px; letter-spacing: 0.6px; text-transform: uppercase;
-  color: var(--aw-sidebar-group-text);
+  color: var(--aw-text-4);
   font-weight: 500;
 }
 .shell-mock.v12 .sb .item {
@@ -149,7 +150,7 @@
 }
 .shell-mock.v12 .sb .user-region .uavatar {
   width: 32px; height: 32px; border-radius: 50%;
-  background: var(--aw-primary); color: white;
+  background: var(--aw-primary-solid); color: var(--aw-text-on-brand);
   display: grid; place-items: center;
   font-size: 12px; font-weight: 600;
   flex-shrink: 0; overflow: hidden;
@@ -274,7 +275,7 @@
 .sidebar-states .ss-sb.dark .ss-logo .lg-text { color: white; }
 .sidebar-states .ss-menu { flex: 1; padding: 6px 0; display: flex; flex-direction: column; gap: 1px; }
 .sidebar-states .ss-grp {
-  font-size: 7px; letter-spacing: 0.5px; color: #9AA3AE;
+  font-size: 7px; letter-spacing: 0.5px; color: #667085;
   padding: 6px 10px 2px; text-transform: uppercase;
 }
 .sidebar-states .ss-sb.dark .ss-grp { color: rgba(255,255,255,0.4); }
@@ -325,8 +326,8 @@
 .sidebar-states .ss-sb.dark .ss-user { background: rgba(0, 0, 0, 0.12); border-top-color: rgba(255,255,255,0.08); }
 .sidebar-states .ss-sb.col .ss-user { justify-content: center; padding: 0; }
 .sidebar-states .ss-user .ua {
-  width: 16px; height: 16px; border-radius: 50%; background: var(--aw-primary);
-  color: white; display: grid; place-items: center; font-size: 8px; font-weight: 600; flex-shrink: 0;
+  width: 16px; height: 16px; border-radius: 50%; background: var(--aw-primary-solid);
+  color: var(--aw-text-on-brand); display: grid; place-items: center; font-size: 8px; font-weight: 600; flex-shrink: 0;
 }
 .sidebar-states .ss-user .ut { font-size: 8.5px; color: #1F2329; line-height: 1.1; }
 .sidebar-states .ss-sb.dark .ss-user .ut { color: white; }
@@ -371,6 +372,7 @@
 .sidebar-states .ss-foot .label { font-weight: 600; color: var(--aw-text-1); }
 .sidebar-states .ss-card.dark .ss-foot .label { color: white; }
 .sidebar-states .ss-foot .meta { color: var(--aw-text-3); font-size: 10px; }
+.sidebar-states .ss-card.dark .ss-foot .meta { color: rgba(255,255,255,0.64); }
 
 /* ============================================================
    Token Architecture Pyramid
@@ -414,6 +416,22 @@
 .token-pyramid .pyramid-legend .leg .examples code {
   background: var(--aw-fill-2); padding: 1px 4px; border-radius: 2px;
   display: inline-block; margin: 1px 2px 1px 0;
+}
+
+/* All neutral swatches remain reachable instead of being clipped by the
+   legacy fixed eight-column track. */
+#color .swatch-row {
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+}
+
+/* A fixed Light shell nested below a Dark documentation root must restore
+   the Light active-state foreground as well as its variables. */
+[data-theme="light"] .shell-mock.v12 .sb .item.act {
+  color: var(--aw-sidebar-text-active);
+}
+[data-theme="light"] .shell-mock.v12 .sb .logo-region .b img,
+[data-theme="light"] .sidebar-states .ss-logo .lg img {
+  filter: none;
 }
 
 /* ============================================================
@@ -605,13 +623,20 @@
   height: 100%;
 }
 .ext-palette .ep-shades .sh {
-  padding: 10px 8px;
-  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 38px 0 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
   font-family: var(--aw-font-mono); font-size: 10px;
-  min-height: 76px;
+  min-height: 82px;
 }
-.ext-palette .ep-shades .sh .step { font-weight: 600; opacity: 0.85; }
-.ext-palette .ep-shades .sh .hx { opacity: 0.75; }
+.ext-palette .ep-shades .sh .step,
+.ext-palette .ep-shades .sh .hx {
+  padding: 1px 8px;
+  background: var(--aw-bg);
+  color: var(--aw-text-1);
+  opacity: 1;
+}
+.ext-palette .ep-shades .sh .step { padding-top: 4px; font-weight: 600; }
+.ext-palette .ep-shades .sh .hx { padding-bottom: 4px; color: var(--aw-text-2); }
 
 .ext-palette .ep-example {
   padding: 14px 16px;
@@ -651,7 +676,7 @@
   display: grid; place-items: center;
   height: 100%; padding: 12px;
   border-right: 1px solid var(--aw-border-3);
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
 }
 .principles-table .pt-icon svg { width: 22px; height: 22px; }
 .principles-table .pt-name {
@@ -767,9 +792,10 @@
   font-family: var(--aw-font-mono); font-size: 10.5px;
   border: 1px solid var(--aw-border-3);
 }
-.nested-demo .nd-label code { color: var(--aw-primary); background: transparent; padding: 0; }
+.nested-demo .nd-label code { color: var(--aw-primary-text); background: transparent; padding: 0; }
 .nested-demo .nd-label.outer { color: var(--aw-text-2); }
 .nested-demo .nd-label.inner { background: #1A1D23; border-color: rgba(91, 155, 255, 0.5); color: #A5C9FF; }
+.nested-demo .nd-label.inner code { color: #A5C9FF; }
 .nested-demo .nd-label.inner2 { background: rgba(207, 19, 34, 0.95); border-color: #FF4D4F; color: white; }
 
 .nested-demo .nd-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -802,7 +828,7 @@
   box-shadow: 0 2px 6px rgba(168, 7, 26, 0.25);
 }
 .nested-demo .nd-btn-ghost {
-  background: transparent; color: #CF1322; border: 1px solid #CF1322;
+  background: transparent; color: #FF7875; border: 1px solid #FF7875;
   height: 32px; padding: 0 16px; border-radius: 4px;
   font-size: 13px; font-weight: 500; cursor: pointer;
 }
@@ -926,7 +952,7 @@
   color: var(--aw-text-2);
   transition: background var(--aw-dur-fast) var(--aw-ease);
 }
-.icon-lib-grid .ilib:hover { background: var(--aw-fill-1); color: var(--aw-primary); }
+.icon-lib-grid .ilib:hover { background: var(--aw-fill-1); color: var(--aw-primary-text); }
 .icon-lib-grid .ilib svg { width: 22px; height: 22px; }
 .icon-lib-grid .ilib span {
   font-size: 11px;
@@ -1001,18 +1027,22 @@
   background: var(--aw-bg);
 }
 .chart-color-bar > div {
-  height: 56px;
-  border-radius: 4px;
   display: flex;
-  align-items: flex-end;
-  padding: 8px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
 }
-.chart-color-bar > div span {
+.chart-color-swatch {
+  display: block;
+  height: 40px;
+  border-radius: 4px;
+}
+.chart-color-label {
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  color: var(--aw-text-2);
   font-family: var(--aw-font-mono);
+  white-space: nowrap;
 }
 
 /* ============================================================
@@ -1177,7 +1207,7 @@ kbd {
   cursor: pointer;
 }
 .ph-anatomy .ph-tabs span.active {
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   border-bottom-color: var(--aw-primary);
   font-weight: 500;
 }

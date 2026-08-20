@@ -6,8 +6,8 @@
   <h2><span data-i18n="ota-page:text.002">OTA 升级 OtaPage</span></h2>
   <p class="lede"><span data-i18n="ota-page:text.003">OTA 升级页管理升级文件、基线版本、适配机型、更新推送和推送固件包。所有文案必须前置版本、机型、范围和风险，避免只写“更新”或“执行”。</span></p>
 
-  <div class="surface" style="padding:0;overflow:hidden">
-    <div style="display:flex;align-items:stretch;height:560px">
+  <div class="surface blueprint-shell-surface" style="padding:0">
+    <div class="blueprint-split-shell">
       <!-- 左:机构树(对应旧 simpleTree, store_list) -->
       <div class="ota-tree">
         <div class="ot-h">
@@ -32,9 +32,9 @@
         <!-- 搜索表单 -->
         <div class="lp-toolbar">
           <div class="row" style="gap:12px;flex:1;min-width:0">
-            <div style="min-width:140px"><label><span data-i18n="ota-page:text.014">名称</span></label><input class="input" placeholder="OTA 包名称" data-i18n-placeholder="ota-page:text.015" /></div>
-            <div style="min-width:140px"><label><span data-i18n="ota-page:text.016">新版本</span></label><input class="input" placeholder="如 v3.5.0" data-i18n-placeholder="ota-page:text.017" /></div>
-            <div style="min-width:140px"><label><span data-i18n="ota-page:text.018">基线版本</span></label><input class="input" placeholder="如 v3.4.2" data-i18n-placeholder="ota-page:text.019" /></div>
+            <div class="filter-field"><label><span data-i18n="ota-page:text.014">名称</span></label><input class="input" placeholder="OTA 包名称" data-i18n-placeholder="ota-page:text.015" /></div>
+            <div class="filter-field"><label><span data-i18n="ota-page:text.016">新版本</span></label><input class="input" placeholder="如 v3.5.0" data-i18n-placeholder="ota-page:text.017" /></div>
+            <div class="filter-field"><label><span data-i18n="ota-page:text.018">基线版本</span></label><input class="input" placeholder="如 v3.4.2" data-i18n-placeholder="ota-page:text.019" /></div>
             <button class="btn btn-primary btn-sm"><span data-i18n="ota-page:text.020">查询</span></button>
             <button class="btn btn-sm"><span data-i18n="ota-page:text.021">重置</span></button>
           </div>
@@ -75,7 +75,7 @@
               <tr>
                 <td><strong><span data-i18n="ota-page:text.038">v3.5.0 灰度包</span></strong></td>
                 <td><span data-i18n="ota-page:text.039">上海运营中心</span></td>
-                <td><code style="color:var(--aw-primary)">v3.5.0</code></td>
+                <td><code style="color: var(--aw-primary-text)">v3.5.0</code></td>
                 <td><code>v3.4.2</code></td>
                 <td class="colnum">245 MB</td>
                 <td>AW-Pro 5</td>

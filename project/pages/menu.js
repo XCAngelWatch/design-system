@@ -19,7 +19,7 @@
             <div class="ms-it"><svg class="ms-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v8m0 0 4-4m-4 4-4-4M4 20h16"/></svg><span data-i18n="menu:text.009">OTA 升级</span></div>
             <div class="ms-it act"><svg class="ms-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16"/><path d="M4 9h16M9 4v16"/></svg><span data-i18n="menu:text.010">数据中心</span></div>
             <div class="ms-it"><svg class="ms-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/></svg><span data-i18n="menu:text.011">设备地图</span></div>
-            <div class="ms-it dis"><svg class="ms-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/></svg><span data-i18n="menu:text.012">系统管理</span></div>
+            <div class="ms-it dis" aria-disabled="true"><svg class="ms-icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/></svg><span data-i18n="menu:text.012">系统管理</span></div>
           </div>
         </div>
 
@@ -59,7 +59,7 @@
           <tr><td><strong>Default</strong></td><td><span class="ms-pill"><span data-i18n="menu:text.027">📁 应用市场</span></span></td><td><code>--aw-sidebar-text</code></td><td><span data-i18n="menu:text.028">未交互的常态</span></td></tr>
           <tr><td><strong>Hover</strong></td><td><span class="ms-pill hover"><span data-i18n="menu:text.029">📁 应用市场</span></span></td><td><code>--aw-sidebar-bg-hover</code></td><td><span data-i18n="menu:text.030">鼠标悬浮 200ms 渐入</span></td></tr>
           <tr><td><strong>Active</strong></td><td><span class="ms-pill active"><span class="bar"></span><span data-i18n="menu:text.031">📁 应用市场</span></span></td><td><code>--aw-sidebar-bg-active</code> + 3px <code>--aw-primary</code> indicator</td><td><span data-i18n="menu:text.032">当前路由匹配</span></td></tr>
-          <tr><td><strong>Disabled</strong></td><td><span class="ms-pill disabled"><span data-i18n="menu:text.033">🔒 系统管理</span></span></td><td><code>--aw-text-disabled</code> + cursor: not-allowed</td><td><span data-i18n="menu:text.034">权限不足 / 未激活</span></td></tr>
+          <tr><td><strong>Disabled</strong></td><td><button type="button" class="ms-pill disabled" disabled><span data-i18n="menu:text.033">🔒 系统管理</span></button></td><td><code>--aw-text-disabled</code> + cursor: not-allowed</td><td><span data-i18n="menu:text.034">权限不足 / 未激活</span></td></tr>
           <tr><td><strong>Badge</strong></td><td><span class="ms-pill"><span data-i18n="menu:text.035">🔔 告警 </span><span class="badge-num">3</span></span></td><td><code>--aw-danger</code><span data-i18n="menu:text.036"> 圆形小数字</span></td><td><span data-i18n="menu:text.037">未读 / 待办计数(限 99+)</span></td></tr>
         </tbody>
       </table>
@@ -78,7 +78,7 @@
         <div style="flex:0 0 280px;font-family:var(--aw-font-mono);font-size:11px;line-height:1.8;background:var(--aw-fill-1);padding:12px;border-radius:6px;color:var(--aw-text-2)">
           <div><span data-i18n="menu:text.050">📁 数据中心          ← L1</span></div>
           <div style="padding-left:16px"><span data-i18n="menu:text.051">│  设备分组          ← L2</span></div>
-          <div style="padding-left:16px">│  <span style="color:var(--aw-primary)"><span data-i18n="menu:text.052">●  设备管理          ← L2 active</span></span></div>
+          <div style="padding-left:16px">│  <span style="color: var(--aw-primary-text)"><span data-i18n="menu:text.052">●  设备管理          ← L2 active</span></span></div>
           <div style="padding-left:16px"><span data-i18n="menu:text.053">│     ├─ 列表视图    ← L3</span></div>
           <div style="padding-left:16px"><span data-i18n="menu:text.054">│     └─ 卡片视图    ← L3</span></div>
           <div style="padding-left:16px"><span data-i18n="menu:text.055">│  型号管理</span></div>
@@ -95,7 +95,7 @@
         <div class="mh-it act"><span data-i18n="menu:text.060">数据中心 </span><span class="mh-bar"></span></div>
         <div class="mh-it"><span data-i18n="menu:text.061">OTA 升级</span></div>
         <div class="mh-it"><span data-i18n="menu:text.062">推送中心</span></div>
-        <div class="mh-it dis"><span data-i18n="menu:text.063">监控大屏 </span><span class="ms-pill" style="background:var(--aw-fill-2);color:var(--aw-text-3);font-size:10px;padding:0 6px;margin-left:4px"><span data-i18n="menu:text.064">即将开放</span></span></div>
+        <button type="button" class="mh-it dis" disabled><span data-i18n="menu:text.063">监控大屏 </span><span class="ms-pill" style="background:var(--aw-fill-2);color:var(--aw-text-3);font-size:10px;padding:0 6px;margin-left:4px"><span data-i18n="menu:text.064">即将开放</span></span></button>
       </div>
     </div>
 

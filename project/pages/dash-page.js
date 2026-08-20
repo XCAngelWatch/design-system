@@ -49,7 +49,7 @@
   <div class="subsection">
     <h3><span data-i18n="dash-page:text.032">统计详情入口 · 从首页到明细</span></h3>
     <p class="lede" style="margin-bottom:12px"><span data-i18n="dash-page:text.033">Figma 数据统计不是独立大屏，而是从首页运营指标进入统计详情。Dashboard 只负责快速判断异常，详情页负责筛选、下钻、导出和追责。</span></p>
-    <div class="surface" style="padding:0;overflow:hidden">
+    <div class="surface responsive-table" style="padding:0">
       <table class="map-table">
         <thead><tr><th style="width:18%"><span data-i18n="dash-page:text.034">首页卡片</span></th><th style="width:24%"><span data-i18n="dash-page:text.035">进入详情后默认视图</span></th><th style="width:26%"><span data-i18n="dash-page:text.036">筛选继承</span></th><th><span data-i18n="dash-page:text.037">异常处理</span></th></tr></thead>
         <tbody>

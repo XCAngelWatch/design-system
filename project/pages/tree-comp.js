@@ -3,13 +3,20 @@
 <div class="content">
 <section class="section" id="tree-comp">
   <p class="section-eyebrow"><span data-i18n="tree-comp:text.001">通用组件 · 树</span></p>
-  <h2><span data-i18n="tree-comp:text.002">树 Tree</span></h2>
+  <h2 role="heading" aria-level="1"><span data-i18n="tree-comp:text.002">树 Tree</span></h2>
   <p class="lede"><span data-i18n="tree-comp:text.003">承载层级关系——机构树（集团 → 大区 → 城市 → 营业厅）、设备分组、权限菜单。支持搜索、多选、半选状态。</span></p>
+  <style>
+    #tree-comp .tnode:not(.selected) .count { color: var(--aw-text-2); }
+    #tree-comp .tree-empty .te-s { color: var(--aw-text-3); }
+    #tree-comp .tnode.dragging { opacity: 1; }
+    #tree-comp .tnode.dragging .info-mini,
+    #tree-comp .tnode.drop-into .info-mini { color: var(--aw-text-2); }
+  </style>
 
   <div class="surface">
     <div class="row" style="gap:32px;align-items:flex-start">
 <div class="tree-comp">
-  <div class="search"><input class="input" placeholder="搜索机构 / 分组" data-i18n-placeholder="tree-comp:attr.004.placeholder" /></div>
+  <div class="search"><input class="input" placeholder="搜索机构 / 分组" data-i18n-placeholder="tree-comp:attr.004.placeholder" aria-label="搜索机构 / 分组" data-i18n-aria-label="tree-comp:attr.086.ariaLabel" /></div>
   <div class="body">
     <div class="tnode expanded"><div class="caret">›</div><div class="check checked"></div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><span class="lbl"><span data-i18n="tree-comp:text.005">AngelWatch 集团</span></span><span class="count">12,486</span></div>
     <div class="tnode expanded depth-1"><div class="caret">›</div><div class="check partial"></div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v12H3z"/></svg><span class="lbl"><span data-i18n="tree-comp:text.006">华东大区</span></span><span class="count">5,284</span></div>
@@ -43,7 +50,7 @@
     <div class="surface">
       <div class="tree-comp" style="max-width:380px">
         <div class="search">
-          <input class="input" value="浦" data-i18n-value="tree-comp:attr.027.value" />
+          <input class="input" value="浦" data-i18n-value="tree-comp:attr.027.value" aria-label="搜索机构 / 分组" data-i18n-aria-label="tree-comp:attr.086.ariaLabel" />
         </div>
         <div class="body">
           <div class="tnode expanded"><div class="caret">›</div><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg><span class="lbl"><span data-i18n="tree-comp:text.028">AngelWatch 集团</span></span><span class="count">12,486</span></div>
@@ -75,7 +82,7 @@
     <h3><span data-i18n="tree-comp:text.045">空态 · Empty</span></h3>
     <div class="surface">
       <div class="tree-comp" style="max-width:380px">
-        <div class="search"><input class="input" value="火星营业厅" data-i18n-value="tree-comp:attr.046.value" /></div>
+        <div class="search"><input class="input" value="火星营业厅" data-i18n-value="tree-comp:attr.046.value" aria-label="搜索机构 / 分组" data-i18n-aria-label="tree-comp:attr.086.ariaLabel" /></div>
         <div class="tree-empty">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           <div class="te-h"><span data-i18n="tree-comp:text.047">未找到匹配的机构</span></div>
@@ -147,7 +154,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="tree-comp:text.072">树 + 列表选中联动</span></h3>
-    <p class="lede" style="margin-bottom:12px"><span data-i18n="tree-comp:text.073">TreeListLayout 的核心：树选中节点 → 右侧列表 filter；右侧行点击 → 反向高亮树节点对应路径。详细布局参见 </span><a href="#/tree-list" style="color:var(--aw-primary)">TreeListLayout</a><span data-i18n="tree-comp:text.085">。</span></p>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="tree-comp:text.073">TreeListLayout 的核心：树选中节点 → 右侧列表 filter；右侧行点击 → 反向高亮树节点对应路径。详细布局参见 </span><a href="#/tree-list" style="color: var(--aw-primary-text)">TreeListLayout</a><span data-i18n="tree-comp:text.085">。</span></p>
     <div class="surface">
       <div class="alert info" style="margin:0"><div class="ico">i</div><div class="content"><strong><span data-i18n="tree-comp:text.074">反向高亮规则：</span></strong><span data-i18n="tree-comp:text.075">右侧选中行的 organizationPath（如 集团/华东/上海/黄浦）对应树节点保留 selected 态；多选时仅最后一个保持 selected，前置节点用 dim 高亮（淡蓝色背景）。</span></div></div>
     </div>

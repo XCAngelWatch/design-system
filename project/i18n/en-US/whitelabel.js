@@ -38,7 +38,7 @@
   "t034": "Spacing",
   "t035": "Density and grid are tightly coupled; customization breaks long-copy layouts across locales",
   "t036": "Type size · Font",
-  "t037": "Inter + Source Han Sans CN are self-hosted and calibrated against device DPI",
+  "t037": "Currently resolved through local() / the system font stack; to lock cross-machine metrics, first commit WOFF2 files with license provenance",
   "t038": "Radius",
   "t039": "6/4/8 tiers are visually packaged with components; single-point changes break consistency",
   "t040": "Shadow",
@@ -92,6 +92,6 @@
   "t088": "formLoginClient / smsLoginClient / socialLoginClient — decides which login methods are available per tenant.",
   "t089": "4. Home / menu props",
   "t090": "fistPage(label/value/params/query/group/close) / menu.props(label/path/icon/children/id) — tenant default home page and visible menu tree.",
-  "t091": "All image assets must be self-hosted. The existing CDN-hosted brand logo is historical legacy; do not add new runtime CDN dependencies. License must be MIT / Apache-2.0 / BSD / ISC."
+  "t091": "All image assets must be self-hosted; the current brand logo is also a repository-local asset. Preserve license and provenance records for third-party assets."
 });
 })(typeof window !== 'undefined' ? window : globalThis);

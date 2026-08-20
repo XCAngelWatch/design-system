@@ -3,8 +3,8 @@
 <div class="content">
 <section class="section" id="empty-state">
   <p class="section-eyebrow"><span data-i18n="empty-state:text.001">业务模式 · 空状态</span></p>
-  <h2><span data-i18n="empty-state:text.002">空状态 Empty State</span></h2>
-  <p class="lede"><span data-i18n="empty-state:text.003">空状态不只是"当前没有可显示的数据"。三类空态对应三类下一步动作 —— 必须可执行、必须有路径。Result 组件强制传 </span><code>extra</code><span data-i18n="empty-state:text.004"> prop（CI 阶段拦截），杜绝出现"留白 + 暂无"的死页面。</span></p>
+  <h2 role="heading" aria-level="1"><span data-i18n="empty-state:text.002">空状态 Empty State</span></h2>
+  <p class="lede"><span data-i18n="empty-state:text.003">空状态不只是"当前没有可显示的数据"。三类空态都必须提供可执行的下一步。当前消费者使用 TMSEmpty 处理数据空态、ErrorPage 处理路由 / 权限 / 系统异常；ErrorPage 未传 </span><code>extra</code><span data-i18n="empty-state:text.004"> 时提供"返回首页"默认动作，业务特定状态仍应显式传入对应操作。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="empty-state:text.005">三类空态</span></h3>
@@ -74,7 +74,7 @@
     <table class="map-table">
       <thead><tr><th style="width:24%"><span data-i18n="empty-state:text.055">空态触发位</span></th><th style="width:24%"><span data-i18n="empty-state:text.056">推荐组件</span></th><th><span data-i18n="empty-state:text.057">说明</span></th></tr></thead>
       <tbody>
-        <tr><td><span data-i18n="empty-state:text.058">整页空</span></td><td><code>Result</code><span data-i18n="empty-state:text.059"> 组件 + 默认 illust</span></td><td><span data-i18n="empty-state:text.060">ListPage / DetailPage 数据全空</span></td></tr>
+        <tr><td><span data-i18n="empty-state:text.058">整页空</span></td><td><code>TMSEmpty</code><span data-i18n="empty-state:text.059"> + description / extra</span></td><td><span data-i18n="empty-state:text.060">ListPage / DetailPage 数据为空；异常状态使用 ErrorPage</span></td></tr>
         <tr><td><span data-i18n="empty-state:text.061">表格内空</span></td><td><code>Empty</code><span data-i18n="empty-state:text.062"> 组件 + 自定义 description</span></td><td><span data-i18n="empty-state:text.063">分页空 / 筛选空，保留表头</span></td></tr>
         <tr><td><span data-i18n="empty-state:text.064">卡片内空</span></td><td><span data-i18n="empty-state:text.065">简化文案 + 图标</span></td><td><span data-i18n="empty-state:text.066">DataCard / Stat 卡片，避免太大占位</span></td></tr>
         <tr><td><span data-i18n="empty-state:text.067">下拉空</span></td><td><span data-i18n="empty-state:text.068">"未找到 X" + 触发新建</span></td><td><span data-i18n="empty-state:text.069">Select / Cascader / TreeSelect 内部</span></td></tr>
@@ -86,52 +86,58 @@
   <div class="subsection">
     <h3><span data-i18n="empty-state:text.073">覆盖 antd 默认 Empty</span></h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="empty-state:text.074">antd 内置的 </span><code>Empty</code><span data-i18n="empty-state:text.075"> 组件 / </span><code>Select</code><span data-i18n="empty-state:text.076"> 下拉空 / </span><code>Table</code><span data-i18n="empty-state:text.077"> 空数据 默认渲染一张</span><b><span data-i18n="empty-state:text.078">彩色插画</span></b><span data-i18n="empty-state:text.079">（</span><code>Empty.PRESENTED_IMAGE_DEFAULT</code><span data-i18n="empty-state:text.080">），与 illustration 页"插画仅用于登录 / 错误页"规则冲突。必须在 ConfigProvider 全局 </span><code>renderEmpty</code><span data-i18n="empty-state:text.081"> 替换。</span></p>
-    <div class="code-block"><pre><code>// packages/web/src/components/Empty.tsx
+    <div class="code-block"><pre><code>// tms2.5-web-ui/src/components/TMSEmpty/TMSEmpty.tsx
 import { Empty } from 'antd';
+import { useTranslation } from 'react-i18next';
 
-export const TMSEmpty: FC&lt;{ description?: string; extra?: ReactNode }&gt; = ({
-  description = 'No data to display',
-  extra,
-}) =&gt; (
-  &lt;Empty
-    image={Empty.PRESENTED_IMAGE_SIMPLE}    // Use antd simple monochrome SVG
-    imageStyle={{ height: 56 }}
-    description={&lt;span style={{ color: 'var(--aw-text-3)', fontSize: 13 }}&gt;{description}&lt;/span&gt;}
-  &gt;
-    {extra}
-  &lt;/Empty&gt;
-);
+export default function TMSEmpty({ description, extra, styles, ...rest }: Props) {
+  const { t } = useTranslation();
+  const text = description ?? t('common.noData');
+  const mergedStyles = typeof styles === 'function'
+    ? info =&gt; {
+        const resolved = styles(info);
+        return { ...resolved, image: { height: 56, ...resolved?.image } };
+      }
+    : { ...styles, image: { height: 56, ...styles?.image } };
+  return (
+    &lt;Empty
+      {...rest}
+      image={Empty.PRESENTED_IMAGE_SIMPLE}
+      styles={mergedStyles}
+      description={&lt;span style={{ color: 'var(--aw-text-3)', fontSize: 13 }}&gt;{text}&lt;/span&gt;}
+    &gt;
+      {extra}
+    &lt;/Empty&gt;
+  );
+}
 
-// Inject through AntdConfig
+// Configure once at the real src/App.tsx root.
 &lt;ConfigProvider renderEmpty={() =&gt; &lt;TMSEmpty /&gt;}&gt;
   &lt;App /&gt;
 &lt;/ConfigProvider&gt;</code></pre></div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="empty-state:text.082">作用范围：</span></b><span data-i18n="empty-state:text.083">renderEmpty 同时覆盖 </span><code>Table</code><span data-i18n="empty-state:text.084"> / </span><code>List</code><span data-i18n="empty-state:text.085"> / </span><code>Select</code><span data-i18n="empty-state:text.086"> / </span><code>TreeSelect</code><span data-i18n="empty-state:text.087"> / </span><code>Cascader</code><span data-i18n="empty-state:text.088"> / </span><code>Empty</code><span data-i18n="empty-state:text.089"> 全部空态。整页空态用 </span><code>&lt;Result /&gt;</code><span data-i18n="empty-state:text.090"> 而非 Empty，因为前者强制 </span><code>extra</code><span data-i18n="empty-state:text.091"> prop。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="empty-state:text.082">作用范围：</span></b><span data-i18n="empty-state:text.083">renderEmpty 同时覆盖 </span><code>Table</code><span data-i18n="empty-state:text.084"> / </span><code>List</code><span data-i18n="empty-state:text.085"> / </span><code>Select</code><span data-i18n="empty-state:text.086"> / </span><code>TreeSelect</code><span data-i18n="empty-state:text.087"> / </span><code>Cascader</code><span data-i18n="empty-state:text.088"> / </span><code>Empty</code><span data-i18n="empty-state:text.089"> 全部空态。页面数据为空使用 </span><code>&lt;TMSEmpty /&gt;</code><span data-i18n="empty-state:text.090"> 并按业务传 description / extra；路由、权限和系统异常使用 </span><code>&lt;ErrorPage /&gt;</code><span data-i18n="empty-state:text.091">，其默认动作是"返回首页"，业务恢复路径则显式传 extra。</span></p>
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="empty-state:text.092">API 约束 · Result 组件强制 extra</span></h3>
-    <div class="code-block"><pre><code>// packages/web/src/components/Result.tsx
-// Required type: extra cannot be undefined
-type ResultProps = {
-  status: 'empty' | 'no-match' | 'error';
-  title: string;
-  description?: string;
-  extra: ReactNode;          // Required; undefined is not allowed
-  errorCode?: string;        // Required when status === 'error'
-};
+    <h3><span data-i18n="empty-state:text.092">真实组件契约 · TMSEmpty / ErrorPage</span></h3>
+    <div class="code-block"><pre><code>// tms2.5-web-ui/src/components/TMSEmpty/TMSEmpty.tsx
+&lt;TMSEmpty
+  description={t('devices.empty')}
+  extra={&lt;Button type="primary"&gt;{t('devices.add')}&lt;/Button&gt;}
+/&gt;
 
-// Usage: three empty-state categories
-&lt;Result status="empty" title="No Devices Yet" description="Add the first device to start management"
-  extra={&lt;Button type="primary"&gt;+ Add Device&lt;/Button&gt;} /&gt;
+// tms2.5-web-ui/src/components/ErrorPage/ErrorPage.tsx
+type ErrorStatus = '404' | '403' | '500' | 'network';
 
-&lt;Result status="no-match" title="No Matching Devices" description="No devices match the current filters"
-  extra={&lt;Button onClick={clearFilter}&gt;Clear Filters&lt;/Button&gt;} /&gt;
-
-&lt;Result status="error" title="Load Failed" description="Network timeout. Check terminal connectivity."
+// A business recovery path overrides the default Back Home action.
+&lt;ErrorPage
+  status="network"
   errorCode="E_TIMEOUT"
-  extra={&lt;&gt;&lt;Button type="primary" onClick={retry}&gt;Retry&lt;/Button&gt;
-    &lt;Button onClick={contactAdmin}&gt;Contact Administrator&lt;/Button&gt;&lt;/&gt;} /&gt;</code></pre></div>
+  extra={&lt;Button type="primary" onClick={retry}&gt;{t('common.retry')}&lt;/Button&gt;}
+/&gt;
+
+// With no extra, localized title/description and Back Home are provided.
+&lt;ErrorPage status="403" /&gt;</code></pre></div>
   </div>
 
   <div class="subsection">
@@ -144,7 +150,7 @@ type ResultProps = {
           <li><span data-i18n="empty-state:text.095">区分首次空 / 筛选空 / 错误空 三类</span></li>
           <li><span data-i18n="empty-state:text.096">错误空必带错误码（方括号 + monospace）</span></li>
           <li><span data-i18n="empty-state:text.097">文案前置对象，"X 还没有 / X 加载失败"</span></li>
-          <li><span data-i18n="empty-state:text.098">Result 组件强制 extra prop</span></li>
+          <li><span data-i18n="empty-state:text.098">业务特定空态显式传 extra；ErrorPage 保留返回首页兜底</span></li>
           <li><span data-i18n="empty-state:text.099">空态图标用 32~48px，不要过大</span></li>
         </ul>
       </div>

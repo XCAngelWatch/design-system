@@ -4,16 +4,16 @@
 <!-- DO / DON'T -->
 <section class="section" id="do-dont">
 <p class="section-eyebrow"><span data-i18n="do-dont:t001">工程落地 · 规范红线</span></p>
-<h2><span data-i18n="do-dont:t002">规范红线 Do &amp; Don't</span></h2>
+<h2 role="heading" aria-level="1"><span data-i18n="do-dont:t002">规范红线 Do &amp; Don't</span></h2>
 <p class="lede"><span data-i18n="do-dont:t003">这些是业务仓库接入 stylelint / 设计审查时应执行的硬约束，覆盖 Token 三层架构、Sidebar 规范、扩展色板与交互守则。</span></p>
 <div class="subsection">
 <h3><span data-i18n="do-dont:t004">antd 默认值 vs TMS 覆盖 · 一览</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="do-dont:t005">这里只保留最容易造成视觉偏差的差异；完整覆盖项与页面级默认值统一维护在</span> <a href="#/config-provider" style="color:var(--aw-primary)"><span data-i18n="do-dont:t006">ConfigProvider 全局配置</span></a><span data-i18n="do-dont:t128">。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="do-dont:t005">这里只保留最容易造成视觉偏差的差异；完整覆盖项与页面级默认值统一维护在</span> <a href="#/config-provider" style="color: var(--aw-primary-text)"><span data-i18n="do-dont:t006">ConfigProvider 全局配置</span></a><span data-i18n="do-dont:t128">。</span></p>
 <table class="map-table">
 <thead><tr><th style="width:24%"><span data-i18n="do-dont:t007">维度</span></th><th style="width:30%"><span data-i18n="do-dont:t008">antd 默认</span></th><th><span data-i18n="do-dont:t009">TMS 覆盖</span></th></tr></thead>
 <tbody>
 <tr><td><span data-i18n="do-dont:t010">品牌主色</span></td><td><span class="mono">#1677FF</span></td><td><span class="mono">#165DFF</span> <span data-i18n="do-dont:t011">当前品牌主色（通过 design token 使用）</span></td></tr>
-<tr><td><span data-i18n="do-dont:t012">状态色</span></td><td><span class="mono">#52C41A / #FAAD14 / #FF4D4F / #1677FF</span> <span data-i18n="do-dont:t013">(-6 阶)</span></td><td><span class="mono">#389E0D / #D48806 / #CF1322 / #0958D9</span> <span data-i18n="do-dont:t014">(-7 阶, 与品牌同位)</span></td></tr>
+<tr><td><span data-i18n="do-dont:t012">状态色</span></td><td><span class="mono">#52C41A / #FAAD14 / #FF4D4F / #1677FF</span> <span data-i18n="do-dont:t013">(统一默认阶位)</span></td><td><span class="mono">#237804 / #874D00 / #CF1322 / #0958D9</span> <span data-i18n="do-dont:t014">(按语义与白底正文对比度逐色选择)</span></td></tr>
 <tr><td>Motion</td><td><span class="mono">.645,.045,.355,1</span> · 0.1 / 0.2 / 0.3 s</td><td><span class="mono">.34,.69,.1,1</span> · 120 / 200 / 320 ms</td></tr>
 <tr><td>Button</td><td><span data-i18n="do-dont:t015">字重 400 · 有 primary shadow</span></td><td><span data-i18n="do-dont:t016">字重 500 · 无 primary shadow</span></td></tr>
 <tr><td>Notification.duration</td><td><span data-i18n="do-dont:t017">4.5s 自动关闭</span></td><td><span data-i18n="do-dont:t018">0（手动关闭；成功 Toast 单独 3s）</span></td></tr>
@@ -30,9 +30,9 @@
 <li><span data-i18n="do-dont:t029">所有颜色通过 CSS 变量引用</span></li>
 <li><span data-i18n="do-dont:t030">radius 统一 6px（仅 sm/lg 例外）</span></li>
 <li><span data-i18n="do-dont:t031">侧边栏：Light</span> <span class="mono">#FFFFFF</span> <span data-i18n="do-dont:t032">白底 + 3px</span> <span class="mono">#165DFF</span> indicator bar / Dark <span class="mono">#1A1D23</span> <span data-i18n="do-dont:t033">渐变</span></li>
-<li><span data-i18n="do-dont:t034">Inter + Source Han Sans CN 自托管</span></li>
+<li><span data-i18n="do-dont:t034">消费者应用通过 @fontsource 随构建产物打包 Inter Variable + Noto Sans SC Variable；设计站当前使用 local / 系统字体回退</span></li>
 <li><span data-i18n="do-dont:t035">状态以「点 + 文字 + 形状」三重编码（色弱可辨）</span></li>
-<li><span data-i18n="do-dont:t036">键盘可达（tab 顺序 + focus 可见）+ 13 个全局快捷键</span></li>
+<li><span data-i18n="do-dont:t036">键盘可达（tab 顺序 + focus 可见）；快捷键必须与当前 Shell / usePageShortcuts 注册表一致</span></li>
 <li><span data-i18n="do-dont:t037">所有可见文本通过</span> <span class="mono">t('namespace.key')</span> <span data-i18n="do-dont:t038">包裹</span></li>
 <li><span data-i18n="do-dont:t039">组件必须同时通过 Light + Dark 视觉回归</span></li>
 <li><span data-i18n="do-dont:t040">单条可逆操作用 Popconfirm；单条不可逆或批量操作用 Modal</span></li>
@@ -73,7 +73,7 @@
 <li><span data-i18n="do-dont:t080">不要在业务代码直接</span> <code>import 'echarts-for-react'</code> <span data-i18n="do-dont:t081">—— 必须通过</span> <code>&lt;TMSChart /&gt;</code> <span data-i18n="do-dont:t082">包装层调用</span></li>
 <li><span data-i18n="do-dont:t083">不要在 echarts series 内硬编码 hex —— 用</span> <code>--aw-chart-1..8</code> <span data-i18n="do-dont:t084">或 status token</span></li>
 <li><span data-i18n="do-dont:t085">不要在 Sidebar 用品牌蓝铺底色（仅作 3px indicator + 浅蓝 active 底）</span></li>
-<li><span data-i18n="do-dont:t086">不要直接套 antd</span> <code>compactAlgorithm</code><span data-i18n="do-dont:t087">(24px)，本系统 Compact = 28px 中间值</span></li>
+<li><span data-i18n="do-dont:t086">不要混淆 AntD size="small" / --aw-h-sm（24px）与用户 Compact 密度（28px），也不要直接套 antd</span> <code>compactAlgorithm</code><span data-i18n="do-dont:t087">；Compact 必须显式设置 controlHeight: 28</span></li>
 <li><span data-i18n="do-dont:t088">不要把"已退役"作为可恢复状态（终态不可逆，只允许审计查看）</span></li>
 </ul>
 </div>
@@ -92,14 +92,14 @@
 <tr><td><span data-i18n="do-dont:t108">远程服务</span></td><td><span data-i18n="do-dont:t109">推送到设备、从设备删除、恢复出厂、取回日志</span></td><td><span data-i18n="do-dont:t110">处理、操作、执行等缺少对象和后果的按钮</span></td></tr>
 </tbody>
 </table>
-<div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong><span data-i18n="do-dont:t111">Figma 红线：</span></strong><span data-i18n="do-dont:t112">只能把 Figma 当作业务证据和模式来源。禁止把废案、临时方案、设计占位词或逐帧截图目录迁入站点；每一处迁移都必须落到 token、组件规则、页面蓝图或模块规则。</span></div></div>
+<div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong><span data-i18n="do-dont:t111">证据准入：</span></strong><span data-i18n="do-dont:t112">Figma 仅在已批准产品需求范围内作为信息架构与流程来源，不是字段、状态、权限或 API 契约。禁止迁入废案、临时方案、设计占位词或逐帧截图目录；每处迁移必须归入对应领域权威。</span></div></div>
 <table class="map-table" style="margin-top:12px">
-<thead><tr><th style="width:22%"><span data-i18n="do-dont:t113">冲突类型</span></th><th style="width:34%"><span data-i18n="do-dont:t114">处理顺序</span></th><th><span data-i18n="do-dont:t115">说明</span></th></tr></thead>
+<thead><tr><th style="width:22%"><span data-i18n="do-dont:t113">领域</span></th><th style="width:34%"><span data-i18n="do-dont:t114">权威来源</span></th><th><span data-i18n="do-dont:t115">说明</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="do-dont:t116">业务模块 / 字段 / 状态</span></td><td><span data-i18n="do-dont:t117">Figma 优先</span></td><td><span data-i18n="do-dont:t118">例如围栏、APN、WIFI、OSS、设备推送结果统计，当前项目缺失时必须补齐。</span></td></tr>
-<tr><td><span data-i18n="do-dont:t119">工程架构 / 路由 / token</span></td><td><span data-i18n="do-dont:t120">当前仓库优先</span></td><td><span data-i18n="do-dont:t121">不得破坏 file:// SPA、--aw-* token、AntD v6 和无构建约束。</span></td></tr>
-<tr><td><span data-i18n="do-dont:t122">废案 / 临时方案</span></td><td><span data-i18n="do-dont:t123">排除</span></td><td><span data-i18n="do-dont:t124">即使来自 Figma，也不作为设计系统依据。</span></td></tr>
-<tr><td><span data-i18n="do-dont:t125">拼写 / 术语别名</span></td><td><span data-i18n="do-dont:t126">规范化后采用</span></td><td><span data-i18n="do-dont:t127">例如“登陆”统一为“登录”，“参数模版”统一为“参数模板”。</span></td></tr>
+<tr><td><span data-i18n="do-dont:t116">字段 / 状态 / 权限 / API</span></td><td><span data-i18n="do-dont:t117">后端 / OpenAPI</span></td><td><span data-i18n="do-dont:t118">设计系统只消费稳定领域 ID，不自行覆盖服务端枚举、权限码或接口结构。</span></td></tr>
+<tr><td><span data-i18n="do-dont:t119">信息架构 / 产品流程</span></td><td><span data-i18n="do-dont:t120">已批准产品需求 / Figma</span></td><td><span data-i18n="do-dont:t121">Figma 是产品与流程来源之一，不是业务数据或 API 契约。</span></td></tr>
+<tr><td><span data-i18n="do-dont:t122">视觉 token / 组件交互 / a11y / 布局</span></td><td><span data-i18n="do-dont:t123">Design System</span></td><td><span data-i18n="do-dont:t124">规范决策在源仓记录，再同步消费者文档与实现。</span></td></tr>
+<tr><td><span data-i18n="do-dont:t125">消费者实现事实</span></td><td><span data-i18n="do-dont:t126">当前应用</span></td><td><span data-i18n="do-dont:t127">已安装版本、目录、路由和运行时行为以消费者代码与测试为准。</span></td></tr>
 </tbody>
 </table>
 </div>

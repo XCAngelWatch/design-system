@@ -130,7 +130,7 @@
                 <div class="rd-row"><span>DEV-86420075</span><span class="er"><span data-i18n="toast:text.091">网络超时</span></span></div>
                 <div class="rd-row"><span>DEV-86420089</span><span class="er"><span data-i18n="toast:text.092">设备离线</span></span></div>
                 <div class="rd-row"><span>DEV-86420112</span><span class="er"><span data-i18n="toast:text.093">磁盘满</span></span></div>
-                <div class="rd-row" style="opacity:0.6"><span data-i18n="toast:text.094">还有 31 条…</span></div>
+                <div class="rd-row is-summary"><span data-i18n="toast:text.094">还有 31 条…</span></div>
               </div>
               <div class="rt-acts">
                 <button class="btn btn-link btn-sm" style="padding:0"><span data-i18n="toast:text.095">下载完整列表</span></button>

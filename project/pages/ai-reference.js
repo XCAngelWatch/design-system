@@ -4,17 +4,17 @@
   <section class="section" id="ai-reference">
     <p class="section-eyebrow" data-i18n="ai-reference:hero.eyebrow">导览 · AI 开发入口</p>
     <h2 data-i18n="ai-reference:hero.title">AI 开发入口：先读这里，再按网页范式开发</h2>
-    <p class="lede" data-i18n="ai-reference:hero.desc">本页把 Markdown、Figma 证据、外部品牌包和当前页面范式串成一条可执行路径。未来 AI 做页面或组件时，先按这里确定权威顺序，再进入对应路由参考结构和交互。</p>
-    <div class="alert info" style="margin-top:18px"><b data-i18n="ai-reference:authority.label">权威顺序：</b><span data-i18n="ai-reference:authority.desc">当前仓库规则最高，Figma / OpenDesign 是业务证据，design-system-angelwatch 只作为旧站品牌包和界面 kit 对照；旧 Vue 2 / Element UI 代码不能覆盖业务仓库当前的 React + AntD v6 范式。</span></div>
+    <p class="lede" data-i18n="ai-reference:hero.desc">本页把 Markdown、Figma 来源、外部品牌包和当前页面范式串成一条可执行路径。未来 AI 做页面或组件时，先判断问题域及其权威来源，再进入对应路由参考结构和交互。</p>
+    <div class="alert info" style="margin-top:18px"><b data-i18n="ai-reference:authority.label">分域权威：</b><span data-i18n="ai-reference:authority.desc">视觉 token、组件交互、无障碍与布局以 Design System 为准；字段、状态、权限与 API 以后端/OpenAPI 为准；信息架构与流程以已批准产品需求/Figma 为准；消费者实现事实以 tms2.5-web-ui 当前源码与测试为准。evidence 只保存带来源的设计快照，不是业务契约。</span></div>
 
     <div class="section-subtitle" style="margin-top:28px" data-i18n="ai-reference:markdown.title">Markdown 入口</div>
     <table class="map-table">
       <thead><tr><th data-i18n="ai-reference:markdown.th.file">文件</th><th data-i18n="ai-reference:markdown.th.purpose">用途</th><th data-i18n="ai-reference:markdown.th.when">什么时候读</th></tr></thead>
       <tbody>
-        <tr><td><code>AI_DESIGN_SYSTEM.md</code></td><td data-i18n="ai-reference:markdown.ai.purpose">AI 首读入口，定义权威顺序、页面范式和验收命令</td><td data-i18n="ai-reference:markdown.ai.when">任何新页面、组件、原型或设计系统修改前</td></tr>
-        <tr><td><code>docs/ai-coding-design-reference.md</code></td><td data-i18n="ai-reference:markdown.coding.purpose">Figma 业务字段、模块词汇、组件选择和实现提示</td><td data-i18n="ai-reference:markdown.coding.when">需要确定字段、状态、操作或页面结构时</td></tr>
-        <tr><td><code>docs/evidence/angelwatch-business-capabilities.json</code></td><td data-i18n="ai-reference:markdown.capabilities.purpose">机器可读的字段、状态、动作、权限、确认、反馈和路由契约</td><td data-i18n="ai-reference:markdown.capabilities.when">生成业务页面、权限矩阵或测试用例前</td></tr>
-        <tr><td><code>docs/evidence/figma-frame-manifest.json</code></td><td data-i18n="ai-reference:markdown.frames.purpose">Figma canvas 覆盖与 adopt / adapt / exclude / pending 结论</td><td data-i18n="ai-reference:markdown.frames.when">判断 Figma 或旧系统内容是否属于当前产品时</td></tr>
+        <tr><td><code>AI_DESIGN_SYSTEM.md</code></td><td data-i18n="ai-reference:markdown.ai.purpose">AI 首读入口，定义分域权威、页面范式和验收命令</td><td data-i18n="ai-reference:markdown.ai.when">任何新页面、组件、原型或设计系统修改前</td></tr>
+        <tr><td><code>docs/ai-coding-design-reference.md</code></td><td data-i18n="ai-reference:markdown.coding.purpose">从 Figma 与既有实现整理的业务观察、组件选择和实现提示</td><td data-i18n="ai-reference:markdown.coding.when">查找设计观察时；字段、状态、权限和 API 仍须核验后端/OpenAPI</td></tr>
+        <tr><td><code>docs/evidence/angelwatch-business-capabilities.json</code></td><td data-i18n="ai-reference:markdown.capabilities.purpose">带来源的机器可读设计快照，不是业务契约</td><td data-i18n="ai-reference:markdown.capabilities.when">理解现有设计映射时；不能用来批准业务页面、权限或测试契约</td></tr>
+        <tr><td><code>docs/evidence/figma-frame-manifest.json</code></td><td data-i18n="ai-reference:markdown.frames.purpose">Figma canvas 来源、覆盖与 adopt / adapt / exclude / pending 快照</td><td data-i18n="ai-reference:markdown.frames.when">核对已批准产品信息架构、流程或旧系统排除依据时</td></tr>
         <tr><td><code>brand-spec.md</code></td><td data-i18n="ai-reference:markdown.brand.purpose">品牌 token、字体、布局姿态和证据摘要</td><td data-i18n="ai-reference:markdown.brand.when">需要确认颜色、字体、间距、圆角和暗色主题时</td></tr>
         <tr><td><code>docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md</code></td><td data-i18n="ai-reference:markdown.figma.purpose">Figma 与当前项目的冲突、缺口和处理决定</td><td data-i18n="ai-reference:markdown.figma.when">需要判断某个 Figma 内容是否应当迁入时</td></tr>
         <tr><td><code>docs/decisions/audits/2026-07-09-angelwatch-external-design-system-audit.md</code></td><td data-i18n="ai-reference:markdown.external.purpose">design-system-angelwatch 可合并内容与禁用内容</td><td data-i18n="ai-reference:markdown.external.when">需要 token、尺寸或界面 kit 参考时</td></tr>
@@ -46,8 +46,8 @@
         <tr><td>customertest-brand/DESIGN.md</td><td data-i18n="ai-reference:evidence.design.usable">颜色、字体、4px 网格、32px 控件、60px 顶栏、侧栏宽度、表格和表单密度</td><td data-i18n="ai-reference:evidence.design.action">映射到当前 --aw-* 与 AntD v6，不直接复制旧样式</td></tr>
         <tr><td>customertest-brand/system/theme.json</td><td data-i18n="ai-reference:evidence.theme.usable">旧站抽取的 ConfigProvider token 草案</td><td data-i18n="ai-reference:evidence.theme.action">作为 token 对照，当前主实现仍以 project/styles/tokens.css 为准</td></tr>
         <tr><td>customertest-brand/ui_kits/app</td><td data-i18n="ai-reference:evidence.kit.usable">侧栏、顶栏、筛选栏、表格、分页的实际界面姿态</td><td data-i18n="ai-reference:evidence.kit.action">用于校准中后台信息密度和布局，不迁移旧交互代码</td></tr>
-        <tr><td>Figma tree</td><td data-i18n="ai-reference:evidence.figma.usable">业务模块、页面族、字段名、状态名、国外版翻译证据</td><td data-i18n="ai-reference:evidence.figma.action">转译到当前页面蓝图、组件规范和 AI Markdown，不逐帧照抄</td></tr>
-        <tr><td>docs/evidence/*.json</td><td data-i18n="ai-reference:evidence.manifest.usable">已批准 Figma 覆盖、当前业务能力和旧系统隔离结论</td><td data-i18n="ai-reference:evidence.manifest.action">AI 优先读取结构化契约；pending / exclude 内容不得进入核心页面</td></tr>
+        <tr><td>Figma tree</td><td data-i18n="ai-reference:evidence.figma.usable">已批准产品信息架构、流程、页面族及字段/状态设计观察</td><td data-i18n="ai-reference:evidence.figma.action">转译到页面蓝图和组件规范；字段、状态、权限与 API 另行核验后端/OpenAPI</td></tr>
+        <tr><td>docs/evidence/*.json</td><td data-i18n="ai-reference:evidence.manifest.usable">带来源的 Figma 覆盖、能力观察和旧系统隔离设计快照</td><td data-i18n="ai-reference:evidence.manifest.action">AI 可读取结构化快照定位来源，但不得把它当业务契约或产品批准</td></tr>
       </tbody>
     </table>
     <div class="section-subtitle" style="margin-top:28px" data-i18n="ai-reference:avoid.title">不要回灌的内容</div>

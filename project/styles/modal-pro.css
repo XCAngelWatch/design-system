@@ -43,7 +43,7 @@
 }
 .modal-demo .tab:hover { color: var(--aw-text-1); }
 .modal-demo .tab.is-active {
-  color: var(--aw-primary);
+  color: var(--aw-primary-text);
   border-bottom-color: var(--aw-primary);
   font-weight: 500;
 }

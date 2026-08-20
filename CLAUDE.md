@@ -6,22 +6,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 AI-first design-system reference documentation site for AngelWatch TMS (设备终端管理系统),组织成 **静态 SPA(单页面应用)**。它的目标不是发布运行时组件库,而是为 AI agent 与开发者在系统设计、页面开发、组件实现时提供可检索、可引用、可对齐的设计知识库。
 
+本仓库只对**视觉 token、组件交互、无障碍与布局**具有规范权威。业务字段、状态、权限和 API 必须以后端/OpenAPI 与后端领域契约为准；产品信息架构、页面范围和用户流程必须以已批准产品需求与 Figma / OpenDesign 为准。`project/pages/` 中的业务内容和 `docs/evidence/angelwatch-business-capabilities.json` 是带来源的设计快照，不是业务仓库可以反向引用来自证的领域契约。
+
 `index.html` 是 shell,所有 66 个 section(导览 3 / 设计基础 13 / 通用组件 14 / 业务模式 12 / 页面蓝图 16 / 工程落地 8)拆为 `pages/<id>.js` 片段(每个文件就是一段把 HTML 字符串注册到 `window.__AW_PAGES__` 的 JS),通过 hash 路由(`#/color`、`#/buttons` 等)由 `pages/_router.js` 用动态 `<script>` 注入而非 fetch 加载。
 
 **Pure HTML + CSS + 一份 vanilla JS 路由器 + 无依赖 i18n runtime,无构建,无 NPM 依赖,无 HTTP 服务器要求 —— `file://` 直接打开 `index.html` 即可。** 共用部分(品牌区 / 侧边栏 / toolbar / 主题切换 / 语言切换 / 路由)在 `pages/_router.js`,差异部分(每个 section 的 HTML 内容)在 `pages/<id>.js`,英文词典在 `i18n/en-US/<id>.js`。
 
-设计系统本身不是组件库 —— 它的样式与规范最终通过 `@tms/design-tokens` + `ConfigProvider.theme` 落地到 sibling 仓库 `tms2.5-web-react` 的 `packages/web` 应用代码。
+设计系统本身不是组件库。当前唯一已验证消费者是 sibling 单应用仓库 `tms2.5-web-ui`：CSS token 落在 `src/styles/tokens.css`，AntD seed / alias token 落在 `src/theme/antd.ts`，组件 token 落在 `src/theme/components.ts`，消费入口是 `src/App.tsx`。只覆盖设计系统职责的机器契约位于 `contracts/tms-web-ui.json`，并原样同步到消费者的 `docs/design-system/source-contract.json`。当前不存在可假定使用的发布 token 包或 `packages/web` monorepo。
 
 ## AI 入口(先读这里)
 
-本仓库是 AI-first 的。AI agent 拿到本仓库后,**先读 `AI_DESIGN_SYSTEM.md`**(根目录,汇总权威顺序、页面范式、外部参考边界与提交前校验),再按需进入:
+本仓库是 AI-first 的。AI agent 拿到本仓库后,**先读 `AI_DESIGN_SYSTEM.md`**(根目录,汇总分域权威边界、页面范式、外部参考边界与提交前校验),再按需进入:
 
 - 网页端 AI 导航:`project/index.html#/ai-reference`(把列表 / 统计 / 账户权限 / 地图 / 推送 / i18n 范式串成一条路径)
-- **业务字段 / 状态机 / 枚举 / operationType / 领域字典权威**:`docs/ai-coding-design-reference.md`(模块字段锚点段)+ 对应 `project/pages/*.js` mock;`AI_DESIGN_SYSTEM.md` 的"业务知识锚点"表是索引
+- **业务设计快照索引（非业务契约）**:`docs/ai-coding-design-reference.md`(模块字段锚点段)+ `docs/evidence/angelwatch-business-capabilities.json` + 对应 `project/pages/*.js` mock；实现前必须回到后端/OpenAPI 核验字段、状态、权限与 API，并回到产品/Figma 核验信息架构与流程
 - 品牌 token 与布局姿态证据:`brand-spec.md`(其 `--bg/--accent` 等是**证据 token**,运行时实现一律用 `project/styles/tokens.css` 的 `--aw-*`,见下方映射)
 - Figma / 外部参考差异与合并边界:`docs/decisions/audits/`
 
-权威顺序:当前仓库规则(`project/` + `--aw-*` + AntD v6 + 静态 SPA + `file://`)> 本地 Figma / OpenDesign 业务证据 > `design-system-angelwatch` 旧站品牌包 > 线上旧 Vue 2 / Element UI。Figma 中标记为旧系统 / 废案 / 临时方案 / 占位图层 / 测试数据的内容不得进入最终规范。
+权威按问题域拆分，禁止使用一条全局排序：设计表现看本仓 Design System；字段/状态/权限/API 看后端与 OpenAPI；信息架构/流程看已批准产品需求与 Figma / OpenDesign；消费者实现事实看 `tms2.5-web-ui` 当前源码与测试；旧品牌包和 Vue 2 / Element UI 只作历史证据。来源暂缺时标记待核验，不得让本仓页面、说明文档和 evidence manifest 互相引用完成自证。Figma 中标记为旧系统 / 废案 / 临时方案 / 占位图层 / 测试数据的内容不得进入最终规范。
 
 ## Deployment
 
@@ -40,6 +42,7 @@ node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
 node scripts/check-consistency.js
+node scripts/check-consumer-contract.js
 node scripts/check-evidence.js
 
 # 3. 全部 page fragments 加载 + 注册校验(无浏览器,Node 静默测试)
@@ -213,8 +216,8 @@ project/
 - Dark mode 通过 `[data-theme="dark"]` 覆盖,toolbar 右上角切换器持久化到 `<html data-theme>` + `localStorage('aw-theme')`
 
 ### 离线 / 自托管
-- 所有第三方资源(字体 / 图标 / loader / 瓦片) 必须自托管,**禁运行时 CDN**(品牌 logo 目前仍引 CDN URL,属于历史遗留,新内容不要再加)
-- license 必须 ∈ MIT / Apache-2.0 / BSD / ISC。已在 `pages/tech-stack.js` 表里固化
+- 所有第三方资源(字体 / 图标 / loader / 瓦片) 必须自托管,**禁运行时 CDN**；当前品牌 logo 也使用仓库内本地资产
+- license 原则上必须属于 MIT / Apache-2.0 / BSD / ISC；多许可证包记录实际选用条款。`pages/tech-stack.js` 区分当前锁定包与未获批候选，候选每次引入都要重新审查
 
 ### 已弃功能(不要恢复)
 - **State Machine 章节**(设备状态转换图)已被移除,不要重新引入。理由:定位过窄,不属于通用设计系统
@@ -222,14 +225,15 @@ project/
 
 ## 落地链接(信息性)
 
-落地代码在 sibling 仓库 `tms2.5-web-react`(不在本仓库,无法直接验证;AI 落地时以本仓库的 `--aw-*` token 与 `pages/*.js` 范式为契约,到 sibling 仓库对齐):
+落地代码在 sibling 仓库 `tms2.5-web-ui`，当前是单应用结构：
 
-- 设计 token 源 → `packages/design-tokens/`(`tokens.json` + 生成的 CSS 变量)
-- antd `theme.token` 覆盖(主色 / 字号 / 圆角 / 间距)→ `packages/design-tokens/src/antd.ts`
-- antd `theme.components` 覆盖(Button / Tag / Table / Menu 等组件级)→ `packages/design-tokens/src/components.ts`
-- 应用消费入口(`<ConfigProvider>` 包裹 + locale + renderEmpty)→ `packages/web/src/app/AntdConfig.tsx`(参考 `pages/config-provider.js` 的可复制示例)
-- 业务页面消费 → `packages/web`(用 antd v6 原生 + `src/components/` 业务封装,不用 Pro Components)
+- 源契约 → 本仓 `contracts/tms-web-ui.json`；消费者镜像 → `tms2.5-web-ui/docs/design-system/source-contract.json`
+- CSS token 消费镜像 → `tms2.5-web-ui/src/styles/tokens.css`
+- `theme.token` 与 alias 映射 → `tms2.5-web-ui/src/theme/antd.ts`
+- `theme.components` 覆盖 → `tms2.5-web-ui/src/theme/components.ts`
+- 应用入口(`<ConfigProvider>` + `<App>` + locale + renderEmpty)→ `tms2.5-web-ui/src/App.tsx`
+- 业务组件 → `tms2.5-web-ui/src/components/`；页面 → `tms2.5-web-ui/src/pages/`
 
-> 职责切分:`antd.ts` 只管 `theme.token`,`components.ts` 只管 `theme.components`,`AntdConfig.tsx` 是消费入口。三者分层,不要把 `theme.components` 写进 `antd.ts`。
+> 职责切分：`antd.ts` 组装 `theme.token` 并调用 `components.ts`；`components.ts` 只返回 `theme.components`；`App.tsx` 是消费入口。未来若建立生成器或发布包，必须先更新决策记录、机器契约与真实目录，再修改这里，禁止提前写成既成事实。
 
-设计系统改动后,如果同步 `@tms/design-tokens` 的 `tokens.json`,同一仓库的 `packages/web` 会自动跟随。
+设计系统改动后，按“源仓 → consumer contract → 消费者文档镜像 → 消费者源码与测试”的顺序同步，并分别运行 `node scripts/check-consumer-contract.js` 与消费者 `pnpm design:check`。

@@ -30,6 +30,13 @@
     "text.026": "Locked by policy (read only)",
     "text.027": "Saving settings",
     "text.028": "Async switches must be controlled: ",
-    "text.029": "enter loading and block repeated clicks during submission. If the server rejects the update, roll back to the previous state and show the reason with a retry path."
+    "text.029": "enter loading and block repeated clicks during submission. If the server rejects the update, roll back to the previous state and show the reason with a retry path.",
+    "attr.030.ariaLabel": "Device SN",
+    "attr.031.ariaLabel": "Device identifier",
+    "attr.032.ariaLabel": "Invalid-format example",
+    "attr.033.ariaLabel": "Read-only input",
+    "attr.034.ariaLabel": "Domain name",
+    "attr.035.ariaLabel": "Device name",
+    "attr.036.ariaLabel": "Remarks"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

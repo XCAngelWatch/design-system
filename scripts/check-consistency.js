@@ -148,7 +148,7 @@ if (!/id="af-disabled"[^>]*disabled[\s\S]*?<div class="step"><button type="butto
 }
 
 const workflow = fs.readFileSync(path.join(root, '.github/workflows/pages.yml'), 'utf8');
-for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'check-consistency.js', 'check-evidence.js']) {
+for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'check-consistency.js', 'check-consumer-contract.js', 'check-evidence.js']) {
   if (!workflow.includes(command)) errors.push('pages workflow: missing validation command ' + command);
 }
 
@@ -165,32 +165,110 @@ if (!datepickerPage.includes('data-calendar-month="2026-04"') ||
 }
 
 const rowActionsPage = readPage('row-actions');
-if (!rowActionsPage.includes('操作 ≥ 4 时') || !rowActionsPage.includes('前 3 个动作明示')) {
-  errors.push('row-actions: collapse threshold must be 3 visible actions, collapse at 4');
+if (!rowActionsPage.includes('表格模式始终是 1 个高频主操作') ||
+    !rowActionsPage.includes('紧凑区 / 卡片可明示最多 3 个动作')) {
+  errors.push('row-actions: table must show 1 primary + More; compact/card may show 3 and collapse from 4');
 }
 
 const configProviderPage = readPage('config-provider');
 for (const forbidden of ['notification.config(', 'theme.darkAlgorithm', 'scrollToFirstError: true']) {
   if (configProviderPage.includes(forbidden)) errors.push('config-provider: obsolete or misplaced API remains: ' + forbidden);
 }
-if (!configProviderPage.includes('&lt;App notification=')) {
+if (!configProviderPage.includes('&lt;AntdApp notification=')) {
   errors.push('config-provider: root example must provide antd App context for feedback APIs');
 }
-if (!configProviderPage.includes('tmsThemeToken[themeMode]')) {
-  errors.push('config-provider: AntD Light/Dark tokens must switch with the runtime theme');
+if (!configProviderPage.includes("buildAntdTheme({") || !configProviderPage.includes("from './theme/antd'")) {
+  errors.push('config-provider: root example must build the runtime theme from src/theme/antd.ts');
 }
-if (!configProviderPage.includes('tmsComponentOverrides[themeMode]')) {
-  errors.push('config-provider: component tokens must switch with the runtime theme');
+for (const actualPath of ['tms2.5-web-ui/src/App.tsx', 'tms2.5-web-ui/src/theme/antd.ts']) {
+  if (!configProviderPage.includes(actualPath)) errors.push('config-provider: missing actual consumer path ' + actualPath);
 }
-for (const typeName of ['Locale', 'FC', 'ReactNode']) {
-  if (!new RegExp('import type \\{[^}]*\\b' + typeName + '\\b[^}]*\\}').test(configProviderPage)) {
-    errors.push('config-provider: complete example is missing type import ' + typeName);
-  }
+for (const fictionalPath of ['tms2.5-web-react', 'packages/web', 'packages/design-tokens', '@tms/design-tokens', '&lt;AntdConfig&gt;']) {
+  if (configProviderPage.includes(fictionalPath)) errors.push('config-provider: fictional consumer topology remains: ' + fictionalPath);
 }
 
 const techStackPage = readPage('tech-stack');
 if (/1k 行|@tanstack\/react-table \+ react-virtual/.test(techStackPage)) {
   errors.push('tech-stack: table virtualization must prefer native antd virtual and measured thresholds');
+}
+for (const requiredFact of [
+  'tms2.5-web-ui/package.json',
+  '6.5.0 / 6.3.2',
+  '候选不是白名单',
+  'src/components/PageHeader/',
+  '原生 virtual + 数值 scroll.x / scroll.y'
+]) {
+  if (!techStackPage.includes(requiredFact)) errors.push('tech-stack: missing current consumer fact ' + requiredFact);
+}
+for (const fictionalPath of ['tms2.5-web-react', 'packages/web', 'packages/design-tokens', '@tms/design-tokens']) {
+  if (techStackPage.includes(fictionalPath)) errors.push('tech-stack: fictional consumer topology remains: ' + fictionalPath);
+}
+
+const palettePage = readPage('palette');
+for (const forbiddenReference of ['@aw/design-tokens', 'extended.ts']) {
+  if (palettePage.includes(forbiddenReference)) {
+    errors.push('palette: unpublished package or file reference remains: ' + forbiddenReference);
+  }
+}
+for (const requiredPolicy of [
+  '当前并没有 40 个 runtime 变量',
+  '--aw-chart-1..8',
+  '扩展分类色必须先提升到源 token',
+  '#237804',
+  '#874D00'
+]) {
+  if (!palettePage.includes(requiredPolicy)) errors.push('palette: missing candidate/runtime policy ' + requiredPolicy);
+}
+for (const obsoleteSemanticTextColor of ['#389E0D', '#D48806']) {
+  if (palettePage.includes(obsoleteSemanticTextColor)) {
+    errors.push('palette: obsolete Light semantic text color remains: ' + obsoleteSemanticTextColor);
+  }
+}
+
+const iconsPage = readPage('icons');
+for (const fictionalIconTopology of ['@tms/icons', 'packages/icons']) {
+  if (iconsPage.includes(fictionalIconTopology)) {
+    errors.push('icons: unpublished package topology remains: ' + fictionalIconTopology);
+  }
+}
+for (const currentIconPolicy of ['@ant-design/icons', 'src/components/', '本地 SVG 仍是待评审候选']) {
+  if (!iconsPage.includes(currentIconPolicy)) errors.push('icons: missing current consumer policy ' + currentIconPolicy);
+}
+
+for (const [id, requiredFontPolicy] of [
+  ['type', ['local()', '系统字体栈', '有许可证记录的 WOFF2']],
+  ['overview', ['local()', '系统字体栈', '有许可证记录的 WOFF2']],
+  ['whitelabel', ['local()', '系统字体栈', '有许可证记录的 WOFF2']]
+]) {
+  const source = readPage(id);
+  for (const phrase of requiredFontPolicy) {
+    if (!source.includes(phrase)) errors.push(id + ': missing honest font delivery policy ' + phrase);
+  }
+}
+if (readPage('type').includes('自托管 woff2') ||
+    readPage('whitelabel').includes('Inter + Source Han Sans CN 自托管') ||
+    readPage('overview').includes('均自托管')) {
+  errors.push('typography: pages must not claim repository-hosted font files before licensed WOFF2 assets exist');
+}
+
+const userManagementPage = readPage('user-mgmt-page');
+for (const obsoleteZonePolicy of ['UTC±HH:MM', '15 分钟粒度', 'UTC+08:00']) {
+  if (userManagementPage.includes(obsoleteZonePolicy)) {
+    errors.push('user-mgmt-page: fixed-offset zone selector remains: ' + obsoleteZonePolicy);
+  }
+}
+for (const currentZonePolicy of ['IANA zone select', 'Asia/Shanghai', 'Intl', 'DST']) {
+  if (!userManagementPage.includes(currentZonePolicy)) errors.push('user-mgmt-page: missing IANA/Intl policy ' + currentZonePolicy);
+}
+
+const colorPage = readPage('color');
+for (const fillAliasRow of [
+  /--aw-fill-3[\s\S]*?#EEEEEE[\s\S]*?#2A2F38[\s\S]*?colorFill<\/code>/,
+  /--aw-fill-2[\s\S]*?colorFillSecondary<\/code>/,
+  /--aw-fill-1[\s\S]*?colorFillTertiary<\/code>/,
+  /--aw-fill-4[\s\S]*?#FCFCFC[\s\S]*?#171A20[\s\S]*?colorFillQuaternary<\/code>/
+]) {
+  if (!fillAliasRow.test(colorPage)) errors.push('color: fill aliases must be documented strongest-to-weakest');
 }
 if (/@tanstack\/react-table|@tanstack\/react-virtual/.test(readPage('ecosystem'))) {
   errors.push('ecosystem: obsolete TanStack table engine guidance remains');

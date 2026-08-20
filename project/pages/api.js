@@ -87,7 +87,7 @@ function DeviceCard(props) {
   );
 }
 
-// resolvedDangerTheme comes from @tms/design-tokens and follows the active mode
+// resolvedDangerTheme is derived from the active --aw-* values in src/theme/antd.ts
 &lt;ConfigProvider theme={resolvedDangerTheme}&gt;
   &lt;DeviceCard /&gt;   {/* automatically receives the red brand theme */}
 &lt;/ConfigProvider&gt;

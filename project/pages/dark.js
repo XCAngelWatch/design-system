@@ -3,8 +3,8 @@
 <div class="content">
 <section class="section" id="dark">
   <p class="section-eyebrow"><span data-i18n="dark:t001">设计基础 · 暗色主题</span></p>
-  <h2><span data-i18n="dark:t002">暗色主题 Dark Mode</span></h2>
-  <p class="lede"><span data-i18n="dark:t003">暗色主题在 TMS 是一等公民，不是切换插件。token 通过</span> <code>[data-theme="dark"]</code> <span data-i18n="dark:t004">完整覆盖，所有组件都参与 dark 视觉回归。运维夜班高频使用，沿用 TMS 暗色习惯。</span></p>
+  <h2 role="heading" aria-level="1"><span data-i18n="dark:t002">暗色主题 Dark Mode</span></h2>
+  <p class="lede"><span data-i18n="dark:t003">暗色主题在 TMS 是一等公民，不是切换插件。token 通过</span> <code>[data-theme="dark"]</code> <span data-i18n="dark:t004">提供显式覆盖；变更组件必须留下 Light / Dark 回归证据。当前设计仓静态 CI 尚未覆盖完整视觉矩阵，不能据此宣称全部组件已通过。运维夜班高频使用，沿用 TMS 暗色习惯。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="dark:t005">使用场景</span></h3>
@@ -36,7 +36,7 @@
         <tr><td><span data-i18n="dark:t024">背景</span></td><td><span data-i18n="dark:t025">不用纯黑</span> <span class="mono">#000</span><span data-i18n="dark:t026">，用灰阶</span> <span class="mono">#0F1115</span> <span data-i18n="dark:t027">页面底 /</span> <span class="mono">#14171D</span> <span data-i18n="dark:t028">卡片</span></td><td><span data-i18n="dark:t029">纯黑 OLED 闪烁感强；灰阶呈现层次</span></td></tr>
         <tr><td><span data-i18n="dark:t030">文本</span></td><td><span data-i18n="dark:t031">不用纯白</span> <span class="mono">#FFF</span><span data-i18n="dark:t032">，用</span> <span class="mono">rgba(255,255,255,.92)</span></td><td><span data-i18n="dark:t033">纯白与暗背景对比过强，长时间阅读眼睛酸</span></td></tr>
         <tr><td><span data-i18n="dark:t034">品牌色</span></td><td><span data-i18n="dark:t035">提亮 + 降饱和：</span><span class="mono">#165DFF</span> → <span class="mono">#4080FF</span></td><td><span data-i18n="dark:t036">原品牌色在暗底对比度不够（仅 3:1）；提亮变体保 4.5:1</span></td></tr>
-        <tr><td><span data-i18n="dark:t037">状态色</span></td><td><span data-i18n="dark:t038">统一提亮：success</span> <span class="mono">#389E0D → #52C41A</span></td><td><span data-i18n="dark:t039">暗底色块需要更亮才能识别；保留色相不变</span></td></tr>
+        <tr><td><span data-i18n="dark:t037">状态色</span></td><td><span data-i18n="dark:t038">逐色映射并实测：success</span> <span class="mono">#237804 → #52C41A</span></td><td><span data-i18n="dark:t039">暗底需要更亮的语义色；不是统一加亮算法</span></td></tr>
         <tr><td><span data-i18n="dark:t040">边框</span></td><td><span data-i18n="dark:t041">用</span> <span class="mono">#3A3F4A → #2D323C → #232831</span> <span data-i18n="dark:t042">三档</span></td><td><span data-i18n="dark:t043">层次比 light 模式更微，避免割裂感</span></td></tr>
         <tr><td><span data-i18n="dark:t044">阴影</span></td><td><span data-i18n="dark:t045">纯黑 + 高 alpha（0.4 ~ 0.6）</span></td><td><span data-i18n="dark:t046">暗底要更深的阴影才有空间感</span></td></tr>
       </tbody>
@@ -64,31 +64,28 @@
         <tr><td><b><span data-i18n="dark:t060">主要 · 92%</span></b></td><td><span class="mono">rgba(255,255,255,.92)</span></td><td><span class="wcag-badge aaa">15.6:1</span></td><td><span data-i18n="dark:t061">标题 / 主列 / 数字</span></td></tr>
         <tr><td><b><span data-i18n="dark:t062">次要 · 72%</span></b></td><td><span class="mono">rgba(255,255,255,.72)</span></td><td><span class="wcag-badge aaa">10.8:1</span></td><td><span data-i18n="dark:t063">正文 / 表单值</span></td></tr>
         <tr><td><b><span data-i18n="dark:t064">说明 · 52%</span></b></td><td><span class="mono">rgba(255,255,255,.52)</span></td><td><span class="wcag-badge aa">6.1:1</span></td><td><span data-i18n="dark:t065">placeholder / 时间戳</span></td></tr>
-        <tr><td><b><span data-i18n="dark:t066">禁用 · 32%</span></b></td><td><span class="mono">rgba(255,255,255,.32)</span></td><td><span class="wcag-badge fail">3.0:1</span></td><td><span data-i18n="dark:t067">仅装饰 / 离线 / 禁用</span></td></tr>
+        <tr><td><b><span data-i18n="dark:t066">禁用 · 32%</span></b></td><td><span class="mono">rgba(255,255,255,.32)</span></td><td><span class="wcag-badge fail">3.0:1</span></td><td><span data-i18n="dark:t067">仅非文本装饰 / 原生禁用控件；不得承载状态或正文信息</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="subsection">
     <h3><span data-i18n="dark:t068">为什么不用 antd</span> <code>darkAlgorithm</code></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="dark:t069">antd v5+ 提供</span> <code>theme.darkAlgorithm</code><span data-i18n="dark:t070">，传入 light token 自动派生 dark token。TMS</span> <b><span data-i18n="dark:t071">不</span></b><span data-i18n="dark:t072">用 darkAlgorithm，原因有三：</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="dark:t069">Ant Design 提供</span> <code>theme.darkAlgorithm</code><span data-i18n="dark:t070">，可从 light token 自动派生 dark token。TMS</span> <b><span data-i18n="dark:t071">不</span></b><span data-i18n="dark:t072">用 darkAlgorithm，原因有三：</span></p>
     <ul style="margin:0 0 12px;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
       <li><b><span data-i18n="dark:t073">沿用 TMS 暗色习惯</span></b><span data-i18n="dark:t074">：运维人员对</span> <code>#0F1115 → #14171D → #1B1F27</code> <span data-i18n="dark:t075">三档背景已经形成肌肉记忆；darkAlgorithm 的派生结果是</span> <code>#141414 → #1F1F1F → #262626</code><span data-i18n="dark:t076">，迁移会破坏既有习惯</span></li>
-      <li><b><span data-i18n="dark:t077">状态色饱和度不一致</span></b><span data-i18n="dark:t078">：darkAlgorithm 对状态色提亮幅度大（如 success</span> <code>#52C41A → #6ABE39</code><span data-i18n="dark:t079">），TMS 偏好更克制（</span><code>#389E0D → #52C41A</code><span data-i18n="dark:t080">），保留"企业级"视觉</span></li>
+      <li><b><span data-i18n="dark:t077">状态色映射需要逐色验证</span></b><span data-i18n="dark:t078">：自动算法不能代替实际前景 / 背景对比度测量；TMS 明确映射 success</span> <code>#237804 → #52C41A</code><span data-i18n="dark:t079">、warning</span> <code>#874D00 → #FAAD14</code><span data-i18n="dark:t080">，并在两套主题分别回归</span></li>
       <li><b><span data-i18n="dark:t081">白标场景灵活性</span></b><span data-i18n="dark:t082">：每个租户的暗色主色不是单纯亮度变化（如某租户 light</span> <code>#165DFF</code> / dark <code>#4080FF</code><span data-i18n="dark:t083">，但有租户 light</span> <code>#CF1322</code> / dark <code>#FF4D4F</code><span data-i18n="dark:t084">），手写 token 表更灵活</span></li>
     </ul>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><b style="color:var(--aw-text-1)"><span data-i18n="dark:t085">代价：</span></b><span data-i18n="dark:t086">antd 内置组件（如 Drawer / Modal / Tooltip）依然用 antd 内部 dark token；它们的</span> <code>colorBgElevated</code> <span data-i18n="dark:t087">与 TMS 的</span> <code>--aw-bg-elevated</code> <span data-i18n="dark:t088">可能产生</span><b><span data-i18n="dark:t089">组件级视觉差</span></b>.</p>
-    <div class="code-block"><pre><code>// ConfigProvider setup -- key point: do not pass darkAlgorithm
-&lt;ConfigProvider theme={{
-  // Do not use algorithm: theme.darkAlgorithm in TMS
-  algorithm: theme.defaultAlgorithm,    // light and dark both use defaultAlgorithm
-  token: data-theme === 'dark'
-    ? darkTokens   // manual mapping: --aw-* dark values -> antd token names
-    : lightTokens,
-}}&gt;
+    <div class="code-block"><pre><code>// ConfigProvider setup -- build explicit token/component mappings from active --aw-* values
+const themeConfig = buildAntdTheme({ controlHeight, tableCellPaddingBlock });
+
+// Do not pass darkAlgorithm or defaultAlgorithm in either mode.
+&lt;ConfigProvider theme={themeConfig}&gt;
   &lt;App /&gt;
 &lt;/ConfigProvider&gt;</code></pre></div>
-    <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong><span data-i18n="dark:t090">antd 升级回归：</span></strong><span data-i18n="dark:t091">antd 主版本升级时（v5 → v6 / v6 → v7）必须人工核对 antd 内部组件的 dark 视觉，darkAlgorithm 的派生算法变化会让 antd 自带的 Drawer / Modal / Tooltip 的 dark 与 TMS 手写 token 产生新差异。详见</span> <a href="#/config-provider" style="color:var(--aw-primary)"><span data-i18n="dark:t092">ConfigProvider 升级 checklist</span></a>.</div></div>
+    <div class="alert warning" style="margin-top:12px"><div class="ico">!</div><div class="content"><strong><span data-i18n="dark:t090">antd 升级回归：</span></strong><span data-i18n="dark:t091">升级 Ant Design 时必须核对 Drawer / Modal / Tooltip 等浮层在 Light / Dark 下的显式 seed、alias 与 component token 映射；新增或改名 token 不会被算法自动补齐。详见</span> <a href="#/config-provider" style="color: var(--aw-primary-text)"><span data-i18n="dark:t092">ConfigProvider 升级 checklist</span></a>.</div></div>
   </div>
 
   <div class="subsection">
@@ -134,6 +131,7 @@ window.addEventListener('storage', function(e) {
           <li><span data-i18n="dark:t100">状态色统一提亮 + 降饱和（保对比度）</span></li>
           <li><span data-i18n="dark:t101">大屏 / 仪表盘默认暗色</span></li>
           <li><span data-i18n="dark:t102">暗模式阴影提强度（0.4 ~ 0.6 alpha）</span></li>
+          <li><span data-i18n="dark:t112">Light / Dark 只切换视觉 token，不改变几何：size="small" 保持 24px，用户 Compact 密度保持 28px</span></li>
         </ul>
       </div>
       <div class="surface" style="border-left:3px solid var(--aw-danger)">

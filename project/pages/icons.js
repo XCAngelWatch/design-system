@@ -4,7 +4,7 @@
 <section class="section" id="icons">
   <p class="section-eyebrow"><span data-i18n="icons:t001">设计基础 · 图标</span></p>
   <h2><span data-i18n="icons:t002">图标系统 Icons</span></h2>
-  <p class="lede"><span data-i18n="icons:t003">直接采用</span> <code>@ant-design/icons</code> <span data-i18n="icons:t004">作为基础图标库（覆盖 ~700 个通用图标）。在此之上补充约 24 个 TMS 业务专属图标 —— 设备 / 心跳 / 固件 / 推送 / 解绑 / 锁定 / 重启 / 故障态等。所有 SVG 自托管 + tree-shake，禁运行时 CDN。</span></p>
+  <p class="lede"><span data-i18n="icons:t003">当前消费者直接采用</span> <code>@ant-design/icons</code> <span data-i18n="icons:t004">作为基础图标库。下方 24 个 TMS 业务图标是设计候选清单，不是已发布包；只有 AntD 图标无法表达经验证语义时，才在消费者 src/components/ 中增加局部 React SVG，或提案本地 SVG 资产。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="icons:t005">尺寸阶梯</span></h3>
@@ -50,7 +50,7 @@
         <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="icons:t020">强调 · Filled</span></div>
         <h3 style="margin:0 0 8px;font-size:14px"><span data-i18n="icons:t021">面性 · 实色填充</span></h3>
         <p style="margin:0 0 10px;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="icons:t022">仅用于状态徽章（在线 / 离线 / 告警圆点）+ 选中态导航 + 通知红点。同一界面 Outlined / Filled 比例 ≥ 5:1，避免视觉抢焦。</span></p>
-        <div style="display:flex;gap:14px;color:var(--aw-primary)">
+        <div style="display:flex;gap:14px;color: var(--aw-primary-text)">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
@@ -68,8 +68,8 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="icons:t027">业务图标库 · 24 个 TMS 专属图标</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="icons:t028">图标资产统一收口在</span> <code>@tms/icons</code> <span data-i18n="icons:t029">共享库，前端按需导入，tree-shake 后体积仅含实际用到的图标。</span></p>
+    <h3><span data-i18n="icons:t027">业务图标候选 · 24 个 TMS 语义</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="icons:t028">实现先从</span> <code>@ant-design/icons</code> <span data-i18n="icons:t029">按需导入；未覆盖且经证实需要的业务语义，收口在消费者 src/components/ 的所属组件，本地 SVG 则先经设计、a11y 与许可证评审。</span></p>
     <div class="icon-lib-grid">
       <div class="ilib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/></svg><span>Device</span></div>
       <div class="ilib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="9"/></svg><span>DeviceOnline</span></div>
@@ -107,29 +107,27 @@
         <tr><td><b><span data-i18n="icons:t035">语义 + 风格后缀</span></b></td><td><code>SearchOutlined</code> · <code>HeartbeatFilled</code></td><td><span data-i18n="icons:t036">主语义置前，风格后缀显式标注 Outlined / Filled</span></td></tr>
         <tr><td><b><span data-i18n="icons:t037">状态字面量同 API</span></b></td><td><code>DeviceOffline</code> <span data-i18n="icons:t038">而非</span> <code>DeviceLost</code></td><td><span data-i18n="icons:t039">对应后端</span> <code>device.status === "offline"</code><span data-i18n="icons:t040">，避免设计 / 数据词汇分裂</span></td></tr>
         <tr><td><b><span data-i18n="icons:t041">动词 / 名词分离</span></b></td><td><code>OtaPush</code><span data-i18n="icons:t042">（动作）·</span> <code>Firmware</code><span data-i18n="icons:t043">（实体）</span></td><td><span data-i18n="icons:t044">动作图标用动词；实体图标用名词。Confirm 选用上一致</span></td></tr>
-        <tr><td><b><span data-i18n="icons:t045">SVG 文件名</span></b></td><td><code>device-online-filled.svg</code></td><td><span data-i18n="icons:t046">kebab-case 与 PascalCase 对应，SVGR 自动生成 React 组件</span></td></tr>
+        <tr><td><b><span data-i18n="icons:t045">候选 SVG 文件名</span></b></td><td><code>device-online-filled.svg</code></td><td><span data-i18n="icons:t046">kebab-case 与 PascalCase 对应；当前没有 SVGR 生成器，不宣称自动发布</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="subsection">
     <h3><span data-i18n="icons:t047">接入流程</span></h3>
-    <div class="code-block"><pre><code>// 1. Designer exports SVG (24x24 viewBox, 1.5px stroke, currentColor)
-//    Put it in packages/icons/src/svg/device-online-filled.svg
+    <div class="code-block"><pre><code>// 1. Prefer the installed package; import only what the screen uses.
+import { MobileOutlined, CloudUploadOutlined } from '@ant-design/icons';
 
-// 2. SVGR generates React components automatically
-//    yarn build:icons → packages/icons/dist/index.js
-//    Each SVG has an independent export and remains tree-shake friendly
+// 2. If no AntD icon expresses a verified domain meaning, keep the first
+//    implementation with its consumer component under src/components/.
+export function DeviceOnlineIcon() {
+  return &lt;svg viewBox="0 0 24 24" aria-hidden focusable="false"&gt;...&lt;/svg&gt;;
+}
 
-// 3. Business code imports icons on demand
-import { DeviceOnlineFilled, OtaPushOutlined } from '@tms/icons';
+// 3. Promote a repeated local SVG only after design, a11y and license review.
+//    There is currently no shared icon package or automatic SVGR pipeline.
 
-// 4. Coexist with antd icons; render through the antd Icon component
-import Icon from '@ant-design/icons';
-&lt;Icon component={DeviceOnlineFilled} /&gt;
-
-// 5. Control color / size through CSS; SVG files carry no internal styling
-.icon-active { color: var(--aw-primary); font-size: 24px; }</code></pre></div>
+// 4. Control color / size through CSS; SVG carries no hard-coded color.
+.icon-active { color: var(--aw-primary-text); font-size: 24px; }</code></pre></div>
   </div>
 
   <div class="subsection">
@@ -142,7 +140,7 @@ import Icon from '@ant-design/icons';
           <li><span data-i18n="icons:t051">尺寸用</span> <code>1em</code> <span data-i18n="icons:t052">跟字号；或显式 16/24/32/48 px</span></li>
           <li><span data-i18n="icons:t053">状态图标必须配文字（"色 + icon + 文字"三重编码，色弱可辨）</span></li>
           <li><span data-i18n="icons:t054">新业务图标先 review 是否能用 antd-icons 现有的 700 个之一</span></li>
-          <li><span data-i18n="icons:t055">SVG 全部自托管，集中在</span> <code>@tms/icons</code> <span data-i18n="icons:t056">包</span></li>
+          <li><span data-i18n="icons:t055">通用图标来自已安装的</span> <code>@ant-design/icons</code><span data-i18n="icons:t056">；业务 React SVG 与消费者 src/components/ 共置，独立本地 SVG 仍是待评审候选</span></li>
           <li><span data-i18n="icons:t057">描边宽度统一 1.5px，圆角终端 + 圆角连接</span></li>
         </ul>
       </div>

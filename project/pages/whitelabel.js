@@ -7,7 +7,7 @@
 <p class="lede"><span data-i18n="whitelabel:t003">企业 TMS 必须支持租户级品牌定制：主色、Logo、登录背景、ICP 文案、产品名等可被租户接管，但语义色 / 间距 / 字号 / 圆角 / 阴影 / 动效曲线由设计系统锁定，租户禁止覆盖。覆盖通过 antd v6</span> <code>ConfigProvider.theme</code> <span data-i18n="whitelabel:t004">注入。</span></p>
 <div class="subsection">
 <h3><span data-i18n="whitelabel:t005">可覆盖 token · 租户允许配置</span></h3>
-<div class="surface" style="padding:0;overflow:hidden">
+<div class="surface responsive-table" style="padding:0">
 <table class="tech-table">
 <thead>
 <tr><th style="width:180px"><span data-i18n="whitelabel:t006">字段</span></th><th style="width:200px"><span data-i18n="whitelabel:t007">antd v6 token 路径</span></th><th style="width:120px"><span data-i18n="whitelabel:t008">默认值</span></th><th><span data-i18n="whitelabel:t009">说明</span></th></tr>
@@ -30,7 +30,7 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="whitelabel:t028">禁止覆盖 token · 设计系统锁定</span></h3>
-<div class="surface" style="padding:0;overflow:hidden">
+<div class="surface responsive-table" style="padding:0">
 <table class="tech-table">
 <thead>
 <tr><th style="width:180px"><span data-i18n="whitelabel:t029">类别</span></th><th style="width:240px"><span data-i18n="whitelabel:t030">代表字段</span></th><th><span data-i18n="whitelabel:t031">原因</span></th></tr>
@@ -38,7 +38,7 @@
 <tbody>
 <tr><td><span data-i18n="whitelabel:t032">语义色</span></td><td>colorSuccess / colorWarning / colorError / colorInfo</td><td><span data-i18n="whitelabel:t033">状态语义全局统一，租户改色破坏 WCAG 与色盲安全编码</span></td></tr>
 <tr><td><span data-i18n="whitelabel:t034">间距</span></td><td>--aw-space-* / paddingXS..XL</td><td><span data-i18n="whitelabel:t035">密度与栅格强相关，定制会破坏多语种长文案布局</span></td></tr>
-<tr><td><span data-i18n="whitelabel:t036">字号 · 字体</span></td><td>fontSize* / fontFamily / lineHeight*</td><td><span data-i18n="whitelabel:t037">Inter + Source Han Sans CN 自托管，与设备 DPI 标定一致</span></td></tr>
+<tr><td><span data-i18n="whitelabel:t036">字号 · 字体</span></td><td>fontSize* / fontFamily / lineHeight*</td><td><span data-i18n="whitelabel:t037">当前由 local() / 系统字体栈解析；若要固定跨机指标，先提交有许可证记录的 WOFF2</span></td></tr>
 <tr><td><span data-i18n="whitelabel:t038">圆角</span></td><td>borderRadius / -SM / -LG</td><td><span data-i18n="whitelabel:t039">6/4/8 三档与组件视觉打包，单点改动破坏一致性</span></td></tr>
 <tr><td><span data-i18n="whitelabel:t040">阴影</span></td><td>boxShadow / Secondary / Tertiary</td><td><span data-i18n="whitelabel:t041">层级语义（subtle / medium / elevation）固定</span></td></tr>
 <tr><td><span data-i18n="whitelabel:t042">动效曲线</span></td><td>motionEaseInOut / motionDuration*</td><td><span data-i18n="whitelabel:t043">cubic-bezier(0.34,0.69,0.1,1) + 120/200/320ms 三档</span></td></tr>
@@ -53,8 +53,8 @@
 <div>&lt;ConfigProvider</div>
 <div style="padding-left:20px">theme={{</div>
 <div style="padding-left:40px"><span style="color:var(--aw-success)"><span data-i18n="whitelabel:t045">// 可覆盖：仅 colorPrimary 与少量组件 token</span></span></div>
-<div style="padding-left:40px">token: { colorPrimary: tenant.primary ?? <span style="color:var(--aw-primary)">'#165DFF'</span> },</div>
-<div style="padding-left:40px">components: { Layout: { siderBg: <span style="color:var(--aw-primary)">'#FFFFFF'</span> } }</div>
+<div style="padding-left:40px">token: { colorPrimary: tenant.primary ?? <span style="color: var(--aw-primary-text)">'#165DFF'</span> },</div>
+<div style="padding-left:40px">components: { Layout: { siderBg: <span style="color: var(--aw-primary-text)">'#FFFFFF'</span> } }</div>
 <div style="padding-left:20px">}}</div>
 <div>&gt;</div>
 <div style="padding-left:20px">&lt;App&gt; ... &lt;/App&gt;</div>
@@ -73,7 +73,7 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="whitelabel:t062">双租户对比 · 同组件不同主色</span></h3>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div class="tenant-theme-compare">
 <div class="surface" style="--aw-primary-local:#165DFF;background:var(--aw-bg)">
 <div style="font-size:11px;letter-spacing:0.6px;text-transform:uppercase;color:var(--aw-text-3);font-weight:600;margin-bottom:8px"><span data-i18n="whitelabel:t063">租户 A · AngelWatch 默认</span></div>
 <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
@@ -122,7 +122,7 @@
 <div class="bp-card"><h4><span data-i18n="whitelabel:t087">③ 登录 client</span></h4><p><span data-i18n="whitelabel:t088">formLoginClient / smsLoginClient / socialLoginClient —— 决定登录页可用方式,按租户启用。</span></p></div>
 <div class="bp-card"><h4><span data-i18n="whitelabel:t089">④ 首页 / 菜单 props</span></h4><p><span data-i18n="whitelabel:t090">fistPage(label/value/params/query/group/close)/ menu.props(label/path/icon/children/id) —— 租户默认首页与可见菜单树。</span></p></div>
 </div>
-<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><span data-i18n="whitelabel:t091">所有图片资源必须自托管(品牌 logo 仍引 CDN 属历史遗留,新内容不要再加)。license ∈ MIT / Apache-2.0 / BSD / ISC。</span></p>
+<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><span data-i18n="whitelabel:t091">所有图片资源必须自托管；当前品牌 logo 也是仓库内本地资产。第三方资产需要保留许可证与来源记录。</span></p>
 </div>
 </section>
 </div>

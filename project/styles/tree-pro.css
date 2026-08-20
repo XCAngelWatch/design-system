@@ -45,7 +45,7 @@
   line-height: 18px;
   flex-shrink: 0;
 }
-.tnode.selected .count { background: var(--aw-bg); color: var(--aw-primary); }
+.tnode.selected .count { background: var(--aw-bg); color: var(--aw-primary-text); }
 .tm-body .tree-comp { max-width: none; border: 0; box-shadow: none; }
 
 .tnode .lbl mark {
@@ -78,7 +78,7 @@
   border: 0;
   background: transparent;
   font-family: inherit;
-  font-size: 11.5px; color: var(--aw-primary);
+  font-size: 11.5px; color: var(--aw-primary-text);
   cursor: pointer;
 }
 .retry-link:hover { text-decoration: underline; }
@@ -176,5 +176,9 @@
 [data-theme="dark"] .tnode .lbl mark {
   background: rgba(173, 104, 0, 0.32);
   color: var(--aw-warning);
+}
+[data-theme="dark"] .tnode.selected,
+[data-theme="dark"] .tnode.selected .count {
+  color: var(--aw-primary-hover);
 }
 [data-theme="dark"] .tnode.dragging { background: rgba(255,255,255,0.08); }

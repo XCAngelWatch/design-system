@@ -20,8 +20,8 @@
 <div class="content">
 <section class="section" id="row-actions">
   <p class="section-eyebrow"><span data-i18n="row-actions:text.001">业务模式 · 行操作</span></p>
-  <h2><span data-i18n="row-actions:text.002">行操作 RowActions</span></h2>
-  <p class="lede"><span data-i18n="row-actions:text.003">表格 / 卡片每条记录的尾列动作。表格统一使用右对齐文字按钮，顺序固定为查看 → 编辑 → 业务动作 → 启停 → 删除，并统一危险确认阈值。</span></p>
+  <h2 role="heading" aria-level="1"><span data-i18n="row-actions:text.002">行操作 RowActions</span></h2>
+  <p class="lede"><span data-i18n="row-actions:text.003">表格 / 卡片每条记录的动作入口。表格尾列只明示 1 个主操作 +“更多”；紧凑区 / 卡片最多明示 3 个图标动作，第 4 个起折叠。更多菜单内按查看 → 编辑 → 业务动作 → 启停 → 删除排序，并统一危险确认阈值。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.004">动作词汇与语义</span></h3>
@@ -49,7 +49,7 @@
     <div class="surface" style="padding:0;overflow:hidden">
       <table class="ra-table">
         <thead>
-          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th style="width:200px" class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
+          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th style="width:140px" class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
         </thead>
         <tbody>
           <tr>
@@ -59,8 +59,6 @@
             <td class="colactions">
               <div class="ra-row">
                 <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.008">推送</span></button>
                 <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
               </div>
             </td>
@@ -72,8 +70,6 @@
             <td class="colactions">
               <div class="ra-row">
                 <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
-                <button class="btn btn-link" title="推送（升级中不可用）" data-i18n-title="row-actions:text.034" disabled><span data-i18n="row-actions:text.008">推送</span></button>
                 <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
               </div>
             </td>
@@ -85,9 +81,7 @@
             <td class="colactions">
               <div class="ra-row">
                 <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.010">日志</span></button>
-                <button class="btn btn-link btn-danger-link" title="删除" data-i18n-title="row-actions:text.007"><span data-i18n="row-actions:text.007">删除</span></button>
+                <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
               </div>
             </td>
           </tr>
@@ -112,8 +106,8 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="row-actions:text.056">折叠态 · 操作 ≥ 4 时</span></h3>
-    <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">前 3 个动作明示，第 4+ 个收入 ⋯ 下拉。设备核心动作（详情、编辑、推送）固定在前 3 位，不进下拉。</span></p>
+    <h3><span data-i18n="row-actions:text.056">按容器拆分显示阈值</span></h3>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">表格模式始终是 1 个高频主操作 +“更多”；紧凑区 / 卡片可明示最多 3 个动作，第 4+ 个收入 ⋯ 下拉。主操作由页面业务频率决定，不把删除设为主操作。</span></p>
     <div class="surface">
       <div class="ra-row">
         <button class="ra-btn" title="详情" data-i18n-title="row-actions:text.005">${ICN.detail}</button>
@@ -140,7 +134,7 @@
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.066">反例</span></h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.067">不要把"删除"做成主色按钮：</span></strong><span data-i18n="row-actions:text.068">主色 </span><code>#165DFF</code><span data-i18n="row-actions:text.069"> 是积极动作（提交 / 确认），删除应走 ghost-danger 或纯红 icon。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要在表格行尾平铺 4 个以上动作：</span></strong><span data-i18n="row-actions:text.071">前 3 个使用文字按钮，其余动作收入更多菜单。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要在表格行尾平铺多个动作：</span></strong><span data-i18n="row-actions:text.071">只明示 1 个高频文字操作，其余动作收入更多菜单；三项阈值只用于紧凑区 / 卡片。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要在同一操作列混用文字与图标：</span></strong><span data-i18n="row-actions:text.073">表格统一文字按钮；只有紧凑卡片允许统一图标 + Tooltip。</span></div></div>
   </div>
 

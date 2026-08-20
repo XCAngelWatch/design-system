@@ -12,23 +12,31 @@
 
 :root,
 [data-theme="light"] {
+  color-scheme: light;
   /* Brand — Arco blue-6 ramp(对齐历史 tms_web_ui 主色) */
   --aw-primary: #165DFF;
+  --aw-primary-text: #165DFF;
+  --aw-primary-solid: #165DFF;
+  --aw-primary-solid-hover: #0E42D2;
+  --aw-primary-solid-active: #0B36AE;
   --aw-primary-hover: #4080FF;
   --aw-primary-active: #0E42D2;
   --aw-primary-bg: #E8F3FF;
   --aw-primary-bg-hover: #BEDAFF;
   --aw-primary-border: #94BFFF;
 
-  /* Status — antd v6 spec aligned, "-7" 色阶(配合 brand 保持企业克制感) */
-  --aw-success: #389E0D;       /* antd green-7  */
+  /* Status — antd palette aligned; text tones are selected per hue for 4.5:1+ contrast */
+  --aw-success: #237804;       /* antd green-8; 4.5:1+ text contrast */
+  --aw-success-solid: #237804; /* white text success surface; 4.5:1+ contrast */
   --aw-success-bg: #F6FFED;    /* antd green-1  */
   --aw-success-border: #B7EB8F;/* antd green-3  */
-  --aw-warning: #D48806;       /* antd gold-7   */
+  --aw-warning: #874D00;       /* antd gold-9; 4.5:1+ text contrast */
   --aw-warning-bg: #FFFBE6;    /* antd gold-1   */
   --aw-warning-border: #FFE58F;/* antd gold-3   */
   --aw-danger: #CF1322;        /* antd red-7    */
   --aw-danger-hover: #C8242A;  /* danger action hover */
+  --aw-danger-solid: #CF1322;
+  --aw-danger-solid-hover: #A8071A;
   --aw-danger-bg: #FFF1F0;     /* antd red-1    */
   --aw-danger-border: #FFA39E; /* antd red-3    */
   --aw-info: #0958D9;          /* antd blue-7   */
@@ -38,9 +46,10 @@
   /* Neutrals — antd v6 light */
   --aw-text-1: #1F2937;
   --aw-text-2: #4B5563;
-  --aw-text-3: #6B7280;
-  --aw-text-4: #9CA3AF;
+  --aw-text-3: #5F6B7A;
+  --aw-text-4: #667085;
   --aw-text-disabled: #BFBFBF;
+  --aw-text-on-brand: #FFF;
 
   --aw-border-1: #D9D9D9;
   --aw-border-2: #E5E7EB;
@@ -49,7 +58,7 @@
   --aw-fill-1: #FAFAFA;
   --aw-fill-2: #F5F5F5;
   --aw-fill-3: #EEEEEE;
-  --aw-switch-handle: #FFFFFF;
+  --aw-switch-handle: #FFF;
 
   --aw-bg: #FFFFFF;
   --aw-bg-page: #F5F7FA;
@@ -110,23 +119,29 @@
      bg-spotlight = Tooltip 暗底 (即使 light 也用暗底, 对比清晰);
      bg-mask = Modal 遮罩。 */
   --aw-border-4: #F5F5F5;
-  --aw-fill-4: #FAFAFA;
+  --aw-fill-4: #FCFCFC;
   --aw-bg-spotlight: rgba(15, 23, 42, 0.92);
   --aw-bg-mask: rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   /* Brand — Arco blue ramp inverted for dark surfaces */
   --aw-primary: #4080FF;        /* Arco blue-5,在深底上更高对比 */
+  --aw-primary-text: #6AA1FF;   /* links / selected text on dark tinted surfaces */
+  --aw-primary-solid: #2858DC;  /* white text remains >= 4.5:1 */
+  --aw-primary-solid-hover: #3666D6;
+  --aw-primary-solid-active: #1F49B6;
   --aw-primary-hover: #6AA1FF;   /* Arco blue-4 */
   --aw-primary-active: #2858DC;  /* darken from blue-6 */
   --aw-primary-bg: #0F2A52;
   --aw-primary-bg-hover: #163C75;
   --aw-primary-border: #285FB2;
 
-  /* Status — dark variants 对齐 antd v6 darkAlgorithm,提亮以保持
-     dark bg 上的可读性;border 与主色同级,兼作分隔与点缀 */
+  /* Status — explicit dark values; no runtime algorithm derivation.
+     提亮以保持 dark bg 上的可读性;border 与主色同级,兼作分隔与点缀 */
   --aw-success: #52C41A;        /* antd green-6 */
+  --aw-success-solid: #237804;  /* white text success surface; 4.5:1+ contrast */
   --aw-success-bg: #162312;
   --aw-success-border: #274916;
   --aw-warning: #FAAD14;        /* antd gold-6  */
@@ -134,6 +149,8 @@
   --aw-warning-border: #594214;
   --aw-danger: #FF4D4F;         /* antd red-6   */
   --aw-danger-hover: #FF7875;
+  --aw-danger-solid: #B4232C;
+  --aw-danger-solid-hover: #9F1D26;
   --aw-danger-bg: #2A1215;
   --aw-danger-border: #58181C;
   --aw-info: #4DABF7;
@@ -142,9 +159,10 @@
 
   --aw-text-1: rgba(255, 255, 255, 0.92);
   --aw-text-2: rgba(255, 255, 255, 0.72);
-  --aw-text-3: rgba(255, 255, 255, 0.52);
-  --aw-text-4: rgba(255, 255, 255, 0.32);
+  --aw-text-3: rgb(255 255 255 / 60%);
+  --aw-text-4: rgb(255 255 255 / 52%);
   --aw-text-disabled: rgba(255, 255, 255, 0.24);
+  --aw-text-on-brand: #FFF;
 
   --aw-border-1: #3A3F4A;
   --aw-border-2: #2D323C;
@@ -182,7 +200,7 @@
 
   /* Tier expansion — dark */
   --aw-border-4: #2D323C;
-  --aw-fill-4: #2A2F38;
+  --aw-fill-4: #171A20;
   --aw-bg-spotlight: rgba(255, 255, 255, 0.92);
   --aw-bg-mask: rgba(0, 0, 0, 0.65);
 }

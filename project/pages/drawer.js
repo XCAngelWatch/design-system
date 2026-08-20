@@ -7,7 +7,7 @@
   <p class="lede"><span data-i18n="drawer:text.003">右侧滑入抽屉仅用于需要保留列表上下文的快速详情与轻量编辑。</span><strong><span data-i18n="drawer:text.004">它不是 Modal 或完整页面的默认替代</span></strong><span data-i18n="drawer:text.005">；复杂创建、跨步骤流程和高风险确认继续使用页面或 Modal。默认 480px 宽。</span></p>
   <div class="drawer-stage">
     <div class="drawer-demo">
-<div class="head"><h4><span data-i18n="drawer:text.006">编辑设备 · 终端-上海-001</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
+<div class="head"><h3><span data-i18n="drawer:text.006">编辑设备 · 终端-上海-001</span></h3><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
 <div class="body">
   <div class="form-demo">
     <div class="form-row"><div class="lbl"><span class="req" style="color:var(--aw-danger)">*</span><span data-i18n="drawer:text.007">设备名称</span></div><div><input class="input" value="终端-上海-001" data-i18n-value="drawer:attr.008.value" /></div></div>
@@ -26,7 +26,7 @@
     <p class="lede" style="margin-bottom:12px"><span data-i18n="drawer:versionLogs.description">从操作记录页的版本名称进入，保留版本列表上下文；抽屉只承载版本摘要与只读审计表格。</span></p>
     <div class="drawer-stage">
       <div class="drawer-demo" style="width:720px">
-        <div class="head"><h4><span data-i18n="drawer:versionLogs.drawerTitle">3.4.2 · 操作记录</span> <span class="tag-meta">v342</span></h4><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
+        <div class="head"><h3><span data-i18n="drawer:versionLogs.drawerTitle">3.4.2 · 操作记录</span> <span class="tag-meta">v342</span></h3><button class="dialog-close" aria-label="关闭" data-i18n-aria-label="common:close">×</button></div>
         <div class="body">
           <div class="demo-grid cols-2" style="margin-bottom:12px">
             <div class="surface" style="padding:12px"><small><span data-i18n="drawer:versionLogs.packageName">应用包名</span></small><div style="margin-top:6px"><code>com.aw.guard</code></div></div>

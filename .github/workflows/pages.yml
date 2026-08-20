@@ -29,6 +29,7 @@ jobs:
           node scripts/i18n-runtime.test.js
           node scripts/i18n-contract.test.js
           node scripts/check-consistency.js
+          node scripts/check-consumer-contract.js
           node scripts/check-evidence.js
           git ls-files -z '*.js' | xargs -0 -n1 node --check
           node - <<'NODE'

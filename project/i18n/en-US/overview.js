@@ -6,7 +6,7 @@
   "hero.titlePrefix": "A unified visual and interaction language for ",
   "hero.titleEm": "Android device management",
   "hero.titleSuffix": ".",
-  "hero.desc": "Built on Ant Design v6, the system calibrates high-density admin experiences for device management, app distribution, OTA upgrades, push tasks, and data monitoring. It is the daily design source for operations and IT administrators, with Light and Dark themes, zh-CN and en-US localization, self-hosted assets, intranet deployment, and offline availability.",
+  "hero.desc": "Built on Ant Design v6, the system calibrates high-density admin experiences for device management, app distribution, OTA upgrades, push tasks, and data monitoring. It provides Light / Dark and zh-CN / en-US and works offline on an intranet. Fonts resolve through local() / the system stack without network requests; for cross-machine determinism, first commit WOFF2 files with license provenance.",
   "hero.meta.tokens": "design tokens",
   "hero.meta.components": "components and patterns",
   "hero.meta.ecosystem": "ecosystem integrations",

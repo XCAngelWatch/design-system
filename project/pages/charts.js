@@ -57,16 +57,16 @@
 
   <div class="subsection">
     <h3><span data-i18n="charts:text.069">业务序列色板 · 8 色</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="charts:text.070">图表序列专属 8 色，</span><b><span data-i18n="charts:text.071">独立于</span></b> <a href="#/palette" style="color:var(--aw-primary)"><span data-i18n="charts:text.072">palette 页</span></a><span data-i18n="charts:text.073">的标签色板 —— 标签色板优化"文字 / 底色对比度 + 业务语义"，图表色板优化"序列间区分度 + 色弱可达"。两者职责不同，token 也分离：标签用 </span><code>--aw-{hue}-{step}</code><span data-i18n="charts:text.074">，图表用 </span><code>--aw-chart-1..8</code><span data-i18n="charts:text.075">。多系列图表按下表顺序取色，dark 模式自动切提亮变体。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="charts:text.070">图表序列专属 8 色，</span><b><span data-i18n="charts:text.071">独立于</span></b> <a href="#/palette" style="color: var(--aw-primary-text)"><span data-i18n="charts:text.072">palette 页</span></a><span data-i18n="charts:text.073">的标签色板 —— 标签色板优化"文字 / 底色对比度 + 业务语义"，图表色板优化"序列间区分度 + 色弱可达"。两者职责不同，token 也分离：标签用 </span><code>--aw-{hue}-{step}</code><span data-i18n="charts:text.074">，图表用 </span><code>--aw-chart-1..8</code><span data-i18n="charts:text.075">。多系列图表按下表顺序取色，dark 模式自动切提亮变体。</span></p>
     <div class="chart-color-bar">
-      <div style="background:var(--aw-chart-1)"><span>① Blue</span></div>
-      <div style="background:var(--aw-chart-2)"><span>② Aqua</span></div>
-      <div style="background:var(--aw-chart-3)"><span>③ Indigo</span></div>
-      <div style="background:var(--aw-chart-4)"><span>④ Gold</span></div>
-      <div style="background:var(--aw-chart-5)"><span>⑤ Coral</span></div>
-      <div style="background:var(--aw-chart-6)"><span>⑥ Cyan</span></div>
-      <div style="background:var(--aw-chart-7)"><span>⑦ Plum</span></div>
-      <div style="background:var(--aw-chart-8)"><span>⑧ Orange</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-1)" aria-hidden="true"></span><span class="chart-color-label">① Blue</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-2)" aria-hidden="true"></span><span class="chart-color-label">② Aqua</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-3)" aria-hidden="true"></span><span class="chart-color-label">③ Indigo</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-4)" aria-hidden="true"></span><span class="chart-color-label">④ Gold</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-5)" aria-hidden="true"></span><span class="chart-color-label">⑤ Coral</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-6)" aria-hidden="true"></span><span class="chart-color-label">⑥ Cyan</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-7)" aria-hidden="true"></span><span class="chart-color-label">⑦ Plum</span></div>
+      <div><span class="chart-color-swatch" style="background:var(--aw-chart-8)" aria-hidden="true"></span><span class="chart-color-label">⑧ Orange</span></div>
     </div>
     <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="charts:text.076">状态分布特例：</span></b><span data-i18n="charts:text.077">设备状态饼图 / 堆叠柱用</span><b><span data-i18n="charts:text.078">状态色直接映射</span></b><span data-i18n="charts:text.079">（success 绿 / warning 黄 / danger 红 / 灰中性），不取业务序列色 —— 保持与列表 status pill 视觉同色。</span></p>
   </div>
@@ -78,7 +78,7 @@
       <tbody>
         <tr><td><span data-i18n="charts:text.083">主轴</span></td><td>1px solid <code>--aw-border-1</code></td><td><span class="mono">#D9D9D9</span></td></tr>
         <tr><td><span data-i18n="charts:text.084">网格线</span></td><td>1px solid <code>--aw-border-3</code><span data-i18n="charts:text.085">，dashed 可选</span></td><td><span class="mono">#F0F0F0</span></td></tr>
-        <tr><td><span data-i18n="charts:text.086">轴标</span></td><td>12px <code>--aw-text-3</code></td><td><span class="mono">#6B7280</span></td></tr>
+        <tr><td><span data-i18n="charts:text.086">轴标</span></td><td>12px <code>--aw-text-3</code></td><td><span class="mono">#5F6B7A</span></td></tr>
         <tr><td><span data-i18n="charts:text.087">数字格式</span></td><td><span data-i18n="charts:text.088">千分位 + 单位置后</span></td><td><span data-i18n="charts:text.089">对接 data-format 页</span></td></tr>
         <tr><td>Tooltip</td><td><span data-i18n="charts:text.090">暗底 + 白字 + </span><code>--aw-shadow-2</code></td><td><span data-i18n="charts:text.091">即使 light 模式也用暗 tooltip，对比清晰</span></td></tr>
         <tr><td><span data-i18n="charts:text.092">图例</span></td><td><span data-i18n="charts:text.093">位置默认下方居中</span></td><td><span data-i18n="charts:text.094">类目 ≥ 6 个用右侧纵向</span></td></tr>

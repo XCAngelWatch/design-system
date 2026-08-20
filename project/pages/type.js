@@ -5,7 +5,7 @@
 <section class="section" id="type">
   <p class="section-eyebrow"><span data-i18n="type:t001">设计基础 · 字体</span></p>
   <h2><span data-i18n="type:t002">字体与字号 Typography</span></h2>
-  <p class="lede"><span data-i18n="type:t003">Inter 拉丁字符 + Source Han Sans CN 中文字符，自托管 woff2，离线可用。8 级字阶，4-pt 对齐。基础字号 14 / 22 与 Ant Design v6 一致；字重严格控制在三档（Regular 400 / Medium 500 / Semibold 600），同一界面通常只用 Regular + Medium 两档。</span></p>
+  <p class="lede"><span data-i18n="type:t003">当前通过 local() 查找 Inter / Source Han Sans CN，未命中时回退系统字体栈；离线时不发出字体网络请求。若需要跨机器的字体指标确定性，再提交有许可证记录的 WOFF2。8 级字阶，4-pt 对齐；基础字号 14 / 22，字重仅用 400 / 500 / 600。</span></p>
   <div class="surface" style="padding:8px 24px">
     <div class="type-row"><div class="meta"><strong>Display</strong>48 / 56 · 600</div><div class="meta">--aw-fs-48</div><div style="font-size:48px;font-weight:600;line-height:1.1;letter-spacing:-0.8px"><span data-i18n="type:t004">设备总览</span></div></div>
     <div class="type-row"><div class="meta"><strong>H1</strong>30 / 40 · 600</div><div class="meta">--aw-fs-30</div><div style="font-size:30px;font-weight:600;line-height:1.3;letter-spacing:-0.3px"><span data-i18n="type:t005">终端运维中心</span></div></div>
@@ -59,16 +59,16 @@
         <tr>
           <td><b><span data-i18n="type:t041">说明文本</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px">Tertiary · 45%</div></td>
           <td><code>--aw-text-3</code></td>
-          <td><span class="swatch-inline" style="background:#6B7280"></span><code>#6B7280</code></td>
-          <td><span class="swatch-inline" style="background:#fff;opacity:.52"></span><code>rgba(255,255,255,.52)</code></td>
+          <td><span class="swatch-inline" style="background:#5F6B7A"></span><code>#5F6B7A</code></td>
+          <td><span class="swatch-inline" style="background:#fff;opacity:.60"></span><code>rgb(255 255 255 / 60%)</code></td>
           <td><span data-i18n="type:t042">placeholder、时间戳、metadata</span></td>
         </tr>
         <tr>
-          <td><b><span data-i18n="type:t043">禁用文本</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px">Disabled · 25%</div></td>
+          <td><b><span data-i18n="type:t043">四级辅助文本</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px">Quaternary · AA</div></td>
           <td><code>--aw-text-4</code></td>
-          <td><span class="swatch-inline" style="background:#9CA3AF"></span><code>#9CA3AF</code></td>
-          <td><span class="swatch-inline" style="background:#fff;opacity:.32"></span><code>rgba(255,255,255,.32)</code></td>
-          <td><span data-i18n="type:t044">disabled 状态、离线设备、过期日期</span></td>
+          <td><span class="swatch-inline" style="background:#667085"></span><code>#667085</code></td>
+          <td><span class="swatch-inline" style="background:#fff;opacity:.52"></span><code>rgb(255 255 255 / 52%)</code></td>
+          <td><span data-i18n="type:t044">placeholder、离线设备、过期日期；真正 disabled 使用 --aw-text-disabled</span></td>
         </tr>
       </tbody>
     </table>

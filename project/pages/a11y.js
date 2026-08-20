@@ -3,8 +3,8 @@
 <div class="content">
 <section class="section" id="a11y">
   <p class="section-eyebrow"><span data-i18n="a11y:t001">设计基础 · 无障碍</span></p>
-  <h2><span data-i18n="a11y:t002">无障碍 Accessibility</span></h2>
-  <p class="lede"><span data-i18n="a11y:t003">运维与 IT 管理员中包含视障 / 色弱 / 键盘优先用户。系统目标 WCAG 2.1 AA 全量合规、关键路径 AAA 合规，CI 阶段通过 axe-core + Pa11y 自动扫描，PR 不达标会被拦。本页固化七大维度的硬约束。</span></p>
+  <h2 role="heading" aria-level="1"><span data-i18n="a11y:t002">无障碍 Accessibility</span></h2>
+  <p class="lede"><span data-i18n="a11y:t003">运维与 IT 管理员中包含视障 / 色弱 / 键盘优先用户。产品以 WCAG 2.1 AA 为交付目标。当前设计仓 CI 仅阻断静态 i18n、契约、一致性与证据检查，尚未运行浏览器级 axe、键盘或读屏测试；这些属于必须补齐的验证计划，不是既有合规证明。只有实际执行并留有报告的覆盖范围才能标记为已验证。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="a11y:t004">键盘可达 · Keyboard</span></h3>
@@ -25,23 +25,20 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="a11y:t025">13 条全局快捷键</span></h3>
+    <h3><span data-i18n="a11y:t025">当前消费者快捷键</span></h3>
     <table class="map-table">
       <thead><tr><th style="width:24%"><span data-i18n="a11y:t026">快捷键</span></th><th style="width:30%"><span data-i18n="a11y:t027">动作</span></th><th><span data-i18n="a11y:t028">说明</span></th></tr></thead>
       <tbody>
-        <tr><td><kbd>Cmd</kbd>+<kbd>K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd></td><td><span data-i18n="a11y:t029">全局搜索（Command Palette）</span></td><td><span data-i18n="a11y:t030">跨设备 / 账号 / 操作 / 页面统一搜索</span></td></tr>
-        <tr><td><kbd>Cmd</kbd>+<kbd>B</kbd></td><td><span data-i18n="a11y:t031">切换侧边栏折叠</span></td><td><span data-i18n="a11y:t032">临时扩展工作区域</span></td></tr>
-        <tr><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td><td><span data-i18n="a11y:t033">切换 Light / Dark 主题</span></td><td><span data-i18n="a11y:t034">对接 motion 页主题切换流程</span></td></tr>
-        <tr><td><kbd>?</kbd></td><td><span data-i18n="a11y:t035">打开快捷键参考</span></td><td><span data-i18n="a11y:t036">任意非输入框聚焦时</span></td></tr>
-        <tr><td><kbd>g</kbd> <kbd>d</kbd></td><td><span data-i18n="a11y:t037">跳转设备列表</span></td><td><span data-i18n="a11y:t038">Vim 式两键序列</span></td></tr>
-        <tr><td><kbd>g</kbd> <kbd>p</kbd></td><td><span data-i18n="a11y:t039">跳转推送页</span></td><td></td></tr>
-        <tr><td><kbd>g</kbd> <kbd>o</kbd></td><td><span data-i18n="a11y:t040">跳转 OTA 页</span></td><td></td></tr>
-        <tr><td><kbd>g</kbd> <kbd>u</kbd></td><td><span data-i18n="a11y:t041">跳转账号权限</span></td><td></td></tr>
-        <tr><td><kbd>g</kbd> <kbd>h</kbd></td><td><span data-i18n="a11y:t042">回到首页 / 仪表盘</span></td><td></td></tr>
-        <tr><td><kbd>/</kbd></td><td><span data-i18n="a11y:t043">聚焦当前页搜索框</span></td><td><span data-i18n="a11y:t044">列表 / 表格</span></td></tr>
-        <tr><td><kbd>n</kbd></td><td><span data-i18n="a11y:t045">"+ 添加" 主操作</span></td><td><span data-i18n="a11y:t046">当前页有添加按钮时</span></td></tr>
-        <tr><td><kbd>r</kbd></td><td><span data-i18n="a11y:t047">刷新当前数据</span></td><td><span data-i18n="a11y:t048">不刷整页，仅 React Query invalidate</span></td></tr>
-        <tr><td><kbd>Esc</kbd></td><td><span data-i18n="a11y:t049">关闭浮层 / 退出编辑</span></td><td><span data-i18n="a11y:t050">层级最深的浮层先关</span></td></tr>
+        <tr><td><kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>B</kbd></td><td><span data-i18n="a11y:t029">切换侧边栏折叠</span></td><td><span data-i18n="a11y:t030">当前由 Shell 注册</span></td></tr>
+        <tr><td><kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></td><td><span data-i18n="a11y:t031">切换 Light / Dark 主题</span></td><td><span data-i18n="a11y:t032">当前由 Shell 注册</span></td></tr>
+        <tr><td><kbd>?</kbd></td><td><span data-i18n="a11y:t033">打开快捷键参考</span></td><td><span data-i18n="a11y:t034">任意非输入框聚焦时</span></td></tr>
+        <tr><td><kbd>g</kbd> <kbd>h</kbd></td><td><span data-i18n="a11y:t035">回到首页 / 仪表盘</span></td><td><span data-i18n="a11y:t036">Shell 中 900ms 两键序列</span></td></tr>
+        <tr><td><kbd>g</kbd> <kbd>a</kbd></td><td><span data-i18n="a11y:t037">跳转应用管理</span></td><td><span data-i18n="a11y:t038">仅在后端菜单允许该路由时跳转</span></td></tr>
+        <tr><td><kbd>g</kbd> <kbd>u</kbd></td><td><span data-i18n="a11y:t039">跳转账号权限</span></td><td></td></tr>
+        <tr><td><kbd>g</kbd> <kbd>l</kbd></td><td><span data-i18n="a11y:t040">跳转日志</span></td><td></td></tr>
+        <tr><td><kbd>/</kbd></td><td><span data-i18n="a11y:t041">聚焦当前页搜索框</span></td><td></td></tr>
+        <tr><td><kbd>n</kbd></td><td><span data-i18n="a11y:t042">"+ 添加" 主操作</span></td><td></td></tr>
+        <tr><td><kbd>r</kbd></td><td><span data-i18n="a11y:t043">刷新当前数据</span></td><td><span data-i18n="a11y:t044">仅在页面通过 usePageShortcuts 注册对应动作时生效</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -123,9 +120,9 @@
   }
 }
 
-/* Large screens / dashboards keep essential new-data flashes even when reduced motion is enabled */
-.realtime-pulse {
-  animation: pulse 600ms;  /* not gated by reduced-motion */
+/* Real-time updates keep their text/status change, but do not force a pulse. */
+@media (prefers-reduced-motion: reduce) {
+  .realtime-pulse { animation: none !important; }
 }</code></pre></div>
   </div>
 
@@ -138,10 +135,10 @@
         <tr><td><span data-i18n="a11y:t110">大文本 (≥18px or ≥14px bold)</span></td><td>3:1(AA)</td><td><span data-i18n="a11y:t111">H1 / H2 / 卡片标题</span></td></tr>
         <tr><td><span data-i18n="a11y:t112">关键 CTA / 大字</span></td><td>7:1(AAA)</td><td><span data-i18n="a11y:t113">主操作按钮文字、统计数字</span></td></tr>
         <tr><td><span data-i18n="a11y:t114">UI 组件 / 图标</span></td><td>3:1(AA)</td><td><span data-i18n="a11y:t115">边框、icon、focus ring vs 底色</span></td></tr>
-        <tr><td><span data-i18n="a11y:t116">状态文字</span></td><td>4.5:1</td><td><span data-i18n="a11y:t117">所有 status 色文本（已通过验证）</span></td></tr>
+        <tr><td><span data-i18n="a11y:t116">状态文字</span></td><td>4.5:1</td><td><span data-i18n="a11y:t117">每组前景 / 背景组合都必须实测；不得由 token 名称推断已通过</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="a11y:t118">校验：</span></b><span data-i18n="a11y:t119">详见</span> <a href="#/color" style="color:var(--aw-primary)"><span data-i18n="a11y:t120">色彩页 WCAG 标注</span></a><span data-i18n="a11y:t121">。本仓库无构建链路，提交前按色彩页标注人工抽检；业务仓库可再接入自动化对比度校验。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="a11y:t118">校验：</span></b><span data-i18n="a11y:t119">详见</span> <a href="#/color" style="color: var(--aw-primary-text)"><span data-i18n="a11y:t120">色彩页 WCAG 标注</span></a><span data-i18n="a11y:t121">。当前 CI 尚无浏览器级覆盖报告；后续报告必须列明路由 / 主题 / 语言 / 视口。未执行的组合只能标为待验证，并通过人工抽检记录补充。</span></p>
   </div>
 
   <div class="subsection">
@@ -152,7 +149,7 @@
         <tr><td><b>NVDA</b> <span data-i18n="a11y:t125">· 必测</span></td><td>Firefox / Chrome</td><td>Windows</td><td><span data-i18n="a11y:t126">≥ 70% 国内用户基础</span></td></tr>
         <tr><td>JAWS</td><td>Chrome</td><td>Windows</td><td><span data-i18n="a11y:t127">企业 / 政府客户</span></td></tr>
         <tr><td>VoiceOver</td><td>Safari</td><td>macOS / iOS</td><td><span data-i18n="a11y:t128">设计师 / 部分管理员</span></td></tr>
-        <tr><td>TalkBack</td><td>Chrome</td><td>Android</td><td><span data-i18n="a11y:t129">移动场景（不是 TMS 默认场景）</span></td></tr>
+        <tr><td>TalkBack</td><td>Chrome</td><td>Android</td><td><span data-i18n="a11y:t129">窄屏移动端关键流程</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -169,13 +166,13 @@
           <li><span data-i18n="a11y:t135">状态信息色 + 形 + 文字三重编码</span></li>
           <li><span data-i18n="a11y:t136">错误用</span> <code>role="alert"</code> + <code>aria-live="assertive"</code></li>
           <li><span data-i18n="a11y:t137">响应</span> <code>prefers-reduced-motion</code></li>
-          <li><span data-i18n="a11y:t138">CI 阶段跑 axe-core + Pa11y 扫描</span></li>
+          <li><span data-i18n="a11y:t138">补齐浏览器级 CI 后运行 axe 并发布覆盖矩阵；在此之前本地扫描只算抽样，键盘与读屏仍需人工验证</span></li>
         </ul>
       </div>
       <div class="surface" style="border-left:3px solid var(--aw-danger)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)">✕ DON'T</h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-          <li><span data-i18n="a11y:t139">不要用</span> <code>:focus-visible</code> <span data-i18n="a11y:t140">only —— 鼠标点击后焦点也应可见</span></li>
+          <li><span data-i18n="a11y:t139">不要移除浏览器焦点样式后只补鼠标 hover；</span><code>:focus-visible</code> <span data-i18n="a11y:t140">是键盘焦点环的默认触发器，鼠标 / 触摸点击无需额外常驻焦点环</span></li>
           <li><span data-i18n="a11y:t141">不要用</span> <code>div onClick</code> <span data-i18n="a11y:t142">替代</span> <code>&lt;button&gt;</code></li>
           <li><span data-i18n="a11y:t143">不要仅靠颜色表达状态</span></li>
           <li><span data-i18n="a11y:t144">不要在 Modal 不实现焦点陷阱</span></li>
