@@ -177,7 +177,7 @@
 <span data-i18n="shell:text.093">· 分组标题：全大写英文 + 中文，</span><code>letter-spacing 0.6px</code><span data-i18n="shell:text.099">，</span><code>color #667085</code><br/>
 <span data-i18n="shell:text.094">· 账号入口固定在侧栏左下角，Topbar 不再重复放头像；</span><code>#FAFAFA</code> <span data-i18n="shell:text.095">底色 + 完整裁切头像 + 姓名 + 角色 chip + ⋯ 菜单</span><br/>
 <span data-i18n="shell:text.096">· 折叠态 64px：仅 icon 居中；hover 浮出右侧 tooltip 卡片</span><br/>
-<span data-i18n="shell:text.097">· 折叠按钮在 Topbar，快捷键</span> <code>⌘ + B</code><br/>
+<span data-i18n="shell:text.097">· 折叠按钮固定在侧栏底部，不放 Topbar；Topbar 只承接面包屑，页面标题和返回入口保留在内容区。快捷键</span> <code>⌘ + B</code><br/>
 <span data-i18n="shell:text.098">· 自定义滚动条：默认 0px；hover sidebar 时显示 4px</span> <code>#DEE1E6</code>
     </div>
   </div>
