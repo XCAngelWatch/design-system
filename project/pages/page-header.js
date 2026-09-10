@@ -10,7 +10,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="page-header:text.013">结构 · 5 个槽位</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.014">从上到下：面包屑（可选）→ 标题行（标题 + 状态 + 操作）→ 关键字段（可选）→ 底部 Tabs（可选）。不提供自由文本副标题 / 描述槽；必要说明放到页面正文。每槽位独立可见性控制，但顺序固定。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.014">组件提供面包屑、标题行（标题 + 状态 + 操作）、关键字段和底部 Tabs 槽位。应用 Shell 中仅将面包屑挂载到顶栏，标题、返回入口、操作和其余槽位保留在内容区。不提供自由文本副标题 / 描述槽；必要说明放到页面正文。</span></p>
     <div class="ph-anatomy">
       <div class="ph-row" style="background:var(--aw-fill-1);font-size:11px;color:var(--aw-text-3);padding:6px 14px"><span style="font-family:var(--aw-font-mono)">crumbs</span><span data-i18n="page-header:text.015"> · 跨级位置</span></div>
       <div class="ph-row" style="font-size:11px;color:var(--aw-text-3);padding:6px 14px;border-bottom:1px dashed var(--aw-border-3)"><span class="mono">data-center / device-list / DEV-86420075</span></div>
@@ -40,7 +40,7 @@
       <thead><tr><th style="width:18%"><span data-i18n="page-header:text.027">页面类型</span></th><th style="width:24%"><span data-i18n="page-header:text.028">面包屑</span></th><th style="width:22%"><span data-i18n="page-header:text.029">主标题</span></th><th style="width:18%"><span data-i18n="page-header:text.030">操作</span></th><th><span data-i18n="page-header:text.031">底部 Tabs</span></th></tr></thead>
       <tbody>
         <tr><td><b>ListPage</b></td><td><span data-i18n="page-header:text.032">1 级 (e.g. “设备管理”)</span></td><td><span data-i18n="page-header:text.033">资源类目名</span></td><td><span data-i18n="page-header:text.034">主：+ 添加 / 次：导入 / 导出</span></td><td><span data-i18n="page-header:text.035">视图切换 (Tab)</span></td></tr>
-        <tr><td><b>DetailPage</b></td><td><span data-i18n="page-header:text.036">2-3 级 + 当前对象名</span></td><td><span data-i18n="page-header:text.037">对象名 + 状态</span></td><td><span data-i18n="page-header:text.038">编辑 / 推送等对象动作；删除 / 解绑 / 重启下沉危险区域</span></td><td><span data-i18n="page-header:text.039">视图（基础 / 状态 / 日志 / 告警 / OTA）</span></td></tr>
+        <tr><td><b>DetailPage</b></td><td><span data-i18n="page-header:text.036">2-3 级 + 当前对象名</span></td><td><span data-i18n="page-header:text.037">对象名 + 状态</span></td><td><span data-i18n="page-header:text.038">编辑 / 推送等对象动作；删除 / 解绑 / 重启进入更多中的独立危险分组或危险区域</span></td><td><span data-i18n="page-header:text.039">视图（基础 / 状态 / 日志 / 告警 / OTA）</span></td></tr>
         <tr><td><b>FormPage</b></td><td><span data-i18n="page-header:text.040">2 级 + “新建” / “编辑”</span></td><td><span data-i18n="page-header:text.041">“新建 X” / “编辑 X”</span></td><td><span data-i18n="page-header:text.042">主：保存 / 次：取消 / 草稿</span></td><td><span data-i18n="page-header:text.043">无</span></td></tr>
         <tr><td><b>DashboardPage</b></td><td><span data-i18n="page-header:text.044">无 (顶级)</span></td><td><span data-i18n="page-header:text.045">“仪表盘”</span></td><td><span data-i18n="page-header:text.046">右：时间范围切换 / 刷新</span></td><td><span data-i18n="page-header:text.047">主题切换 (Tab)</span></td></tr>
       </tbody>
@@ -108,7 +108,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="page-header:text.085">动作排列规则</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.086">从左到右：次操作 → 中性操作 → 主操作。最右一定是 Primary。≥ 4 个动作必须折叠到 </span><span class="mono" data-i18n="page-header:text.113">操作 ▾</span><span data-i18n="page-header:text.087"> 下拉。破坏性动作（删除 / 解绑 / 重启）不放页头，下沉到 Tab “更多” 或详情底部。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.086">从左到右：次操作 → 中性操作 → 主操作。最右一定是 Primary。≥ 4 个动作必须折叠到 </span><span class="mono" data-i18n="page-header:text.113">操作 ▾</span><span data-i18n="page-header:text.087"> 下拉。破坏性动作（删除 / 解绑 / 重启）不在页头直接平铺，进入“更多”中分隔置底的危险分组或独立危险区；均需一次 Modal 确认。</span></p>
     <div class="demo-grid cols-3">
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px" data-i18n="page-header:text.088">2-3 个操作</div>
@@ -120,8 +120,8 @@
         <div style="margin-top:8px;font-size:11px;color:var(--aw-text-3)" data-i18n="page-header:text.095">下拉 4-8 项；超过分组</div>
       </div>
       <div class="surface">
-        <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="page-header:text.096">破坏性 · 不在页头</span></div>
-        <div style="display:flex;gap:8px;flex-direction:column"><div style="font-size:12px;color:var(--aw-text-3)"><span data-i18n="page-header:text.097">删除 / 解绑 / 重启 → 下沉到详情底部“危险区域”</span></div></div>
+        <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="page-header:text.096">破坏性 · 独立分组</span></div>
+        <div style="display:flex;gap:8px;flex-direction:column"><div style="font-size:12px;color:var(--aw-text-3)"><span data-i18n="page-header:text.097">删除 / 解绑 / 重启 → 更多中的分隔危险组或独立危险区，不与普通按钮平铺</span></div></div>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)"><span data-i18n="page-header:text.112">✕ DON'T</span></h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
           <li><span data-i18n="page-header:text.105">不要业务页自造页头或添加副标题 / 描述</span></li>
-          <li><span data-i18n="page-header:text.106">不要把破坏性按钮放页头</span></li>
+          <li><span data-i18n="page-header:text.106">不要在页头直接平铺破坏性按钮</span></li>
           <li><span data-i18n="page-header:text.107">不要 ≥ 2 个 Primary 操作并存</span></li>
           <li><span data-i18n="page-header:text.108">不要在 ListPage sticky PageHeader（与表格 sticky header 冲突）</span></li>
           <li><span data-i18n="page-header:text.109">不要让面包屑超过 5 级（用“…”折叠）</span></li>

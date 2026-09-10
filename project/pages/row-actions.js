@@ -121,8 +121,8 @@
             <div class="ra-mit">${ICN.log}<span><span data-i18n="row-actions:text.058">查看日志</span></span></div>
             <div class="ra-mit">${ICN.copy}<span><span data-i18n="row-actions:text.059">复制 SN</span></span></div>
             <div class="ra-mit">${ICN.download}<span><span data-i18n="row-actions:text.060">下载证书</span></span></div>
-            <div class="ra-mit danger">${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></div>
             <div class="ra-mdiv"></div>
+            <div class="ra-mit danger">${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></div>
             <div class="ra-mit warn">${ICN.reset}<span><span data-i18n="row-actions:text.062">重置出厂</span></span></div>
             <div class="ra-mit danger">${ICN.del}<span><span data-i18n="row-actions:text.063">删除设备</span></span></div>
           </div>

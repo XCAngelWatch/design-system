@@ -186,6 +186,7 @@
     "keyFieldsOnly": true,
     "maxPrimaryActions": 1,
     "dangerActionsAllowed": false,
+    "dangerActionsPlacement": ["separated-overflow-menu", "danger-zone"],
     "collapseActionsFrom": 4,
     "longPageSticky": ["detail", "form", "dashboard"],
     "listPageSticky": false,
