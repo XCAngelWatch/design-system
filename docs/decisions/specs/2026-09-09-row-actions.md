@@ -12,7 +12,7 @@
 - 行内与菜单共用一个执行和确认流程。需要确认的行操作统一一次 Modal，默认焦点在取消；请求进行中禁止重复触发。调用方已拥有确认对话框时，不再重复声明组件 confirm。
 - 禁用动作保留短名称并解释原因。权限、状态、allowedActions、数据范围和接口参数仍由业务契约决定；布局变化不新增权限或扩大数据范围。
 - 菜单由点击或键盘触发，按钮提供对象上下文、aria-haspopup 和 aria-expanded。打开时交接焦点，方向键导航，Escape 关闭并回焦；触屏不依赖 hover。
-- 页头保持独立预算：一个强调主按钮，最多三个直接动作，第 4 项起收纳；危险操作使用独立区域。有业务名称的决策菜单（例如审核）保留名称，不改成“更多”。
+- 页头保持独立预算：一个强调主按钮，最多三个直接动作，第 4 项起收纳；危险操作不直接平铺在页头，使用“更多”菜单中分隔置底的危险分组或独立危险区；两种位置均沿用一次 Modal 确认。有业务名称的决策菜单（例如审核）保留名称，不改成“更多”。
 
 ## 公共组件落地
 
@@ -25,3 +25,5 @@
 按源页面及中英文词典 → contracts/tms-web-ui.json → 消费者 source-contract.json 和文档 → 公共组件与业务页面同步。验证源 i18n、consistency、consumer contract；消费者检查权限/状态矩阵、行内/菜单确认次数、异步重复触发、键盘、主题、语言和窄布局。
 
 参考：Carbon 推荐少量行操作直接展示以减少点击，其 overflow 指南将风险动作分隔置底；TMS 保留明确业务文字而非照搬图标形式。[Carbon Data Table](https://carbondesignsystem.com/components/data-table/usage/)，[Carbon Overflow Menu](https://carbondesignsystem.com/components/overflow-menu/usage/)。菜单焦点与展开语义按 [W3C Menu Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/) 实施。
+
+页头契约中的 `dangerActionsAllowed: false` 指禁止直接平铺危险按钮；`dangerActionsPlacement` 将上述独立区域明确为 `separated-overflow-menu` 或 `danger-zone`。这是对本次已授权“危险操作默认进入更多底部，分隔并确认”规则的同步澄清，保留既有设备页头的更多入口，不新增操作或权限。

@@ -135,6 +135,7 @@ if (contract.rowActions.table.visiblePrimaryCount !== 1 ||
 }
 if (contract.pageHeader.freeTextSubtitle || !contract.pageHeader.keyFieldsOnly ||
     contract.pageHeader.maxPrimaryActions !== 1 || contract.pageHeader.dangerActionsAllowed ||
+    !same(contract.pageHeader.dangerActionsPlacement, ['separated-overflow-menu', 'danger-zone']) ||
     contract.pageHeader.collapseActionsFrom !== 4 ||
     !same(contract.pageHeader.longPageSticky, ['detail', 'form', 'dashboard']) ||
     contract.pageHeader.listPageSticky || contract.pageHeader.compactAfterScrollPx !== 60) {
