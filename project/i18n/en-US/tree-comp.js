@@ -2,6 +2,8 @@
 (function (root) {
   'use strict';
   root.__AW_I18N__.register('en-US', 'tree-comp', {
+    "orgName": "Keep organization names on one line. Truncate long names in the middle, preserving both ends, and reveal the full name on hover, keyboard focus or click. Apply this to sidebar trees and organization dropdowns. Search, selection values and accessible names always retain the full name.",
+    "orgCount": "Do not show an organization-count badge in an organization selector header. Preserve hierarchy, search highlighting and permission locks; name presentation must not change data scope. Use text-color tokens for selected and highlighted labels to keep both themes readable.",
     "text.001": "Common Components · Tree",
     "text.002": "Tree",
     "text.003": "Carries hierarchical relationships such as organization tree (group → region → city → service hall), device groups, and permission menus. Supports search, multi-select, and half-checked states.",

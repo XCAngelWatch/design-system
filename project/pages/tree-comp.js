@@ -39,6 +39,8 @@
     <li><span data-i18n="tree-comp:text.021">右侧 </span><code class="mono">count</code><span data-i18n="tree-comp:text.022"> 显示该节点下的设备总数</span></li>
     <li><span data-i18n="tree-comp:text.023">搜索框过滤节点，命中部分高亮，自动展开父节点</span></li>
     <li><span data-i18n="tree-comp:text.024">键盘：↑↓ 移动，← 折叠，→ 展开，Space 勾选</span></li>
+    <li><span data-i18n="tree-comp:orgName">机构名称固定单行；超长时中间省略并保留首尾，悬停、键盘聚焦或点击可查看完整名称。侧栏树与表单机构下拉树使用同一规则；搜索、选择值及无障碍名称始终使用完整名称。</span></li>
+    <li><span data-i18n="tree-comp:orgCount">机构选择树的页头不展示机构数量角标。保留展开层级、搜索命中提示与权限锁定状态，名称展示不改变数据范围。选中及高亮文字使用文字色令牌，保证明暗主题下的可读性。</span></li>
   </ul>
 </div>
     </div>
