@@ -328,7 +328,7 @@
   <div class="subsection">
     <h3><span data-i18n="table:text.198">反例</span></h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="table:text.199">不要在虚拟列表中使用 colspan 跨行：</span></strong><span data-i18n="table:text.200">虚拟化只渲染可视区，跨行单元格在滚动时会撕裂。改用普通行 + 视觉分组（hr 分隔）。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="table:text.201">不要把"操作"列设宽超过 240px：</span></strong><span data-i18n="table:text.202">这通常意味着表格内明示了过多操作。只保留 1 个高频操作，其余进入 </span><a href="#/row-actions" style="color: var(--aw-primary-text)"><span data-i18n="table:text.203">RowActions 折叠态</span></a><span data-i18n="table:text.326">。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="table:text.201">操作列按可见文案核算宽度：</span></strong><span data-i18n="table:text.202">最多展示一个主操作和一个常用辅助操作，保持完整单行文案；容不下时将辅助操作收入 </span><a href="#/row-actions" style="color: var(--aw-primary-text)"><span data-i18n="table:text.203">RowActions 折叠态</span></a><span data-i18n="table:text.326">。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -351,7 +351,7 @@
         <tr><td>SN / IMEI / IP</td><td>left</td><td>160</td><td>2</td><td><span data-i18n="table:text.220">monospace + 复制按钮 hover 显</span></td></tr>
         <tr><td><span data-i18n="table:text.221">状态</span></td><td>left</td><td>96</td><td><span data-i18n="table:text.222">1（不隐藏）</span></td><td><span data-i18n="table:text.223">状态色 + 圆点 + 文字三重编码</span></td></tr>
         <tr><td><span data-i18n="table:text.224">数字 / 时间戳</span></td><td>right</td><td>100-140</td><td>3</td><td><code>tabular-nums</code><span data-i18n="table:text.225">；时间戳带 tooltip 绝对时间</span></td></tr>
-        <tr><td><span data-i18n="table:text.226">操作</span></td><td>right</td><td>140</td><td><span data-i18n="table:text.227">1（不隐藏）</span></td><td><code>fixed: 'right'</code><span data-i18n="table:text.228">；只明示 1 个高频操作 + 更多</span></td></tr>
+        <tr><td><span data-i18n="table:text.226">操作</span></td><td>right</td><td>140</td><td><span data-i18n="table:text.227">1（不隐藏）</span></td><td><code>fixed: 'right'</code><span data-i18n="table:text.228">；最多 1 个主操作 + 1 个辅助操作，其余收入更多</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -423,7 +423,7 @@
       <thead><tr><th><span data-i18n="table:text.308">模式</span></th><th><span data-i18n="table:text.309">出现模块</span></th><th><span data-i18n="table:text.310">规则</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="table:text.311">筛选区</span></td><td><span data-i18n="table:text.312">应用管理 / OTA / 设备管理 / 推送任务</span></td><td><span data-i18n="table:text.313">常用 3-4 字段直接展示，高级筛选折叠；搜索字段永远在第一位。</span></td></tr>
-        <tr><td><span data-i18n="table:text.314">表格视图</span></td><td><span data-i18n="table:text.315">应用列表 / 设备列表 / 日志 / 字典</span></td><td><span data-i18n="table:text.316">状态列靠近主对象；操作列固定右侧；RowActions 只明示 1 个高频操作 + 更多。</span></td></tr>
+        <tr><td><span data-i18n="table:text.314">表格视图</span></td><td><span data-i18n="table:text.315">应用列表 / 设备列表 / 日志 / 字典</span></td><td><span data-i18n="table:text.316">状态列靠近主对象；操作列固定右侧；RowActions 按用途标记优先级，宽度允许时展示最多 2 项，其余收入更多。</span></td></tr>
         <tr><td><span data-i18n="table:text.317">卡片视图</span></td><td><span data-i18n="table:text.318">应用管理 / 广告管理 / 设备管理 / 设备分组</span></td><td><span data-i18n="table:text.319">卡片保留主状态、关键字段、最近操作；批量勾选入口在左上角。</span></td></tr>
         <tr><td><span data-i18n="table:text.320">批量条</span></td><td><span data-i18n="table:text.321">分配设备 / 推送设备 / 导出日志</span></td><td><span data-i18n="table:text.322">只在选中后出现，显示已选数量、清空入口和 2-3 个高频批量动作。</span></td></tr>
         <tr><td><span data-i18n="table:text.323">状态列</span></td><td><span data-i18n="table:text.324">应用审核 / OTA 推送 / 设备在线 / 任务结果</span></td><td><span data-i18n="table:text.325">状态文案与操作可用性绑定；不能只改变颜色而不改变可操作项。</span></td></tr>

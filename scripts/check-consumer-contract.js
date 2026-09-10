@@ -21,9 +21,9 @@ const darkBlock = (tokenCss.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\}/) || [
 const light = tokenMap(lightBlock);
 const dark = tokenMap(darkBlock);
 
-if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-08-14' ||
+if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-09-09' ||
     contract.sourceRepository !== 'design-system' ||
-    contract.decisionRecord !== 'docs/decisions/specs/2026-08-14-responsive-consumer-contract.md') {
+    contract.decisionRecord !== 'docs/decisions/specs/2026-09-09-row-actions.md') {
   errors.push('contract: unexpected schema or decision version');
 }
 if (contract.consumerRepository !== 'tms2.5-web-ui' ||
@@ -107,7 +107,7 @@ if (contract.pagination.defaultPageSize !== 20 ||
   errors.push('pagination: expected default 20 and options [20,50,100,200]');
 }
 if (!same(contract.i18n?.locales, ['zh_CN', 'en', 'es', 'pt', 'fr', 'ru']) ||
-    !same(contract.i18n?.requiredAllLocaleKeys, ['common.scrollableTable', 'common.dangerZone']) ||
+    !same(contract.i18n?.requiredAllLocaleKeys, ['common.scrollableTable', 'common.dangerZone', 'common.moreFor', 'common.actionProcessing']) ||
     !same(contract.i18n?.defaultValueLiteralRequiredLocales, ['zh_CN', 'en'])) {
   errors.push('i18n: expected six locales, shared a11y/danger keys, and zh_CN/en defaultValue literal catalogs');
 }
@@ -118,11 +118,20 @@ if (contract.dateTime?.transport !== 'RFC3339-or-ISO-8601-instant' ||
   errors.push('dateTime: expected instant transport, Intl display, IANA priority, and no fixed-offset zones');
 }
 if (contract.rowActions.table.visiblePrimaryCount !== 1 ||
-    !contract.rowActions.table.collapseSecondaryActions ||
-    contract.rowActions.compactCard.maxVisibleCount !== 3 ||
-    contract.rowActions.compactCard.collapseFrom !== 4 || !contract.rowActions.dangerLast ||
-    contract.rowActions.dangerConfirmationDefaultFocus !== 'cancel') {
-  errors.push('rowActions: expected table 1 primary + more and compact/card max 3, collapse from 4');
+    contract.rowActions.table.maxVisibleCount !== 2 ||
+    contract.rowActions.table.narrowVisibleCount !== 1 ||
+    contract.rowActions.table.collapseSecondaryActions ||
+    contract.rowActions.compactCard.maxVisibleCount !== 2 ||
+    contract.rowActions.compactCard.collapseFrom !== 3 ||
+    contract.rowActions.toolbar.maxVisibleCount !== 3 ||
+    !same(contract.rowActions.placement, ['primary', 'secondary', 'menu']) ||
+    contract.rowActions.responsive.narrowContainerBreakpoint !== 'md' ||
+    !contract.rowActions.singleSafeActionInline || contract.rowActions.dangerInlineDefault ||
+    !same(contract.rowActions.dangerInlineExceptions, ['group-membership-removal']) ||
+    contract.rowActions.confirmation !== 'single-modal-independent-of-placement' ||
+    !contract.rowActions.menuKeyboardFocus || !contract.rowActions.pendingPreventsRepeat ||
+    !contract.rowActions.dangerLast || contract.rowActions.dangerConfirmationDefaultFocus !== 'cancel') {
+  errors.push('rowActions: purpose-based max 2, responsive fit, safe danger placement and one confirmation required');
 }
 if (contract.pageHeader.freeTextSubtitle || !contract.pageHeader.keyFieldsOnly ||
     contract.pageHeader.maxPrimaryActions !== 1 || contract.pageHeader.dangerActionsAllowed ||
