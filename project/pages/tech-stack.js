@@ -56,7 +56,7 @@
         <tr><td><code>PageHeader</code></td><td><code>src/components/PageHeader/</code></td><td><span data-i18n="tech-stack:t055">统一页头槽位、动作与 sticky compact 行为。</span></td></tr>
         <tr><td><code>TMSEmpty</code> / <code>ErrorPage</code></td><td><code>src/components/TMSEmpty/</code> / <code>ErrorPage/</code></td><td><span data-i18n="tech-stack:t056">全局空态与整页错误反馈。</span></td></tr>
         <tr><td><code>AppTable</code> / <code>AppPagination</code></td><td><code>src/components/AppTable/</code> / <code>AppPagination/</code></td><td><span data-i18n="tech-stack:t057">默认使用 AntD Table；大数据固定行高场景使用原生 virtual + 数值 scroll.x / scroll.y。</span></td></tr>
-        <tr><td><code>RowActions</code></td><td><code>src/components/RowActions/</code></td><td><span data-i18n="tech-stack:t058">表格默认 1 个主操作 + 更多；紧凑卡片最多明示 3 个。</span></td></tr>
+        <tr><td><code>RowActions</code></td><td><code>src/components/RowActions/</code></td><td><span data-i18n="tech-stack:t058">表格和卡片最多 2 个普通动作；窄容器保留主操作，危险操作默认收入更多。</span></td></tr>
         <tr><td><code>StatusIndicator</code></td><td><code>src/components/StatusIndicator/</code></td><td><span data-i18n="tech-stack:t059">状态使用颜色、图标与文字多重编码。</span></td></tr>
         <tr><td><code>TMSChart</code> / <code>KpiCard</code> / <code>ChartCard</code></td><td><code>src/components/</code></td><td><span data-i18n="tech-stack:t060">图表、指标与容器统一消费主题 token。</span></td></tr>
         <tr><td><code>MobileTabBar</code></td><td><code>src/components/MobileTabBar/</code></td><td><span data-i18n="tech-stack:t061">md 以下的窄屏主导航，与桌面 Sidebar 互斥。</span></td></tr>

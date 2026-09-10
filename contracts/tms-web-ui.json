@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "contractVersion": "2026-08-14",
+  "contractVersion": "2026-09-09",
   "sourceRepository": "design-system",
   "consumerRepository": "tms2.5-web-ui",
   "consumerCopyPath": "docs/design-system/source-contract.json",
-  "decisionRecord": "docs/decisions/specs/2026-08-14-responsive-consumer-contract.md",
+  "decisionRecord": "docs/decisions/specs/2026-09-09-row-actions.md",
   "tokens": {
     "sourceFile": "project/styles/tokens.css",
     "prefix": "--aw-",
@@ -142,7 +142,7 @@
   },
   "i18n": {
     "locales": ["zh_CN", "en", "es", "pt", "fr", "ru"],
-    "requiredAllLocaleKeys": ["common.scrollableTable", "common.dangerZone"],
+    "requiredAllLocaleKeys": ["common.scrollableTable", "common.dangerZone", "common.moreFor", "common.actionProcessing"],
     "defaultValueLiteralRequiredLocales": ["zh_CN", "en"]
   },
   "dateTime": {
@@ -154,12 +154,30 @@
   "rowActions": {
     "table": {
       "visiblePrimaryCount": 1,
-      "collapseSecondaryActions": true
+      "maxVisibleCount": 2,
+      "narrowVisibleCount": 1,
+      "collapseSecondaryActions": false
     },
     "compactCard": {
+      "maxVisibleCount": 2,
+      "collapseFrom": 3
+    },
+    "toolbar": {
       "maxVisibleCount": 3,
       "collapseFrom": 4
     },
+    "placement": ["primary", "secondary", "menu"],
+    "responsive": {
+      "narrowContainerBreakpoint": "md",
+      "fit": "measured-action-width",
+      "preservePrimaryAction": true
+    },
+    "singleSafeActionInline": true,
+    "dangerInlineDefault": false,
+    "dangerInlineExceptions": ["group-membership-removal"],
+    "confirmation": "single-modal-independent-of-placement",
+    "menuKeyboardFocus": true,
+    "pendingPreventsRepeat": true,
     "dangerLast": true,
     "dangerConfirmationDefaultFocus": "cancel"
   },

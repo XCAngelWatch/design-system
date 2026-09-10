@@ -6,6 +6,7 @@
   <p class="section-eyebrow"><span data-i18n="tree-list:text.001">页面蓝图 · TreeListLayout</span></p>
   <h2><span data-i18n="tree-list:text.002">树列表 TreeListLayout</span></h2>
   <p class="lede"><span data-i18n="tree-list:text.003">左侧 240px 机构树 / 资源树（可折叠），右侧承载列表或详情。TMS 中频率最高的层级布局——设备分组、权限管理、告警规则均沿用。</span></p>
+  <p class="lede"><span data-i18n="tree-list:orgNames">机构树名称保持单行，超长时中间省略并可查看全名；页头不显示机构数量角标。各页面与机构下拉选择器共用名称展示规则。</span></p>
   <div class="frame">
     <div class="frame-head"><span data-i18n="tree-list:text.004">📐 TreeListLayout · 设备分组</span></div>
     <div class="frame-body" style="padding:0">

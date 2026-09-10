@@ -59,7 +59,7 @@
     "t055": "Unified header slots, actions, and sticky-compact behavior.",
     "t056": "Global empty states and full-page error feedback.",
     "t057": "Use AntD Table by default; use native virtual with numeric scroll.x / scroll.y for fixed-height large-data scenarios.",
-    "t058": "Tables default to one primary action plus More; compact cards expose at most three actions.",
+    "t058": "Tables and cards expose at most two safe actions. Narrow containers retain the primary; danger actions default to More.",
     "t059": "Encode status with color, icon, and text.",
     "t060": "Charts, metrics, and containers consume theme tokens consistently.",
     "t061": "Primary narrow-screen navigation below md, mutually exclusive with the desktop Sidebar.",

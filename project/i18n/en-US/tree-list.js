@@ -2,6 +2,7 @@
 (function (root) {
   'use strict';
   root.__AW_I18N__.register('en-US', 'tree-list', {
+    "orgNames": "Keep organization names on one line, truncate long names in the middle and make the full name available. Omit organization-count badges from the header. Use the same name presentation in all pages and organization dropdowns.",
     "text.001": "Page Blueprints · TreeListLayout",
     "text.002": "Tree List Layout",
     "text.003": "The left side is a 240px organization or resource tree (collapsible), and the right side hosts a list or detail view. This is the most frequent hierarchy layout in TMS, used by device groups, permission management, and alert rules.",

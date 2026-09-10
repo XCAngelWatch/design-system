@@ -165,9 +165,9 @@ if (!datepickerPage.includes('data-calendar-month="2026-04"') ||
 }
 
 const rowActionsPage = readPage('row-actions');
-if (!rowActionsPage.includes('表格模式始终是 1 个高频主操作') ||
-    !rowActionsPage.includes('紧凑区 / 卡片可明示最多 3 个动作')) {
-  errors.push('row-actions: table must show 1 primary + More; compact/card may show 3 and collapse from 4');
+if (!rowActionsPage.includes('表格与紧凑卡片最多明示 2 个普通动作') ||
+    !rowActionsPage.includes('确认由统一执行器负责')) {
+  errors.push('row-actions: max 2 safe actions and placement-independent confirmation required');
 }
 
 const configProviderPage = readPage('config-provider');
