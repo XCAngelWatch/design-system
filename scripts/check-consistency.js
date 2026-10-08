@@ -235,6 +235,86 @@ for (const currentIconPolicy of ['@ant-design/icons', 'src/components/', '本地
   if (!iconsPage.includes(currentIconPolicy)) errors.push('icons: missing current consumer policy ' + currentIconPolicy);
 }
 
+// Validate the asset/catalog relationship without requiring the consumer's node_modules.
+const iconSandbox = { window: {} };
+for (const id of ['icons', 'row-actions']) {
+  vm.runInNewContext(readPage(id), iconSandbox, { filename: id + '.js', timeout: 1000 });
+}
+const iconHtml = iconSandbox.window.__AW_PAGES__.icons;
+const rowActionHtml = iconSandbox.window.__AW_PAGES__['row-actions'];
+const symbolIds = new Set();
+for (const match of iconHtml.matchAll(/<symbol\b[^>]*\bid="([^"]+)"/g)) {
+  if (symbolIds.has(match[1])) errors.push('icons: duplicate SVG symbol ' + match[1]);
+  symbolIds.add(match[1]);
+}
+if (!symbolIds.size) errors.push('icons: shared SVG symbol definitions are missing');
+
+function checkIconReference(id, context) {
+  if (!symbolIds.has(id)) errors.push(context + ': missing SVG symbol ' + id);
+}
+
+let iconEntryCount = 0;
+const iconNames = new Set();
+// These names were incorrectly presented as AntD exports in the reviewed source.
+const nonexistentAntdNames = new Set([
+  'RefreshOutlined', 'BackOutlined', 'CropOutlined', 'FolderDeleteOutlined',
+  'CpuOutlined', 'BatteryOutlined', 'TicketOutlined'
+]);
+for (const section of iconHtml.matchAll(/<div\b([^>]*\bdata-icon-category-section="[^"]+"[^>]*)>/g)) {
+  const attrs = Object.fromEntries(Array.from(section[1].matchAll(/([\w-]+)="([^"]*)"/g), (match) => [match[1], match[2]]));
+  const category = attrs['data-icon-category-section'];
+  const allCandidates = attrs['data-icon-source'] === 'candidate';
+  const candidates = new Set((attrs['data-icon-candidates'] || '').split(',').filter(Boolean));
+  const sectionNames = new Set();
+  for (const entry of (attrs['data-icons'] || '').split(',')) {
+    const definition = entry.match(/^([A-Za-z][A-Za-z0-9]*):([a-z0-9-]+)$/);
+    if (!definition) {
+      errors.push('icons/' + category + ': malformed catalog entry ' + entry);
+      continue;
+    }
+    const [, name, symbol] = definition;
+    if (sectionNames.has(name)) errors.push('icons/' + category + ': repeated entry ' + name);
+    sectionNames.add(name);
+    iconNames.add(name);
+    iconEntryCount++;
+    checkIconReference('aw-icon-' + symbol, 'icons/' + category + '/' + name);
+    if (!allCandidates && !candidates.has(name) &&
+        (/Candidate$/.test(name) || !/(?:Outlined|Filled|TwoTone)$/.test(name) || nonexistentAntdNames.has(name))) {
+      errors.push('icons/' + category + ': non-AntD name must be explicitly declared as a candidate: ' + name);
+    }
+  }
+  for (const name of candidates) {
+    if (!sectionNames.has(name)) errors.push('icons/' + category + ': candidate metadata references absent entry ' + name);
+  }
+  if (category === 'tms' && !allCandidates) errors.push('icons/tms: domain icons must retain candidate metadata');
+}
+if (!iconEntryCount) errors.push('icons: catalog entries are missing');
+for (const attribute of ['data-icon-visible-count', 'data-icon-total-count']) {
+  const value = iconHtml.match(new RegExp('<span\\b[^>]*\\b' + attribute + '(?:="[^"]*")?[^>]*>(\\d+)</span>'));
+  if (!value || Number(value[1]) !== iconEntryCount) errors.push('icons: ' + attribute + ' must equal ' + iconEntryCount);
+}
+const iconCopy = iconHtml + fs.readFileSync(path.join(root, 'project/i18n/en-US/icons.js'), 'utf8');
+for (const [pattern, expected, label] of [
+  [/(\d+)\s*(?:个展示项|display entries)/g, iconEntryCount, 'display entry count'],
+  [/(\d+)\s*(?:个唯一名称|unique names)/g, iconNames.size, 'unique name count']
+]) {
+  for (const match of iconCopy.matchAll(pattern)) {
+    if (Number(match[1]) !== expected) errors.push('icons: documented ' + label + ' must equal ' + expected);
+  }
+}
+for (const [context, markup] of [['icons', iconHtml], ['row-actions', rowActionHtml]]) {
+  for (const match of markup.matchAll(/<use\b[^>]*\bhref="#([^"]+)"/g)) checkIconReference(match[1], context);
+}
+// Read literal glyph mappings and direct calls, so adding/removing assets checks both consumers.
+for (const map of router.matchAll(/var\s+(?:glyphIcons|inlineGlyphs)\s*=\s*\{([\s\S]*?)\};/g)) {
+  for (const match of map[1].matchAll(/:\s*'([^']+)'/g)) checkIconReference('aw-icon-' + match[1], 'router glyph map');
+}
+for (const pattern of [/\bsymbol:\s*'[^']+'/g, /\bsymbol\s*=\s*[^;\n]+/g, /\bcreateSystemIcon\([^)]*\)/g, /\breplaceIconCarrier\([^,\n]+,[^)]*\)/g]) {
+  for (const expression of router.matchAll(pattern)) {
+    for (const match of expression[0].matchAll(/'([^']+)'/g)) checkIconReference('aw-icon-' + match[1], 'router system icon');
+  }
+}
+
 for (const [id, requiredFontPolicy] of [
   ['type', ['local()', '系统字体栈', '有许可证记录的 WOFF2']],
   ['overview', ['local()', '系统字体栈', '有许可证记录的 WOFF2']],

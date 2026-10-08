@@ -44,19 +44,22 @@
 .ra-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
   font-size: 13px;
 }
 .ra-table thead th {
   background: var(--aw-fill-1);
   border-bottom: 1px solid var(--aw-border-2);
   text-align: left;
-  padding: 10px 12px;
+  padding: 10px 16px;
   font-size: 13px; font-weight: 500;
   color: var(--aw-text-2);
 }
-.ra-table .colactions { text-align: right; white-space: nowrap; }
+.ra-table .colactions { text-align: left; white-space: nowrap; overflow: visible; }
+.ra-table td:not(.colactions),
+.ra-table th:not(.colactions) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ra-table td {
-  padding: 10px 12px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--aw-border-3);
   color: var(--aw-text-1);
   vertical-align: middle;
@@ -74,7 +77,7 @@
 .ra-row {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 6px;
 }
 .ra-btn {
@@ -109,23 +112,53 @@
 /* ---------- 折叠下拉 (More Menu) ---------- */
 .ra-more-wrap { position: relative; }
 .ra-menu {
-  position: absolute;
-  top: calc(100% + 6px); right: 0;
+  position: fixed;
+  margin: 0;
+  right: auto;
   min-width: 168px;
+  max-width: calc(100vw - 16px);
+  max-height: calc(100vh - 16px);
+  overflow: auto;
   background: var(--aw-bg);
   border: 1px solid var(--aw-border-2);
   border-radius: var(--aw-radius);
   box-shadow: var(--aw-shadow-2);
   padding: 4px;
-  z-index: 10;
-  /* Always visible in mock; in real app toggle via state. */
+  z-index: 1000;
+  display: none;
 }
+.ra-menu.is-open { display: block; right: auto; bottom: auto; }
+.ra-menu[hidden] { display: none; }
+.ra-menu-action {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+.ra-menu-action.ra-btn {
+  display: flex; align-items: center; gap: 8px;
+  height: auto; min-height: 32px; padding: 7px 10px;
+  font-family: inherit; font-size: 13px; line-height: 1.4;
+  color: var(--aw-text-1); white-space: nowrap;
+}
+.ra-menu-action.ra-btn .aw-icon { color: var(--aw-text-2); }
+.ra-menu-action.ra-btn:hover { background: var(--aw-fill-1); }
+.ra-menu-action.ra-btn:hover .aw-icon { color: var(--aw-primary-text); }
+.ra-menu-action.ra-btn:disabled,
+.ra-menu-action.ra-btn.dim { color: var(--aw-text-disabled); }
+.ra-menu-action.ra-btn:disabled:hover,
+.ra-menu-action.ra-btn.dim:hover { background: transparent; }
+.ra-menu-action.ra-btn:disabled .aw-icon,
+.ra-menu-action.ra-btn.dim .aw-icon { color: inherit; }
 .ra-mit {
   display: flex; align-items: center; gap: 8px;
   padding: 7px 10px;
   border-radius: 4px;
   font-size: 13px; color: var(--aw-text-1);
   cursor: pointer;
+}
+button.ra-mit {
+  width: 100%; border: 0; background: transparent;
+  font-family: inherit; text-align: left; white-space: nowrap;
 }
 .ra-mit svg { color: var(--aw-text-2); flex-shrink: 0; }
 .ra-mit:hover { background: var(--aw-fill-1); }
@@ -140,6 +173,15 @@
   height: 1px; background: var(--aw-border-3);
   margin: 4px 6px;
 }
+
+dialog.ra-confirm.modal-demo {
+  padding: 0; margin: auto;
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  color: var(--aw-text-1);
+}
+dialog.ra-confirm::backdrop { background: var(--aw-bg-mask); }
 
 
 /* ---------- Dark theme ---------- */

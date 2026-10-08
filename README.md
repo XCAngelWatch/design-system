@@ -168,6 +168,7 @@ design-system/
 node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
+node scripts/row-actions-runtime.test.js
 node scripts/check-consistency.js
 node scripts/check-consumer-contract.js
 node scripts/check-evidence.js

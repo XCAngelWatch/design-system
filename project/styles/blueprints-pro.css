@@ -429,7 +429,7 @@
 
   .lp-actions > .row .btn,
   .lp-toolbar > .row > .btn {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
   }
 
   .lp-pager .pager {
@@ -547,10 +547,6 @@
 
   .token-pyramid .pyramid-legend {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .icon-lib-grid {
-    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
   }
 
   .icon-size-grid {

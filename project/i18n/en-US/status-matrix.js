@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'status-matrix', {
     "text.001": "Business Patterns · Device Status",
     "text.002": "Device Status Matrix",
-    "text.003": "These eight entries are derived display states used in lists, cards, and details, not one backend enum. The real device state combines independent fields such as onlineFlag, state, and registeredFlag, then maps them to copy, shape, and color by business priority.",
+    "text.003": "These eight entries are derived display states used in lists, cards, and details, not one backend enum. The real device state combines independent fields such as onlineFlag, state, and registeredFlag, then maps them to copy, shape, and color by business priority. Keep status markers static; use a separate progress component for live progress.",
     "text.004": "Status",
     "text.005": "Visual",
     "text.006": "Trigger",

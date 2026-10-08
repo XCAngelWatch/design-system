@@ -10,10 +10,10 @@
 <table class="map-table">
 <thead><tr><th style="width:18%"><span data-i18n="data-format:t008">场景</span></th><th style="width:28%"><span data-i18n="data-format:t009">格式</span></th><th style="width:22%"><span data-i18n="data-format:t010">示例</span></th><th><span data-i18n="data-format:t011">规则</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t012">大数字</span></td><td><span data-i18n="data-format:t013">千分位（半角逗号）</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t014">≥ 1000 必须分隔；表格右对齐 + 等宽字符（</span><code>font-feature-settings: "tnum"</code><span data-i18n="data-format:t176">）</span></td></tr>
+<tr><td><span data-i18n="data-format:t012">大数字</span></td><td><span data-i18n="data-format:t013">千分位（半角逗号）</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t014">≥ 1000 必须分隔；普通数值左对齐、金额右对齐，数字用等宽字符（</span><code>font-feature-settings: "tnum"</code><span data-i18n="data-format:t176">）</span></td></tr>
 <tr><td><span data-i18n="data-format:t015">百分比</span></td><td><span data-i18n="data-format:t016">数字 +</span> <span class="mono">%</span> <span data-i18n="data-format:t017">· 固定 2 位小数</span></td><td><span class="mono">98.20%</span></td><td><span data-i18n="data-format:t018">不补 0 会让"98%"和"98.5%"对不齐；趋势用 ↑↓ 配独立列</span></td></tr>
 <tr><td><span data-i18n="data-format:t019">带单位</span></td><td><span data-i18n="data-format:t020">数字 + 半角空格 + 单位</span></td><td><span class="mono">123,220 kg</span></td><td><span data-i18n="data-format:t021">单位 lowercase；常用单位收口到表头，单元格只放数字</span></td></tr>
-<tr><td><span data-i18n="data-format:t022">表格数字</span></td><td><span data-i18n="data-format:t023">右对齐 + tnum</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t024">同列同位数对齐；带单位列在表头标注（如 "心跳间隔 (秒)"）</span></td></tr>
+<tr><td><span data-i18n="data-format:t022">表格数字</span></td><td><span data-i18n="data-format:t023">普通数值左对齐；金额右对齐 + tnum</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t024">普通数值、时间与操作列左对齐；金额列右对齐。带单位列在表头标注（如 "心跳间隔 (秒)"）</span></td></tr>
 <tr><td><span data-i18n="data-format:t025">大数缩写</span></td><td>1.2k / 12.5k / 1.2M</td><td><span class="mono">12.5k</span></td><td><span data-i18n="data-format:t026">仅在 DataCard / 仪表盘中使用，详情 / 表格保留完整数字</span></td></tr>
 <tr><td><span data-i18n="data-format:t027">趋势数字</span></td><td><span data-i18n="data-format:t028">带正负号 + 图形</span></td><td><span class="mono">↑ +248</span> / <span class="mono">↓ -12</span></td><td><span data-i18n="data-format:t029">正数永远显式 + 号；颜色：增长视语义用 success / 也可用品牌灰</span></td></tr>
 </tbody>
@@ -116,7 +116,7 @@
 <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)">✓ DO</h3>
 <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
 <li><span data-i18n="data-format:t142">所有数字 / 日期通过</span> <code>Intl.*</code> / <code>src/utils/format.ts</code> <span data-i18n="data-format:t143">统一格式化</span></li>
-<li><span data-i18n="data-format:t144">表格数字列右对齐 +</span> <code>font-variant-numeric: tabular-nums</code></li>
+<li><span data-i18n="data-format:t144">表格普通数字左对齐、金额右对齐，数字统一使用</span> <code>font-variant-numeric: tabular-nums</code></li>
 <li><span data-i18n="data-format:t145">消费者声明展示时区策略：</span> <code>user / tenant IANA → resolvedOptions().timeZone → UTC</code> <span data-i18n="data-format:t146">，并按目标 instant 派生当时偏移</span></li>
 <li><span data-i18n="data-format:t147">设备 SN / IMEI / IP / MAC 一律 monospace</span></li>
 <li><span data-i18n="data-format:t148">空值统一用 em dash</span> <span class="mono">—</span></li>

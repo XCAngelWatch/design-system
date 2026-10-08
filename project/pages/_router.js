@@ -97,8 +97,8 @@
   };
 
   var BRAND_LOGO = 'favicon.ico';
-  var SUN_SVG  = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-  var MOON_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  var SUN_SVG  = '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-sun"></use></svg>';
+  var MOON_SVG = '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-moon"></use></svg>';
 
   function createFallbackI18n() {
     var locale = 'zh-CN';
@@ -336,8 +336,12 @@
       syncNavigationDrawer(false, { restoreFocus: true });
     };
     sidebar.onclick = function (event) {
-      if (event.target.closest && event.target.closest('a[href^="#/"]')) {
-        syncNavigationDrawer(false, { focusActive: false });
+      var link = event.target.closest && event.target.closest('a[href^="#/"]');
+      if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button > 0) return;
+      syncNavigationDrawer(false, { focusActive: false });
+      if (link.getAttribute('href') === location.hash) {
+        event.preventDefault();
+        loadRoute(getRouteFromHash(), { focusHeading: true });
       }
     };
     syncNavigationDrawer(document.body.classList.contains('doc-nav-open'), { focusActive: false });
@@ -1087,12 +1091,382 @@
     showDemoToast(root, tCommon('demo.fileSelected', { file: fileName }, '已选择文件：{file}'));
   }
 
+  function parseIconCatalogItems(value) {
+    return String(value || '').split(',').map(function (entry) {
+      var separator = entry.indexOf(':');
+      if (separator < 1) return null;
+      return {
+        name: entry.slice(0, separator).trim(),
+        symbol: entry.slice(separator + 1).trim()
+      };
+    }).filter(function (item) {
+      return item && item.name && item.symbol;
+    });
+  }
+
+  function filterIconCatalog(root) {
+    var catalog = root.querySelector('[data-icon-catalog]');
+    if (!catalog) return;
+
+    var input = catalog.querySelector('[data-icon-search]');
+    var activeFilter = catalog.querySelector('[data-icon-filter].active');
+    var query = input ? input.value.trim().toLowerCase() : '';
+    var category = activeFilter ? activeFilter.getAttribute('data-icon-filter') : 'all';
+    var visibleCount = 0;
+
+    catalog.querySelectorAll('.ilib[data-icon-name]').forEach(function (item) {
+      var section = item.closest('[data-icon-category-section]');
+      var categoryMatch = category === 'all' || section.getAttribute('data-icon-category-section') === category;
+      var queryMatch = !query || item.getAttribute('data-icon-name').indexOf(query) !== -1;
+      item.hidden = !(categoryMatch && queryMatch);
+      if (!item.hidden) visibleCount++;
+    });
+
+    catalog.querySelectorAll('[data-icon-category-section]').forEach(function (section) {
+      section.hidden = !Array.prototype.some.call(section.querySelectorAll('.ilib'), function (item) {
+        return !item.hidden;
+      });
+    });
+
+    var visibleOutput = catalog.querySelector('[data-icon-visible-count]');
+    if (visibleOutput) visibleOutput.textContent = formatNumber(visibleCount, getCurrentLocale());
+    var empty = catalog.querySelector('[data-icon-empty]');
+    if (empty) empty.hidden = visibleCount > 0;
+  }
+
+  function renderIconCatalog(root) {
+    var catalog = root.querySelector('[data-icon-catalog]');
+    if (!catalog) return;
+
+    var totalCount = 0;
+    catalog.querySelectorAll('[data-icon-category-section]').forEach(function (section) {
+      if (section.querySelector('.icon-catalog-grid')) {
+        totalCount += section.querySelectorAll('.ilib[data-icon-name]').length;
+        return;
+      }
+      var category = section.getAttribute('data-icon-category-section');
+      var grid = document.createElement('div');
+      grid.className = 'icon-lib-grid icon-catalog-grid';
+
+      parseIconCatalogItems(section.getAttribute('data-icons')).forEach(function (definition) {
+        var item = document.createElement('div');
+        item.className = 'ilib';
+        item.setAttribute('data-icon-name', definition.name.toLowerCase());
+        item.setAttribute('data-icon-category', category);
+
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '1.5');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+        svg.setAttribute('aria-hidden', 'true');
+        var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+        use.setAttribute('href', '#aw-icon-' + definition.symbol);
+        svg.appendChild(use);
+
+        var label = document.createElement('span');
+        label.textContent = definition.name;
+        item.appendChild(svg);
+        item.appendChild(label);
+        grid.appendChild(item);
+        totalCount++;
+      });
+      section.appendChild(grid);
+    });
+
+    var totalOutput = catalog.querySelector('[data-icon-total-count]');
+    if (totalOutput) totalOutput.textContent = formatNumber(totalCount, getCurrentLocale());
+    filterIconCatalog(root);
+  }
+
+  var openRowActionMenu = null;
+  var rowActionConfirmation = null;
+
+  function closeRowActionMenu(restoreFocus) {
+    if (!openRowActionMenu) return;
+    var current = openRowActionMenu;
+    openRowActionMenu = null;
+    if (typeof current.menu.hidePopover === 'function' && current.menu.matches(':popover-open')) current.menu.hidePopover();
+    current.menu.classList.remove('is-open');
+    current.menu.hidden = true;
+    current.trigger.setAttribute('aria-expanded', 'false');
+    if (restoreFocus && current.trigger.isConnected) current.trigger.focus({ preventScroll: true });
+  }
+
+  function positionRowActionMenu() {
+    if (!openRowActionMenu) return;
+    var menu = openRowActionMenu.menu;
+    var anchor = openRowActionMenu.trigger.getBoundingClientRect();
+    var bounds = menu.getBoundingClientRect();
+    var viewportWidth = document.documentElement.clientWidth;
+    var viewportHeight = document.documentElement.clientHeight;
+    var top = anchor.bottom + 6;
+    if (top + bounds.height > viewportHeight - 8) top = anchor.top - bounds.height - 6;
+    menu.style.top = Math.max(8, top) + 'px';
+    menu.style.left = Math.max(8, Math.min(anchor.right - bounds.width, viewportWidth - bounds.width - 8)) + 'px';
+  }
+
+  function getRowMenuItems(menu) {
+    return Array.prototype.filter.call(menu.querySelectorAll('[role="menuitem"]'), function (item) {
+      return !item.disabled && item.getAttribute('aria-disabled') !== 'true' && !item.hidden;
+    });
+  }
+
+  function openRowMenu(trigger, last) {
+    var menu = trigger.parentElement.querySelector('.ra-menu');
+    if (!menu) return;
+    closeRowActionMenu(false);
+    menu.hidden = false;
+    menu.classList.add('is-open');
+    openRowActionMenu = { trigger: trigger, menu: menu };
+    trigger.setAttribute('aria-expanded', 'true');
+    // The top layer keeps the popup outside clipped table and demo containers.
+    if (typeof menu.showPopover === 'function') menu.showPopover();
+    positionRowActionMenu();
+    var items = getRowMenuItems(menu);
+    if (items.length) items[last ? items.length - 1 : 0].focus({ preventScroll: true });
+  }
+
+  function fitRowActionMenus(root) {
+    root.querySelectorAll('.ra-row').forEach(function (row) {
+      var secondary = row.querySelector('[data-row-secondary]');
+      var menu = row.querySelector('.ra-menu');
+      if (!secondary || !menu) return;
+      if (!secondary._rowHome) {
+        secondary._rowHome = document.createComment('secondary action position');
+        secondary.before(secondary._rowHome);
+      }
+      secondary._rowHome.after(secondary);
+      secondary.classList.remove('ra-menu-action');
+      secondary.removeAttribute('role');
+      secondary.removeAttribute('tabindex');
+      var menuLabel = secondary.querySelector('[data-row-menu-label]');
+      if (menuLabel) menuLabel.remove();
+      if (window.innerWidth < 768 || row.scrollWidth > row.clientWidth + 1) {
+        if (!secondary.textContent.trim()) {
+          var label = secondary.getAttribute('aria-label') || secondary.getAttribute('title');
+          if (label) {
+            menuLabel = document.createElement('span');
+            menuLabel.setAttribute('data-row-menu-label', '');
+            menuLabel.textContent = label;
+            secondary.appendChild(menuLabel);
+          }
+        }
+        secondary.classList.add('ra-menu-action');
+        secondary.setAttribute('role', 'menuitem');
+        secondary.setAttribute('tabindex', '-1');
+        menu.insertBefore(secondary, menu.firstChild);
+      }
+    });
+  }
+
+  function measureActionCell(cell) {
+    // Measure in the original table's style context without disturbing focus.
+    var probe = cell.cloneNode(true);
+    probe.removeAttribute('id');
+    probe.setAttribute('aria-hidden', 'true');
+    probe.setAttribute('inert', '');
+    probe.style.cssText += ';position:fixed;left:-100000px;top:0;display:block;width:max-content!important;min-width:0;max-width:none;visibility:hidden;white-space:nowrap;transition:none';
+    probe.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
+    probe.querySelectorAll('.btn, button, a[role="button"]').forEach(function (button) {
+      button.style.maxWidth = 'none';
+      button.style.width = 'max-content';
+      button.style.flexShrink = '0';
+      button.style.transition = 'none';
+    });
+    cell.parentElement.appendChild(probe);
+    var width = Math.ceil(probe.getBoundingClientRect().width);
+    probe.remove();
+    return width;
+  }
+
+  function fitTableActionColumns(root) {
+    root.querySelectorAll('table.dt:not(.ra-table)').forEach(function (table) {
+      var header = table.tHead && table.tHead.rows[0];
+      if (!header || !table.querySelector('td.colactions button, td.colactions a[href]')) return;
+      var cells = Array.prototype.slice.call(header.cells);
+      if (cells.some(function (cell) { return cell.colSpan !== 1 || cell.rowSpan !== 1; })) return;
+      var state = table._demoActionSizing;
+      if (!state) {
+        var columns = Array.prototype.slice.call(table.querySelectorAll(':scope > colgroup > col'));
+        if (columns.length && (columns.length !== cells.length || columns.some(function (col) { return col.span !== 1; }))) return;
+        state = table._demoActionSizing = {
+          minWidth: table.style.getPropertyValue('min-width'),
+          minPriority: table.style.getPropertyPriority('min-width'),
+          columns: columns.map(function (col) {
+            return { node: col, width: col.style.getPropertyValue('width'), priority: col.style.getPropertyPriority('width') };
+          })
+        };
+        var parent = table.parentElement;
+        if (!parent.matches('.table-wrap, .bp-table-scroll, .frozen-table-wrap, .responsive-table, .i18n-table-scroll, .demo-table-scroll')) {
+          var wrapper = document.createElement('div');
+          wrapper.className = 'demo-table-scroll';
+          var minimum = getComputedStyle(table).minWidth;
+          wrapper.style.setProperty('--aw-demo-table-min-width', parseFloat(minimum) > 0 ? minimum : '640px');
+          parent.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      }
+      // Always return to the authored layout before measuring: resize and locale
+      // changes must never add another increment to an already enlarged table.
+      table.style.setProperty('min-width', state.minWidth, state.minPriority);
+      if (state.generatedColumns) { state.generatedColumns.remove(); state.generatedColumns = null; }
+      state.columns.forEach(function (entry) { entry.node.style.setProperty('width', entry.width, entry.priority); });
+      if (!table.getClientRects().length) return;
+      var baseWidth = table.getBoundingClientRect().width;
+      var widths = cells.map(function (cell) { return cell.getBoundingClientRect().width; });
+      var growth = 0;
+      cells.forEach(function (cell, index) {
+        if (!cell.classList.contains('colactions')) return;
+        var required = measureActionCell(cell);
+        Array.prototype.forEach.call(table.rows, function (row) {
+          var action = row.cells[index];
+          if (action && action.colSpan === 1 && action.classList.contains('colactions') && action.getClientRects().length) {
+            required = Math.max(required, measureActionCell(action));
+          }
+        });
+        var increment = Math.max(0, required + 1 - widths[index]);
+        widths[index] += increment;
+        growth += increment;
+      });
+      if (!growth) return;
+      var targetColumns = state.columns.map(function (entry) { return entry.node; });
+      if (!targetColumns.length) {
+        state.generatedColumns = document.createElement('colgroup');
+        state.generatedColumns.setAttribute('data-demo-action-columns', '');
+        targetColumns = widths.map(function () {
+          var col = document.createElement('col');
+          state.generatedColumns.appendChild(col);
+          return col;
+        });
+        table.insertBefore(state.generatedColumns, table.tHead);
+      }
+      targetColumns.forEach(function (col, index) { col.style.width = widths[index] + 'px'; });
+      table.style.minWidth = Math.ceil(baseWidth + growth) + 'px';
+    });
+  }
+
+  var tableLayoutFrame = 0;
+  function scheduleTableLayout(root) {
+    if (!root || tableLayoutFrame) return;
+    tableLayoutFrame = requestAnimationFrame(function () {
+      tableLayoutFrame = 0;
+      if (!root.isConnected) return;
+      fitTableActionColumns(root);
+      updateTableOverflowTitles(root);
+    });
+  }
+
+  function updateTableOverflowTitles(root) {
+    root.querySelectorAll('table.dt th, table.dt td, .ra-table th, .ra-table td').forEach(function (cell) {
+      if (cell.classList.contains('colactions') || cell.classList.contains('colselect')) return;
+      if (cell.hasAttribute('title') && !cell.hasAttribute('data-demo-overflow-title')) return;
+      if (cell.scrollWidth > cell.clientWidth + 1) {
+        cell.title = cell.textContent.trim();
+        cell.setAttribute('data-demo-overflow-title', '');
+      } else if (cell.hasAttribute('data-demo-overflow-title')) {
+        cell.removeAttribute('title');
+        cell.removeAttribute('data-demo-overflow-title');
+      }
+    });
+  }
+
+  function prepareRowActionMenus(root) {
+    root.querySelectorAll('.ra-more-wrap').forEach(function (wrap) {
+      var trigger = wrap.querySelector('.ra-more-trigger');
+      var menu = wrap.querySelector('.ra-menu');
+      if (!trigger || !menu) return;
+      if (!trigger.id) trigger.id = 'row-more-' + (++demoControlId);
+      if (!menu.id) menu.id = 'row-menu-' + (++demoControlId);
+      trigger.setAttribute('aria-controls', menu.id);
+      trigger.setAttribute('aria-haspopup', 'menu');
+      trigger.setAttribute('aria-expanded', 'false');
+      var row = trigger.closest('tr');
+      if (row) trigger.setAttribute('aria-label', tCommon('moreFor', { label: row.cells[0].textContent.trim() }, '{label}的更多操作'));
+      menu.setAttribute('role', 'menu');
+      menu.setAttribute('aria-labelledby', trigger.id);
+      if (typeof menu.showPopover === 'function') menu.setAttribute('popover', 'manual');
+      menu.hidden = true;
+      menu.querySelectorAll('[role="menuitem"]').forEach(function (item) { item.setAttribute('tabindex', '-1'); });
+    });
+    fitRowActionMenus(root);
+  }
+
+  function closeRowActionConfirmation() {
+    if (!rowActionConfirmation) return;
+    var dialog = rowActionConfirmation;
+    rowActionConfirmation = null;
+    dialog.onclose = null;
+    dialog.close();
+    dialog.remove();
+  }
+
+  function confirmRowAction(root, action, trigger) {
+    if (rowActionConfirmation) return;
+    var dialog = document.createElement('dialog');
+    dialog.className = 'modal-demo ra-confirm';
+    var titleId = 'row-confirm-' + (++demoControlId);
+    dialog.setAttribute('aria-labelledby', titleId);
+    dialog.innerHTML = '<div class="head"><h4></h4></div><div class="body"></div><div class="foot"><button type="button" class="btn" autofocus></button><button type="button" class="btn btn-danger"></button></div>';
+    var title = dialog.querySelector('h4');
+    title.id = titleId;
+    title.textContent = tCommon('demo.confirmAction', { action: action }, '确认{action}');
+    var row = trigger.closest('tr');
+    var label = row ? row.cells[0].textContent.trim() : tCommon('demo.exampleDevice', null, '示例设备');
+    var body = dialog.querySelector('.body');
+    body.id = titleId + '-body';
+    body.textContent = tCommon('demo.confirmActionBody', { action: action, label: label }, '将对“{label}”执行“{action}”。此处仅演示确认流程，不会修改真实设备。');
+    dialog.setAttribute('aria-describedby', body.id);
+    var buttons = dialog.querySelectorAll('button');
+    buttons[0].textContent = tCommon('cancel', null, '取消');
+    buttons[1].textContent = tCommon('icon.confirm', null, '确认');
+    buttons[0].onclick = function () { dialog.close(); };
+    buttons[1].onclick = function () {
+      buttons[1].disabled = true;
+      dialog.close();
+      showDemoToast(root, tCommon('demo.buttonClicked', { action: action }, '已点击：{action}'));
+    };
+    dialog.onclose = function () {
+      rowActionConfirmation = null;
+      dialog.remove();
+      if (trigger.isConnected) trigger.focus({ preventScroll: true });
+    };
+    rowActionConfirmation = dialog;
+    document.body.appendChild(dialog);
+    dialog.showModal();
+    buttons[0].focus();
+  }
+
   function wireDemoInteractions(root) {
     if (!root) return;
+    renderIconCatalog(root);
     enhanceDemoSemantics(root);
+    normalizeComponentIcons(root);
+    normalizeSelectLabels(root);
+    prepareRowActionMenus(root);
 
     root.onclick = function (event) {
       var target = event.target;
+      var menuTrigger = target.closest && target.closest('.ra-more-trigger');
+      if (menuTrigger && root.contains(menuTrigger)) {
+        event.preventDefault();
+        if (openRowActionMenu && openRowActionMenu.trigger === menuTrigger) closeRowActionMenu(true);
+        else openRowMenu(menuTrigger, false);
+        return;
+      }
+      var menuItem = target.closest && target.closest('.ra-menu [role="menuitem"]');
+      if (menuItem && root.contains(menuItem)) {
+        event.preventDefault();
+        if (menuItem.disabled || menuItem.getAttribute('aria-disabled') === 'true') return;
+        var trigger = openRowActionMenu && openRowActionMenu.trigger;
+        var action = menuItem.textContent.trim() || menuItem.getAttribute('aria-label');
+        closeRowActionMenu(true);
+        if (menuItem.hasAttribute('data-demo-confirm') && trigger) confirmRowAction(root, action, trigger);
+        else showDemoToast(root, tCommon('demo.buttonClicked', { action: action }, '已点击：{action}'));
+        return;
+      }
       var actionEl = target.closest && target.closest('[data-demo-action]');
       if (actionEl && root.contains(actionEl)) {
         handleDemoAction(root, actionEl, actionEl.getAttribute('data-demo-action'), event);
@@ -1101,6 +1475,19 @@
 
       var routeLink = target.closest && target.closest('a[href^="#/"]');
       if (routeLink) return;
+
+      var iconFilter = target.closest && target.closest('[data-icon-filter]');
+      if (iconFilter && root.contains(iconFilter)) {
+        event.preventDefault();
+        var catalog = iconFilter.closest('[data-icon-catalog]');
+        catalog.querySelectorAll('[data-icon-filter]').forEach(function (button) {
+          var active = button === iconFilter;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        filterIconCatalog(root);
+        return;
+      }
 
       var passwordToggle = target.closest && target.closest('[data-demo-toggle-password]');
       if (passwordToggle && root.contains(passwordToggle)) {
@@ -1250,6 +1637,10 @@
       }
     };
 
+    root.oninput = function (event) {
+      if (event.target.matches && event.target.matches('[data-icon-search]')) filterIconCatalog(root);
+    };
+
     root.onchange = function (event) {
       var input = event.target;
       if (input.matches && input.matches('[data-demo-file-input]')) {
@@ -1288,7 +1679,32 @@
     };
 
     root.onkeydown = function (event) {
+      var menuTrigger = event.target.closest && event.target.closest('.ra-more-trigger');
+      if (menuTrigger && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+        event.preventDefault();
+        openRowMenu(menuTrigger, event.key === 'ArrowUp');
+        return;
+      }
+      if (openRowActionMenu && openRowActionMenu.menu.contains(event.target)) {
+        var items = getRowMenuItems(openRowActionMenu.menu);
+        var index = items.indexOf(event.target);
+        var next = null;
+        if (event.key === 'ArrowDown') next = (index + 1) % items.length;
+        if (event.key === 'ArrowUp') next = (index - 1 + items.length) % items.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = items.length - 1;
+        if (next !== null && items.length) {
+          event.preventDefault();
+          items[next].focus();
+          return;
+        }
+        if (event.key === 'Tab') closeRowActionMenu(true);
+      }
       if (event.key === 'Escape') {
+        if (openRowActionMenu) {
+          event.preventDefault();
+          closeRowActionMenu(true);
+        }
         root.querySelectorAll('.select.is-open').forEach(function (select) {
           setDemoSelectExpanded(select, false);
         });
@@ -1391,6 +1807,7 @@
   // 已经发起加载的 script 缓存,避免重复 inject
   var loadedScripts = {};
   var loadedLocaleScripts = {};
+  var iconSymbolsPromise = null;
 
   function loadPageScript(routeId) {
     return new Promise(function (resolve, reject) {
@@ -1427,6 +1844,167 @@
         });
       };
       document.head.appendChild(s);
+    });
+  }
+
+  function ensureGlobalIconSymbols() {
+    if (document.getElementById('aw-global-icon-symbols')) return Promise.resolve(true);
+    if (iconSymbolsPromise) return iconSymbolsPromise;
+
+    iconSymbolsPromise = loadPageScript('icons').then(function (html) {
+      if (document.getElementById('aw-global-icon-symbols')) return true;
+      var source = document.createElement('div');
+      source.innerHTML = html;
+      var symbols = source.querySelector('.icon-symbols');
+      if (!symbols) return false;
+      symbols.id = 'aw-global-icon-symbols';
+      symbols.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(symbols, document.body.firstChild);
+      return true;
+    }).catch(function (error) {
+      iconSymbolsPromise = null;
+      console.error('[icons]', error);
+      return false;
+    });
+    return iconSymbolsPromise;
+  }
+
+  function createSystemIcon(symbol) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'aw-icon');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.5');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    use.setAttribute('href', '#aw-icon-' + symbol);
+    svg.appendChild(use);
+    return svg;
+  }
+
+  function replaceIconCarrier(element, symbol) {
+    if (!element || element.querySelector(':scope > .aw-icon')) return;
+    if (element.matches('button, [role="button"]') && !element.hasAttribute('aria-label')) {
+      var labels = {
+        close: tCommon('close', null, '关闭'),
+        more: tCommon('more', null, '更多'),
+        plus: tCommon('increaseValue', null, '增加数值'),
+        minus: tCommon('decreaseValue', null, '减少数值'),
+        refresh: tCommon('retry', null, '重试'),
+        play: tCommon('icon.play', null, '播放'),
+        success: tCommon('icon.confirm', null, '确认')
+      };
+      element.setAttribute('aria-label', element.getAttribute('title') || labels[symbol] || element.textContent.trim());
+    }
+    element.textContent = '';
+    element.appendChild(createSystemIcon(symbol));
+  }
+
+  function normalizeComponentIcons(root) {
+    if (!root || !document.getElementById('aw-global-icon-symbols')) return;
+
+    var carrierRules = [
+      { selector: '.alert.info > .ico, .toast.info .ico', symbol: 'info' },
+      { selector: '.alert.success > .ico, .toast.success .ico', symbol: 'success' },
+      { selector: '.alert.warning > .ico, .toast.warning .ico', symbol: 'warning' },
+      { selector: '.alert.error > .ico, .toast.error .ico', symbol: 'error' }
+    ];
+    carrierRules.forEach(function (rule) {
+      root.querySelectorAll(rule.selector).forEach(function (element) {
+        replaceIconCarrier(element, rule.symbol);
+      });
+    });
+
+    root.querySelectorAll('.dialog-close, .toast .close, .notification .close, .up-inline .x').forEach(function (element) {
+      var collapse = element.getAttribute('data-i18n-aria-label') === 'common:collapse' || element.textContent.trim() === '−';
+      replaceIconCarrier(element, collapse ? 'minus' : 'close');
+    });
+
+    root.querySelectorAll('.nav-btn, .caret').forEach(function (element) {
+      var text = element.textContent.trim();
+      if (text === '‹' || text === '←') replaceIconCarrier(element, 'arrow-left');
+      if (text === '›' || text === '→') replaceIconCarrier(element, 'arrow-right');
+    });
+
+    var glyphIcons = {
+      '×': 'close',
+      '✕': 'close',
+      '✓': 'success',
+      '✔': 'success',
+      '!': 'warning',
+      'i': 'info',
+      '⟳': 'refresh',
+      '↻': 'refresh',
+      '▶': 'play',
+      '−': 'minus',
+      '+': 'plus',
+      '…': 'more',
+      '⋯': 'more'
+    };
+    root.querySelectorAll('.ico, .pct, .upp-play, button.icon-btn').forEach(function (element) {
+      if (element.children.length) return;
+      var symbol = glyphIcons[element.textContent.trim()];
+      if (element.matches('.up-ring.done .pct, .up-ring.err .pct')) {
+        var done = element.parentElement.classList.contains('done');
+        element.setAttribute('role', 'img');
+        element.setAttribute('aria-label', done ?
+          tCommon('uploadComplete', null, '上传完成') : tCommon('uploadFailed', null, '上传失败'));
+        symbol = done ? 'success' : 'error';
+      }
+      if (symbol) replaceIconCarrier(element, symbol);
+    });
+
+    root.querySelectorAll('button, a[role="button"]').forEach(function (element) {
+      if (element.closest('.num-input, .pager')) return;
+      var symbol = glyphIcons[element.textContent.trim()];
+      if (symbol) replaceIconCarrier(element, symbol);
+    });
+
+    var inlineGlyphs = {
+      '+': 'plus',
+      '＋': 'plus',
+      '⚙': 'setting',
+      '←': 'arrow-left',
+      '→': 'arrow-right',
+      '✓': 'success',
+      '✕': 'error'
+    };
+    root.querySelectorAll('button span[data-i18n], a[role="button"] span[data-i18n], h3 > span[data-i18n], th.colactions > span[data-i18n]').forEach(function (label) {
+      var control = label.closest('button, a[role="button"]') || label.parentElement;
+      if (!control || control.querySelector('.aw-icon')) return;
+      var text = label.textContent.trim();
+      var leading = text.match(/^([+＋⚙←✓✕])\s*/);
+      var trailing = text.match(/\s*(→)$/);
+      if (leading) {
+        label.textContent = text.slice(leading[0].length);
+        control.insertBefore(createSystemIcon(inlineGlyphs[leading[1]]), label);
+      } else if (trailing) {
+        label.textContent = text.slice(0, text.length - trailing[0].length);
+        control.appendChild(createSystemIcon(inlineGlyphs[trailing[1]]));
+        control.classList.add('icon-trailing');
+      }
+    });
+
+    root.querySelectorAll('button svg, .btn svg, .icon-btn svg, .dp svg, .tree-comp .ico, .tnode .ico, .upload-drop .ico svg, .upload-item .actions svg').forEach(function (svg) {
+      if (svg.classList.contains('aw-icon')) return;
+      if (svg.getAttribute('fill') === 'none' || svg.hasAttribute('stroke')) {
+        svg.setAttribute('stroke-width', '1.5');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+      }
+    });
+  }
+
+  function normalizeSelectLabels(root) {
+    root.querySelectorAll('.select > span').forEach(function (label) {
+      var walker = document.createTreeWalker(label, NodeFilter.SHOW_TEXT);
+      var lastText = null;
+      while (walker.nextNode()) lastText = walker.currentNode;
+      if (lastText) lastText.nodeValue = lastText.nodeValue.replace(/\s*[▾▼]\s*$/, '');
     });
   }
 
@@ -1480,6 +2058,7 @@
       }
     }
     wireDemoInteractions(slot);
+    scheduleTableLayout(slot);
     slot.setAttribute('aria-busy', 'false');
     if (options.preserveScroll) {
       requestAnimationFrame(function () {
@@ -1506,6 +2085,8 @@
     options = options || {};
     if (!ROUTE_MAP[routeId]) routeId = DEFAULT_ROUTE;
     var reqId = ++currentReqId;
+    closeRowActionMenu(false);
+    closeRowActionConfirmation();
 
     var slot = document.getElementById('app-slot');
     var sidebar = document.getElementById('app-side');
@@ -1530,11 +2111,16 @@
 
     var pagePromise = loadPageScript(routeId);
     var localePromise = loadEnglishCatalogOrFallback(routeId);
+    var iconPromise = ensureGlobalIconSymbols();
 
-    Promise.all([pagePromise, localePromise]).then(function (result) {
+    Promise.all([pagePromise, localePromise, iconPromise]).then(function (result) {
       if (reqId !== currentReqId) return;
       var html = result[0];
       slot.innerHTML = html;
+      if (document.getElementById('aw-global-icon-symbols')) {
+        var localSymbols = slot.querySelector('.icon-symbols');
+        if (localSymbols) localSymbols.remove();
+      }
       window.__AW_I18N__.apply(slot);
       finishRouteRender(slot, options);
     }).catch(function (err) {
@@ -1553,14 +2139,27 @@
   function init() {
     window.addEventListener('hashchange', navigate);
     window.addEventListener('resize', function () {
+      closeRowActionMenu(false);
+      fitRowActionMenus(document.getElementById('app-slot'));
+      scheduleTableLayout(document.getElementById('app-slot'));
       syncNavigationDrawer(false, { focusActive: false });
       revealActiveNavigation();
     });
+    document.addEventListener('pointerdown', function (event) {
+      if (openRowActionMenu && !openRowActionMenu.menu.contains(event.target) &&
+          !openRowActionMenu.trigger.contains(event.target)) closeRowActionMenu(false);
+    });
+    window.addEventListener('scroll', function (event) {
+      if (openRowActionMenu && !openRowActionMenu.menu.contains(event.target)) closeRowActionMenu(true);
+    }, true);
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && document.body.classList.contains('doc-nav-open')) {
         syncNavigationDrawer(false, { restoreFocus: true });
       }
     });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { scheduleTableLayout(document.getElementById('app-slot')); });
+    }
     navigate();
   }
 

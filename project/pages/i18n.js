@@ -12,13 +12,13 @@
     <div class="i18n-grid">
       <div class="i18n-card">
         <div class="lang-tag"><span><span data-i18n="i18n:t008">zh-CN · 简体中文</span></span><span class="flag">CN</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,185 / 6,185</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,228 / 6,228</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t010">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t011">来源</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)"><span data-i18n="i18n:t012">基准语言</span></div></div>
       </div>
       <div class="i18n-card">
         <div class="lang-tag"><span>en-US · English</span><span class="flag">US</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,185 / 6,185</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,228 / 6,228</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t014">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t015">维护人</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">Localization Team</div></div>
       </div>
@@ -172,7 +172,7 @@
         <thead><tr><th style="width:140px"><span data-i18n="i18n:t088">位置</span></th><th style="width:200px"><span data-i18n="i18n:t089">兜底策略</span></th><th><span data-i18n="i18n:t090">说明</span></th></tr></thead>
         <tbody>
           <tr><td><span data-i18n="i18n:t091">侧栏菜单</span></td><td><span data-i18n="i18n:t092">截断 + tooltip</span></td><td><span data-i18n="i18n:t093">菜单项最大宽度 200px (展开态)；超出 ellipsis；hover 200ms 后浮出 tooltip 显示完整文案</span></td></tr>
-          <tr><td><span data-i18n="i18n:t094">按钮</span></td><td><span data-i18n="i18n:t095">自适应宽度，最长 12 字符后换行降级</span></td><td><span data-i18n="i18n:t096">≤ 12 char 单行；&gt; 12 char 允许两行（line-height 1.3，按钮高度由 32 → 48 自动撑开）；&gt; 24 char 必须改 i18n key（行话）</span></td></tr>
+          <tr><td><span data-i18n="i18n:t094">按钮</span></td><td><span data-i18n="i18n:t095">自适应宽度，文字保持单行</span></td><td><span data-i18n="i18n:t096">按钮不压缩、不折行、不省略操作名称；空间不足时操作区整体换行，行操作按主次收纳。译文仍过长时由本地化审定简洁表达，不按字符数机械裁切。</span></td></tr>
           <tr><td><span data-i18n="i18n:t097">表头</span></td><td><span data-i18n="i18n:t098">截断 + tooltip</span></td><td><span data-i18n="i18n:t099">列宽固定时表头超出 ellipsis；hover 浮 tooltip。表头用最短描述（如 "时间" 而非 "最后心跳时间"），完整描述放 tooltip</span></td></tr>
           <tr><td><span data-i18n="i18n:t100">表单 label</span></td><td><span data-i18n="i18n:t101">固定宽度，自动右对齐</span></td><td><span data-i18n="i18n:t102">label 区域宽度按最长译文设定（lint 阶段计算）；过长时改两行</span></td></tr>
           <tr><td>Tag / Status</td><td><span data-i18n="i18n:t103">不允许换行</span></td><td><span data-i18n="i18n:t104">状态标签必须保持一行。如 pt 翻译过长需要重新选词或缩写（与本地化团队协商）</span></td></tr>
@@ -258,7 +258,7 @@
     <div class="surface" style="font-family:var(--aw-font-mono);font-size:12px;line-height:1.7;color:var(--aw-text-2)">
       <div>react-i18next · ICU MessageFormat · Intl.DateTimeFormat / NumberFormat / RelativeTimeFormat</div>
       <div style="margin-top:4px"><span data-i18n="i18n:t148">CI 检查：未包裹的中文字面量扫描 · key 缺失检测 · 双语长度差异告警</span></div>
-      <div style="margin-top:4px"><span data-i18n="i18n:t149">UI 兜底：max-width + ellipsis + tooltip · button 自适应高度 · table column min-width</span></div>
+      <div style="margin-top:4px"><span data-i18n="i18n:t149">UI 兜底：文本单行省略 + 完整值查看 · 操作区换行或收纳 · 表格局部横向滚动</span></div>
     </div>
   </div>
 </section>

@@ -5,7 +5,7 @@
 <section class="section" id="status-matrix">
   <p class="section-eyebrow"><span data-i18n="status-matrix:text.001">业务模式 · 终端状态</span></p>
   <h2><span data-i18n="status-matrix:text.002">终端状态矩阵</span></h2>
-  <p class="lede"><span data-i18n="status-matrix:text.003">下列 8 项是列表、卡片和详情页使用的派生展示状态，不是后端单一枚举。设备真实状态由 onlineFlag、state、registeredFlag 等独立字段组合，界面再按业务优先级映射为文字、形状和颜色。</span></p>
+  <p class="lede"><span data-i18n="status-matrix:text.003">下列 8 项是列表、卡片和详情页使用的派生展示状态，不是后端单一枚举。设备真实状态由 onlineFlag、state、registeredFlag 等独立字段组合，界面再按业务优先级映射为文字、形状和颜色。标记保持静态；需要表达实时进度时使用独立进度组件。</span></p>
   <table class="status-matrix">
     <thead>
 <tr><th style="width:160px"><span data-i18n="status-matrix:text.004">状态</span></th><th style="width:120px"><span data-i18n="status-matrix:text.005">视觉</span></th><th style="width:140px">Token</th><th><span data-i18n="status-matrix:text.006">触发条件</span></th><th style="width:200px"><span data-i18n="status-matrix:text.007">允许后续操作</span></th></tr>

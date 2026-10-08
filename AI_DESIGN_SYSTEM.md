@@ -64,7 +64,11 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统。核心场景是�
 - `scrollToFirstError` 配置在具体 Form；自建表单控件透传 `value/onChange/id/ref/disabled/status`。
 - 大数据表格优先使用 AntD 原生 `virtual`；同时设置数值型 `scroll.x` 与 `scroll.y`，不按固定行数切换第二套表格内核。
 - 包装 AntD v6 组件需透传 `classNames/styles` Semantic DOM API；禁止依赖内部 DOM 层级选择器。
-- 普通详情页使用面包屑，沉浸式流程使用返回按钮，两者不重复；数值列右对齐并使用 `tabular-nums`。
+- 普通详情页使用面包屑，沉浸式流程使用返回按钮，两者不重复；表格普通数值、时间与操作列左对齐，金额列右对齐，数字使用 `tabular-nums`。
+
+- 按钮保持单行且不压缩；空间不足时由操作区换行或收纳辅助操作，不截断操作名称。Select 单行省略，展开后可读完整选项。
+- 表格使用固定列布局，常规单元格左右各 16px；长文本单行省略并提供完整值查看，窄容器保留局部横向滚动。
+- 机构树隐藏重复的装饰图标，保留展开、勾选、加载与权限状态；状态矩阵标记保持静态，实时进度使用独立进度组件。
 
 ## 国际化边界
 
@@ -135,6 +139,7 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统。核心场景是�
 node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
+node scripts/row-actions-runtime.test.js
 node scripts/check-consistency.js
 node scripts/check-consumer-contract.js
 node scripts/check-evidence.js

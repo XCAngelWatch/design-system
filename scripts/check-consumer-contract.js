@@ -21,9 +21,9 @@ const darkBlock = (tokenCss.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\}/) || [
 const light = tokenMap(lightBlock);
 const dark = tokenMap(darkBlock);
 
-if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-09-09' ||
+if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-09-18' ||
     contract.sourceRepository !== 'design-system' ||
-    contract.decisionRecord !== 'docs/decisions/specs/2026-09-09-row-actions.md') {
+    contract.decisionRecord !== 'docs/decisions/specs/2026-09-18-opendesign-visual-alignment.md') {
   errors.push('contract: unexpected schema or decision version');
 }
 if (contract.consumerRepository !== 'tms2.5-web-ui' ||
@@ -116,6 +116,24 @@ if (contract.dateTime?.transport !== 'RFC3339-or-ISO-8601-instant' ||
     !same(contract.dateTime?.timeZonePriority, ['user-or-tenant-iana', 'runtime-resolved-iana', 'UTC']) ||
     contract.dateTime?.fixedOffsetAsZoneAllowed !== false) {
   errors.push('dateTime: expected instant transport, Intl display, IANA priority, and no fixed-offset zones');
+}
+if (!same(contract.visualPresentation, {
+  table: {
+    defaultAlign: 'left', numberAlign: 'left', dateTimeAlign: 'left', actionsAlign: 'left',
+    amountAlign: 'right', cellPaddingInline: 16, numericFontVariant: 'tabular-nums'
+  },
+  controls: {
+    buttonWhiteSpace: 'nowrap', buttonFlexShrink: 0,
+    singleSelectValueOverflow: 'ellipsis', switchHandleAlignment: 'center'
+  },
+  icons: {
+    documentationSvgViewBox: [0, 0, 24, 24], documentationSvgStrokeWidth: 1.5,
+    consumerSource: 'antd-exports-or-reviewed-local-svg'
+  },
+  staticStatusMatrixAnimation: false, decorativeTreeNodeIcons: false,
+  preserveLoadingAndInteractiveIndicators: true
+})) {
+  errors.push('visualPresentation: approved OpenDesign table, control, icon, or decoration policy drifted');
 }
 if (contract.rowActions.table.visiblePrimaryCount !== 1 ||
     contract.rowActions.table.maxVisibleCount !== 2 ||

@@ -109,12 +109,12 @@
 /* ===== Buttons (antd v6 style) ===== */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
-  gap: 6px; height: 32px; padding: 0 15px;
+  gap: 6px; height: 32px; padding: 0 15px; flex-shrink: 0;
   border: 1px solid var(--aw-border-1);
   background: var(--aw-bg); color: var(--aw-text-1);
   font-family: inherit; font-size: 14px; font-weight: 400;
   border-radius: var(--aw-radius); cursor: pointer;
-  max-width: 100%; text-align: center;
+  max-width: 100%; text-align: center; white-space: nowrap;
   transition: all var(--aw-dur-fast) var(--aw-ease);
 }
 .btn:hover { color: var(--aw-primary-text); border-color: var(--aw-primary); }
@@ -218,6 +218,13 @@ button.select { font-family: inherit; color: var(--aw-text-1); text-align: left;
   border-bottom: 1.5px solid var(--aw-text-3);
   transform: translateY(-70%) rotate(45deg);
 }
+.select > span {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /* Checkbox / Radio */
 .check {
@@ -256,14 +263,15 @@ button.select { font-family: inherit; color: var(--aw-text-1); text-align: left;
   transition: background var(--aw-dur-base), border-color var(--aw-dur-base), box-shadow var(--aw-dur-fast);
 }
 .switch::after {
-  content: ''; position: absolute; top: 2px; left: 2px;
+  content: ''; position: absolute; top: 50%; left: 2px;
   width: 16px; height: 16px; border-radius: 50%;
   background: var(--aw-switch-handle); box-shadow: var(--aw-shadow-1);
+  transform: translateY(-50%);
   transition: transform var(--aw-dur-base) var(--aw-ease);
 }
 .switch:hover { border-color: var(--aw-primary-hover); }
 .switch.is-on { background: var(--aw-primary); border-color: var(--aw-primary); box-shadow: none; }
-.switch.is-on::after { transform: translateX(22px); }
+.switch.is-on::after { transform: translate(22px, -50%); }
 .switch:focus-visible { outline: 0; box-shadow: 0 0 0 2px var(--aw-primary-bg); }
 .switch.is-loading::before {
   content: ''; position: absolute; z-index: 1;
@@ -369,26 +377,49 @@ button.select { font-family: inherit; color: var(--aw-text-1); text-align: left;
 /* ===== Table ===== */
 .table-wrap { border: 1px solid var(--aw-border-2); border-radius: var(--aw-radius); overflow-x: auto; overflow-y: hidden; background: var(--aw-bg); }
 table.dt {
-  width: 100%; border-collapse: collapse; font-size: 13px;
+  width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px;
 }
+.table-wrap > table.dt { min-width: 720px; }
 table.dt th, table.dt td {
-  text-align: left; padding: 10px 12px;
+  text-align: left; padding: 10px 16px;
   border-bottom: 1px solid var(--aw-border-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
+/* Compact selection columns retain room for the 16px checkbox and focus ring. */
+table.dt .colselect,
+table.dt th:has(> .check), table.dt td:has(> .check) { padding-inline: 10px; }
 table.dt thead th {
   background: var(--aw-fill-1); color: var(--aw-text-2);
   font-weight: 500; font-size: 13px;
 }
 table.dt tbody tr:hover td { background: var(--aw-fill-1); }
 table.dt tbody tr:last-child td { border-bottom: 0; }
-table.dt .colactions { white-space: nowrap; text-align: right; }
-table.dt .colnum { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.dt .colactions { white-space: nowrap; text-align: left; overflow: visible; }
+table.dt .colnum, table.dt .coltime { text-align: left; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.dt .colamount { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 table.dt .colactions .btn-link { height: 24px; font-size: 13px; }
 table th.colactions,
-table td.colactions { text-align: right; white-space: nowrap; }
+table td.colactions { text-align: left; white-space: nowrap; }
 table td.colactions > .btn + .btn { margin-left: 4px; }
-.table-actions { display: flex; align-items: center; justify-content: flex-end; gap: 4px; }
+.table-actions { display: flex; align-items: center; justify-content: flex-start; gap: 4px; }
 table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--aw-text-2); }
+
+/* Shared icon geometry; button spacing comes from .btn gap. */
+.aw-icon {
+  display: inline-block;
+  width: 1em; height: 1em; flex: 0 0 auto;
+  overflow: visible;
+  fill: none; stroke: currentColor; stroke-width: 1.5;
+  stroke-linecap: round; stroke-linejoin: round;
+  vertical-align: -0.125em;
+}
+.icon-btn .aw-icon,
+.dialog-close .aw-icon,
+.toast .close .aw-icon,
+.nav-btn .aw-icon,
+.ra-btn .aw-icon,
+.ra-mit .aw-icon { width: 16px; height: 16px; }
+h3 > .aw-icon, th.colactions > .aw-icon { margin-right: 6px; }
 
 .icon-btn,
 .dialog-close,
@@ -418,7 +449,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
   display: flex; align-items: center; justify-content: space-between;
   font-weight: 500; font-size: 15px;
 }
-.card-head .actions { display: flex; gap: 8px; }
+.card-head .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .card-body { padding: 20px; }
 
 /* KPI / Stat card */
@@ -856,7 +887,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
 .tnode .check.checked::after { content: ''; position: absolute; top: 1.5px; left: 4px; width: 3px; height: 7px; border: solid white; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); }
 .tnode .check.partial { background: var(--aw-primary); border-color: var(--aw-primary); position: relative; }
 .tnode .check.partial::after { content: ''; position: absolute; top: 5px; left: 2px; width: 8px; height: 2px; background: white; }
-.tnode .ico { width: 14px; height: 14px; color: var(--aw-text-3); flex-shrink: 0; }
+.tnode .ico { display: none; }
 .tnode .lbl { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tnode .count { font-size: 11px; color: var(--aw-text-3); font-family: var(--aw-font-mono); }
 .tnode.depth-1 { padding-left: 22px; }
@@ -1099,7 +1130,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
 
 /* Form layout demo */
 .form-demo { display: flex; flex-direction: column; gap: 16px; max-width: 560px; }
-.form-row { display: grid; grid-template-columns: 110px 1fr; gap: 16px; align-items: center; }
+.form-row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; align-items: center; }
 .form-row .lbl { font-size: 14px; color: var(--aw-text-2); text-align: right; }
 .form-row .lbl .req { color: var(--aw-danger); margin-right: 2px; }
 .form-row .help { font-size: 12px; color: var(--aw-text-3); margin-top: 4px; }
@@ -1115,7 +1146,7 @@ table.dt code { font-family: var(--aw-font-mono); font-size: 12px; color: var(--
   }
   .fp-grid .fp-wide { grid-column: auto; }
   .formpage-mock .foot { flex-wrap: wrap; padding: 12px 16px; }
-  .formpage-mock .foot .btn { flex: 1 1 auto; }
+  .formpage-mock .foot .btn { flex: 1 0 auto; }
 
   .map-table {
     display: block;

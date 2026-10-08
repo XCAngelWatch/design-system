@@ -1,19 +1,19 @@
 /* AngelWatch Design System — page: row-actions */
 (function () {
-  // Inline SVG library — 16x16 stroke icons
+  // Shared AngelWatch icon symbols — one canonical geometry source for all component demos.
   var ICN = {
-    detail:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
-    edit:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
-    del:      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>',
-    push:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M4 20h16"/></svg>',
-    upgrade:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V8m0 0l-4 4m4-4l4 4"/><path d="M4 4h16"/></svg>',
-    log:      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6M9 17h6"/></svg>',
-    copy:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
-    toggle:   '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><circle cx="8" cy="12" r="2"/></svg>',
-    reset:    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>',
-    download: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><path d="M12 15V3"/></svg>',
-    exp:      '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>',
-    more:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>'
+    detail:   '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-eye"></use></svg>',
+    edit:     '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-edit"></use></svg>',
+    del:      '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-trash"></use></svg>',
+    push:     '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-send"></use></svg>',
+    upgrade:  '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-arrow-up"></use></svg>',
+    log:      '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-file-text"></use></svg>',
+    copy:     '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-copy"></use></svg>',
+    toggle:   '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-power"></use></svg>',
+    reset:    '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-refresh"></use></svg>',
+    download: '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-cloud-download"></use></svg>',
+    exp:      '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-arrow-up"></use></svg>',
+    more:     '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-more"></use></svg>'
   };
 
   (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["row-actions"] = `
@@ -59,8 +59,15 @@
             <td class="colactions">
               <div class="ra-row">
                 <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
-                <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
+                <button class="btn btn-link" data-row-secondary><span data-i18n="row-actions:text.006">编辑</span></button>
+                <span class="ra-more-wrap">
+                  <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
+                  <div class="ra-menu" role="menu" hidden>
+                    <button class="ra-mit" type="button" role="menuitem"><span data-i18n="row-actions:text.058">查看日志</span></button>
+                    <div class="ra-mdiv" role="separator"></div>
+                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm><span data-i18n="row-actions:text.063">删除设备</span></button>
+                  </div>
+                </span>
               </div>
             </td>
           </tr>
@@ -71,8 +78,15 @@
             <td class="colactions">
               <div class="ra-row">
                 <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
-                <button class="btn btn-link"><span data-i18n="row-actions:text.006">编辑</span></button>
-                <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
+                <button class="btn btn-link" data-row-secondary><span data-i18n="row-actions:text.006">编辑</span></button>
+                <span class="ra-more-wrap">
+                  <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
+                  <div class="ra-menu" role="menu" hidden>
+                    <button class="ra-mit" type="button" role="menuitem"><span data-i18n="row-actions:text.058">查看日志</span></button>
+                    <div class="ra-mdiv" role="separator"></div>
+                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm><span data-i18n="row-actions:text.063">删除设备</span></button>
+                  </div>
+                </span>
               </div>
             </td>
           </tr>
@@ -83,7 +97,14 @@
             <td class="colactions">
               <div class="ra-row">
                 <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
-                <button class="btn btn-link" title="更多" data-i18n-title="row-actions:text.016">…</button>
+                <span class="ra-more-wrap">
+                  <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
+                  <div class="ra-menu" role="menu" hidden>
+                    <button class="ra-mit" type="button" role="menuitem"><span data-i18n="row-actions:text.058">查看日志</span></button>
+                    <div class="ra-mdiv" role="separator"></div>
+                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm><span data-i18n="row-actions:text.063">删除设备</span></button>
+                  </div>
+                </span>
               </div>
             </td>
           </tr>
@@ -113,18 +134,18 @@
     <div class="surface">
       <div class="ra-row">
         <button class="ra-btn" title="详情" data-i18n-title="row-actions:text.005">${ICN.detail}</button>
-        <button class="ra-btn" title="编辑" data-i18n-title="row-actions:text.006">${ICN.edit}</button>
+        <button class="ra-btn" data-row-secondary title="编辑" data-i18n-title="row-actions:text.006">${ICN.edit}</button>
         <div class="ra-divider"></div>
         <div class="ra-more-wrap">
-          <button class="ra-btn" title="更多" data-i18n-title="row-actions:text.016">${ICN.more}</button>
-          <div class="ra-menu">
-            <div class="ra-mit">${ICN.log}<span><span data-i18n="row-actions:text.058">查看日志</span></span></div>
-            <div class="ra-mit">${ICN.copy}<span><span data-i18n="row-actions:text.059">复制 SN</span></span></div>
-            <div class="ra-mit">${ICN.download}<span><span data-i18n="row-actions:text.060">下载证书</span></span></div>
-            <div class="ra-mdiv"></div>
-            <div class="ra-mit danger">${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></div>
-            <div class="ra-mit warn">${ICN.reset}<span><span data-i18n="row-actions:text.062">重置出厂</span></span></div>
-            <div class="ra-mit danger">${ICN.del}<span><span data-i18n="row-actions:text.063">删除设备</span></span></div>
+          <button class="ra-btn ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false" title="更多" data-i18n-title="row-actions:text.016">${ICN.more}</button>
+          <div class="ra-menu" role="menu" hidden>
+            <button class="ra-mit" type="button" role="menuitem">${ICN.log}<span><span data-i18n="row-actions:text.058">查看日志</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem">${ICN.copy}<span><span data-i18n="row-actions:text.059">复制 SN</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem">${ICN.download}<span><span data-i18n="row-actions:text.060">下载证书</span></span></button>
+            <div class="ra-mdiv" role="separator"></div>
+            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm>${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></button>
+            <button class="ra-mit warn" type="button" role="menuitem" data-demo-confirm>${ICN.reset}<span><span data-i18n="row-actions:text.062">重置出厂</span></span></button>
+            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm>${ICN.del}<span><span data-i18n="row-actions:text.063">删除设备</span></span></button>
           </div>
         </div>
       </div>

@@ -89,7 +89,9 @@
         : [];
       tables.forEach(function (table) {
         var parent = table.parentElement;
-        if (!parent || parent.classList.contains('i18n-table-scroll')) return;
+        if (!parent || ['i18n-table-scroll', 'demo-table-scroll', 'table-wrap', 'bp-table-scroll', 'frozen-table-wrap', 'responsive-table'].some(function (name) {
+          return parent.classList.contains(name);
+        })) return;
         if (!parent.clientWidth) return;
         if (table.scrollWidth > parent.clientWidth) {
           var wrapper = document.createElement('div');

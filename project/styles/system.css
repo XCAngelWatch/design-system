@@ -227,6 +227,8 @@ html[lang]:not([lang^="zh"]) .nav a {
   }
   .spa .toolbar-controls {
     margin-left: auto;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
   }
 }
 

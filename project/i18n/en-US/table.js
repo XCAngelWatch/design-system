@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'table', {
     "text.001": "Common Components · Table / Pagination",
     "text.002": "Table",
-    "text.003": "The core component of the device list. Line height 40px (including padding), header light gray background, hover highlight. Align the action column to the right and use text buttons.",
+    "text.003": "The core device-list component uses 40px default rows, a light header and hover highlighting. Use a fixed table layout with 16px horizontal cell padding. Left-align ordinary numbers, dates and actions; right-align monetary amounts. Truncate long text on one line with access to the full value, and scroll the table horizontally in narrow containers.",
     "text.004": "Device name",
     "text.005": "Status",
     "text.006": "OTA version",
@@ -213,7 +213,7 @@
     "text.209": "Each column definition must at least define ",
     "text.210": " is optional column-header configuration; this specification recommends clear titles for all business columns. ",
     "text.211": " are structural properties; ",
-    "text.212": " are interactive properties. The following table gives standard definitions for 6 common column types.",
+    "text.212": " are interactive properties. The following table gives standard definitions for 7 common column types.",
     "text.213": "column type",
     "text.214": "Special rules",
     "text.215": "Check box",
@@ -225,7 +225,7 @@
     "text.221": "Status",
     "text.222": "1 (not hidden)",
     "text.223": "Status color + dot + text triple encoding",
-    "text.224": "number/timestamp",
+    "text.224": "Ordinary numbers / timestamps",
     "text.225": "; show absolute time in a tooltip for timestamps",
     "text.226": "Actions",
     "text.227": "1 (not hidden)",
@@ -330,6 +330,8 @@
     "text.326": ".",
     "text.327": "; ",
     "text.328": "Page number to jump to",
-    "text.329": "Selection column"
+    "text.329": "Selection column",
+    "text.330": "Amount",
+    "text.331": "; keep currency symbols, amounts and decimal places right-aligned"
   });
 })(typeof window !== 'undefined' ? window : globalThis);
