@@ -97,7 +97,7 @@
     "text.094": "· The account entry is fixed at the bottom left of the sidebar; the Topbar no longer repeats the avatar;",
     "text.095": "filled background + fully cropped avatar + name + role chip + more menu",
     "text.096": "· Collapsed 64px state: icons centered only; hover shows a tooltip card on the right",
-    "text.097": "· Collapse control lives in the Topbar, shortcut",
+    "text.097": "· Keep the desktop sidebar collapse control at the sidebar bottom, outside the Topbar. PageHeader moves only breadcrumbs into the Topbar; page titles and back actions stay in the content area. Shortcut",
     "text.098": "· Custom scrollbar: 0px by default; shows 4px on sidebar hover",
     "text.099": ", ",
     "text.100": "Responsive Account Entry",
