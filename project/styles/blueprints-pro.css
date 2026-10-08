@@ -255,9 +255,14 @@
 
 .cascader-demo-layout {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
   align-items: start;
   gap: 24px;
+}
+.cascader-demo-layout > * { min-width: 0; }
+.cascader-demo-layout .cascader-pop {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .tenant-theme-compare {
@@ -360,10 +365,6 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .cascader-demo-layout .cascader-pop {
-    max-width: 100%;
-    overflow-x: auto;
-  }
 }
 
 @media (max-width: 640px) {
@@ -404,11 +405,6 @@
   .cascader-col {
     min-width: 142px;
     width: 45vw;
-  }
-
-  .search-mock-v2 .row1,
-  .search-mock-v2.expanded .row1 {
-    grid-template-columns: minmax(0, 1fr);
   }
 
   .filter-field {

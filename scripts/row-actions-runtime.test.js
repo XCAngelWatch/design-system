@@ -40,8 +40,11 @@ class Element {
     ]);
   }
   querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
+  contains(node) { return node === this || this.children.some(child => child.contains(node)); }
+  focus() { context.document.activeElement = this; }
   remove() {
     if (this.parentElement) {
+      if (this.contains(context.document.activeElement)) context.document.activeElement = null;
       const siblings = this.parentElement.children;
       siblings.splice(siblings.indexOf(this), 1);
       this.parentElement = null;
@@ -65,6 +68,7 @@ class Element {
 const context = {
   window: { innerWidth: 1280 },
   document: {
+    activeElement: null,
     createElement: tag => new Element(tag),
     createComment: () => new Element('#comment')
   }
@@ -83,9 +87,11 @@ function fixture({ label = '编辑', text = '', icon = true } = {}) {
   }, text));
   const svg = icon ? secondary.appendChild(new Element('svg')) : null;
   const wrap = row.appendChild(new Element('span', { class: 'ra-more-wrap' }));
+  const trigger = wrap.appendChild(new Element('button', { class: 'ra-more-trigger' }, '更多'));
   const menu = wrap.appendChild(new Element('div', { class: 'ra-menu' }));
+  menu.hidden = true;
   const existingItem = menu.appendChild(new Element('button', { role: 'menuitem' }, '查看日志'));
-  return { root, row, primary, secondary, svg, wrap, menu, existingItem };
+  return { root, row, primary, secondary, svg, wrap, trigger, menu, existingItem };
 }
 
 const compact = fixture();
@@ -129,5 +135,17 @@ context.window.innerWidth = 390;
 context.fit(textButton.root);
 assert.equal(textButton.secondary.textContent, 'Edit');
 assert.equal(textButton.secondary.querySelector('[data-row-menu-label]'), null, 'existing visible text must not be duplicated');
+
+const focused = fixture();
+context.window.innerWidth = 1280;
+focused.secondary.focus();
+context.fit(focused.root);
+assert.equal(context.document.activeElement, focused.secondary, 'resizing a visible action preserves its focus');
+context.window.innerWidth = 390;
+context.fit(focused.root);
+assert.equal(context.document.activeElement, focused.trigger, 'a focused action folded into a closed menu transfers focus to its visible trigger');
+focused.primary.focus();
+context.fit(focused.root);
+assert.equal(context.document.activeElement, focused.primary, 'responsive placement must not steal unrelated focus');
 
 console.log('row-action responsive placement tests passed');

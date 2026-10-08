@@ -202,6 +202,24 @@ try {
   i18n.setLocale('zh-CN');
   i18n.apply(fakeTableRoot([zhTable]));
   assert.equal(zhParent.inserted().length, 0);
+
+  const frames = [];
+  global.window.requestAnimationFrame = callback => frames.push(callback);
+  const staleParent = fakeParent({ clientWidth: 320 });
+  i18n.setLocale('en-US');
+  i18n.apply(fakeTableRoot([fakeTable(640, staleParent)]));
+  i18n.setLocale('zh-CN');
+  frames.splice(0).forEach(callback => callback());
+  assert.equal(staleParent.inserted().length, 0, 'a deferred English layout must not wrap a page after switching back to Chinese');
+
+  const detachedParent = fakeParent({ clientWidth: 320 });
+  const detachedRoot = fakeTableRoot([fakeTable(640, detachedParent)]);
+  detachedRoot.isConnected = true;
+  i18n.setLocale('en-US');
+  i18n.apply(detachedRoot);
+  detachedRoot.isConnected = false;
+  frames.splice(0).forEach(callback => callback());
+  assert.equal(detachedParent.inserted().length, 0, 'a removed page must not receive deferred layout mutations');
 } finally {
   if (previousTableWindow === undefined) delete global.window;
   else global.window = previousTableWindow;

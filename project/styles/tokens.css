@@ -2,13 +2,8 @@
    Self-hosted, no CDN. Internal-deployment.
 */
 
-/* Inter + Source Han Sans CN — declared but using local() fallback only,
-   since this is a documentation site. In production these are self-hosted .woff2. */
-@font-face {
-  font-family: "Inter Local";
-  src: local("Inter"), local("Inter-Regular"), local("system-ui");
-  font-display: swap;
-}
+/* The documentation uses installed fonts and system fallbacks. Consumers that
+   require identical typography must bundle their approved font assets. */
 
 :root,
 [data-theme="light"] {

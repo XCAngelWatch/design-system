@@ -620,12 +620,14 @@ h3 > .aw-icon, th.colactions > .aw-icon { margin-right: 6px; }
   height: 22px; background: var(--aw-fill-2); border-radius: 3px;
 }
 .search-mock .acts { display: flex; gap: 6px; }
-.search-mock .btn-mock {
+.search-mock .btn-mock,
+.shell-mock .btn-mock {
   height: 22px; padding: 0 10px; font-size: 11px;
   border-radius: 3px; display: grid; place-items: center;
   background: var(--aw-primary-solid); color: var(--aw-text-on-brand);
 }
-.search-mock .btn-mock.ghost { background: var(--aw-bg); color: var(--aw-text-2); border: 1px solid var(--aw-border-2); }
+.search-mock .btn-mock.ghost,
+.shell-mock .btn-mock.ghost { background: var(--aw-bg); color: var(--aw-text-2); border: 1px solid var(--aw-border-2); }
 
 /* tiny table */
 .mini-table { background: var(--aw-bg); border: 1px solid var(--aw-border-3); border-radius: 4px; overflow: hidden; }
@@ -635,31 +637,8 @@ h3 > .aw-icon, th.colactions > .aw-icon { margin-right: 6px; }
 .mini-table .check-mini { width: 12px; height: 12px; border: 1px solid var(--aw-border-1); border-radius: 2px; }
 .mini-table .check-mini.checked { background: var(--aw-primary); border-color: var(--aw-primary); }
 
-/* Detail mock */
-.detail-mock { display: flex; flex-direction: column; gap: 10px; }
-.detail-mock .summary {
-  background: var(--aw-bg); border: 1px solid var(--aw-border-3);
-  border-radius: 4px; padding: 14px;
-  display: flex; gap: 14px;
-}
-.detail-mock .summary .ico-big {
-  width: 48px; height: 48px; border-radius: 6px;
-  background: var(--aw-primary-bg); color: var(--aw-primary-text);
-  display: grid; place-items: center; font-weight: 600;
-}
-.detail-mock .summary .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 24px; flex: 1; font-size: 11px; }
-.detail-mock .summary .meta .kv label { color: var(--aw-text-3); display: block; margin-bottom: 2px; font-size: 10px; }
-.detail-mock .summary .meta .kv span { color: var(--aw-text-1); font-weight: 500; }
-.tabs-mock { display: flex; border-bottom: 1px solid var(--aw-border-3); }
-.tabs-mock div { padding: 8px 12px; font-size: 11px; color: var(--aw-text-2); cursor: pointer; }
-.tabs-mock div.act { color: var(--aw-primary-text); border-bottom: 2px solid var(--aw-primary); font-weight: 500; }
-
 /* Dashboard mock */
 .dash-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.dash-stat { background: var(--aw-bg); border: 1px solid var(--aw-border-3); border-radius: 4px; padding: 12px; }
-.dash-stat .lbl { font-size: 10px; color: var(--aw-text-3); }
-.dash-stat .num { font-size: 20px; font-weight: 600; margin-top: 4px; letter-spacing: -0.4px; }
-.dash-stat .delta { font-size: 10px; color: var(--aw-success); }
 .dash-charts { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
 .dash-chart {
   background: var(--aw-bg); border: 1px solid var(--aw-border-3);
@@ -684,8 +663,6 @@ h3 > .aw-icon, th.colactions > .aw-icon { margin-right: 6px; }
 .code .k { color: #6AA1FF; }
 .code .s { color: #52C41A; }
 .code .c { color: #8793A1; }
-
-/* ===== ADDITIONAL COMPONENTS ===== */
 
 /* Progress */
 .progress { display: flex; align-items: center; gap: 12px; }
@@ -1173,9 +1150,6 @@ h3 > .aw-icon, th.colactions > .aw-icon { margin-right: 6px; }
   .search-mock .acts {
     align-self: end;
   }
-  .detail-mock .summary .meta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .dash-charts {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1208,22 +1182,6 @@ h3 > .aw-icon, th.colactions > .aw-icon { margin-right: 6px; }
   }
   .search-mock .acts {
     justify-content: flex-end;
-  }
-  .detail-mock .summary {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  .detail-mock .summary .meta {
-    width: 100%;
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .tabs-mock {
-    max-width: 100%;
-    overflow-x: auto;
-  }
-  .tabs-mock > * {
-    flex: 0 0 auto;
-    white-space: nowrap;
   }
   .treelist-mock {
     height: auto;

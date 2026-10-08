@@ -7,17 +7,24 @@
     <p class="lede" data-i18n="ai-reference:hero.desc">本页把 Markdown、Figma 来源、外部品牌包和当前页面范式串成一条可执行路径。未来 AI 做页面或组件时，先判断问题域及其权威来源，再进入对应路由参考结构和交互。</p>
     <div class="alert info" style="margin-top:18px"><b data-i18n="ai-reference:authority.label">分域权威：</b><span data-i18n="ai-reference:authority.desc">视觉 token、组件交互、无障碍与布局以 Design System 为准；字段、状态、权限与 API 以后端/OpenAPI 为准；信息架构与流程以已批准产品需求/Figma 为准；消费者实现事实以 tms2.5-web-ui 当前源码与测试为准。evidence 只保存带来源的设计快照，不是业务契约。</span></div>
 
+    <div class="surface" style="margin-top:18px">
+      <h3 data-i18n="ai-reference:reuse.title">其他项目如何使用</h3>
+      <p data-i18n="ai-reference:reuse.boundary">可以查阅现行视觉 token、组件交互、无障碍与布局指南，并按自己项目的技术栈实现；业务字段、状态、权限、API 和产品流程仍需分别核验。本仓不发布运行时组件包，TMS 消费者契约只描述已验证的 tms2.5-web-ui，不能直接作为其他项目的接入保证。</p>
+      <p><a href="https://github.com/XCAngelWatch/design-system" data-i18n="ai-reference:reuse.repository">源仓与离线获取</a> · <a href="https://github.com/XCAngelWatch/design-system/blob/main/project/styles/tokens.css" data-i18n="ai-reference:reuse.tokens">现行视觉 token</a> · <a href="https://github.com/XCAngelWatch/design-system/blob/main/contracts/tms-web-ui.json" data-i18n="ai-reference:reuse.contract">TMS 消费者契约</a></p>
+      <p data-i18n="ai-reference:reuse.access">以下源文件链接在本地 file 模式和线上站点均指向 GitHub，需要联网。离线时获取完整仓库后读取同名相对路径；仅下载 project 目录只能查看参考站，不包含 Markdown、证据清单与消费者契约。接入时记录所参考的 commit，后续按自己的消费者契约验证同步。</p>
+    </div>
+
     <div class="section-subtitle" style="margin-top:28px" data-i18n="ai-reference:markdown.title">Markdown 入口</div>
     <table class="map-table">
       <thead><tr><th data-i18n="ai-reference:markdown.th.file">文件</th><th data-i18n="ai-reference:markdown.th.purpose">用途</th><th data-i18n="ai-reference:markdown.th.when">什么时候读</th></tr></thead>
       <tbody>
-        <tr><td><code>AI_DESIGN_SYSTEM.md</code></td><td data-i18n="ai-reference:markdown.ai.purpose">AI 首读入口，定义分域权威、页面范式和验收命令</td><td data-i18n="ai-reference:markdown.ai.when">任何新页面、组件、原型或设计系统修改前</td></tr>
-        <tr><td><code>docs/ai-coding-design-reference.md</code></td><td data-i18n="ai-reference:markdown.coding.purpose">从 Figma 与既有实现整理的业务观察、组件选择和实现提示</td><td data-i18n="ai-reference:markdown.coding.when">查找设计观察时；字段、状态、权限和 API 仍须核验后端/OpenAPI</td></tr>
-        <tr><td><code>docs/evidence/angelwatch-business-capabilities.json</code></td><td data-i18n="ai-reference:markdown.capabilities.purpose">带来源的机器可读设计快照，不是业务契约</td><td data-i18n="ai-reference:markdown.capabilities.when">理解现有设计映射时；不能用来批准业务页面、权限或测试契约</td></tr>
-        <tr><td><code>docs/evidence/figma-frame-manifest.json</code></td><td data-i18n="ai-reference:markdown.frames.purpose">Figma canvas 来源、覆盖与 adopt / adapt / exclude / pending 快照</td><td data-i18n="ai-reference:markdown.frames.when">核对已批准产品信息架构、流程或旧系统排除依据时</td></tr>
-        <tr><td><code>brand-spec.md</code></td><td data-i18n="ai-reference:markdown.brand.purpose">品牌 token、字体、布局姿态和证据摘要</td><td data-i18n="ai-reference:markdown.brand.when">需要确认颜色、字体、间距、圆角和暗色主题时</td></tr>
-        <tr><td><code>docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md</code></td><td data-i18n="ai-reference:markdown.figma.purpose">Figma 与当前项目的冲突、缺口和处理决定</td><td data-i18n="ai-reference:markdown.figma.when">需要判断某个 Figma 内容是否应当迁入时</td></tr>
-        <tr><td><code>docs/decisions/audits/2026-07-09-angelwatch-external-design-system-audit.md</code></td><td data-i18n="ai-reference:markdown.external.purpose">design-system-angelwatch 可合并内容与禁用内容</td><td data-i18n="ai-reference:markdown.external.when">需要 token、尺寸或界面 kit 参考时</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/AI_DESIGN_SYSTEM.md"><code>AI_DESIGN_SYSTEM.md</code></a></td><td data-i18n="ai-reference:markdown.ai.purpose">AI 首读入口，定义分域权威、页面范式和验收命令</td><td data-i18n="ai-reference:markdown.ai.when">任何新页面、组件、原型或设计系统修改前</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/docs/ai-coding-design-reference.md"><code>docs/ai-coding-design-reference.md</code></a></td><td data-i18n="ai-reference:markdown.coding.purpose">从 Figma 与既有实现整理的业务观察、组件选择和实现提示</td><td data-i18n="ai-reference:markdown.coding.when">查找设计观察时；字段、状态、权限和 API 仍须核验后端/OpenAPI</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/docs/evidence/angelwatch-business-capabilities.json"><code>docs/evidence/angelwatch-business-capabilities.json</code></a></td><td data-i18n="ai-reference:markdown.capabilities.purpose">带来源的机器可读设计快照，不是业务契约</td><td data-i18n="ai-reference:markdown.capabilities.when">理解现有设计映射时；不能用来批准业务页面、权限或测试契约</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/docs/evidence/figma-frame-manifest.json"><code>docs/evidence/figma-frame-manifest.json</code></a></td><td data-i18n="ai-reference:markdown.frames.purpose">Figma canvas 来源、覆盖与 adopt / adapt / exclude / pending 快照</td><td data-i18n="ai-reference:markdown.frames.when">核对已批准产品信息架构、流程或旧系统排除依据时</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/brand-spec.md"><code>brand-spec.md</code></a></td><td data-i18n="ai-reference:markdown.brand.purpose">品牌 token、字体、布局姿态和证据摘要</td><td data-i18n="ai-reference:markdown.brand.when">需要确认颜色、字体、间距、圆角和暗色主题时</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md"><code>docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md</code></a></td><td data-i18n="ai-reference:markdown.figma.purpose">Figma 与当前项目的冲突、缺口和处理决定</td><td data-i18n="ai-reference:markdown.figma.when">需要判断某个 Figma 内容是否应当迁入时</td></tr>
+        <tr><td><a href="https://github.com/XCAngelWatch/design-system/blob/main/docs/decisions/audits/2026-07-09-angelwatch-external-design-system-audit.md"><code>docs/decisions/audits/2026-07-09-angelwatch-external-design-system-audit.md</code></a></td><td data-i18n="ai-reference:markdown.external.purpose">design-system-angelwatch 可合并内容与禁用内容</td><td data-i18n="ai-reference:markdown.external.when">需要 token、尺寸或界面 kit 参考时</td></tr>
       </tbody>
     </table>
   </section>

@@ -95,6 +95,13 @@ table.dt.dt-loose tbody td { height: 48px; }
   box-shadow: -4px 0 4px -4px rgba(0,0,0,0.06);
 }
 .frozen-table-wrap table.dt th.freeze-r { background: var(--aw-fill-1); }
+.frozen-table-wrap table.dt :is(th, td).freeze-l.demo-freeze-scroll,
+.frozen-table-wrap table.dt :is(th, td).freeze-r.demo-freeze-scroll {
+  position: static;
+  left: auto;
+  right: auto;
+  box-shadow: none;
+}
 
 
 /* ---------- 列宽拖拽 ---------- */

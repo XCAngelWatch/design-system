@@ -148,7 +148,7 @@ if (!/id="af-disabled"[^>]*disabled[\s\S]*?<div class="step"><button type="butto
 }
 
 const workflow = fs.readFileSync(path.join(root, '.github/workflows/pages.yml'), 'utf8');
-for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'check-consistency.js', 'check-consumer-contract.js', 'check-evidence.js']) {
+for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'row-actions-runtime.test.js', 'router-runtime.test.js', 'table-layout-runtime.test.js', 'check-consistency.js', 'check-consumer-contract.js', 'check-evidence.js']) {
   if (!workflow.includes(command)) errors.push('pages workflow: missing validation command ' + command);
 }
 
@@ -202,6 +202,46 @@ for (const requiredFact of [
 }
 for (const fictionalPath of ['tms2.5-web-react', 'packages/web', 'packages/design-tokens', '@tms/design-tokens']) {
   if (techStackPage.includes(fictionalPath)) errors.push('tech-stack: fictional consumer topology remains: ' + fictionalPath);
+}
+
+// All current routes must use the real single-application consumer topology.
+// Historical decisions are deliberately outside this scan.
+for (const id of pageIds) {
+  for (const fictionalPath of ['packages/charts/', '@tms/web/hooks', '@tms/i18n']) {
+    if (readPage(id).includes(fictionalPath)) errors.push(id + ': fictional consumer topology remains: ' + fictionalPath);
+  }
+}
+const chartsPage = readPage('charts');
+for (const actualReference of ['src/components/TMSChart/TMSChart.tsx', 'src/theme/chart.ts', "from '@/theme/chart'", 'useChartTheme()', 'chart.tooltipBg']) {
+  if (!chartsPage.includes(actualReference)) errors.push('charts: missing actual consumer reference ' + actualReference);
+}
+if (chartsPage.includes("registerTheme('tms-light'") || /color:\s*'var\(--aw-/.test(chartsPage)) {
+  errors.push('charts: current consumer uses resolved token colors in options, not a fictional registered theme or Canvas CSS-variable strings');
+}
+for (const obsoleteClaim of ['即使 light 模式也用暗 tooltip', 'TMS 仍用自注册主题', 'UniversalTransition 默认开启', '渲染提速 30-50%']) {
+  if (chartsPage.includes(obsoleteClaim)) errors.push('charts: obsolete consumer or unmeasured capability claim: ' + obsoleteClaim);
+}
+if (!readPage('copywriting').includes('src/i18n/locales/*.json')) {
+  errors.push('copywriting: terminology changes must target the actual consumer locale catalogs');
+}
+
+// These source files are outside the project-only Pages artifact. Keep explicit,
+// resolvable repository links so hosted and file-mode readers can obtain them.
+const aiReferencePage = readPage('ai-reference');
+for (const reference of [
+  'AI_DESIGN_SYSTEM.md', 'docs/ai-coding-design-reference.md',
+  'docs/evidence/angelwatch-business-capabilities.json', 'docs/evidence/figma-frame-manifest.json',
+  'brand-spec.md', 'contracts/tms-web-ui.json', 'project/styles/tokens.css',
+  'docs/decisions/audits/2026-07-08-figma-project-diff-conflicts.md',
+  'docs/decisions/audits/2026-07-09-angelwatch-external-design-system-audit.md'
+]) {
+  const href = 'href="https://github.com/XCAngelWatch/design-system/blob/main/' + reference + '"';
+  if (!aiReferencePage.includes(href) || !fs.existsSync(path.join(root, reference))) {
+    errors.push('ai-reference: missing source link or target ' + reference);
+  }
+}
+for (const boundary of ['本仓不发布运行时组件包', '只描述已验证的 tms2.5-web-ui', '仅下载 project 目录只能查看参考站']) {
+  if (!aiReferencePage.includes(boundary)) errors.push('ai-reference: missing cross-project usage boundary ' + boundary);
 }
 
 const palettePage = readPage('palette');

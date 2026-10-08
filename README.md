@@ -33,6 +33,14 @@ open project/index.html
 
 本仓库是 AI-first 的。AI agent 拿到仓库后先读 [`AI_DESIGN_SYSTEM.md`](AI_DESIGN_SYSTEM.md)（分域权威边界、页面范式、业务设计快照索引、外部参考边界、提交前校验），再按需进入 [`docs/ai-coding-design-reference.md`](docs/ai-coding-design-reference.md)（从既有设计与实现整理的业务观察）、[`docs/evidence/angelwatch-business-capabilities.json`](docs/evidence/angelwatch-business-capabilities.json)（带来源的机器可读设计快照）和 [`brand-spec.md`](brand-spec.md)（品牌 token 与布局姿态）。业务实现仍须分别查后端/OpenAPI 和已批准产品需求/Figma。网页端 AI 导航页：`project/index.html#/ai-reference`。当前落地代码在 sibling 单应用仓库 `tms2.5-web-ui`；Design System 消费者契约见 [`contracts/tms-web-ui.json`](contracts/tms-web-ui.json)。
 
+## 其他项目如何使用
+
+其他项目可以通过在线站点查阅视觉与交互规范，或获取[完整源仓](https://github.com/XCAngelWatch/design-system)后离线打开 `project/index.html`。Pages 只发布 `project/`；AI 首读文档、证据清单和机器契约在源仓中，网页的 [AI 入口](https://xcangelwatch.github.io/design-system/#/ai-reference)提供对应源码链接。仅复制 `project/` 不会同时带上这些文档。
+
+接入项目应记录参考的 commit，读取现行 [`tokens.css`](project/styles/tokens.css)，按自身技术栈实现组件，并为主题、国际化、响应式与无障碍建立自己的验证。`contracts/tms-web-ui.json` 是 **TMS 专用消费者契约**；本仓没有发布通用组件包，也没有验证其他项目的运行时实现。业务字段、权限、API 与产品流程必须使用接入项目自己的权威来源。
+
+仓库目前没有项目级 `LICENSE` 文件，第三方依赖的许可证说明不等于本仓代码与品牌资产的授权。对外复制或再分发前，需由维护者明确相应使用授权。
+
 ## 权威边界
 
 | 问题域 | 首要来源 | Design System 的职责 |
@@ -169,6 +177,8 @@ node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
 node scripts/row-actions-runtime.test.js
+node scripts/router-runtime.test.js
+node scripts/table-layout-runtime.test.js
 node scripts/check-consistency.js
 node scripts/check-consumer-contract.js
 node scripts/check-evidence.js

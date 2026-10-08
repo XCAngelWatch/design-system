@@ -59,7 +59,7 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t079">TMS 术语锁定表</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t080">下表为系统级专有名词，跨四语 zh-CN / en / es / pt 锁定。添加术语必须先 PR 到</span> <code>@tms/i18n</code> <span data-i18n="copywriting:t081">词表，再在业务代码引用。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t080">下表为系统级专有名词，跨四语 zh-CN / en / es / pt 锁定。添加术语须先在消费者的</span> <code>src/i18n/locales/*.json</code> <span data-i18n="copywriting:t081">词典中完成评审并同步其全部支持语言，再在业务代码引用；本表四语仅作术语参考，不是已发布的 i18n 包。</span></p>
 <table class="map-table">
 <thead><tr><th><span data-i18n="copywriting:t082">对象</span></th><th>zh-CN</th><th>en</th><th>es</th><th>pt</th></tr></thead>
 <tbody>

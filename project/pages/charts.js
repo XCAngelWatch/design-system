@@ -80,7 +80,7 @@
         <tr><td><span data-i18n="charts:text.084">网格线</span></td><td>1px solid <code>--aw-border-3</code><span data-i18n="charts:text.085">，dashed 可选</span></td><td><span class="mono">#F0F0F0</span></td></tr>
         <tr><td><span data-i18n="charts:text.086">轴标</span></td><td>12px <code>--aw-text-3</code></td><td><span class="mono">#5F6B7A</span></td></tr>
         <tr><td><span data-i18n="charts:text.087">数字格式</span></td><td><span data-i18n="charts:text.088">千分位 + 单位置后</span></td><td><span data-i18n="charts:text.089">对接 data-format 页</span></td></tr>
-        <tr><td>Tooltip</td><td><span data-i18n="charts:text.090">暗底 + 白字 + </span><code>--aw-shadow-2</code></td><td><span data-i18n="charts:text.091">即使 light 模式也用暗 tooltip，对比清晰</span></td></tr>
+        <tr><td>Tooltip</td><td><span data-i18n="charts:text.090">活动主题背景与文字；阴影参考 </span><code>--aw-shadow-2</code></td><td><span data-i18n="charts:text.091">背景 --aw-bg-elevated，文字 --aw-text-1</span></td></tr>
         <tr><td><span data-i18n="charts:text.092">图例</span></td><td><span data-i18n="charts:text.093">位置默认下方居中</span></td><td><span data-i18n="charts:text.094">类目 ≥ 6 个用右侧纵向</span></td></tr>
         <tr><td><span data-i18n="charts:text.095">圆角</span></td><td><span data-i18n="charts:text.096">柱状图顶部圆角 2px</span></td><td><span data-i18n="charts:text.097">对接 </span><code>--aw-radius-sm</code></td></tr>
         <tr><td><span data-i18n="charts:text.098">动画</span></td><td><span data-i18n="charts:text.099">入场 320ms / 实时刷新 ≤ 200ms</span></td><td><span data-i18n="charts:text.100">对接 motion 页 ease 曲线</span></td></tr>
@@ -183,166 +183,48 @@
 
   <div class="subsection">
     <h3><span data-i18n="charts:text.130">echarts v6 集成 · Integration</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 14px"><span data-i18n="charts:text.131">echarts v6 + echarts-for-react v3 是 TMS 唯一图表方案。下面四步把 design tokens 注入 echarts 主题 —— 业务方写图表只关心 </span><code>series</code><span data-i18n="charts:text.132"> 和 </span><code>data</code><span data-i18n="charts:text.133">，不关心颜色 / 字体 / 网格。所有图表共用 </span><code>tms-light</code> / <code>tms-dark</code><span data-i18n="charts:text.134"> 两个注册主题，theme 切换</span><b><span data-i18n="charts:text.135">不</span></b><span data-i18n="charts:text.136">需要重新 setOption。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 14px" data-i18n="charts:text.131">当前已验证落点是 tms2.5-web-ui 单应用：TMSChart 透传图表属性，useChartTheme 读取活动 CSS token，调用页面负责构建 option 及空、加载、错误与重试状态。以下示例只说明这个接入关系，不代表存在可安装的图表包。</p>
 
-    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)"><span data-i18n="charts:text.137">1. 按需引入 · Tree-shake</span></h4>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7"><span data-i18n="charts:text.138">echarts v6 全量约 1.2 MB；按需引入压到 ~120 KB。在 </span><code>packages/charts/src/echarts.ts</code><span data-i18n="charts:text.139"> 集中声明用到的模块，业务方</span><b><span data-i18n="charts:text.140">不</span></b><span data-i18n="charts:text.141">直接 import echarts。</span></p>
-    <div class="code-block"><pre><code>// packages/charts/src/echarts.ts
-import * as echarts from 'echarts/core';
-import {
-  LineChart, BarChart, PieChart, ScatterChart,
-  HeatmapChart, SankeyChart, TreemapChart, GaugeChart,
-} from 'echarts/charts';
-import {
-  GridComponent, TooltipComponent, LegendComponent,
-  TitleComponent, ToolboxComponent, DataZoomComponent,
-  MarkLineComponent, MarkAreaComponent,
-} from 'echarts/components';
-import { LabelLayout, UniversalTransition } from 'echarts/features';
-import { CanvasRenderer, SVGRenderer } from 'echarts/renderers';
+    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)" data-i18n="charts:text.137">1. 当前源码入口</h4>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7" data-i18n="charts:text.138">包装器位于 src/components/TMSChart/TMSChart.tsx，主题 hook 位于 src/theme/chart.ts；@/ 是消费者映射到 src/ 的本地别名，其他项目需要映射到自己的实现。</p>
+    <div class="code-block"><pre><code>import TMSChart from '@/components/TMSChart';
+import { useChartTheme } from '@/theme/chart';</code></pre></div>
 
-echarts.use([
-  LineChart, BarChart, PieChart, ScatterChart,
-  HeatmapChart, SankeyChart, TreemapChart, GaugeChart,
-  GridComponent, TooltipComponent, LegendComponent,
-  TitleComponent, ToolboxComponent, DataZoomComponent,
-  MarkLineComponent, MarkAreaComponent,
-  LabelLayout, UniversalTransition,
-  CanvasRenderer,   // Default to Canvas; use SVG for print, SSR, or SVG themes
-]);
+    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)" data-i18n="charts:text.142">2. 从活动 token 构建 option</h4>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7" data-i18n="charts:text.143">useChartTheme 随消费者主题状态重读 CSS token。调用页面把解析后的颜色传入 option，主题变化后更新图表；Canvas 颜色值不直接使用 var(--aw-*) 字符串。示例的系列名由调用方从 i18n 传入。</p>
+    <div class="code-block"><pre><code>type TrendProps = {
+  dates: string[];
+  values: number[];
+  seriesLabel: string;
+};
 
-export default echarts;</code></pre></div>
-
-    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)"><span data-i18n="charts:text.142">2. 注册 TMS 主题</span></h4>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7"><span data-i18n="charts:text.143">把 design tokens 通过 </span><code>registerTheme</code><span data-i18n="charts:text.144"> 注入 echarts。Light / Dark 各注册一份，主题切换时切 theme 名称即可。</span></p>
-    <div class="code-block"><pre><code>// packages/charts/src/theme.ts
-import echarts from './echarts';
-
-const cssVar = (name) =&gt;
-  getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-
-function buildTMSTheme(mode) {
-  const isDark = mode === 'dark';
-  return {
-    color: [
-      cssVar('--aw-chart-1'),  // antd blue-6   #1677FF / dark: #4096FF
-      cssVar('--aw-chart-2'),  // aqua green    #5AD8A6
-      cssVar('--aw-chart-3'),  // indigo gray   #5D7092
-      cssVar('--aw-chart-4'),  // gold          #F6BD16
-      cssVar('--aw-chart-5'),  // coral         #E8684A
-      cssVar('--aw-chart-6'),  // light cyan    #6DC8EC
-      cssVar('--aw-chart-7'),  // plum          #9270CA
-      cssVar('--aw-chart-8'),  // soft orange   #FF9D4D
-    ],
-    backgroundColor: 'transparent',
-    textStyle: {
-      fontFamily: cssVar('--aw-font'),
-      color: cssVar('--aw-text-2'),
-      fontSize: 12,
-    },
-    title: {
-      textStyle: { color: cssVar('--aw-text-1'), fontWeight: 600 },
-      subtextStyle: { color: cssVar('--aw-text-3') },
-    },
-    tooltip: {
-      backgroundColor: '#14171D',                       // Dark tooltip in both light and dark modes
-      borderColor: '#14171D',
-      textStyle: { color: 'rgba(255,255,255,0.92)', fontSize: 12 },
-      extraCssText: 'box-shadow: 0 4px 12px rgba(0,0,0,0.5); border-radius: 6px;',
-    },
-    grid: { left: 60, right: 24, top: 40, bottom: 40, containLabel: true },
+export function Trend({ dates, values, seriesLabel }: TrendProps) {
+  const chart = useChartTheme();
+  return &lt;TMSChart style={{ height: 280 }} option={{
+    aria: { enabled: true },
+    color: [...chart.series],
     xAxis: {
-      axisLine:  { lineStyle: { color: cssVar('--aw-border-1') } },
-      axisLabel: { color: cssVar('--aw-text-3'), fontSize: 12 },
-      splitLine: { show: false },
+      type: 'category', data: dates,
+      axisLabel: { color: chart.axis },
+      axisLine: { lineStyle: { color: chart.axis } },
     },
     yAxis: {
-      axisLine:  { show: false },
-      axisLabel: { color: cssVar('--aw-text-3'), fontSize: 12 },
-      splitLine: { lineStyle: { color: cssVar('--aw-border-3'), type: [3, 3] } },
+      type: 'value', axisLabel: { color: chart.axis },
+      splitLine: { lineStyle: { color: chart.grid } },
     },
-    legend: {
-      bottom: 0, icon: 'circle', itemWidth: 8, itemHeight: 8, itemGap: 16,
-      textStyle: { color: cssVar('--aw-text-2'), fontSize: 12 },
+    tooltip: {
+      trigger: 'axis', backgroundColor: chart.tooltipBg,
+      textStyle: { color: chart.tooltipText },
     },
-    line: { smooth: true, symbol: 'none', lineStyle: { width: 2 } },
-    bar:  { itemStyle: { borderRadius: [2, 2, 0, 0] } },
-    pie:  { itemStyle: { borderColor: cssVar('--aw-bg'), borderWidth: 2 } },
-    animation: !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-    animationDuration: 320,
-    animationEasing: 'cubicOut',
-  };
-}
-
-echarts.registerTheme('tms-light', buildTMSTheme('light'));
-echarts.registerTheme('tms-dark',  buildTMSTheme('dark'));
-
-// Re-register the theme when theme state syncs across tabs.
-window.addEventListener('storage', (e) =&gt; {
-  if (e.key === 'aw-theme') {
-    echarts.registerTheme('tms-' + e.newValue, buildTMSTheme(e.newValue));
-  }
-});</code></pre></div>
-
-    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)"><span data-i18n="charts:text.145">3. React 包装 · TMSChart</span></h4>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7"><span data-i18n="charts:text.146">业务代码统一通过 </span><code>&lt;TMSChart /&gt;</code><span data-i18n="charts:text.147"> 调用，</span><b><span data-i18n="charts:text.148">禁止</span></b><span data-i18n="charts:text.149">直接引 </span><code>echarts-for-react</code><span data-i18n="charts:text.150">。包装层处理：主题切换 / loading / 空态 / 错误重试 / 容器尺寸变化。</span></p>
-    <div class="code-block"><pre><code>// packages/charts/src/TMSChart.tsx
-import ReactECharts from 'echarts-for-react/lib/core';
-import echarts from './echarts';
-import { useTheme } from '@tms/web/hooks';
-import { Empty, Skeleton, Alert } from 'antd';
-
-export function TMSChart({ option, height = 320, loading, error, onRetry, ...rest }) {
-  const { mode } = useTheme();           // 'light' | 'dark'
-
-  if (loading) return &lt;Skeleton.Image active style={{ width: '100%', height }} /&gt;;
-  if (error)   return &lt;Alert type="error" message="Loading failed" description={error.code}
-                       action={&lt;button onClick={onRetry}&gt;Retry&lt;/button&gt;} /&gt;;
-  if (!option?.series?.length) return &lt;Empty description="No data available" /&gt;;
-
-  return (
-    &lt;ReactECharts
-      echarts={echarts}
-      option={option}
-      theme={'tms-' + mode}
-      style={{ height, width: '100%' }}
-      opts={{ renderer: 'canvas' }}     // Large-screen SVG: opts={{ renderer: 'svg' }}
-      notMerge={false}
-      lazyUpdate={true}
-      onChartReady={rest.onChartReady}
-    /&gt;
-  );
+    series: [{ name: seriesLabel, type: 'line', data: values }],
+  }} /&gt;;
 }</code></pre></div>
 
-    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)"><span data-i18n="charts:text.151">4. 业务调用</span></h4>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7"><span data-i18n="charts:text.152">业务代码</span><b><span data-i18n="charts:text.153">只描述数据</span></b><span data-i18n="charts:text.154">。颜色 / 字体 / 网格 / Tooltip 全部由主题接管。</span></p>
-    <div class="code-block"><pre><code>// Trend — Line
-&lt;TMSChart option={{
-  xAxis: { type: 'category', data: ['04-22','04-23','04-24','04-25','04-26','04-27','04-28'] },
-  yAxis: { type: 'value' },
-  series: [
-    { name: 'Online devices', type: 'line', data: [9856, 10082, 9923, 11104, 11920, 11628, 12486] },
-    { name: 'Heartbeats',      type: 'line', data: [85420, 86120, 84920, 91200, 95400, 93120, 98860] },
-  ],
-  tooltip: { trigger: 'axis' },
-  legend: {},
-}} /&gt;
+    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)" data-i18n="charts:text.145">3. 状态与容器责任</h4>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7" data-i18n="charts:text.146">当前 TMSChart 保留 ReactECharts 属性透传，默认 notMerge=true 并撑满父容器。父容器必须提供高度；页面或图表区块负责 Skeleton、TMSEmpty、Alert 与重试。不要把这些能力假设为包装器已内置。</p>
 
-// Share — Donut + status colors
-&lt;TMSChart option={{
-  series: [{
-    type: 'pie', radius: ['55%', '80%'],
-    label: { show: false },
-    data: [
-      { value: 8856, name: 'Online',    itemStyle: { color: 'var(--aw-success)' } },
-      { value: 1872, name: 'Upgrading', itemStyle: { color: 'var(--aw-warning)' } },
-      { value:  984, name: 'Fault',     itemStyle: { color: 'var(--aw-danger)' } },
-      { value:  774, name: 'Offline',   itemStyle: { color: 'var(--aw-text-3)' } },
-    ],
-  }],
-  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
-  legend: { bottom: 0 },
-}} /&gt;</code></pre></div>
+    <h4 style="font-size:13px;font-weight:600;margin:18px 0 8px;color:var(--aw-text-1)" data-i18n="charts:text.151">4. 按需加载的评估边界</h4>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:0 0 8px;line-height:1.7" data-i18n="charts:text.152">当前包装器从 echarts-for-react 导入。只有实际包体积或性能证明需要优化时，才评估 echarts/core 的模块注册与按需加载，并覆盖现有图表、渲染器和主题测试；不把未测量的包体积或未实现的拆包方案写成当前能力。</p>
   </div>
 
   <div class="subsection">
@@ -350,12 +232,12 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
     <table class="map-table">
       <thead><tr><th style="width:18%"><span data-i18n="charts:text.156">渲染器</span></th><th style="width:24%"><span data-i18n="charts:text.157">推荐场景</span></th><th style="width:24%"><span data-i18n="charts:text.158">优势</span></th><th><span data-i18n="charts:text.159">限制</span></th></tr></thead>
       <tbody>
-        <tr><td><b><span data-i18n="charts:text.160">Canvas · 默认</span></b></td><td><span data-i18n="charts:text.161">大屏 / Dashboard / 实时刷新</span></td><td><span data-i18n="charts:text.162">≥ 5,000 数据点性能更好；GPU 加速</span></td><td><span data-i18n="charts:text.163">不可 SEO；放大模糊；导出 PNG only</span></td></tr>
-        <tr><td><b>SVG</b></td><td><span data-i18n="charts:text.164">报表 / 打印 / 导出 PDF / 精度优先</span></td><td><span data-i18n="charts:text.165">矢量无损；DOM 可调试；导出 SVG/PDF</span></td><td><span data-i18n="charts:text.166">≥ 1,000 节点 DOM 卡顿</span></td></tr>
+        <tr><td><b><span data-i18n="charts:text.160">Canvas · 默认</span></b></td><td><span data-i18n="charts:text.161">大屏 / Dashboard / 实时刷新</span></td><td><span data-i18n="charts:text.162">密集图表可评估 Canvas；性能在目标设备实测</span></td><td><span data-i18n="charts:text.163">位图放大受分辨率限制；导出流程单独验证</span></td></tr>
+        <tr><td><b>SVG</b></td><td><span data-i18n="charts:text.164">报表 / 打印 / 导出 PDF / 精度优先</span></td><td><span data-i18n="charts:text.165">矢量清晰；DOM 可检查；适合打印流程</span></td><td><span data-i18n="charts:text.166">节点多时需评估 DOM 开销，不设统一数量阈值</span></td></tr>
         <tr><td><b>SSR</b></td><td><span data-i18n="charts:text.167">服务端预渲染 (Node)</span></td><td><span data-i18n="charts:text.168">首屏快；SEO 友好</span></td><td><span data-i18n="charts:text.169">需 echarts </span><code>renderToSVGString</code><span data-i18n="charts:text.170">；动效失效</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="charts:text.171">默认策略：</span></b><span data-i18n="charts:text.172">所有图表 Canvas；导出 / 打印场景临时切 SVG（</span><code>opts.renderer = 'svg'</code><span data-i18n="charts:text.173"> 或包一层 </span><code>&lt;PrintableChart /&gt;</code><span data-i18n="charts:text.174">）；监控大屏 ≥ 4 块图表 + 全部实时刷新场景必 Canvas。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="charts:text.171">选择策略：</span></b><span data-i18n="charts:text.172">按当前图表的数据量、交互和导出需求选择渲染器；</span><code>opts.renderer = 'svg'</code><span data-i18n="charts:text.173">可显式选择 SVG。</span><span data-i18n="charts:text.174">在目标设备实测性能，不用固定的数据点、DOM 节点或图表数量代替验证。</span></p>
   </div>
 
   <div class="subsection">
@@ -364,11 +246,11 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
       <thead><tr><th style="width:24%"><span data-i18n="charts:text.176">特性</span></th><th style="width:34%"><span data-i18n="charts:text.177">当前约束</span></th><th><span data-i18n="charts:text.178">实现方式</span></th></tr></thead>
       <tbody>
         <tr><td><b><span data-i18n="charts:text.179">TypeScript 类型</span></b></td><td><span data-i18n="charts:text.180">所有 option 字段使用官方导出类型</span></td><td><span data-i18n="charts:text.181">统一从公开入口导入 </span><code>EChartsOption</code><span data-i18n="charts:text.182">，禁止依赖内部文件结构</span></td></tr>
-        <tr><td><b><span data-i18n="charts:text.183">tree-shake 改进</span></b></td><td><span data-i18n="charts:text.184">features 模块单独提取（</span><code>LabelLayout</code> / <code>UniversalTransition</code><span data-i18n="charts:text.242">）</span></td><td><span data-i18n="charts:text.185">必须显式 </span><code>echarts.use()</code><span data-i18n="charts:text.186">，否则 label / 过渡失效</span></td></tr>
-        <tr><td><b><span data-i18n="charts:text.187">暗色模式</span></b></td><td><span data-i18n="charts:text.188">内置 </span><code>dark</code><span data-i18n="charts:text.189"> 主题；默认背景透明</span></td><td><span data-i18n="charts:text.190">TMS 仍用自注册主题，不用 </span><code>dark</code><span data-i18n="charts:text.191"> 内置（值差异太大）</span></td></tr>
-        <tr><td><b><span data-i18n="charts:text.192">动画系统</span></b></td><td><span data-i18n="charts:text.193">UniversalTransition 默认开启</span></td><td><span data-i18n="charts:text.194">切换 </span><code>option</code><span data-i18n="charts:text.195"> 时数据流转动画自动；可关闭 </span><code>animationDuration: 0</code></td></tr>
+        <tr><td><b><span data-i18n="charts:text.183">模块按需注册</span></b></td><td><span data-i18n="charts:text.184">采用 echarts/core 时评估所需 features（</span><code>LabelLayout</code> / <code>UniversalTransition</code><span data-i18n="charts:text.242">）</span></td><td><span data-i18n="charts:text.185">该方案需要显式 </span><code>echarts.use()</code><span data-i18n="charts:text.186"> 注册；当前包装器入口尚未采用此方案</span></td></tr>
+        <tr><td><b><span data-i18n="charts:text.187">暗色模式</span></b></td><td><span data-i18n="charts:text.188">内置 </span><code>dark</code><span data-i18n="charts:text.189"> 主题不能代替 TMS token 映射</span></td><td><span data-i18n="charts:text.190">当前用 useChartTheme 更新 option，不使用 </span><code>dark</code><span data-i18n="charts:text.191"> 内置主题或自注册主题</span></td></tr>
+        <tr><td><b><span data-i18n="charts:text.192">动画系统</span></b></td><td><span data-i18n="charts:text.193">UniversalTransition 需按系列显式启用</span></td><td><span data-i18n="charts:text.194">更新 </span><code>option</code><span data-i18n="charts:text.195"> 的常规动画与跨系列过渡分别配置；减少动效时设置 </span><code>animation: false</code></td></tr>
         <tr><td><b><span data-i18n="charts:text.196">无障碍</span></b></td><td><span data-i18n="charts:text.197">添加 </span><code>aria.enabled</code><span data-i18n="charts:text.198"> 默认描述图表内容</span></td><td><span data-i18n="charts:text.199">TMS 强制 </span><code>aria.enabled: true</code><span data-i18n="charts:text.200">，对接 a11y 页 SR 规范</span></td></tr>
-        <tr><td><b><span data-i18n="charts:text.201">性能</span></b></td><td><span data-i18n="charts:text.202">大数据集 (≥ 100k 点) 渲染提速 30-50%</span></td><td><span data-i18n="charts:text.203">大屏可去掉 sampling，直出原始数据</span></td></tr>
+        <tr><td><b><span data-i18n="charts:text.201">性能</span></b></td><td><span data-i18n="charts:text.202">大数据集在目标设备与真实交互下测量</span></td><td><span data-i18n="charts:text.203">是否采样由实测性能与数据保真需求决定，不默认移除 sampling</span></td></tr>
         <tr><td><b><span data-i18n="charts:text.204">导入路径</span></b></td><td><span data-i18n="charts:text.205">不使用 </span><code>echarts/lib/*</code><span data-i18n="charts:text.206"> 内部子路径</span></td><td><span data-i18n="charts:text.207">所有 import 走 </span><code>echarts/core</code> + <code>echarts/charts</code><span data-i18n="charts:text.208"> 等公开目录</span></td></tr>
       </tbody>
     </table>
@@ -393,12 +275,12 @@ export function TMSChart({ option, height = 320, loading, error, onRetry, ...res
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)">✓ DO</h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
           <li><span data-i18n="charts:text.217">统一通过 </span><code>&lt;TMSChart /&gt;</code><span data-i18n="charts:text.218"> 调用，禁止业务直接 import echarts-for-react</span></li>
-          <li><span data-i18n="charts:text.219">echarts 模块通过 </span><code>echarts.use([...])</code><span data-i18n="charts:text.220"> 集中按需引入</span></li>
-          <li><span data-i18n="charts:text.221">theme 走 </span><code>registerTheme('tms-light' / 'tms-dark')</code><span data-i18n="charts:text.222">，不在每次 setOption 重写颜色</span></li>
+          <li><span data-i18n="charts:text.219">模块按需加载仅在需求与体积验证后采用 </span><code>echarts.use([...])</code><span data-i18n="charts:text.220"> 集中注册，并回归已用图表</span></li>
+          <li><span data-i18n="charts:text.221">当前主题颜色由 </span><code>useChartTheme()</code><span data-i18n="charts:text.222"> 读取活动 token，再随主题变化更新 option</span></li>
           <li><span data-i18n="charts:text.223">状态分布图用 status 色（绿 / 黄 / 红）；多系列按 8 色业务序列顺序</span></li>
-          <li><span data-i18n="charts:text.224">Tooltip 统一暗底；数字格式遵循 data-format 页</span></li>
-          <li><span data-i18n="charts:text.225">大屏 / Dashboard 用 Canvas；导出 / 打印用 SVG</span></li>
-          <li><span data-i18n="charts:text.226">空 / 错误 / 加载在 </span><code>&lt;TMSChart /&gt;</code><span data-i18n="charts:text.227"> 包装层处理</span></li>
+          <li><span data-i18n="charts:text.224">Tooltip 使用当前主题背景与文字 token；数字格式遵循 data-format 页</span></li>
+          <li><span data-i18n="charts:text.225">渲染器按实际数据量、交互和导出需求选择并验证</span></li>
+          <li><span data-i18n="charts:text.226">图表页面在渲染 </span><code>&lt;TMSChart /&gt;</code><span data-i18n="charts:text.227"> 前处理空 / 错误 / 加载与重试</span></li>
           <li>echarts <code>aria.enabled: true</code><span data-i18n="charts:text.228"> 强制开启</span></li>
           <li><span data-i18n="charts:text.229">地图用自托管 leaflet + GeoJSON 瓦片</span></li>
         </ul>

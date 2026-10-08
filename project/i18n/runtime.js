@@ -84,6 +84,7 @@
       : function (callback) { callback(); };
 
     schedule(function () {
+      if (locale !== 'en-US' || rootNode.isConnected === false) return;
       var tables = rootNode.querySelectorAll
         ? Array.prototype.slice.call(rootNode.querySelectorAll('table'))
         : [];

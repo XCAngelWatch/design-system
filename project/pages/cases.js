@@ -44,7 +44,7 @@
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case1.step2.name">Modal 二次确认</div><div class="cf-desc" data-i18n="cases:case1.step2.desc">不可逆操作使用 Modal.confirm，焦点落在取消；文案说明将向 28 台设备推送 OTA 包，预计 8 分钟，并要求输入数字 28 确认。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case1.step3.name">PushPage 跟踪推送结果</div><div class="cf-desc" data-i18n="cases:case1.step3.desc">每条设备独立进度环 + 状态 Tag；SSE 推送更新；失败停在该条，不影响后续；Toast 汇总 24 成功 / 4 失败。</div></div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case1.step3.name">PushPage 跟踪推送结果</div><div class="cf-desc" data-i18n="cases:case1.step3.desc">进度环与状态 Tag 展示各设备的任务反馈；订阅或轮询方式由消费项目核验。示例 Toast 汇总 24 成功 / 4 失败。</div></div>
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case1.step4.name">Result 处理失败</div><div class="cf-desc" data-i18n="cases:case1.step4.desc">Result 使用 partial-success，列出 4 台失败、错误码和下载失败清单 / 重试 / 联系系统管理员三个后续动作，再跳详情查心跳日志。</div></div>
     </div>
@@ -91,7 +91,7 @@
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case4.step3.name">Whitelabel token 接管</div><div class="cf-desc" data-i18n="cases:case4.step3.desc">租户 webConfig 的 logo / brandColor / siteName 通过 ConfigProvider 顶层注入，所有 --aw-* token 重新解析，dark 与双语保持一致。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case4.step4.name">数据隔离</div><div class="cf-desc" data-i18n="cases:case4.step4.desc">所有 API 自带 X-Tenant 头；切租户清空 React Query 缓存，防止 A 租户数据闪现到 B 租户。</div></div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case4.step4.name">数据隔离</div><div class="cf-desc" data-i18n="cases:case4.step4.desc">租户与权限隔离以后端契约为准；切换租户时清除旧上下文和页面数据，防止 A 租户数据闪现到 B 租户。</div></div>
     </div>
     <div class="case-tags"><span>login-page</span><span>shell</span><span>whitelabel</span><span>i18n</span></div>
   </div>
@@ -133,7 +133,7 @@
       <tbody>
         <tr><td data-i18n="cases:patterns.bulk.pattern">批量勾选 + Action toolbar</td><td data-i18n="cases:patterns.bulk.used">案例 1 / 案例 5</td></tr>
         <tr><td data-i18n="cases:patterns.confirm.pattern">不可逆操作二次确认 + 输入数量</td><td data-i18n="cases:patterns.confirm.used">案例 1 / 案例 3</td></tr>
-        <tr><td data-i18n="cases:patterns.sse.pattern">SSE 推送更新 React Query</td><td data-i18n="cases:patterns.sse.used">案例 1 / 案例 2 / 案例 3</td></tr>
+        <tr><td data-i18n="cases:patterns.sse.pattern">统一刷新进度与状态</td><td data-i18n="cases:patterns.sse.used">案例 1 / 案例 2 / 案例 3</td></tr>
         <tr><td data-i18n="cases:patterns.result.pattern">Result 部分成功 + 失败 CSV</td><td data-i18n="cases:patterns.result.used">案例 1 / 案例 5</td></tr>
         <tr><td data-i18n="cases:patterns.audit.pattern">操作记录 Tab 强制审计</td><td data-i18n="cases:patterns.audit.used">案例 2 / 案例 5</td></tr>
         <tr><td data-i18n="cases:patterns.tenant.pattern">租户切换整页 reload</td><td data-i18n="cases:patterns.tenant.used">案例 4</td></tr>

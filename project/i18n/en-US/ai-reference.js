@@ -79,6 +79,12 @@
   "avoid.legacy.title": "Legacy implementation limits",
   "avoid.legacy.desc": "Do not copy Vue 2 / Element UI code, use Pro Components, add runtime CDNs, introduce build steps, or require an HTTP server.",
   "avoid.figma.title": "Figma exclusion boundary",
-  "avoid.figma.desc": "Old systems, rejected drafts, temporary solutions, placeholder layers, test filenames, and mock IDs are exclusion evidence only and must not enter final UI copy."
+  "avoid.figma.desc": "Old systems, rejected drafts, temporary solutions, placeholder layers, test filenames, and mock IDs are exclusion evidence only and must not enter final UI copy.",
+  "reuse.title": "Using this reference in another project",
+  "reuse.boundary": "Use current visual tokens and interaction, accessibility, and layout guidance, then implement them in your own stack. Verify business fields, states, permissions, APIs, and product workflows separately. This repository publishes no runtime component package. Its TMS consumer contract covers only the verified tms2.5-web-ui implementation and does not guarantee integration elsewhere.",
+  "reuse.repository": "Source repository and offline access",
+  "reuse.tokens": "Current visual tokens",
+  "reuse.contract": "TMS consumer contract",
+  "reuse.access": "These source links open GitHub from both file mode and the hosted site and require a network connection. For offline access, obtain the full repository and read the matching relative paths. Downloading only project provides the reference site without Markdown, evidence manifests, or consumer contracts. Record the referenced commit and validate future synchronization against your own consumer contract."
 });
 })(typeof window !== 'undefined' ? window : globalThis);
