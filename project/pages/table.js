@@ -217,7 +217,7 @@
         <thead><tr>
           <th style="width:160px"><span data-i18n="table:text.135">设备名称</span><div class="col-resizer"></div></th>
           <th style="width:140px">SN<div class="col-resizer dragging"></div></th>
-          <th style="width:90px"><span data-i18n="table:text.136">状态</span><div class="col-resizer"></div></th>
+          <th style="width:120px"><span data-i18n="table:text.136">状态</span><div class="col-resizer"></div></th>
           <th><span data-i18n="table:text.137">OTA 版本</span><div class="col-resizer"></div></th>
           <th><span data-i18n="table:text.138">所属机构</span></th>
         </tr></thead>

@@ -13,13 +13,15 @@ fs.mkdirSync(output, {recursive:true});
 const allRoutes = fs.readdirSync(root + '/project/pages').filter(f => f.endsWith('.js') && f !== '_router.js').map(f => f.slice(0, -3));
 const routes = option('--routes', allRoutes.join(',')).split(',');
 if (routes.some(route => !allRoutes.includes(route))) throw new Error('Unknown route in --routes');
+const widths = option('--widths', '1440,390').split(',').map(Number);
+if (widths.some(width => !Number.isInteger(width) || width < 320)) throw new Error('Invalid viewport in --widths');
 
 const axe = process.env.AXE_SCRIPT || require.resolve('axe-core/axe.min.js');
 (async () => {
   const browser = await chromium.launch({headless: true});
   const problems = [];
   let renders = 0, accessibility = 0;
-  const matrix = [1440,390].flatMap(width => ['zh-CN','en-US'].flatMap(locale => ['light','dark'].map(theme => [width,locale,theme])));
+  const matrix = widths.flatMap(width => ['zh-CN','en-US'].flatMap(locale => ['light','dark'].map(theme => [width,locale,theme])));
   for (const [width, locale, theme] of matrix) {
     const context = await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
     const page = await context.newPage();
@@ -50,6 +52,19 @@ const axe = process.env.AXE_SCRIPT || require.resolve('axe-core/axe.min.js');
         }
         for (const row of document.querySelectorAll('.datacard .ra-row')) {
           if (visible(row) && row.scrollWidth > row.clientWidth + 1) issues.push({kind:'card-actions-overflow',text:row.textContent.trim()});
+        }
+        for (const status of document.querySelectorAll('.status-dot')) {
+          const cell = status.closest('td, .datacard .body .v');
+          if (!cell || !visible(status) || status.closest('[hidden]')) continue;
+          const style = getComputedStyle(cell);
+          if (!['hidden','clip'].includes(style.overflowX)) continue;
+          const range = document.createRange();
+          range.selectNodeContents(status);
+          const text = range.getBoundingClientRect();
+          const bounds = cell.getBoundingClientRect();
+          if (text.right > bounds.right + 1 || text.left < bounds.left - 1 || text.bottom > bounds.bottom + 1) {
+            issues.push({kind:'status-clipped',text:status.textContent.trim()});
+          }
         }
         for (const button of document.querySelectorAll('#app-slot .btn-back')) {
           if (!button.querySelector('use[href="#aw-icon-arrow-left"]') || !button.textContent.trim() || !button.hasAttribute('data-route-back')) issues.push({kind:'back-control',html:button.outerHTML});

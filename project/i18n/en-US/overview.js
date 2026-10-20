@@ -61,7 +61,7 @@
   "rule.feedback.text2": "The consumer manages request state, failure feedback, and retry actions.",
   "rule.optimistic.name": "Optimistic UI",
   "rule.optimistic.en": "Reversible only",
-  "rule.optimistic.text1": "Selection, favorites, and state toggles may respond immediately and roll back with a Toast on failure.",
+  "rule.optimistic.text1": "Selection, favorites, and state toggles may respond immediately and roll back with a Toast on failure. ",
   "rule.optimistic.no": "Do not",
   "rule.optimistic.text2": " use this for delete, firmware push, reboot, or any irreversible/high-impact action.",
   "rule.safe.name": "Safe Defaults",

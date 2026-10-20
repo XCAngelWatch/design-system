@@ -27,7 +27,7 @@
             <th style="width:160px"><span data-i18n="push-page:text.011">推送方式</span></th>
             <th style="width:120px"><span data-i18n="push-page:text.012">操作人</span></th>
             <th style="width:160px"><span data-i18n="push-page:text.013">推送时间</span></th>
-            <th style="width:100px"><span data-i18n="push-page:text.014">状态</span></th>
+            <th style="width:160px"><span data-i18n="push-page:text.014">状态</span></th>
             <th style="width:140px" class="colactions"><span data-i18n="push-page:text.015">操作</span></th>
           </tr>
         </thead>

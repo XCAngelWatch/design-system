@@ -49,7 +49,7 @@
     <div class="surface" style="padding:0;overflow:hidden">
       <table class="ra-table">
         <thead>
-          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
+          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:120px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
         </thead>
         <tbody>
           <tr>

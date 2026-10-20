@@ -67,7 +67,7 @@
                 <th class="colnum" style="width:80px"><span data-i18n="ota-page:text.033">大小</span></th>
                 <th style="width:120px"><span data-i18n="ota-page:text.034">适配机型</span></th>
                 <th style="width:140px"><span data-i18n="ota-page:text.035">创建时间</span></th>
-                <th style="width:100px"><span data-i18n="ota-page:text.036">状态</span></th>
+                <th style="width:180px"><span data-i18n="ota-page:text.036">状态</span></th>
                 <th style="width:140px" class="colactions"><span data-i18n="ota-page:text.037">操作</span></th>
               </tr>
             </thead>

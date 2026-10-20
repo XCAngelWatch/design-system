@@ -354,6 +354,9 @@
 }
 .datacard .body .l { color: var(--aw-text-3); }
 .datacard .body .v { color: var(--aw-text-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.datacard .body .v .status-dot { max-width: 100%; white-space: normal; }
+.datacard .body .v .status-dot > span { min-width: 0; overflow-wrap: anywhere; }
+.datacard .body .v .status-dot::before { flex-shrink: 0; }
 .datacard .foot {
   margin-top: auto;
   padding: 8px 10px;
