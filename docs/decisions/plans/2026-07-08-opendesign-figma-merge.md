@@ -690,7 +690,7 @@ Insert this subsection before the final `</section>` of the table page:
       <thead><tr><th>模式</th><th>出现模块</th><th>规则</th></tr></thead>
       <tbody>
         <tr><td>筛选区</td><td>应用管理 / OTA / 设备管理 / 推送任务</td><td>常用 3-4 字段直接展示，高级筛选折叠；搜索字段永远在第一位。</td></tr>
-        <tr><td>表格视图</td><td>应用列表 / 设备列表 / 日志 / 字典</td><td>状态列靠近主对象；操作列固定右侧；超过 4 个动作交给 RowActions。</td></tr>
+        <tr><td>表格视图</td><td>应用列表 / 设备列表 / 日志 / 字典</td><td>状态列靠近主对象；操作列固定右侧；达到 3 个动作时交给 RowActions，最多 2 个普通文字动作外露，其余菜单项带语义图标，继续遵守危险确认与窄容器收纳规则。</td></tr>
         <tr><td>卡片视图</td><td>应用管理 / 广告管理 / 设备管理 / 设备分组</td><td>卡片保留主状态、关键字段、最近操作；批量勾选入口在左上角。</td></tr>
         <tr><td>批量条</td><td>分配设备 / 推送设备 / 导出日志</td><td>只在选中后出现，显示已选数量、清空入口和 2-3 个高频批量动作。</td></tr>
         <tr><td>状态列</td><td>应用审核 / OTA 推送 / 设备在线 / 任务结果</td><td>状态文案与操作可用性绑定；不能只改变颜色而不改变可操作项。</td></tr>
@@ -747,7 +747,7 @@ Insert this subsection before the final `</section>` in `project/pages/feedback.
       <div class="bp-step"><div class="num">1</div><div class="name">动作前确认</div><div class="desc">推送、删除、重置、恢复出厂等强副作用操作使用 Modal.confirm，并明示影响数量。</div></div>
       <div class="bp-step"><div class="num">2</div><div class="name">执行中进度</div><div class="desc">大批量任务使用进度弹窗或任务详情页；Toast 只做启动成功提示。</div></div>
       <div class="bp-step"><div class="num">3</div><div class="name">终态 Result</div><div class="desc">完成、失败、部分成功都进入 Result 或详情卡；部分成功必须列出失败项。</div></div>
-      <div class="bp-step"><div class="num">4</div><div class="name">下一步动作</div><div class="desc">提供重试失败项、下载 CSV、查看日志、返回列表，不让用户猜下一步。</div></div>
+      <div class="bp-step"><div class="num">4</div><div class="name">下一步动作</div><div class="desc">提供重试失败项、下载 CSV、查看日志；二三级页面统一使用带左箭头和文字的返回按钮，优先返回已验证的站内来源，无来源时回退业务父页面。</div></div>
     </div>
   </div>
 ```

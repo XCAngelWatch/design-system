@@ -148,6 +148,114 @@ paging.document.activeElement = outside;
 paging.render(pager, 8);
 assert.equal(paging.document.activeElement, outside);
 
+// Use browser-like entries, including an external page before the document.
+// Native Back/Forward restores state; setting a new hash creates a fresh entry.
+function navigationFixture(initial = '#/overview') {
+  const entries = [{ hash: 'external', state: null }, { hash: initial, state: null }];
+  let position = 1;
+  let pendingBack = false;
+  let backCalls = 0;
+  const context = {
+    ROUTE_MAP: { overview: {}, table: {}, icons: {}, 'detail-page': {}, 'list-page': {} },
+    DEFAULT_ROUTE: 'overview',
+    routeHistory: [], routeHistoryIndex: -1, routeHistorySession: 'test-document',
+    routeHistoryAvailable: false, routeBackPending: false,
+    location: {
+      get hash() { return entries[position].hash; },
+      set hash(hash) {
+        if (hash === entries[position].hash) return;
+        entries.splice(position + 1);
+        entries.push({ hash, state: null });
+        position++;
+      }
+    },
+    history: {
+      get state() { return entries[position].state; },
+      replaceState(state, title, hash) {
+        entries[position].state = structuredClone(state);
+        if (hash !== undefined) entries[position].hash = hash;
+      },
+      back() { backCalls++; pendingBack = true; }
+    },
+    loadRoute(route) { context.rendered = route; }
+  };
+  vm.runInNewContext(['getRouteFromHash', 'parseRouteTarget', 'recordRouteVisit', 'navigateBack'].map(productionFunction).join('\n') +
+    '\nthis.record = recordRouteVisit; this.back = navigateBack;', context);
+  context.record();
+  return {
+    context,
+    get backCalls() { return backCalls; },
+    get hash() { return context.location.hash; },
+    visit(hash) { context.location.hash = hash; context.record(); },
+    travel(delta) { position += delta; context.record(); },
+    finishBack() {
+      if (!pendingBack) return;
+      pendingBack = false;
+      position--;
+      context.record();
+    }
+  };
+}
+const backControl = attributes => ({ getAttribute(name) { return attributes[name] || null; } });
+const navigation = navigationFixture();
+navigation.visit('#/table');
+navigation.visit('#/icons');
+navigation.travel(-1);
+assert.equal(navigation.hash, '#/table');
+navigation.context.back();
+navigation.context.back();
+assert.equal(navigation.backCalls, 1, 'a double click cannot queue multiple history traversals');
+navigation.finishBack();
+assert.equal(navigation.hash, '#/overview', 'Back after browser Back must not return forward to Icons');
+navigation.travel(1);
+navigation.travel(1);
+assert.equal(navigation.hash, '#/icons', 'browser Forward still follows the original entries');
+navigation.context.back();
+navigation.finishBack();
+assert.equal(navigation.hash, '#/table');
+navigation.visit('#/list-page');
+assert.equal(navigation.context.routeHistory.length, 3, 'a new branch discards stale forward visits');
+navigation.context.back();
+navigation.finishBack();
+assert.equal(navigation.hash, '#/table');
+
+const deepLink = navigationFixture('#/detail-page');
+deepLink.context.back(backControl({ 'data-back-fallback': '#/list-page' }));
+assert.equal(deepLink.hash, '#/list-page', 'direct demo access uses its explicit internal fallback');
+assert.equal(deepLink.backCalls, 0, 'a direct link must never navigate to the preceding external page');
+deepLink.context.record();
+deepLink.context.back(backControl({ 'data-back-target': '#/overview' }));
+assert.equal(deepLink.hash, '#/overview', 'an explicit target wins over history');
+const invalidTarget = navigationFixture('#/detail-page');
+invalidTarget.context.back(backControl({ 'data-back-target': 'https://example.com/', 'data-back-fallback': 'javascript:alert(1)' }));
+assert.equal(invalidTarget.hash, '#/overview', 'invalid or external targets use the internal overview');
+
+const queryHistory = navigationFixture();
+queryHistory.visit('#/table');
+queryHistory.context.history.replaceState(queryHistory.context.history.state, '', '#/table?view=compact');
+queryHistory.context.record();
+assert.equal(queryHistory.context.routeHistory.length, 2, 'replacing a view query does not invent another visit');
+queryHistory.visit('#/icons');
+queryHistory.context.back();
+queryHistory.finishBack();
+assert.equal(queryHistory.hash, '#/table?view=compact', 'returning preserves the preceding view query');
+
+let commonCatalog;
+vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../project/i18n/common.en-US.js'), 'utf8'), {
+  window: { __AW_I18N__: { register(locale, namespace, catalog) { commonCatalog = catalog; } } }
+});
+const toolbarContext = {
+  ROUTE_MAP: { overview: { group: '导览' }, table: { group: '通用组件' } },
+  DEFAULT_ROUTE: 'overview', BACK_SVG: '<svg></svg>',
+  getGroupLabel: group => group, getRouteLabel: route => route,
+  buildLocaleToggle: () => '', buildThemeToggle: () => '',
+  tCommon: (key, params, fallback) => commonCatalog[key] || fallback
+};
+vm.runInNewContext(productionFunction('buildToolbar') + '\nthis.toolbar = buildToolbar;', toolbarContext);
+assert.match(toolbarContext.toolbar('table'), /data-route-back aria-label="Back to the previous page"/);
+assert.match(toolbarContext.toolbar('table'), /<span>Back<\/span>/);
+assert.doesNotMatch(toolbarContext.toolbar('overview'), /data-route-back/);
+
 // Concurrent page requests share a script; errors remain retryable and a cached
 // page resolves without another injection. The real loader runs against fake events.
 async function testScriptLoading() {
@@ -184,6 +292,34 @@ async function testScriptLoading() {
   assert.equal(injected.length, 4);
 }
 
-testScriptLoading().then(() => {
-  console.log('router lifecycle, focus, semantic icon and script loading tests passed');
+async function testClipboard() {
+  let copied, removed = 0, restored = 0, allowed = true;
+  const clipboard = {
+    navigator: { clipboard: { writeText(value) { copied = value; return Promise.resolve(); } } },
+    document: {
+      activeElement: { isConnected: true, focus() { restored++; } },
+      body: { appendChild() {} },
+      createElement() { return { setAttribute() {}, select() { copied = this.value; }, remove() { removed++; } }; },
+      execCommand() { return allowed; }
+    }
+  };
+  vm.runInNewContext(productionFunction('copyDemoText') + '\nthis.copy = copyDemoText;', clipboard);
+  await clipboard.copy('trace-native');
+  assert.equal(copied, 'trace-native');
+  assert.equal(removed, 0, 'native clipboard does not create a fallback control');
+  clipboard.navigator.clipboard.writeText = () => Promise.reject(new Error('Permission denied'));
+  await clipboard.copy('trace-fallback');
+  assert.equal(copied, 'trace-fallback');
+  assert.equal(removed, 1);
+  assert.equal(restored, 1, 'fallback copy returns focus to its trigger');
+  delete clipboard.navigator.clipboard;
+  allowed = false;
+  await assert.rejects(clipboard.copy('trace-rejected'), /Copy unavailable/);
+  assert.equal(removed, 2, 'failed copy cleans up its temporary control');
+  assert.equal(restored, 2);
+  await assert.rejects(clipboard.copy(''), /Missing copy value/);
+}
+
+Promise.all([testScriptLoading(), testClipboard()]).then(() => {
+  console.log('router lifecycle, navigation history, localized back controls, focus, semantic icon, clipboard and script loading tests passed');
 }).catch(error => { console.error(error); process.exitCode = 1; });

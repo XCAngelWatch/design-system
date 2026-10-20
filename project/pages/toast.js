@@ -4,7 +4,7 @@
 <section class="section" id="toast">
   <p class="section-eyebrow"><span data-i18n="toast:text.001">通用组件 · 消息与通知</span></p>
   <h2><span data-i18n="toast:text.002">Message / Notification / Tooltip / Popover</span></h2>
-  <p class="lede"><span data-i18n="toast:text.003">Message 用于可忽略的轻量成功或信息；Notification 跟踪异步进度并链接任务详情；Tooltip 解释行内内容，Popover 承载结构化补充信息。错误终态使用 Alert、Modal 或 Result。</span></p>
+  <p class="lede"><span data-i18n="toast:text.003">Message 用于简短成功、信息或可原地重试的操作失败，当前上下文须保持可见；页面 / 区域加载失败保留 Alert 或 Result 与重试入口。Notification 跟踪异步进度并链接任务详情；Tooltip 解释行内内容，Popover 承载结构化补充信息。</span></p>
 
   <div class="demo-grid cols-2">
     <div class="surface">
@@ -51,8 +51,8 @@
           <tr><th style="width:120px"><span data-i18n="toast:text.024">类型</span></th><th style="width:140px"><span data-i18n="toast:text.025">默认位置</span></th><th style="width:100px"><span data-i18n="toast:text.026">栈上限</span></th><th style="width:120px"><span data-i18n="toast:text.027">自动消失</span></th><th><span data-i18n="toast:text.028">典型场景</span></th></tr>
         </thead>
         <tbody>
-          <tr><td>Message<br/><small style="color:var(--aw-text-3)"><span data-i18n="toast:text.029">轻量横条</span></small></td><td><span data-i18n="toast:text.030">页面顶部居中</span></td><td><span data-i18n="toast:text.031">3 条</span></td><td><span data-i18n="toast:text.032">1.5s 成功 / 2s info</span></td><td><span data-i18n="toast:text.033">"已保存" / "已复制" / "已撤销"</span></td></tr>
-          <tr><td>Notification<br/><small style="color:var(--aw-text-3)"><span data-i18n="toast:text.034">右上角卡片</span></small></td><td><span data-i18n="toast:text.035">topRight (默认)</span><br/><small><span data-i18n="toast:text.036">可配 topLeft / bottomRight</span></small></td><td><span data-i18n="toast:text.037">3 条</span></td><td><span data-i18n="toast:text.038">3s 成功 / 4.5s info / 6s 警告；进度手动关闭</span></td><td><span data-i18n="toast:text.039">OTA 推送启动、进度和结果摘要；终态链接 Result</span></td></tr>
+          <tr><td>Message<br/><small style="color:var(--aw-text-3)"><span data-i18n="toast:text.029">轻量横条</span></small></td><td><span data-i18n="toast:text.030">页面顶部居中</span></td><td><span data-i18n="toast:text.031">3 条</span></td><td><span data-i18n="toast:text.032">成功 1.5s / 信息 2s；可重试失败按阅读需要延长，并保留原操作入口</span></td><td><span data-i18n="toast:text.033">"已保存" / "已复制" / "已撤销"</span></td></tr>
+          <tr><td>Notification<br/><small style="color:var(--aw-text-3)"><span data-i18n="toast:text.034">右上角卡片</span></small></td><td><span data-i18n="toast:text.035">topRight (默认)</span><br/><small><span data-i18n="toast:text.036">可配 topLeft / bottomRight</span></small></td><td><span data-i18n="toast:text.037">3 条</span></td><td><span data-i18n="toast:text.038">普通摘要：成功 3s / 信息 4.5s / 警告 6s；进度与待处理内容手动关闭</span></td><td><span data-i18n="toast:text.039">OTA 推送启动、进度和结果摘要；终态链接 Result</span></td></tr>
           <tr><td><span data-i18n="toast:text.040">富 Notification</span><br/><small style="color:var(--aw-text-3)"><span data-i18n="toast:text.041">含按钮 / 进度</span></small></td><td>topRight / bottomRight</td><td><span data-i18n="toast:text.042">2 条</span></td><td><span data-i18n="toast:text.043">不自动消失</span></td><td><span data-i18n="toast:text.044">升级进度、待确认动作</span></td></tr>
           <tr><td>Tooltip<br/><small style="color:var(--aw-text-3)"><span data-i18n="toast:text.045">hover 浮层</span></small></td><td><span data-i18n="toast:text.046">跟随触发元素</span></td><td><span data-i18n="toast:text.047">1 条 (单)</span></td><td><span data-i18n="toast:text.048">移开即消</span></td><td><span data-i18n="toast:text.049">截断文本完整内容、icon 含义解释</span></td></tr>
         </tbody>

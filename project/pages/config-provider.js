@@ -4,7 +4,7 @@
 <section class="section" id="config-provider">
 <p class="section-eyebrow"><span data-i18n="config-provider:t001">工程落地 · 全局配置</span></p>
 <h2><span data-i18n="config-provider:t002">全局配置 ConfigProvider</span></h2>
-<p class="lede"><span data-i18n="config-provider:t003">这一页把 docs 中散布的"我们用的是 X 而不是 antd 默认 Y"集中整理到</span> <code>&lt;ConfigProvider&gt;</code> <span data-i18n="config-provider:t004">及其页面级默认值。所有项目根</span> <code>App.tsx</code> <span data-i18n="config-provider:t005">必须包一层带这些覆盖的 ConfigProvider，否则视觉与 docs 不一致是已知 bug。当前单应用消费者入口是</span> <code class="mono">tms2.5-web-ui/src/App.tsx</code><span data-i18n="config-provider:t090">。</span></p>
+<p class="lede"><span data-i18n="config-provider:t003">本页汇总当前 TMS 消费者的</span> <code>&lt;ConfigProvider&gt;</code> <span data-i18n="config-provider:t004">入口配置和页面级设计约定。其他项目采用时须核验自己的依赖与主题实现；</span> <code>App.tsx</code> <span data-i18n="config-provider:t005">示例不能直接视作通用组件包。当前单应用消费者入口是</span> <code class="mono">tms2.5-web-ui/src/App.tsx</code><span data-i18n="config-provider:t090">。</span></p>
 <div class="subsection">
 <h3><span data-i18n="config-provider:t006">覆盖项一览</span></h3>
 <table class="map-table">
@@ -23,14 +23,14 @@
 <tr><td>Button.primaryShadow</td><td><span class="mono">0 2px 0 rgba(...)</span></td><td><span class="mono">none</span></td><td><code>theme.components.Button.primaryShadow</code></td></tr>
 <tr><td>Pagination.pageSize</td><td>10</td><td>20</td><td><span data-i18n="config-provider:t019">不在 theme，需</span> <code>&lt;Pagination defaultPageSize={20}&gt;</code> <span data-i18n="config-provider:t020">或</span> <code>&lt;Table pagination={{ pageSize: 20 }} /&gt;</code></td></tr>
 <tr><td>Notification.duration</td><td>4.5s</td><td><span data-i18n="config-provider:t021">按反馈类型配置</span></td><td><code>App.useApp().notification</code> <span data-i18n="config-provider:t022">· 禁止静态 notification API</span></td></tr>
-<tr><td>Form.validateTrigger</td><td>onChange</td><td><span data-i18n="config-provider:t023">onBlur (必填) / onChange (格式)</span></td><td><code>&lt;Form validateTrigger="onBlur"&gt;</code> <span data-i18n="config-provider:t024">· 默认</span></td></tr>
-<tr><td>Form.validateMessages</td><td><span data-i18n="config-provider:t025">antd 内置 zh / en</span></td><td><span data-i18n="config-provider:t026">TMS 文案三层模板</span></td><td><code>theme</code> <span data-i18n="config-provider:t027">不管，需</span> <code>&lt;ConfigProvider form.validateMessages={{...}} /&gt;</code></td></tr>
+<tr><td>Form.validateTrigger</td><td>onChange</td><td><span data-i18n="config-provider:t023">按字段规则选择触发时机</span></td><td><code>&lt;Form validateTrigger="onBlur"&gt;</code> <span data-i18n="config-provider:t024">· 页面按需配置，当前根入口未统一覆盖</span></td></tr>
+<tr><td>Form.validateMessages</td><td><span data-i18n="config-provider:t025">antd 内置 zh / en</span></td><td><span data-i18n="config-provider:t026">TMS 文案三层模板</span></td><td><code>theme</code> <span data-i18n="config-provider:t027">不管，需</span> <code>&lt;ConfigProvider form={{ validateMessages }} /&gt;</code></td></tr>
 <tr><td><span data-i18n="config-provider:t028">Tag 预设色</span></td><td><span data-i18n="config-provider:t029">13 (含 volcano/lime/yellow)</span></td><td><span data-i18n="config-provider:t030">只使用已发布语义 token；8 色扩展标签色仍是候选</span></td><td><span data-i18n="config-provider:t031">不在 antd ConfigProvider 内禁用，由业务仓库 lint / 代码审查拦截</span> <code>color="volcano"</code> <span data-i18n="config-provider:t032">等</span></td></tr>
 <tr class="map-group"><td colspan="4"><span data-i18n="config-provider:t033">渲染层 · ConfigProvider props</span></td></tr>
-<tr><td>locale</td><td>en_US</td><td><span data-i18n="config-provider:t034">zh_CN (默认) · en_US / es_ES / pt_BR / fr_FR / ru_RU (切换)</span></td><td><code>&lt;ConfigProvider locale={zhCN}&gt;</code></td></tr>
+<tr><td>locale</td><td>en_US</td><td><span data-i18n="config-provider:t034">跟随已保存语言 / 浏览器语言；支持六种 locale</span></td><td><code>&lt;ConfigProvider locale={ANTD_LOCALE_MAP[i18n.language] ?? zhCN}&gt;</code></td></tr>
 <tr><td>componentSize</td><td>middle (32px)</td><td>middle</td><td><span data-i18n="config-provider:t035">同 ✓ 不需覆盖</span></td></tr>
-<tr><td>renderEmpty</td><td><span data-i18n="config-provider:t036">antd 自带彩色插画</span></td><td><span data-i18n="config-provider:t037">TMS Empty 组件 (单色 + Result.extra)</span></td><td><code>&lt;ConfigProvider renderEmpty={() =&gt; &lt;TMSEmpty /&gt;}&gt;</code></td></tr>
-<tr><td>getPopupContainer</td><td>document.body</td><td><span data-i18n="config-provider:t038">parentElement (跟随滚动)</span></td><td><code>&lt;ConfigProvider getPopupContainer={node =&gt; node?.parentElement || document.body}&gt;</code></td></tr>
+<tr><td>renderEmpty</td><td><span data-i18n="config-provider:t036">antd 自带彩色插画</span></td><td><span data-i18n="config-provider:t037">TMSEmpty（单色 Empty，可选 extra 操作）</span></td><td><code>&lt;ConfigProvider renderEmpty={() =&gt; &lt;TMSEmpty /&gt;}&gt;</code></td></tr>
+<tr><td>getPopupContainer</td><td>document.body</td><td><span data-i18n="config-provider:t038">document.body（当前应用）</span></td><td><code>&lt;ConfigProvider getPopupContainer={() =&gt; document.body}&gt;</code></td></tr>
 <tr><td>getTargetContainer</td><td>window</td><td><span data-i18n="config-provider:t039">app-main 滚动容器</span></td><td><code>&lt;ConfigProvider getTargetContainer={() =&gt; document.getElementById('app-main')}&gt;</code></td></tr>
 <tr><td>direction</td><td>ltr</td><td>ltr</td><td><span data-i18n="config-provider:t040">同 ✓ 不支持 RTL</span></td></tr>
 <tr><td>theme.algorithm</td><td>defaultAlgorithm</td><td><span data-i18n="config-provider:t041">自定义 (不用 darkAlgorithm)</span></td><td><span data-i18n="config-provider:t042">见</span> <a href="#/dark" style="color: var(--aw-primary-text)"><span data-i18n="config-provider:t043">dark 页</span></a> <span data-i18n="config-provider:t044">· 手写 token，不走 algorithm</span></td></tr>
@@ -60,11 +60,12 @@ export default function App() {
 
   return (
     &lt;ConfigProvider
-      locale={resolvedAntdLocale}
+      locale={ANTD_LOCALE_MAP[i18n.language] ?? zhCN}
       theme={themeConfig}
       renderEmpty={() =&gt; &lt;TMSEmpty /&gt;}
-      getPopupContainer={(node) =&gt; node?.parentElement || document.body}
+      getPopupContainer={() =&gt; document.body}
       getTargetContainer={() =&gt; document.getElementById('app-main') || window}
+      button={{ styles: { root: { whiteSpace: 'nowrap', flexShrink: 0 } } }}
       form={{ validateMessages, requiredMark: true }}
     &gt;
       &lt;AntdApp notification={{ placement: 'topRight', maxCount: 3 }}&gt;
@@ -77,18 +78,13 @@ export default function App() {
 <p style="font-size:12px;color:var(--aw-text-3);max-width:720px;line-height:1.7;margin:6px 0 0"><span data-i18n="config-provider:t092">滚动到首个错误属于 Form 实例行为：</span><code>&lt;Form scrollToFirstError&gt;</code><span data-i18n="config-provider:t093">；自建表单控件必须透传 id 与 ref。</span></p>
 </div>
 <div class="subsection">
-<h3><span data-i18n="config-provider:t053">嵌套 ConfigProvider · 局部覆盖</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="config-provider:t054">已批准的局部语义场景（如危险操作面板）可以在子树嵌一层</span> <code>&lt;ConfigProvider&gt;</code><span data-i18n="config-provider:t055">。子级只覆盖差异项。强制暗色子树或多租户白标当前不是既有能力；必须先扩展 theme builder、机器契约与回归测试。</span></p>
-<div class="code-block"><pre><code>// Approved local semantic override; value still comes from the active source token
-const dangerPrimary = getComputedStyle(document.documentElement)
-  .getPropertyValue('--aw-danger-solid')
-  .trim();
-
-&lt;ConfigProvider theme={{ token: { colorPrimary: dangerPrimary } }}&gt;
-  &lt;DangerPanel&gt;
-    &lt;Button type="primary"&gt;Resolve Now&lt;/Button&gt;
-  &lt;/DangerPanel&gt;
-&lt;/ConfigProvider&gt;</code></pre></div>
+<h3><span data-i18n="config-provider:t053">局部语义 · 优先使用原生属性</span></h3>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="config-provider:t054">危险操作优先使用原生 danger 属性，不需要为此额外嵌套</span> <code>&lt;ConfigProvider&gt;</code><span data-i18n="config-provider:t055">。当前 Button 三态已有组件 token 映射，只改全局 colorPrimary 不会覆盖它们。强制暗色子树或多租户白标当前不是既有能力；必须先扩展 theme builder、机器契约与回归测试。</span></p>
+<div class="code-block"><pre><code>// Existing component-token mappings provide the danger colors.
+// Invoke the approved confirmation flow from the click handler.
+&lt;Button danger type="primary" onClick={confirmDelete}&gt;
+  {t('common.delete')}
+&lt;/Button&gt;</code></pre></div>
 </div>
 <div class="subsection">
 <h3><span data-i18n="config-provider:t056">CSS 变量 → antd token 同步</span></h3>
@@ -148,8 +144,8 @@ export function buildAntdTheme(options: AntdThemeOptions): ThemeConfig {
 <li><span data-i18n="config-provider:t081">不要在业务代码写</span> <code>&lt;ConfigProvider&gt;</code> <span data-i18n="config-provider:t082">临时改 token</span></li>
 <li><span data-i18n="config-provider:t083">不要 JS 写</span> <code>document.documentElement.style.setProperty('--aw-primary', ...)</code></li>
 <li><span data-i18n="config-provider:t084">不要跳过</span> <code>renderEmpty</code> <span data-i18n="config-provider:t085">—— antd 默认彩色插画与 TMS illustration 规则冲突</span></li>
-<li><span data-i18n="config-provider:t086">不要保留</span> <code>Notification.duration</code> <span data-i18n="config-provider:t087">默认 4.5s（与 feedback 决策树冲突）</span></li>
-<li><span data-i18n="config-provider:t088">不要让</span> <code>getPopupContainer</code> <span data-i18n="config-provider:t089">走 body 默认（长页面 popup 飘走是已知 bug）</span></li>
+<li><span data-i18n="config-provider:t086">不要对所有</span> <code>Notification.duration</code> <span data-i18n="config-provider:t087">盲用默认 4.5s；需要持续处理或保留操作入口时按反馈类型配置持久通知。</span></li>
+<li><span data-i18n="config-provider:t088">不要无验证地将</span> <code>getPopupContainer</code> <span data-i18n="config-provider:t089">改挂到 parentElement；局部滚动、裁切、弹层定位与焦点都需回归。当前入口使用 document.body。</span></li>
 </ul>
 </div>
 </div>

@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'wizard-page', {
     "text.001": "Page Blueprints · WizardPage",
     "text.002": "Wizard Page",
-    "text.003": "Top Steps progress -> middle content -> footer previous / next controls. Use it for OTA push, batch import, and complex configuration. Each step can save a draft to avoid losing work in long flows.",
+    "text.003": "Back and Steps at the top → content in the middle → Previous / Next at the bottom. Back leaves the wizard; Previous only changes the step. Use for OTA pushes, bulk imports, and complex configuration. Each step can save a draft to avoid losing work when a long flow is interrupted.",
     "text.004": "WizardPage · OTA Push Wizard",
     "text.005": "Select Devices",
     "text.006": "1,284 devices",
@@ -28,6 +28,7 @@
     "text.024": "← Previous",
     "text.025": "Save Draft",
     "text.026": "Cancel",
-    "text.027": "Next ->"
+    "text.027": "Next ->",
+    "navigation.back": "Back"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

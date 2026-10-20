@@ -4,7 +4,7 @@
 <section class="section" id="copywriting">
 <p class="section-eyebrow"><span data-i18n="copywriting:t001">工程落地 · 文案</span></p>
 <h2><span data-i18n="copywriting:t002">文案规范 Copywriting</span></h2>
-<p class="lede"><span data-i18n="copywriting:t003">AngelWatch TMS 是面向安卓设备的终端管理系统。文案必须围绕设备管理、应用分发、OTA 升级、推送任务、数据监控、账户权限和系统配置展开；设计系统保留必要英文组件名，但业务对象优先使用中文。</span></p>
+<p class="lede"><span data-i18n="copywriting:t003">本页以 Android 终端管理说明文案设计。其他项目复用清晰、准确和可执行的写法，业务对象、角色、状态和术语须回到自己的产品与后端契约确认；各语言使用对应词典，不统一强制中文。</span></p>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t004">模块语言锚点 · Android 终端管理</span></h3>
 <table class="map-table">
@@ -25,7 +25,7 @@
 <thead><tr><th style="width:24%"><span data-i18n="copywriting:t030">文本类型</span></th><th style="width:34%"><span data-i18n="copywriting:t031">处理方式</span></th><th><span data-i18n="copywriting:t032">原因</span></th></tr></thead>
 <tbody>
 <tr><td><span data-i18n="copywriting:t033">真实导航和页面标题</span></td><td><span data-i18n="copywriting:t034">纳入模块词表</span></td><td><span data-i18n="copywriting:t035">这些词决定信息架构，例如应用市场、OTA升级管理、推送任务、数据中心。</span></td></tr>
-<tr><td><span data-i18n="copywriting:t036">字段名和状态名</span></td><td><span data-i18n="copywriting:t037">转译为组件规则</span></td><td><span data-i18n="copywriting:t038">字段用于表格、详情、抽屉和筛选项；状态用于标签、结果页和操作可用性。</span></td></tr>
+<tr><td><span data-i18n="copywriting:t036">字段名和状态名</span></td><td><span data-i18n="copywriting:t037">核验后转译为展示规则</span></td><td><span data-i18n="copywriting:t038">Figma 提供展示观察；字段含义、状态枚举与动作可用性仍须核验后端契约。</span></td></tr>
 <tr><td><span data-i18n="copywriting:t039">样例文件、样例包名、测试数据</span></td><td><span data-i18n="copywriting:t040">仅作为结构证据</span></td><td><span data-i18n="copywriting:t041">它们帮助判断需要上传、安装明细、版本记录等模块，不直接作为最终文案。</span></td></tr>
 <tr><td><span data-i18n="copywriting:t042">设计占位和图层命名</span></td><td><span data-i18n="copywriting:t043">不进入用户可见文案</span></td><td><span data-i18n="copywriting:t044">占位词只能说明布局层级，不能污染产品语言。</span></td></tr>
 </tbody>
@@ -51,15 +51,15 @@
 <div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t065">01 · 立足点</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t066">关注用户能用产品做什么 —— "推送固件"而非"系统正在为您完成固件分发"。</span></div></div>
 <div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t067">02 · 精简</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t068">删掉一切可删的虚词。"请确认是否要删除该项设备"→"删除 1 台设备?"</span></div></div>
 <div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t069">03 · 一致</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t070">同一对象同一术语贯穿全系统。"设备 / 终端 / 装置"不混用 —— 锁定为"设备"。</span></div></div>
-<div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t071">04 · 易懂</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t072">用运维人员熟悉的语言。避免"鉴权失败"，用"登录已过期，请重新登录"。</span></div></div>
+<div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t071">04 · 易懂</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t072">用运维人员熟悉的语言，并保留真实原因：确认会话过期才提示重新登录；权限不足应说明权限，未知原因不改写成登录过期。</span></div></div>
 <div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t073">05 · 突出</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t074">关键信息前置。"删除 28 台设备 (含 3 台在线)"前置数量。</span></div></div>
-<div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t075">06 · 完整</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t076">说清楚后果。错误信息三层："做了什么 + 为什么 + 怎么办"。</span></div></div>
-<div class="surface" style="grid-column:span 2"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t077">07 · 精准</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t078">时间 / 数字 / 状态字面量与系统数据一致。"刚刚"在 i18n 中是 30 秒内，超出严格回退到"X 分钟前"，不模糊处理。</span></div></div>
+<div class="surface"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t075">06 · 完整</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t076">说清楚发生了什么、已知原因和可执行的下一步；原因未知时明确说明，不编造诊断。</span></div></div>
+<div class="surface" style="grid-column:span 2"><div class="tag-meta" style="margin-bottom:6px"><span data-i18n="copywriting:t077">07 · 精准</span></div><div style="font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="copywriting:t078">时间、数字与状态字面量应与数据一致；相对时间阈值由消费项目统一实现并测试，本页示例不代表 i18n 库自动处理。</span></div></div>
 </div>
 </div>
 <div class="subsection">
-<h3><span data-i18n="copywriting:t079">TMS 术语锁定表</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t080">下表为系统级专有名词，跨四语 zh-CN / en / es / pt 锁定。添加术语须先在消费者的</span> <code>src/i18n/locales/*.json</code> <span data-i18n="copywriting:t081">词典中完成评审并同步其全部支持语言，再在业务代码引用；本表四语仅作术语参考，不是已发布的 i18n 包。</span></p>
+<h3><span data-i18n="copywriting:t079">TMS 术语参考表</span></h3>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t080">下表是四语设计词汇参考，不能据此建立业务枚举。添加术语须先在消费者的</span> <code>src/i18n/locales/*.json</code> <span data-i18n="copywriting:t081">词典中完成评审并同步其全部支持语言，再在业务代码引用；本表四语仅作术语参考，不是已发布的 i18n 包。</span></p>
 <table class="map-table">
 <thead><tr><th><span data-i18n="copywriting:t082">对象</span></th><th>zh-CN</th><th>en</th><th>es</th><th>pt</th></tr></thead>
 <tbody>
@@ -76,14 +76,14 @@
 </table>
 </div>
 <div class="subsection">
-<h3><span data-i18n="copywriting:t101">术语锁定补充(四语)</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t102">以下术语四语锁定,直接引用,不另起译法。</span></p>
+<h3><span data-i18n="copywriting:t101">术语参考补充（四语）</span></h3>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t102">以下为设计示例，实际发布文案以已批准术语及消费者词典为准；“已下架”和“未上架”等不同含义不得因共用英文标签而合并。</span></p>
 <table class="map-table">
 <thead><tr><th><span data-i18n="copywriting:t103">概念</span></th><th>zh</th><th>en</th><th>es</th><th>pt</th></tr></thead>
 <tbody>
 <tr><td><span data-i18n="copywriting:t104">围栏</span></td><td data-i18n-ignore>围栏</td><td><b>Geofence</b></td><td>Geocerca</td><td>Cerca geográfica</td></tr>
-<tr><td><span data-i18n="copywriting:t106">已上架</span></td><td data-i18n-ignore>已上架</td><td><b>Published</b></td><td>Publicado</td><td>Publicados</td></tr>
-<tr><td><span data-i18n="copywriting:t108">已下架</span></td><td data-i18n-ignore>已下架</td><td><b>Unpublished</b></td><td>Inédito</td><td>Não publicado</td></tr>
+<tr><td><span data-i18n="copywriting:t106">已上架</span></td><td data-i18n-ignore>已上架</td><td><b>Published</b></td><td>Publicado</td><td>Publicado</td></tr>
+<tr><td><span data-i18n="copywriting:t108">已下架</span></td><td data-i18n-ignore>已下架</td><td><b>Unpublished</b></td><td>No publicado</td><td>Não publicado</td></tr>
 <tr><td><span data-i18n="copywriting:t110">基线版本</span></td><td data-i18n-ignore>基线版本</td><td><b>Original Version</b></td><td>Versión original</td><td>—</td></tr>
 <tr><td><span data-i18n="copywriting:t112">系统版本</span></td><td data-i18n-ignore>系统版本</td><td><b>Build Number</b></td><td>—</td><td>—</td></tr>
 </tbody>
@@ -92,7 +92,7 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t116">状态枚举四语</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t117">以下状态枚举四语锁定,用语义化 key(如</span> <code>push.status.notPushed</code><span data-i18n="copywriting:t118">),不用数字索引。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t117">以下展示状态翻译的组织方式，实际枚举以领域契约为准。使用语义化 key（如</span> <code>push.status.notPushed</code><span data-i18n="copywriting:t118">），不用显示顺序代替业务 code。</span></p>
 <table class="map-table">
 <thead><tr><th><span data-i18n="copywriting:t119">枚举</span></th><th>zh</th><th>en</th><th>es</th><th>pt</th></tr></thead>
 <tbody>
@@ -102,7 +102,7 @@
 <tr><td><span data-i18n="copywriting:t126">监控触发时机</span></td><td data-i18n-ignore>开机 / 亮屏 / 灭屏 / 每 N 分钟 / 网络切换 / 收到推送</td><td>boot / screen on / off / every N min / network switch / push</td><td>—</td><td>—</td></tr>
 </tbody>
 </table>
-<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><b><span data-i18n="copywriting:t128">机构作用域文案(业务规则)</span></b><span data-i18n="copywriting:t129">:重新推送仅对失败/已过期且具备 push_task_rePush 权限时生效;终止推送仅对执行中且具备 push_task_terminate 权限时生效。机构层级向下管理、母机构管理子机构、数据隔离。"指定机构及子机构"含子;"指定机构"仅直属不含子。Track History 轨迹查询需独立四语本地化。</span></p>
+<p style="font-size:12px;color:var(--aw-text-3);margin:12px 0 0"><b><span data-i18n="copywriting:t128">机构与权限文案边界</span></b><span data-i18n="copywriting:t129">：重新推送、终止推送的可用状态和权限由后端契约确定，不能从本表推导权限码。明确区分“指定机构及子机构”和“指定机构直属”；范围名称须与真实查询一致。Track History 等导航词须同步全部支持语言。</span></p>
 </div>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t130">人称与语气</span></h3>
@@ -113,7 +113,7 @@
 <li><span data-i18n="copywriting:t132">用「你」和「我」拉近距离，不用"您"</span></li>
 <li><span data-i18n="copywriting:t133">主动语态："已推送"、"已删除"</span></li>
 <li><span data-i18n="copywriting:t134">引导而非命令："建议先备份"</span></li>
-<li><span data-i18n="copywriting:t135">错误信息陈述事实 + 给路径："网络超时，请检查网关连通性"</span></li>
+<li><span data-i18n="copywriting:t135">错误信息陈述已知事实并给出路径；只有确认网络超时才提示检查连接</span></li>
 <li><span data-i18n="copywriting:t136">系统主语多用第一人称："我已为你保留草稿"</span></li>
 </ul>
 </div>
@@ -147,7 +147,7 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t177">错误文案三层结构</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t178">所有错误必须包含三个要素：</span><b><span data-i18n="copywriting:t179">做了什么</span></b><span data-i18n="copywriting:t180">（用户感知的操作）+</span> <b><span data-i18n="copywriting:t181">为什么</span></b><span data-i18n="copywriting:t182">（具体原因）+</span> <b><span data-i18n="copywriting:t183">怎么办</span></b><span data-i18n="copywriting:t184">（下一步可执行动作）。错误码作为第四要素 tooltip 暴露，便于运维定位。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t178">错误文案优先回答三个问题：</span><b><span data-i18n="copywriting:t179">做了什么</span></b><span data-i18n="copywriting:t180">（用户感知的操作）+</span> <b><span data-i18n="copywriting:t181">为什么</span></b><span data-i18n="copywriting:t182">（有依据的已知原因；未知时说明）+</span> <b><span data-i18n="copywriting:t183">怎么办</span></b><span data-i18n="copywriting:t184">（与实际能力一致的下一步）。可复制的错误码或 traceId 仅在响应提供时展示，不能只依赖 hover。</span></p>
 <div class="demo-grid cols-2">
 <div class="surface" style="border-left:3px solid var(--aw-success)">
 <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)"><span data-i18n="copywriting:t185">✓ 完整三层</span></h3>
@@ -167,13 +167,13 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="copywriting:t192">空状态文案 · Empty Copy</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t193">空状态必须给"下一步"，不能只说"当前没有可显示的数据"。三种空态对应不同文案模板。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="copywriting:t193">空状态说明原因；有合适且有权限的动作时提供下一步。请求失败必须与空数据区分，使用持续反馈和可执行的重试入口。</span></p>
 <table class="map-table">
 <thead><tr><th style="width:22%"><span data-i18n="copywriting:t194">空态类型</span></th><th style="width:32%"><span data-i18n="copywriting:t195">推荐文案</span></th><th><span data-i18n="copywriting:t196">下一步操作</span></th></tr></thead>
 <tbody>
 <tr><td><b><span data-i18n="copywriting:t197">首次空</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px"><span data-i18n="copywriting:t198">用户尚无数据</span></div></td><td><span data-i18n="copywriting:t199">"还没有设备 / 添加首台设备开始管理"</span></td><td><span class="mono"><span data-i18n="copywriting:t200">+ 添加设备</span></span> <span data-i18n="copywriting:t201">主按钮</span></td></tr>
 <tr><td><b><span data-i18n="copywriting:t202">筛选空</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px"><span data-i18n="copywriting:t203">条件无匹配</span></div></td><td><span data-i18n="copywriting:t204">"当前筛选条件下无匹配设备"</span></td><td><span class="mono"><span data-i18n="copywriting:t205">清除筛选</span></span> <span data-i18n="copywriting:t206">次按钮</span></td></tr>
-<tr><td><b><span data-i18n="copywriting:t207">错误空</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px"><span data-i18n="copywriting:t208">请求失败</span></div></td><td><span data-i18n="copywriting:t209">"加载失败，请检查网络"</span></td><td><span class="mono"><span data-i18n="copywriting:t210">重试</span></span> + <span class="mono"><span data-i18n="copywriting:t211">联系管理员</span></span></td></tr>
+<tr><td><b><span data-i18n="copywriting:t207">错误空</span></b><div style="font-size:11px;color:var(--aw-text-3);margin-top:2px"><span data-i18n="copywriting:t208">请求失败</span></div></td><td><span data-i18n="copywriting:t209">“加载失败，请重试”</span></td><td><span class="mono"><span data-i18n="copywriting:t210">重试</span></span> + <span class="mono"><span data-i18n="copywriting:t211">联系管理员</span></span></td></tr>
 </tbody>
 </table>
 </div>
@@ -184,7 +184,7 @@
 <tbody>
 <tr><td><span data-i18n="copywriting:t216">标题不加句号</span></td><td><span data-i18n="copywriting:t217">"设备列表" 而非 "设备列表。"</span></td><td><span data-i18n="copywriting:t218">标签 / 标题 / 占位提示统一省句号</span></td></tr>
 <tr><td><span data-i18n="copywriting:t219">感叹号克制</span></td><td><span data-i18n="copywriting:t220">仅"成功 / 完成"等强情感场景</span></td><td><span data-i18n="copywriting:t221">不在错误 / 警告 / 默认提示用</span></td></tr>
-<tr><td><span data-i18n="copywriting:t222">省略号半角</span></td><td><span class="mono">…</span><span data-i18n="copywriting:t264">（U+2026）</span></td><td><span data-i18n="copywriting:t223">不用三个英文点</span> <span class="mono">...</span></td></tr>
+<tr><td><span data-i18n="copywriting:t222">省略号字符</span></td><td><span class="mono">…</span><span data-i18n="copywriting:t264">（U+2026）</span></td><td><span data-i18n="copywriting:t223">不用三个英文点</span> <span class="mono">...</span></td></tr>
 <tr><td><span data-i18n="copywriting:t224">中英文之间空格</span></td><td><span data-i18n="copywriting:t225">"运行 antd v6 框架"</span></td><td><span data-i18n="copywriting:t226">数字 / 英文 / 单位 与中文之间半角空格</span></td></tr>
 <tr><td><span data-i18n="copywriting:t227">专有名词大小写</span></td><td>Ant Design / antd / OTA / SN / IMEI</td><td><span data-i18n="copywriting:t228">全称首字母大写，缩写全大写</span></td></tr>
 <tr><td><span data-i18n="copywriting:t229">统计数字阿拉伯</span></td><td><span data-i18n="copywriting:t230">"在线 28 台" 而非 "在线二十八台"</span></td><td><span data-i18n="copywriting:t231">所有可比对的数字用阿拉伯</span></td></tr>
@@ -198,7 +198,7 @@
 <table class="map-table">
 <thead><tr><th style="width:28%"><span data-i18n="copywriting:t238">距现在</span></th><th style="width:34%"><span data-i18n="copywriting:t239">展示</span></th><th><span data-i18n="copywriting:t240">说明</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="copywriting:t241">≤ 30 秒</span></td><td><span data-i18n="copywriting:t242">"刚刚"</span></td><td><span data-i18n="copywriting:t243">实时性场景；超 30 秒严格切换</span></td></tr>
+<tr><td><span data-i18n="copywriting:t241">≤ 30 秒</span></td><td><span data-i18n="copywriting:t242">"刚刚"</span></td><td><span data-i18n="copywriting:t243">阈值示例；消费项目需统一实现并测试</span></td></tr>
 <tr><td><span data-i18n="copywriting:t244">30 秒 ~ 1 小时</span></td><td><span data-i18n="copywriting:t245">"5 分钟前"</span></td><td><span data-i18n="copywriting:t246">整数分钟</span></td></tr>
 <tr><td><span data-i18n="copywriting:t247">1 ~ 24 小时</span></td><td><span data-i18n="copywriting:t248">"3 小时前"</span></td><td><span data-i18n="copywriting:t249">整数小时</span></td></tr>
 <tr><td><span data-i18n="copywriting:t250">当日</span></td><td><span data-i18n="copywriting:t251">"今天 14:32"</span></td><td><span data-i18n="copywriting:t252">同日内统一前缀</span></td></tr>
@@ -207,7 +207,7 @@
 <tr><td><span data-i18n="copywriting:t259">≥ 7 天</span></td><td>"2026-04-15"</td><td><span data-i18n="copywriting:t260">回退绝对日期</span></td></tr>
 </tbody>
 </table>
-<p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="copywriting:t263">Tooltip：</span></b> <span data-i18n="copywriting:t261">所有相对时间 hover 后显示完整 ISO 时间</span> <span class="mono">2026-04-28 14:32:18 +08:00</span><span data-i18n="copywriting:t262">，便于精确定位。</span></p>
+<p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="copywriting:t263">Tooltip：</span></b> <span data-i18n="copywriting:t261">相对时间应提供键盘可达的完整日期时间及展示时区，示意为</span> <span class="mono">2026-04-28 14:32:18 +08:00</span><span data-i18n="copywriting:t262">；实际输出按 Intl 与用户时区策略生成，不手拼固定格式。</span></p>
 </div>
 </section>
 </div>

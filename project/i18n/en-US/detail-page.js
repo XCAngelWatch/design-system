@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'detail-page', {
     "text.001": "Page Blueprints · DetailPage",
     "text.002": "Detail Page",
-    "text.003": "Breadcrumbs + summary header (KV pairs) + tabs (basic information / status / logs / alerts / firmware history). Regular detail pages do not also show an equivalent Back button.",
+    "text.003": "Back + breadcrumbs + summary header (key fields) + tabs (basic information / status / logs / alerts / firmware history). Back returns to the source page, or to the business parent when opened directly; breadcrumbs show the current location.",
     "text.005": "Device Management",
     "text.006": "Device-Shanghai-001",
     "text.007": "Term",
@@ -27,6 +27,7 @@
     "text.024": "Audit Logs",
     "text.025": "Alerts (3)",
     "text.026": "Firmware History",
-    "text.027": "Content area for the selected tab."
+    "text.027": "Content area for the selected tab.",
+    "text.004": "Back"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

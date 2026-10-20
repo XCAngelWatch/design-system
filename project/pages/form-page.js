@@ -11,7 +11,7 @@
     <div class="frame-body" style="padding:24px;background:var(--aw-bg-page)">
 <div class="formpage-mock">
   <div class="head">
-    <div class="head-back"><button class="btn btn-text"><span data-i18n="form-page:text.004">← 返回</span></button></div>
+    <div class="head-back"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="form-page:text.004">返回上一级</span></button></div>
     <div class="head-title"><h3 style="margin:0;font-size:18px"><span data-i18n="form-page:text.005">新建设备</span></h3><span class="tag"><span data-i18n="form-page:text.006">草稿</span></span></div>
   </div>
   <div class="body">

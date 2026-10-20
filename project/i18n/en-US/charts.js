@@ -224,7 +224,7 @@
     "text.235": "Do not introduce other chart libraries (",
     "text.236": " / direct d3 drawing). Standardize on echarts to avoid color and theme fragmentation.",
     "text.237": "Do not hard-code hex values inside series; use tokens or status color variables.",
-    "text.238": "Do not call setOption again after theme switching; switch the theme name instead.",
+    "text.238": "Do not replace current tokens with a built-in theme name. Resolve tokens again and update the option after a theme change so colors do not remain stale.",
     "text.239": "Do not use >= 7 hues in a single chart; avoid 3D pie charts and pseudo-3D bars.",
     "text.240": "Do not use animations >= 600ms; do not omit the Y-axis zero baseline.",
     "text.241": "Do not use red/green alone for \"up / down\"; pair it with ↑↓ shapes for color-blind accessibility.",

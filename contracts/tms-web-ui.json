@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "contractVersion": "2026-09-18",
+  "contractVersion": "2026-10-20",
   "sourceRepository": "design-system",
   "consumerRepository": "tms2.5-web-ui",
   "consumerCopyPath": "docs/design-system/source-contract.json",
-  "decisionRecord": "docs/decisions/specs/2026-09-18-opendesign-visual-alignment.md",
+  "decisionRecord": "docs/decisions/specs/2026-10-20-navigation-and-action-presentation.md",
   "tokens": {
     "sourceFile": "project/styles/tokens.css",
     "prefix": "--aw-",
@@ -180,6 +180,9 @@
     "table": {
       "visiblePrimaryCount": 1,
       "maxVisibleCount": 2,
+      "collapseFrom": 3,
+      "inlinePresentation": "text-only",
+      "menuPresentation": "semantic-icon-and-text",
       "narrowVisibleCount": 1,
       "collapseSecondaryActions": false
     },
@@ -207,6 +210,20 @@
     "dangerConfirmationDefaultFocus": "cancel"
   },
   "pageHeader": {
+    "backNavigation": {
+      "presentation": "arrow-left-and-text",
+      "requiredFor": ["nested-detail", "form", "immersive-flow"],
+      "hiddenFor": ["top-level-list", "top-level-dashboard"],
+      "detailBreadcrumbsAllowed": true,
+      "formBreadcrumbsAllowed": false,
+      "immersiveBreadcrumbsAllowed": false,
+      "targetPriority": ["explicit-target", "validated-in-app-source", "business-parent"],
+      "externalHistoryFallbackAllowed": false,
+      "preserveListState": true,
+      "preserveUnsavedChangesGuard": true,
+      "placement": "content",
+      "visibleWhenSticky": true
+    },
     "freeTextSubtitle": false,
     "keyFieldsOnly": true,
     "maxPrimaryActions": 1,

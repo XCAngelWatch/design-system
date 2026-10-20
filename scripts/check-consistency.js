@@ -356,9 +356,9 @@ for (const pattern of [/\bsymbol:\s*'[^']+'/g, /\bsymbol\s*=\s*[^;\n]+/g, /\bcre
 }
 
 for (const [id, requiredFontPolicy] of [
-  ['type', ['local()', '系统字体栈', '有许可证记录的 WOFF2']],
-  ['overview', ['local()', '系统字体栈', '有许可证记录的 WOFF2']],
-  ['whitelabel', ['local()', '系统字体栈', '有许可证记录的 WOFF2']]
+  ['type', ['本机', '系统字体', '有许可证记录的 WOFF2']],
+  ['overview', ['本机', '系统字体', '有许可证记录的 WOFF2']],
+  ['whitelabel', ['本机', '系统字体', '有许可证记录的 WOFF2']]
 ]) {
   const source = readPage(id);
   for (const phrase of requiredFontPolicy) {
@@ -400,8 +400,24 @@ if (/不可逆[\s\S]*Popconfirm[\s\S]*或[\s\S]*Modal\.confirm/.test(overviewPag
 }
 
 const detailPage = readPage('detail-page');
-if (detailPage.includes('class="crumbs"') && detailPage.includes('detail-page:text.004')) {
-  errors.push('detail-page: do not show an equivalent Back button together with breadcrumbs');
+if (!detailPage.includes('class="page-back-row"') ||
+    !detailPage.includes('data-back-fallback="#/device-center-page"') ||
+    !detailPage.includes('class="crumbs"')) {
+  errors.push('detail-page: provide Back with a stable parent fallback alongside breadcrumb context');
+}
+for (const route of ['detail-page', 'form-page', 'wizard-page', 'push-page', 'avatar-result', 'error-page', 'page-header']) {
+  const source = readPage(route);
+  const backButtons = [...source.matchAll(/<button\b([^>]*\bbtn-back\b[^>]*)>([\s\S]*?)<\/button>/g)];
+  if (!backButtons.length) errors.push(route + ': missing unified Back control');
+  for (const [, attributes, content] of backButtons) {
+    const destination = attributes.match(/data-back-(?:target|fallback)="#\/([\w-]+)"/);
+    if (!destination || !fs.existsSync(path.join(pagesDir, destination[1] + '.js'))) {
+      errors.push(route + ': Back needs a valid in-site target or fallback');
+    }
+    if (!content.includes('#aw-icon-arrow-left') || !content.includes('data-i18n=')) {
+      errors.push(route + ': Back needs the shared arrow-left icon and translated text');
+    }
+  }
 }
 
 const apiPage = readPage('api');

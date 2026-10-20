@@ -4,13 +4,13 @@
 <section class="section" id="cases">
   <p class="section-eyebrow" data-i18n="cases:hero.eyebrow">导览 · 实践案例</p>
   <h2 data-i18n="cases:hero.title">终端管理实践案例</h2>
-  <p class="lede" data-i18n="cases:hero.desc">实践案例用于说明 Android 终端管理的端到端流程：选择设备、推送应用或 OTA 包、跟踪结果、处理失败项、审计操作记录。复杂场景出现争议时，优先回到这里看完整链路。</p>
+  <p class="lede" data-i18n="cases:hero.desc">以下是用于讨论布局和交互的设计场景，不是当前消费者的功能或性能验收清单。字段、状态、权限与 API 须核验后端契约，页面范围、流程与风险策略须经产品批准。</p>
 
   <div class="subsection module-coverage">
     <h3 data-i18n="cases:coverage.title">业务模块覆盖矩阵</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:820px;line-height:1.7;margin:0 0 12px" data-i18n="cases:coverage.desc">本页按 Android 终端管理的核心业务域沉淀页面规则，帮助团队在应用、OTA、推送、数据中心、账户权限和增值服务之间保持一致体验。</p>
     <table class="coverage-table">
-      <thead><tr><th data-i18n="cases:coverage.th.domain">业务域</th><th data-i18n="cases:coverage.th.pages">关键页面</th><th data-i18n="cases:coverage.th.routes">落地页面</th><th data-i18n="cases:coverage.th.strategy">覆盖策略</th></tr></thead>
+      <thead><tr><th data-i18n="cases:coverage.th.domain">业务域</th><th data-i18n="cases:coverage.th.pages">关键页面</th><th data-i18n="cases:coverage.th.routes">参考页面</th><th data-i18n="cases:coverage.th.strategy">覆盖策略</th></tr></thead>
       <tbody>
         <tr><td data-i18n="cases:coverage.market.domain">应用市场</td><td data-i18n="cases:coverage.market.pages">应用列表 / 版本 / 审核 / 安装明细</td><td><a href="#/market-page">market-page</a> + <a href="#/table">table</a> + <a href="#/data-cards">data-cards</a></td><td data-i18n="cases:coverage.market.strategy">主列表、卡片视图、审核、版本、安装明细</td></tr>
         <tr><td data-i18n="cases:coverage.ota.domain">OTA 升级</td><td data-i18n="cases:coverage.ota.pages">升级文件 / 推送确认 / 结果明细</td><td><a href="#/ota-page">ota-page</a> + <a href="#/feedback">feedback</a></td><td data-i18n="cases:coverage.ota.strategy">沿用页面蓝图，抽取上传、确认、推送结果规则</td></tr>
@@ -21,47 +21,47 @@
         <tr><td data-i18n="cases:coverage.service.domain">增值服务</td><td data-i18n="cases:coverage.service.pages">日志 / 锁定 / 流量 / 密码 / 恢复 / 文件 / APN / WIFI / 黑白名单</td><td><a href="#/service-page">service-page</a> + <a href="#/push-page">push-page</a></td><td data-i18n="cases:coverage.service.strategy">服务配置、推送任务和目标设备详情三段式闭环</td></tr>
       </tbody>
     </table>
-    <div class="coverage-notes"><span data-i18n="cases:coverage.note.exclude">排除：老系统页面、废案、临时方案</span><span data-i18n="cases:coverage.note.token">Token：以 --aw-primary 与主题变量为准</span><span data-i18n="cases:coverage.note.asset">资产：本轮不复制图片素材</span></div>
+    <div class="coverage-notes"><span data-i18n="cases:coverage.note.exclude">排除：老系统页面、废案、临时方案</span><span data-i18n="cases:coverage.note.token">Token：以 --aw-primary 与主题变量为准</span><span data-i18n="cases:coverage.note.asset">资产：仅采用已核验的仓库内资源</span></div>
     <div class="surface" style="margin-top:14px">
       <h3 style="margin:0 0 10px;font-size:14px" data-i18n="cases:sources.title">来源与转译边界</h3>
       <table class="map-table">
         <thead><tr><th style="width:22%" data-i18n="cases:sources.th.source">来源</th><th style="width:30%" data-i18n="cases:sources.th.purpose">用途</th><th data-i18n="cases:sources.th.rule">转译规则</th></tr></thead>
         <tbody>
-          <tr><td data-i18n="cases:sources.figma.source">本地 Figma 文件</td><td data-i18n="cases:sources.figma.purpose">识别业务模块、页面族和高频状态</td><td data-i18n="cases:sources.figma.rule">只抽取可复用模式，不把每个画板逐帧复制进站点。</td></tr>
+          <tr><td data-i18n="cases:sources.figma.source">本地 Figma 文件</td><td data-i18n="cases:sources.figma.purpose">识别页面族、布局与状态展示</td><td data-i18n="cases:sources.figma.rule">只抽取可复用模式，不把每个画板逐帧复制进站点。</td></tr>
           <tr><td>OpenDesign tree / tokens</td><td data-i18n="cases:sources.open.purpose">核对模块数量、文案词汇和色彩证据</td><td data-i18n="cases:sources.open.rule">运行时不依赖本地绝对路径，最终只保留规范化说明和仓库内页面。</td></tr>
           <tr><td data-i18n="cases:sources.current.source">当前 design-system</td><td data-i18n="cases:sources.current.purpose">落地 token、组件规则、路由和页面蓝图</td><td data-i18n="cases:sources.current.rule">优先遵循 Ant Design v6、file://、常青文档与 --aw-* 变量约束。</td></tr>
         </tbody>
       </table>
-      <p style="font-size:12px;color:var(--aw-text-3);line-height:1.7;margin:10px 0 0" data-i18n="cases:sources.summary">本轮把 Figma 证据转译为模块级规则：应用市场、OTA、推送任务、数据中心、设备地图、增值服务、账户权限、数据统计和系统管理。旧系统、废案和临时方案不进入规范。</p>
+      <p style="font-size:12px;color:var(--aw-text-3);line-height:1.7;margin:10px 0 0" data-i18n="cases:sources.summary">这些设计快照提供模块间的一致体验参考；不能据此认定功能已实现或字段已获后端确认。旧系统、废案和临时方案不进入规范。</p>
     </div>
   </div>
 
   <div class="subsection">
     <h3 data-i18n="cases:case1.title">案例 · 01 · 批量推送 OTA 包</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case1.desc">运维选 28 台设备 → 推送 OTA 包 → 实时跟进 → 处理失败设备。这是 TMS 最高频流程，跨 list-page → push-page → ota-page → detail-page 四个页面。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case1.desc">示例：选择 28 台设备 → 确认推送 OTA 包 → 跟踪任务 → 处理失败项，用来串联列表、推送、OTA 与详情页的交互。</p>
     <div class="case-flow">
       <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case1.step1.name">ListPage 选择终端</div><div class="cf-desc" data-i18n="cases:case1.step1.desc">表格批量勾选，批量条显示 28/12,486；Action toolbar 出现推送 OTA 包；高级筛选记住状态 = 在线。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case1.step2.name">Modal 二次确认</div><div class="cf-desc" data-i18n="cases:case1.step2.desc">不可逆操作使用 Modal.confirm，焦点落在取消；文案说明将向 28 台设备推送 OTA 包，预计 8 分钟，并要求输入数字 28 确认。</div></div>
+      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case1.step2.name">Modal 二次确认</div><div class="cf-desc" data-i18n="cases:case1.step2.desc">通过 App 上下文的 modal.confirm 明示目标、数量与后果，默认聚焦取消。数量输入按已批准风险策略启用；仅在有可靠依据时展示耗时估计。</div></div>
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case1.step3.name">PushPage 跟踪推送结果</div><div class="cf-desc" data-i18n="cases:case1.step3.desc">进度环与状态 Tag 展示各设备的任务反馈；订阅或轮询方式由消费项目核验。示例 Toast 汇总 24 成功 / 4 失败。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case1.step4.name">Result 处理失败</div><div class="cf-desc" data-i18n="cases:case1.step4.desc">Result 使用 partial-success，列出 4 台失败、错误码和下载失败清单 / 重试 / 联系系统管理员三个后续动作，再跳详情查心跳日志。</div></div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case1.step4.name">Result 处理失败</div><div class="cf-desc" data-i18n="cases:case1.step4.desc">部分成功结果视图列出示例中的 4 台失败设备与已知原因；按实际能力和权限提供失败清单、重试或联系管理员入口。</div></div>
     </div>
     <div class="case-tags"><span>list-page</span><span>push-page</span><span>ota-page</span><span>detail-page</span><span>row-actions</span><span>data-cards</span><span>progress</span><span>toast</span><span>avatar-result</span></div>
   </div>
 
   <div class="subsection">
     <h3 data-i18n="cases:case2.title">案例 · 02 · 单设备故障排查</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case2.desc">告警进来 → 跳详情页 → 查最近心跳 / 操作日志 / OTA 版本 → 定位原因 → 重启或回滚。从 toast → detail → log → action 闭环 ≤ 30 秒。</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case2.desc">设计场景：告警 → 详情 → 最近心跳、操作记录与 OTA 信息 → 选择已支持的处置动作。具体入口、字段与处理时限由产品和服务契约确认。</p>
     <div class="case-flow">
       <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case2.step1.name">Notification 告警</div><div class="cf-desc" data-i18n="cases:case2.step1.desc">右上角 Notification 折叠展开，显示 DEV-86420075 心跳丢失 5 分钟，并提供立即查看直跳详情。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name">DetailPage</div><div class="cf-desc" data-i18n="cases:case2.step2.desc">顶部状态条红色离线，关键字段 SN/IMEI/IP 一屏可见；6 个 Tab 的第一个就是心跳，不需要再点。</div></div>
+      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name">DetailPage</div><div class="cf-desc" data-i18n="cases:case2.step2.desc">首屏展示关键设备标识和状态，状态使用已定义的语义色。按诊断任务组织详情内容，不预设固定 Tab 数量或第一个 Tab。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case2.step3.name">操作记录追溯</div><div class="cf-desc" data-i18n="cases:case2.step3.desc">操作记录 Tab 展示最近 24h 完整审计，包括 who / when / what / IP，用于定位 OTA 升级后丢心跳等原因。</div></div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case2.step3.name">操作记录追溯</div><div class="cf-desc" data-i18n="cases:case2.step3.desc">提供可用的操作记录入口，按后端实际返回的操作者、时间、动作和来源辅助定位问题；不能把前端显示范围当作完整审计保证。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case2.step4.name">Popconfirm 回滚</div><div class="cf-desc" data-i18n="cases:case2.step4.desc">回滚 OTA 版本使用 Popconfirm 行内确认，文案明示回滚需 2 分钟且期间设备离线；服务端二次校验后推回滚。</div></div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case2.step4.name">确认处置动作</div><div class="cf-desc" data-i18n="cases:case2.step4.desc">仅展示后端支持且有权限的处置动作。重启、回滚等强副作用操作使用 modal.confirm，说明已知影响，默认聚焦取消；不承诺未知恢复时间。</div></div>
     </div>
     <div class="case-tags"><span>toast</span><span>detail-page</span><span>tab-variants</span><span>status-matrix</span><span>row-actions</span><span>feedback</span></div>
   </div>
@@ -70,28 +70,28 @@
     <h3 data-i18n="cases:case3.title">案例 · 03 · OTA 全流程</h3>
     <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case3.desc">从上传新 OTA 包 → 配置升级策略 → 灰度推送 → 全量推送 → 监控 → 回归。涉及 wizard-page / ota-page / push-page / dash-page 四页。</p>
     <div class="case-flow">
-      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case3.step1.name">WizardPage 配置</div><div class="cf-desc" data-i18n="cases:case3.step1.desc">5 步向导：上传 .bin、设备范围、灰度比例、推送时间、复核。每步可回退，最后一步显示 Diff。</div></div>
+      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case3.step1.name">WizardPage 配置</div><div class="cf-desc" data-i18n="cases:case3.step1.desc">示例步骤：选择已支持的包、设备范围、策略、执行时间和复核。实际格式与步骤由产品和接口确认；返回上一步保留已填信息。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case3.step2.name">Drawer 灰度（10%）</div><div class="cf-desc" data-i18n="cases:case3.step2.desc">从 OtaPage 列表点击开始灰度，Drawer 展示实时进度；灰度成功率 ≥ 95% 后启用全量推送按钮。</div></div>
+      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case3.step2.name">Drawer 灰度示例</div><div class="cf-desc" data-i18n="cases:case3.step2.desc">若产品支持灰度推送，可用 Drawer 展示已核验的任务进度。灰度比例、观察窗口与全量放行条件由已批准策略确定。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case3.step3.name">PushPage 全量</div><div class="cf-desc" data-i18n="cases:case3.step3.desc">复用批量推送流程；区别是大批量（≥ 1000）必须输入完整 SN 前缀确认。</div></div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case3.step3.name">PushPage 全量</div><div class="cf-desc" data-i18n="cases:case3.step3.desc">复用批量确认与任务跟踪。大批量风险门槛、输入确认方式和执行权限由产品策略与后端契约确定。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case3.step4.name">DashboardPage 查看终端概况</div><div class="cf-desc" data-i18n="cases:case3.step4.desc">仪表盘查看升级率、心跳、告警三大趋势；异常 spike 自动跳告警，再回到单设备排查流程。</div></div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case3.step4.name">DashboardPage 查看终端概况</div><div class="cf-desc" data-i18n="cases:case3.step4.desc">在仪表盘查看接口已提供的趋势与异常，并提供可点击的告警或详情入口；不因后台数据更新自动打断当前任务。</div></div>
     </div>
     <div class="case-tags"><span>wizard-page</span><span>ota-page</span><span>push-page</span><span>dash-page</span><span>drawer</span><span>charts</span><span>upload</span></div>
   </div>
 
   <div class="subsection">
-    <h3 data-i18n="cases:case4.title">案例 · 04 · 多租户切换</h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case4.desc">同一管理员管多个租户（不同品牌白标）。登录 → 切租户 → 视觉品牌随租户变 → 数据隔离。</p>
+    <h3 data-i18n="cases:case4.title">案例 · 04 · 租户主题扩展候选</h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:760px;line-height:1.7;margin:0 0 12px" data-i18n="cases:case4.desc">候选场景：同一管理员切换有权限的租户，并切换经批准的品牌配置。当前消费者尚未实现租户主题链路；采用前须扩展主题构建器、机器契约与回归测试。</p>
     <div class="case-flow">
-      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case4.step1.name">LoginPage 多租户</div><div class="cf-desc" data-i18n="cases:case4.step1.desc">登录页第一步选租户并记住上次选择，第二步输入账号 / 密码；仅在认证接口返回额外风控步骤时追加滑块验证。</div></div>
+      <div class="cf-step"><div class="cf-num">1</div><div class="cf-name" data-i18n="cases:case4.step1.name">LoginPage 多租户</div><div class="cf-desc" data-i18n="cases:case4.step1.desc">租户选择是否存在、出现时机和认证步骤由已批准流程与认证接口确定；本案例不新增登录前置步骤。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case4.step2.name">Shell 顶部切换</div><div class="cf-desc" data-i18n="cases:case4.step2.desc">右上角租户徽章打开 Dropdown，列出有权限的租户；切换后整页 reload，而不是 SPA 内部切换，logo、主色、机构名全部替换。</div></div>
+      <div class="cf-step"><div class="cf-num">2</div><div class="cf-name" data-i18n="cases:case4.step2.name">Shell 顶部切换</div><div class="cf-desc" data-i18n="cases:case4.step2.desc">若提供切换入口，只展示有权限的租户并处理未保存内容。整页重载或应用内切换须由消费项目评估，不将 reload 定为通用要求。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case4.step3.name">Whitelabel token 接管</div><div class="cf-desc" data-i18n="cases:case4.step3.desc">租户 webConfig 的 logo / brandColor / siteName 通过 ConfigProvider 顶层注入，所有 --aw-* token 重新解析，dark 与双语保持一致。</div></div>
+      <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case4.step3.name">品牌配置与主题映射</div><div class="cf-desc" data-i18n="cases:case4.step3.desc">品牌资产与主题 token 分别映射；先定义允许覆盖的品牌值及明暗主题对比度测试。ConfigProvider 不会自动重算全部 --aw-* CSS 变量。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case4.step4.name">数据隔离</div><div class="cf-desc" data-i18n="cases:case4.step4.desc">租户与权限隔离以后端契约为准；切换租户时清除旧上下文和页面数据，防止 A 租户数据闪现到 B 租户。</div></div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case4.step4.name">数据隔离</div><div class="cf-desc" data-i18n="cases:case4.step4.desc">后端负责租户与权限隔离。若实现切换，前端须清理旧租户状态、取消旧请求并隔离迟到响应，再显示新租户数据。</div></div>
     </div>
     <div class="case-tags"><span>login-page</span><span>shell</span><span>whitelabel</span><span>i18n</span></div>
   </div>
@@ -106,7 +106,7 @@
       <div class="cf-arrow">→</div>
       <div class="cf-step"><div class="cf-num">3</div><div class="cf-name" data-i18n="cases:case5.step3.name">Table 异常打标</div><div class="cf-desc" data-i18n="cases:case5.step3.desc">勾选异常行后批量标记审查中，行级 Tag 显示状态，并把异常分组提升到顶部。</div></div>
       <div class="cf-arrow">→</div>
-      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case5.step4.name">导出 CSV / PDF</div><div class="cf-desc" data-i18n="cases:case5.step4.desc">右上角导出打开 Modal 选择 CSV 完整版或 PDF 摘要；进度完成后不自动下载，只给下载按钮和 24h 过期提示。</div></div>
+      <div class="cf-step"><div class="cf-num">4</div><div class="cf-name" data-i18n="cases:case5.step4.name">导出 CSV / PDF</div><div class="cf-desc" data-i18n="cases:case5.step4.desc">按服务实际支持的格式提供导出入口。任务完成后提供下载；有效期、导出范围和权限依据真实响应与后端契约展示。</div></div>
     </div>
     <div class="case-tags"><span>user-mgmt-page</span><span>list-page</span><span>table</span><span>cascader</span><span>row-actions</span><span>upload</span><span>avatar-result</span></div>
   </div>
@@ -132,12 +132,12 @@
       <thead><tr><th style="width:30%" data-i18n="cases:patterns.th.pattern">模式</th><th data-i18n="cases:patterns.th.used">出现于</th></tr></thead>
       <tbody>
         <tr><td data-i18n="cases:patterns.bulk.pattern">批量勾选 + Action toolbar</td><td data-i18n="cases:patterns.bulk.used">案例 1 / 案例 5</td></tr>
-        <tr><td data-i18n="cases:patterns.confirm.pattern">不可逆操作二次确认 + 输入数量</td><td data-i18n="cases:patterns.confirm.used">案例 1 / 案例 3</td></tr>
+        <tr><td data-i18n="cases:patterns.confirm.pattern">不可逆操作确认 + 风险策略</td><td data-i18n="cases:patterns.confirm.used">案例 1 / 案例 3</td></tr>
         <tr><td data-i18n="cases:patterns.sse.pattern">统一刷新进度与状态</td><td data-i18n="cases:patterns.sse.used">案例 1 / 案例 2 / 案例 3</td></tr>
         <tr><td data-i18n="cases:patterns.result.pattern">Result 部分成功 + 失败 CSV</td><td data-i18n="cases:patterns.result.used">案例 1 / 案例 5</td></tr>
-        <tr><td data-i18n="cases:patterns.audit.pattern">操作记录 Tab 强制审计</td><td data-i18n="cases:patterns.audit.used">案例 2 / 案例 5</td></tr>
-        <tr><td data-i18n="cases:patterns.tenant.pattern">租户切换整页 reload</td><td data-i18n="cases:patterns.tenant.used">案例 4</td></tr>
-        <tr><td data-i18n="cases:patterns.error.pattern">错误信息三层（做了什么 + 为什么 + 怎么办）</td><td data-i18n="cases:patterns.error.used">所有案例</td></tr>
+        <tr><td data-i18n="cases:patterns.audit.pattern">可用操作记录与审计入口</td><td data-i18n="cases:patterns.audit.used">案例 2 / 案例 5</td></tr>
+        <tr><td data-i18n="cases:patterns.tenant.pattern">租户切换的上下文隔离（候选）</td><td data-i18n="cases:patterns.tenant.used">案例 4</td></tr>
+        <tr><td data-i18n="cases:patterns.error.pattern">错误信息：发生了什么 + 已知原因 + 下一步</td><td data-i18n="cases:patterns.error.used">所有案例</td></tr>
         <tr><td data-i18n="cases:patterns.theme.pattern">Light / Dark 双主题视觉同等支持</td><td data-i18n="cases:patterns.theme.used">所有案例</td></tr>
         <tr><td data-i18n="cases:patterns.session.pattern">远程会话状态与推送批次分离</td><td data-i18n="cases:patterns.session.used">案例 06</td></tr>
         <tr><td data-i18n="cases:patterns.conflict.pattern">冲突来源 + 跳过/覆盖 + 部分成功</td><td data-i18n="cases:patterns.conflict.used">设备分组 / 权限配置 / 应用与 OTA 分配</td></tr>

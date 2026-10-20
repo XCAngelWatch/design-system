@@ -8,7 +8,7 @@
     "text.004": "Input state",
     "attr.005.placeholder": "Please enter the device SN",
     "attr.006.value": "Format error",
-    "attr.007.placeholder": "Read only",
+    "attr.007.placeholder": "Disabled",
     "text.008": "Select & Switch",
     "text.009": "East China · Node 03",
     "text.010": "Enable OTA",
@@ -27,16 +27,19 @@
     "text.023": "Save",
     "text.024": "Cancel",
     "text.025": "Allow device screenshots",
-    "text.026": "Locked by policy (read only)",
+    "text.026": "Locked by policy (cannot change)",
     "text.027": "Saving settings",
     "text.028": "Async switches must be controlled: ",
     "text.029": "enter loading and block repeated clicks during submission. If the server rejects the update, roll back to the previous state and show the reason with a retry path.",
     "attr.030.ariaLabel": "Device SN",
     "attr.031.ariaLabel": "Device identifier",
     "attr.032.ariaLabel": "Invalid-format example",
-    "attr.033.ariaLabel": "Read-only input",
+    "attr.033.ariaLabel": "Disabled input",
     "attr.034.ariaLabel": "Domain name",
     "attr.035.ariaLabel": "Device name",
-    "attr.036.ariaLabel": "Remarks"
+    "attr.036.ariaLabel": "Remarks",
+    "validation.identifier": "Enter a valid device identifier.",
+    "readonly.identifier": "Read-only device identifier",
+    "readonly.rule": "Read-only fields remain focusable and allow selection and copying. Disabled fields do not participate in keyboard interaction or form submission."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

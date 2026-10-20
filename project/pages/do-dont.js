@@ -5,7 +5,7 @@
 <section class="section" id="do-dont">
 <p class="section-eyebrow"><span data-i18n="do-dont:t001">工程落地 · 规范红线</span></p>
 <h2 role="heading" aria-level="1"><span data-i18n="do-dont:t002">规范红线 Do &amp; Don't</span></h2>
-<p class="lede"><span data-i18n="do-dont:t003">这些是业务仓库接入 stylelint / 设计审查时应执行的硬约束，覆盖 Token 三层架构、Sidebar 规范、扩展色板与交互守则。</span></p>
+<p class="lede"><span data-i18n="do-dont:t003">本页约束视觉、组件交互与无障碍；TMS 工程约定仅适用于当前消费者。业务权限、状态码和产品能力须核验各项目契约，候选能力不是已发布组件。</span></p>
 <div class="subsection">
 <h3><span data-i18n="do-dont:t004">antd 默认值 vs TMS 覆盖 · 一览</span></h3>
 <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="do-dont:t005">这里只保留最容易造成视觉偏差的差异；完整覆盖项与页面级默认值统一维护在</span> <a href="#/config-provider" style="color: var(--aw-primary-text)"><span data-i18n="do-dont:t006">ConfigProvider 全局配置</span></a><span data-i18n="do-dont:t128">。</span></p>
@@ -16,7 +16,7 @@
 <tr><td><span data-i18n="do-dont:t012">状态色</span></td><td><span class="mono">#52C41A / #FAAD14 / #FF4D4F / #1677FF</span> <span data-i18n="do-dont:t013">(统一默认阶位)</span></td><td><span class="mono">#237804 / #874D00 / #CF1322 / #0958D9</span> <span data-i18n="do-dont:t014">(按语义与白底正文对比度逐色选择)</span></td></tr>
 <tr><td>Motion</td><td><span class="mono">.645,.045,.355,1</span> · 0.1 / 0.2 / 0.3 s</td><td><span class="mono">.34,.69,.1,1</span> · 120 / 200 / 320 ms</td></tr>
 <tr><td>Button</td><td><span data-i18n="do-dont:t015">字重 400 · 有 primary shadow</span></td><td><span data-i18n="do-dont:t016">字重 500 · 无 primary shadow</span></td></tr>
-<tr><td>Notification.duration</td><td><span data-i18n="do-dont:t017">4.5s 自动关闭</span></td><td><span data-i18n="do-dont:t018">0（手动关闭；成功 Toast 单独 3s）</span></td></tr>
+<tr><td>Notification.duration</td><td><span data-i18n="do-dont:t017">4.5s 自动关闭</span></td><td><span data-i18n="do-dont:t018">按反馈用途设置；需持续处理的信息保持可见</span></td></tr>
 <tr><td><span data-i18n="do-dont:t019">Modal 不可逆默认焦点</span></td><td><span data-i18n="do-dont:t020">"确认" 按钮</span></td><td><span data-i18n="do-dont:t021">"取消" 按钮 (焦点防误点)</span></td></tr>
 <tr><td><span data-i18n="do-dont:t022">暗色算法</span></td><td>antd <code>darkAlgorithm</code> <span data-i18n="do-dont:t023">派生</span></td><td><span data-i18n="do-dont:t024">TMS 手写 token</span></td></tr>
 </tbody>
@@ -35,18 +35,18 @@
 <li><span data-i18n="do-dont:t036">键盘可达（tab 顺序 + focus 可见）；快捷键必须与当前 Shell / usePageShortcuts 注册表一致</span></li>
 <li><span data-i18n="do-dont:t037">所有可见文本通过</span> <span class="mono">t('namespace.key')</span> <span data-i18n="do-dont:t038">包裹</span></li>
 <li><span data-i18n="do-dont:t039">组件必须同时通过 Light + Dark 视觉回归</span></li>
-<li><span data-i18n="do-dont:t040">单条可逆操作用 Popconfirm；单条不可逆或批量操作用 Modal</span></li>
+<li><span data-i18n="do-dont:t040">启停、重置、删除、批量推送等高风险业务动作只用一次 App 上下文 modal.confirm；Popconfirm 仅适用于本地低风险视图操作。</span></li>
 <li><span data-i18n="do-dont:t041">日期 / 数字格式必须用</span> <span class="mono">Intl.*</span> API</li>
-<li><span data-i18n="do-dont:t042">异常态返回 ErrorPage（404/403/500）+ traceId</span></li>
-<li><span data-i18n="do-dont:t043">异步/批量操作给到 Result 终态页</span></li>
-<li><span data-i18n="do-dont:t044">组件只消费 Alias Token，不直接引 Seed/Map（</span><code>colorBgContainer</code> ✓ / <code>colorPrimary</code> ✗)</li>
+<li><span data-i18n="do-dont:t042">路由级 404/403 可用 Result；加载失败保留当前页面并显示持续反馈与重试。仅展示服务端已提供的 traceId。</span></li>
+<li><span data-i18n="do-dont:t043">异步/批量操作提供可追踪的终态与后续动作，不强制跳独立 Result 页</span></li>
+<li><span data-i18n="do-dont:t044">业务组件复用语义 token；品牌与组件状态映射在主题层集中维护，例如</span><code>colorBgContainer</code> / <code>colorPrimary</code></li>
 <li><span data-i18n="do-dont:t045">Sidebar Active 必须用</span> <b><span data-i18n="do-dont:t046">3px 品牌蓝 indicator bar</span></b><span data-i18n="do-dont:t047">，不能仅靠背景色</span></li>
-<li><span data-i18n="do-dont:t048">业务标签优先用扩展色板的 25/700 双阶（保 AA 对比）</span></li>
+<li><span data-i18n="do-dont:t048">标签使用已发布语义 token；扩展色板仍是候选，采用前核验明暗主题对比度</span></li>
 <li><span data-i18n="do-dont:t049">所有文本色块应达到 WCAG 对比度要求（≥ 4.5:1）；业务仓库可接入自动化检查</span></li>
 <li><span data-i18n="do-dont:t050">组件级覆盖统一收口在</span> <code>theme.components</code><span data-i18n="do-dont:t051">，禁止散落在业务代码</span></li>
-<li><span data-i18n="do-dont:t052">复杂场景（地图/终端/拖拽/节点图/虚拟表/Schema 表单/代码编辑）优先用成熟 NPM 包，不自建</span></li>
+<li><span data-i18n="do-dont:t052">复杂场景先评估原生能力；候选 NPM 包须批准后再接入</span></li>
 <li><span data-i18n="do-dont:t053">新引入的第三方包必须 license ∈ MIT / Apache-2.0 / BSD / ISC，其他需法务确认</span></li>
-<li><span data-i18n="do-dont:t054">破坏性操作必须经服务端二次校验，非法操作返回 422 并记录审计</span></li>
+<li><span data-i18n="do-dont:t054">服务端负责操作权限与风险校验；错误状态码、审计字段和留存规则以领域契约为准</span></li>
 <li><span data-i18n="do-dont:t055">所有第三方资源（字体 / 图标 / Monaco loader / leaflet 瓦片）必须自托管，禁运行时 CDN</span></li>
 </ul>
 </div>
@@ -55,14 +55,14 @@
 <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
 <li><span data-i18n="do-dont:t056">不要使用</span> <span class="mono">!important</span><span data-i18n="do-dont:t057">（业务仓库 stylelint 规则通常会拦截）</span><br/><span style="color:var(--aw-text-3);font-size:12px"><span data-i18n="do-dont:t058">例外:a11y reduced-motion 重置 / antd CSS-in-JS 覆盖。豁免必须前置</span> <code>/* stylelint-disable-next-line declaration-no-important -- reason */</code> <span data-i18n="do-dont:t059">注释。</span></span></li>
 <li><span data-i18n="do-dont:t060">不要使用 Tailwind utility（仅 CSS Modules）</span></li>
-<li><span data-i18n="do-dont:t061">不要使用</span> <span class="mono">@ant-design/pro-components</span><span data-i18n="do-dont:t062">（不再维护对 antd v6 的兼容）。</span><span class="mono">ProForm / ProTable / ProLayout / ProCard</span> <span data-i18n="do-dont:t063">等均改用 antd 原生 + 业务自建封装</span></li>
-<li><span data-i18n="do-dont:t064">不要使用过亮的强调色（饱和度 ≤ 80%）</span></li>
+<li><span data-i18n="do-dont:t061">不要使用</span> <span class="mono">@ant-design/pro-components</span><span data-i18n="do-dont:t062">（当前 TMS 不采用该依赖）。</span><span class="mono">ProForm / ProTable / ProLayout / ProCard</span> <span data-i18n="do-dont:t063">等均改用 antd 原生 + 业务自建封装</span></li>
+<li><span data-i18n="do-dont:t064">不要任意调整强调色；使用已发布 token，并按实际前景与背景检查对比度</span></li>
 <li><span data-i18n="do-dont:t065">不要在登录页之外使用装饰性插画（错误页线性插画除外）</span></li>
 <li><span data-i18n="do-dont:t066">不要从 CDN 加载字体或图标</span></li>
 <li><span data-i18n="do-dont:t067">不要硬编码用户可见字符串（即使是英文）</span></li>
 <li><span data-i18n="do-dont:t068">不要在 Dark 模式用纯黑</span> <span class="mono">#000</span> <span data-i18n="do-dont:t069">或纯白文本（用 token）</span></li>
 <li><span data-i18n="do-dont:t070">不要用整卡背景色表达状态（用 4px 顶部色条）</span></li>
-<li><span data-i18n="do-dont:t071">不要用 Toast 显示错误结果（用 Result 页或 Modal）</span></li>
+<li><span data-i18n="do-dont:t071">加载或刷新失败不能只用短暂 Toast；使用持续 Alert/Result 与重试。已有内容上的单次操作失败可用 message。</span></li>
 <li><span data-i18n="do-dont:t072">不要用纯色彩表达状态（必须 + 文字 / 形状）</span></li>
 <li><span data-i18n="do-dont:t073">不要在业务代码中写 hex（</span><code>#165DFF</code> ✗ / <code>var(--aw-primary)</code> ✓)</li>
 <li><span data-i18n="do-dont:t074">不要在一屏内并存 &gt; 5 种色相，避免视觉嘈杂</span></li>
@@ -74,7 +74,7 @@
 <li><span data-i18n="do-dont:t083">不要在 echarts series 内硬编码 hex —— 用</span> <code>--aw-chart-1..8</code> <span data-i18n="do-dont:t084">或 status token</span></li>
 <li><span data-i18n="do-dont:t085">不要在 Sidebar 用品牌蓝铺底色（仅作 3px indicator + 浅蓝 active 底）</span></li>
 <li><span data-i18n="do-dont:t086">不要混淆 AntD size="small" / --aw-h-sm（24px）与用户 Compact 密度（28px），也不要直接套 antd</span> <code>compactAlgorithm</code><span data-i18n="do-dont:t087">；Compact 必须显式设置 controlHeight: 28</span></li>
-<li><span data-i18n="do-dont:t088">不要把"已退役"作为可恢复状态（终态不可逆，只允许审计查看）</span></li>
+<li><span data-i18n="do-dont:t088">不要从设计示例推导退役、锁定等业务状态的可逆性；以领域契约为准</span></li>
 </ul>
 </div>
 </div>

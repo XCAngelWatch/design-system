@@ -1,10 +1,10 @@
 /* AngelWatch Design System — page: tab-variants (auto-generated from HTML fragment) */
 (window.__AW_PAGES__ = window.__AW_PAGES__ || {})["tab-variants"] = `
 <div class="content">
-<!-- TAB VARIANTS / POPCONFIRM -->
+<!-- TAB VARIANTS / ACTION CONFIRMATION -->
 <section class="section" id="tab-variants">
   <p class="section-eyebrow"><span data-i18n="tab-variants:text.001">业务模式 · Tabs / 确认</span></p>
-  <h2><span data-i18n="tab-variants:text.002">Tabs 变体与 Popconfirm</span></h2>
+  <h2><span data-i18n="tab-variants:text.002">Tabs 变体与操作确认</span></h2>
 
   <div class="subsection">
     <h3><span data-i18n="tab-variants:text.003">Tabs · 三种形态</span></h3>
@@ -26,22 +26,18 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="tab-variants:text.019">Popconfirm · 轻量二次确认</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6"><span data-i18n="tab-variants:text.020">确认强度按可逆性和影响范围分级：单条可逆的启停、状态翻转使用 </span><b>Popconfirm</b><span data-i18n="tab-variants:text.021">（轻、就近、不阻塞）；单条不可逆删除、批量操作、OTA 推送和删除组织使用 </span><b>Modal</b><span data-i18n="tab-variants:text.022">（阻塞，明确影响范围，默认焦点在取消）。</span></p>
-    <div class="popconfirm-showcase">
-<div class="popconfirm">
-  <div class="popconfirm-bubble">
-    <div><span class="pc-icon">⚠</span><span data-i18n="tab-variants:text.023">确认停用终端 </span><strong><span data-i18n="tab-variants:text.024">终端-上海-001</span></strong><span data-i18n="tab-variants:text.025">？停用后可由管理员重新启用。</span></div>
-    <div class="pc-actions"><button class="btn btn-sm"><span data-i18n="tab-variants:text.026">取消</span></button><button class="btn btn-sm btn-danger"><span data-i18n="tab-variants:text.027">确认停用</span></button></div>
-  </div>
-  <button class="btn btn-sm btn-ghost-danger"><span data-i18n="tab-variants:text.028">停用</span></button>
+    <h3><span data-i18n="tab-variants:text.019">Modal · 一次操作确认</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 14px;max-width:720px;line-height:1.6"><span data-i18n="tab-variants:text.020">启停、锁定、重置和删除等高风险动作，无论外露还是收进菜单，都只经过一次 Modal 确认。</span> <span data-i18n="tab-variants:text.021">使用 App.useApp() 提供的 modal.confirm，说明对象、数量与影响；默认焦点在取消，执行中阻止重复提交。</span> <span data-i18n="tab-variants:text.022">以下按钮只演示确认交互。实际操作可用性、恢复方式与权限须核验后端契约。</span></p>
+    <div class="demo-grid cols-2">
+<div class="surface" data-row-label="DEV-86420075">
+  <p><span data-i18n="tab-variants:text.023">停用对象：</span><strong><span data-i18n="tab-variants:text.024">终端-上海-001</span></strong> <code>DEV-86420075</code></p>
+  <p style="font-size:13px;color:var(--aw-text-2)"><span data-i18n="tab-variants:text.025">提交前说明停用影响和可恢复条件，避免仅询问“是否继续”。</span></p>
+  <button class="btn btn-sm btn-ghost-danger" data-demo-confirm><span data-i18n="tab-variants:text.028">停用</span></button>
 </div>
-<div class="popconfirm">
-  <div class="popconfirm-bubble">
-    <div><span class="pc-icon" style="color:var(--aw-info)">i</span><span data-i18n="tab-variants:text.029">确认锁定该终端？锁定后只能由超级管理员解锁。</span></div>
-    <div class="pc-actions"><button class="btn btn-sm"><span data-i18n="tab-variants:text.030">取消</span></button><button class="btn btn-sm btn-primary"><span data-i18n="tab-variants:text.031">锁定</span></button></div>
-  </div>
-  <button class="btn btn-sm"><span data-i18n="tab-variants:text.032">锁定</span></button>
+<div class="surface" data-row-label="DEV-86420075">
+  <p><code>DEV-86420075</code></p>
+  <p style="font-size:13px;color:var(--aw-text-2)"><span data-i18n="tab-variants:text.029">锁定确认应说明设备受限范围、解锁条件与所需权限；这些业务规则以后端为准。</span></p>
+  <button class="btn btn-sm" data-demo-confirm><span data-i18n="tab-variants:text.032">锁定</span></button>
 </div>
     </div>
   </div>

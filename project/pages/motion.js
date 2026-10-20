@@ -75,14 +75,14 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
-  /* 2. Reduce tokens too, so ConfigProvider injects them into antd internals */
-  :root, [data-theme="dark"] {
+  /* 2. Optional CSS-token consumers; AntD theme synchronization needs app code */
+  :root, [data-theme] {
     --aw-dur-fast: 1ms;
     --aw-dur-base: 1ms;
     --aw-dur-slow: 1ms;
   }
 }</code></pre></div>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="motion:t046">完整链路：</span></b><span data-i18n="motion:t047">CSS variable 降为 1ms → ConfigProvider 监听</span> <code>--aw-dur-*</code> <span data-i18n="motion:t048">把 antd</span> <code>motionDurationFast/Mid/Slow</code> <span data-i18n="motion:t049">同步覆盖 → antd 内部组件入场动画也降为 1ms。两层都改才能闭环，仅改 CSS transition 拦不住 antd Drawer/Modal 的 rc-motion 入场。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="motion:t046">完整链路：</span></b><span data-i18n="motion:t047">CSS 覆盖负责减少当前动画；</span> <code>--aw-dur-*</code> <span data-i18n="motion:t048">不会自动被 ConfigProvider 监听。当前消费者的</span> <code>motionDurationFast/Mid/Slow</code> <span data-i18n="motion:t049">为固定配置，尚未接入系统偏好监听。若要同步组件内部时长，需由应用监听 matchMedia 的变化、重新构建 theme，并同时保留 CSS 降级；不能把两层同步写成现有能力。</span></p>
   </div>
 
   <div class="subsection">
@@ -92,23 +92,23 @@
     <div class="surface" style="padding:14px;font-family:var(--aw-font-mono);font-size:12px;line-height:1.85;color:var(--aw-text-2)">
       <div style="color:var(--aw-text-3)"><span data-i18n="motion:t055">// 入口位置</span></div>
       <div><span data-i18n="motion:t056">Topbar 右侧 toolbar · 太阳 / 月亮 icon (位于面包屑同行右端)</span></div>
-      <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="motion:t057">// 默认策略</span></div>
-      <div><span data-i18n="motion:t058">1. 首次访问读</span> <b>prefers-color-scheme</b> <span data-i18n="motion:t059">系统设置</span></div>
-      <div><span data-i18n="motion:t060">2. 用户手动切换后写入</span> <b>localStorage('aw-theme')</b><span data-i18n="motion:t061">，覆盖系统</span></div>
-      <div><span data-i18n="motion:t062">3. 跨标签同步：监听 storage event 重新读 localStorage 应用</span></div>
-      <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="motion:t063">// 切换动效 (避免组件级闪烁)</span></div>
+      <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="motion:t057">// 当前文档站策略</span></div>
+      <div><span data-i18n="motion:t058">1. 首次默认 Light；文档站不监听</span> <b>prefers-color-scheme</b> <span data-i18n="motion:t059">；消费者的系统偏好行为见 Dark 页</span></div>
+      <div><span data-i18n="motion:t060">2. 用户手动切换后写入</span> <b>localStorage('aw-theme')</b><span data-i18n="motion:t061">，供下次访问恢复</span></div>
+      <div><span data-i18n="motion:t062">3. 文档站没有跨标签 storage 监听；消费者通过 tms25:ui 另行同步</span></div>
+      <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="motion:t063">// 可选主题过渡参考（不是当前站点的全局规则）</span></div>
       <div>html, body { transition: background-color 200ms var(--aw-ease); }</div>
-      <div>* { transition: background-color 120ms, border-color 120ms, color 120ms; }</div>
+      <div>@media (prefers-reduced-motion: reduce) { html, body { transition: none; } }</div>
       <div style="margin-top:8px;color:var(--aw-text-3)"><span data-i18n="motion:t064">// FOUC 防护 (在 &lt;head&gt; 内同步执行)</span></div>
-      <div>var t = localStorage.getItem('aw-theme');</div>
-      <div>if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);</div>
+      <div>try { var t = localStorage.getItem('aw-theme');</div>
+      <div>if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (error) {}</div>
     </div>
 
-    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="motion:t065">切换瞬间过渡：</span></strong><span data-i18n="motion:t066">仅根 root + 全局 background-color / border-color / color 过渡 120ms，不要让所有 transition 都参与（否则 hover 反应迟钝）。</span></div></div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="motion:t065">若新增主题过渡：</span></strong><span data-i18n="motion:t066">只过渡必要的背景与文字属性，不全局覆盖组件已有 transition；减少动效时禁用该过渡。需实测后才能作为既有行为描述。</span></div></div>
 
-    <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="motion:t067">暗色 logo：</span></strong><span data-i18n="motion:t068">brand-logo 在深色侧栏头会糊。已通过</span> <code>filter: brightness(0) invert(1)</code> <span data-i18n="motion:t069">反白处理。租户提供的 logo 若已是单色版本可在 webConfig 中标记</span> <code>logo.darkVariant</code> <span data-i18n="motion:t070">直接切换，避免 filter 失真。</span></div></div>
+    <div class="alert warning" style="margin-top:8px"><div class="ico">!</div><div class="content"><strong><span data-i18n="motion:t067">暗色 logo：</span></strong><span data-i18n="motion:t068">部分示例中的单色 logo 采用</span> <code>filter: brightness(0) invert(1)</code> <span data-i18n="motion:t069">。这只适用于已验证的单色资产；</span> <code>logo.darkVariant</code> <span data-i18n="motion:t070">不是本仓已确认的消费者字段。租户深色 logo 的能力与字段必须另行核验，不得据此虚构配置 API。</span></div></div>
 
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="motion:t071">禁止运行时改 token 数值：</span></strong><span data-i18n="motion:t072">主题切换走 CSS 选择器（</span><code>[data-theme]</code><span data-i18n="motion:t073">），不要 JS 写</span> <code>document.documentElement.style.setProperty</code><span data-i18n="motion:t074">，会和租户白标 token 冲突。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="motion:t071">禁止运行时改 token 数值：</span></strong><span data-i18n="motion:t072">主题切换走 CSS 选择器（</span><code>[data-theme]</code><span data-i18n="motion:t073">），不要 JS 写</span> <code>document.documentElement.style.setProperty</code><span data-i18n="motion:t074">作为一般主题切换方式；未来租户覆盖必须有独立契约与优先级。</span></div></div>
   </div>
 </section>
 </div>

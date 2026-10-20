@@ -10,9 +10,9 @@
 <table class="map-table">
 <thead><tr><th style="width:18%"><span data-i18n="data-format:t008">场景</span></th><th style="width:28%"><span data-i18n="data-format:t009">格式</span></th><th style="width:22%"><span data-i18n="data-format:t010">示例</span></th><th><span data-i18n="data-format:t011">规则</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t012">大数字</span></td><td><span data-i18n="data-format:t013">千分位（半角逗号）</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t014">≥ 1000 必须分隔；普通数值左对齐、金额右对齐，数字用等宽字符（</span><code>font-feature-settings: "tnum"</code><span data-i18n="data-format:t176">）</span></td></tr>
-<tr><td><span data-i18n="data-format:t015">百分比</span></td><td><span data-i18n="data-format:t016">数字 +</span> <span class="mono">%</span> <span data-i18n="data-format:t017">· 固定 2 位小数</span></td><td><span class="mono">98.20%</span></td><td><span data-i18n="data-format:t018">不补 0 会让"98%"和"98.5%"对不齐；趋势用 ↑↓ 配独立列</span></td></tr>
-<tr><td><span data-i18n="data-format:t019">带单位</span></td><td><span data-i18n="data-format:t020">数字 + 半角空格 + 单位</span></td><td><span class="mono">123,220 kg</span></td><td><span data-i18n="data-format:t021">单位 lowercase；常用单位收口到表头，单元格只放数字</span></td></tr>
+<tr><td><span data-i18n="data-format:t012">大数字</span></td><td><span data-i18n="data-format:t013">按 locale 数字分组</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t014">分隔符由 Intl 决定，不固定为逗号；普通数值左对齐、金额右对齐，数字用等宽字符（</span><code>font-feature-settings: "tnum"</code><span data-i18n="data-format:t176">）</span></td></tr>
+<tr><td><span data-i18n="data-format:t015">百分比</span></td><td><span data-i18n="data-format:t016">按 locale 显示</span> <span class="mono">%</span> <span data-i18n="data-format:t017">· 业务字段决定精度</span></td><td><span class="mono">98.20%</span></td><td><span data-i18n="data-format:t018">同一指标精度一致；通过 Intl percent 格式化并核验输入是 0–1 比率还是 0–100 数值</span></td></tr>
+<tr><td><span data-i18n="data-format:t019">带单位</span></td><td><span data-i18n="data-format:t020">本地化数字与标准单位</span></td><td><span class="mono">123,220 kg</span></td><td><span data-i18n="data-format:t021">单位保留标准大小写（如 kg、MB、MHz）；公共单位可置于表头，不随意改写大小写</span></td></tr>
 <tr><td><span data-i18n="data-format:t022">表格数字</span></td><td><span data-i18n="data-format:t023">普通数值左对齐；金额右对齐 + tnum</span></td><td><span class="mono">12,486</span></td><td><span data-i18n="data-format:t024">普通数值、时间与操作列左对齐；金额列右对齐。带单位列在表头标注（如 "心跳间隔 (秒)"）</span></td></tr>
 <tr><td><span data-i18n="data-format:t025">大数缩写</span></td><td>1.2k / 12.5k / 1.2M</td><td><span class="mono">12.5k</span></td><td><span data-i18n="data-format:t026">仅在 DataCard / 仪表盘中使用，详情 / 表格保留完整数字</span></td></tr>
 <tr><td><span data-i18n="data-format:t027">趋势数字</span></td><td><span data-i18n="data-format:t028">带正负号 + 图形</span></td><td><span class="mono">↑ +248</span> / <span class="mono">↓ -12</span></td><td><span data-i18n="data-format:t029">正数永远显式 + 号；颜色：增长视语义用 success / 也可用品牌灰</span></td></tr>
@@ -21,15 +21,15 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="data-format:t030">日期与时间 · Date &amp; Time</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t031">接口与存储传输时间点使用 RFC 3339 UTC instant，例如</span> <code>2026-04-28T06:32:18Z</code><span data-i18n="data-format:t032">；计划任务与用户偏好另存 IANA 时区，例如</span> <code>Asia/Shanghai</code><span data-i18n="data-format:t033">。消费者必须声明展示时区策略：优先用户 / 租户 IANA zone；尚未配置时可显式采用 Intl.DateTimeFormat().resolvedOptions().timeZone 作为 IANA fallback，无法解析再回退 UTC。不得用固定偏移冒充 IANA / DST 规则。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t031">时间解析须先核验接口的格式与时区。无歧义的时间点示例采用 RFC 3339 UTC instant，如</span> <code>2026-04-28T06:32:18Z</code><span data-i18n="data-format:t032">；计划任务与用户展示偏好宜使用 IANA 时区，如</span> <code>Asia/Shanghai</code><span data-i18n="data-format:t033">。消费者必须声明展示时区策略：优先用户 / 租户 IANA zone；尚未配置时可显式采用 Intl.DateTimeFormat().resolvedOptions().timeZone 作为 IANA fallback，无法解析再回退 UTC。不得用固定偏移冒充 IANA / DST 规则。</span></p>
 <table class="map-table">
 <thead><tr><th style="width:24%"><span data-i18n="data-format:t034">场景</span></th><th style="width:34%"><span data-i18n="data-format:t035">格式</span></th><th><span data-i18n="data-format:t036">使用规则</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t037">传输 / 存储时间点</span></td><td><span class="mono">2026-04-28T06:32:18Z</span></td><td><span data-i18n="data-format:t038">API、持久化与机器日志使用可排序的 UTC instant；展示前解析为时间点</span></td></tr>
+<tr><td><span data-i18n="data-format:t037">传输 / 存储时间点</span></td><td><span class="mono">2026-04-28T06:32:18Z</span></td><td><span data-i18n="data-format:t038">先核验服务端字段是 UTC、带偏移时间点还是无时区本地时间；缺少语义时反馈接口问题，不通过前端固定加减小时掩盖</span></td></tr>
 <tr><td><span data-i18n="data-format:t178">用户完整日期时间</span></td><td><span class="mono">zh-CN: 2026/04/28 14:32:18 GMT+8<br/>en-US: Apr 28, 2026, 2:32:18 PM GMT+8</span></td><td><span data-i18n="data-format:t179">故障日志 / 审计 / 推送 / 操作记录使用 Intl 与策略解析出的 IANA timeZone；需要精确定位时显示秒和时区名 / 偏移</span></td></tr>
 <tr><td><span data-i18n="data-format:t039">仅日期</span></td><td><span class="mono">zh-CN: 2026/04/28<br/>en-US: Apr 28, 2026</span></td><td><span data-i18n="data-format:t040">报表 / 筛选条件 / 截止日期使用 Intl dateStyle；不要手拼固定顺序</span></td></tr>
 <tr><td><span data-i18n="data-format:t041">仅时间</span></td><td><span class="mono">zh-CN: 14:32<br/>en-US: 2:32 PM</span></td><td><span data-i18n="data-format:t042">同日事件序列使用 Intl timeStyle / hourCycle；秒位只在精度场景保留</span></td></tr>
-<tr><td><span data-i18n="data-format:t043">相对时间</span></td><td><span data-i18n="data-format:t044">"刚刚 / 5 分钟前 / 2 小时前 / 昨天 14:32"</span></td><td><span data-i18n="data-format:t045">实时性 ≤ 7 天的列表；超 7 天回退绝对时间。tooltip 始终显示绝对时间</span></td></tr>
+<tr><td><span data-i18n="data-format:t043">相对时间</span></td><td><span data-i18n="data-format:t044">"刚刚 / 5 分钟前 / 2 小时前 / 昨天 14:32"</span></td><td><span data-i18n="data-format:t045">相对与绝对时间的切换阈值由消费项目统一；完整时间与展示时区必须能通过键盘访问</span></td></tr>
 <tr><td><span data-i18n="data-format:t046">当日切换</span></td><td><span data-i18n="data-format:t047">"今天 14:32" / "昨天 14:32"</span></td><td><span data-i18n="data-format:t048">设备最近心跳 / 最近上线 等高频比对场景</span></td></tr>
 <tr><td><span data-i18n="data-format:t049">时间区间</span></td><td><span class="mono">Intl.DateTimeFormat(...).formatRange(start, end)</span></td><td><span data-i18n="data-format:t050">优先使用 locale 感知的 formatRange；组件分隔符不得代替日期本身的本地化</span></td></tr>
 <tr><td><span data-i18n="data-format:t051">持续时长</span></td><td><span data-i18n="data-format:t052">"3天 5小时 12分" / "5h 12m" / "23s"</span></td><td><span data-i18n="data-format:t053">OTA 累计耗时 / 离线时长 / 升级用时；超 24h 用"天/小时/分"，否则用</span> <span class="mono">h/m/s</span></td></tr>
@@ -38,22 +38,22 @@
 </div>
 <div class="subsection">
 <h3><span data-i18n="data-format:t054">设备标识 · Device Identifier</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t055">所有设备标识强制 monospace（</span><code>--aw-font-mono</code><span data-i18n="data-format:t056">）+ 分组分隔，便于运维口头复述与肉眼比对。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t055">所有设备标识强制 monospace（</span><code>--aw-font-mono</code><span data-i18n="data-format:t056">）；分组仅用于展示，复制应保留 API 原始标识。</span></p>
 <table class="map-table">
 <thead><tr><th style="width:18%"><span data-i18n="data-format:t057">类型</span></th><th style="width:30%"><span data-i18n="data-format:t058">格式</span></th><th style="width:24%"><span data-i18n="data-format:t059">示例</span></th><th><span data-i18n="data-format:t060">说明</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t061">设备 SN</span></td><td><span class="mono">DEV-XXXXXXXX</span></td><td><span class="mono">DEV-86420075</span></td><td><span data-i18n="data-format:t062">固定前缀 + 8 位数字；列表展示完整，详情顶部突出</span></td></tr>
+<tr><td><span data-i18n="data-format:t061">设备 SN</span></td><td><span class="mono">API string</span></td><td><span class="mono">DEV-86420075</span></td><td><span data-i18n="data-format:t062">左侧仅示例；实际前缀与长度由设备契约决定，不补前缀、不截断或转为数字</span></td></tr>
 <tr><td>IMEI</td><td><span data-i18n="data-format:t063">15 位，4-6-5 分组</span></td><td><span class="mono">8642 007512 34567</span></td><td><span data-i18n="data-format:t064">口头读出友好；展示用空格，复制粘贴回退到无空格</span></td></tr>
-<tr><td>IPv4</td><td><span data-i18n="data-format:t065">四段，半角点分</span></td><td><span class="mono">10.0.42.118</span></td><td><span data-i18n="data-format:t066">不补 0；私网外显示 ASN / 国家</span></td></tr>
+<tr><td>IPv4</td><td><span data-i18n="data-format:t065">四段，半角点分</span></td><td><span class="mono">10.0.42.118</span></td><td><span data-i18n="data-format:t066">不补 0；ASN / 国家仅在接口提供且产品需要时展示</span></td></tr>
 <tr><td><span data-i18n="data-format:t067">MAC 地址</span></td><td><span data-i18n="data-format:t068">6 段，半角冒号</span></td><td><span class="mono">A8:5E:45:9F:11:02</span></td><td><span data-i18n="data-format:t069">大写；复制时保持冒号格式</span></td></tr>
-<tr><td><span data-i18n="data-format:t070">固件版本</span></td><td><span data-i18n="data-format:t071">SemVer · v 前缀</span></td><td><span class="mono">v3.4.2</span></td><td><span data-i18n="data-format:t072">主.次.补；预发布</span> <span class="mono">v3.4.2-rc.1</span><span data-i18n="data-format:t073">；列表展示精确到 patch</span></td></tr>
-<tr><td><span data-i18n="data-format:t074">批次号</span></td><td><span data-i18n="data-format:t075">日期 + 序号</span></td><td><span class="mono">PUSH-20260428-007</span></td><td><span data-i18n="data-format:t076">推送批次 / 升级任务 / 导入任务统一前缀，便于检索</span></td></tr>
+<tr><td><span data-i18n="data-format:t070">固件版本</span></td><td><span data-i18n="data-format:t071">按 API 原值展示</span></td><td><span class="mono">v3.4.2</span></td><td><span data-i18n="data-format:t072">若领域采用 SemVer，可显示如</span> <span class="mono">v3.4.2-rc.1</span><span data-i18n="data-format:t073">；其他版本格式不强制添加 v 或补齐 patch</span></td></tr>
+<tr><td><span data-i18n="data-format:t074">批次号</span></td><td><span data-i18n="data-format:t075">领域定义的任务标识</span></td><td><span class="mono">PUSH-20260428-007</span></td><td><span data-i18n="data-format:t076">示例不规定真实前缀；保留服务端标识以便查询与复制</span></td></tr>
 </tbody>
 </table>
 </div>
 <div class="subsection">
 <h3><span data-i18n="data-format:t077">敏感数据脱敏 · Masking</span></h3>
-<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t078">用户隐私数据列表 / 详情页默认脱敏，仅在管理员"查看完整"操作 + 服务端二次校验后展示原文。脱敏规则与服务端一致，前端不能"假脱敏"（DOM 中能拿到完整值）。</span></p>
+<p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="data-format:t078">以下脱敏样式仅为展示示例，哪些字段可看、可复制或可解密由后端权限与数据契约决定。不得把原文仅用 CSS 隐藏当作脱敏；前端不重复处理已脱敏值。</span></p>
 <table class="map-table">
 <thead><tr><th style="width:18%"><span data-i18n="data-format:t079">类型</span></th><th style="width:30%"><span data-i18n="data-format:t080">脱敏规则</span></th><th style="width:26%"><span data-i18n="data-format:t081">示例</span></th><th><span data-i18n="data-format:t082">展示方式</span></th></tr></thead>
 <tbody>
@@ -61,7 +61,7 @@
 <tr><td><span data-i18n="data-format:t086">邮箱</span></td><td><span data-i18n="data-format:t087">首字母 + 3 星 + @域名</span></td><td><span class="mono">d***@example.com</span></td><td><span data-i18n="data-format:t088">域名不脱敏</span></td></tr>
 <tr><td><span data-i18n="data-format:t089">身份证</span></td><td><span data-i18n="data-format:t090">前 3 + 8 星 + 后 4</span></td><td><span class="mono">213***...***203</span></td><td><span data-i18n="data-format:t091">仅高敏页面默认显示</span></td></tr>
 <tr><td><span data-i18n="data-format:t092">用户名</span></td><td><span data-i18n="data-format:t093">首字 + 星</span></td><td><span class="mono"><span data-i18n="data-format:t094">张***</span></span></td><td><span data-i18n="data-format:t095">列表中两位以下姓名只展示首字 + 星</span></td></tr>
-<tr><td><span data-i18n="data-format:t096">设备 IP</span></td><td><span data-i18n="data-format:t097">段 3 / 段 4 脱敏</span></td><td><span class="mono">10.0.***.118</span></td><td><span data-i18n="data-format:t098">仅供应商租户场景脱敏；自营运维不脱敏</span></td></tr>
+<tr><td><span data-i18n="data-format:t096">设备 IP</span></td><td><span data-i18n="data-format:t097">段 3 / 段 4 脱敏</span></td><td><span class="mono">10.0.***.118</span></td><td><span data-i18n="data-format:t098">是否显示或脱敏须由数据权限契约确定，不按租户名称推断</span></td></tr>
 </tbody>
 </table>
 </div>
@@ -75,13 +75,13 @@
 </div>
 <div class="surface">
 <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="data-format:t106">加载中</span></div>
-<h3 style="margin:0 0 8px;font-size:14px"><span data-i18n="data-format:t107">Skeleton（不显示文字）</span></h3>
-<p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="data-format:t108">表格 / 卡片用 antd</span> <code>Skeleton</code><span data-i18n="data-format:t109">；表内单格用</span> <span class="mono">⋯</span><span data-i18n="data-format:t110">（省略号）+ shimmer。禁止占位为"加载中..."文本（视觉跳动）。</span></p>
+<h3 style="margin:0 0 8px;font-size:14px"><span data-i18n="data-format:t107">保留布局的加载状态</span></h3>
+<p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="data-format:t108">首次加载可用 antd</span> <code>Skeleton</code><span data-i18n="data-format:t109">；已有内容刷新可保留内容并显示 loading，不仅使用</span> <span class="mono">⋯</span><span data-i18n="data-format:t110">等视觉符号，需让辅助技术也能获知加载状态。</span></p>
 </div>
 <div class="surface">
 <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="data-format:t111">错误</span></div>
-<h3 style="margin:0 0 8px;font-size:14px"><span class="mono">--</span> <span data-i18n="data-format:t112">+ tooltip 错误码</span></h3>
-<p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="data-format:t113">字段获取失败显示</span> <span class="mono">--</span><span data-i18n="data-format:t114">（双连字符）+ hover tooltip 给出错误码 / 重试按钮。整表失败用 ErrorPage，不在表格内堆叠错误行。</span></p>
+<h3 style="margin:0 0 8px;font-size:14px"><span class="mono">--</span> <span data-i18n="data-format:t112">+ 可见失败说明</span></h3>
+<p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="data-format:t113">字段获取失败可显示</span> <span class="mono">--</span><span data-i18n="data-format:t114">并附可见失败说明与键盘可达的重试。列表加载或刷新失败用持续 Alert/Result，不强制跳页或将失败伪装为空数据。</span></p>
 </div>
 </div>
 </div>
@@ -103,9 +103,9 @@
 <table class="map-table">
 <thead><tr><th style="width:24%"><span data-i18n="data-format:t127">场景</span></th><th style="width:30%"><span data-i18n="data-format:t128">格式</span></th><th style="width:22%"><span data-i18n="data-format:t129">示例</span></th><th><span data-i18n="data-format:t130">说明</span></th></tr></thead>
 <tbody>
-<tr><td><span data-i18n="data-format:t131">本币（CNY 默认）</span></td><td><span class="mono">¥</span> <span data-i18n="data-format:t132">+ 数字 + 千分位</span></td><td><span class="mono">¥1,234.00</span></td><td><span data-i18n="data-format:t133">固定 2 位小数；货币符号紧贴数字</span></td></tr>
-<tr><td><span data-i18n="data-format:t134">多币种</span></td><td><span data-i18n="data-format:t135">ISO 代码 + 空格 + 数字</span></td><td><span class="mono">USD 1,234.00</span></td><td><span data-i18n="data-format:t136">国际场景禁用 $ / £ / € 等歧义符号</span></td></tr>
-<tr><td><span data-i18n="data-format:t137">正式文档</span></td><td><span data-i18n="data-format:t138">大写中文金额</span></td><td><span data-i18n="data-format:t139">壹仟贰佰叁拾肆元整</span></td><td><span data-i18n="data-format:t140">合同 / 发票场景；前端不实现，调用后端</span> <code>/format/cny</code></td></tr>
+<tr><td><span data-i18n="data-format:t131">币种示例（CNY）</span></td><td><span class="mono">¥</span> <span data-i18n="data-format:t132">等符号由 Intl 生成</span></td><td><span class="mono">¥1,234.00</span></td><td><span data-i18n="data-format:t133">币种与精度依据业务契约；符号、分隔符和小数位使用 Intl currency 格式化</span></td></tr>
+<tr><td><span data-i18n="data-format:t134">多币种</span></td><td><span data-i18n="data-format:t135">Intl currencyDisplay: code</span></td><td><span class="mono">USD 1,234.00</span></td><td><span data-i18n="data-format:t136">可能歧义时显示 ISO 币种代码，顺序与空格由 locale 决定</span></td></tr>
+<tr><td><span data-i18n="data-format:t137">正式文档</span></td><td><span data-i18n="data-format:t138">大写中文金额</span></td><td><span data-i18n="data-format:t139">壹仟贰佰叁拾肆元整</span></td><td><span data-i18n="data-format:t140">按已核验的财务或后端能力实现，不假定存在通用金额转换接口。</span></td></tr>
 </tbody>
 </table>
 </div>

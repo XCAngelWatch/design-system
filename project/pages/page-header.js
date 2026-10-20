@@ -4,14 +4,15 @@
 <section class="section" id="page-header">
   <p class="section-eyebrow"><span data-i18n="page-header:text.001">业务模式 · 页头</span></p>
   <h2 role="heading" aria-level="1"><span data-i18n="page-header:text.002">页头 PageHeader</span></h2>
-  <p class="lede"><span data-i18n="page-header:text.003">每个业务页的顶部都应复用相同骨架 —— 面包屑 + 主标题 / 状态 + 主次操作。这套结构由 </span><code>PageHeader</code><span data-i18n="page-header:text.004"> 组件统一封装；新增或迁移页面以此为验收目标。运维切换业务页时不应重新寻找“主操作在哪”。</span></p>
+  <p class="lede"><span data-i18n="page-header:text.003">每个业务页的顶部都应复用相同骨架 —— 二三级页面返回上一级 + 面包屑 + 主标题 / 状态 + 主次操作。这套结构由 </span><code>PageHeader</code><span data-i18n="page-header:text.004"> 组件统一封装；新增或迁移页面以此为验收目标。运维切换业务页时不应重新寻找“主操作在哪”。</span></p>
 
   <div class="alert warning" style="margin:10px 0 18px"><div class="ico">!</div><div class="content"><strong><span data-i18n="page-header:text.005">这是 TMS 自建组件，不是 antd 提供。</span></strong><span data-i18n="page-header:text.006">当前 Ant Design 不提供 </span><code>&lt;PageHeader /&gt;</code><span data-i18n="page-header:text.007">；项目也不引入 </span><code>@ant-design/pro-components</code><span data-i18n="page-header:text.008"> 作为替代，其 </span><code>&lt;ProPageHeader /&gt;</code><span data-i18n="page-header:text.009"> 会引入被禁用的 ProComponents 依赖。因此</span><b><span data-i18n="page-header:text.010">必须自建</span></b><span data-i18n="page-header:text.011">，当前实现位于 </span><code class="mono">tms2.5-web-ui/src/components/PageHeader/PageHeader.tsx</code><span data-i18n="page-header:text.012">。</span></div></div>
 
   <div class="subsection">
-    <h3><span data-i18n="page-header:text.013">结构 · 5 个槽位</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.014">组件提供面包屑、标题行（标题 + 状态 + 操作）、关键字段和底部 Tabs 槽位。应用 Shell 中仅将面包屑挂载到顶栏，标题、返回入口、操作和其余槽位保留在内容区。不提供自由文本副标题 / 描述槽；必要说明放到页面正文。</span></p>
+    <h3><span data-i18n="page-header:text.013">结构 · 6 个槽位</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.014">组件提供返回、面包屑、标题行（标题 + 状态 + 操作）、关键字段和底部 Tabs 槽位。二三级详情页与沉浸式流程显示返回入口，顶级列表页和仪表盘不显示。应用 Shell 中仅将面包屑挂载到顶栏，返回、标题和其余槽位保留在内容区；不提供自由文本副标题 / 描述槽。</span></p>
     <div class="ph-anatomy">
+      <div class="ph-row" data-slot="back" style="padding:8px 14px"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回上一级</span></button></div>
       <div class="ph-row" style="background:var(--aw-fill-1);font-size:11px;color:var(--aw-text-3);padding:6px 14px"><span style="font-family:var(--aw-font-mono)">crumbs</span><span data-i18n="page-header:text.015"> · 跨级位置</span></div>
       <div class="ph-row" style="font-size:11px;color:var(--aw-text-3);padding:6px 14px;border-bottom:1px dashed var(--aw-border-3)"><span class="mono">data-center / device-list / DEV-86420075</span></div>
       <div class="ph-row ph-titlerow">
@@ -40,8 +41,8 @@
       <thead><tr><th style="width:18%"><span data-i18n="page-header:text.027">页面类型</span></th><th style="width:24%"><span data-i18n="page-header:text.028">面包屑</span></th><th style="width:22%"><span data-i18n="page-header:text.029">主标题</span></th><th style="width:18%"><span data-i18n="page-header:text.030">操作</span></th><th><span data-i18n="page-header:text.031">底部 Tabs</span></th></tr></thead>
       <tbody>
         <tr><td><b>ListPage</b></td><td><span data-i18n="page-header:text.032">1 级 (e.g. “设备管理”)</span></td><td><span data-i18n="page-header:text.033">资源类目名</span></td><td><span data-i18n="page-header:text.034">主：+ 添加 / 次：导入 / 导出</span></td><td><span data-i18n="page-header:text.035">视图切换 (Tab)</span></td></tr>
-        <tr><td><b>DetailPage</b></td><td><span data-i18n="page-header:text.036">2-3 级 + 当前对象名</span></td><td><span data-i18n="page-header:text.037">对象名 + 状态</span></td><td><span data-i18n="page-header:text.038">编辑 / 推送等对象动作；删除 / 解绑 / 重启进入更多中的独立危险分组或危险区域</span></td><td><span data-i18n="page-header:text.039">视图（基础 / 状态 / 日志 / 告警 / OTA）</span></td></tr>
-        <tr><td><b>FormPage</b></td><td><span data-i18n="page-header:text.040">2 级 + “新建” / “编辑”</span></td><td><span data-i18n="page-header:text.041">“新建 X” / “编辑 X”</span></td><td><span data-i18n="page-header:text.042">主：保存 / 次：取消 / 草稿</span></td><td><span data-i18n="page-header:text.043">无</span></td></tr>
+        <tr><td><b>DetailPage</b></td><td><span data-i18n="page-header:text.036">返回上一级 + 2-3 级面包屑 + 当前对象名</span></td><td><span data-i18n="page-header:text.037">对象名 + 状态</span></td><td><span data-i18n="page-header:text.038">编辑 / 推送等对象动作；删除 / 解绑 / 重启进入更多中的独立危险分组或危险区域</span></td><td><span data-i18n="page-header:text.039">视图（基础 / 状态 / 日志 / 告警 / OTA）</span></td></tr>
+        <tr><td><b>FormPage</b></td><td><span data-i18n="page-header:text.040">返回上一级，不重复展示面包屑</span></td><td><span data-i18n="page-header:text.041">“新建 X” / “编辑 X”</span></td><td><span data-i18n="page-header:text.042">主：保存 / 次：取消 / 草稿</span></td><td><span data-i18n="page-header:text.043">无</span></td></tr>
         <tr><td><b>DashboardPage</b></td><td><span data-i18n="page-header:text.044">无 (顶级)</span></td><td><span data-i18n="page-header:text.045">“仪表盘”</span></td><td><span data-i18n="page-header:text.046">右：时间范围切换 / 刷新</span></td><td><span data-i18n="page-header:text.047">主题切换 (Tab)</span></td></tr>
       </tbody>
     </table>
@@ -64,6 +65,7 @@
         <div class="tag-meta" style="margin:14px 14px 0">DetailPage</div>
         <div class="ph-mock">
           <div class="ph-cm"><span data-i18n="page-header:text.054">设备 / 终端-上海-001</span></div>
+          <div class="ph-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回上一级</span></button></div>
           <div class="ph-tm">
             <div><b><span data-i18n="page-header:text.055">终端-上海-001</span></b> <span class="status-dot online"><span data-i18n="page-header:text.056">在线</span></span></div>
             <div class="ph-acts"><button class="btn" data-i18n="page-header:text.057">编辑</button><button class="btn btn-primary" data-i18n="page-header:text.058">推送</button></div>
@@ -73,7 +75,7 @@
       <div class="surface" style="padding:0">
         <div class="tag-meta" style="margin:14px 14px 0">FormPage</div>
         <div class="ph-mock">
-          <div class="ph-cm"><span data-i18n="page-header:text.059">设备 / 新建</span></div>
+          <div class="ph-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回上一级</span></button></div>
           <div class="ph-tm">
             <div><b><span data-i18n="page-header:text.060">新建设备</span></b></div>
             <div class="ph-acts"><button class="btn" data-i18n="page-header:text.062">取消</button><button class="btn" data-i18n="page-header:text.063">保存草稿</button><button class="btn btn-primary" data-i18n="page-header:text.064">保存</button></div>
@@ -94,12 +96,12 @@
 
   <div class="subsection">
     <h3><span data-i18n="page-header:text.069">Sticky 行为</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.070">长滚动页面（Detail / Form / Dashboard）的 PageHeader 顶部 sticky —— 滚动时折叠为</span><b><span data-i18n="page-header:text.071">紧凑模式</span></b><span data-i18n="page-header:text.072">（标题 + 主操作）。Tabs 仍保留，便于快速切换视图。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.070">长滚动页面（Detail / Form / Dashboard）的 PageHeader 顶部 sticky —— 滚动时折叠为</span><b><span data-i18n="page-header:text.071">紧凑模式</span></b><span data-i18n="page-header:text.072">（标题 + 主操作，适用时保留返回）。Tabs 仍保留，便于快速切换视图。</span></p>
     <table class="map-table">
       <thead><tr><th style="width:24%"><span data-i18n="page-header:text.073">滚动距离</span></th><th style="width:30%"><span data-i18n="page-header:text.074">PageHeader 状态</span></th><th><span data-i18n="page-header:text.075">视觉变化</span></th></tr></thead>
       <tbody>
-        <tr><td>0 ~ 60px</td><td><span data-i18n="page-header:text.076">完整态</span></td><td><span data-i18n="page-header:text.077">面包屑 + 标题 + 操作 + Tabs</span></td></tr>
-        <tr><td>≥ 60px</td><td><span data-i18n="page-header:text.078">紧凑态 (sticky)</span></td><td><span data-i18n="page-header:text.079">面包屑隐藏 / 标题缩 14px / 仅保留主次操作 + Tabs</span></td></tr>
+        <tr><td>0 ~ 60px</td><td><span data-i18n="page-header:text.076">完整态</span></td><td><span data-i18n="page-header:text.077">返回（适用时）+ 面包屑 + 标题 + 操作 + Tabs</span></td></tr>
+        <tr><td>≥ 60px</td><td><span data-i18n="page-header:text.078">紧凑态 (sticky)</span></td><td><span data-i18n="page-header:text.079">保留返回（适用时）/ 面包屑隐藏 / 标题缩 14px / 仅保留主次操作 + Tabs</span></td></tr>
         <tr><td><span data-i18n="page-header:text.080">滚回顶部</span></td><td><span data-i18n="page-header:text.081">200ms 还原</span></td><td><span data-i18n="page-header:text.082">对接 motion 页 ease 曲线</span></td></tr>
       </tbody>
     </table>
@@ -138,6 +140,7 @@
           <li><span data-i18n="page-header:text.102">≥ 4 个操作折叠到下拉</span></li>
           <li><span data-i18n="page-header:text.103">长页 sticky + 紧凑态自动切换</span></li>
           <li><span data-i18n="page-header:text.104">面包屑最后一段不可点（当前位）</span></li>
+          <li><span data-i18n="page-header:text.115">二三级页面使用统一左箭头返回按钮；优先返回站内来源，直接打开时使用业务父路由兜底。</span></li>
         </ul>
       </div>
       <div class="surface" style="border-left:3px solid var(--aw-danger)">

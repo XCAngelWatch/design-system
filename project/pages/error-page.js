@@ -12,7 +12,7 @@
 <div class="ep-code"><span data-i18n="error-page:text.018">ERROR · 404</span></div>
 <h3><span data-i18n="error-page:text.004">页面不存在</span></h3>
 <p class="ep-sub"><span data-i18n="error-page:text.005">请检查 URL，或从左侧菜单重新进入。如果是分享链接已失效，请联系发送者。</span></p>
-<div class="ep-actions"><button class="btn btn-primary"><span data-i18n="error-page:text.006">返回首页</span></button></div>
+<div class="ep-actions"><button class="btn btn-back" type="button" data-route-back data-back-target="#/overview"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="error-page:text.006">返回首页</span></button></div>
     </div>
     <div class="errorpage-card">
 <svg class="ep-illust" viewBox="0 0 132 100" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="50" y="40" width="32" height="28" rx="2"/><path d="M56 40 V32 a10 10 0 0 1 20 0 V40"/><circle cx="66" cy="54" r="2.5" fill="currentColor"/><line x1="66" y1="56" x2="66" y2="62"/></svg>
@@ -27,7 +27,7 @@
 <div class="ep-code"><span data-i18n="error-page:text.020">ERROR · 500</span></div>
 <h3><span data-i18n="error-page:text.013">服务异常</span></h3>
 <p class="ep-sub"><span data-i18n="error-page:text.014">服务端发生未知错误。Trace ID：</span><code>5f3a-91bc-4422</code><span data-i18n="error-page:text.015"> · 请复制后联系运维。</span></p>
-<div class="ep-actions"><button class="btn btn-primary"><span data-i18n="error-page:text.016">重试</span></button><button class="btn"><span data-i18n="error-page:text.017">复制 Trace ID</span></button></div>
+<div class="ep-actions"><button class="btn btn-primary" type="button" data-demo-action="retry-error"><span data-i18n="error-page:text.016">模拟重试</span></button><button class="btn" type="button" data-demo-action="copy-trace" data-copy-text="5f3a-91bc-4422"><span data-i18n="error-page:text.017">复制 Trace ID</span></button></div>
     </div>
   </div>
   <div class="subsection">

@@ -78,7 +78,7 @@
     "text.074": "Display the selected quantity before submission, and enter partial success Result if failed.",
     "text.075": "Counterexamples",
     "text.076": "Do not use Drawer to do \"delete confirmation\":",
-    "text.077": "The action is too lightweight and requires blocking decisions. Change Modal or Popconfirm.",
+    "text.077": "Deletion requires an explicit blocking decision. Use one Modal confirmation from the App context, with Cancel focused by default.",
     "text.078": "Do not embed Drawer within Modal:",
     "text.079": "Cascading interactions can cause users to lose track of their return path.",
     "text.080": "Interaction Lifecycle · Focus, Close, and Scroll",

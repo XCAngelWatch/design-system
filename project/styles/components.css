@@ -146,6 +146,15 @@
 .btn-ghost-danger:hover { color: var(--aw-danger); border-color: var(--aw-danger); }
 .btn-text { background: transparent; border-color: transparent; color: var(--aw-text-2); padding: 0 8px; }
 .btn-text:hover { background: var(--aw-fill-2); color: var(--aw-text-1); border-color: transparent; }
+.btn-back {
+  height: 32px; padding: 0 8px; gap: 6px;
+  background: transparent; border-color: transparent; color: var(--aw-text-2);
+}
+.btn-back:hover {
+  background: var(--aw-fill-2); border-color: transparent; color: var(--aw-text-1);
+}
+.btn-back:active { background: var(--aw-fill-3); }
+.btn.btn-back .aw-icon { width: 16px; height: 16px; margin: 0; }
 .btn-link { background: transparent; border-color: transparent; color: var(--aw-primary-text); padding: 0 4px; }
 .btn-link:hover { color: var(--aw-primary-hover); border-color: transparent; background: transparent; }
 .btn-link.btn-danger-link { color: var(--aw-danger); }
@@ -209,7 +218,11 @@
 }
 .select[data-demo-options] { cursor: pointer; }
 .select[data-demo-options]:hover { border-color: var(--aw-primary-hover); }
-.select[data-demo-options]:focus-visible { border-color: var(--aw-primary); box-shadow: 0 0 0 2px var(--aw-primary-bg); outline: 0; }
+.select[data-demo-options]:focus-visible {
+  border-color: var(--aw-primary);
+  outline: 2px solid var(--aw-primary);
+  outline-offset: 2px;
+}
 button.select { font-family: inherit; color: var(--aw-text-1); text-align: left; }
 .select::after {
   content: ''; position: absolute; right: 10px; top: 50%;
@@ -228,12 +241,21 @@ button.select { font-family: inherit; color: var(--aw-text-1); text-align: left;
 
 /* Checkbox / Radio */
 .check {
-  display: inline-flex; align-items: center; gap: 8px;
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  min-height: 24px;
   font-size: 14px; cursor: pointer; user-select: none;
 }
-.check input { display: none; }
+.check input {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+.check input:focus-visible + .box {
+  outline: 2px solid var(--aw-primary);
+  outline-offset: 2px;
+}
 .check .box {
-  width: 16px; height: 16px; border-radius: 4px;
+  width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0;
   border: 1px solid var(--aw-border-1); background: var(--aw-bg);
   display: grid; place-items: center;
   transition: all var(--aw-dur-fast);
@@ -272,7 +294,7 @@ button.select { font-family: inherit; color: var(--aw-text-1); text-align: left;
 .switch:hover { border-color: var(--aw-primary-hover); }
 .switch.is-on { background: var(--aw-primary); border-color: var(--aw-primary); box-shadow: none; }
 .switch.is-on::after { transform: translate(22px, -50%); }
-.switch:focus-visible { outline: 0; box-shadow: 0 0 0 2px var(--aw-primary-bg); }
+.switch:focus-visible { outline: 2px solid var(--aw-primary); outline-offset: 2px; }
 .switch.is-loading::before {
   content: ''; position: absolute; z-index: 1;
   top: 6px; left: 6px; width: 8px; height: 8px;

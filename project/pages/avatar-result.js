@@ -34,7 +34,7 @@
   <h4><span data-i18n="avatar-result:text.014">批量升级已下发</span></h4>
   <p class="desc"><span data-i18n="avatar-result:text.015">已向 86 台终端推送 v3.4.2，推送进度可在升级中心实时查看。</span></p>
   <div class="extra"><div><span data-i18n="avatar-result:text.016">计划：86 / 86 台</span></div><div><span data-i18n="avatar-result:text.017">预计完成：14:40 (当地时间)</span></div><div><span data-i18n="avatar-result:text.018">失败回滚阈值：≥ 5%</span></div></div>
-  <div style="display:flex;gap:8px;justify-content:center"><button class="btn btn-primary"><span data-i18n="avatar-result:text.019">查看进度</span></button><button class="btn"><span data-i18n="avatar-result:text.020">返回列表</span></button></div>
+  <div style="display:flex;gap:8px;justify-content:center"><button class="btn btn-primary"><span data-i18n="avatar-result:text.019">查看进度</span></button><button class="btn btn-back" type="button" data-route-back data-back-target="#/push-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="avatar-result:text.020">返回列表</span></button></div>
 </div>
 <div class="result-mock error">
   <div class="ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
@@ -48,7 +48,7 @@
   <div class="ico"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
   <h4><span data-i18n="avatar-result:text.028">暂无可升级版本</span></h4>
   <p class="desc"><span data-i18n="avatar-result:text.029">所选 86 台终端已全部为最新版（v3.4.2）。</span></p>
-  <div style="display:flex;gap:8px;justify-content:center"><button class="btn"><span data-i18n="avatar-result:text.030">返回</span></button></div>
+  <div style="display:flex;gap:8px;justify-content:center"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/push-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="avatar-result:text.030">返回</span></button></div>
 </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
           </table>
         </div>
         <div class="rp-acts">
-          <button class="btn"><span data-i18n="avatar-result:text.058">返回</span></button>
+          <button class="btn btn-back" type="button" data-route-back data-back-fallback="#/push-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="avatar-result:text.058">返回</span></button>
           <button class="btn"><span data-i18n="avatar-result:text.059">下载错误清单 (CSV)</span></button>
           <button class="btn btn-primary"><span data-i18n="avatar-result:text.060">重试失败项 (34)</span></button>
         </div>

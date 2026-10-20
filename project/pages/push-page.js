@@ -15,7 +15,7 @@
         <button class="btn btn-primary btn-sm"><span data-i18n="push-page:text.007">查询</span></button>
         <button class="btn btn-sm"><span data-i18n="push-page:text.008">重置</span></button>
       </div>
-      <button class="btn btn-text btn-sm" style="flex-shrink:0"><span data-i18n="push-page:text.009">← 返回</span></button>
+      <button class="btn btn-back" type="button" data-route-back data-back-fallback="#/ota-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="push-page:text.009">返回上一级</span></button>
     </div>
 
     <!-- 列:batchId / targetMode / createBy / pushTime / batchState / 操作 -->
@@ -95,6 +95,7 @@
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px"><span data-i18n="push-page:text.047">每个推送批次必须展示总数、执行中、成功、失败、已过期、已终止六态统计(对应后端 processingCount/successCount/failCount/expiredCount/terminatedCount)。统计区配 echarts 比例环,点击进入推送设备详情并默认筛选对应状态。</span></p>
     <div class="bp-grid">
       <div class="bp-card"><h4><span data-i18n="push-page:text.048">总数</span></h4><p><span class="mono">1,284</span> <span data-i18n="push-page:text.049">台目标设备。用于核对批次影响范围。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="push-page:stats.processing">执行中</span></h4><p><span class="mono">30</span> <span data-i18n="push-page:stats.processingDescription">台尚未进入终态。保留进度与设备明细入口，最终结果以后端回报为准。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="push-page:text.050">成功</span></h4><p><span class="mono">1,216</span> <span data-i18n="push-page:text.051">台已确认接收。允许查看设备清单和导出结果。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="push-page:text.052">失败</span></h4><p><span class="mono">28</span> <span data-i18n="push-page:text.053">台执行失败。必须提供失败原因、重试失败项(</span><code>push_task_rePush</code> <span data-i18n="push-page:text.054">权限)和下载失败清单。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="push-page:text.055">已过期</span></h4><p><span class="mono">6</span> <span data-i18n="push-page:text.056">台超时未送达。具备 push_task_rePush 权限时可重新推送，并保留原失败原因。</span></p></div>

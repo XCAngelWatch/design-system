@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'data-cards', {
     "text.001": "Business Patterns · Device Cards",
     "text.002": "Device Card DataCard",
-    "text.003": "A ListPage table view alone does not satisfy field research: on small screens such as laptops, team leads scan a row of statuses more efficiently than a table. Add DataCard as the second ListPage view, toggled from the top toolbar ",
+    "text.003": "Device cards support quick, device-by-device status review. Where the product requires it, offer DataCard as a second ListPage view using the toolbar switch ",
     "text.004": ". Use the status color as a top strip rather than a full-card background to avoid visual overload.",
     "text.005": "Device-Shanghai-001",
     "text.006": "Status",
@@ -40,16 +40,16 @@
     "text.036": "1 day 4 hours",
     "text.037": "History",
     "text.038": "Send",
-    "text.039": "▸ Card width = (container width − 12 × (n−1)) / n, where n ∈ {2,3,4,5,6}; when n=6, show only the first two body fields and move details into the hover layer.",
+    "text.039": "Cards wrap with their container and may use one column on narrow screens. Keep key status and device identity visible; expose secondary fields through details, not hover alone.",
     "text.040": "Business Card Family · App / OTA / Device",
     "text.041": "App Card",
-    "text.042": "Used for the App Market card view. Primary information includes app name, package name, version, review/publishing status; actions stay View, Review, Versions, and More.",
+    "text.042": "For the app marketplace card view, show app name, package, version, and review/listing status. Expose at most two actions and place the rest in a More menu with icons and text.",
     "text.043": "OTA File Card",
     "text.044": "Used for the upgrade-file card view. Primary information includes file name, model, version, size, and uploader; status determines whether update push is allowed.",
     "text.045": "Device Card",
     "text.046": "Used for device management and device groups. Primary information includes device name, SN, online status, and organization; remote control, logs, and upgrade actions enable or disable with status.",
     "text.047": "Cards do not replace tables; they are high-frequency inspection views",
     "text.048": "Card actions must match the table action column",
-    "text.049": "Disabled states must show a reason"
+    "text.049": "Explain disabled states. In this example offline devices cannot receive commands or upgrades; actual availability comes from backend capabilities."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

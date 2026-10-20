@@ -293,7 +293,7 @@ export function Trend({ dates, values, seriesLabel }: TrendProps) {
           <li><span data-i18n="charts:text.233">不要使用内部子路径 </span><code>echarts/lib/*</code><span data-i18n="charts:text.234">，统一从稳定公开入口导入</span></li>
           <li><span data-i18n="charts:text.235">不要引入其他图表库（</span><code>@ant-design/charts</code> / <code>chart.js</code> / <code>recharts</code><span data-i18n="charts:text.236"> / d3 直绘）—— 统一 echarts，避免取色 / 主题分裂</span></li>
           <li><span data-i18n="charts:text.237">不要在 series 内硬编码 hex（用 token 或 status 色变量）</span></li>
-          <li><span data-i18n="charts:text.238">不要切主题后重新 setOption（用 theme 名切换即可）</span></li>
+          <li><span data-i18n="charts:text.238">不要用内置 theme 名替代当前 token；切换主题后重新解析 token 并更新 option，避免沿用旧主题颜色</span></li>
           <li><span data-i18n="charts:text.239">不要在一张图用 ≥ 7 种色相 / 不要 3D 饼图 / 立体柱状图</span></li>
           <li><span data-i18n="charts:text.240">不要让动画 ≥ 600ms / 不要省略 Y 轴零点</span></li>
           <li><span data-i18n="charts:text.241">不要用红绿表达"上升 / 下降"（色弱不友好），配 ↑↓ 图形</span></li>

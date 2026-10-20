@@ -21,9 +21,9 @@ const darkBlock = (tokenCss.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\}/) || [
 const light = tokenMap(lightBlock);
 const dark = tokenMap(darkBlock);
 
-if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-09-18' ||
+if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-10-20' ||
     contract.sourceRepository !== 'design-system' ||
-    contract.decisionRecord !== 'docs/decisions/specs/2026-09-18-opendesign-visual-alignment.md') {
+    contract.decisionRecord !== 'docs/decisions/specs/2026-10-20-navigation-and-action-presentation.md') {
   errors.push('contract: unexpected schema or decision version');
 }
 if (contract.consumerRepository !== 'tms2.5-web-ui' ||
@@ -137,6 +137,9 @@ if (!same(contract.visualPresentation, {
 }
 if (contract.rowActions.table.visiblePrimaryCount !== 1 ||
     contract.rowActions.table.maxVisibleCount !== 2 ||
+    contract.rowActions.table.collapseFrom !== 3 ||
+    contract.rowActions.table.inlinePresentation !== 'text-only' ||
+    contract.rowActions.table.menuPresentation !== 'semantic-icon-and-text' ||
     contract.rowActions.table.narrowVisibleCount !== 1 ||
     contract.rowActions.table.collapseSecondaryActions ||
     contract.rowActions.compactCard.maxVisibleCount !== 2 ||
@@ -151,13 +154,26 @@ if (contract.rowActions.table.visiblePrimaryCount !== 1 ||
     !contract.rowActions.dangerLast || contract.rowActions.dangerConfirmationDefaultFocus !== 'cancel') {
   errors.push('rowActions: purpose-based max 2, responsive fit, safe danger placement and one confirmation required');
 }
-if (contract.pageHeader.freeTextSubtitle || !contract.pageHeader.keyFieldsOnly ||
+if (!same(contract.pageHeader.backNavigation, {
+  presentation: 'arrow-left-and-text',
+  requiredFor: ['nested-detail', 'form', 'immersive-flow'],
+  hiddenFor: ['top-level-list', 'top-level-dashboard'],
+  detailBreadcrumbsAllowed: true,
+  formBreadcrumbsAllowed: false,
+  immersiveBreadcrumbsAllowed: false,
+  targetPriority: ['explicit-target', 'validated-in-app-source', 'business-parent'],
+  externalHistoryFallbackAllowed: false,
+  preserveListState: true,
+  preserveUnsavedChangesGuard: true,
+  placement: 'content',
+  visibleWhenSticky: true
+}) || contract.pageHeader.freeTextSubtitle || !contract.pageHeader.keyFieldsOnly ||
     contract.pageHeader.maxPrimaryActions !== 1 || contract.pageHeader.dangerActionsAllowed ||
     !same(contract.pageHeader.dangerActionsPlacement, ['separated-overflow-menu', 'danger-zone']) ||
     contract.pageHeader.collapseActionsFrom !== 4 ||
     !same(contract.pageHeader.longPageSticky, ['detail', 'form', 'dashboard']) ||
     contract.pageHeader.listPageSticky || contract.pageHeader.compactAfterScrollPx !== 60) {
-  errors.push('pageHeader: subtitle/danger/sticky contract drifted');
+  errors.push('pageHeader: back navigation/subtitle/danger/sticky contract drifted');
 }
 if (!same(contract.feedback.providerOrder, ['ConfigProvider', 'App']) ||
     contract.feedback.api !== 'App.useApp()' || contract.feedback.staticApiAllowed ||

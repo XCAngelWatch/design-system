@@ -61,7 +61,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-row-label="ops_sh_001">
                 <td><span data-i18n="user-mgmt-page:text.030">上海运营中心</span></td>
                 <td><code>ops_sh_001</code></td>
                 <td><span data-i18n="user-mgmt-page:text.031">运维-上海</span></td>
@@ -69,9 +69,9 @@
                 <td><span data-i18n="user-mgmt-page:text.032">管理员</span></td>
                 <td><span data-i18n="user-mgmt-page:text.033">主负责人</span></td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.034">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.035">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.036">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.037">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.035">编辑</span></button><button class="btn btn-link" data-demo-confirm><span data-i18n="user-mgmt-page:text.036">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.037">停用</span></button></td>
               </tr>
-              <tr>
+              <tr data-row-label="zhang_gong">
                 <td><span data-i18n="user-mgmt-page:text.038">上海运营中心</span></td>
                 <td><code>zhang_gong</code></td>
                 <td><span data-i18n="user-mgmt-page:text.039">张工</span></td>
@@ -79,9 +79,9 @@
                 <td><span data-i18n="user-mgmt-page:text.040">运维</span></td>
                 <td>—</td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.041">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.042">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.043">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.044">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.042">编辑</span></button><button class="btn btn-link" data-demo-confirm><span data-i18n="user-mgmt-page:text.043">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.044">停用</span></button></td>
               </tr>
-              <tr>
+              <tr data-row-label="li_audit">
                 <td><span data-i18n="user-mgmt-page:text.045">上海运营中心</span></td>
                 <td><code>li_audit</code></td>
                 <td><span data-i18n="user-mgmt-page:text.046">李审计</span></td>
@@ -89,9 +89,9 @@
                 <td><span data-i18n="user-mgmt-page:text.047">审计</span></td>
                 <td><span data-i18n="user-mgmt-page:text.048">每月 1 号导报表</span></td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.049">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.050">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.051">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.052">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.050">编辑</span></button><button class="btn btn-link" data-demo-confirm><span data-i18n="user-mgmt-page:text.051">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.052">停用</span></button></td>
               </tr>
-              <tr>
+              <tr data-row-label="chen_lead">
                 <td><span data-i18n="user-mgmt-page:text.053">上海运营中心</span></td>
                 <td><code>chen_lead</code></td>
                 <td><span data-i18n="user-mgmt-page:text.054">陈分管</span></td>
@@ -99,9 +99,9 @@
                 <td><span data-i18n="user-mgmt-page:text.055">主管</span></td>
                 <td><span data-i18n="user-mgmt-page:text.056">分管华东</span></td>
                 <td><span class="status-dot is-success"><span data-i18n="user-mgmt-page:text.057">启用</span></span></td>
-                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.058">编辑</span></button><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.059">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.060">停用</span></button></td>
+                <td class="colactions"><button class="btn btn-link"><span data-i18n="user-mgmt-page:text.058">编辑</span></button><button class="btn btn-link" data-demo-confirm><span data-i18n="user-mgmt-page:text.059">重置密码</span></button><button class="btn btn-link btn-danger-link"><span data-i18n="user-mgmt-page:text.060">停用</span></button></td>
               </tr>
-              <tr>
+              <tr data-row-label="wang_temp_08">
                 <td><span data-i18n="user-mgmt-page:text.061">上海运营中心</span></td>
                 <td><code>wang_temp_08</code></td>
                 <td><span data-i18n="user-mgmt-page:text.062">王临时</span></td>

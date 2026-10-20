@@ -5,7 +5,7 @@
     "text.001": "Page Blueprints · FormPage",
     "text.002": "Form Page",
     "text.003": "The header provides a separate back path before the title and status. The body uses grouped forms, and the fixed footer contains cancel and save actions. Use it for creating or editing devices, firmware packages, organizations, and similar entities.",
-    "text.004": "← Back",
+    "text.004": "Back",
     "text.005": "Add Device",
     "text.006": "Draft",
     "text.007": "Basic Information",

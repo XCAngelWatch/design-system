@@ -55,14 +55,15 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="market-page:text.049">状态与操作矩阵(版本包真实状态)</span></h3>
+    <h3><span data-i18n="market-page:text.049">状态与操作矩阵（版本包设计快照）</span></h3>
+    <p style="font-size:13px;color:var(--aw-text-2);margin:0 0 12px"><span data-i18n="market-page:source.boundary">以下状态、字段、权限与枚举是设计快照，后端契约仍待核验。实现时以当前后端 / OpenAPI 为准；页面范围与流程回到已批准产品需求及 Figma / OpenDesign，不以本页 mock 反向证明业务能力。</span></p>
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px"><span data-i18n="market-page:text.050">版本包状态含签名子态(kpp / APK 签名中与签名错误)。已上架 =</span> <b>Published</b><span data-i18n="market-page:text.051">,已下架 =</span> <b>Unpublished</b><span data-i18n="market-page:text.101">。</span></p>
     <table class="blueprint-table">
       <thead><tr><th><span data-i18n="market-page:text.052">状态</span></th><th><span data-i18n="market-page:text.053">主操作</span></th><th><span data-i18n="market-page:text.054">禁用操作</span></th><th><span data-i18n="market-page:text.055">反馈组件</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="market-page:text.056">草稿 / 签名中 / 签名错误</span></td><td><span data-i18n="market-page:text.057">编辑、删除、重新签名</span></td><td><span data-i18n="market-page:text.058">上架、推送</span></td><td><span data-i18n="market-page:text.059">签名错误用 danger Tag + 错误码 tooltip</span></td></tr>
         <tr><td><span data-i18n="market-page:text.060">审核中</span></td><td><span data-i18n="market-page:text.061">审核通过 / 驳回</span></td><td><span data-i18n="market-page:text.062">下架、推送安装</span></td><td><span data-i18n="market-page:text.063">Modal 表单，必须填写审核意见</span></td></tr>
-        <tr><td><span data-i18n="market-page:text.064">已上架 Published</span></td><td><span data-i18n="market-page:text.065">版本管理 / 下架 / 推送安装</span></td><td><span data-i18n="market-page:text.066">删除</span></td><td><span data-i18n="market-page:text.067">Popconfirm 或 Modal.confirm</span></td></tr>
+        <tr><td><span data-i18n="market-page:text.064">已上架 Published</span></td><td><span data-i18n="market-page:text.065">版本管理 / 下架 / 推送安装</span></td><td><span data-i18n="market-page:text.066">删除</span></td><td><span data-i18n="market-page:text.067">下架 / 推送安装经一次 Modal 确认，使用 App.useApp() 的 modal.confirm；默认焦点在取消</span></td></tr>
         <tr><td><span data-i18n="market-page:text.068">已拒绝 / 取消上架</span></td><td><span data-i18n="market-page:text.069">编辑、删除、重新申请上架</span></td><td><span data-i18n="market-page:text.070">推送安装</span></td><td><span data-i18n="market-page:text.071">Alert 持续展示拒绝原因和错误码</span></td></tr>
         <tr><td><span data-i18n="market-page:text.072">已下架 Unpublished</span></td><td><span data-i18n="market-page:text.073">重新上架 / 修改</span></td><td><span data-i18n="market-page:text.074">推送安装</span></td><td><span data-i18n="market-page:text.075">Message 只提示轻量操作结果</span></td></tr>
         <tr><td><span data-i18n="market-page:text.076">版本升级中</span></td><td><span data-i18n="market-page:text.077">查看进度 / 安装明细</span></td><td><span data-i18n="market-page:text.078">删除版本包</span></td><td><span data-i18n="market-page:text.079">Result 部分成功承接失败设备</span></td></tr>
@@ -75,7 +76,7 @@
     <p style="font-size:13px;color:var(--aw-text-3);margin:0 0 12px"><span data-i18n="market-page:text.081">添加应用四段表单;APK 签名解析在后端完成,不在前端解析。</span></p>
     <div class="bp-grid">
       <div class="bp-card"><h4><span data-i18n="market-page:text.082">① 基础信息</span></h4><p><span data-i18n="market-page:text.083">机构 / APK 包(上传后自动解析 packageName+versionCode+versionName)/ logo / 9:16 截图 / 应用名 / 分类 / 开发者 / 简介 / 详情 / 备注。</span></p></div>
-      <div class="bp-card"><h4><span data-i18n="market-page:text.084">② 权限配置</span></h4><p><span data-i18n="market-page:text.085">禁止卸载 uninstallFlag / 禁止清除数据 clearDataFlag(switch,正常 active=true 语义,不沿用旧后端反转)。</span></p></div>
+      <div class="bp-card"><h4><span data-i18n="market-page:text.084">② 权限配置</span></h4><p><span data-i18n="market-page:text.085">禁止卸载 uninstallFlag / 禁止清除数据 clearDataFlag：开关选中表示界面标签所述限制已开启。接口布尔值、数值及正反向编码以后端契约为准，由适配层转换，不能因视觉语义直接改变请求值。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="market-page:text.086">③ 签名配置</span></h4><p><span data-i18n="market-page:text.087">是否签名 needSigner / 签名方式 certificateType(1 谷歌 / 2 AW / 3 证书链)/ 证书 certificateId / 使用证书机构 usingDeptId。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="market-page:text.088">④ 规则信息</span></h4><p><span data-i18n="market-page:text.089">适配机型 deviceModelId(多选)/ 可见范围 ruleType(0-7,同推送 targetMode)/ 可见对象 rule(5 分组 / 6,7 机构树 / 其他 textarea)。</span></p></div>
       <div class="bp-card"><h4><span data-i18n="market-page:text.090">版本与自动策略</span></h4><p><span data-i18n="market-page:text.091">版本列表列:versionName / versionCode / 操作人 / 大小 / 下载数 / 适配机型 / 备注 / 状态 / 操作。自动安装 autoInstallFlag / 自动更新 autoUpdateFlag 开关开启需二次确认。同应用不同版本高版本优先显示;更新版本签名须一致。</span></p></div>

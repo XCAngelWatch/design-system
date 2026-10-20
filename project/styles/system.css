@@ -192,19 +192,18 @@ html[lang]:not([lang^="zh"]) .nav a {
     min-height: 52px;
     padding: 9px 12px;
     gap: 8px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
   }
   .spa .app-main.comp-page .comp-bc {
-    flex: 1 1 auto;
-    flex-basis: auto;
+    flex: 1 1 calc(100% - 40px);
   }
   .spa .app-main.comp-page .comp-bc .group,
-  .spa .app-main.comp-page .comp-bc .sep {
+  .spa .app-main.comp-page .comp-bc .group + .sep {
     display: none;
   }
   .spa .toolbar-controls {
-    width: auto;
+    width: 100%;
     min-width: 0;
     gap: 4px;
     justify-content: flex-end;
@@ -218,17 +217,6 @@ html[lang]:not([lang^="zh"]) .nav a {
   .spa .theme-toggle-fixed svg {
     width: 12px;
     height: 12px;
-  }
-}
-
-@media (max-width: 350px) {
-  .spa .app-main.comp-page .comp-bc {
-    display: none;
-  }
-  .spa .toolbar-controls {
-    margin-left: auto;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
   }
 }
 

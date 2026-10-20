@@ -16,7 +16,7 @@
     "text.013": "Service Error",
     "text.014": "The server encountered an unknown error. Trace ID: ",
     "text.015": " · Copy it and contact Operations.",
-    "text.016": "Retry",
+    "text.016": "Simulate Retry",
     "text.017": "Copy Trace ID",
     "text.018": "ERROR · 404",
     "text.019": "ERROR · 403",

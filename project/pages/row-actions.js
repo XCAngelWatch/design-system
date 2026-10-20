@@ -21,7 +21,7 @@
 <section class="section" id="row-actions">
   <p class="section-eyebrow"><span data-i18n="row-actions:text.001">业务模式 · 行操作</span></p>
   <h2 role="heading" aria-level="1"><span data-i18n="row-actions:text.002">行操作 RowActions</span></h2>
-  <p class="lede"><span data-i18n="row-actions:text.003">表格和卡片最多直接展示 1 个主操作与 1 个常用辅助操作；窄容器保留主操作，其余收入更多。只有一个普通操作时直接展示。主次由业务用途与状态指定，危险操作分隔后置底。</span></p>
+  <p class="lede"><span data-i18n="row-actions:text.003">表格外露动作使用纯文字。普通动作少于 3 个时，在宽度允许的情况下直接展示；达到 3 个时最多保留 1 个主操作与 1 个辅助操作，其余进入带语义图标的更多菜单。窄容器保留主操作；主次由业务用途与状态指定，危险操作分隔后置底。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.004">动作词汇与语义</span></h3>
@@ -41,7 +41,7 @@
         <div class="ra-cell"><div class="ra-icn">${ICN.more}</div><div class="ra-name"><span data-i18n="row-actions:text.016">更多</span></div><code>more</code></div>
       </div>
     </div>
-    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="row-actions:text.017">使用边界：</span></strong><span data-i18n="row-actions:text.018">上方图标仅用于动作词汇和开发映射；表格尾列使用文字按钮，紧凑卡片才允许 16×16 单色图标。危险动作使用 </span><code>--aw-danger</code><span data-i18n="row-actions:text.019">，禁用态使用 </span><code>--aw-text-disabled</code><span data-i18n="row-actions:text.020">，图标按钮必须提供 Tooltip 和 aria-label</span><span data-i18n="row-actions:text.021">。</span></div></div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="row-actions:text.017">使用边界：</span></strong><span data-i18n="row-actions:text.018">上方图标用于动作词汇、开发映射与折叠菜单；表格外露动作只用文字，菜单项使用 16×16 单色图标。紧凑卡片仍可使用统一图标 + Tooltip。危险动作使用 </span><code>--aw-danger</code><span data-i18n="row-actions:text.019">，禁用态使用 </span><code>--aw-text-disabled</code><span data-i18n="row-actions:text.020">，图标按钮必须提供 Tooltip 和 aria-label</span><span data-i18n="row-actions:text.021">。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -49,7 +49,7 @@
     <div class="surface" style="padding:0;overflow:hidden">
       <table class="ra-table">
         <thead>
-          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th style="width:240px" class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
+          <tr><th style="width:140px"><span data-i18n="row-actions:text.023">设备名称</span></th><th style="width:120px">SN</th><th style="width:90px"><span data-i18n="row-actions:text.024">状态</span></th><th style="width:80px"><span data-i18n="row-actions:text.025">版本</span></th><th><span data-i18n="row-actions:text.026">所属</span></th><th class="colactions"><span data-i18n="row-actions:text.027">操作</span></th></tr>
         </thead>
         <tbody>
           <tr>
@@ -63,9 +63,9 @@
                 <span class="ra-more-wrap">
                   <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
                   <div class="ra-menu" role="menu" hidden>
-                    <button class="ra-mit" type="button" role="menuitem"><span data-i18n="row-actions:text.058">查看日志</span></button>
+                    <button class="ra-mit" type="button" role="menuitem" data-row-icon="file-text"><span data-i18n="row-actions:text.058">查看日志</span></button>
                     <div class="ra-mdiv" role="separator"></div>
-                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm><span data-i18n="row-actions:text.063">删除设备</span></button>
+                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="trash"><span data-i18n="row-actions:text.063">删除设备</span></button>
                   </div>
                 </span>
               </div>
@@ -82,9 +82,9 @@
                 <span class="ra-more-wrap">
                   <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
                   <div class="ra-menu" role="menu" hidden>
-                    <button class="ra-mit" type="button" role="menuitem"><span data-i18n="row-actions:text.058">查看日志</span></button>
+                    <button class="ra-mit" type="button" role="menuitem" data-row-icon="file-text"><span data-i18n="row-actions:text.058">查看日志</span></button>
                     <div class="ra-mdiv" role="separator"></div>
-                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm><span data-i18n="row-actions:text.063">删除设备</span></button>
+                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="trash"><span data-i18n="row-actions:text.063">删除设备</span></button>
                   </div>
                 </span>
               </div>
@@ -100,9 +100,9 @@
                 <span class="ra-more-wrap">
                   <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
                   <div class="ra-menu" role="menu" hidden>
-                    <button class="ra-mit" type="button" role="menuitem"><span data-i18n="row-actions:text.058">查看日志</span></button>
+                    <button class="ra-mit" type="button" role="menuitem" data-row-icon="file-text"><span data-i18n="row-actions:text.058">查看日志</span></button>
                     <div class="ra-mdiv" role="separator"></div>
-                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm><span data-i18n="row-actions:text.063">删除设备</span></button>
+                    <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="trash"><span data-i18n="row-actions:text.063">删除设备</span></button>
                   </div>
                 </span>
               </div>
@@ -129,23 +129,22 @@
   </div>
 
   <div class="subsection">
-    <h3><span data-i18n="row-actions:text.056">按用途与可用宽度收纳</span></h3>
-    <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">表格与紧凑卡片最多明示 2 个普通动作。1 个主操作位置稳定，第 2 个常用辅助操作仅在容器与完整文案宽度允许时展示；其余进入更多。只剩一个普通操作时不套更多。危险操作默认收纳，成员移出等明确单用途例外必须登记。</span></p>
+    <h3><span data-i18n="row-actions:text.056">表格折叠态 · 按用途与可用宽度收纳</span></h3>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">表格与紧凑卡片最多明示 2 个普通动作，3 个及以上时其余进入更多。1 个主操作位置稳定，第 2 个常用辅助操作仅在容器与完整文案宽度允许时展示。表格外露动作纯文字，菜单项配语义图标；紧凑卡片可用图标 + Tooltip。只剩一个普通操作时不套更多；危险操作默认收纳，明确单用途例外须登记。</span></p>
     <div class="surface">
       <div class="ra-row">
-        <button class="ra-btn" title="详情" data-i18n-title="row-actions:text.005">${ICN.detail}</button>
-        <button class="ra-btn" data-row-secondary title="编辑" data-i18n-title="row-actions:text.006">${ICN.edit}</button>
-        <div class="ra-divider"></div>
+        <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
+        <button class="btn btn-link" data-row-secondary><span data-i18n="row-actions:text.006">编辑</span></button>
         <div class="ra-more-wrap">
-          <button class="ra-btn ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false" title="更多" data-i18n-title="row-actions:text.016">${ICN.more}</button>
+          <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
           <div class="ra-menu" role="menu" hidden>
-            <button class="ra-mit" type="button" role="menuitem">${ICN.log}<span><span data-i18n="row-actions:text.058">查看日志</span></span></button>
-            <button class="ra-mit" type="button" role="menuitem">${ICN.copy}<span><span data-i18n="row-actions:text.059">复制 SN</span></span></button>
-            <button class="ra-mit" type="button" role="menuitem">${ICN.download}<span><span data-i18n="row-actions:text.060">下载证书</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem" data-row-icon="file-text">${ICN.log}<span><span data-i18n="row-actions:text.058">查看日志</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem" data-row-icon="copy">${ICN.copy}<span><span data-i18n="row-actions:text.059">复制 SN</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem" data-row-icon="cloud-download">${ICN.download}<span><span data-i18n="row-actions:text.060">下载证书</span></span></button>
             <div class="ra-mdiv" role="separator"></div>
-            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm>${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></button>
-            <button class="ra-mit warn" type="button" role="menuitem" data-demo-confirm>${ICN.reset}<span><span data-i18n="row-actions:text.062">重置出厂</span></span></button>
-            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm>${ICN.del}<span><span data-i18n="row-actions:text.063">删除设备</span></span></button>
+            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="power">${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></button>
+            <button class="ra-mit warn" type="button" role="menuitem" data-demo-confirm data-row-icon="refresh">${ICN.reset}<span><span data-i18n="row-actions:text.062">重置出厂</span></span></button>
+            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="trash">${ICN.del}<span><span data-i18n="row-actions:text.063">删除设备</span></span></button>
           </div>
         </div>
       </div>
@@ -157,7 +156,7 @@
     <h3><span data-i18n="row-actions:text.066">反例</span></h3>
     <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.067">不要把"删除"做成主色按钮：</span></strong><span data-i18n="row-actions:text.068">主色 </span><code>#165DFF</code><span data-i18n="row-actions:text.069"> 是积极动作（提交 / 确认），删除应走 ghost-danger 或纯红 icon。</span></div></div>
     <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要按数组顺序机械折叠：</span></strong><span data-i18n="row-actions:text.071">显式标记主操作、辅助操作和菜单项。两项普通操作能放下时直接展示；窄容器收纳辅助操作。禁用项说明原因，不把删除提升为主操作。菜单按钮声明展开状态，键盘打开后焦点进入菜单，关闭后返回触发器。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要在同一操作列混用文字与图标：</span></strong><span data-i18n="row-actions:text.073">表格统一文字按钮；只有紧凑卡片允许统一图标 + Tooltip。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要给表格外露操作添加图标：</span></strong><span data-i18n="row-actions:text.073">外露动作保持纯文字；折叠菜单项使用语义图标，紧凑卡片可使用统一图标 + Tooltip。</span></div></div>
   </div>
 
   <div class="subsection">

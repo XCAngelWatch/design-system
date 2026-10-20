@@ -130,10 +130,19 @@
 .ra-menu.is-open { display: block; right: auto; bottom: auto; }
 .ra-menu[hidden] { display: none; }
 .ra-menu-action {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
   width: 100%;
+  min-height: 32px;
+  height: auto;
+  padding: 7px 10px;
   text-align: left;
 }
+.ra-menu-action .aw-icon { margin: 0; color: var(--aw-text-2); }
+.ra-menu-action:hover .aw-icon,
+.ra-menu-action:is(:disabled, .danger, .warn, .btn-danger-link) .aw-icon { color: inherit; }
 .ra-menu-action.ra-btn {
   display: flex; align-items: center; gap: 8px;
   height: auto; min-height: 32px; padding: 7px 10px;

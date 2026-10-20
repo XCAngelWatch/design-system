@@ -94,8 +94,8 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统，核心是设备�
 | 小屏巡检 / 卡片视图 | `DataCard` | 与表格同字段同操作，状态用顶部色条，不用整卡背景 |
 | 创建 / 编辑 8 个字段以内 | `Modal + Form` | 阻塞式、短流程 |
 | 创建 / 编辑超过 8 个字段 | `Drawer + Form` | 保留列表上下文，适合设备、分组、参数、应用分类 |
-| 批量 / 不可逆操作 | `App.useApp().modal.confirm` | 明示数量、对象和后果，默认焦点在取消；禁止静态 Modal API |
-| 单行可逆或轻量确认 | `Popconfirm` | 附着在行操作旁 |
+| 高风险业务操作（删除、启停、重置、批量等） | `App.useApp().modal.confirm` | 一次确认，明示数量、对象和后果，默认焦点在取消；禁止静态 Modal API |
+| 低风险本地界面确认 | `Popconfirm` | 仅用于恢复未保存视图等不改变业务数据或设备状态的动作 |
 | 异步批量终态 | `Result` | 必须给失败项、重试、下载失败清单、查看日志 |
 | 远程任务详情 | `Drawer` 或任务详情页 | 进行中任务关闭后必须能从任务列表继续追踪 |
 | 组织 / 权限 / 设备分配 | `Tree`, `Transfer`, `Cascader` | 支持搜索、懒加载、半选态、冲突说明 |
@@ -109,7 +109,8 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统，核心是设备�
 - `scrollToFirstError` 属于具体 `Form`；自建表单控件必须透传 `value/onChange/id/ref/disabled/status`。
 - `AppTable` 默认使用 AntD Table；固定行高的大数据场景优先 `virtual` 且同时提供数值型 `scroll.x/scroll.y`，是否更换内核只由性能测试决定。
 - 包装 AntD v6 组件时透传 `classNames/styles` Semantic DOM API，禁止依赖内部 DOM 层级选择器。
-- 普通详情页使用面包屑；仅沉浸式子流程使用返回按钮，不同时放置等价的两套返回导航。
+- 二三级详情页、表单与沉浸式子流程统一显示带 `arrow-left` 和文字的返回按钮。详情页可同时保留面包屑说明位置，表单与沉浸式流程不重复展示面包屑，顶级列表与仪表盘不显示返回。显式目标优先，其次返回已验证的站内访问来源；没有来源时配置稳定的业务父路由，保留列表状态和未保存表单拦截，禁止无条件使用浏览器历史退出应用。应用 Shell 仅将面包屑挂载到顶栏，返回入口留在内容区并在紧凑页头中保留。
+- 表格达到 3 个动作时最多保留前 2 个普通文字动作，其余进入带语义图标的菜单；显式用途、窄容器收纳、危险动作最后与一次确认规则继续有效，不因显示顺序改变操作权限或副作用。
 - 普通数值（数量、百分比、文件大小）、时间与操作列左对齐，金额列右对齐；数字使用 `tabular-nums`，状态列与操作列禁止换行。
 - 表格采用固定列布局，常规单元格左右各 16px，选择列按控件宽度单独设置；长文本单行省略并支持完整值查看，窄容器局部横向滚动。
 - 按钮保持单行且不压缩；操作区可换行，行操作按主次收纳到更多。Select 标签单行省略，选项保留完整名称。
@@ -139,7 +140,7 @@ AngelWatch TMS 是面向 Android 终端管理的后台系统，核心是设备�
 实现提示：
 
 - 应用列表列:应用名(logo) / 机构 / 包名 / **版本总数 versionCount** / **下载总数 downloadCount** / 操作。区分字段为版本总数与下载总数。支持表格/卡片视图切换、列设置、数据范围切换(本级及子级)。
-- 版本包状态(含签名子态):草稿 / kpp签名中 / kpp签名错误 / APK签名中 / APK签名错误 / 审核中 / 已上架 / 已拒绝 / 取消上架 / 已下架。签名态是真实业务(谷歌签名 / AW签名 / 证书链签名)。
+- 设计快照中的版本包状态(含签名子态):草稿 / kpp签名中 / kpp签名错误 / APK签名中 / APK签名错误 / 审核中 / 已上架 / 已拒绝 / 取消上架 / 已下架。签名类型观察包括谷歌签名 / AW签名 / 证书链签名；现行状态、编码与可用性须由后端/OpenAPI 确认。
 - 添加应用四段表单:① 基础信息(APK 包上传后自动解析 packageName+versionCode+versionName / logo / 9:16 截图 / 分类 / 开发者 / 简介) ② 权限配置(禁止卸载 uninstallFlag / 禁止清除数据 clearDataFlag) ③ 签名配置(needSigner / certificateType:1 谷歌 /2 AW /3 证书链 / certificateId / usingDeptId) ④ 规则信息(适配机型多选 / 可见范围 ruleType 0-7)。
 - 应用分类有 **ordinal 排序**字段;**自动安装 / 自动更新**开关开启需二次确认。
 - 上架审核走 `Modal`;安装结果走 `Result`;APK 签名解析应在后端完成,不在前端。
@@ -292,9 +293,31 @@ Figma 证据来源于“国外版翻译” canvas，包含设备地图轨迹查�
 node scripts/check-i18n.js
 node scripts/i18n-runtime.test.js
 node scripts/i18n-contract.test.js
+node scripts/row-actions-runtime.test.js
+node scripts/router-runtime.test.js
+node scripts/table-layout-runtime.test.js
 node scripts/check-consistency.js
+node scripts/check-consumer-contract.js
 node scripts/check-evidence.js
 ```
+
+发布前和部署后还需使用真实浏览器验证。以下脚本复用独立 QA 环境的 Playwright 与 axe，不改变本站无 npm 依赖的部署方式：
+
+```bash
+# 设置为已安装模块与脚本的绝对路径；Chromium 需由 QA 环境预先安装。
+export PLAYWRIGHT_MODULE=/path/to/qa/node_modules/@playwright/test
+export AXE_SCRIPT=/path/to/qa/node_modules/axe-core/axe.min.js
+
+# 默认 file://；66 路由 × 2 语言 × 2 主题 × 2 视口，包含 axe 与截图。
+node scripts/browser-audit.js --output /tmp/aw-local-audit
+node scripts/browser-interaction-audit.js --output /tmp/aw-local-interactions.json
+
+# 部署成功后对真实地址执行相同检查，不以本地通过代替线上验收。
+node scripts/browser-audit.js --url https://xcangelwatch.github.io/design-system/ --output /tmp/aw-live-audit
+node scripts/browser-interaction-audit.js --url https://xcangelwatch.github.io/design-system/ --output /tmp/aw-live-interactions.json
+```
+
+浏览器脚本退出码非零表示失败；报告记录 URL、执行时间与覆盖组合。人工检查生成截图，核对 Actions 的提交 SHA 与线上资源哈希；自动化 axe 不等于读屏或完整 WCAG 合规证明。当前 Pages CI 仍运行静态与 Node 检查，浏览器脚本需要显式执行。
 
 必须运行：
 
@@ -341,8 +364,8 @@ for path in Path('project').rglob('*'):
         if term in text:
             bad.append((str(path), term))
     for label, pattern in [
-        ('class new-tag', re.compile(r'class=["\\'][^"\\']*\\bnew-tag\\b[^"\\']*["\\']')),
-        ('class="v">vX.X</span>', re.compile(r'class="v">v[0-9]+\\.[0-9]+ *</span>')),
+        ('class new-tag', re.compile(r"class=[\"'][^\"']*\bnew-tag\b[^\"']*[\"']")),
+        ('class="v">vX.X</span>', re.compile(r'class="v">v[0-9]+\.[0-9]+ *</span>')),
     ]:
         if pattern.search(text):
             bad.append((str(path), label))
@@ -358,7 +381,7 @@ PY
 python3 - <<'PY'
 from pathlib import Path
 import re
-placeholder = re.compile(r'2rd-level-title|Button Text|>\\s*title\\s*<|>\\s*text\\s*<|>\\s*input\\s*<')
+placeholder = re.compile(r'2rd-level-title|Button Text|>\s*title\s*<|>\s*text\s*<|>\s*input\s*<')
 legacy = []
 placeholders = []
 for path in list(Path('project/pages').glob('*.js')) + list(Path('project/styles').glob('*.css')):
@@ -369,11 +392,11 @@ for path in list(Path('project/pages').glob('*.js')) + list(Path('project/styles
         placeholders.append(str(path))
 if legacy:
     print('legacy #0052CC found:')
-    print('\\n'.join(legacy))
+    print('\n'.join(legacy))
     raise SystemExit(1)
 if placeholders:
     print('figma placeholders found:')
-    print('\\n'.join(placeholders))
+    print('\n'.join(placeholders))
     raise SystemExit(1)
 print('legacy primary and figma placeholder scans clear ✓')
 PY

@@ -53,7 +53,7 @@
     ['charts',                '数据图表 Charts',                   '业务模式'],
     ['cascader',              '级联与穿梭',                         '业务模式'],
     ['advanced-form',         '数字输入与校验',                       '业务模式'],
-    ['tab-variants',          'Tabs 与 Popconfirm',             '业务模式'],
+    ['tab-variants',          'Tabs 与操作确认',             '业务模式'],
     ['avatar-result',         '头像 / 结果 / 描述',                  '业务模式'],
     ['empty-state',           '空状态 Empty',                     '业务模式'],
     ['error-page',            '错误页 ErrorPage',                 '业务模式'],
@@ -99,6 +99,7 @@
   var BRAND_LOGO = 'favicon.ico';
   var SUN_SVG  = '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-sun"></use></svg>';
   var MOON_SVG = '<svg class="aw-icon" aria-hidden="true"><use href="#aw-icon-moon"></use></svg>';
+  var BACK_SVG = '<svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg>';
 
   function createFallbackI18n() {
     var locale = 'zh-CN';
@@ -260,14 +261,18 @@
       bcGroup = getGroupLabel(meta.group);
       bcLeaf = getRouteLabel(routeId);
     }
-    var bc = '<div class="comp-bc">' +
+    var back = routeId === DEFAULT_ROUTE ? '' :
+      '<button class="btn btn-back comp-back" type="button" data-route-back aria-label="' +
+      tCommon('navigation.backToPreviousPage', null, '返回上一访问页') + '">' + BACK_SVG +
+      '<span>' + tCommon('navigation.back', null, '返回') + '</span></button>';
+    var bc = '<div class="comp-bc">' + back + '<div class="comp-bc-path">' +
              (routeId === 'overview' ? '<span class="leaf">' + bcLeaf + '</span>' :
               '<a href="#/overview">' + tCommon('breadcrumb.home', null, '概览') + '</a>' +
               '<span class="sep">/</span>' +
               '<span class="group">' + bcGroup + '</span>' +
               '<span class="sep">/</span>' +
               '<span class="leaf">' + bcLeaf + '</span>') +
-             '</div>';
+             '</div></div>';
     var navToggle = '<button type="button" class="doc-nav-toggle" data-doc-nav-toggle aria-controls="app-side" aria-expanded="false" aria-label="' +
       tCommon('navigation.open', null, '打开导航') + '">' +
       '<span aria-hidden="true"><i></i><i></i><i></i></span></button>';
@@ -403,6 +408,11 @@
     });
   }
 
+  function wireToolbarBack() {
+    var button = document.querySelector('#app-toolbar [data-route-back]');
+    if (button) button.onclick = function () { navigateBack(button); };
+  }
+
   // === demo interactions ===
   function setSingleActive(el, selector, cls) {
     var scope = el.parentElement || document;
@@ -460,6 +470,31 @@
   function handleDemoAction(root, el, action, event) {
     event.preventDefault();
     pulse(el);
+
+    if (action === 'copy-trace') {
+      copyDemoText(el.getAttribute('data-copy-text')).then(function () {
+        if (root.contains(el)) showDemoToast(root, tCommon('demo.traceCopied', null, '已复制示例 Trace ID'));
+      }).catch(function () {
+        if (root.contains(el)) showDemoToast(root, tCommon('demo.copyFailed', null, '无法自动复制，请手动选择并复制 Trace ID'));
+      });
+      return;
+    }
+
+    if (action === 'retry-error') {
+      var card = el.closest('.errorpage-card');
+      if (!card) return;
+      card.querySelector('.ep-illust').hidden = true;
+      card.querySelector('.ep-code').textContent = 'DEMO · OK';
+      var heading = card.querySelector('h3');
+      heading.textContent = tCommon('demo.retryRecovered', null, '示例已恢复');
+      heading.setAttribute('tabindex', '-1');
+      var description = card.querySelector('.ep-sub');
+      description.textContent = tCommon('demo.retryExplanation', null, '已演示安全重试后的恢复状态；没有发送服务请求。重新进入本页可再次查看错误示例。');
+      description.setAttribute('role', 'status');
+      card.querySelector('.ep-actions').hidden = true;
+      heading.focus();
+      return;
+    }
 
     if (action === 'quick-range') {
       setSingleActive(el, '.chip', 'active');
@@ -548,6 +583,29 @@
       showDemoToast(root, tCommon('demo.selectionConfirmed', null, '已确认当前日期时间'));
       return;
     }
+  }
+
+  function copyDemoText(value) {
+    if (!value) return Promise.reject(new Error('Missing copy value'));
+    function legacyCopy() {
+      var input = document.createElement('textarea');
+      input.value = value;
+      input.setAttribute('readonly', '');
+      input.className = 'demo-tab-panel-sr';
+      var active = document.activeElement;
+      document.body.appendChild(input);
+      input.select();
+      try {
+        if (!document.execCommand('copy')) throw new Error('Copy unavailable');
+      } finally {
+        input.remove();
+        if (active && active.isConnected) active.focus({ preventScroll: true });
+      }
+    }
+    return Promise.resolve().then(function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(value);
+      throw new Error('Clipboard API unavailable');
+    }).catch(legacyCopy);
   }
 
   function getDemoSelectPopup(select) {
@@ -985,7 +1043,8 @@
     }
     if (group.classList.contains('tabs-route') && tab.getAttribute('data-demo-query')) {
       var routeId = getRouteFromHash() || DEFAULT_ROUTE;
-      history.replaceState(null, '', '#/' + routeId + '?view=' + encodeURIComponent(tab.getAttribute('data-demo-query')));
+      history.replaceState(history.state, '', '#/' + routeId + '?view=' + encodeURIComponent(tab.getAttribute('data-demo-query')));
+      recordRouteVisit();
     }
   }
 
@@ -1226,6 +1285,18 @@
     if (top + bounds.height > viewportHeight - 8) top = anchor.top - bounds.height - 6;
     menu.style.top = Math.max(8, top) + 'px';
     menu.style.left = Math.max(8, Math.min(anchor.right - bounds.width, viewportWidth - bounds.width - 8)) + 'px';
+    openRowActionMenu.anchor = { top: anchor.top, right: anchor.right, bottom: anchor.bottom, left: anchor.left };
+  }
+
+  function handleRowActionScroll(event) {
+    if (!openRowActionMenu || openRowActionMenu.menu.contains(event.target)) return;
+    var previous = openRowActionMenu.anchor;
+    var current = openRowActionMenu.trigger.getBoundingClientRect();
+    // Focusing an offscreen trigger scrolls its container synchronously, but
+    // the scroll event may arrive after keyboard opening. Only close if the
+    // anchor actually moved since positioning; stale events cannot close it.
+    if (previous && (current.top !== previous.top || current.left !== previous.left ||
+        current.right !== previous.right || current.bottom !== previous.bottom)) closeRowActionMenu(true);
   }
 
   function getRowMenuItems(menu) {
@@ -1249,6 +1320,119 @@
     if (items.length) items[last ? items.length - 1 : 0].focus({ preventScroll: true });
   }
 
+  function getRowActionIcon(button) {
+    var explicit = button.getAttribute('data-row-icon');
+    if (explicit) return explicit;
+    var label = button.hasAttribute('data-i18n') ? button : button.querySelector('[data-i18n]');
+    var key = label && label.getAttribute('data-i18n');
+    // Stable catalog keys survive translated wording and locale changes. New
+    // authored actions should use data-row-icon rather than extending text rules.
+    var keys = {
+      'eye': ['row-actions:text.005', 'device-center-page:text.046', 'market-page:text.039', 'service-page:text.066'],
+      'edit': ['row-actions:text.006', 'market-page:text.044', 'user-mgmt-page:text.035', 'user-mgmt-page:text.042', 'user-mgmt-page:text.050', 'user-mgmt-page:text.058', 'user-mgmt-page:text.066'],
+      'monitor': ['device-center-page:text.047', 'device-center-page:text.063'],
+      'warning': ['device-center-page:text.054'],
+      'file-text': ['row-actions:text.010', 'row-actions:text.058', 'device-center-page:text.048', 'device-center-page:text.055'],
+      'clock': ['device-center-page:text.062'],
+      'package': ['market-page:text.040'],
+      'send': ['row-actions:text.008', 'service-page:text.064'],
+      'key': ['user-mgmt-page:text.036', 'user-mgmt-page:text.043', 'user-mgmt-page:text.051', 'user-mgmt-page:text.059'],
+      'power': ['row-actions:text.012', 'row-actions:text.061', 'user-mgmt-page:text.037', 'user-mgmt-page:text.044', 'user-mgmt-page:text.052', 'user-mgmt-page:text.060', 'user-mgmt-page:text.067'],
+      'arrow-down': ['market-page:text.041'],
+      'check': ['market-page:text.043'],
+      'close': ['market-page:text.045'],
+      'trash': ['row-actions:text.007', 'row-actions:text.063', 'service-page:text.065', 'user-mgmt-page:text.068'],
+      'copy': ['row-actions:text.011', 'row-actions:text.059'],
+      'cloud-download': ['row-actions:text.014', 'row-actions:text.060'],
+      'refresh': ['row-actions:text.013', 'row-actions:text.062']
+    };
+    return Object.keys(keys).filter(function (symbol) {
+      return keys[symbol].indexOf(key) !== -1;
+    })[0] || null;
+  }
+
+  function decorateRowMenuItem(item) {
+    item.setAttribute('role', 'menuitem');
+    item.setAttribute('tabindex', '-1');
+    if (item.querySelector('svg')) return;
+    var symbol = getRowActionIcon(item);
+    if (!symbol || !document.getElementById('aw-icon-' + symbol)) return;
+    var icon = createSystemIcon(symbol);
+    icon.setAttribute('data-row-menu-icon', '');
+    item.insertBefore(icon, item.firstChild);
+  }
+
+  function normalizeRowActionMenus(root) {
+    root.querySelectorAll('td.colactions, .ra-row').forEach(function (container) {
+      // Authored menus already encode primary/secondary and dangerous placement.
+      if (container.querySelector('.ra-more-wrap')) return;
+      var row = container.querySelector('.table-actions') || container;
+      var buttons = Array.prototype.filter.call(row.children, function (child) { return child.tagName === 'BUTTON'; });
+      var trigger = buttons.filter(function (button) {
+        return button.classList.contains('ra-more-trigger') || /^(更多|more|…|⋯|\.\.\.)$/i.test(button.textContent.trim());
+      })[0];
+      var actions = buttons.filter(function (button) { return button !== trigger; });
+      // Count real actions, never a placeholder More button. Do not invent an
+      // empty menu for the common "Details + More" illustrative cells.
+      if (actions.length < 3) return;
+      var risky = actions.filter(function (button) {
+        return button.matches('.danger, .btn-danger, .btn-danger-link, .btn-ghost-danger') || button.hasAttribute('data-demo-confirm');
+      });
+      var ordinary = actions.filter(function (button) { return risky.indexOf(button) === -1; });
+      var primary = ordinary.filter(function (button) {
+        return button.hasAttribute('data-row-primary') || button.getAttribute('data-row-placement') === 'primary';
+      })[0];
+      var secondary = ordinary.filter(function (button) {
+        return button !== primary && (button.hasAttribute('data-row-secondary') || button.getAttribute('data-row-placement') === 'secondary');
+      })[0];
+      if (!primary) primary = ordinary.filter(function (button) {
+        return button !== secondary && button.getAttribute('data-row-placement') !== 'menu';
+      })[0];
+      var visible = [primary, secondary].filter(Boolean);
+      ordinary.forEach(function (button) {
+        if (visible.length < 2 && visible.indexOf(button) === -1 && button.getAttribute('data-row-placement') !== 'menu') visible.push(button);
+      });
+      if (!row.classList.contains('ra-row')) {
+        if (row === container && container.tagName === 'TD') {
+          row = document.createElement('div');
+          container.appendChild(row);
+        }
+        row.classList.add('ra-row');
+      }
+      visible.forEach(function (button, index) {
+        row.appendChild(button);
+        if (index === 1) button.setAttribute('data-row-secondary', '');
+      });
+      var wrap = document.createElement('span');
+      wrap.className = 'ra-more-wrap';
+      if (!trigger) {
+        trigger = document.createElement('button');
+        trigger.className = 'btn btn-link';
+        trigger.textContent = tCommon('more', null, '更多');
+      }
+      trigger.type = 'button';
+      trigger.classList.add('ra-more-trigger');
+      wrap.appendChild(trigger);
+      var menu = document.createElement('div');
+      menu.className = 'ra-menu';
+      var collapsed = ordinary.filter(function (button) { return visible.indexOf(button) === -1; });
+      collapsed.concat(risky).forEach(function (button, index) {
+        if (risky.length && index === collapsed.length) {
+          var divider = document.createElement('div');
+          divider.className = 'ra-mdiv';
+          divider.setAttribute('role', 'separator');
+          menu.appendChild(divider);
+        }
+        button.classList.add('ra-menu-action');
+        if (risky.indexOf(button) !== -1) button.setAttribute('data-demo-confirm', '');
+        decorateRowMenuItem(button);
+        menu.appendChild(button);
+      });
+      wrap.appendChild(menu);
+      row.appendChild(wrap);
+    });
+  }
+
   function fitRowActionMenus(root) {
     root.querySelectorAll('.ra-row').forEach(function (row) {
       var secondary = row.querySelector('[data-row-secondary]');
@@ -1265,6 +1449,8 @@
       secondary.removeAttribute('tabindex');
       var menuLabel = secondary.querySelector('[data-row-menu-label]');
       if (menuLabel) menuLabel.remove();
+      var menuIcon = secondary.querySelector('[data-row-menu-icon]');
+      if (menuIcon) menuIcon.remove();
       if (window.innerWidth < 768 || row.scrollWidth > row.clientWidth + 1) {
         if (!secondary.textContent.trim()) {
           var label = secondary.getAttribute('aria-label') || secondary.getAttribute('title');
@@ -1278,6 +1464,7 @@
         secondary.classList.add('ra-menu-action');
         secondary.setAttribute('role', 'menuitem');
         secondary.setAttribute('tabindex', '-1');
+        decorateRowMenuItem(secondary);
         menu.insertBefore(secondary, menu.firstChild);
       }
       if (hadFocus) {
@@ -1335,7 +1522,7 @@
   }
 
   function fitDemoTableColumns(root) {
-    root.querySelectorAll('table.dt:not(.ra-table)').forEach(function (table) {
+    root.querySelectorAll('table.dt, table.ra-table').forEach(function (table) {
       var header = table.tHead && table.tHead.rows[0];
       if (!header) return;
       var cells = Array.prototype.slice.call(header.cells);
@@ -1451,13 +1638,12 @@
       trigger.setAttribute('aria-controls', menu.id);
       trigger.setAttribute('aria-haspopup', 'menu');
       trigger.setAttribute('aria-expanded', 'false');
-      var row = trigger.closest('tr');
-      if (row) trigger.setAttribute('aria-label', tCommon('moreFor', { label: row.cells[0].textContent.trim() }, '{label}的更多操作'));
+      trigger.setAttribute('aria-label', tCommon('moreFor', { label: getDemoActionLabel(trigger) }, '{label}的更多操作'));
       menu.setAttribute('role', 'menu');
       menu.setAttribute('aria-labelledby', trigger.id);
       if (typeof menu.showPopover === 'function') menu.setAttribute('popover', 'manual');
       menu.hidden = true;
-      menu.querySelectorAll('[role="menuitem"]').forEach(function (item) { item.setAttribute('tabindex', '-1'); });
+      menu.querySelectorAll('[role="menuitem"]').forEach(decorateRowMenuItem);
     });
     fitRowActionMenus(root);
   }
@@ -1471,6 +1657,15 @@
     dialog.remove();
   }
 
+  function getDemoActionLabel(trigger) {
+    var labeled = trigger.closest('[data-row-label]');
+    if (labeled) return labeled.getAttribute('data-row-label');
+    var card = trigger.closest('.datacard');
+    if (card) return card.querySelector('.nm').textContent.trim() + ' · ' + card.querySelector('.sn').textContent.trim();
+    var row = trigger.closest('tr');
+    return row ? row.cells[0].textContent.trim() : tCommon('demo.exampleDevice', null, '示例设备');
+  }
+
   function confirmRowAction(root, action, trigger) {
     if (rowActionConfirmation) return;
     var dialog = document.createElement('dialog');
@@ -1481,8 +1676,7 @@
     var title = dialog.querySelector('h4');
     title.id = titleId;
     title.textContent = tCommon('demo.confirmAction', { action: action }, '确认{action}');
-    var row = trigger.closest('tr');
-    var label = row ? row.cells[0].textContent.trim() : tCommon('demo.exampleDevice', null, '示例设备');
+    var label = getDemoActionLabel(trigger);
     var body = dialog.querySelector('.body');
     body.id = titleId + '-body';
     body.textContent = tCommon('demo.confirmActionBody', { action: action, label: label }, '将对“{label}”执行“{action}”。此处仅演示确认流程，不会修改真实设备。');
@@ -1512,11 +1706,28 @@
     renderIconCatalog(root);
     enhanceDemoSemantics(root);
     normalizeComponentIcons(root);
+    normalizeBackButtons(root);
     normalizeSelectLabels(root);
+    normalizeRowActionMenus(root);
     prepareRowActionMenus(root);
 
     root.onclick = function (event) {
       var target = event.target;
+      var backButton = target.closest && target.closest('[data-route-back]');
+      if (backButton && root.contains(backButton)) {
+        event.preventDefault();
+        if (!backButton.disabled) navigateBack(backButton);
+        return;
+      }
+      var demoLink = target.closest && target.closest('[data-demo-route]');
+      if (demoLink && root.contains(demoLink)) {
+        var demoRoute = parseRouteTarget(demoLink.getAttribute('data-demo-route'));
+        if (demoRoute && !demoLink.disabled && demoLink.getAttribute('aria-disabled') !== 'true') {
+          event.preventDefault();
+          location.hash = '#/' + demoRoute;
+        }
+        return;
+      }
       var menuTrigger = target.closest && target.closest('.ra-more-trigger');
       if (menuTrigger && root.contains(menuTrigger)) {
         event.preventDefault();
@@ -1533,6 +1744,14 @@
         closeRowActionMenu(true);
         if (menuItem.hasAttribute('data-demo-confirm') && trigger) confirmRowAction(root, action, trigger);
         else showDemoToast(root, tCommon('demo.buttonClicked', { action: action }, '已点击：{action}'));
+        return;
+      }
+      var confirmedAction = target.closest && target.closest('[data-demo-confirm]');
+      if (confirmedAction && root.contains(confirmedAction)) {
+        event.preventDefault();
+        if (!confirmedAction.disabled && confirmedAction.getAttribute('aria-disabled') !== 'true') {
+          confirmRowAction(root, confirmedAction.textContent.trim() || confirmedAction.getAttribute('aria-label'), confirmedAction);
+        }
         return;
       }
       var actionEl = target.closest && target.closest('[data-demo-action]');
@@ -1853,6 +2072,68 @@
 
   // === routing ===
   var currentReqId = 0;
+  var routeHistory = [];
+  var routeHistoryIndex = -1;
+  var routeHistorySession = String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+  var routeHistoryAvailable = false;
+  var routeBackPending = false;
+
+  function parseRouteTarget(value) {
+    var match = String(value || '').match(/^(?:#\/)?([\w-]+)$/);
+    return match && ROUTE_MAP[match[1]] ? match[1] : null;
+  }
+
+  function recordRouteVisit() {
+    var route = getRouteFromHash() || DEFAULT_ROUTE;
+    var marker = history.state && history.state.awDocRoute;
+    // Browser Back/Forward restores the entry's position instead of adding a
+    // second visit. Keep this document's history separate from external pages.
+    if (marker && marker.session === routeHistorySession &&
+        routeHistory[marker.index] && routeHistory[marker.index].route === route) {
+      routeHistoryIndex = marker.index;
+    } else {
+      routeHistory = routeHistory.slice(0, routeHistoryIndex + 1);
+      routeHistoryIndex = routeHistory.length;
+      routeHistory.push({ route: route, hash: location.hash });
+    }
+    routeHistory[routeHistoryIndex].hash = location.hash;
+    routeBackPending = false;
+    var state = Object.assign({}, history.state || {});
+    state.awDocRoute = { session: routeHistorySession, index: routeHistoryIndex };
+    try {
+      history.replaceState(state, '');
+      routeHistoryAvailable = true;
+    } catch (error) {
+      // Some file viewers restrict the History API; the explicit fallback still
+      // stays inside the documentation site.
+      routeHistoryAvailable = false;
+    }
+  }
+
+  function navigateBack(button) {
+    if (routeBackPending) return;
+    var target = parseRouteTarget(button && button.getAttribute('data-back-target'));
+    var fallback = parseRouteTarget(button && button.getAttribute('data-back-fallback')) || DEFAULT_ROUTE;
+    if (!target && routeHistoryAvailable && routeHistoryIndex > 0) {
+      routeBackPending = true;
+      history.back();
+      return;
+    }
+    target = target || fallback;
+    if (target === getRouteFromHash()) {
+      loadRoute(target, { focusHeading: true });
+    } else {
+      location.hash = '#/' + target;
+    }
+  }
+
+  function normalizeBackButtons(root) {
+    root.querySelectorAll('.btn-back').forEach(function (button) {
+      button.setAttribute('type', 'button');
+      button.setAttribute('data-route-back', '');
+      if (!button.querySelector('.aw-icon')) button.insertBefore(createSystemIcon('arrow-left'), button.firstChild);
+    });
+  }
 
   function getRouteFromHash() {
     var h = location.hash || '';
@@ -2170,6 +2451,7 @@
     if (toolbar) toolbar.innerHTML = buildToolbar(routeId);
     wireThemeToggle();
     wireLocaleToggle();
+    wireToolbarBack();
     wireNavigationDrawer();
 
     // Update title
@@ -2204,6 +2486,7 @@
 
   function navigate(event) {
     var route = getRouteFromHash();
+    recordRouteVisit();
     loadRoute(route || DEFAULT_ROUTE, { focusHeading: Boolean(event && event.type === 'hashchange') });
   }
 
@@ -2220,9 +2503,7 @@
       if (openRowActionMenu && !openRowActionMenu.menu.contains(event.target) &&
           !openRowActionMenu.trigger.contains(event.target)) closeRowActionMenu(false);
     });
-    window.addEventListener('scroll', function (event) {
-      if (openRowActionMenu && !openRowActionMenu.menu.contains(event.target)) closeRowActionMenu(true);
-    }, true);
+    window.addEventListener('scroll', handleRowActionScroll, true);
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && document.body.classList.contains('doc-nav-open')) {
         syncNavigationDrawer(false, { restoreFocus: true });

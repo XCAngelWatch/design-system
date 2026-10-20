@@ -4,22 +4,22 @@
 <section class="section" id="a11y">
   <p class="section-eyebrow"><span data-i18n="a11y:t001">设计基础 · 无障碍</span></p>
   <h2 role="heading" aria-level="1"><span data-i18n="a11y:t002">无障碍 Accessibility</span></h2>
-  <p class="lede"><span data-i18n="a11y:t003">运维与 IT 管理员中包含视障 / 色弱 / 键盘优先用户。产品以 WCAG 2.1 AA 为交付目标。当前设计仓 CI 仅阻断静态 i18n、契约、一致性与证据检查，尚未运行浏览器级 axe、键盘或读屏测试；这些属于必须补齐的验证计划，不是既有合规证明。只有实际执行并留有报告的覆盖范围才能标记为已验证。</span></p>
+  <p class="lede"><span data-i18n="a11y:t003">产品以 WCAG 2.1 AA 为交付目标，并将 WCAG 2.2 的目标尺寸与焦点不被遮挡纳入验收。当前 CI 以静态与运行时单元检查为主；浏览器 axe 抽样、键盘与读屏必须分别记录路由、主题、语言和视口。以下是验收要求，不是全站合规证明。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="a11y:t004">键盘可达 · Keyboard</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="a11y:t005">所有交互组件必须可仅用键盘完成全部操作 —— 不依赖鼠标。Tab 顺序按视觉阅读顺序（左→右、上→下）。键盘或程序化焦点必须显示 focus ring，并</span><b><span data-i18n="a11y:t006">使用</span></b> <code>:focus-visible</code>.</p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="a11y:t005">所有交互组件必须可仅用键盘完成全部操作。Tab 顺序按阅读与操作顺序排列。焦点必须可见；使用浏览器的焦点可见性判断，</span><b><span data-i18n="a11y:t006">使用</span></b> <code>:focus-visible</code>.</p>
     <table class="map-table">
       <thead><tr><th style="width:18%"><span data-i18n="a11y:t007">按键</span></th><th style="width:30%"><span data-i18n="a11y:t008">行为</span></th><th><span data-i18n="a11y:t009">语境</span></th></tr></thead>
       <tbody>
-        <tr><td><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd></td><td><span data-i18n="a11y:t010">前进 / 后退聚焦</span></td><td><span data-i18n="a11y:t011">所有交互元素；隐藏元素</span> <code>tabindex="-1"</code></td></tr>
-        <tr><td><kbd>Enter</kbd></td><td><span data-i18n="a11y:t012">确认 / 提交 / 触发主动作</span></td><td><span data-i18n="a11y:t013">按钮、链接；表单内不在 textarea 中提交</span></td></tr>
+        <tr><td><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd></td><td><span data-i18n="a11y:t010">前进 / 后退聚焦</span></td><td><span data-i18n="a11y:t011">可见且可用的交互控件参与 Tab 顺序；程序化聚焦可用</span> <code>tabindex="-1"</code><span data-i18n="a11y:keyboard.hidden">。真正隐藏或停用的子树使用 hidden / inert 等机制；tabindex=-1 不能隐藏内容或阻止程序化聚焦。</span></td></tr>
+        <tr><td><kbd>Enter</kbd></td><td><span data-i18n="a11y:t012">确认 / 提交 / 触发主动作</span></td><td><span data-i18n="a11y:t013">按钮与链接；表单提交遵循控件行为，textarea 保留换行</span></td></tr>
         <tr><td><kbd>Space</kbd></td><td><span data-i18n="a11y:t014">勾选 / 触发按钮</span></td><td>Checkbox / Switch / Button</td></tr>
         <tr><td><kbd>Esc</kbd></td><td><span data-i18n="a11y:t015">关闭浮层 / 取消编辑</span></td><td><span data-i18n="a11y:t016">Modal、Drawer、Popover、Dropdown 必须响应</span></td></tr>
-        <tr><td><kbd>↑</kbd> / <kbd>↓</kbd></td><td><span data-i18n="a11y:t017">上下导航</span></td><td><span data-i18n="a11y:t018">Select、Menu、Table 行、Tree、AutoComplete</span></td></tr>
-        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td><span data-i18n="a11y:t019">左右导航</span></td><td><span data-i18n="a11y:t020">Tabs、Steps、Pagination、Calendar 日期格</span></td></tr>
-        <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td><span data-i18n="a11y:t021">跳到首 / 末</span></td><td><span data-i18n="a11y:t022">Select、Menu、Table（首行 / 末行）</span></td></tr>
-        <tr><td><kbd>PageUp</kbd> / <kbd>PageDown</kbd></td><td><span data-i18n="a11y:t023">翻页</span></td><td><span data-i18n="a11y:t024">Table 分页、Calendar 月切换</span></td></tr>
+        <tr><td><kbd>↑</kbd> / <kbd>↓</kbd></td><td><span data-i18n="a11y:t017">上下导航</span></td><td><span data-i18n="a11y:t018">Select、Menu、Tree、AutoComplete 等复合控件；普通数据表格不拦截方向键</span></td></tr>
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td><span data-i18n="a11y:t019">左右导航</span></td><td><span data-i18n="a11y:t020">Tabs、Calendar 日期格；仅在对应复合控件模式中实现</span></td></tr>
+        <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td><span data-i18n="a11y:t021">跳到首 / 末</span></td><td><span data-i18n="a11y:t022">Select、Menu 等复合控件；不为普通 table 增加 grid 键盘模型</span></td></tr>
+        <tr><td><kbd>PageUp</kbd> / <kbd>PageDown</kbd></td><td><span data-i18n="a11y:t023">翻页</span></td><td><span data-i18n="a11y:t024">Calendar 月切换；表格翻页按钮使用 Tab 和 Enter / Space</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -49,7 +49,7 @@
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="a11y:t052">焦点环</span></div>
         <h3 style="margin:0 0 8px;font-size:14px"><span data-i18n="a11y:t053">键盘导航可见</span></h3>
-        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="a11y:t054">2px outline + 2px offset，颜色</span> <code>--aw-primary</code>. <b><span data-i18n="a11y:t055">使用</span></b> <code>:focus-visible</code><span data-i18n="a11y:t056">，仅在键盘或程序化焦点时显示</span><span data-i18n="a11y:t057">；鼠标点击不额外显示焦点环。Dark 模式自动跟随 token 提亮。</span></p>
+        <p style="margin:0;font-size:13px;color:var(--aw-text-2);line-height:1.7"><span data-i18n="a11y:t054">2px outline + 2px offset，颜色</span> <code>--aw-primary</code>. <b><span data-i18n="a11y:t055">使用</span></b> <code>:focus-visible</code><span data-i18n="a11y:t056">按浏览器焦点可见性判断显示焦点环</span><span data-i18n="a11y:t057">；输入控件即使由指针聚焦也可能显示。不得移除键盘焦点；Dark 模式使用当前主题 token。</span></p>
       </div>
       <div class="surface">
         <div class="tag-meta" style="margin-bottom:8px"><span data-i18n="a11y:t058">焦点陷阱</span></div>
@@ -85,7 +85,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="a11y:t086">色弱 / 色盲支持 · Color-blind</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="a11y:t087">~ 8% 男性是某种色觉缺陷（红绿色盲最常见）。状态信息</span><b><span data-i18n="a11y:t088">禁止仅依靠颜色</span></b><span data-i18n="a11y:t089">表达 —— 必须色 + 形 + 文字三重编码。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="a11y:t087">用户可能存在红绿色觉差异等色觉障碍。状态信息</span><b><span data-i18n="a11y:t088">禁止仅依靠颜色</span></b><span data-i18n="a11y:t089">表达 —— 必须色 + 形 + 文字三重编码。</span></p>
     <div class="demo-grid cols-2">
       <div class="surface" style="border-left:3px solid var(--aw-success)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)"><span data-i18n="a11y:t090">✓ 三重编码</span></h3>
@@ -115,6 +115,7 @@
   *::before,
   *::after {
     animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;
   }
@@ -132,13 +133,13 @@
       <thead><tr><th style="width:30%"><span data-i18n="a11y:t105">对比对象</span></th><th style="width:24%"><span data-i18n="a11y:t106">最低要求</span></th><th><span data-i18n="a11y:t107">规则</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="a11y:t108">正文文本 vs 底色</span></td><td>4.5:1(AA)</td><td><span data-i18n="a11y:t109">所有</span> <code>--aw-text-1</code> / <code>--aw-text-2</code></td></tr>
-        <tr><td><span data-i18n="a11y:t110">大文本 (≥18px or ≥14px bold)</span></td><td>3:1(AA)</td><td><span data-i18n="a11y:t111">H1 / H2 / 卡片标题</span></td></tr>
-        <tr><td><span data-i18n="a11y:t112">关键 CTA / 大字</span></td><td>7:1(AAA)</td><td><span data-i18n="a11y:t113">主操作按钮文字、统计数字</span></td></tr>
+        <tr><td><span data-i18n="a11y:t110">大文本（≥ 18pt / 24 CSS px，或 ≥ 14pt / 18.67 CSS px 粗体）</span></td><td>3:1(AA)</td><td><span data-i18n="a11y:t111">只有达到上述阈值的文本才适用；不可按 H1 / H2 标签推定</span></td></tr>
+        <tr><td><span data-i18n="a11y:t112">增强对比度（AAA，可选更高目标）</span></td><td>7:1 / 4.5:1</td><td><span data-i18n="a11y:t113">普通文本 ≥ 7:1；大文本 ≥ 4.5:1。主按钮按实际字号与背景验算，不宣称默认已达 AAA</span></td></tr>
         <tr><td><span data-i18n="a11y:t114">UI 组件 / 图标</span></td><td>3:1(AA)</td><td><span data-i18n="a11y:t115">边框、icon、focus ring vs 底色</span></td></tr>
         <tr><td><span data-i18n="a11y:t116">状态文字</span></td><td>4.5:1</td><td><span data-i18n="a11y:t117">每组前景 / 背景组合都必须实测；不得由 token 名称推断已通过</span></td></tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="a11y:t118">校验：</span></b><span data-i18n="a11y:t119">详见</span> <a href="#/color" style="color: var(--aw-primary-text)"><span data-i18n="a11y:t120">色彩页 WCAG 标注</span></a><span data-i18n="a11y:t121">。当前 CI 尚无浏览器级覆盖报告；后续报告必须列明路由 / 主题 / 语言 / 视口。未执行的组合只能标为待验证，并通过人工抽检记录补充。</span></p>
+    <p style="font-size:12px;color:var(--aw-text-3);margin:14px 0 0;line-height:1.7"><b style="color:var(--aw-text-2)"><span data-i18n="a11y:t118">校验：</span></b><span data-i18n="a11y:t119">详见</span> <a href="#/color" style="color: var(--aw-primary-text)"><span data-i18n="a11y:t120">色彩页 WCAG 标注</span></a><span data-i18n="a11y:t121">。浏览器报告必须列明路由 / 主题 / 语言 / 视口。自动扫描不替代键盘与读屏验收，未执行的组合只能标为待验证。</span></p>
   </div>
 
   <div class="subsection">
@@ -146,7 +147,7 @@
     <table class="map-table">
       <thead><tr><th style="width:26%">SR</th><th style="width:24%"><span data-i18n="a11y:t123">浏览器</span></th><th style="width:18%">OS</th><th><span data-i18n="a11y:t124">覆盖范围</span></th></tr></thead>
       <tbody>
-        <tr><td><b>NVDA</b> <span data-i18n="a11y:t125">· 必测</span></td><td>Firefox / Chrome</td><td>Windows</td><td><span data-i18n="a11y:t126">≥ 70% 国内用户基础</span></td></tr>
+        <tr><td><b>NVDA</b> <span data-i18n="a11y:t125">· 必测</span></td><td>Firefox / Chrome</td><td>Windows</td><td><span data-i18n="a11y:t126">桌面键盘与读屏代表组合；不据此推断用户占比</span></td></tr>
         <tr><td>JAWS</td><td>Chrome</td><td>Windows</td><td><span data-i18n="a11y:t127">企业 / 政府客户</span></td></tr>
         <tr><td>VoiceOver</td><td>Safari</td><td>macOS / iOS</td><td><span data-i18n="a11y:t128">设计师 / 部分管理员</span></td></tr>
         <tr><td>TalkBack</td><td>Chrome</td><td>Android</td><td><span data-i18n="a11y:t129">窄屏移动端关键流程</span></td></tr>
@@ -160,7 +161,7 @@
       <div class="surface" style="border-left:3px solid var(--aw-success)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-success)">✓ DO</h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-          <li><span data-i18n="a11y:t131">所有交互组件键盘可达，键盘或程序化焦点始终显示 focus ring</span></li>
+          <li><span data-i18n="a11y:t131">所有交互组件键盘可达，焦点可见且不被固定顶栏、底栏或浮层完全遮挡</span></li>
           <li><span data-i18n="a11y:t132">icon-only 按钮必带</span> <code>aria-label</code></li>
           <li><span data-i18n="a11y:t133">表单字段</span> <code>&lt;label htmlFor&gt;</code> <span data-i18n="a11y:t134">关联</span></li>
           <li><span data-i18n="a11y:t135">状态信息色 + 形 + 文字三重编码</span></li>
@@ -172,7 +173,7 @@
       <div class="surface" style="border-left:3px solid var(--aw-danger)">
         <h3 style="margin:0 0 12px;font-size:14px;color:var(--aw-danger)">✕ DON'T</h3>
         <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--aw-text-2);line-height:1.9">
-          <li><span data-i18n="a11y:t139">不要移除浏览器焦点样式后只补鼠标 hover；</span><code>:focus-visible</code> <span data-i18n="a11y:t140">是键盘焦点环的默认触发器，鼠标 / 触摸点击无需额外常驻焦点环</span></li>
+          <li><span data-i18n="a11y:t139">不要移除浏览器焦点样式后只补鼠标 hover；</span><code>:focus-visible</code> <span data-i18n="a11y:t140">是默认焦点指示方式；尊重浏览器判断，不强制隐藏鼠标或触摸触发的焦点环</span></li>
           <li><span data-i18n="a11y:t141">不要用</span> <code>div onClick</code> <span data-i18n="a11y:t142">替代</span> <code>&lt;button&gt;</code></li>
           <li><span data-i18n="a11y:t143">不要仅靠颜色表达状态</span></li>
           <li><span data-i18n="a11y:t144">不要在 Modal 不实现焦点陷阱</span></li>
@@ -182,6 +183,14 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div class="subsection">
+    <h3><span data-i18n="a11y:wcag22.title">WCAG 2.2 补充验收目标</span></h3>
+    <ul style="font-size:13px;color:var(--aw-text-2);line-height:1.8">
+      <li><span data-i18n="a11y:wcag22.target">指针目标原则上至少 24 × 24 CSS px。小目标可按标准的间距例外验收：以目标中心绘制的 24px 直径圆不得与其他目标或其他小目标的该圆相交；另有等效控件、行内文本、浏览器原生控制和必要呈现例外，须逐项记录，不能把 24px 误当作所有图标的视觉尺寸。</span></li>
+      <li><span data-i18n="a11y:wcag22.focus">键盘聚焦的组件不能被作者创建的内容完全遮挡；固定页头、底部操作栏、抽屉与滚动容器都要测试。适当使用 scroll-padding / scroll-margin；未执行测试时不得标记通过。</span></li>
+    </ul>
+    <p><span data-i18n="a11y:sources.title">验收依据：</span> <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">WCAG 1.4.3</a> · <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html">WCAG 1.4.6</a> · <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">WCAG 2.5.8</a> · <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html">WCAG 2.4.11</a> · <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">APG Table</a></p>
   </div>
 </section>
 </div>

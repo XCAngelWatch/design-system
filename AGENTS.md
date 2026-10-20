@@ -31,7 +31,7 @@ AI-first design-system reference documentation site for AngelWatch TMS (设备�
 
 ## Common commands
 
-没有 build / install / test step。
+站点无需 build / install；提交前必须运行以下 Node 校验。浏览器巡检使用独立 QA 环境，不给站点引入运行时依赖。
 
 ```bash
 # 1. 在浏览器打开(双击 / open / file:// 都可以)
@@ -103,7 +103,7 @@ project/
 │   ├── common.en-US.js    shell / 导航 / toolbar / 通用交互英文词典
 │   └── en-US/<id>.js      66 个 route 英文词典,namespace 与 route id 一致
 ├── pages/                 66 个 fragment + 1 个 router
-│   ├── _router.js         共用 (~270 行) — ROUTES 表 / sidebar / toolbar 渲染 /
+│   ├── _router.js         共用 — ROUTES 表 / sidebar / toolbar 渲染 /
 │   │                      hash 路由 / 动态 <script> 加载 / 主题持久化(localStorage)
 │   ├── overview.js / ai-reference.js / cases.js  概览 + AI 入口 + 实践案例              (导览 3)
 │   ├── color.js ~ responsive.js       色 / 暗色 / i18n / 字 / 距 / 图标…   (设计基础 13)

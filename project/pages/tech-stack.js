@@ -9,7 +9,7 @@
   <div class="subsection">
     <h3><span data-i18n="tech-stack:t008">版本与依赖规则</span></h3>
     <ul style="font-size:13px;color:var(--aw-text-2);line-height:1.9;padding-left:18px">
-      <li><span data-i18n="tech-stack:t009">当前 package.json 使用精确版本；pnpm-lock.yaml 记录完整解析结果，CI 使用 frozen lockfile。</span></li>
+      <li><span data-i18n="tech-stack:t009">当前 package.json 的运行时依赖使用精确版本；pnpm-lock.yaml 记录完整解析结果，CI 使用 frozen lockfile。开发工具依赖按各自声明与锁文件核验。</span></li>
       <li><span data-i18n="tech-stack:t010">升级先看 release notes，再运行 pnpm check、pnpm build、Light/Dark、六种 locale、响应式与关键 E2E。</span></li>
       <li><span data-i18n="tech-stack:t011">新依赖必须有已验证需求、许可证结论、体积与维护性评估；本设计文档不能替代依赖审批。</span></li>
     </ul>
@@ -26,7 +26,7 @@
         <tr><td><span data-i18n="tech-stack:t023">国际化</span></td><td><code>i18next</code> / <code>react-i18next</code></td><td>26.3.4 / 17.0.8</td><td><span data-i18n="tech-stack:t024">zh-CN、en、es、pt、fr、ru 六种语言；AntD locale 同步。</span></td></tr>
         <tr><td><span data-i18n="tech-stack:t025">数据访问</span></td><td><code>axios</code> / <code>json-bigint</code></td><td>1.18.1 / 1.0.0</td><td><span data-i18n="tech-stack:t026">统一 HTTP 客户端与 Snowflake ID 安全解析。</span></td></tr>
         <tr><td><span data-i18n="tech-stack:t027">图表</span></td><td><code>echarts</code> / <code>echarts-for-react</code></td><td>6.1.0 / 3.0.6</td><td><span data-i18n="tech-stack:t028">通过 TMSChart 消费设计 token。</span></td></tr>
-        <tr><td><span data-i18n="tech-stack:t029">文件与安全</span></td><td><code>jszip</code> / <code>spark-md5</code> / <code>dompurify</code> / <code>crypto-js</code></td><td>3.10.1 / 3.0.2 / 3.4.12 / 4.2.0</td><td><span data-i18n="tech-stack:t030">压缩包、校验、HTML 清理与协议所需加密。</span></td></tr>
+        <tr><td><span data-i18n="tech-stack:t029">校验与协议工具</span></td><td><code>spark-md5</code> / <code>crypto-js</code></td><td>3.0.2 / 4.2.0</td><td><span data-i18n="tech-stack:t030">文件 MD5 与既有协议加密；不代表推荐新的密码方案。JSZip 3.10.2 仅由开发工具 exceljs 间接引入，DOMPurify 未安装。</span></td></tr>
         <tr><td><span data-i18n="tech-stack:t031">日期基础</span></td><td><code>dayjs</code></td><td>1.11.21</td><td><span data-i18n="tech-stack:t032">日期运算；用户可见格式仍统一走 Intl 封装。</span></td></tr>
       </tbody>
     </table>
@@ -56,7 +56,7 @@
         <tr><td><code>PageHeader</code></td><td><code>src/components/PageHeader/</code></td><td><span data-i18n="tech-stack:t055">统一页头槽位、动作与 sticky compact 行为。</span></td></tr>
         <tr><td><code>TMSEmpty</code> / <code>ErrorPage</code></td><td><code>src/components/TMSEmpty/</code> / <code>ErrorPage/</code></td><td><span data-i18n="tech-stack:t056">全局空态与整页错误反馈。</span></td></tr>
         <tr><td><code>AppTable</code> / <code>AppPagination</code></td><td><code>src/components/AppTable/</code> / <code>AppPagination/</code></td><td><span data-i18n="tech-stack:t057">默认使用 AntD Table；大数据固定行高场景使用原生 virtual + 数值 scroll.x / scroll.y。</span></td></tr>
-        <tr><td><code>RowActions</code></td><td><code>src/components/RowActions/</code></td><td><span data-i18n="tech-stack:t058">表格和卡片最多 2 个普通动作；窄容器保留主操作，危险操作默认收入更多。</span></td></tr>
+        <tr><td><code>RowActions</code></td><td><code>src/components/RowActions/</code></td><td><span data-i18n="tech-stack:t058">表格和卡片最多 2 个普通动作；表格外露动作纯文字，3 个及以上时其余收入带语义图标的更多菜单。窄容器保留主操作，危险操作分隔后置底。</span></td></tr>
         <tr><td><code>StatusIndicator</code></td><td><code>src/components/StatusIndicator/</code></td><td><span data-i18n="tech-stack:t059">状态使用颜色、图标与文字多重编码。</span></td></tr>
         <tr><td><code>TMSChart</code> / <code>KpiCard</code> / <code>ChartCard</code></td><td><code>src/components/</code></td><td><span data-i18n="tech-stack:t060">图表、指标与容器统一消费主题 token。</span></td></tr>
         <tr><td><code>MobileTabBar</code></td><td><code>src/components/MobileTabBar/</code></td><td><span data-i18n="tech-stack:t061">md 以下的窄屏主导航，与桌面 Sidebar 互斥。</span></td></tr>

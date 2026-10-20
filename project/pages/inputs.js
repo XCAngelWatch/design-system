@@ -12,8 +12,10 @@
 <div style="display:flex;flex-direction:column;gap:10px">
   <input class="input" placeholder="请输入设备 SN" data-i18n-placeholder="inputs:attr.005.placeholder" aria-label="设备 SN" data-i18n-aria-label="inputs:attr.030.ariaLabel" />
   <input class="input" value="DEV-86420075-IMEI" aria-label="设备标识" data-i18n-aria-label="inputs:attr.031.ariaLabel" />
-  <input class="input is-error" value="格式错误" data-i18n-value="inputs:attr.006.value" aria-label="格式错误示例" data-i18n-aria-label="inputs:attr.032.ariaLabel" />
-  <input class="input" disabled placeholder="只读" data-i18n-placeholder="inputs:attr.007.placeholder" aria-label="只读输入" data-i18n-aria-label="inputs:attr.033.ariaLabel" />
+  <div><input class="input is-error" value="格式错误" data-i18n-value="inputs:attr.006.value" aria-label="格式错误示例" data-i18n-aria-label="inputs:attr.032.ariaLabel" aria-invalid="true" aria-describedby="inputs-format-error" /><div id="inputs-format-error" class="help" style="color:var(--aw-danger)" data-i18n="inputs:validation.identifier">请输入有效的设备标识。</div></div>
+  <input class="input" disabled placeholder="已禁用" data-i18n-placeholder="inputs:attr.007.placeholder" aria-label="禁用输入" data-i18n-aria-label="inputs:attr.033.ariaLabel" />
+  <input class="input" readonly value="DEV-86420075-IMEI" aria-label="只读设备标识" data-i18n-aria-label="inputs:readonly.identifier" />
+  <div class="help" data-i18n="inputs:readonly.rule">只读字段仍可聚焦、选择与复制；禁用字段不参与键盘操作或表单提交。</div>
   <div class="input-group">
     <span class="addon">https://</span>
     <input class="input" value="tms.angelwatch.io" aria-label="域名" data-i18n-aria-label="inputs:attr.034.ariaLabel" />
