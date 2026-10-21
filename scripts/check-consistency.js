@@ -405,6 +405,18 @@ if (!detailPage.includes('class="page-back-row"') ||
     !detailPage.includes('class="crumbs"')) {
   errors.push('detail-page: provide Back with a stable parent fallback alongside breadcrumb context');
 }
+for (const route of ['detail-page', 'page-header']) {
+  const source = readPage(route);
+  const detailHeaders = [...source.matchAll(/<header\b[^>]*>([\s\S]*?)<\/header>/g)];
+  if (!detailHeaders.length) errors.push(route + ': detail navigation needs a shared content header');
+  for (const [, header] of detailHeaders) {
+    if (!header.includes('class="ph-title-with-back"') ||
+        !/<button\b[^>]*\bbtn-back\b[\s\S]*?<\/button>\s*<div class="ph-title-content">/.test(header) ||
+        /<h[1-6]\b[^>]*>[\s\S]*?<button\b[\s\S]*?<\/h[1-6]>/.test(header)) {
+      errors.push(route + ': detail Back must precede the title in one row, outside the heading');
+    }
+  }
+}
 for (const route of ['detail-page', 'form-page', 'wizard-page', 'push-page', 'avatar-result', 'error-page', 'page-header']) {
   const source = readPage(route);
   const backButtons = [...source.matchAll(/<button\b([^>]*\bbtn-back\b[^>]*)>([\s\S]*?)<\/button>/g)];

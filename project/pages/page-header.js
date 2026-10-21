@@ -10,22 +10,24 @@
 
   <div class="subsection">
     <h3><span data-i18n="page-header:text.013">结构 · 6 个槽位</span></h3>
-    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.014">组件提供返回、面包屑、标题行（标题 + 状态 + 操作）、关键字段和底部 Tabs 槽位。二三级详情页与沉浸式流程显示返回入口，顶级列表页和仪表盘不显示。应用 Shell 中仅将面包屑挂载到顶栏，返回、标题和其余槽位保留在内容区；不提供自由文本副标题 / 描述槽。</span></p>
+    <p style="font-size:13px;color:var(--aw-text-2);max-width:720px;line-height:1.7;margin:0 0 12px"><span data-i18n="page-header:text.014">组件提供返回、面包屑、标题行（标题 + 状态 + 操作）、关键字段和底部 Tabs 槽位。独立详情在内容区同一页头内，将“← 返回”放在标题前并保持同一行；按钮不嵌入 h1。顶栏只挂载面包屑。二三级详情页、表单与沉浸式流程显示返回，顶级列表页和仪表盘不显示；不提供自由文本副标题 / 描述槽。</span></p>
     <div class="ph-anatomy">
-      <div class="ph-row" data-slot="back" style="padding:8px 14px"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回上一级</span></button></div>
       <div class="ph-row" style="background:var(--aw-fill-1);font-size:11px;color:var(--aw-text-3);padding:6px 14px"><span style="font-family:var(--aw-font-mono)">crumbs</span><span data-i18n="page-header:text.015"> · 跨级位置</span></div>
       <div class="ph-row" style="font-size:11px;color:var(--aw-text-3);padding:6px 14px;border-bottom:1px dashed var(--aw-border-3)"><span class="mono">data-center / device-list / DEV-86420075</span></div>
-      <div class="ph-row ph-titlerow">
-        <div>
+      <header class="ph-row ph-titlerow">
+        <div class="ph-title-with-back">
+          <button class="btn btn-back" data-slot="back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回</span></button>
+          <div class="ph-title-content">
           <div class="ph-slot" data-slot="title"><b style="font-size:16px;color:var(--aw-text-1)"><span data-i18n="page-header:text.016">终端-上海-001</span></b><span class="status-dot online" style="margin-left:8px"><span data-i18n="page-header:text.017">在线</span></span></div>
           <div class="ph-slot" data-slot="keyFields" style="margin-top:6px;font-size:12px;color:var(--aw-text-3)">SN <code>DEV-86420075</code><span data-i18n="page-header:text.018"> · 上海 / 黄浦营业厅 · v3.4.2</span></div>
+          </div>
         </div>
         <div class="ph-actions">
           <button class="btn" data-i18n="page-header:text.019">导出</button>
           <button class="btn" data-i18n="page-header:text.020">操作 ▾</button>
           <button class="btn btn-primary" data-i18n="page-header:text.021">推送 OTA 包</button>
         </div>
-      </div>
+      </header>
       <div class="ph-row ph-tabs">
         <span class="active" data-i18n="page-header:text.022">基础信息</span>
         <span data-i18n="page-header:text.023">实时状态</span>
@@ -65,17 +67,16 @@
         <div class="tag-meta" style="margin:14px 14px 0">DetailPage</div>
         <div class="ph-mock">
           <div class="ph-cm"><span data-i18n="page-header:text.054">设备 / 终端-上海-001</span></div>
-          <div class="ph-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回上一级</span></button></div>
-          <div class="ph-tm">
-            <div><b><span data-i18n="page-header:text.055">终端-上海-001</span></b> <span class="status-dot online"><span data-i18n="page-header:text.056">在线</span></span></div>
+          <header class="ph-tm">
+            <div class="ph-title-with-back"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回</span></button><div class="ph-title-content"><b><span data-i18n="page-header:text.055">终端-上海-001</span></b> <span class="status-dot online"><span data-i18n="page-header:text.056">在线</span></span></div></div>
             <div class="ph-acts"><button class="btn" data-i18n="page-header:text.057">编辑</button><button class="btn btn-primary" data-i18n="page-header:text.058">推送</button></div>
-          </div>
+          </header>
         </div>
       </div>
       <div class="surface" style="padding:0">
         <div class="tag-meta" style="margin:14px 14px 0">FormPage</div>
         <div class="ph-mock">
-          <div class="ph-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回上一级</span></button></div>
+          <div class="ph-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/device-center-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="page-header:text.114">返回</span></button></div>
           <div class="ph-tm">
             <div><b><span data-i18n="page-header:text.060">新建设备</span></b></div>
             <div class="ph-acts"><button class="btn" data-i18n="page-header:text.062">取消</button><button class="btn" data-i18n="page-header:text.063">保存草稿</button><button class="btn btn-primary" data-i18n="page-header:text.064">保存</button></div>
@@ -140,7 +141,7 @@
           <li><span data-i18n="page-header:text.102">≥ 4 个操作折叠到下拉</span></li>
           <li><span data-i18n="page-header:text.103">长页 sticky + 紧凑态自动切换</span></li>
           <li><span data-i18n="page-header:text.104">面包屑最后一段不可点（当前位）</span></li>
-          <li><span data-i18n="page-header:text.115">二三级页面使用统一左箭头返回按钮；优先返回站内来源，直接打开时使用业务父路由兜底。</span></li>
+          <li><span data-i18n="page-header:text.115">二三级页面使用左箭头与文字返回。独立详情在标题前同一行呈现；加载、空数据、错误、403、移动端与紧凑态均保留返回，来源不可用时回到业务父页。</span></li>
         </ul>
       </div>
       <div class="surface" style="border-left:3px solid var(--aw-danger)">

@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'detail-page', {
     "text.001": "Page Blueprints · DetailPage",
     "text.002": "Detail Page",
-    "text.003": "Back + breadcrumbs + summary header (key fields) + tabs (basic information / status / logs / alerts / firmware history). Back returns to the source page, or to the business parent when opened directly; breadcrumbs show the current location.",
+    "text.003": "Topbar breadcrumbs + a content header with Back, title, and status in one row + business content. Keep Back beside the title, outside h1, during loading, empty, error, and 403 states, on mobile, and in compact mode. Prefer an explicit target or valid in-app source; otherwise use the business parent and preserve list state. Organize content groups, summaries, and tabs by business needs; drawer details continue to use Close.",
     "text.005": "Device Management",
     "text.006": "Device-Shanghai-001",
     "text.007": "Term",

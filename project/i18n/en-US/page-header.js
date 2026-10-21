@@ -15,7 +15,7 @@
     "text.011": ", with the current implementation in ",
     "text.012": ".",
     "text.013": "Structure · 6 Slots",
-    "text.014": "Provide slots for Back, breadcrumbs, the title row (title + status + actions), key fields, and bottom Tabs. Show Back on detail pages and immersive flows, but not on top-level lists or dashboards. Only breadcrumbs move into the application Topbar; Back, the title, and other slots stay in the content area. Do not add a free-text subtitle or description slot.",
+    "text.014": "Provide slots for Back, breadcrumbs, the title row (title + status + actions), key fields, and bottom Tabs. On standalone detail pages, place the left-arrow Back button before the title in the same row and content header, outside h1. Only breadcrumbs move into the Topbar. Show Back on nested details, forms, and immersive flows, but not on top-level lists or dashboards. Do not add a free-text subtitle or description slot.",
     "text.015": " · Cross-level location",
     "text.016": "Device-Shanghai-001",
     "text.017": "Online",
@@ -112,6 +112,6 @@
     "text.112": "✕ DON'T",
     "text.113": "Actions ▾",
     "text.114": "Back",
-    "text.115": "Use a consistent left-arrow Back button on second- and third-level pages. Return to the in-app source when available; use a stable business parent for direct entry."
+    "text.115": "Use a left-arrow Back button with visible text on second- and third-level pages. On standalone details, place it before the title in the same row. Keep it during loading, empty, error, and 403 states, on mobile, and in compact mode; use the business parent when the source is unavailable."
   });
 })(typeof window !== 'undefined' ? window : globalThis);

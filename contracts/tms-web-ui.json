@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "contractVersion": "2026-10-20",
+  "contractVersion": "2026-10-21",
   "sourceRepository": "design-system",
   "consumerRepository": "tms2.5-web-ui",
   "consumerCopyPath": "docs/design-system/source-contract.json",
-  "decisionRecord": "docs/decisions/specs/2026-10-20-navigation-and-action-presentation.md",
+  "decisionRecord": "docs/decisions/specs/2026-10-21-detail-return-header-alignment.md",
   "tokens": {
     "sourceFile": "project/styles/tokens.css",
     "prefix": "--aw-",
@@ -222,7 +222,11 @@
       "preserveListState": true,
       "preserveUnsavedChangesGuard": true,
       "placement": "content",
-      "visibleWhenSticky": true
+      "detailPlacement": "before-title-same-row",
+      "outsideHeading": true,
+      "visibleWhenSticky": true,
+      "visibleWhenMobile": true,
+      "visibleDuring": ["loading", "empty", "error", "forbidden"]
     },
     "freeTextSubtitle": false,
     "keyFieldsOnly": true,

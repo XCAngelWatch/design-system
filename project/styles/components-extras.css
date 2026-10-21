@@ -967,6 +967,28 @@
   text-overflow: ellipsis;
 }
 .ph-mock .ph-back-row { padding: 8px 6px; }
+.ph-title-with-back {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+.ph-title-with-back > .btn-back { flex: 0 0 auto; }
+.ph-title-with-back > .ph-title-content { min-width: 0; overflow-wrap: anywhere; }
+.ph-mock .ph-tm > .ph-title-with-back:first-child { align-items: flex-start; flex-wrap: nowrap; }
+.ph-anatomy .ph-titlerow { flex-wrap: wrap; }
+.detail-content-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+@media (max-width: 700px) {
+  .ph-title-with-back { flex-basis: 100%; }
+  .ph-anatomy .ph-actions { flex-wrap: wrap; }
+}
 
 .toolbar-controls {
   display: flex;

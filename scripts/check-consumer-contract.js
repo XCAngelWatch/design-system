@@ -21,9 +21,9 @@ const darkBlock = (tokenCss.match(/\[data-theme="dark"\]\s*\{([\s\S]*?)\}/) || [
 const light = tokenMap(lightBlock);
 const dark = tokenMap(darkBlock);
 
-if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-10-20' ||
+if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-10-21' ||
     contract.sourceRepository !== 'design-system' ||
-    contract.decisionRecord !== 'docs/decisions/specs/2026-10-20-navigation-and-action-presentation.md') {
+    contract.decisionRecord !== 'docs/decisions/specs/2026-10-21-detail-return-header-alignment.md') {
   errors.push('contract: unexpected schema or decision version');
 }
 if (contract.consumerRepository !== 'tms2.5-web-ui' ||
@@ -166,7 +166,11 @@ if (!same(contract.pageHeader.backNavigation, {
   preserveListState: true,
   preserveUnsavedChangesGuard: true,
   placement: 'content',
-  visibleWhenSticky: true
+  detailPlacement: 'before-title-same-row',
+  outsideHeading: true,
+  visibleWhenSticky: true,
+  visibleWhenMobile: true,
+  visibleDuring: ['loading', 'empty', 'error', 'forbidden']
 }) || contract.pageHeader.freeTextSubtitle || !contract.pageHeader.keyFieldsOnly ||
     contract.pageHeader.maxPrimaryActions !== 1 || contract.pageHeader.dangerActionsAllowed ||
     !same(contract.pageHeader.dangerActionsPlacement, ['separated-overflow-menu', 'danger-zone']) ||
