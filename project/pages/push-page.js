@@ -15,7 +15,7 @@
         <button class="btn btn-primary btn-sm"><span data-i18n="push-page:text.007">查询</span></button>
         <button class="btn btn-sm"><span data-i18n="push-page:text.008">重置</span></button>
       </div>
-      <button class="btn btn-back" type="button" data-route-back data-back-fallback="#/ota-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="push-page:text.009">返回上一级</span></button>
+      <button class="btn btn-back" type="button" data-route-back data-back-fallback="#/ota-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="push-page:text.009">返回</span></button>
     </div>
 
     <!-- 列:batchId / targetMode / createBy / pushTime / batchState / 操作 -->

@@ -1045,6 +1045,7 @@ html[lang]:not([lang^="zh"]) .btn {
   overflow-wrap: normal;
   word-break: normal;
 }
+html[lang]:not([lang^="zh"]) .btn.btn-back { height: 32px; }
 html[lang]:not([lang^="zh"]) .form-row { grid-template-columns: minmax(132px, auto) minmax(0, 1fr); }
 html[lang]:not([lang^="zh"]) .form-row > .lbl { min-width: 132px; white-space: normal; overflow-wrap: break-word; word-break: normal; }
 html[lang]:not([lang^="zh"]) .tabs { overflow-x: auto; }

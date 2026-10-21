@@ -188,6 +188,14 @@ function navigationFixture(initial = '#/overview') {
     get hash() { return context.location.hash; },
     visit(hash) { context.location.hash = hash; context.record(); },
     travel(delta) { position += delta; context.record(); },
+    reload() {
+      context.routeHistory = [];
+      context.routeHistoryIndex = -1;
+      context.routeHistorySession += '-reloaded';
+      context.routeHistoryAvailable = false;
+      context.routeBackPending = false;
+      context.record();
+    },
     finishBack() {
       if (!pendingBack) return;
       pendingBack = false;
@@ -229,6 +237,47 @@ assert.equal(deepLink.hash, '#/overview', 'an explicit target wins over history'
 const invalidTarget = navigationFixture('#/detail-page');
 invalidTarget.context.back(backControl({ 'data-back-target': 'https://example.com/', 'data-back-fallback': 'javascript:alert(1)' }));
 assert.equal(invalidTarget.hash, '#/overview', 'invalid or external targets use the internal overview');
+
+const refreshedDetail = navigationFixture('#/list-page');
+refreshedDetail.visit('#/detail-page');
+refreshedDetail.reload();
+refreshedDetail.context.back(backControl({ 'data-back-fallback': '#/list-page' }));
+assert.equal(refreshedDetail.hash, '#/list-page', 'refresh discards the old source and uses the safe parent');
+assert.equal(refreshedDetail.backCalls, 0, 'refresh cannot rely on an earlier document session');
+
+const refreshedHistory = navigationFixture('#/list-page');
+refreshedHistory.visit('#/detail-page');
+refreshedHistory.reload();
+refreshedHistory.travel(-1);
+assert.equal(refreshedHistory.hash, '#/list-page');
+refreshedHistory.context.back();
+refreshedHistory.finishBack();
+assert.equal(refreshedHistory.hash, '#/overview', 'Back after refresh and browser Back stays inside the site');
+assert.equal(refreshedHistory.backCalls, 0, 'the preceding external entry must not be traversed');
+refreshedHistory.context.record();
+refreshedHistory.visit('#/table');
+refreshedHistory.context.back();
+refreshedHistory.finishBack();
+assert.equal(refreshedHistory.hash, '#/overview', 'new visits after re-anchoring regain normal internal Back');
+refreshedHistory.travel(1);
+assert.equal(refreshedHistory.hash, '#/table', 'Forward still works within the new history segment');
+
+const staleForward = navigationFixture('#/list-page');
+staleForward.visit('#/detail-page');
+staleForward.reload();
+staleForward.travel(-1);
+staleForward.travel(1);
+staleForward.context.back(backControl({ 'data-back-fallback': '#/list-page' }));
+assert.equal(staleForward.hash, '#/list-page', 'revisiting an older segment cannot resurrect unverified history');
+assert.equal(staleForward.backCalls, 0);
+
+const unknownEntry = navigationFixture('#/list-page');
+unknownEntry.visit('#/detail-page');
+unknownEntry.context.history.replaceState({ awDocRoute: { session: unknownEntry.context.routeHistorySession, index: 99 } }, '');
+unknownEntry.context.record();
+unknownEntry.context.back(backControl({ 'data-back-fallback': '#/list-page' }));
+assert.equal(unknownEntry.hash, '#/list-page', 'an unknown marker uses the safe parent rather than native Back');
+assert.equal(unknownEntry.backCalls, 0);
 
 const queryHistory = navigationFixture();
 queryHistory.visit('#/table');

@@ -417,17 +417,30 @@ for (const route of ['detail-page', 'page-header']) {
     }
   }
 }
-for (const route of ['detail-page', 'form-page', 'wizard-page', 'push-page', 'avatar-result', 'error-page', 'page-header']) {
+const requiredBackRoutes = new Set(['detail-page', 'form-page', 'wizard-page', 'push-page', 'avatar-result', 'error-page', 'page-header']);
+for (const route of pageIds) {
   const source = readPage(route);
-  const backButtons = [...source.matchAll(/<button\b([^>]*\bbtn-back\b[^>]*)>([\s\S]*?)<\/button>/g)];
-  if (!backButtons.length) errors.push(route + ': missing unified Back control');
-  for (const [, attributes, content] of backButtons) {
-    const destination = attributes.match(/data-back-(?:target|fallback)="#\/([\w-]+)"/);
-    if (!destination || !fs.existsSync(path.join(pagesDir, destination[1] + '.js'))) {
+  // Discover by behavior, icon or visible label as well as class, so a new
+  // chapter or an accidentally removed btn-back class cannot bypass this check.
+  const backButtons = [...source.matchAll(/<(button|a)\b([^>]*)>([\s\S]*?)<\/\1>/g)].filter(([, , attributes, content]) => {
+    const label = content.replace(/<[^>]*>/g, '').trim();
+    return /\bbtn-back\b|\bdata-route-back\b/.test(attributes) ||
+      content.includes('#aw-icon-arrow-left') || /^(?:←\s*)?返回(?:上一级|列表|首页)?$/.test(label);
+  });
+  if (requiredBackRoutes.has(route) && !backButtons.length) errors.push(route + ': missing unified Back control');
+  for (const [, tag, attributes, content] of backButtons) {
+    if (tag !== 'button' || !/class="[^"]*\bbtn-back\b/.test(attributes) || !/\bdata-route-back\b/.test(attributes)) {
+      errors.push(route + ': Back must use the shared button and navigation handler');
+    }
+    const destinations = [...attributes.matchAll(/data-back-(?:target|fallback)="([^"]*)"/g)];
+    if (!destinations.length || destinations.some(([, target]) => !/^#\/[\w-]+$/.test(target) || !pageIds.has(target.slice(2)))) {
       errors.push(route + ': Back needs a valid in-site target or fallback');
     }
     if (!content.includes('#aw-icon-arrow-left') || !content.includes('data-i18n=')) {
       errors.push(route + ': Back needs the shared arrow-left icon and translated text');
+    }
+    if (!/\bdata-back-target=/.test(attributes) && content.replace(/<[^>]*>/g, '').trim() !== '返回') {
+      errors.push(route + ': source-aware Back must use 返回; fixed-destination labels need an explicit target');
     }
   }
 }

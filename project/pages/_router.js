@@ -2092,6 +2092,14 @@
         routeHistory[marker.index] && routeHistory[marker.index].route === route) {
       routeHistoryIndex = marker.index;
     } else {
+      if (marker) {
+        // A stale or unknown entry may be reached by browser Back after a
+        // reload. Its predecessor is not verified: start a new history segment
+        // instead of treating that traversal as a newly pushed route.
+        routeHistory = [];
+        routeHistoryIndex = -1;
+        routeHistorySession = String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+      }
       routeHistory = routeHistory.slice(0, routeHistoryIndex + 1);
       routeHistoryIndex = routeHistory.length;
       routeHistory.push({ route: route, hash: location.hash });

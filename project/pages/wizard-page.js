@@ -11,7 +11,7 @@
     <div class="frame-body" style="padding:0">
 <div class="wizard-mock">
   <div class="top">
-    <div class="page-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/ota-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="wizard-page:navigation.back">返回上一级</span></button></div>
+    <div class="page-back-row"><button class="btn btn-back" type="button" data-route-back data-back-fallback="#/ota-page"><svg class="aw-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#aw-icon-arrow-left"></use></svg><span data-i18n="wizard-page:navigation.back">返回</span></button></div>
     <div class="steps">
       <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="wizard-page:text.005">选择设备</span></div><div class="sub"><span data-i18n="wizard-page:text.006">1,284 台</span></div></div>
       <div class="step done"><div class="num">✓</div><div class="lbl"><span data-i18n="wizard-page:text.007">选择固件包</span></div><div class="sub">v3.5.0</div></div>
