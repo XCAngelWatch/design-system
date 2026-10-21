@@ -12,13 +12,13 @@
     <div class="i18n-grid">
       <div class="i18n-card">
         <div class="lang-tag"><span><span data-i18n="i18n:t008">zh-CN · 简体中文</span></span><span class="flag">CN</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,239 / 6,239</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t009">已翻译 keys</span></div><div class="mn">6,522 / 6,522</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t010">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t011">来源</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)"><span data-i18n="i18n:t012">基准语言</span></div></div>
       </div>
       <div class="i18n-card">
         <div class="lang-tag"><span>en-US · English</span><span class="flag">US</span></div>
-        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,239 / 6,239</div></div>
+        <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t013">已翻译 keys</span></div><div class="mn">6,522 / 6,522</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t014">覆盖率</span></div><div class="mn" style="color:var(--aw-success)">100%</div></div>
         <div class="stat-mini"><div class="ml"><span data-i18n="i18n:t015">维护人</span></div><div class="mn" style="font-size:12px;font-weight:400;color:var(--aw-text-2)">Localization Team</div></div>
       </div>
@@ -105,7 +105,7 @@
           <tr><td><span data-i18n="i18n:t060">设备地图-设备查询-轨迹查询 / 已搜索</span></td><td><code>map.track.*</code>, <code>map.deviceLocation.*</code></td><td><span data-i18n="i18n:t061">保留“轨迹查询、开始时间、结束时间、起点、终点、设备编号”语义；国外版用 Track History / Start Time / End Time / Start Point / End Point，日期和坐标必须走 Intl 与数字格式化。</span></td></tr>
           <tr><td><span data-i18n="i18n:t062">设备地图-围栏管理-绘制围栏</span></td><td><code>map.fence.draw.*</code>, <code>map.fence.alert.*</code></td><td><span data-i18n="i18n:t063">绘制围栏是强操作流程，按钮必须区分 Save / Cancel / Edit / Delete；围栏名称、告警范围、关联设备要保留 tooltip，避免英文长文案溢出。</span></td></tr>
           <tr><td><span data-i18n="i18n:t064">应用市场-应用管理</span></td><td><code>market.app.*</code>, <code>market.version.*</code></td><td><span data-i18n="i18n:t065">Figma 国外版给出 Draft / Published / Removed 对照。状态词进入统一枚举，不允许每个页面自行翻译“草稿、已上架、已下架”。</span></td></tr>
-          <tr><td><span data-i18n="i18n:t066">数据中心-设备管理</span></td><td><code>device.list.*</code>, <code>device.overdue.*</code></td><td><span data-i18n="i18n:t067">Device Management、Device Grouping、Model Management、Parameter Management、Online Scheme、Overdue Devices 是侧边栏和表格联动词；表头按最长译文设置最小宽度。</span></td></tr>
+          <tr><td><span data-i18n="i18n:t066">数据中心-设备管理</span></td><td><code>device.list.*</code>, <code>device.overdue.*</code></td><td><span data-i18n="i18n:t067">Device Management、Device Grouping、Model Management、Parameter Management、Online Scheme、Overdue Devices 是侧边栏和表格联动词。AWTable 按当前语言的表头、内容和动作测宽，切换语言重新计算；六语言分别验收，不在每种语言中永久预留最长译文的宽度。</span></td></tr>
           <tr><td><span data-i18n="i18n:t068">数据中心-设备管理-设备详情</span></td><td><code>device.detail.*</code>, <code>device.telemetry.*</code></td><td><span data-i18n="i18n:t069">设备详情字段多且单位密集：系统版本、固件版本、电池电量、IP地址、DSN、IMEI-IMSI-icc_id 必须拆成 label key 与 value formatter，不能拼字符串。</span></td></tr>
           <tr><td><span data-i18n="i18n:t070">用户端-主页-主题-侧边栏</span></td><td><code>nav.*</code>, <code>shell.notice.*</code></td><td><span data-i18n="i18n:t071">英文导航证据包含 Home、Application Management、OTA Management、Push Task、Data Center、Account Information、Device Map、Statistics、Value-added Services、System Management。产品导航翻译由 nav namespace 统一维护。</span></td></tr>
         </tbody>
@@ -173,7 +173,7 @@
         <tbody>
           <tr><td><span data-i18n="i18n:t091">侧栏菜单</span></td><td><span data-i18n="i18n:t092">截断 + tooltip</span></td><td><span data-i18n="i18n:t093">菜单项最大宽度 200px (展开态)；超出 ellipsis；hover 200ms 后浮出 tooltip 显示完整文案</span></td></tr>
           <tr><td><span data-i18n="i18n:t094">按钮</span></td><td><span data-i18n="i18n:t095">自适应宽度，文字保持单行</span></td><td><span data-i18n="i18n:t096">按钮不压缩、不折行、不省略操作名称；空间不足时操作区整体换行，行操作按主次收纳。译文仍过长时由本地化审定简洁表达，不按字符数机械裁切。</span></td></tr>
-          <tr><td><span data-i18n="i18n:t097">表头</span></td><td><span data-i18n="i18n:t098">截断 + tooltip</span></td><td><span data-i18n="i18n:t099">列宽固定时表头超出 ellipsis；hover 浮 tooltip。表头用最短描述（如 "时间" 而非 "最后心跳时间"），完整描述放 tooltip</span></td></tr>
+          <tr><td><span data-i18n="i18n:t097">表头</span></td><td><span data-i18n="i18n:t098">按当前语言测宽 + 全文访问</span></td><td><span data-i18n="i18n:t099">优先按当前语言表头与内容分配宽度；空间不足允许普通表头省略，但须支持键盘、触屏和 hover 查看全文。不得自行缩短已确认术语；操作按钮始终保留完整单行文案。</span></td></tr>
           <tr><td><span data-i18n="i18n:t100">表单 label</span></td><td><span data-i18n="i18n:t101">固定宽度，自动右对齐</span></td><td><span data-i18n="i18n:t102">label 区域宽度按最长译文设定（lint 阶段计算）；过长时改两行</span></td></tr>
           <tr><td>Tag / Status</td><td><span data-i18n="i18n:t103">不允许换行</span></td><td><span data-i18n="i18n:t104">状态标签必须保持一行。如 pt 翻译过长需要重新选词或缩写（与本地化团队协商）</span></td></tr>
         </tbody>

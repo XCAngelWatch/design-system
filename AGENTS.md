@@ -44,6 +44,8 @@ node scripts/i18n-contract.test.js
 node scripts/row-actions-runtime.test.js
 node scripts/router-runtime.test.js
 node scripts/table-layout-runtime.test.js
+node scripts/aw-table-runtime.test.js
+node scripts/aw-table-filters-runtime.test.js
 node scripts/check-consistency.js
 node scripts/check-consumer-contract.js
 node scripts/check-evidence.js

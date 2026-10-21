@@ -4,7 +4,7 @@
   root.__AW_I18N__.register('en-US', 'list-page', {
     "text.001": "Page Blueprints · ListPage",
     "text.002": "List Page",
-    "text.003": "Breadcrumb -> collapsible search form -> toolbar (batch actions + view switch) -> table (multi-select + pagination + column settings). This is the most common page skeleton in TMS.",
+    "text.003": "Breadcrumb → AWTableFilters panel → toolbar → batch selection bar → AWTable → pagination. The shared panel provides primary/advanced fields, applied counts and a search footer; business code declares fields, permissions and query semantics.",
     "text.004": "Home",
     "text.005": "Device Center",
     "text.006": "Device Management",
@@ -20,7 +20,6 @@
     "text.016": "Export",
     "text.017": "0 selected",
     "text.018": "Cards",
-    "text.019": "Column Settings",
     "text.020": "Device Name",
     "text.021": "Status",
     "text.022": "Version",
@@ -31,6 +30,15 @@
     "text.027": "Device-Beijing-014",
     "text.028": "Upgrading",
     "text.029": "Details",
-    "text.030": "12,486 items total"
+    "text.030": "12,486 items total",
+    "filters.title": "Filters",
+    "filters.count": "0 active filters",
+    "filters.all": "All",
+    "filters.date": "Created Date",
+    "filters.start": "Start Date",
+    "filters.end": "End Date",
+    "filters.collapse": "Hide Filters",
+    "filters.static": "Expanded static blueprint; these controls do not submit a query. Collapsing changes visibility only, preserving both draft and applied values. The count reflects applied conditions.",
+    "filters.preview": "Open the AWTableFilters interactive preview"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

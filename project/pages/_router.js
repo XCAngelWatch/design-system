@@ -37,7 +37,7 @@
     ['inputs',                '输入与表单 Input',                   '通用组件'],
     ['menu',                  '菜单 Menu',                       '通用组件'],
     ['nav-comp',              '导航与标签页',                        '通用组件'],
-    ['table',                 '表格 Table',                      '通用组件'],
+    ['table',                 '统一表格 AWTable',                      '通用组件'],
     ['tags',                  '标签与状态 Tag',                     '通用组件'],
     ['feedback',              '反馈 Feedback',                   '通用组件'],
     ['progress',              '进度与步骤',                         '通用组件'],
@@ -1351,9 +1351,33 @@
     })[0] || null;
   }
 
+  function makeRowActionTextOnly(button) {
+    if (!button.textContent.trim()) {
+      var label = button.getAttribute('aria-label') || button.getAttribute('title');
+      if (label) {
+        var text = document.createElement('span');
+        text.setAttribute('data-row-action-label', '');
+        text.textContent = label;
+        button.appendChild(text);
+      }
+    }
+    button.querySelectorAll('svg').forEach(function (icon) {
+      if (!icon.hasAttribute('data-action-indicator')) icon.remove();
+    });
+    if (button.classList.contains('ra-btn')) {
+      button.classList.remove('ra-btn');
+      button.classList.add('btn');
+      button.classList.add('btn-link');
+    }
+  }
+
   function decorateRowMenuItem(item) {
     item.setAttribute('role', 'menuitem');
     item.setAttribute('tabindex', '-1');
+    if (!item.closest('.datacard') && !item.closest('[data-row-actions-compact]')) {
+      makeRowActionTextOnly(item);
+      return;
+    }
     if (item.querySelector('svg')) return;
     var symbol = getRowActionIcon(item);
     if (!symbol || !document.getElementById('aw-icon-' + symbol)) return;
@@ -1364,45 +1388,67 @@
 
   function normalizeRowActionMenus(root) {
     root.querySelectorAll('td.colactions, .ra-row').forEach(function (container) {
-      // Authored menus already encode primary/secondary and dangerous placement.
-      if (container.querySelector('.ra-more-wrap')) return;
-      var row = container.querySelector('.table-actions') || container;
+      var row = container.querySelector('.ra-row') || container.querySelector('.table-actions') || container;
+      if (row._rowActionsNormalized) return;
+      var compact = Boolean(row.closest('.datacard') || row.closest('[data-row-actions-compact]'));
+      var existingMenu = row.querySelector('.ra-menu');
       var buttons = Array.prototype.filter.call(row.children, function (child) { return child.tagName === 'BUTTON'; });
-      var trigger = buttons.filter(function (button) {
-        return button.classList.contains('ra-more-trigger') || /^(更多|more|…|⋯|\.\.\.)$/i.test(button.textContent.trim());
+      var trigger = row.querySelector('.ra-more-trigger') || buttons.filter(function (button) {
+        return /^(更多|more|…|⋯|\.\.\.)$/i.test(button.textContent.trim());
       })[0];
       var actions = buttons.filter(function (button) { return button !== trigger; });
-      // Count real actions, never a placeholder More button. Do not invent an
-      // empty menu for the common "Details + More" illustrative cells.
-      if (actions.length < 3) return;
+      if (existingMenu) actions = actions.concat(Array.prototype.filter.call(existingMenu.children, function (child) {
+        return child.tagName === 'BUTTON';
+      }));
+      if (!actions.length) {
+        if (trigger) trigger.remove();
+        return;
+      }
       var risky = actions.filter(function (button) {
-        return button.matches('.danger, .btn-danger, .btn-danger-link, .btn-ghost-danger') || button.hasAttribute('data-demo-confirm');
+        var exception = button.getAttribute('data-row-danger-exception') === 'group-membership-removal';
+        return !exception && (button.matches('.danger, .warn, .btn-danger, .btn-danger-link, .btn-ghost-danger') || button.hasAttribute('data-demo-confirm'));
       });
       var ordinary = actions.filter(function (button) { return risky.indexOf(button) === -1; });
       var primary = ordinary.filter(function (button) {
         return button.hasAttribute('data-row-primary') || button.getAttribute('data-row-placement') === 'primary';
-      })[0];
+      })[0] || ordinary.filter(function (button) { return button.getAttribute('data-row-placement') !== 'menu'; })[0] || ordinary[0];
       var secondary = ordinary.filter(function (button) {
         return button !== primary && (button.hasAttribute('data-row-secondary') || button.getAttribute('data-row-placement') === 'secondary');
-      })[0];
-      if (!primary) primary = ordinary.filter(function (button) {
-        return button !== secondary && button.getAttribute('data-row-placement') !== 'menu';
-      })[0];
-      var visible = [primary, secondary].filter(Boolean);
-      ordinary.forEach(function (button) {
-        if (visible.length < 2 && visible.indexOf(button) === -1 && button.getAttribute('data-row-placement') !== 'menu') visible.push(button);
       });
-      if (!row.classList.contains('ra-row')) {
-        if (row === container && container.tagName === 'TD') {
-          row = document.createElement('div');
-          container.appendChild(row);
-        }
-        row.classList.add('ra-row');
+      var ordered = [primary].filter(Boolean).concat(secondary);
+      ordinary.forEach(function (button) { if (ordered.indexOf(button) === -1) ordered.push(button); });
+      // Tables allow three entries total; More consumes one even for a danger-only menu.
+      var limit = compact ? 2 : (ordered.length > 3 || risky.length ? 2 : 3);
+      var visible = ordered.slice(0, limit);
+      var collapsed = ordered.slice(limit);
+      if (row === container && container.tagName === 'TD') {
+        row = document.createElement('div');
+        container.appendChild(row);
       }
+      row.classList.add('ra-row');
+      row._rowActionsNormalized = true;
+      var oldWrap = row.querySelector('.ra-more-wrap');
+      if (oldWrap) oldWrap.remove();
       visible.forEach(function (button, index) {
+        button.classList.remove('ra-menu-action');
+        button.classList.remove('ra-mit');
+        button.removeAttribute('role');
+        button.removeAttribute('tabindex');
+        button.removeAttribute('data-row-secondary');
+        if (!compact) {
+          makeRowActionTextOnly(button);
+          button.classList.add('btn');
+          button.classList.add('btn-link');
+        }
         row.appendChild(button);
-        if (index === 1) button.setAttribute('data-row-secondary', '');
+        if (index > 0) button.setAttribute('data-row-secondary', '');
       });
+      // Even a wide 2/3-action row needs an initially hidden menu so it can
+      // fold by measured container width and restore without recreating actions.
+      if (!collapsed.length && !risky.length && visible.length < 2) {
+        if (trigger) trigger.remove();
+        return;
+      }
       var wrap = document.createElement('span');
       wrap.className = 'ra-more-wrap';
       if (!trigger) {
@@ -1415,60 +1461,84 @@
       wrap.appendChild(trigger);
       var menu = document.createElement('div');
       menu.className = 'ra-menu';
-      var collapsed = ordinary.filter(function (button) { return visible.indexOf(button) === -1; });
+      wrap.appendChild(menu);
+      row.appendChild(wrap);
       collapsed.concat(risky).forEach(function (button, index) {
-        if (risky.length && index === collapsed.length) {
+        if (risky.length && collapsed.length && index === collapsed.length) {
           var divider = document.createElement('div');
           divider.className = 'ra-mdiv';
           divider.setAttribute('role', 'separator');
           menu.appendChild(divider);
         }
+        button.removeAttribute('data-row-secondary');
         button.classList.add('ra-menu-action');
         if (risky.indexOf(button) !== -1) button.setAttribute('data-demo-confirm', '');
-        decorateRowMenuItem(button);
         menu.appendChild(button);
+        decorateRowMenuItem(button);
       });
-      wrap.appendChild(menu);
-      row.appendChild(wrap);
+      wrap.hidden = !collapsed.length && !risky.length;
     });
+  }
+
+  function syncRowMenuDivider(menu) {
+    menu.querySelectorAll('.ra-mdiv').forEach(function (divider) { divider.remove(); });
+    var items = Array.prototype.filter.call(menu.children, function (child) { return child.tagName === 'BUTTON'; });
+    var firstDanger = items.filter(function (button) { return button.hasAttribute('data-demo-confirm'); })[0];
+    if (firstDanger && items.indexOf(firstDanger) > 0) {
+      var divider = document.createElement('div');
+      divider.className = 'ra-mdiv';
+      divider.setAttribute('role', 'separator');
+      menu.insertBefore(divider, firstDanger);
+    }
   }
 
   function fitRowActionMenus(root) {
     root.querySelectorAll('.ra-row').forEach(function (row) {
-      var secondary = row.querySelector('[data-row-secondary]');
+      var secondary = Array.prototype.slice.call(row.querySelectorAll('[data-row-secondary]'));
       var menu = row.querySelector('.ra-menu');
-      if (!secondary || !menu) return;
-      var hadFocus = secondary.contains(document.activeElement);
-      if (!secondary._rowHome) {
-        secondary._rowHome = document.createComment('secondary action position');
-        secondary.before(secondary._rowHome);
-      }
-      secondary._rowHome.after(secondary);
-      secondary.classList.remove('ra-menu-action');
-      secondary.removeAttribute('role');
-      secondary.removeAttribute('tabindex');
-      var menuLabel = secondary.querySelector('[data-row-menu-label]');
-      if (menuLabel) menuLabel.remove();
-      var menuIcon = secondary.querySelector('[data-row-menu-icon]');
-      if (menuIcon) menuIcon.remove();
-      if (window.innerWidth < 768 || row.scrollWidth > row.clientWidth + 1) {
-        if (!secondary.textContent.trim()) {
-          var label = secondary.getAttribute('aria-label') || secondary.getAttribute('title');
+      if (!secondary.length || !menu) return;
+      var wrap = row.querySelector('.ra-more-wrap');
+      var compact = Boolean(row.closest('.datacard') || row.closest('[data-row-actions-compact]'));
+      var focused = secondary.filter(function (button) { return button.contains(document.activeElement); })[0];
+      secondary.forEach(function (button) {
+        if (!button._rowHome) {
+          button._rowHome = document.createComment('secondary action position');
+          button.before(button._rowHome);
+        }
+        button._rowHome.after(button);
+        button.classList.remove('ra-menu-action');
+        button.removeAttribute('role');
+        button.removeAttribute('tabindex');
+        var menuLabel = button.querySelector('[data-row-menu-label]');
+        if (menuLabel) menuLabel.remove();
+        var menuIcon = button.querySelector('[data-row-menu-icon]');
+        if (menuIcon) menuIcon.remove();
+        if (!compact) makeRowActionTextOnly(button);
+      });
+      wrap.hidden = !menu.querySelector('button');
+      secondary.slice().reverse().forEach(function (button) {
+        if (!(compact && window.innerWidth < 768) && row.scrollWidth <= row.clientWidth + 1) return;
+        if (!button.textContent.trim()) {
+          var label = button.getAttribute('aria-label') || button.getAttribute('title');
           if (label) {
-            menuLabel = document.createElement('span');
+            var menuLabel = document.createElement('span');
             menuLabel.setAttribute('data-row-menu-label', '');
             menuLabel.textContent = label;
-            secondary.appendChild(menuLabel);
+            button.appendChild(menuLabel);
           }
         }
-        secondary.classList.add('ra-menu-action');
-        secondary.setAttribute('role', 'menuitem');
-        secondary.setAttribute('tabindex', '-1');
-        decorateRowMenuItem(secondary);
-        menu.insertBefore(secondary, menu.firstChild);
-      }
-      if (hadFocus) {
-        var focusTarget = menu.contains(secondary) && menu.hidden ? row.querySelector('.ra-more-trigger') : secondary;
+        button.classList.add('ra-menu-action');
+        menu.insertBefore(button, menu.firstChild);
+        decorateRowMenuItem(button);
+        wrap.hidden = false;
+      });
+      syncRowMenuDivider(menu);
+      // The table width planner must grow/unpin the column if the primary and
+      // More still cannot fit. Never hide/truncate the last primary action.
+      if (row.scrollWidth > row.clientWidth + 1) row.setAttribute('data-row-actions-overflow', '');
+      else row.removeAttribute('data-row-actions-overflow');
+      if (focused) {
+        var focusTarget = menu.contains(focused) && menu.hidden ? row.querySelector('.ra-more-trigger') : focused;
         if (focusTarget) focusTarget.focus({ preventScroll: true });
       }
     });
@@ -1713,6 +1783,7 @@
 
     root.onclick = function (event) {
       var target = event.target;
+      if (target.closest && target.closest('[data-aw-table-demo]')) return;
       var backButton = target.closest && target.closest('[data-route-back]');
       if (backButton && root.contains(backButton)) {
         event.preventDefault();
@@ -1930,6 +2001,7 @@
 
     root.onchange = function (event) {
       var input = event.target;
+      if (input.closest && input.closest('[data-aw-table-demo]')) return;
       if (input.matches && input.matches('[data-demo-file-input]')) {
         handleDemoFiles(root, input.closest('[data-demo-upload]'), input.files);
         return;
@@ -1966,6 +2038,7 @@
     };
 
     root.onkeydown = function (event) {
+      if (event.target.closest && event.target.closest('[data-aw-table-demo]')) return;
       var menuTrigger = event.target.closest && event.target.closest('.ra-more-trigger');
       if (menuTrigger && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
         event.preventDefault();
@@ -2416,6 +2489,8 @@
       }
     }
     wireDemoInteractions(slot);
+    if (window.AWTableDemo) window.AWTableDemo.mount(slot);
+    if (window.AWTableGuide) window.AWTableGuide.mount(slot);
     scheduleTableLayout(slot);
     slot.setAttribute('aria-busy', 'false');
     if (options.preserveScroll) {

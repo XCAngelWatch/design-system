@@ -59,7 +59,7 @@
     "t055": "Unified header slots, actions, and sticky-compact behavior.",
     "t056": "Global empty states and full-page error feedback.",
     "t057": "Use AntD Table by default; use native virtual with numeric scroll.x / scroll.y for fixed-height large-data scenarios.",
-    "t058": "Tables and cards expose at most two safe actions. Exposed table actions use text only; additional actions go into a More menu with semantic icons. Narrow containers retain the primary action, and danger actions follow a divider at the bottom.",
+    "t058": "AWTable target contract: show 1–3 normal actions inline without a menu; with a menu, show at most two plus More for three visible entries total. Table, menu and toolbar business actions are text-only. Insufficient width and danger actions are exceptions; compact cards keep their separate contract. App installation tasks and OTA package lists are approved for migration; other pages require individual confirmation.",
     "t059": "Encode status with color, icon, and text.",
     "t060": "Charts, metrics, and containers consume theme tokens consistently.",
     "t061": "Primary narrow-screen navigation below md, mutually exclusive with the desktop Sidebar.",

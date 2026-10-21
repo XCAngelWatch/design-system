@@ -63,7 +63,7 @@ const go = async (page, route) => {await page.evaluate(route=>location.hash='#/'
   const menu=page.locator('.ra-menu.is-open');
   await menu.waitFor({state:'visible'});
   check(await menu.evaluate(m=>m.contains(document.activeElement)),'keyboard focus enters menu');
-  check(await menu.locator('[role="menuitem"]').evaluateAll(items=>items.every(item=>item.querySelector('svg use')&&item.textContent.trim())),'every menu item has icon and text');
+  check(await menu.locator('[role="menuitem"]').evaluateAll(items=>items.every(item=>!item.querySelector('svg')&&item.textContent.trim())),'every table menu item has text without a business icon');
   await page.keyboard.press('End');
   check(await menu.locator('[role="menuitem"]').last().evaluate(e=>e===document.activeElement),'End reaches last item');
   await page.keyboard.press('Escape');
@@ -79,10 +79,10 @@ const go = async (page, route) => {await page.evaluate(route=>location.hash='#/'
   for(const route of ['device-center-page','push-page','table','market-page']) {
     await go(page,route);
     const invalid=await page.locator('td.colactions').evaluateAll(cells=>cells.flatMap(cell=>{
-      const visible=Array.from(cell.querySelectorAll('button')).filter(b=>!b.closest('.ra-menu')&&!b.matches('.ra-more-trigger')&&!b.hidden);
-      return visible.length>2?[{text:cell.textContent.trim(),count:visible.length}]:[];
+      const visible=Array.from(cell.querySelectorAll('button')).filter(b=>!b.closest('.ra-menu')&&!b.hidden&&!b.closest('[hidden]'));
+      return visible.length>3?[{text:cell.textContent.trim(),count:visible.length}]:[];
     }));
-    check(!invalid.length,route+' has at most two inline actions: '+JSON.stringify(invalid));
+    check(!invalid.length,route+' has at most three visible entries including More: '+JSON.stringify(invalid));
   }
   await go(page,'row-actions');
   const firstRow=page.locator('.ra-table .ra-row').first();
@@ -90,7 +90,9 @@ const go = async (page, route) => {await page.evaluate(route=>location.hash='#/'
     await page.setViewportSize({width:w,height:1000});
     await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
     const count=await firstRow.locator('[data-row-secondary]').count();
-    check(count===1,'resize preserves exactly one secondary action');
+    check(count===1,'resize preserves the single secondary action beside primary and More');
+    const actionKeys=await firstRow.locator('button:not(.ra-more-trigger)').evaluateAll(buttons=>buttons.map(button=>button.querySelector('[data-i18n]')?.getAttribute('data-i18n')).sort());
+    check(JSON.stringify(actionKeys)===JSON.stringify(['row-actions:text.005','row-actions:text.006','row-actions:text.058','row-actions:text.063']), 'resize preserves each of the four declared actions exactly once');
   }
   await go(page,'inputs');
   const checkbox = page.locator('.check input[type="checkbox"]').first();
@@ -111,6 +113,8 @@ const go = async (page, route) => {await page.evaluate(route=>location.hash='#/'
   check(await page.locator('input[readonly]').count()===1,'readonly example is distinct from disabled');
   await go(page,'data-cards');
   check(await page.locator('.datacard .ra-more-trigger').count()===4,'all four cards use shared action menus');
+  check(await page.locator('.datacard .ra-row').evaluateAll(rows=>rows.every(row=>Array.from(row.children).filter(child=>child.tagName==='BUTTON').length<=2)),'compact cards independently retain at most two inline actions');
+  check(await page.locator('.datacard .ra-menu [role=menuitem]').evaluateAll(items=>items.length>0&&items.every(item=>item.querySelector('svg use')&&item.textContent.trim())),'compact-card menus retain semantic icons and text');
   const restartCard=page.locator('.datacard.fault');
   await restartCard.locator('.ra-more-trigger').click();
   await restartCard.locator('[data-demo-confirm]').click();

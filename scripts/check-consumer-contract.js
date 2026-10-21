@@ -23,7 +23,7 @@ const dark = tokenMap(darkBlock);
 
 if (contract.schemaVersion !== 1 || contract.contractVersion !== '2026-10-21' ||
     contract.sourceRepository !== 'design-system' ||
-    contract.decisionRecord !== 'docs/decisions/specs/2026-10-21-detail-return-header-alignment.md') {
+    contract.decisionRecord !== 'docs/decisions/specs/2026-10-21-aw-table.md') {
   errors.push('contract: unexpected schema or decision version');
 }
 if (contract.consumerRepository !== 'tms2.5-web-ui' ||
@@ -136,23 +136,113 @@ if (!same(contract.visualPresentation, {
   errors.push('visualPresentation: approved OpenDesign table, control, icon, or decoration policy drifted');
 }
 if (contract.rowActions.table.visiblePrimaryCount !== 1 ||
-    contract.rowActions.table.maxVisibleCount !== 2 ||
-    contract.rowActions.table.collapseFrom !== 3 ||
+    contract.rowActions.table.maxVisibleCount !== 3 ||
+    contract.rowActions.table.visibleEntryLimit !== 3 ||
+    contract.rowActions.table.moreCountsAsEntry !== true ||
+    contract.rowActions.table.overflowInlineLimit !== 2 ||
+    contract.rowActions.table.collapseFrom !== 4 ||
     contract.rowActions.table.inlinePresentation !== 'text-only' ||
-    contract.rowActions.table.menuPresentation !== 'semantic-icon-and-text' ||
-    contract.rowActions.table.narrowVisibleCount !== 1 ||
-    contract.rowActions.table.collapseSecondaryActions ||
+    contract.rowActions.table.menuPresentation !== 'text-only' ||
+    contract.rowActions.table.minimumVisibleCount !== 1 ||
+    contract.rowActions.table.collapseOnlyFor !== 'count-danger-or-insufficient-width' ||
     contract.rowActions.compactCard.maxVisibleCount !== 2 ||
     contract.rowActions.compactCard.collapseFrom !== 3 ||
     contract.rowActions.toolbar.maxVisibleCount !== 3 ||
     !same(contract.rowActions.placement, ['primary', 'secondary', 'menu']) ||
-    contract.rowActions.responsive.narrowContainerBreakpoint !== 'md' ||
+    contract.rowActions.responsive.structuralBreakpoint !== 'md' ||
     !contract.rowActions.singleSafeActionInline || contract.rowActions.dangerInlineDefault ||
     !same(contract.rowActions.dangerInlineExceptions, ['group-membership-removal']) ||
     contract.rowActions.confirmation !== 'single-modal-independent-of-placement' ||
     !contract.rowActions.menuKeyboardFocus || !contract.rowActions.pendingPreventsRepeat ||
     !contract.rowActions.dangerLast || contract.rowActions.dangerConfirmationDefaultFocus !== 'cancel') {
-  errors.push('rowActions: purpose-based max 2, responsive fit, safe danger placement and one confirmation required');
+  errors.push('rowActions: normal max 3, collapse from 4, responsive fit, safe danger placement and one confirmation required');
+}
+if (!contract.decisionRecords?.includes('docs/decisions/specs/2026-10-21-aw-table.md') ||
+    contract.awTable?.name !== 'AWTable' || contract.awTable.engine !== 'antd-native-table' ||
+    contract.awTable.actions.normalInlineLimit !== 3 || contract.awTable.actions.collapseFrom !== 4 ||
+    contract.awTable.actions.overflowInlineLimit !== 2 ||
+    contract.awTable.actions.visibleEntryLimit !== 3 ||
+    contract.awTable.actions.moreCountsAsEntry !== true || contract.awTable.actions.businessIcons !== false ||
+    !same(contract.awTable.actions.exceptions, ['danger', 'insufficient-container-width']) ||
+    contract.awTable.layout.cellPaddingInline !== 16 || contract.awTable.layout.selectionWidth !== 40 ||
+    !same(contract.awTable.layout.densityMinRowHeights, [32, 40, 48]) ||
+    contract.awTable.query.event !== 'onQueryChange' || !contract.awTable.query.oneCommitPerInteraction ||
+    contract.awTable.query.remoteDataResliced !== false ||
+    contract.awTable.standaloneRefreshControl !== false ||
+    contract.awTable.composition.includes('column-settings') ||
+    contract.awTable.query.search !== 'always-request-once-with-validated-draft' ||
+    contract.awTable.query.unchangedSearch !== 'reload-current-page' ||
+    contract.awTable.selection.defaultSelectAll !== 'current-page' ||
+    !fs.existsSync(path.join(root, contract.awTable.specification))) {
+  errors.push('AWTable: unified component, layout, query, and action contract drifted');
+}
+if (!same(contract.awTable?.columnSettings, {
+  enabled: 'opt-in-visibility-only',
+  api: ['schemaVersion', 'scopeKey'],
+  entry: 'fixed-actions-header-otherwise-required-identity-header',
+  fallbackWithoutIdentity: 'first-business-column-header',
+  standaloneToolbar: false,
+  addsHeaderRow: false,
+  headerSortTarget: 'independent',
+  requiredColumns: ['first-identity-or-first-business', 'actions'],
+  identityHideableDefault: false,
+  columnOverride: 'hideable',
+  defaultVisibility: 'all-columns',
+  commit: 'apply-draft-once',
+  cancel: 'discard-draft-on-cancel-escape-outside',
+  reset: 'all-columns-in-draft-until-apply',
+  queryEffect: 'none',
+  storage: 'local',
+  storagePayload: ['schemaVersion', 'hiddenIds'],
+  storageScope: ['application', 'user', 'tenant', 'tableId', 'schemaVersion'],
+  newColumns: 'visible',
+  legacyOtaCache: 'ignored',
+  contextChange: 'close-and-discard-draft-preserve-same-identity-preferences',
+  dragReorder: 'deferred',
+  resize: 'deferred'
+}) || !same(contract.awTable?.paginationLayout, {
+  total: 'left',
+  controls: 'right',
+  narrow: 'wrap-without-clipping',
+  tableAndCard: 'shared-presentation-single-event-owner'
+})) {
+  errors.push('AWTable: header-only visibility, protected columns, isolated draft preferences and shared pagination required');
+}
+if (contract.awTable?.filters?.name !== 'AWTableFilters' || !contract.awTable.filters.standalone ||
+    contract.awTable.filters.referencePattern !== 'resource-package-panel' ||
+    !same(contract.awTable.filters.structure, ['primary-fields', 'advanced-fields', 'divider', 'expand-left-applied-count-reset-submit-right']) ||
+    contract.awTable.filters.visibleTitle !== false ||
+    contract.awTable.filters.accessibleName !== 'localized-title' ||
+    contract.awTable.filters.activeCountPlacement !== 'footer-before-reset' ||
+    contract.awTable.filters.zeroCountVisible !== true ||
+    contract.awTable.filters.panelPadding !== 16 ||
+    contract.awTable.filters.defaultSubmitMode !== 'explicit' ||
+    contract.awTable.filters.activeCountSource !== 'normalized-applied' ||
+    contract.awTable.filters.rangeCountsAs !== 1 || !contract.awTable.filters.zeroAndFalseAreValues ||
+    !contract.awTable.filters.collapsePreservesDraftAndApplied || !contract.awTable.filters.submitIncludesCollapsedFields ||
+    contract.awTable.filters.collapseEmitsQuery !== false || contract.awTable.filters.externalContextReset !== false ||
+    contract.awTable.filters.businessIcons !== false) {
+  errors.push('AWTableFilters: resource-panel layout, applied count, hidden values and explicit submission required');
+}
+if (contract.awTable?.interactionSpecification !== 'docs/components/aw-table-interactions.md' ||
+    contract.awTable?.consumerReuseEvidence !== 'docs/decisions/audits/2026-10-21-awtable-consumer-reuse.md' ||
+    !fs.existsSync(path.join(root, contract.awTable.interactionSpecification)) ||
+    !fs.existsSync(path.join(root, contract.awTable.consumerReuseEvidence)) ||
+    contract.awTable.query.coordinator !== 'one-synchronous-admission-and-request-owner' ||
+    contract.awTable.query.resetAtDefaultQuery !== 'no-read-clear-selection-and-draft' ||
+    !same(contract.awTable.request?.gate, ['ready', 'waiting', 'blocked']) ||
+    contract.awTable.request.unreadyScopeReads !== false ||
+    contract.awTable.request.refreshPresentation !== 'in-table-loading-without-visible-status-row' ||
+    contract.awTable.request.refreshAnnouncement !== 'screen-reader-only' ||
+    contract.awTable.request.preserveResultLayoutWhilePending !== true ||
+    contract.awTable.request.refreshErrorPresentation !== 'persistent-stale-result-warning-and-retry' ||
+    !same(contract.awTable.request.staleResultIsolation, ['success', 'error', 'finally']) ||
+    contract.awTable.request.mutationInvalidation !== 'coalesce-one-read-in-origin-context' ||
+    contract.awTable.request.writeAutoRetry !== false ||
+    contract.awTable.selection.batchSnapshot !== 'freeze-at-confirmation-or-direct-trigger' ||
+    contract.awTable.selection.unknownOutcome !== 'verify-before-retry' ||
+    contract.awTable.accessibility.scrollFocusWhen !== 'actual-overflow') {
+  errors.push('AWTable: documented reuse, request ownership, context isolation, and interaction boundaries required');
 }
 if (!same(contract.pageHeader.backNavigation, {
   presentation: 'arrow-left-and-text',

@@ -4,7 +4,7 @@
   "sourceRepository": "design-system",
   "consumerRepository": "tms2.5-web-ui",
   "consumerCopyPath": "docs/design-system/source-contract.json",
-  "decisionRecord": "docs/decisions/specs/2026-10-21-detail-return-header-alignment.md",
+  "decisionRecord": "docs/decisions/specs/2026-10-21-aw-table.md",
   "tokens": {
     "sourceFile": "project/styles/tokens.css",
     "prefix": "--aw-",
@@ -179,12 +179,15 @@
   "rowActions": {
     "table": {
       "visiblePrimaryCount": 1,
-      "maxVisibleCount": 2,
-      "collapseFrom": 3,
+      "maxVisibleCount": 3,
+      "visibleEntryLimit": 3,
+      "moreCountsAsEntry": true,
+      "overflowInlineLimit": 2,
+      "collapseFrom": 4,
       "inlinePresentation": "text-only",
-      "menuPresentation": "semantic-icon-and-text",
-      "narrowVisibleCount": 1,
-      "collapseSecondaryActions": false
+      "menuPresentation": "text-only",
+      "minimumVisibleCount": 1,
+      "collapseOnlyFor": "count-danger-or-insufficient-width"
     },
     "compactCard": {
       "maxVisibleCount": 2,
@@ -192,13 +195,16 @@
     },
     "toolbar": {
       "maxVisibleCount": 3,
-      "collapseFrom": 4
+      "collapseFrom": 4,
+      "inlinePresentation": "text-only",
+      "menuPresentation": "text-only"
     },
     "placement": ["primary", "secondary", "menu"],
     "responsive": {
-      "narrowContainerBreakpoint": "md",
+      "structuralBreakpoint": "md",
       "fit": "measured-action-width",
-      "preservePrimaryAction": true
+      "preservePrimaryAction": true,
+      "minimumFitFallback": "grow-column-unpin-local-scroll"
     },
     "singleSafeActionInline": true,
     "dangerInlineDefault": false,
@@ -256,5 +262,165 @@
         "messageAllowed": true
       }
     }
+  },
+  "decisionRecords": ["docs/decisions/specs/2026-10-21-detail-return-header-alignment.md", "docs/decisions/specs/2026-10-21-aw-table.md"],
+  "awTable": {
+    "name": "AWTable",
+    "specification": "docs/components/aw-table.md",
+    "interactionSpecification": "docs/components/aw-table-interactions.md",
+    "consumerReuseEvidence": "docs/decisions/audits/2026-10-21-awtable-consumer-reuse.md",
+    "delivery": {
+      "source": "specification-and-interactive-demo",
+      "consumer": "approved-app-install-tasks-and-ota-workspace-implementation",
+      "publishedRuntimePackage": false
+    },
+    "engine": "antd-native-table",
+    "dataModes": ["remote", "local"],
+    "composition": ["filters", "toolbar", "selection-bar", "table", "pagination", "state-view"],
+    "columnSettings": {
+      "enabled": "opt-in-visibility-only",
+      "api": ["schemaVersion", "scopeKey"],
+      "entry": "fixed-actions-header-otherwise-required-identity-header",
+      "fallbackWithoutIdentity": "first-business-column-header",
+      "standaloneToolbar": false,
+      "addsHeaderRow": false,
+      "headerSortTarget": "independent",
+      "requiredColumns": ["first-identity-or-first-business", "actions"],
+      "identityHideableDefault": false,
+      "columnOverride": "hideable",
+      "defaultVisibility": "all-columns",
+      "commit": "apply-draft-once",
+      "cancel": "discard-draft-on-cancel-escape-outside",
+      "reset": "all-columns-in-draft-until-apply",
+      "queryEffect": "none",
+      "storage": "local",
+      "storagePayload": ["schemaVersion", "hiddenIds"],
+      "storageScope": ["application", "user", "tenant", "tableId", "schemaVersion"],
+      "newColumns": "visible",
+      "legacyOtaCache": "ignored",
+      "contextChange": "close-and-discard-draft-preserve-same-identity-preferences",
+      "dragReorder": "deferred",
+      "resize": "deferred"
+    },
+    "standaloneRefreshControl": false,
+    "filters": {
+      "name": "AWTableFilters",
+      "standalone": true,
+      "referencePattern": "resource-package-panel",
+      "structure": ["primary-fields", "advanced-fields", "divider", "expand-left-applied-count-reset-submit-right"],
+      "visibleTitle": false,
+      "accessibleName": "localized-title",
+      "activeCountPlacement": "footer-before-reset",
+      "zeroCountVisible": true,
+      "fields": "caller-schema",
+      "defaultSubmitMode": "explicit",
+      "draftSeparateFromApplied": true,
+      "activeCountSource": "normalized-applied",
+      "rangeCountsAs": 1,
+      "zeroAndFalseAreValues": true,
+      "collapsePreservesDraftAndApplied": true,
+      "submitIncludesCollapsedFields": true,
+      "collapseEmitsQuery": false,
+      "reset": "declared-defaults-one-event-collapse-first-page",
+      "sortAndPageSizeReset": "parent-declared-policy",
+      "externalContextReset": false,
+      "layout": "container-responsive-primary-advanced",
+      "panelPadding": 16,
+      "businessIcons": false,
+      "optionFailure": "field-local-error-and-retry",
+      "asyncValidation": "current-draft-and-context-only",
+      "dateSerialization": "domain-adapter-with-explicit-timezone-and-boundary"
+    },
+    "rowKey": "stable-string",
+    "actions": {
+      "normalInlineLimit": 3,
+      "collapseFrom": 4,
+      "overflowInlineLimit": 2,
+      "visibleEntryLimit": 3,
+      "moreCountsAsEntry": true,
+      "exceptions": ["danger", "insufficient-container-width"],
+      "businessIcons": false,
+      "preserveInteractionIndicators": true,
+      "hiddenCounts": false,
+      "disabledCounts": true,
+      "executionLock": "context-row-action-confirming-through-execution",
+      "mutationCompletion": "origin-context-current-applied-query",
+      "failureFeedback": "single-owner"
+    },
+    "layout": {
+      "cellPaddingInline": 16,
+      "selectionWidth": 40,
+      "densityMinRowHeights": [32, 40, 48],
+      "actionWidth": "current-locale-measured-final-combinations-plus-cell-padding",
+      "actionWidthScope": "table-not-row-or-page",
+      "minimumPrimaryFit": "grow-column-unpin-local-scroll",
+      "scrollX": "sum-visible-planned-column-widths",
+      "freezeBudget": "container-minus-at-least-one-key-data-column-min-width",
+      "unfreezeOrder": ["secondary-left", "actions-right", "primary-left"],
+      "measurement": "content-box-without-double-subtraction",
+      "measurementInvalidation": ["container", "locale", "font", "density", "definitions"],
+      "virtualization": "explicit-performance-tested-native"
+    },
+    "paginationLayout": {
+      "total": "left",
+      "controls": "right",
+      "narrow": "wrap-without-clipping",
+      "tableAndCard": "shared-presentation-single-event-owner"
+    },
+    "query": {
+      "event": "onQueryChange",
+      "oneCommitPerInteraction": true,
+      "draftSeparateFromApplied": true,
+      "pageSizeChange": "first-page",
+      "sortChange": "first-page",
+      "filterChange": "first-page",
+      "search": "always-request-once-with-validated-draft",
+      "unchangedSearch": "reload-current-page",
+      "searchWhilePending": "prevent-duplicate-request",
+      "coordinator": "one-synchronous-admission-and-request-owner",
+      "resetAtDefaultQuery": "no-read-clear-selection-and-draft",
+      "refresh": "preserve-applied-query",
+      "requestResult": "latest-query-only",
+      "remoteDataResliced": false
+    },
+    "request": {
+      "gate": ["ready", "waiting", "blocked"],
+      "gateOwner": "domain-adapter",
+      "unreadyScopeReads": false,
+      "staleResultIsolation": ["success", "error", "finally"],
+      "foregroundPending": "disable-query-controls-keep-draft-editable",
+      "refreshPresentation": "in-table-loading-without-visible-status-row",
+      "refreshAnnouncement": "screen-reader-only",
+      "preserveResultLayoutWhilePending": true,
+      "refreshErrorPresentation": "persistent-stale-result-warning-and-retry",
+      "mutationInvalidation": "coalesce-one-read-in-origin-context",
+      "errorIsolation": "per-region",
+      "automaticPolling": "opt-in-external-adapter",
+      "writeAutoRetry": false
+    },
+    "selection": {
+      "defaultSelectAll": "current-page",
+      "retention": ["page", "query", "context"],
+      "allMatchingRequiresBackendContract": true,
+      "partialFailure": "retain-failed-selection",
+      "batchSnapshot": "freeze-at-confirmation-or-direct-trigger",
+      "unknownOutcome": "verify-before-retry"
+    },
+    "preferences": {
+      "scope": ["user", "tenant", "tableId", "schemaVersion"],
+      "queryStorage": "url-or-session",
+      "presentationStorage": "local",
+      "restoreValidation": "schema-field-and-context-whitelist-before-first-read",
+      "restorePendingOrDialogs": false
+    },
+    "accessibility": {
+      "keyboardMenus": true,
+      "focusReturn": true,
+      "fullValueOnFocusAndTouch": true,
+      "namedFocusableScrollRegion": true,
+      "scrollFocusWhen": "actual-overflow",
+      "focusReturnPolicy": "valid-trigger-or-neighbor-without-stealing-focus"
+    },
+    "companionPatterns": ["semantic-cells", "overflow-text", "organization-scope", "form-dialog", "export", "query-restoration"]
   }
 }

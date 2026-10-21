@@ -21,6 +21,8 @@ class Element {
     this.children = [];
     this.parentElement = null;
     this.text = text;
+    this.clientWidth = 1000;
+    this.scrollWidth = 100;
     const classes = this.classes = new Set((attributes.class || '').split(' ').filter(Boolean));
     this.classList = {
       add(name) { classes.add(name); },
@@ -90,12 +92,12 @@ const context = {
   tCommon(key, params, fallback) { return key === 'more' ? 'More' : fallback; },
   demoControlId: 0
 };
-vm.runInNewContext(['createSystemIcon', 'getRowActionIcon', 'decorateRowMenuItem', 'normalizeRowActionMenus', 'prepareRowActionMenus', 'getRowMenuItems', 'getDemoActionLabel'].map(productionFunction).join('\n') +
+vm.runInNewContext(['createSystemIcon', 'getRowActionIcon', 'makeRowActionTextOnly', 'decorateRowMenuItem', 'normalizeRowActionMenus', 'syncRowMenuDivider', 'prepareRowActionMenus', 'getRowMenuItems', 'getDemoActionLabel'].map(productionFunction).join('\n') +
   '\n' + placement[0] + '\nthis.fit = fitRowActionMenus; this.normalize = normalizeRowActionMenus; this.prepare = prepareRowActionMenus; this.items = getRowMenuItems;', context);
 
 function fixture({ label = '编辑', text = '', icon = true } = {}) {
   const root = new Element('main');
-  const row = root.appendChild(new Element('div', { class: 'ra-row' }));
+  const row = root.appendChild(new Element('div', { class: 'ra-row', ...(icon ? { 'data-row-actions-compact': '' } : {}) }));
   row.clientWidth = 240;
   row.scrollWidth = 180;
   const primary = row.appendChild(new Element('button', {}, '详情'));
@@ -150,11 +152,13 @@ assert.equal(compact.secondary.textContent, 'Edit', 'menu text uses the current 
 
 const textButton = fixture({ label: 'Edit', text: 'Edit', icon: false });
 context.window.innerWidth = 390;
+textButton.row.scrollWidth = 300;
 context.fit(textButton.root);
 assert.equal(textButton.secondary.textContent, 'Edit');
 assert.equal(textButton.secondary.querySelector('[data-row-menu-label]'), null, 'existing visible text must not be duplicated');
-assert.equal(textButton.secondary.querySelector('use').getAttribute('href'), '#aw-icon-edit');
+assert.equal(textButton.secondary.querySelector('svg'), null, 'table menu actions stay text-only');
 context.window.innerWidth = 1280;
+textButton.row.scrollWidth = 180;
 context.fit(textButton.root);
 assert.equal(textButton.secondary.querySelector('svg'), null, 'a generated menu icon must not leak into the exposed text action');
 
@@ -178,32 +182,48 @@ function actionCell(actions) {
 }
 function action(text, attributes = {}) { return new Element('button', attributes, text); }
 context.window.innerWidth = 1280;
+// Run the production normalizer for every count, including disabled actions.
+for (let count = 0; count <= 4; count++) {
+  const actions = Array.from({ length: count }, (_, index) => action('Action ' + index));
+  if (count) actions[count - 1].disabled = true;
+  const candidate = actionCell(actions);
+  context.normalize(candidate.root);
+  context.prepare(candidate.root);
+  const row = candidate.root.querySelector('.ra-row');
+  const inline = row ? row.children.filter(child => child.tagName === 'BUTTON') : [];
+  const wrap = candidate.root.querySelector('.ra-more-wrap');
+  assert.equal(inline.length, count > 3 ? 2 : count, count + ' ordinary actions use the right inline limit');
+  assert.equal(Boolean(wrap && !wrap.hidden), count > 3, 'More is visible only above three ordinary actions when space fits');
+  if (count) assert.equal(actions[count - 1].disabled, true, 'placement preserves disabled state');
+}
+
 const details = action('Details', { 'data-row-icon': 'eye' });
 const remote = action('Remote', { 'data-row-icon': 'monitor' });
 const logs = action('Different translated wording', { 'data-i18n': 'device-center-page:text.048' });
-logs.disabled = true;
-const ordinary = actionCell([details, remote, logs]);
+const download = action('Download', { 'data-row-icon': 'cloud-download' });
+download.disabled = true;
+const ordinary = actionCell([details, remote, logs, download]);
 context.normalize(ordinary.root);
 context.prepare(ordinary.root);
 const generatedMenu = ordinary.root.querySelector('.ra-menu');
 assert.ok(generatedMenu);
 assert.equal(ordinary.root.querySelector('.ra-row').children.filter(child => child.tagName === 'BUTTON').length, 2);
-assert.equal(logs.parentElement, generatedMenu, 'the third real ordinary action is collapsed');
-assert.equal(logs.querySelector('use').getAttribute('href'), '#aw-icon-file-text', 'menu semantics use the catalog key rather than translated text');
-assert.equal(logs.disabled, true, 'folding preserves disabled state');
-assert.equal(context.items(generatedMenu).length, 0, 'disabled items cannot receive menu keyboard focus');
+assert.equal(logs.parentElement, generatedMenu, 'the third ordinary action folds because More consumes the third visible entry');
+assert.equal(download.parentElement, generatedMenu, 'the fourth ordinary action is collapsed');
+assert.equal(download.querySelector('svg'), null, 'table menu actions have no business icons');
+assert.equal(context.items(generatedMenu).length, 1, 'only the enabled log action receives menu keyboard focus');
 assert.equal(generatedMenu.hidden, true);
 assert.equal(ordinary.root.querySelector('.ra-more-trigger').getAttribute('aria-haspopup'), 'menu');
 context.normalize(ordinary.root);
 context.prepare(ordinary.root);
 assert.equal(ordinary.root.querySelectorAll('.ra-menu').length, 1, 'preparing again does not wrap an authored or generated menu');
-assert.equal(logs.querySelectorAll('svg').length, 1, 'menu icons are idempotent');
 
 const destructive = action('Remove', { class: 'btn btn-danger-link', 'data-row-icon': 'trash' });
 const preferred = action('Preferred', { 'data-row-primary': '', 'data-row-icon': 'eye' });
-const extra = action('Extra', { 'data-row-placement': 'menu', 'data-row-icon': 'file-text' });
+const extra = action('Extra', { 'data-row-icon': 'file-text' });
 const helper = action('Helper', { 'data-row-secondary': '', 'data-row-icon': 'edit' });
-const explicit = actionCell([destructive, extra, helper, preferred]);
+const fourth = action('Fourth');
+const explicit = actionCell([destructive, helper, preferred, extra, fourth]);
 context.normalize(explicit.root);
 context.prepare(explicit.root);
 const explicitRow = explicit.root.querySelector('.ra-row');
@@ -211,14 +231,72 @@ assert.equal(explicitRow.children[0], preferred, 'explicit primary placement win
 assert.equal(explicitRow.children.filter(child => child.tagName === 'BUTTON')[1], helper);
 const explicitMenu = explicit.root.querySelector('.ra-menu');
 assert.equal(explicitMenu.children[0], extra);
-assert.equal(explicitMenu.children[1].getAttribute('role'), 'separator');
-assert.equal(explicitMenu.children[2], destructive, 'dangerous actions remain last after a separator');
-assert.equal(destructive.hasAttribute('data-demo-confirm'), true, 'the existing single-confirmation executor handles the moved dangerous action');
+assert.equal(explicitMenu.children[1], fourth);
+assert.equal(explicitMenu.children[2].getAttribute('role'), 'separator');
+assert.equal(explicitMenu.children[3], destructive, 'dangerous actions remain last after a separator');
+assert.equal(destructive.hasAttribute('data-demo-confirm'), true, 'one confirmation executor handles the dangerous action');
+
+const task = actionCell([action('Details'), action('Pause'), action('Operation logs'), action('Terminate', { class: 'danger' })]);
+context.normalize(task.root);
+context.prepare(task.root);
+const taskRow = task.root.querySelector('.ra-row');
+assert.equal(taskRow.children.filter(child => child.tagName === 'BUTTON').length, 2, 'a dangerous menu item reserves the third entry for More');
+assert.equal(taskRow.querySelector('.ra-menu').children[0].textContent, 'Operation logs', 'operation logs join the menu before the danger group');
+
+const onlyDanger = actionCell([action('Delete', { class: 'danger' })]);
+context.normalize(onlyDanger.root);
+context.prepare(onlyDanger.root);
+assert.equal(onlyDanger.root.querySelector('.ra-more-wrap').hidden, false, 'a sole dangerous action may use More');
+assert.equal(onlyDanger.root.querySelector('.ra-menu').children.length, 1, 'danger-only menus have no leading separator');
+const membership = actionCell([action('Remove member', { class: 'danger', 'data-row-danger-exception': 'group-membership-removal' })]);
+context.normalize(membership.root);
+assert.equal(membership.root.querySelector('.ra-more-wrap'), null, 'documented membership removal may remain inline');
 
 const small = actionCell([action('Details'), action('Edit'), action('More')]);
 context.normalize(small.root);
-assert.equal(small.root.querySelector('.ra-menu'), null, 'a More placeholder is not counted as a third actual action');
-assert.equal(small.cell.children.length, 3);
+context.prepare(small.root);
+assert.equal(small.root.querySelector('.ra-more-wrap').hidden, true, 'a More placeholder does not count as an action or create a visible empty menu');
+
+// Ordinary actions authored inside old menus must be promoted when the current
+// rule permits; the resulting three actions then fold by actual container width.
+const authored = fixture({ icon: false, label: 'Edit', text: 'Edit' });
+authored.secondary.disabled = true;
+context.normalize(authored.root);
+context.prepare(authored.root);
+assert.equal(authored.existingItem.parentElement, authored.row, 'authored menu location does not force a third ordinary action into More');
+assert.equal(authored.row.querySelector('.ra-more-wrap').hidden, true);
+Object.defineProperty(authored.row, 'scrollWidth', { configurable: true, get() {
+  const exposed = this.children.filter(child => child.tagName === 'BUTTON').length;
+  return exposed * 70 + (this.querySelector('.ra-more-wrap').hidden ? 0 : 50);
+} });
+authored.row.clientWidth = 200;
+context.fit(authored.root);
+assert.equal(authored.row.children.filter(child => child.tagName === 'BUTTON').length, 2, 'three actions reduce to two plus More when needed');
+authored.row.clientWidth = 140;
+context.fit(authored.root);
+assert.equal(authored.row.children.filter(child => child.tagName === 'BUTTON').length, 1, 'two actions reduce to the primary plus More when needed');
+assert.equal(authored.secondary.disabled, true);
+authored.row.clientWidth = 90;
+context.fit(authored.root);
+assert.equal(authored.primary.parentElement, authored.row, 'the primary is never hidden even below its minimum required width');
+assert.equal(authored.row.hasAttribute('data-row-actions-overflow'), true, 'remaining overflow is exposed to the table width planner');
+authored.row.clientWidth = 240;
+context.fit(authored.root);
+assert.equal(authored.row.children.filter(child => child.tagName === 'BUTTON').length, 3, 'all three actions restore when container space returns');
+assert.equal(authored.row.querySelector('.ra-more-wrap').hidden, true);
+assert.equal(authored.row.hasAttribute('data-row-actions-overflow'), false);
+const narrowDanger = action('Delete', { class: 'danger', 'data-demo-confirm': '' });
+const dangerMenu = authored.row.querySelector('.ra-menu');
+dangerMenu.appendChild(narrowDanger);
+authored.row.clientWidth = 140;
+context.fit(authored.root);
+assert.equal(dangerMenu.children[dangerMenu.children.length - 2].getAttribute('role'), 'separator', 'folding ordinary actions into a danger-only menu creates one separator');
+context.fit(authored.root);
+assert.equal(dangerMenu.querySelectorAll('.ra-mdiv').length, 1, 'repeated resize does not duplicate danger separators');
+authored.row.clientWidth = 300;
+context.fit(authored.root);
+assert.equal(dangerMenu.querySelectorAll('.ra-mdiv').length, 0, 'restoring ordinary actions removes a leading separator');
+
 
 // Confirmation must name the actual account/device, not the first table column
 // (which can be an organization or selection checkbox).
@@ -322,4 +400,4 @@ anchor.bottom -= 32;
 scrollContext.scroll({ target: {} });
 assert.deepEqual(closeCalls, [true, true], 'real vertical scroll also closes the menu');
 
-console.log('row-action responsive placement, semantic icons and menu normalization tests passed');
+console.log('row-action count, responsive placement, text-only tables, compact cards and menu normalization tests passed');

@@ -148,7 +148,7 @@ if (!/id="af-disabled"[^>]*disabled[\s\S]*?<div class="step"><button type="butto
 }
 
 const workflow = fs.readFileSync(path.join(root, '.github/workflows/pages.yml'), 'utf8');
-for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'row-actions-runtime.test.js', 'router-runtime.test.js', 'table-layout-runtime.test.js', 'check-consistency.js', 'check-consumer-contract.js', 'check-evidence.js']) {
+for (const command of ['check-i18n.js', 'i18n-runtime.test.js', 'i18n-contract.test.js', 'row-actions-runtime.test.js', 'router-runtime.test.js', 'table-layout-runtime.test.js', 'aw-table-runtime.test.js', 'aw-table-filters-runtime.test.js', 'check-consistency.js', 'check-consumer-contract.js', 'check-evidence.js']) {
   if (!workflow.includes(command)) errors.push('pages workflow: missing validation command ' + command);
 }
 
@@ -165,9 +165,9 @@ if (!datepickerPage.includes('data-calendar-month="2026-04"') ||
 }
 
 const rowActionsPage = readPage('row-actions');
-if (!rowActionsPage.includes('表格与紧凑卡片最多明示 2 个普通动作') ||
+if (!rowActionsPage.includes('表格每行最多 3 个可见入口，包含“更多”') ||
     !rowActionsPage.includes('确认由统一执行器负责')) {
-  errors.push('row-actions: max 2 safe actions and placement-independent confirmation required');
+  errors.push('row-actions: at most 3 visible entries including More and placement-independent confirmation required');
 }
 
 const configProviderPage = readPage('config-provider');

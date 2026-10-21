@@ -8,6 +8,11 @@
 
 站点是 **纯静态 SPA**：`project/index.html` 是 shell，`project/pages/<id>.js` 是页面片段，`project/pages/_router.js` 通过 hash 路由和动态 `<script>` 注入加载片段。无构建、无 NPM 依赖、无 HTTP 服务器要求，`file://` 直接打开即可。
 
+
+统一表格组件内容与目标 API：[AWTable](docs/components/aw-table.md)，包含可独立复用的 [AWTableFilters 筛选区](docs/components/aw-table.md#awtablefilters-筛选组件)。可交互预览位于 `project/index.html#/table`。源规范先更新，消费者实现需按本次确认边界同步。
+
+封装开发配套：[交互细则](docs/components/aw-table-interactions.md) 按事件说明请求次数、状态、焦点与异常；[当前前端复用审查](docs/decisions/audits/2026-10-21-awtable-consumer-reuse.md) 列出源码证据、吸收与适配边界。设计页将交互预览、源码依据、事件矩阵和实施清单分开呈现。
+
 ## 入口
 
 **在线访问**：[https://xcangelwatch.github.io/design-system/](https://xcangelwatch.github.io/design-system/)
@@ -179,6 +184,8 @@ node scripts/i18n-contract.test.js
 node scripts/row-actions-runtime.test.js
 node scripts/router-runtime.test.js
 node scripts/table-layout-runtime.test.js
+node scripts/aw-table-runtime.test.js
+node scripts/aw-table-filters-runtime.test.js
 node scripts/check-consistency.js
 node scripts/check-consumer-contract.js
 node scripts/check-evidence.js
@@ -224,6 +231,8 @@ print('balanced ✓' if all(o == c for t, (o, c) in p.s.items() if t not in void
 # 5. 禁止模式回归：版本时间线 / 状态机图 / 版本徽章
 grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\.0/|撤回 v1|（同 v1' project/
 ```
+
+AWTable 交互改动还应在独立 QA 环境运行 `scripts/aw-table-browser.test.js`（12 组尺寸、语言、主题回归）与 `scripts/aw-table-scenarios-browser.test.js`（开发接入、复制回退、请求竞态、批量结果与列宽组合）。通过 `PLAYWRIGHT_MODULE` 和 `AXE_SCRIPT` 指向该环境中的 Playwright 与 axe，通过 `AW_TABLE_QA_URL` 指向本地文档站；测试只使用本地合成数据，不连接业务后端。站点发布流程仍只依赖静态源仓检查，不为文档站增加运行时或安装依赖。
 
 ## 扩展规则
 

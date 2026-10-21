@@ -21,7 +21,7 @@
 <section class="section" id="row-actions">
   <p class="section-eyebrow"><span data-i18n="row-actions:text.001">业务模式 · 行操作</span></p>
   <h2 role="heading" aria-level="1"><span data-i18n="row-actions:text.002">行操作 RowActions</span></h2>
-  <p class="lede"><span data-i18n="row-actions:text.003">表格外露动作使用纯文字。普通动作少于 3 个时，在宽度允许的情况下直接展示；达到 3 个时最多保留 1 个主操作与 1 个辅助操作，其余进入带语义图标的更多菜单。窄容器保留主操作；主次由业务用途与状态指定，危险操作分隔后置底。</span></p>
+  <p class="lede"><span data-i18n="row-actions:text.003">AWTable 的行内动作、更多菜单与表格工具栏均使用纯文字，不添加业务图标。普通操作 1–3 项在宽度允许时直接展示；有菜单时最多 2 项加更多，共 3 个入口；4 项起的其余动作进入菜单。空间不足时可收为 1 项加更多，主操作保持可见；危险操作默认置于菜单底部。</span></p>
 
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.004">动作词汇与语义</span></h3>
@@ -41,7 +41,7 @@
         <div class="ra-cell"><div class="ra-icn">${ICN.more}</div><div class="ra-name"><span data-i18n="row-actions:text.016">更多</span></div><code>more</code></div>
       </div>
     </div>
-    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="row-actions:text.017">使用边界：</span></strong><span data-i18n="row-actions:text.018">上方图标用于动作词汇、开发映射与折叠菜单；表格外露动作只用文字，菜单项使用 16×16 单色图标。紧凑卡片仍可使用统一图标 + Tooltip。危险动作使用 </span><code>--aw-danger</code><span data-i18n="row-actions:text.019">，禁用态使用 </span><code>--aw-text-disabled</code><span data-i18n="row-actions:text.020">，图标按钮必须提供 Tooltip 和 aria-label</span><span data-i18n="row-actions:text.021">。</span></div></div>
+    <div class="alert info" style="margin-top:12px"><div class="ico">i</div><div class="content"><strong><span data-i18n="row-actions:text.017">使用边界：</span></strong><span data-i18n="row-actions:text.018">上方图标仅用于语义映射与紧凑卡片参考；表格行内动作、更多菜单和工具栏业务按钮均为纯文字。下拉箭头和加载反馈等必要指示保留。紧凑卡片仍可使用统一图标 + Tooltip。危险动作使用 </span><code>--aw-danger</code><span data-i18n="row-actions:text.019">，禁用态使用 </span><code>--aw-text-disabled</code><span data-i18n="row-actions:text.020">，图标按钮必须提供 Tooltip 和 aria-label</span><span data-i18n="row-actions:text.021">。</span></div></div>
   </div>
 
   <div class="subsection">
@@ -130,7 +130,7 @@
 
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.056">表格折叠态 · 按用途与可用宽度收纳</span></h3>
-    <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">表格与紧凑卡片最多明示 2 个普通动作，3 个及以上时其余进入更多。1 个主操作位置稳定，第 2 个常用辅助操作仅在容器与完整文案宽度允许时展示。表格外露动作纯文字，菜单项配语义图标；紧凑卡片可用图标 + Tooltip。只剩一个普通操作时不套更多；危险操作默认收纳，明确单用途例外须登记。</span></p>
+    <p class="lede" style="margin-bottom:12px"><span data-i18n="row-actions:text.057">表格每行最多 3 个可见入口，包含“更多”。无菜单时普通操作 1–3 项直接展示；4 项起或存在危险菜单项时最多 2 项加更多。数量基于权限和适用状态过滤后的动作；禁用项仍计数。按业务优先级保留主操作，宽度不足依次收纳辅助操作。危险操作默认进入更多底部，仅移除分组成员保留已登记例外。零项不显示空菜单；单个普通操作不套更多。紧凑卡片保持最多 2 项、3 项起折叠的独立规则。</span></p>
     <div class="surface">
       <div class="ra-row">
         <button class="btn btn-link"><span data-i18n="row-actions:text.005">详情</span></button>
@@ -138,13 +138,13 @@
         <div class="ra-more-wrap">
           <button class="btn btn-link ra-more-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><span data-i18n="row-actions:text.016">更多</span></button>
           <div class="ra-menu" role="menu" hidden>
-            <button class="ra-mit" type="button" role="menuitem" data-row-icon="file-text">${ICN.log}<span><span data-i18n="row-actions:text.058">查看日志</span></span></button>
-            <button class="ra-mit" type="button" role="menuitem" data-row-icon="copy">${ICN.copy}<span><span data-i18n="row-actions:text.059">复制 SN</span></span></button>
-            <button class="ra-mit" type="button" role="menuitem" data-row-icon="cloud-download">${ICN.download}<span><span data-i18n="row-actions:text.060">下载证书</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem" data-row-icon="file-text"><span><span data-i18n="row-actions:text.058">查看日志</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem" data-row-icon="copy"><span><span data-i18n="row-actions:text.059">复制 SN</span></span></button>
+            <button class="ra-mit" type="button" role="menuitem" data-row-icon="cloud-download"><span><span data-i18n="row-actions:text.060">下载证书</span></span></button>
             <div class="ra-mdiv" role="separator"></div>
-            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="power">${ICN.toggle}<span><span data-i18n="row-actions:text.061">停用设备</span></span></button>
-            <button class="ra-mit warn" type="button" role="menuitem" data-demo-confirm data-row-icon="refresh">${ICN.reset}<span><span data-i18n="row-actions:text.062">重置出厂</span></span></button>
-            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="trash">${ICN.del}<span><span data-i18n="row-actions:text.063">删除设备</span></span></button>
+            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="power"><span><span data-i18n="row-actions:text.061">停用设备</span></span></button>
+            <button class="ra-mit warn" type="button" role="menuitem" data-demo-confirm data-row-icon="refresh"><span><span data-i18n="row-actions:text.062">重置出厂</span></span></button>
+            <button class="ra-mit danger" type="button" role="menuitem" data-demo-confirm data-row-icon="trash"><span><span data-i18n="row-actions:text.063">删除设备</span></span></button>
           </div>
         </div>
       </div>
@@ -154,9 +154,9 @@
 
   <div class="subsection">
     <h3><span data-i18n="row-actions:text.066">反例</span></h3>
-    <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.067">不要把"删除"做成主色按钮：</span></strong><span data-i18n="row-actions:text.068">主色 </span><code>#165DFF</code><span data-i18n="row-actions:text.069"> 是积极动作（提交 / 确认），删除应走 ghost-danger 或纯红 icon。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要按数组顺序机械折叠：</span></strong><span data-i18n="row-actions:text.071">显式标记主操作、辅助操作和菜单项。两项普通操作能放下时直接展示；窄容器收纳辅助操作。禁用项说明原因，不把删除提升为主操作。菜单按钮声明展开状态，键盘打开后焦点进入菜单，关闭后返回触发器。</span></div></div>
-    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要给表格外露操作添加图标：</span></strong><span data-i18n="row-actions:text.073">外露动作保持纯文字；折叠菜单项使用语义图标，紧凑卡片可使用统一图标 + Tooltip。</span></div></div>
+    <div class="alert error"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.067">不要把"删除"做成主色按钮：</span></strong><span data-i18n="row-actions:text.068">主色 </span><code>#165DFF</code><span data-i18n="row-actions:text.069"> 是积极动作（提交 / 确认），表格删除动作应使用危险色文字；不添加删除图标。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.070">不要按数组顺序机械折叠：</span></strong><span data-i18n="row-actions:text.071">显式标记业务优先级，无菜单且能放下时全部展示 1–3 项普通操作；有菜单时最多保留前 2 项加更多，总入口不超过 3。窄容器收纳辅助操作；主操作加更多仍放不下时扩大列宽、解除固定并局部横滚，不裁切按钮。禁用项说明原因，不把删除提升为主操作。菜单声明展开状态，键盘打开后焦点进入菜单，关闭后返回触发器。</span></div></div>
+    <div class="alert error" style="margin-top:8px"><div class="ico">×</div><div class="content"><strong><span data-i18n="row-actions:text.072">不要给表格业务操作添加图标：</span></strong><span data-i18n="row-actions:text.073">行内动作、更多菜单与工具栏业务按钮均保持纯文字；必要的下拉和加载指示保留。紧凑卡片可使用统一图标 + Tooltip。</span></div></div>
   </div>
 
   <div class="subsection">

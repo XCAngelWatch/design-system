@@ -69,8 +69,12 @@ const axe = process.env.AXE_SCRIPT || require.resolve('axe-core/axe.min.js');
         for (const button of document.querySelectorAll('#app-slot .btn-back')) {
           if (!button.querySelector('use[href="#aw-icon-arrow-left"]') || !button.textContent.trim() || !button.hasAttribute('data-route-back')) issues.push({kind:'back-control',html:button.outerHTML});
         }
-        for (const item of document.querySelectorAll('.ra-menu [role="menuitem"]')) {
-          if (!item.querySelector('svg use') || !item.textContent.trim()) issues.push({kind:'menu-icon-or-label',html:item.outerHTML});
+        for (const item of document.querySelectorAll('.ra-menu [role="menuitem"], .aw-table-menu [role="menuitem"]')) {
+          const compact = !!item.closest('.datacard, [data-row-actions-compact]');
+          const businessIcons = Array.from(item.querySelectorAll('svg')).filter(icon => !icon.hasAttribute('data-action-indicator'));
+          if (!item.textContent.trim()) issues.push({kind:'menu-label-missing',html:item.outerHTML});
+          if (compact && !item.querySelector('svg use')) issues.push({kind:'compact-menu-icon-missing',html:item.outerHTML});
+          if (!compact && businessIcons.length) issues.push({kind:'table-menu-business-icon',html:item.outerHTML});
         }
         const ids = new Set();
         for (const el of document.querySelectorAll('[id]')) {

@@ -29,7 +29,7 @@
     'route.inputs': 'Input and Form',
     'route.menu': 'Menu',
     'route.nav-comp': 'Navigation and Tabs',
-    'route.table': 'Table',
+    'route.table': 'AWTable',
     'route.tags': 'Tag and Status',
     'route.feedback': 'Feedback',
     'route.progress': 'Progress and Steps',

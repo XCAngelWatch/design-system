@@ -79,7 +79,10 @@
   align-items: center;
   justify-content: flex-start;
   gap: 6px;
+  flex-wrap: nowrap;
 }
+.ra-row > button, .ra-more-trigger { flex-shrink: 0; white-space: nowrap; }
+.ra-more-wrap[hidden] { display: none; }
 .ra-btn {
   width: 28px; height: 28px;
   display: grid; place-items: center;
