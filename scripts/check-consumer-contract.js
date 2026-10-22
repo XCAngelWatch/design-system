@@ -179,11 +179,18 @@ if (!contract.decisionRecords?.includes('docs/decisions/specs/2026-10-21-aw-tabl
 if (!same(contract.awTable?.columnSettings, {
   enabled: 'opt-in-visibility-only',
   api: ['schemaVersion', 'scopeKey'],
-  entry: 'fixed-actions-header-otherwise-required-identity-header',
-  fallbackWithoutIdentity: 'first-business-column-header',
+  entry: 'results-toolbar-right',
+  trigger: 'icon-button-with-tooltip',
+  triggerSize: 32,
+  triggerIcon: 'ControlOutlined',
+  triggerLabel: 'localized-title',
+  tooltipTriggers: ['hover', 'focus'],
+  tooltipWhileOpen: false,
+  triggerOpenState: 'primary-background-and-text',
+  groupedWith: 'view-switch',
+  headerWidthReservation: false,
   standaloneToolbar: false,
   addsHeaderRow: false,
-  headerSortTarget: 'independent',
   requiredColumns: ['first-identity-or-first-business', 'actions'],
   identityHideableDefault: false,
   columnOverride: 'hideable',
@@ -206,14 +213,17 @@ if (!same(contract.awTable?.columnSettings, {
   narrow: 'wrap-without-clipping',
   tableAndCard: 'shared-presentation-single-event-owner'
 })) {
-  errors.push('AWTable: header-only visibility, protected columns, isolated draft preferences and shared pagination required');
+  errors.push('AWTable: right-toolbar icon visibility, protected columns, isolated draft preferences and shared pagination required');
 }
 if (contract.awTable?.filters?.name !== 'AWTableFilters' || !contract.awTable.filters.standalone ||
     contract.awTable.filters.referencePattern !== 'resource-package-panel' ||
-    !same(contract.awTable.filters.structure, ['primary-fields', 'advanced-fields', 'divider', 'expand-left-applied-count-reset-submit-right']) ||
+    !same(contract.awTable.filters.structure, ['primary-fields', 'advanced-fields', 'divider', 'applied-count-left-expand-reset-submit-right']) ||
     contract.awTable.filters.visibleTitle !== false ||
     contract.awTable.filters.accessibleName !== 'localized-title' ||
-    contract.awTable.filters.activeCountPlacement !== 'footer-before-reset' ||
+    contract.awTable.filters.activeCountPlacement !== 'footer-left' ||
+    contract.awTable.filters.actionsPlacement !== 'footer-right' ||
+    !same(contract.awTable.filters.actionOrder, ['expand', 'reset', 'submit']) ||
+    contract.awTable.filters.narrowFooter !== 'count-left-actions-wrap-right-reset-submit-together' ||
     contract.awTable.filters.zeroCountVisible !== true ||
     contract.awTable.filters.panelPadding !== 16 ||
     contract.awTable.filters.defaultSubmitMode !== 'explicit' ||

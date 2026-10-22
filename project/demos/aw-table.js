@@ -96,6 +96,47 @@
       { key: 'version', semantic: 'text', min: 112, preferred: 136 },
       { key: 'updated', semantic: 'dateTime', min: 168, preferred: 196 }
     ];
+    var hiddenColumns = new Set(), columnDraft = new Set(), columnPanelContext = null;
+    var columnStorageKey = 'aw:table-demo:columns:v1';
+    function optionalColumn(key) { return ['status', 'version', 'updated'].includes(key); }
+    try {
+      var storedColumns = JSON.parse(localStorage.getItem(columnStorageKey));
+      if (storedColumns && storedColumns.schemaVersion === 1 && Array.isArray(storedColumns.hiddenIds) && storedColumns.hiddenIds.every(function (key) { return typeof key === 'string'; })) {
+        hiddenColumns = new Set(storedColumns.hiddenIds.filter(optionalColumn));
+      }
+    } catch (_) { /* Invalid or unavailable storage falls back to all columns. */ }
+    function visibleColumnDefinitions() { return columnDefinitions.filter(function (column) { return !hiddenColumns.has(column.key); }); }
+    function paintColumnDraft() {
+      host.querySelector('[data-aw-column-options]').innerHTML = columnDefinitions.filter(function (column) { return column.key !== 'selection'; }).concat(actionWidth() ? [{ key: 'actions' }] : []).map(function (column) {
+        return '<label><input type="checkbox" data-aw-column-option="' + column.key + '"' + (!columnDraft.has(column.key) ? ' checked' : '') + (!optionalColumn(column.key) ? ' disabled' : '') + '><span>' + escape(text(column.key)) + '</span></label>';
+      }).join('');
+    }
+    function closeColumns(focus) {
+      var panel = host.querySelector('[data-aw-columns-panel]');
+      var entry = host.querySelector('[data-aw-command="columns"]');
+      panel.hidden = true; entry.setAttribute('aria-expanded', 'false'); columnDraft = new Set(); columnPanelContext = null;
+      if (focus && entry.isConnected) entry.focus({ preventScroll: true });
+    }
+    var columnControl = host.querySelector('[data-aw-columns-control]');
+    function showColumnTooltip(visible) {
+      var entry = host.querySelector('[data-aw-command="columns"]');
+      var tip = host.querySelector('[data-aw-columns-tooltip]');
+      tip.hidden = !visible || entry.getAttribute('aria-expanded') === 'true';
+      if (tip.hidden) entry.removeAttribute('aria-describedby');
+      else entry.setAttribute('aria-describedby', tip.id);
+    }
+    columnControl.addEventListener('pointerenter', function () { showColumnTooltip(true); });
+    columnControl.addEventListener('pointerleave', function () { if (!columnControl.contains(document.activeElement)) showColumnTooltip(false); });
+    columnControl.addEventListener('focusin', function () { showColumnTooltip(true); });
+    columnControl.addEventListener('focusout', function (event) { if (!columnControl.contains(event.relatedTarget)) showColumnTooltip(false); });
+    function openColumns() {
+      var panel = host.querySelector('[data-aw-columns-panel]');
+      if (!panel.hidden) { closeColumns(true); return; }
+      closeMenu(false); columnDraft = new Set(hiddenColumns); columnPanelContext = context; paintColumnDraft();
+      panel.hidden = false; host.querySelector('[data-aw-command="columns"]').setAttribute('aria-expanded', 'true');
+      showColumnTooltip(false);
+      panel.querySelector('input:not(:disabled)').focus({ preventScroll: true });
+    }
     function fixtures(length, scope) { return Array.from({ length: length }, function (_, index) {
       return { id: 'sample-' + index, number: index + 1, name: text('sample', { n: String(index + 1).padStart(2, '0') }) + (scope === 'B' ? ' · B' : ''),
         status: index % 3 ? 'published' : 'draft', model: index % 2 ? 'P10' : 'K1352', version: '1.2.' + index,
@@ -144,12 +185,12 @@
       return items;
     }
     function actions(row) {
-      return planActions(actionItems(row), Math.max(0, contentWidth() - columnDefinitions.slice(0, 3).reduce(function (sum, column) { return sum + column.min; }, 0)), measure('more'), 8);
+      return planActions(actionItems(row), Math.max(0, contentWidth() - visibleColumnDefinitions().slice(0, 3).reduce(function (sum, column) { return sum + column.min; }, 0)), measure('more'), 8);
     }
     function actionWidth() {
       // Use all declared combinations, never the current page's longest row.
       var combinations = mixedActions ? Array.from({ length: 6 }, function (_, number) { return actionItems({ number: number, status: 'draft' }); }) : [actionItems()];
-      return planActionColumn(combinations, Math.max(0, contentWidth() - columnDefinitions.slice(0, 3).reduce(function (sum, column) { return sum + column.min; }, 0)), measure('more'), 8);
+      return planActionColumn(combinations, Math.max(0, contentWidth() - visibleColumnDefinitions().slice(0, 3).reduce(function (sum, column) { return sum + column.min; }, 0)), measure('more'), 8);
     }
     function rows(forQuery, source) {
       var target = forQuery || resultQuery;
@@ -258,19 +299,22 @@
       host.dataset.awSelected = JSON.stringify(Array.from(selected)); host.dataset.awBatchOutcome = JSON.stringify(batchOutcome);
       host.dataset.awVerificationCount = String(verificationCount); host.dataset.awMutationCount = String(mutationCount); host.dataset.awOptionsRequests = String(optionsRequests);
       host.dataset.awActionWidth = String(width);
-      var widths = columnDefinitions.map(function (column) { return column.preferred; }).concat(width ? [width] : []);
-      host.dataset.awColumnDefinitions = JSON.stringify(columnDefinitions);
+      if (columnPanelContext !== null && columnPanelContext !== context) closeColumns(false);
+      var visibleColumns = visibleColumnDefinitions();
+      var widths = visibleColumns.map(function (column) { return column.preferred; }).concat(width ? [width] : []);
+      host.dataset.awColumnDefinitions = JSON.stringify(visibleColumns);
+      host.dataset.awHiddenColumns = JSON.stringify(Array.from(hiddenColumns));
       var totalWidth = widths.reduce(function (sum, width) { return sum + width; }, 0);
       var spare = Math.max(0, contentWidth() - 2 - totalWidth);
-      widths[columnDefinitions.findIndex(function (column) { return column.flexible; })] += spare; totalWidth += spare;
+      widths[visibleColumns.findIndex(function (column) { return column.flexible; })] += spare; totalWidth += spare;
       var freeze = width > 0 && contentWidth() - width >= columnDefinitions[1].min;
       host.dataset.awContainerWidth = String(Math.round(contentWidth())); host.dataset.awTotalWidth = String(totalWidth);
       var head = '<th scope="col"><input type="checkbox" data-aw-select-all aria-label="' + escape(text('selectPage')) + '"></th>' +
         '<th scope="col" aria-sort="' + (query.sort === 'asc' ? 'ascending' : query.sort === 'desc' ? 'descending' : 'none') + '">' +
         button(text('name') + (query.sort === 'asc' ? ' ↑' : query.sort === 'desc' ? ' ↓' : ''), 'sort', !canQuery() ? 'disabled' : '') + '</th>' +
-        '<th scope="col">' + escape(text('status')) + '</th>' +
-        '<th scope="col">' + escape(text('version')) + '</th>' +
-        '<th scope="col">' + escape(text('updated')) + '</th>' +
+        (hiddenColumns.has('status') ? '' : '<th scope="col">' + escape(text('status')) + '</th>') +
+        (hiddenColumns.has('version') ? '' : '<th scope="col">' + escape(text('version')) + '</th>') +
+        (hiddenColumns.has('updated') ? '' : '<th scope="col">' + escape(text('updated')) + '</th>') +
         (width ? '<th scope="col" class="aw-table-actions-cell">' + escape(text('actions')) + '</th>' : '');
       var content = pageRows.map(function (row) {
         var stale = state === 'stale-error' || JSON.stringify(query) !== JSON.stringify(resultQuery);
@@ -282,9 +326,10 @@
         }).join('');
         if (plan.overflow.length) rowActions += button(text('more'), 'more', 'data-aw-row="' + row.id + '" aria-haspopup="menu" aria-expanded="false"' + (busy ? ' disabled' + unavailable : ''));
         return '<tr' + (selected.has(row.id) ? ' class="is-selected"' : '') + '><td><input type="checkbox" data-aw-select="' + row.id + '" aria-label="' + escape(text('selectRow', { name: row.name })) + '"' + (selected.has(row.id) ? ' checked' : '') + (busy ? ' disabled' + unavailable : '') + '></td>' +
-          '<td><span class="aw-table-value" data-aw-value="' + row.id + '">' + escape(row.name) + '</span></td><td>' + escape(text(row.status)) + '</td>' +
-          '<td>' + escape(row.version) + '</td>' +
-          '<td class="aw-table-date">' + escape(row.updated) + '</td>' +
+          '<td><span class="aw-table-value" data-aw-value="' + row.id + '">' + escape(row.name) + '</span></td>' +
+          (hiddenColumns.has('status') ? '' : '<td>' + escape(text(row.status)) + '</td>') +
+          (hiddenColumns.has('version') ? '' : '<td>' + escape(row.version) + '</td>') +
+          (hiddenColumns.has('updated') ? '' : '<td class="aw-table-date">' + escape(row.updated) + '</td>') +
           (width ? '<td class="aw-table-actions-cell"><div class="aw-table-actions">' + (rowActions || '<span class="visually-hidden">' + escape(text('noActions')) + '</span>') + '</div></td>' : '') + '</tr>';
       }).join('');
       if (state === 'loading') content = Array.from({ length: 4 }, function () { return '<tr><td colspan="' + widths.length + '"><div class="aw-table-skeleton"></div></td></tr>'; }).join('');
@@ -517,6 +562,14 @@
       var buttonNode = event.target.closest('[data-aw-command]');
       if (!buttonNode || buttonNode.disabled) return;
       var action = buttonNode.dataset.awCommand;
+      if (action === 'columns') { openColumns(); return; }
+      if (action === 'columnsCancel') { closeColumns(true); return; }
+      if (action === 'columnsReset') { columnDraft = new Set(); paintColumnDraft(); return; }
+      if (action === 'columnsApply') {
+        hiddenColumns = new Set(columnDraft);
+        try { localStorage.setItem(columnStorageKey, JSON.stringify({ schemaVersion: 1, hiddenIds: Array.from(hiddenColumns) })); } catch (_) { /* Preferences remain usable for this view. */ }
+        closeColumns(true); render(); return;
+      }
       if (!canQuery() && ['reset', 'previous', 'next', 'sort', 'retry'].includes(action)) return;
       if (action === 'runScenario') { runScenario(host.querySelector('[data-aw-scenario]').value); return; }
       if (action === 'resumeScope') { if (gate === 'ready') return; gate = 'ready'; setState('ready'); requestRows(); return; }
@@ -531,6 +584,8 @@
       else run(action, buttonNode.dataset.awRow, buttonNode);
     });
     host.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') showColumnTooltip(false);
+      if (event.key === 'Escape' && !host.querySelector('[data-aw-columns-panel]').hidden) { event.preventDefault(); closeColumns(true); return; }
       if (event.target.matches('[data-aw-value][data-aw-truncated="true"]')) {
         if (['Enter', ' ', 'Escape'].includes(event.key)) {
           event.preventDefault();
@@ -549,6 +604,11 @@
     });
     host.addEventListener('change', function (event) {
       var target = event.target;
+      if (target.matches('[data-aw-column-option]')) {
+        var key = target.dataset.awColumnOption;
+        if (optionalColumn(key)) { if (target.checked) columnDraft.delete(key); else columnDraft.add(key); }
+        return;
+      }
       if (target.closest('[data-aw-filters]')) return;
       if (target.matches('[data-aw-scenario]')) return;
       if (target.matches('[data-aw-mixed-actions]')) mixedActions = target.checked;
@@ -566,7 +626,11 @@
       else if (target.matches('[data-aw-select-all]')) { if (target.disabled || state === 'stale-error' || isRequestPending() || gate !== 'ready' || batchBusy || JSON.stringify(query) !== JSON.stringify(resultQuery)) return; rows().slice((resultQuery.page - 1) * resultQuery.pageSize, resultQuery.page * resultQuery.pageSize).forEach(function (row) { if (target.checked) selected.add(row.id); else selected.delete(row.id); }); }
       render();
     });
-    function outside(event) { if (menu && !menu.contains(event.target) && event.target !== trigger) closeMenu(false); }
+    function outside(event) {
+      if (menu && !menu.contains(event.target) && event.target !== trigger) closeMenu(false);
+      var panel = host.querySelector('[data-aw-columns-panel]');
+      if (!panel.hidden && !panel.contains(event.target) && !event.target.closest('[data-aw-command="columns"]')) closeColumns(false);
+    }
     document.addEventListener('pointerdown', outside);
     function onScroll(event) {
       if (!menu || !trigger || menu.contains(event.target)) return;

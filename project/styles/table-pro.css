@@ -275,10 +275,10 @@ table.dt.dt-resizable thead th:hover .col-resizer { background: var(--aw-border-
 .aw-table-filter-range > div { display: flex; align-items: center; gap: 8px; }
 .aw-table-filter-range label { flex: 1 1 0; }
 .aw-table-filter-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--aw-border-2); }
-.aw-table-filter-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 4px 0; min-height: 32px; border: 0; background: transparent; color: var(--aw-primary-text); font: inherit; font-size: 14px; cursor: pointer; }
+.aw-table-filter-toggle { flex: 0 0 auto; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; padding: 4px 0; min-height: 32px; border: 0; background: transparent; color: var(--aw-primary-text); font: inherit; font-size: 14px; cursor: pointer; }
 .aw-table-filter-toggle svg { flex-shrink: 0; }
 .aw-table-filter-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
-.aw-table-filter-buttons { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; max-width: 100%; margin-left: auto; }
+.aw-table-filter-buttons { min-width: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; max-width: 100%; margin-left: auto; }
 .aw-table-filter-submit-actions { display: flex; flex: 0 0 auto; gap: 8px; }
 .aw-table-filter-buttons .btn { flex: 0 0 auto; min-height: 32px; padding-inline: 16px; font-size: 14px; }
 .aw-table-filter-errors { color: var(--aw-danger); font-size: 13px; margin-block: 12px 0; }
@@ -446,3 +446,21 @@ table.dt.dt-resizable thead th:hover .col-resizer { background: var(--aw-border-
 }
 
 .aw-table-demo-settings > summary { padding-block: 6px; }
+
+
+.aw-table-results-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-block: 12px; min-width: 0; }
+.aw-table-results-toolbar > .aw-table-note { margin: 0; min-width: 0; }
+.aw-table-results-actions { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; margin-inline-start: auto; max-width: 100%; }
+.aw-table-results-actions > .btn { white-space: nowrap; }
+.aw-table-columns-control { position: relative; display: inline-flex; flex: none; }
+.aw-table-columns-trigger { display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--aw-h-md); height: var(--aw-h-md); padding: 0; border: 0; border-radius: var(--aw-radius); background: var(--aw-fill-1); color: var(--aw-text-2); cursor: pointer; }
+.aw-table-columns-trigger:hover { background: var(--aw-fill-2); color: var(--aw-primary-text); }
+.aw-table-columns-trigger[aria-expanded="true"] { background: var(--aw-primary-bg); color: var(--aw-primary-text); }
+.aw-table-columns-trigger:focus-visible { outline: 2px solid var(--aw-primary); outline-offset: 2px; }
+.aw-table-columns-tooltip { position: absolute; right: 0; bottom: calc(100% + 8px); z-index: 11; width: max-content; max-width: calc(100vw - 48px); padding: 6px 8px; border-radius: var(--aw-radius); background: var(--aw-bg-spotlight); color: var(--aw-text-on-brand); font-size: 12px; }
+.aw-table-columns-tooltip::after { content: ''; position: absolute; top: 100%; right: 0; width: 100%; height: 8px; }
+.aw-table-columns-panel { position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; width: min(320px, calc(100vw - 48px)); padding: 16px; border: 1px solid var(--aw-border-2); border-radius: var(--aw-radius); background: var(--aw-bg); color: var(--aw-text-1); }
+.aw-table-column-options { display: grid; gap: 12px; max-height: 280px; overflow: auto; margin-block: 16px; }
+.aw-table-column-options label { display: flex; align-items: flex-start; gap: 8px; min-width: 0; overflow-wrap: anywhere; }
+.aw-table-columns-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; border-top: 1px solid var(--aw-border-2); padding-top: 12px; }
+.aw-table-columns-footer > div { display: flex; gap: 8px; margin-inline-start: auto; }
