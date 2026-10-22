@@ -228,6 +228,16 @@ if (contract.awTable?.filters?.name !== 'AWTableFilters' || !contract.awTable.fi
     contract.awTable.filters.panelPadding !== 16 ||
     contract.awTable.filters.fieldGap !== 16 ||
     contract.awTable.filters.sharedColumnTracks !== 'primary-and-advanced' ||
+    contract.awTable.filters.columnTrackSizing !== 'equal-width-start-aligned' ||
+    contract.awTable.filters.columnTrackMinWidth !== 224 ||
+    contract.awTable.filters.columnTrackMaxWidth !== 320 ||
+    contract.awTable.filters.maxColumns !== 4 ||
+    contract.awTable.filters.columnCount !== 'both-groups-span-demand-within-container' ||
+    contract.awTable.filters.fieldMinWidth !== 'span-aware-shared-track-minimum-raises-cap' ||
+    contract.awTable.filters.fieldFlex !== 'deprecated-ignored' ||
+    contract.awTable.filters.narrowTrack !== 'shrink-single-column-to-container' ||
+    contract.awTable.filters.mobileTrack !== 'fill-single-column-at-container-max-575px' ||
+    contract.awTable.filters.fullSpan !== 'all-shared-tracks-within-track-cap' ||
     !same(contract.awTable.filters.fieldSpans, [1, 2, 'full']) ||
     !same(contract.awTable.filters.compositionExamples, ['standard', 'context', 'compact']) ||
     contract.awTable.filters.contextScope !== 'business-adapter' ||

@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const { normalize, countActive, validateRanges } = require('../project/demos/aw-table-filters');
+const { normalize, countActive, validateRanges, planLayout } = require('../project/demos/aw-table-filters');
 
 const fields = [
   { id: 'search' },
@@ -63,4 +63,30 @@ assert.deepEqual(validateRanges(customFields, custom), {}, 'range validation doe
 
 const ranges = [{ id: 'created', kind: 'range' }, { id: 'updated', kind: 'range', advanced: true }];
 assert.deepEqual(validateRanges(ranges, { created: ['', '2026-10-01'], updated: ['2026-10-21', '2026-10-01'] }), { created: 'incomplete', updated: 'order' }, 'validation returns independent errors for all date fields');
-console.log('AWTable filters: normalization, active counts, custom semantics and date-range validation passed');
+const installationLayout = [
+  { id: 'keyword', layout: { flex: 2 } },
+  { id: 'status' },
+  { id: 'application' },
+  { id: 'organization', advanced: true },
+  { id: 'creator', advanced: true },
+  { id: 'dates', advanced: true, layout: { span: 2 } }
+];
+const wideLayout = planLayout(installationLayout, 1600);
+assert.equal(wideLayout.columns, 4, 'advanced spans determine shared columns even when basic fields need only three');
+assert.equal(wideLayout.template, 'repeat(4, minmax(0, 320px))', 'all ordinary fields stop at 320px on wide screens');
+assert.deepEqual(wideLayout.spans, { keyword: 1, status: 1, application: 1, organization: 1, creator: 1, dates: 2 }, 'legacy flex does not widen keywords; explicit date span is retained');
+assert.equal(planLayout(installationLayout, 944).columns, 4, 'four 224px tracks plus three 16px gaps fit exactly');
+assert.equal(planLayout(installationLayout, 943).columns, 3, 'the grid drops one column before squeezing ordinary controls below 224px');
+assert.equal(planLayout(installationLayout, 703).columns, 2, 'three tracks require 704px');
+assert.equal(planLayout(installationLayout, 575).template, 'minmax(0, 1fr)', 'mobile single-column fields fill the container');
+assert.equal(planLayout(installationLayout, 575).spans.dates, 1, 'date spans collapse to one track on mobile');
+assert.equal(planLayout([{ id: 'search', layout: { flex: 5 } }], 1600).template, 'repeat(1, minmax(0, 320px))', 'a single desktop field does not stretch across the card');
+assert.equal(planLayout(Array.from({ length: 8 }, (_, index) => ({ id: String(index) })), 3000).columns, 4, 'schemas with many fields never add more than four columns');
+const customMinimum = [{ id: 'large', layout: { minWidth: 400 } }, { id: 'small' }];
+assert.equal(planLayout(customMinimum, 1000).template, 'repeat(2, minmax(0, 400px))', 'a declared minimum increases every track equally and raises the default cap when needed');
+assert.equal(planLayout(customMinimum, 815).columns, 1, 'declared minima determine when to wrap');
+const spanningMinimum = [{ id: 'search' }, { id: 'range', advanced: true, layout: { minWidth: 656, span: 2 } }];
+assert.equal(planLayout(spanningMinimum, 1000).template, 'repeat(2, minmax(0, 320px))', 'spanning minimum includes the interior 16px gap before per-track distribution');
+assert.equal(planLayout([{ id: 'full', layout: { span: 'full' } }, { id: 'one' }, { id: 'two' }], 1600).template, 'repeat(2, minmax(0, 320px))', 'full rows use bounded shared tracks rather than the entire panel');
+assert.equal(planLayout([{ id: 'large', layout: { minWidth: 800 } }], 600).template, 'repeat(1, minmax(0, 600px))', 'a minimum wider than the container cannot cause page overflow');
+console.log('AWTable filters: normalization, active counts, date-range validation and bounded equal-width layout passed');

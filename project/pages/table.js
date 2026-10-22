@@ -54,7 +54,7 @@
 <section class="aw-filter-compositions" id="aw-filter-compositions" tabindex="-1" aria-labelledby="aw-filter-compositions-title">
   <h3 id="aw-filter-compositions-title"><span data-i18n="table:filterExamples.title">AWTableFilters · 三种组合</span></h3>
   <p><span data-i18n="table:filterExamples.intro">标准、上下文和紧凑组合复用同一筛选组件。字段数量、分组和机构范围由业务配置，不强制凑满两行；下列示例独立保存本页演示状态，不调用业务接口。</span></p>
-  <p class="aw-table-note"><span data-i18n="table:filterExamples.layout">基础区与高级区共用列轨道，标签置于控件上方；关键词和日期范围可跨列。卡片四周统一 16px，窄容器或触控设备的交互目标至少 44px。已应用计数始终在底栏左侧。</span></p>
+  <p class="aw-table-note"><span data-i18n="table:filterExamples.layout">基础区与高级区共用等宽列轨道，普通字段默认每列 224–320px，最多 4 列；宽屏不继续拉伸，日期按需显式跨列。列数同时满足两组字段的跨度，空间不足时减列，手机单列铺满。卡片四周与字段间距统一 16px，窄容器或触控设备的交互目标至少 44px。已应用计数始终在底栏左侧。</span></p>
   <article class="aw-filter-example" data-aw-filter-example="standard" aria-labelledby="aw-filter-standard-heading">
     <h4 id="aw-filter-standard-heading"><span data-i18n="table:filterExamples.standard.title">标准组合 · 常用条件与高级条件</span></h4>
     <p><span data-i18n="table:filterExamples.standard.body">常用条件直接展示，低频条件按需展开。编辑不改变已应用计数；有效搜索后更新计数，折叠保留输入，重置恢复默认值并收起高级区。</span></p>
@@ -758,7 +758,7 @@
       <thead><tr><th style="width:18%"><span data-i18n="table:text.250">类型</span></th><th style="width:30%"><span data-i18n="table:text.251">触发方式</span></th><th><span data-i18n="table:text.252">布局与行为</span></th></tr></thead>
       <tbody>
         <tr><td><span data-i18n="table:text.253">列内筛选</span></td><td><span data-i18n="table:text.254">列标题筛选入口</span></td><td><span data-i18n="table:text.255">仅作为已声明的可选入口，与 AWTableFilters 共用已应用查询；不得为同一条件维护另一份状态或重复提交。选项较多时提供搜索或远程加载。</span></td></tr>
-        <tr><td><span data-i18n="table:text.256">筛选面板</span></td><td><span data-i18n="table:text.257">主要字段 → 高级字段 → 分隔线 → 左计数 / 右展开、重置、搜索</span></td><td><span data-i18n="table:text.258">按字段声明的主要 / 高级分组与顺序布局，不固定外露 4 项。依据真实容器宽度换列，关键词与日期范围优先保留完整宽度；不显示独立标题行，保留区域可访问名称；底栏左侧已启用计数，右侧依次为更多筛选、重置、搜索。0 项也显示，窄容器操作组可换行右对齐，计数保持左对齐且不挤压按钮。</span></td></tr>
+        <tr><td><span data-i18n="table:text.256">筛选面板</span></td><td><span data-i18n="table:text.257">主要字段 → 高级字段 → 分隔线 → 左计数 / 右展开、重置、搜索</span></td><td><span data-i18n="table:text.258">按字段声明的主要 / 高级分组与顺序布局，不固定外露 4 项。两组共用等宽轨道，普通列默认 224–320px、最多 4 列；关键词不默认加宽，日期按声明跨列。按两组较大的跨度总数和真实容器换列，宽屏列宽有上限，手机单列铺满；不显示独立标题行，保留区域可访问名称；底栏左侧已启用计数，右侧依次为更多筛选、重置、搜索。0 项也显示，窄容器操作组可换行右对齐，计数保持左对齐且不挤压按钮。</span></td></tr>
         <tr><td><span data-i18n="table:text.259">高级筛选</span></td><td><span data-i18n="table:text.260">更多筛选 / 收起筛选</span></td><td><span data-i18n="table:text.261">存在高级字段时才显示入口，并提供 aria-expanded 与 aria-controls。展开 / 收起不查询、不清值；隐藏字段的草稿和已应用条件仍保留，参与后续提交、计数与恢复。</span></td></tr>
         <tr><td><span data-i18n="table:text.262">计数与可选摘要</span></td><td><span data-i18n="table:text.263">已应用条件计数；摘要标签可选</span></td><td><span data-i18n="table:text.264">计数在底栏左侧独立显示，0 项也保留；右侧的更多筛选、重置、搜索成组排列。按字段计算，完整日期范围算 1 项，空白文本不计，0 等有效值不得漏计；编辑草稿不改变计数。若提供可关闭标签，须明确移除后提交一次或仅修改草稿，不混用两种模式。</span></td></tr>
         <tr><td><span data-i18n="table:text.247">持久化</span></td><td>URL / session</td><td><span data-i18n="table:text.265">草稿、已应用条件与展开态分别恢复；仅白名单公开字段可写 URL，其余使用适当作用域的会话状态。</span></td></tr>

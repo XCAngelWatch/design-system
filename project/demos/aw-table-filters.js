@@ -41,6 +41,30 @@
     });
     return errors;
   }
+  // Keep both groups on one bounded, equal-width grid. Legacy flex values do not
+  // change column proportions; only an explicit span makes a field wider.
+  function planLayout(fields, width) {
+    var gap = 16;
+    var requested = Math.max(1, Math.max.apply(null, [false, true].map(function (advanced) {
+      return fields.filter(function (field) { return Boolean(field.advanced) === advanced; }).reduce(function (sum, field) {
+        return sum + (field.layout && field.layout.span === 'full' ? 0 : field.layout && field.layout.span || 1);
+      }, 0);
+    })));
+    var maximum = width <= 575 ? 1 : Math.min(4, requested);
+    for (var columns = maximum; columns >= 1; columns -= 1) {
+      var spans = {}, minimum = 224;
+      fields.forEach(function (field) {
+        var layout = field.layout || {};
+        var span = layout.span === 'full' ? columns : Math.min(columns, layout.span || 1);
+        spans[field.id] = layout.span === 'full' ? 'full' : span;
+        if (Number.isFinite(layout.minWidth) && layout.minWidth > 0) minimum = Math.max(minimum, (layout.minWidth - gap * (span - 1)) / span);
+      });
+      if (columns === 1 || columns * minimum + gap * (columns - 1) <= width) {
+        var trackWidth = Math.max(0, Math.min(Math.max(320, minimum), (width - gap * (columns - 1)) / columns));
+        return { columns: columns, spans: spans, template: width <= 575 ? 'minmax(0, 1fr)' : 'repeat(' + columns + ', minmax(0, ' + trackWidth + 'px))' };
+      }
+    }
+  }
   function mount(form, options) {
     var fields = options.fields;
     var expanded = options.expanded === true, busy = false, externalBusy = false, alive = true;
@@ -50,6 +74,29 @@
     var count = form.querySelector('[data-aw-filter-count]');
     var summary = form.querySelector('[data-aw-filter-errors]');
     function controls(field) { return Array.from(form.querySelectorAll('[data-aw-filter="' + field.id + '"]')); }
+    var primary = form.querySelector('.aw-table-filter-primary');
+    var layoutFields = fields.map(function (field) {
+      var cell = controls(field)[0];
+      while (cell.parentElement && cell.parentElement !== primary && cell.parentElement !== advanced) cell = cell.parentElement;
+      var layout = Object.assign({}, field.layout);
+      if (layout.span == null && cell.classList.contains('aw-table-filter-span-full')) layout.span = 'full';
+      else if (layout.span == null && cell.classList.contains('aw-table-filter-span-2')) layout.span = 2;
+      return { id: field.id, advanced: Boolean(field.advanced), layout: layout, cell: cell };
+    });
+    function updateLayout() {
+      if (!alive) return;
+      var computed = window.getComputedStyle(form);
+      var width = form.clientWidth - parseFloat(computed.paddingLeft) - parseFloat(computed.paddingRight);
+      var plan = planLayout(layoutFields, Math.max(0, width));
+      form.style.setProperty('--aw-filter-tracks', plan.template);
+      layoutFields.forEach(function (field) {
+        field.cell.style.gridColumn = plan.spans[field.id] === 'full' ? '1 / -1' : 'span ' + plan.spans[field.id];
+      });
+    }
+    var resizeObserver = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateLayout);
+    if (resizeObserver) resizeObserver.observe(form);
+    else window.addEventListener('resize', updateLayout);
+    updateLayout();
     function read() {
       var values = {};
       fields.forEach(function (field) {
@@ -130,7 +177,7 @@
       readDraft: read,
       setApplied: function (value) { applied = normalize(fields, value); paint(); },
       setSubmitting: function (value) { externalBusy = Boolean(value); paint(); },
-      destroy: function () { alive = false; form.removeEventListener('submit', submit); form.removeEventListener('click', click); form.removeEventListener('input', input); form.removeEventListener('keydown', keydown); }
+      destroy: function () { alive = false; if (resizeObserver) resizeObserver.disconnect(); else window.removeEventListener('resize', updateLayout); form.removeEventListener('submit', submit); form.removeEventListener('click', click); form.removeEventListener('input', input); form.removeEventListener('keydown', keydown); }
     };
   }
   var exampleDisposers = [];
@@ -170,5 +217,5 @@
       exampleDisposers.push(function () { controller.destroy(); example.removeEventListener('change', contextChanged); });
     });
   }
-  return { normalize: normalize, countActive: countActive, validateRanges: validateRanges, mount: mount, mountExamples: mountExamples };
+  return { normalize: normalize, countActive: countActive, validateRanges: validateRanges, planLayout: planLayout, mount: mount, mountExamples: mountExamples };
 });

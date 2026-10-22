@@ -75,7 +75,8 @@ async function layout(page, label, coarse = false) {
           padding: [s.paddingTop, s.paddingRight, s.paddingBottom, s.paddingLeft],
           gaps: [p.rowGap, p.columnGap, a.rowGap, a.columnGap], tracks: [p.gridTemplateColumns, a.gridTemplateColumns],
           aligned: !first || Array.from(primary.children).some(node => { const r = rect(node); return Math.abs(r.left - first.left) < 1 && Math.abs(r.right - first.right) < 1; }),
-          width: region.width, controls, overflow: controls.some(r => r.left < f.left - 1 || r.right > f.right + 1) };
+          width: region.width, contentWidth: form.clientWidth - parseFloat(s.paddingLeft) - parseFloat(s.paddingRight),
+          controls, overflow: controls.some(r => r.left < f.left - 1 || r.right > f.right + 1) };
       }),
       context: Array.from(document.querySelectorAll('[data-aw-example-context]')).filter(visible).map(rect)
     };
@@ -84,6 +85,9 @@ async function layout(page, label, coarse = false) {
   for (const m of metrics.forms) {
     check(m.padding.every(value => value === '16px'), label + '/' + m.kind + ': 16px card padding');
     check(m.gaps.every(value => value === '16px'), label + '/' + m.kind + ': 16px field gaps');
+    const primaryTracks = m.tracks[0].split(' ').map(parseFloat);
+    check(primaryTracks.length <= 4 && primaryTracks.every(value => Math.abs(value - primaryTracks[0]) < 0.5), label + '/' + m.kind + ': at most four equal tracks');
+    if (m.contentWidth > 575) check(primaryTracks.every(value => value <= 320.5), label + '/' + m.kind + ': ordinary fields stop growing at 320px');
     if (m.kind === 'standard' || m.kind === 'main') {
       const tracks = m.tracks.map(value => value.split(' ').map(parseFloat));
       check(tracks[0].length === tracks[1].length && tracks[0].every((value, i) => Math.abs(value - tracks[1][i]) < 0.5), label + '/' + m.kind + ': basic and advanced tracks match');
@@ -110,7 +114,7 @@ async function main() {
   try {
     let axePath = process.env.AXE_SCRIPT;
     if (!axePath) { try { axePath = require.resolve('axe-core/axe.min.js', { paths: [process.env.PLAYWRIGHT_MODULE || __dirname] }); } catch (_) {} }
-    for (const locale of ['zh-CN', 'en-US']) for (const theme of ['light', 'dark']) for (const width of [390, 768, 1440]) {
+    for (const locale of ['zh-CN', 'en-US']) for (const theme of ['light', 'dark']) for (const width of [390, 768, 1440, 1920]) {
       const context = await browser.newContext({ viewport: { width, height: 1000 }, locale });
       const page = await context.newPage(), label = [locale, theme, width].join('/');
       page.on('pageerror', error => failures.push(label + ': page error: ' + error.message));
