@@ -133,5 +133,42 @@
       destroy: function () { alive = false; form.removeEventListener('submit', submit); form.removeEventListener('click', click); form.removeEventListener('input', input); form.removeEventListener('keydown', keydown); }
     };
   }
-  return { normalize: normalize, countActive: countActive, validateRanges: validateRanges, mount: mount };
+  var exampleDisposers = [];
+  function mountExamples(root) {
+    exampleDisposers.forEach(function (dispose) { dispose(); });
+    exampleDisposers = [];
+    root.querySelectorAll('[data-aw-filter-example]').forEach(function (example) {
+      var form = example.querySelector('[data-aw-example-form]');
+      var result = example.querySelector('[data-aw-example-result]');
+      var fields = [], defaults = {};
+      form.querySelectorAll('[data-aw-filter]').forEach(function (control) {
+        var id = control.dataset.awFilter;
+        if (fields.some(function (field) { return field.id === id; })) return;
+        var range = control.type === 'date';
+        fields.push({ id: id, kind: range ? 'range' : 'text', advanced: !!control.closest('[data-aw-filter-advanced]') });
+        defaults[id] = range ? ['', ''] : '';
+      });
+      function text(key, values) {
+        var label = example.querySelector('[data-aw-example-label="' + key + '"]');
+        return (label ? label.textContent : key).replace(/\{(\w+)\}/g, function (_, name) { return values && values[name] != null ? values[name] : ''; });
+      }
+      var controller = mount(form, {
+        fields: fields, defaults: defaults, text: text,
+        onApply: function (values) {
+          controller.setApplied(values);
+          result.textContent = text('applied', { count: countActive(fields, values) });
+        },
+        onReset: function (values) {
+          controller.setApplied(values);
+          result.textContent = text('reset');
+        }
+      });
+      function contextChanged(event) {
+        if (event.target.matches('[data-aw-example-context]')) result.textContent = text('scopeChanged');
+      }
+      example.addEventListener('change', contextChanged);
+      exampleDisposers.push(function () { controller.destroy(); example.removeEventListener('change', contextChanged); });
+    });
+  }
+  return { normalize: normalize, countActive: countActive, validateRanges: validateRanges, mount: mount, mountExamples: mountExamples };
 });

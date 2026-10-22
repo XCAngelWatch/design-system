@@ -1783,7 +1783,7 @@
 
     root.onclick = function (event) {
       var target = event.target;
-      if (target.closest && target.closest('[data-aw-table-demo]')) return;
+      if (target.closest && target.closest('[data-aw-table-demo], [data-aw-filter-example]')) return;
       var backButton = target.closest && target.closest('[data-route-back]');
       if (backButton && root.contains(backButton)) {
         event.preventDefault();
@@ -2001,7 +2001,7 @@
 
     root.onchange = function (event) {
       var input = event.target;
-      if (input.closest && input.closest('[data-aw-table-demo]')) return;
+      if (input.closest && input.closest('[data-aw-table-demo], [data-aw-filter-example]')) return;
       if (input.matches && input.matches('[data-demo-file-input]')) {
         handleDemoFiles(root, input.closest('[data-demo-upload]'), input.files);
         return;
@@ -2038,7 +2038,7 @@
     };
 
     root.onkeydown = function (event) {
-      if (event.target.closest && event.target.closest('[data-aw-table-demo]')) return;
+      if (event.target.closest && event.target.closest('[data-aw-table-demo], [data-aw-filter-example]')) return;
       var menuTrigger = event.target.closest && event.target.closest('.ra-more-trigger');
       if (menuTrigger && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
         event.preventDefault();
@@ -2490,6 +2490,7 @@
     }
     wireDemoInteractions(slot);
     if (window.AWTableDemo) window.AWTableDemo.mount(slot);
+    if (window.AWTableFiltersDemo) window.AWTableFiltersDemo.mountExamples(slot);
     if (window.AWTableGuide) window.AWTableGuide.mount(slot);
     scheduleTableLayout(slot);
     slot.setAttribute('aria-busy', 'false');

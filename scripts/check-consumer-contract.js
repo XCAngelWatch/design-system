@@ -226,13 +226,21 @@ if (contract.awTable?.filters?.name !== 'AWTableFilters' || !contract.awTable.fi
     contract.awTable.filters.narrowFooter !== 'count-left-actions-wrap-right-reset-submit-together' ||
     contract.awTable.filters.zeroCountVisible !== true ||
     contract.awTable.filters.panelPadding !== 16 ||
+    contract.awTable.filters.fieldGap !== 16 ||
+    contract.awTable.filters.sharedColumnTracks !== 'primary-and-advanced' ||
+    !same(contract.awTable.filters.fieldSpans, [1, 2, 'full']) ||
+    !same(contract.awTable.filters.compositionExamples, ['standard', 'context', 'compact']) ||
+    contract.awTable.filters.contextScope !== 'business-adapter' ||
+    contract.awTable.filters.controlHeight !== 32 ||
+    contract.awTable.filters.touchTargetMinHeight !== 44 ||
+    !same(contract.awTable.filters.touchTargetWhen, ['coarse-pointer', 'container-max-575px']) ||
     contract.awTable.filters.defaultSubmitMode !== 'explicit' ||
     contract.awTable.filters.activeCountSource !== 'normalized-applied' ||
     contract.awTable.filters.rangeCountsAs !== 1 || !contract.awTable.filters.zeroAndFalseAreValues ||
     !contract.awTable.filters.collapsePreservesDraftAndApplied || !contract.awTable.filters.submitIncludesCollapsedFields ||
     contract.awTable.filters.collapseEmitsQuery !== false || contract.awTable.filters.externalContextReset !== false ||
     contract.awTable.filters.businessIcons !== false) {
-  errors.push('AWTableFilters: resource-panel layout, applied count, hidden values and explicit submission required');
+  errors.push('AWTableFilters: shared tracks, 16px spacing, three compositions, touch targets, applied count and explicit submission required');
 }
 if (contract.awTable?.interactionSpecification !== 'docs/components/aw-table-interactions.md' ||
     contract.awTable?.consumerReuseEvidence !== 'docs/decisions/audits/2026-10-21-awtable-consumer-reuse.md' ||

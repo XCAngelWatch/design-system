@@ -232,7 +232,7 @@ print('balanced ✓' if all(o == c for t, (o, c) in p.s.items() if t not in void
 grep -rnE 'class="new-tag"|class="v">v[0-9]+\.[0-9]+ *</span>|state-machine|sm-graph|sm-legend|sm-rules|"v1\.0/|撤回 v1|（同 v1' project/
 ```
 
-AWTable 交互改动还应在独立 QA 环境运行 `scripts/aw-table-browser.test.js`（12 组尺寸、语言、主题回归）与 `scripts/aw-table-scenarios-browser.test.js`（开发接入、复制回退、请求竞态、批量结果与列宽组合）。通过 `PLAYWRIGHT_MODULE` 和 `AXE_SCRIPT` 指向该环境中的 Playwright 与 axe，通过 `AW_TABLE_QA_URL` 指向本地文档站；测试只使用本地合成数据，不连接业务后端。站点发布流程仍只依赖静态源仓检查，不为文档站增加运行时或安装依赖。
+AWTable 交互改动还应在独立 QA 环境运行 `scripts/aw-table-browser.test.js`（12 组尺寸、语言、主题回归）、`scripts/aw-table-scenarios-browser.test.js`（开发接入、复制回退、请求竞态、批量结果与列宽组合）及 `scripts/aw-table-filter-compositions-browser.test.js`（三种筛选组合、共享列轨道、16px 间距和 44px 触控目标）。通过 `PLAYWRIGHT_MODULE` 和 `AXE_SCRIPT` 指向该环境中的 Playwright 与 axe，通过 `AW_TABLE_QA_URL` 指向本地文档站；测试只使用本地合成数据，不连接业务后端。基础表格与筛选组合脚本可通过 `PLAYWRIGHT_CHANNEL=chrome` 使用本机 Chrome。站点发布流程仍只依赖静态源仓检查，不为文档站增加运行时或安装依赖。
 
 ## 扩展规则
 

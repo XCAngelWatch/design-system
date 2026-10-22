@@ -57,6 +57,15 @@
 </div>
     </div>
   </div>
+  <div class="subsection">
+    <h3><span data-i18n="inputs:filters.title">列表筛选组合</span></h3>
+    <div class="surface">
+      <p><span data-i18n="inputs:filters.layout">列表筛选使用 AWTableFilters 的标准、上下文或紧凑组合。卡片四周统一 16px；基础区与高级区共用列轨道，标签在控件上方，关键词与日期范围可按需跨列。保留底栏左侧计数与右侧操作，不增加可见标题行。</span></p>
+      <p><span data-i18n="inputs:filters.touch">桌面控件以 32px 为默认高度；窄容器与粗指针触控设备将输入、选择、展开及操作按钮的目标尺寸提升至至少 44px，操作区自然换行。</span></p>
+      <p><span data-i18n="inputs:filters.behavior">编辑草稿不改变已应用计数，校验通过后搜索才应用；折叠保留输入，重置恢复业务默认值。字段数量、分组和机构范围由业务配置，机构范围按需放在筛选卡外，不计入筛选项数量。</span></p>
+      <a href="#/table"><span data-i18n="inputs:filters.link">查看 AWTableFilters 三种组合与交互示例</span></a>
+    </div>
+  </div>
   <div class="subsection"><h3><span data-i18n="common:component.usedBy">页面蓝图使用场景</span></h3><div class="blueprint-notes"><span><a href="#/login-page">LoginPage</a></span><span><a href="#/list-page">ListPage</a></span><span><a href="#/form-page">FormPage</a></span><span><a href="#/user-mgmt-page">UserMgmtPage</a></span></div></div>
 </section>
 </div>

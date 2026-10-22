@@ -40,6 +40,11 @@
     "attr.036.ariaLabel": "Remarks",
     "validation.identifier": "Enter a valid device identifier.",
     "readonly.identifier": "Read-only device identifier",
-    "readonly.rule": "Read-only fields remain focusable and allow selection and copying. Disabled fields do not participate in keyboard interaction or form submission."
+    "readonly.rule": "Read-only fields remain focusable and allow selection and copying. Disabled fields do not participate in keyboard interaction or form submission.",
+    "filters.title": "List filter compositions",
+    "filters.layout": "Use a standard, contextual or compact AWTableFilters composition for list filters. Cards have 16px padding on all sides. Basic and advanced groups share column tracks, with labels above controls; keywords and date ranges may span columns. Keep the count on the left of the footer and actions on the right, without a visible title row.",
+    "filters.touch": "Desktop controls default to 32px high. In narrow containers and on coarse-pointer touch devices, inputs, selects, expansion controls and action buttons use targets of at least 44px, with actions wrapping as needed.",
+    "filters.behavior": "Editing the draft does not change the applied count. Search applies valid filters after validation; collapsing preserves input, and Reset restores business defaults. The page configures field counts, groups and organization scope. Optional scope controls stay outside the filter card and are excluded from the filter count.",
+    "filters.link": "Explore the three AWTableFilters compositions and interactions"
   });
 })(typeof window !== 'undefined' ? window : globalThis);

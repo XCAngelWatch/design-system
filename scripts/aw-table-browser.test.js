@@ -56,7 +56,10 @@ async function verifyFilters(page, demo, q, r) {
   check(await form.count() === 1, 'one semantic filter form');
   check(await form.locator('.aw-table-filters-heading').count() === 0, 'filters have no visible title row');
   check(await form.getAttribute('aria-labelledby') === 'aw-table-filters-title' && await form.locator('#aw-table-filters-title').evaluate(node => node.classList.contains('visually-hidden')), 'filters retain a localized accessible name');
-  check(await form.locator('.aw-table-filter-buttons').evaluate(group => group.firstElementChild.matches('[data-aw-filter-count]') && group.children[1].matches('.aw-table-filter-submit-actions') && group.children[1].children[0].matches('[data-aw-filter-reset]') && group.children[1].children[1].matches('[type="submit"]')), 'footer order is applied count, Reset and Search');
+  check(await form.locator('.aw-table-filter-footer').evaluate(footer => {
+    const group = footer.querySelector('.aw-table-filter-buttons');
+    return footer.firstElementChild.matches('[data-aw-filter-count]') && group.firstElementChild.matches('[data-aw-filter-toggle]') && group.children[1].matches('.aw-table-filter-submit-actions') && group.children[1].children[0].matches('[data-aw-filter-reset]') && group.children[1].children[1].matches('[type="submit"]');
+  }), 'footer keeps applied count left and More, Reset, Search grouped right');
   check(await form.locator('[data-aw-filter-count]').isVisible(), 'zero applied count remains visible before Reset');
   check(await submit.count() === 1 && await submit.getAttribute('data-aw-command') === 'search', 'one form submit path owns Search and Enter');
   check(await reset.getAttribute('type') === 'button', 'Reset cannot implicitly submit the form');
@@ -289,7 +292,7 @@ async function verifyDeveloperGuides(page, { width, locale, theme, findings, sho
 }
 
 (async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, channel: process.env.PLAYWRIGHT_CHANNEL });
   const findings = [], shots = [];
   try {
     const widths = (process.env.AW_TABLE_QA_WIDTHS || '390,768,1440').split(',').map(Number);
@@ -339,7 +342,9 @@ async function verifyDeveloperGuides(page, { width, locale, theme, findings, sho
       await demo.locator('[data-aw-danger]').uncheck();
       check(await demo.evaluate(host => Math.abs(Number(host.dataset.awActionWidth) - host.querySelector('td.aw-table-actions-cell').getBoundingClientRect().width) < 1), 'action column does not absorb spare width');
       check(await demo.locator('.aw-table-actions svg').count() === 0, 'actions are text-only');
-      check(await demo.locator('[data-aw-command="refresh"], [data-aw-command="columns"], [data-aw-columns]').count() === 0, 'table has no independent Refresh or column-settings entry');
+      check(await demo.locator('[data-aw-command="refresh"]').count() === 0, 'table has no independent Refresh entry');
+      check(await demo.locator('[data-aw-command="columns"]').count() === 1 && await demo.locator('.aw-table-results-actions [data-aw-command="columns"]').count() === 1, 'column settings has one entry in the right-side results toolbar');
+      check(await demo.locator('thead [data-aw-command="columns"]').count() === 0, 'column settings is not duplicated in the table header');
       check(await demo.locator('thead th').count() === 6, 'all five fixed data and selection columns plus actions are visible');
       check(await demo.getAttribute('data-aw-request-count') !== null, 'request count is exposed separately from query changes');
       await verifyFilters(page, demo, q, r);
